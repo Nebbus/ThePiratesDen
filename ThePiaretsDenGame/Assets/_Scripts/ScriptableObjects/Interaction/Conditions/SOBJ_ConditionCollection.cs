@@ -1,16 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SOBJ_ConditionCollection : MonoBehaviour {
+public class SOBJ_ConditionCollection : ScriptableObject
+{
+    public string                   description;                                 // Description of the ConditionCollection.  This is used purely for identification in the inspector.
+    public SOBJ_Condition[]        requiredConditions = new SOBJ_Condition[0];   // The Conditions that need to be met in order for the ReactionCollection to React.
+    public SOBJ_ReactionCollection reactionCollection;                           // Reference to the ReactionCollection that will React should all the Conditions be met.
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
+    /// <summary>
+    /// This is called by the Interactable one at a time for 
+    /// each of its ConditionCollections until one returns true.
+    /// </summary>
+    /// <returns></returns>
+    public bool CheckAndReact()
+    {
+        // Go through all Conditions...
+        for (int i = 0; i < requiredConditions.Length; i++)
+        {
+            /* ... and check them against the AllConditions version of the Condition. 
+             * If they don't have the same satisfied flag, return false.
+             */
+            if (!SOBJ_AllConditions.CheckCondition(requiredConditions[i]))
+                return false;
+        }
+
+        // If there is an ReactionCollection assigned, call its React function.
+        if (reactionCollection)
+        {
+            reactionCollection.React();
+        }
+        // A Reaction happened so return true.
+        return true;
+    }
 }

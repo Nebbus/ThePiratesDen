@@ -47,17 +47,17 @@ public class MONO_PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-     
-    }
-
-
-    private void Start()
-    {
         // The player will be rotated by this script so the nav mesh agent should not rotate it.
         agent.updateRotation = false;
 
         // Create the wait based on the delay.
         inputHoldWait = new WaitForSeconds(inputHoldDelay);
+    }
+
+
+    private void Start()
+    {
+    
 
         // Load the starting position from the save data and find the transform from the starting position's name.
         /*        string startingPositionName = "";
@@ -109,8 +109,10 @@ public class MONO_PlayerMovement : MonoBehaviour
         animator.SetFloat(hashSpeedPara, speed, speedDampTime, Time.deltaTime);
     }
 
-
-    // This is called when the nav mesh agent is very close to it's destination.
+    /// <summary>
+    /// This is called when the nav mesh agent is very close to it's destination.
+    /// </summary>
+    /// <param name="speed"> New movment speed </param>
     private void Stopping(out float speed)
     {
         // Stop the nav mesh agent from moving the player.
@@ -138,8 +140,12 @@ public class MONO_PlayerMovement : MonoBehaviour
 */
     }
 
-
-    // This is called when the nav mesh agent is close to its destination but not so close it's position should snap to it's destination.
+    /// <summary>
+    /// This is called when the nav mesh agent is close to its destination but not 
+    /// so close it's position should snap to it's destination.
+    /// </summary>
+    /// <param name="speed">New movment speed</param>
+    /// <param name="distanceToDestination"> Distance to the destination </param>
     private void Slowing(out float speed, float distanceToDestination)
     {
         // Although the player will continue to move, it will be controlled manually so stop the nav mesh agent.
@@ -161,8 +167,10 @@ public class MONO_PlayerMovement : MonoBehaviour
         speed = Mathf.Lerp(slowingSpeed, 0f, proportionalDistance);
     }
 
-
-    // This is called when the player is moving normally.  In such cases the player is moved by the nav mesh agent, but rotated by this function.
+    /// <summary>
+    /// This is called when the player is moving normally.  In such cases the player
+    /// is moved by the nav mesh agent, but rotated by this function.
+    /// </summary>
     private void Moving()
     {
         // Create a rotation looking down the nav mesh agent's desired velocity.
@@ -172,8 +180,11 @@ public class MONO_PlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSmoothing * Time.deltaTime);
     }
 
-
-    // This function is called by the EventTrigger on the scene's ground when it is clicked on.
+    /// <summary>
+    ///  This function is called by the EventTrigger
+    ///  on the scene's ground when it is clicked on.
+    /// </summary>
+    /// <param name="data"></param>
     public void OnGroundClick(BaseEventData data)
     {
 
@@ -227,7 +238,10 @@ public class MONO_PlayerMovement : MonoBehaviour
            agent.isStopped = false;
        }
    */
-
+   /// <summary>
+   /// Shuts down the intputs and waits until the animation is done to turn them on.
+   /// </summary>
+   /// <returns></returns>
  private IEnumerator WaitForInteraction()
     {
         // As soon as the wait starts, input should no longer be accepted.
