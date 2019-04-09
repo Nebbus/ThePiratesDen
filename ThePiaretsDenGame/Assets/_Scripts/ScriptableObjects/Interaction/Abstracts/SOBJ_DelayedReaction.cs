@@ -9,12 +9,13 @@ public abstract class SOBJ_DelayedReaction : SOBJ_Reaction
 
     protected WaitForSeconds wait;  // Storing the wait created from the delay so it doesn't need to be created each time.
 
-
-    // This function 'hides' the Init function from the Reaction class.
-    // Hiding generally happens when the original function doesn't meet
-    // the requirements for the function in the inheriting class.
-    // Previously it was assumed that all Reactions just needed to call
-    // SpecificInit but with DelayedReactions, wait needs to be set too.
+    /// <summary>
+    /// This function 'hides' the Init function from the Reaction class.
+    /// Hiding generally happens when the original function doesn't meet
+    /// the requirements for the function in the inheriting class.
+    /// Previously it was assumed that all Reactions just needed to call
+    /// SpecificInit but with DelayedReactions, wait needs to be set too.
+    /// </summary>
     public new void Init()
     {
         wait = new WaitForSeconds(delay);
@@ -22,9 +23,11 @@ public abstract class SOBJ_DelayedReaction : SOBJ_Reaction
         SpecificInit();
     }
 
-
-    // This function 'hides' the React function from the Reaction class.
-    // It replaces the functionality with starting a coroutine instead.
+    /// <summary>
+    /// This function 'hides' the React function from the Reaction class.
+    /// It replaces the functionality with starting a coroutine instead.
+    /// </summary>
+    /// <param name="monoBehaviour">MONO_ReactionCollection that called this function</param>
     public new void React(MonoBehaviour monoBehaviour)
     {
         monoBehaviour.StartCoroutine(ReactCoroutine());
