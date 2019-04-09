@@ -31,7 +31,7 @@ public class EDI_AllConditions : Editor
     private string newConditionDescription = "New Condition";   // String to start off the naming of new Conditions.
 
 
-    private const string creationPath = "Assets/_Resources/_AllConditions.asset";
+    private const string creationPath = "Assets/_Resources/SOBJ_AllConditions.asset";
     // The path that the AllConditions asset is created at.
     private const float buttonWidth = 30f;                      // Width in pixels of the button to create Conditions.
 
@@ -148,12 +148,15 @@ public class EDI_AllConditions : Editor
 
 
     // Call this function when the menu item is selected.
-    [MenuItem("Assets/Create/_AllConditions")]
+    [MenuItem("Assets/Create/SOBJ_AllConditions")]
     private static void CreateAllConditionsAsset()
     {
         // If there's already an AllConditions asset, do nothing.
         if (SOBJ_AllConditions.Instance)
+        {
             return;
+        }
+
 
         // Create an instance of the AllConditions object and make an asset for it.
         SOBJ_AllConditions instance = CreateInstance<SOBJ_AllConditions>();
@@ -244,7 +247,10 @@ public class EDI_AllConditions : Editor
         {
             // ... and if one matches the given Condition, return its index.
             if (TryGetConditionAt(i).hash == condition.hash)
+            {
                 return i;
+            }
+
         }
 
         // If the Condition wasn't found, return -1.
@@ -259,11 +265,17 @@ public class EDI_AllConditions : Editor
 
         // If it doesn't exist or there are null elements, return null.
         if (allConditions == null || allConditions[0] == null)
+        {
             return null;
+        }
+
 
         // If the given index is beyond the length of the array return the first element.
         if (index >= allConditions.Length)
+        {
             return allConditions[0];
+        }
+
 
         // Otherwise return the Condition at the given index.
         return allConditions[index];
@@ -274,7 +286,10 @@ public class EDI_AllConditions : Editor
     {
         // If there is no Conditions array, return a length of 0.
         if (SOBJ_AllConditions.Instance.conditions == null)
+        {
             return 0;
+        }
+
 
         // Otherwise return the length of the array.
         return SOBJ_AllConditions.Instance.conditions.Length;

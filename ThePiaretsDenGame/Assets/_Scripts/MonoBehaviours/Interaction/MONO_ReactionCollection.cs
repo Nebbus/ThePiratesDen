@@ -20,9 +20,10 @@ public class MONO_ReactionCollection : MonoBehaviour
              * done to demonstrate hiding and not especially for functionality.
              */
             SOBJ_DelayedReaction delayedReaction = reactions[i] as SOBJ_DelayedReaction;
-
+           
             if (delayedReaction)
             {
+                Debug.Log(delayedReaction.name);
                 delayedReaction.Init();
             }
             else

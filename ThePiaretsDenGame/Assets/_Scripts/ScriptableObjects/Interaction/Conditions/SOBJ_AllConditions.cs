@@ -20,13 +20,21 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
         {
             // If the instance is currently null, try to find an AllConditions instance already in memory.
             if (!instance)
+            {
                 instance = FindObjectOfType<SOBJ_AllConditions>();
+            }
             // If the instance is still null, try to load it from the Resources folder.
             if (!instance)
+            {
                 instance = Resources.Load<SOBJ_AllConditions>(loadPath);
+            }
+
             // If the instance is still null, report that it has not been created yet.
             if (!instance)
+            {
                 Debug.LogError("SOBJ_AllConditions has not been created yet.  Go to Assets > Create > SOBJ_AllConditions.");
+            }
+
             return instance;
         }
         set { instance = value; }
