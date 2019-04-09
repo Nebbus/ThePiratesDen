@@ -31,11 +31,17 @@ public class MONO_CameraRotation : MonoBehaviour
 		{
 			return;
 		}
-			
+
+		 
+
 		// Find a new rotation aimed at the player's position with a given offset.
 		Quaternion newRotation = Quaternion.LookRotation (playerPosition.position - transform.position + offset);
+		newRotation = new Quaternion (newRotation.x, 0, 0, 1);
+
 
 		// Spherically interpolate between the camera's current rotation and the new rotation.
 		transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, Time.deltaTime * smoothing);
+
+
 	}
 }
