@@ -5,14 +5,14 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Animator animator;                   // Reference to the animator component.
-    public NavMeshAgent agent;                  // Reference to the nav mesh agent component.
-    public SaveData playerSaveData;             // Reference to the save data asset containing the player's starting position.
-    public float turnSmoothing = 15f;           // The amount of smoothing applied to the player's turning using spherical interpolation.
-    public float speedDampTime = 0.1f;          // The approximate amount of time it takes for the speed parameter to reach its value upon being set.
-    public float slowingSpeed = 0.175f;         // The speed the player moves as it reaches close to it's destination.
-    public float turnSpeedThreshold = 0.5f;     // The speed beyond which the player can move and turn normally.
-    public float inputHoldDelay = 0.5f;         // How long after reaching an interactable before input is allowed again.
+    public Animator     animator;                       // Reference to the animator component.
+    public NavMeshAgent agent;                          // Reference to the nav mesh agent component.
+    public SaveData     playerSaveData;                 // Reference to the save data asset containing the player's starting position.
+    public float        turnSmoothing       = 15f;      // The amount of smoothing applied to the player's turning using spherical interpolation.
+    public float        speedDampTime       = 0.1f;     // The approximate amount of time it takes for the speed parameter to reach its value upon being set.
+    public float        slowingSpeed        = 0.175f;   // The speed the player moves as it reaches close to it's destination.
+    public float        turnSpeedThreshold  = 0.5f;     // The speed beyond which the player can move and turn normally.
+    public float        inputHoldDelay      = 0.5f;     // How long after reaching an interactable before input is allowed again.
     
 
     private Interactable currentInteractable;   // The interactable that is currently being headed towards.
@@ -155,8 +155,9 @@ public class PlayerMovement : MonoBehaviour
     // This function is called by the EventTrigger on the scene's ground when it is clicked on.
     public void OnGroundClick(BaseEventData data)
     {
+     
         // If the handle input flag is set to false then do nothing.
-        if(!handleInput)
+        if (!handleInput)
             return;
         
         // The player is no longer headed for an interactable so set it to null.
@@ -182,6 +183,7 @@ public class PlayerMovement : MonoBehaviour
     // This function is called by the EventTrigger on an Interactable, the Interactable component is passed into it.
     public void OnInteractableClick(Interactable interactable)
     {
+       
         // If the handle input flag is set to false then do nothing.
         if(!handleInput)
             return;

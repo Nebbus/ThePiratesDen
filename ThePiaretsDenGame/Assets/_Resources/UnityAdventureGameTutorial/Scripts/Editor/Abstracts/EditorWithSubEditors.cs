@@ -10,7 +10,7 @@ public abstract class EditorWithSubEditors<TEditor, TTarget> : Editor
     where TEditor : Editor
     where TTarget : Object
 {
-    protected TEditor[] subEditors;         // Array of Editors nested within this Editor.
+    protected TEditor[] subEditors; // Array of Editors nested within this Editor.
 
     
     // This should be called in OnEnable and at the start of OnInspectorGUI.
