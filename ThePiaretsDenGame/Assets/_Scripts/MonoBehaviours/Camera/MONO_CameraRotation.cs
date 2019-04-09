@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class MONO_CameraRotation : MonoBehaviour
 {
-	public bool moveCamera = true;                      // Whether the camera should be moved by this script.    
-	public float smoothing = 7f;                        // Smoothing applied during Slerp, higher is smoother but slower.
-	public Vector3 offset = new Vector3 (0f, 1.5f, 0f); // The offset from the player's position that the camera aims at.
-	public Transform playerPosition;                    // Reference to the player's Transform to aim at.
+	public bool moveCamera 		= true;                     	// Whether the camera should be moved by this script.    
+	public float smoothing 		= 7f;                       	// Smoothing applied during Slerp, higher is smoother but slower.
+	public Vector3 offset 		= new Vector3 (0f, 1.5f, 0f); 	// The offset from the player's position that the camera aims at.
+	public Transform playerPosition;                    		// Reference to the player's Transform to aim at.
 
 
 	private IEnumerator Start ()
@@ -28,8 +28,10 @@ public class MONO_CameraRotation : MonoBehaviour
 	{
 		// If the camer shouldn't move, do nothing.
 		if (!moveCamera)
+		{
 			return;
-
+		}
+			
 		// Find a new rotation aimed at the player's position with a given offset.
 		Quaternion newRotation = Quaternion.LookRotation (playerPosition.position - transform.position + offset);
 
