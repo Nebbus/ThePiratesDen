@@ -10,6 +10,7 @@
 public class SOBJ_ConditionReaction : SOBJ_Reaction
 {
     public SOBJ_Condition condition;// The SOBJ_Condition to be changed.
+
     public bool satisfied;          // The satisfied state the SOBJ_Condition will be changed to.
 
 

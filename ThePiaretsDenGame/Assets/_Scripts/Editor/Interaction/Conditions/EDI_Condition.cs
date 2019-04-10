@@ -82,12 +82,16 @@ public class EDI_Condition : Editor
         EditorGUILayout.BeginHorizontal(GUI.skin.box);
         EditorGUI.indentLevel++;
 
+
         // Display the description of the Condition.
         EditorGUILayout.LabelField(condition.description);
 
         // Display a button showing a '-' that if clicked removes this Condition from the AllConditions asset.
         if (GUILayout.Button("-", GUILayout.Width(conditionButtonWidth)))
+        {
             EDI_AllConditions.RemoveCondition(condition);
+        }
+
 
         EditorGUI.indentLevel--;
         EditorGUILayout.EndHorizontal();
@@ -147,7 +151,7 @@ public class EDI_Condition : Editor
 
         /* Display a button with a '-' that when clicked removes
          * the target from the ConditionCollection's conditions array.
-         */ 
+         */
         if (GUILayout.Button("-", GUILayout.Width(conditionButtonWidth)))
         {
             conditionsProperty.RemoveFromObjectArray(condition);

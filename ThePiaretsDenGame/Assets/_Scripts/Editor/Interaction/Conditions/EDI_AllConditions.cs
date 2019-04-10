@@ -31,7 +31,7 @@ public class EDI_AllConditions : Editor
     private string newConditionDescription = "New Condition";   // String to start off the naming of new Conditions.
 
 
-    private const string creationPath = "Assets/_Resources/SOBJ_AllConditions.asset";
+    private const string creationPath = "Assets/Resources/SOBJ_AllConditions.asset";
     // The path that the AllConditions asset is created at.
     private const float buttonWidth = 30f;                      // Width in pixels of the button to create Conditions.
 
@@ -45,7 +45,10 @@ public class EDI_AllConditions : Editor
          * create an empty array of Conditions.
          */ 
         if (allConditions.conditions == null)
+        {
             allConditions.conditions = new SOBJ_Condition[0];
+        }
+
 
         // If there aren't any editors, create them.
         if (conditionEditors == null)
