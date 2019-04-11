@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sdvsd : MonoBehaviour {
+public class ADD_LATER : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

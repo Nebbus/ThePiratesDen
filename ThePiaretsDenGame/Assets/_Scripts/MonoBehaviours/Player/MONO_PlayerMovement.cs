@@ -15,24 +15,24 @@ public class MONO_PlayerMovement : MonoBehaviour
     public float        turnSpeedThreshold  = 0.5f;     // The speed beyond which the player can move and turn normally.
     public float        inputHoldDelay      = 0.5f;     // How long after reaching an interactable before input is allowed again.
 
-// private Interactable currentInteractable;   // The interactable that is currently being headed towards.
-     private Vector3 destinationPosition;        // The position that is currently being headed towards, this is the interactionLocation of the currentInteractable if it is not null.
-     private bool handleInput = true;            // Whether input is currently being handled.
-     private WaitForSeconds inputHoldWait;       // The WaitForSeconds used to make the user wait before input is handled again.
+     private MONO_Interactable currentInteractable;   // The interactable that is currently being headed towards.
+     private Vector3 destinationPosition;             // The position that is currently being headed towards, this is the interactionLocation of the currentInteractable if it is not null.
+     private bool handleInput = true;                 // Whether input is currently being handled.
+     private WaitForSeconds inputHoldWait;            // The WaitForSeconds used to make the user wait before input is handled again.
 
 
     /* An hash representing the Speed animator parameter, 
      * this is used at runtime in place of a string.
      */
- private readonly int hashSpeedPara = Animator.StringToHash("Speed");
+    private readonly int hashSpeedPara = Animator.StringToHash("Speed");
 
     /* An hash representing the Locomotion tag, 
      * this is used at runtime in place of a string.
      */
-//      private readonly int hashLocomotionTag = Animator.StringToHash("Locomotion");
+      private readonly int hashLocomotionTag = Animator.StringToHash("Locomotion");
 
     // The key used to retrieve the starting position from the playerSaveData.
-//  public const string startingPositionKey = "starting position";
+//      public const string startingPositionKey = "starting position";
 
 
     /* The proportion of the nav mesh agent's 
@@ -75,7 +75,9 @@ public class MONO_PlayerMovement : MonoBehaviour
 
     private void OnAnimatorMove()
        {
-           // Set the velocity of the nav mesh agent (which is moving the player) based on the speed that the animator would move the player.
+           /* Set the velocity of the nav mesh agent (which is moving the player)
+            * based on the speed that the animator would move the player.
+            */ 
            agent.velocity = animator.deltaPosition / Time.deltaTime;
        }
   
@@ -84,28 +86,39 @@ public class MONO_PlayerMovement : MonoBehaviour
     {
         // If the nav mesh agent is currently waiting for a path, do nothing.
         if (agent.pathPending)
+        {
             return;
+        }
+           
 
         // Cache the speed that nav mesh agent wants to move at.
         float speed = agent.desiredVelocity.magnitude;
 
-        // If the nav mesh agent is very close to it's destination, call the Stopping function.
+        /* If the nav mesh agent is very close to it's destination, 
+         * call the Stopping function.
+         */ 
         if (agent.remainingDistance <= agent.stoppingDistance * stopDistanceProportion)
         {
             Stopping(out speed);
         }
-        // Otherwise, if the nav mesh agent is close to it's destination, call the Slowing function.
+        /*Otherwise, if the nav mesh agent is close to it's destination,
+         * call the Slowing function.
+         */ 
         else if (agent.remainingDistance <= agent.stoppingDistance)
         {
             Slowing(out speed, agent.remainingDistance);
         }
-        // Otherwise, if the nav mesh agent wants to move fast enough, call the Moving function.
+        /* Otherwise, if the nav mesh agent wants to move fast enough, 
+         * call the Moving function.
+         */ 
         else if (speed > turnSpeedThreshold)
         {
             Moving();
         }
 
-        // Set the animator's Speed parameter based on the (possibly modified) speed that the nav mesh agent wants to move at.
+        /* Set the animator's Speed parameter based on the (possibly modified) 
+         * speed that the nav mesh agent wants to move at.
+         */ 
         animator.SetFloat(hashSpeedPara, speed, speedDampTime, Time.deltaTime);
     }
 
@@ -125,7 +138,7 @@ public class MONO_PlayerMovement : MonoBehaviour
         speed = 0f;
 
         // If the player is stopping at an interactable...
- /*       if (currentInteractable)
+       if (currentInteractable)
         {
             // ... set the player's rotation to match the interactionLocation's.
             transform.rotation = currentInteractable.interactionLocation.rotation;
@@ -137,7 +150,7 @@ public class MONO_PlayerMovement : MonoBehaviour
             // Start the WaitForInteraction coroutine so that input is ignored briefly.
             StartCoroutine(WaitForInteraction());
         }
-*/
+
     }
 
     /// <summary>
@@ -148,22 +161,33 @@ public class MONO_PlayerMovement : MonoBehaviour
     /// <param name="distanceToDestination"> Distance to the destination </param>
     private void Slowing(out float speed, float distanceToDestination)
     {
-        // Although the player will continue to move, it will be controlled manually so stop the nav mesh agent.
+        /* Although the player will continue to move, it will 
+         * be controlled manually so stop the nav mesh agent.
+         */ 
         agent.isStopped = true;
 
-        // Find the distance to the destination as a percentage of the stopping distance.
+        /* Find the distance to the destination as a percentage
+         * of the stopping distance.
+         */ 
         float proportionalDistance = 1f - distanceToDestination / agent.stoppingDistance;
 
-        // The target rotation is the rotation of the interactionLocation if the player is headed to an interactable, or the player's own rotation if not.
-//        Quaternion targetRotation = currentInteractable ? currentInteractable.interactionLocation.rotation : transform.rotation;
+        /* The target rotation is the rotation of the interactionLocation 
+         * if the player is headed to an interactable, or the player's own 
+         * rotation if not.
+         */ 
+        Quaternion targetRotation = currentInteractable ? currentInteractable.interactionLocation.rotation : transform.rotation;
 
-        // Interpolate the player's rotation between itself and the target rotation based on how close to the destination the player is.
-//        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, proportionalDistance);
+        /* Interpolate the player's rotation between itself and the target 
+         * rotation based on how close to the destination the player is.
+         */ 
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, proportionalDistance);
 
         // Move the player towards the destination by an amount based on the slowing speed.
         transform.position = Vector3.MoveTowards(transform.position, destinationPosition, slowingSpeed * Time.deltaTime);
 
-        // Set the speed (for use by the animator) to a value between slowing speed and zero based on the proportional distance.
+        /* Set the speed (for use by the animator) to a value between slowing
+         * speed and zero based on the proportional distance.
+         */ 
         speed = Mathf.Lerp(slowingSpeed, 0f, proportionalDistance);
     }
 
@@ -189,19 +213,23 @@ public class MONO_PlayerMovement : MonoBehaviour
     {
 
         // If the handle input flag is set to false then do nothing.
-/*        if (!handleInput)
+        if (!handleInput)
         {
             return;
         }
-*/     
+    
 
         // The player is no longer headed for an interactable so set it to null.
- //       currentInteractable = null;
+       currentInteractable = null;
 
-        // This function needs information about a click so cast the BaseEventData to a PointerEventData.
+        /* This function needs information about a click so cast
+         * the BaseEventData to a PointerEventData.
+         */ 
         PointerEventData pData = (PointerEventData)data;
 
-        // Try and find a point on the nav mesh nearest to the world position of the click and set the destination to that.
+        /* Try and find a point on the nav mesh nearest to the world position
+         * of the click and set the destination to that.
+         */ 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(pData.pointerCurrentRaycast.worldPosition, out hit, navMeshSampleDistance, NavMesh.AllAreas))
         {
@@ -209,23 +237,33 @@ public class MONO_PlayerMovement : MonoBehaviour
         }
         else
         {
-            // In the event that the nearest position cannot be found, set the position as the world position of the click.
+            /* In the event that the nearest position cannot be found, 
+             * set the position as the world position of the click.
+             */ 
             destinationPosition = pData.pointerCurrentRaycast.worldPosition;
         }
 
 
-        // Set the destination of the nav mesh agent to the found destination position and start the nav mesh agent going.
+        /* Set the destination of the nav mesh agent to the found
+         * destination position and start the nav mesh agent going.
+         */ 
         agent.SetDestination(destinationPosition);
         agent.isStopped = false;
     }
 
-
-    // This function is called by the EventTrigger on an Interactable, the Interactable component is passed into it.
-    /*  public void OnInteractableClick(Interactable interactable)
+    /// <summary>
+    /// This function is called by the EventTrigger on an Interactable,
+    /// the Interactable component is passed into it.
+    /// </summary>
+    /// <param name="interactable"></param>
+    public void OnInteractableClick(MONO_Interactable interactable)
        {
            // If the handle input flag is set to false then do nothing.
            if (!handleInput)
-               return;
+           {
+            return;
+           }
+
 
            // Store the interactble that was clicked on.
            currentInteractable = interactable;
@@ -233,11 +271,13 @@ public class MONO_PlayerMovement : MonoBehaviour
            // Set the destination to the interaction location of the interactable.
            destinationPosition = currentInteractable.interactionLocation.position;
 
-           // Set the destination of the nav mesh agent to the found destination position and start the nav mesh agent going.
+           /* Set the destination of the nav mesh agent to the found destination
+            * position and start the nav mesh agent going.
+            */ 
            agent.SetDestination(destinationPosition);
            agent.isStopped = false;
        }
-   */
+  
    /// <summary>
    /// Shuts down the intputs and waits until the animation is done to turn them on.
    /// </summary>
@@ -251,10 +291,10 @@ public class MONO_PlayerMovement : MonoBehaviour
         yield return inputHoldWait;
 
         // Until the animator is in a state with the Locomotion tag, wait.
-   /*     while (animator.GetCurrentAnimatorStateInfo(0).tagHash != hashLocomotionTag)
+       while (animator.GetCurrentAnimatorStateInfo(0).tagHash != hashLocomotionTag)
         {
             yield return null;
-        }*/
+        }
 
         // Now input can be accepted again.
         handleInput = true;

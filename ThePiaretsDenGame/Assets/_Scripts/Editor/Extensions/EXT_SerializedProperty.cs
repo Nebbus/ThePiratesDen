@@ -1,22 +1,32 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 // This class contains extension methods for the SerializedProperty
 // class.  Specifically, methods for dealing with object arrays.
-public static class SerializedPropertyExtensions
+public static class EXT_SerializedProperty
 {
-    // Use this to add an object to an object array represented by a SerializedProperty.
-    public static void _AddToObjectArray<T> (this SerializedProperty arrayProperty, T elementToAdd)
+    /// <summary>
+    /// Use this to add an object to an object array represented by a SerializedProperty.
+    /// </summary>
+    /// <typeparam name="T"> Type of array</typeparam>
+    /// <param name="arrayProperty"> the array the operation will be done on</param>
+    /// <param name="elementToAdd"> element to add</param>
+    public static void AddToObjectArray<T>(this SerializedProperty arrayProperty, T elementToAdd)
         where T : Object
     {
         // If the SerializedProperty this is being called from is not an array, throw an exception.
         if (!arrayProperty.isArray)
+        {
             throw new UnityException("SerializedProperty " + arrayProperty.name + " is not an array.");
+        }
+            
 
         // Pull all the information from the target of the serializedObject.
         arrayProperty.serializedObject.Update();
 
-        // Add a null array element to the end of the array then populate it with the object parameter.
+        /* Add a null array element to the end of the array
+         * then populate it with the object parameter.
+         */ 
         arrayProperty.InsertArrayElementAtIndex(arrayProperty.arraySize);
         arrayProperty.GetArrayElementAtIndex(arrayProperty.arraySize - 1).objectReferenceValue = elementToAdd;
 
@@ -24,26 +34,43 @@ public static class SerializedPropertyExtensions
         arrayProperty.serializedObject.ApplyModifiedProperties();
     }
 
-
-    // Use this to remove the object at an index from an object array represented by a SerializedProperty.
-    public static void _RemoveFromObjectArrayAt (this SerializedProperty arrayProperty, int index)
+    /// <summary>
+    ///  Use this to remove the object at an index from an object array represented by a SerializedProperty.
+    /// </summary>
+    /// <param name="arrayProperty"> the array the operation will be done on</param>
+    /// <param name="index"> index of element to be removed</param>
+    public static void RemoveFromObjectArrayAt(this SerializedProperty arrayProperty, int index)
     {
-        // If the index is not appropriate or the serializedProperty this is being called from is not an array, throw an exception.
-        if(index < 0)
+        /* If the index is not appropriate or the serializedProperty this
+         * is being called from is not an array, throw an exception.
+         */
+        if (index < 0)
+        {
             throw new UnityException("SerializedProperty " + arrayProperty.name + " cannot have negative elements removed.");
+        }
+          
 
         if (!arrayProperty.isArray)
+        {
             throw new UnityException("SerializedProperty " + arrayProperty.name + " is not an array.");
+        }
 
-        if(index > arrayProperty.arraySize - 1)
+
+        if (index > arrayProperty.arraySize - 1)
+        {
             throw new UnityException("SerializedProperty " + arrayProperty.name + " has only " + arrayProperty.arraySize + " elements so element " + index + " cannot be removed.");
+        }
+
 
         // Pull all the information from the target of the serializedObject.
         arrayProperty.serializedObject.Update();
 
         // If there is a non-null element at the index, null it.
         if (arrayProperty.GetArrayElementAtIndex(index).objectReferenceValue)
+        {
             arrayProperty.DeleteArrayElementAtIndex(index);
+        }
+
 
         // Delete the null element from the array at the index.
         arrayProperty.DeleteArrayElementAtIndex(index);
@@ -52,17 +79,27 @@ public static class SerializedPropertyExtensions
         arrayProperty.serializedObject.ApplyModifiedProperties();
     }
 
-
-    // Use this to remove an object from an object array represented by a SerializedProperty.
-    public static void _RemoveFromObjectArray<T> (this SerializedProperty arrayProperty, T elementToRemove)
+    /// <summary>
+    /// Use this to remove an object from an object array represented by a SerializedProperty.
+    /// </summary>
+    /// <typeparam name="T"> Type of array</typeparam>
+    /// <param name="arrayProperty"> the array the operation will be done on</param>
+    /// <param name="elementToRemove"> element to remove</param>
+    public static void RemoveFromObjectArray<T>(this SerializedProperty arrayProperty, T elementToRemove)
         where T : Object
     {
         // If either the serializedProperty doesn't represent an array or the element is null, throw an exception.
         if (!arrayProperty.isArray)
+        {
             throw new UnityException("SerializedProperty " + arrayProperty.name + " is not an array.");
+        }
 
-        if(!elementToRemove)
+
+        if (!elementToRemove)
+        {
             throw new UnityException("Removing a null element is not supported using this method.");
+        }
+
 
         // Pull all the information from the target of the serializedObject.
         arrayProperty.serializedObject.Update();
@@ -76,7 +113,7 @@ public static class SerializedPropertyExtensions
             if (elementProperty.objectReferenceValue == elementToRemove)
             {
                 // ... then remove it.
-                arrayProperty.RemoveFromObjectArrayAt (i);
+                arrayProperty.RemoveFromObjectArrayAt(i);
                 return;
             }
         }
