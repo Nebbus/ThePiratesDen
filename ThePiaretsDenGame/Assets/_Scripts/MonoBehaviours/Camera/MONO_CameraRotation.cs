@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Fungus;
 using UnityEngine;
 
 public class MONO_CameraRotation : MonoBehaviour
@@ -29,6 +30,7 @@ public class MONO_CameraRotation : MonoBehaviour
 
 	private void LateUpdate()
 	{
+		
 		// If the camera shouldn't move, do nothing.
 		if (!moveCamera)
 		{
