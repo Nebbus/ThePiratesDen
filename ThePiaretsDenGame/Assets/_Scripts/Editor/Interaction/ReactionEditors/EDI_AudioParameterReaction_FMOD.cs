@@ -6,14 +6,14 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(SOBJ_AudioReaction_FMOD))]
+[CustomEditor(typeof(SOBJ_AudioParameterReaction_FMOD))]
 [CanEditMultipleObjects]
-public class EDI_AudioReaction_FMOD : EDI_Reaction
+public class EDI_AudioParameterReaction_FMOD : EDI_Reaction
 {
 
     protected override string GetFoldoutLabel()
     {
-        return "EDI_AudioReaction_FMOD";
+        return "SOBJ_AudioParameterReaction_FMOD";
     }
 
     /// <summary>
@@ -73,28 +73,27 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
         }
     }
 
-
     protected override void DrawReaction()
     {
-        // if oneShot, fadeout or override attenuation is needed as parameters se StudioEventEmitterEditor.
-        var tag             = serializedObject.FindProperty("CollisionTag");
-        var ev              = serializedObject.FindProperty("Event");
-        var param           = serializedObject.FindProperty("Params");
-        var preload         = serializedObject.FindProperty("Preload");
+
+        var tag    = serializedObject.FindProperty("CollisionTag");
+        var ev     = serializedObject.FindProperty("Event");
+        var param = serializedObject.FindProperty("Params");
+        var preload = serializedObject.FindProperty("Preload");
 
 
-       
+
         EditorGUI.BeginChangeCheck();
 
         EditorGUILayout.PropertyField(ev, new GUIContent("Event"));
 
         EditorEventRef editorEvent = EventManager.EventFromPath(ev.stringValue);
 
-    
+
         if (editorEvent != null)
         {
 
-            param.isExpanded = EditorGUILayout.Foldout(param.isExpanded, "Initial Parameter Values");
+            param.isExpanded = EditorGUILayout.Foldout(param.isExpanded, "Parameter sets to Values");
             if (ev.hasMultipleDifferentValues)
             {
                 if (param.isExpanded)
@@ -161,14 +160,9 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
                 }
             }
 
-            EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Advanced options" );
-            EditorGUI.indentLevel++;
-            EditorGUILayout.PropertyField(preload, new GUIContent("Preload Sample Data"));
-            EditorGUI.indentLevel--;
         }
 
-    
+
         serializedObject.ApplyModifiedProperties();
     }
 
@@ -183,7 +177,7 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
             matchingSet = true;
             foreach (var obj in serializedObject.targetObjects)
             {
-                var emitter = obj as SOBJ_AudioReaction_FMOD;
+                var emitter = obj as SOBJ_AudioParameterReaction_FMOD;
                 var param = emitter.Params != null ? emitter.Params.FirstOrDefault((x) => x.Name == name) : null;
                 if (first)
                 {
@@ -223,7 +217,7 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
         {
             matchingSet = matchingValue = true;
 
-            var emitter = serializedObject.targetObject as SOBJ_AudioReaction_FMOD;
+            var emitter = serializedObject.targetObject as SOBJ_AudioParameterReaction_FMOD;
             var param = emitter.Params != null ? emitter.Params.FirstOrDefault((x) => x.Name == name) : null;
             if (param != null)
             {
@@ -250,7 +244,7 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
 
     void SetParameterValue(UnityEngine.Object obj, string name, float value)
     {
-        var emitter = obj as SOBJ_AudioReaction_FMOD;
+        var emitter = obj as SOBJ_AudioParameterReaction_FMOD;
         var param = emitter.Params != null ? emitter.Params.FirstOrDefault((x) => x.Name == name) : null;
         if (param != null)
         {
@@ -276,7 +270,7 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
 
     void AddParameterValue(UnityEngine.Object obj, string name, float value)
     {
-        var emitter = obj as SOBJ_AudioReaction_FMOD;
+        var emitter = obj as SOBJ_AudioParameterReaction_FMOD;
         var param = emitter.Params != null ? emitter.Params.FirstOrDefault((x) => x.Name == name) : null;
         if (param == null)
         {
