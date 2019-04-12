@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using Fungus;
 
@@ -16,4 +16,4 @@ using Fungus;
 		{
 			ExecuteBlock ();
 		}
-	}}
+	}

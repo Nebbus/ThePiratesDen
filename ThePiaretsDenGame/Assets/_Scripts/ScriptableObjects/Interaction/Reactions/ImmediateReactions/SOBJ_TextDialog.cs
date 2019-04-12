@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SOBJ_TextDialog : MonoBehaviour {
+public class SOBJ_TextDialog : SOBJ_Reaction
+{
+	public Fungus.Flowchart flowchart;       // The gameobject to be turned on or off.
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	protected override void ImmediateReaction()
+	{
+		flowchart.ExecuteBlock ("Start");
 	}
 }
+
