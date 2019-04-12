@@ -7,323 +7,152 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(SOBJ_AudioReaction_FMOD))]
-[CanEditMultipleObjects]
 public class EDI_AudioReaction_FMOD : EDI_Reaction
 {
 
+    StudioEventEmitter targetEmitter;
+
+    SerializedProperty emitters;
+
+        bool[] expanded;
+
+    bool test;
+
     protected override string GetFoldoutLabel()
     {
-        return "EDI_AudioReaction_FMOD";
-    }
-
-    /// <summary>
-    /// _UpdateParamsOnEmitter part 1.
-    /// Updates the values of each parameter in the emitter. 
-    /// Function is copied from Assets\Plugins\Editor\FMOD\EditorUtils.cs
-    /// </summary>
-    /// <param name="serializedObject"> Object that will react with audio reaction </param>
-    /// <param name="path"> Path to script that holds reference to FMOD parameters </param>
-    public void _UpdateParamsOnEmitter(SerializedObject serializedObject, string path)
-    {
-        if (String.IsNullOrEmpty(path) || EventManager.EventFromPath(path) == null)
-        {
-            return;
-        }
-
-        var eventRef = EventManager.EventFromPath(path);
-        serializedObject.ApplyModifiedProperties();
-        if (serializedObject.isEditingMultipleObjects)
-        {
-            foreach (var obj in serializedObject.targetObjects)
-            {
-                _UpdateParamsOnEmitter(obj, eventRef);
-            }
-        }
-        else
-        {
-            _UpdateParamsOnEmitter(serializedObject.targetObject, eventRef);
-        }
-        serializedObject.Update();
-    }
-    /// <summary>
-    /// _UpdateParamsOnEmitter part 2.
-    /// Updates the values of each parameter in the emitter. 
-    /// Function is copied from Assets\Plugins\Editor\FMOD\EditorUtils.cs 
-    /// </summary>
-    /// <param name="obj"></param>
-    /// <param name="eventRef"></param>
-    private void _UpdateParamsOnEmitter(UnityEngine.Object obj, EditorEventRef eventRef)
-    {
-        var emitter = obj as SOBJ_AudioReaction_FMOD;
-        if (emitter == null)
-        {
-            // Custom game object
-            return;
-        }
-
-        for (int i = 0; i < emitter.Params.Length; i++)
-        {
-            if (!eventRef.Parameters.Exists((x) => x.Name == emitter.Params[i].Name))
-            {
-                int end = emitter.Params.Length - 1;
-                emitter.Params[i] = emitter.Params[end];
-                Array.Resize<ParamRef>(ref emitter.Params, end);
-                i--;
-            }
-        }
+        return "SOBJ_AudioParameterReaction_FMOD";
     }
 
 
-    protected override void DrawReaction()
+    protected override void Init()
     {
-        // if oneShot, fadeout or override attenuation is needed as parameters se StudioEventEmitterEditor.
-        var tag             = serializedObject.FindProperty("CollisionTag");
-        var ev              = serializedObject.FindProperty("Event");
-        var param           = serializedObject.FindProperty("Params");
-        var preload         = serializedObject.FindProperty("Preload");
-
-
-       
-        EditorGUI.BeginChangeCheck();
-
-        EditorGUILayout.PropertyField(ev, new GUIContent("Event"));
-
-        EditorEventRef editorEvent = EventManager.EventFromPath(ev.stringValue);
-
-    
-        if (editorEvent != null)
-        {
-
-            param.isExpanded = EditorGUILayout.Foldout(param.isExpanded, "Initial Parameter Values");
-            if (ev.hasMultipleDifferentValues)
+      
+            emitters    = serializedObject.FindProperty("Emitters");
+           targetEmitter = null;
+            for (int i = 0; i < emitters.arraySize; i++)
             {
-                if (param.isExpanded)
+                 targetEmitter = emitters.GetArrayElementAtIndex(i).FindPropertyRelative("Target").objectReferenceValue as StudioEventEmitter;
+                if (targetEmitter != null)
                 {
-                    GUILayout.Box("Cannot change parameters when different events are selected", GUILayout.ExpandWidth(true));
+                    expanded = new bool[targetEmitter.GetComponents<StudioEventEmitter>().Length];
+                    break;
                 }
             }
-            else
+        }
+
+        protected override void DrawReaction()
+        {
+        SOBJ_AudioReaction_FMOD targetScript = (SOBJ_AudioReaction_FMOD)target;
+        bool newSet2                         = GUILayout.Toggle(targetScript.play, "Play sound");
+        targetScript.play                    = newSet2;
+        var newTargetEmitter = EditorGUILayout.ObjectField("Target", targetEmitter, typeof(StudioEventEmitter), true) as StudioEventEmitter;
+        if (newTargetEmitter != targetEmitter)
+        {
+            emitters.ClearArray();
+            targetEmitter = newTargetEmitter;
+
+            if (targetEmitter == null)
             {
-                var eventRef = EventManager.EventFromPath(ev.stringValue);
-                if (param.isExpanded && eventRef != null)
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            List<StudioEventEmitter> newEmitters = new List<StudioEventEmitter>();
+            targetEmitter.GetComponents<StudioEventEmitter>(newEmitters);
+            expanded = new bool[newEmitters.Count];
+            foreach (var emitter in newEmitters)
+            {
+                emitters.InsertArrayElementAtIndex(0);
+                emitters.GetArrayElementAtIndex(0).FindPropertyRelative("Target").objectReferenceValue = emitter;
+            }
+        }
+
+        if (targetEmitter == null)
+        {
+            return;
+        }
+
+        var localEmitters = new List<StudioEventEmitter>();
+        targetEmitter.GetComponents<StudioEventEmitter>(localEmitters);
+
+        int emitterIndex = 0;
+        foreach (var emitter in localEmitters)
+        {
+            SerializedProperty emitterProperty = null;
+            for (int i = 0; i < emitters.arraySize; i++)
+            {
+                if (emitters.GetArrayElementAtIndex(i).FindPropertyRelative("Target").objectReferenceValue == emitter)
                 {
+                    emitterProperty = emitters.GetArrayElementAtIndex(i);
+                    break;
+                }
+            }
+
+            // New emitter component added to game object since we last looked
+            if (emitterProperty == null)
+            {
+                emitters.InsertArrayElementAtIndex(0);
+                emitterProperty = emitters.GetArrayElementAtIndex(0);
+                emitterProperty.FindPropertyRelative("Target").objectReferenceValue = emitter;
+            }
+
+
+            if (!String.IsNullOrEmpty(emitter.Event))
+            {
+                expanded[emitterIndex] = EditorGUILayout.Foldout(expanded[emitterIndex], emitter.Event);
+                if (expanded[emitterIndex])
+                {
+                    var eventRef = EventManager.EventFromPath(emitter.Event);
                     foreach (var paramRef in eventRef.Parameters)
                     {
-                        bool set;
-                        float value;
-                        bool matchingSet, matchingValue;
-                        CheckParameter(paramRef.Name, out set, out matchingSet, out value, out matchingValue);
-
+                        bool set = false;
+                        int index = -1;
+                        for (int i = 0; i < emitterProperty.FindPropertyRelative("Params").arraySize; i++)
+                        {
+                            if (emitterProperty.FindPropertyRelative("Params").GetArrayElementAtIndex(i).FindPropertyRelative("Name").stringValue == paramRef.Name)
+                            {
+                                index = i;
+                                set = true;
+                                break;
+                            }
+                        }
                         EditorGUILayout.BeginHorizontal();
                         EditorGUILayout.PrefixLabel(paramRef.Name);
-                        EditorGUI.showMixedValue = !matchingSet;
-                        EditorGUI.BeginChangeCheck();
-                        bool newSet = EditorGUILayout.Toggle(set, GUILayout.Width(20));
-                        EditorGUI.showMixedValue = false;
-
-                        if (EditorGUI.EndChangeCheck())
+                        bool newSet = GUILayout.Toggle(set, "");
+                        if (!set && newSet)
                         {
-                            Undo.RecordObjects(serializedObject.isEditingMultipleObjects ? serializedObject.targetObjects : new UnityEngine.Object[] { serializedObject.targetObject }, "Inspector");
-                            if (newSet)
-                            {
-                                AddParameterValue(paramRef.Name, paramRef.Default);
-                            }
-                            else
-                            {
-                                DeleteParameterValue(paramRef.Name);
-                            }
-                            set = newSet;
+                            index = 0;
+                            emitterProperty.FindPropertyRelative("Params").InsertArrayElementAtIndex(0);
+                            emitterProperty.FindPropertyRelative("Params").GetArrayElementAtIndex(0).FindPropertyRelative("Name").stringValue = paramRef.Name;
+                            emitterProperty.FindPropertyRelative("Params").GetArrayElementAtIndex(0).FindPropertyRelative("Value").floatValue = 0;
                         }
-
-                        EditorGUI.BeginDisabledGroup(!newSet);
+                        if (set && !newSet)
+                        {
+                            emitterProperty.FindPropertyRelative("Params").DeleteArrayElementAtIndex(index);
+                        }
+                        set = newSet;
+                        EditorGUI.BeginDisabledGroup(!set);
                         if (set)
                         {
-                            EditorGUI.showMixedValue = !matchingValue;
-                            EditorGUI.BeginChangeCheck();
-                            value = EditorGUILayout.Slider(value, paramRef.Min, paramRef.Max);
-                            if (EditorGUI.EndChangeCheck())
-                            {
-                                Undo.RecordObjects(serializedObject.isEditingMultipleObjects ? serializedObject.targetObjects : new UnityEngine.Object[] { serializedObject.targetObject }, "Inspector");
-                                SetParameterValue(paramRef.Name, value);
-                            }
-                            EditorGUI.showMixedValue = false;
+                            var valueProperty = emitterProperty.FindPropertyRelative("Params").GetArrayElementAtIndex(index).FindPropertyRelative("Value");
+                            valueProperty.floatValue = EditorGUILayout.Slider(valueProperty.floatValue, paramRef.Min, paramRef.Max);
                         }
                         else
                         {
-                            EditorGUI.showMixedValue = !matchingValue;
-                            EditorGUILayout.Slider(paramRef.Default, paramRef.Min, paramRef.Max);
-                            EditorGUI.showMixedValue = false;
+                            EditorGUILayout.Slider(0, paramRef.Min, paramRef.Max);
                         }
                         EditorGUI.EndDisabledGroup();
                         EditorGUILayout.EndHorizontal();
                     }
-
                 }
             }
-
-            EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Advanced options" );
-            EditorGUI.indentLevel++;
-            EditorGUILayout.PropertyField(preload, new GUIContent("Preload Sample Data"));
-            EditorGUI.indentLevel--;
+  
+            emitterIndex++;
         }
 
-    
         serializedObject.ApplyModifiedProperties();
     }
 
-    void CheckParameter(string name, out bool set, out bool matchingSet, out float value, out bool matchingValue)
-    {
-        value = 0;
-        set = false;
-        if (serializedObject.isEditingMultipleObjects)
-        {
-            bool first = true;
-            matchingValue = true;
-            matchingSet = true;
-            foreach (var obj in serializedObject.targetObjects)
-            {
-                var emitter = obj as SOBJ_AudioReaction_FMOD;
-                var param = emitter.Params != null ? emitter.Params.FirstOrDefault((x) => x.Name == name) : null;
-                if (first)
-                {
-                    set = param != null;
-                    value = set ? param.Value : 0;
-                    first = false;
-                }
-                else
-                {
-                    if (set)
-                    {
-                        if (param == null)
-                        {
-                            matchingSet = false;
-                            matchingValue = false;
-                            return;
-                        }
-                        else
-                        {
-                            if (param.Value != value)
-                            {
-                                matchingValue = false;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (param != null)
-                        {
-                            matchingSet = false;
-                        }
-                    }
-                }
-            }
-        }
-        else
-        {
-            matchingSet = matchingValue = true;
-
-            var emitter = serializedObject.targetObject as SOBJ_AudioReaction_FMOD;
-            var param = emitter.Params != null ? emitter.Params.FirstOrDefault((x) => x.Name == name) : null;
-            if (param != null)
-            {
-                set = true;
-                value = param.Value;
-            }
-        }
-    }
-
-    void SetParameterValue(string name, float value)
-    {
-        if (serializedObject.isEditingMultipleObjects)
-        {
-            foreach (var obj in serializedObject.targetObjects)
-            {
-                SetParameterValue(obj, name, value);
-            }
-        }
-        else
-        {
-            SetParameterValue(serializedObject.targetObject, name, value);
-        }
-    }
-
-    void SetParameterValue(UnityEngine.Object obj, string name, float value)
-    {
-        var emitter = obj as SOBJ_AudioReaction_FMOD;
-        var param = emitter.Params != null ? emitter.Params.FirstOrDefault((x) => x.Name == name) : null;
-        if (param != null)
-        {
-            param.Value = value;
-        }
-    }
-
-
-    void AddParameterValue(string name, float value)
-    {
-        if (serializedObject.isEditingMultipleObjects)
-        {
-            foreach (var obj in serializedObject.targetObjects)
-            {
-                AddParameterValue(obj, name, value);
-            }
-        }
-        else
-        {
-            AddParameterValue(serializedObject.targetObject, name, value);
-        }
-    }
-
-    void AddParameterValue(UnityEngine.Object obj, string name, float value)
-    {
-        var emitter = obj as SOBJ_AudioReaction_FMOD;
-        var param = emitter.Params != null ? emitter.Params.FirstOrDefault((x) => x.Name == name) : null;
-        if (param == null)
-        {
-            int end = emitter.Params.Length;
-            Array.Resize<ParamRef>(ref emitter.Params, end + 1);
-            emitter.Params[end] = new ParamRef();
-            emitter.Params[end].Name = name;
-            emitter.Params[end].Value = value;
-        }
-    }
-
-    void DeleteParameterValue(string name)
-    {
-        if (serializedObject.isEditingMultipleObjects)
-        {
-            foreach (var obj in serializedObject.targetObjects)
-            {
-                DeleteParameterValue(obj, name);
-            }
-        }
-        else
-        {
-            DeleteParameterValue(serializedObject.targetObject, name);
-        }
-    }
-
-    void DeleteParameterValue(UnityEngine.Object obj, string name)
-    {
-        var emitter = obj as SOBJ_AudioReaction_FMOD;
-        int found = -1;
-        for (int i = 0; i < emitter.Params.Length; i++)
-        {
-            if (emitter.Params[i].Name == name)
-            {
-                found = i;
-            }
-        }
-        if (found >= 0)
-        {
-            int end = emitter.Params.Length - 1;
-            emitter.Params[found] = emitter.Params[end];
-            Array.Resize<ParamRef>(ref emitter.Params, end);
-        }
-    }
-
-
-
-
+  
 
 }

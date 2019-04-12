@@ -19,9 +19,9 @@ namespace FMODUnity
 
         void OnEnable()
         {
-            emitters = serializedObject.FindProperty("Emitters");
-            trigger = serializedObject.FindProperty("TriggerEvent");
-            tag = serializedObject.FindProperty("CollisionTag");
+            emitters    = serializedObject.FindProperty("Emitters");
+            trigger     = serializedObject.FindProperty("TriggerEvent");
+            tag         = serializedObject.FindProperty("CollisionTag");
             targetEmitter = null;
             for (int i = 0; i < emitters.arraySize; i++)
             {
