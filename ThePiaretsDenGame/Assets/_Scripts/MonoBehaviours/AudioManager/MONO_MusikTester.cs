@@ -3,38 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class Musikensomspelas : MonoBehaviour {
+/// <summary>
+/// This script is only for testing of the 
+/// muski an ambiens
+/// </summary>
+public class MONO_MusikTester : MonoBehaviour {
 
     public StudioEventEmitter musiken;
     public StudioEventEmitter ambiens;
-    public float miljö;
+
+    public float area;
     public float ambien;
-    // Use this for initialization
-    void Start () {
-        miljö = 0;
+
+
+    void Start ()
+    {
+        area   = 0;
         ambien = 0;
 
     }
 	
-	// Update is called once per frame
+
 	void Update () {
         if (Input.GetKeyDown(KeyCode.F))
         {
          
-            if (miljö == 0f)
+            if (area == 0f)
             {
                 Debug.Log("0");
-                musiken.SetParameter("Area", 1.0f);
-                miljö = 1f;
+                musiken.SetParameter("Area", 1.0f);           
                 ambiens.SetParameter("AMB_Switch", 1.0f);
+                area   = 1f;
                 ambien = 1f;
             }
-            else if (miljö == 1f)
+            else if (area == 1f)
             { musiken.SetParameter("Area", 0.0f);
-                miljö = 0f;
+
                 ambiens.SetParameter("AMB_Switch", 0.0f);
+                area   = 0f;
                 ambien = 0f;
-                Debug.Log("1");
             }
         }
 	}

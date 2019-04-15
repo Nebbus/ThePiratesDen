@@ -20,7 +20,7 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
 
     protected override string GetFoldoutLabel()
     {
-        return "SOBJ_AudioParameterReaction_FMOD";
+        return "SOBJ_AudioReaction_FMOD";
     }
 
 

@@ -211,26 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Emitters:
-  - Target: {fileID: 771856096}
+  - Target: {fileID: 0}
     Params: []
   play: 1
---- !u!114 &326028468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012a760d82037934992e0cd5ba2b0f2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Emitters:
-  - Target: {fileID: 771856096}
-    Params:
-    - Name: Dor_bam
-      Value: 1
-  play: 0
 --- !u!1 &333327253
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,6 +566,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 568622194}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &692660413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/Boom
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &771856093
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 923812794}
-  - {fileID: 326028468}
+  - {fileID: 1163643479}
 --- !u!114 &771856096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,17 +634,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/SFX/Objects/Dorr
+  Event: event:/Music/Levelmusic
   PlayEvent: 0
   StopEvent: 0
   CollisionTag: 
-  AllowFadeout: 0
+  AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &796325350
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObject: {fileID: 1327954715}
-  activeState: 0
+  activeState: 1
 --- !u!1 &1008854721
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +901,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153451925}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1163643479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012a760d82037934992e0cd5ba2b0f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 771856096}
+    Params:
+    - Name: Area
+      Value: 0
+    - Name: AMB_Switch
+      Value: 0
+  play: 1
 --- !u!1 &1327954715 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1488700873102462, guid: a4020da0d4f61f84287c6e1efa737707,
@@ -1017,7 +1032,7 @@ Prefab:
     - target: {fileID: 114510734336489586, guid: a4020da0d4f61f84287c6e1efa737707,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114977689446388268, guid: a4020da0d4f61f84287c6e1efa737707,
         type: 2}
@@ -1122,6 +1137,16 @@ Prefab:
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114510734336489586, guid: a4020da0d4f61f84287c6e1efa737707,
+        type: 2}
+      propertyPath: reactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 692660413}
+    - target: {fileID: 114977689446388268, guid: a4020da0d4f61f84287c6e1efa737707,
+        type: 2}
+      propertyPath: defaultReactionCollection
+      value: 
+      objectReference: {fileID: 771856095}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
   m_IsPrefabParent: 0
@@ -1267,7 +1292,7 @@ Prefab:
     - target: {fileID: 114510734336489586, guid: a4020da0d4f61f84287c6e1efa737707,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_LocalPosition.x
