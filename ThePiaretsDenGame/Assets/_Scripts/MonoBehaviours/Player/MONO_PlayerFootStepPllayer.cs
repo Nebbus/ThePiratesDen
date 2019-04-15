@@ -13,6 +13,8 @@ public class MONO_PlayerFootStepPllayer : MonoBehaviour {
     /// <summary>
     /// This funktion will be calld by a animations event,
     /// so it ned to be events when the players fot hits the ground.
+    /// se this https://www.youtube.com/watch?v=Bnm8mzxnwP8 for how
+    /// to create them.
     /// </summary>
     private void Step()
     {
