@@ -23,17 +23,14 @@ public class SOBJ_AudioReaction_FMOD : SOBJ_Reaction
             var emitterRef = Emitters[i];
             if (emitterRef.Target != null)
             {
-               
+                if (play)
+                {
+                    emitterRef.Target.Play();
+                }
                 for (int j = 0; j < Emitters[i].Params.Length; j++)
                 {
                   
                     emitterRef.Target.SetParameter(Emitters[i].Params[j].Name, Emitters[i].Params[j].Value);
-                   
-
-                }
-                if (play)
-                {
-                    emitterRef.Target.Play();
                 }
             }
         }
