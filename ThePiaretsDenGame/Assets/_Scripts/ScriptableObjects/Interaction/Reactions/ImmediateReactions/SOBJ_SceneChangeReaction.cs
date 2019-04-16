@@ -3,7 +3,7 @@
 public class SOBJ_SceneChangeReaction : SOBJ_Reaction
 {
 	public string sceneToBeLoaded;
-	[SerializeField]
+
 	private GameObject sceneManager;
 	private MONO_SceneManager managerScript;
 
