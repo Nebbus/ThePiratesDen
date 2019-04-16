@@ -6,7 +6,8 @@ using System.Collections.Generic;
 
 public class MONO_Inventory : MonoBehaviour {
 
-    public GameObject inventory;
+    [Tooltip("The object that gas the Grid Layout Group on it, it will have all items as children")]
+    public GameObject inventoryGroup;
 
     public Image[]     invetoryItemsImages = new Image[numberItemSlots];
     public SOBJ_Item[] invetoryItems       = new SOBJ_Item[numberItemSlots];
