@@ -17,6 +17,8 @@ public class MONO_Inventory : MonoBehaviour {
 
 
 
+
+
     public void AddItem(SOBJ_Item itemToAdd)
      {
          for (int i = 0; i < invetoryItems.Length; i++)

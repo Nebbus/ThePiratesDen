@@ -7,18 +7,21 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_Condition, S
     public SerializedProperty collectionsProperty;              // Represents the array of ConditionCollections that the target belongs to.
 
 
-    private SOBJ_ConditionCollection conditionCollection;       // Reference to the target.
-    private SerializedProperty descriptionProperty;             // Represents a string description for the target.
-    private SerializedProperty conditionsProperty;              // Represents an array of Conditions for the target.
-    private SerializedProperty reactionCollectionProperty;      // Represents the ReactionCollection that is referenced by the target.
+    private SOBJ_ConditionCollection conditionCollection;         // Reference to the target.
+    private SerializedProperty       descriptionProperty;         // Represents a string description for the target.
+    private SerializedProperty       conditionsProperty;          // Represents an array of Conditions for the target.
+    private SerializedProperty       reactionCollectionProperty;  // Represents the ReactionCollection that is referenced by the target.
 
 
     private const float conditionButtonWidth = 30f;             // Width of the button for adding a new Condition.
     private const float collectionButtonWidth = 125f;           // Width of the button for removing the target from it's Interactable.
+   
     // Name of the field that represents a string description for the target.
-    private const string conditionCollectionPropDescriptionName = "description"; 
+    private const string conditionCollectionPropDescriptionName        = "description"; 
+
     // Name of the field that represents an array of Conditions for the target.
-    private const string conditionCollectionPropRequiredConditionsName = "requiredConditions";  
+    private const string conditionCollectionPropRequiredConditionsName = "requiredConditions"; 
+    
     // Name of the field that represents the ReactionCollection that is referenced by the target.
     private const string conditionCollectionPropReactionCollectionName = "reactionCollection";  
 
