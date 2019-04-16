@@ -26,7 +26,7 @@ public class MONO_Inventory : MonoBehaviour {
          {
              if (invetoryItems[i] == null)
              {
-                 invetoryItems[i]               = itemToAdd;
+                invetoryItems[i]               = itemToAdd;
                 invetoryItemsImages[i].sprite  = itemToAdd.sprite;
                 invetoryItemsImages[i].enabled = true;
                  return;
@@ -39,9 +39,9 @@ public class MONO_Inventory : MonoBehaviour {
      {
          for (int i = 0; i < invetoryItems.Length; i++)
          {
-             if (invetoryItems[i] == null)
+             if (invetoryItems[i] == itemToRemove)
              {
-                 invetoryItems[i]                = null;
+                invetoryItems[i]                = null;
                 invetoryItemsImages[i].sprite   = null;
                 invetoryItemsImages[i].enabled  = false;
                  return;
