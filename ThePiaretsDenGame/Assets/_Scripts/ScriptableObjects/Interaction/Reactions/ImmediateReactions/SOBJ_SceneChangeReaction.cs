@@ -15,8 +15,7 @@ public class SOBJ_SceneChangeReaction : SOBJ_Reaction
 
 	protected override void ImmediateReaction()
 	{
-		
-		sceneManager.GetComponent<MONO_SceneManager> ().FadeAndLoad(sceneToBeLoaded);
+		sceneManager.GetComponent<MONO_SceneManager> ().ChangeScene(sceneToBeLoaded);
 	}
 }
 

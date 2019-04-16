@@ -15,10 +15,11 @@ public class MONO_PlayerMovement : MonoBehaviour
     public float        turnSpeedThreshold  = 0.5f;     // The speed beyond which the player can move and turn normally.
     public float        inputHoldDelay      = 0.5f;     // How long after reaching an interactable before input is allowed again.
 
-     private MONO_Interactable currentInteractable;   // The interactable that is currently being headed towards.
-     private Vector3 destinationPosition;             // The position that is currently being headed towards, this is the interactionLocation of the currentInteractable if it is not null.
-     private bool handleInput = true;                 // Whether input is currently being handled.
-     private WaitForSeconds inputHoldWait;            // The WaitForSeconds used to make the user wait before input is handled again.
+    private MONO_Interactable currentInteractable;   // The interactable that is currently being headed towards.
+    private Vector3 destinationPosition;             // The position that is currently being headed towards, this is the interactionLocation of the currentInteractable if it is not null.
+    private WaitForSeconds inputHoldWait;            // The WaitForSeconds used to make the user wait before input is handled again.
+	private MONO_SceneManager sceneManager;
+
 
 
     /* An hash representing the Speed animator parameter, 
@@ -52,6 +53,7 @@ public class MONO_PlayerMovement : MonoBehaviour
 
         // Create the wait based on the delay.
         inputHoldWait = new WaitForSeconds(inputHoldDelay);
+		sceneManager = FindObjectOfType<MONO_SceneManager> ();
     }
 
 
@@ -213,7 +215,7 @@ public class MONO_PlayerMovement : MonoBehaviour
     {
 
         // If the handle input flag is set to false then do nothing.
-        if (!handleInput)
+        if (!sceneManager.handleInput)
         {
             return;
         }
@@ -259,7 +261,7 @@ public class MONO_PlayerMovement : MonoBehaviour
     public void OnInteractableClick(MONO_Interactable interactable)
        {
            // If the handle input flag is set to false then do nothing.
-           if (!handleInput)
+           if (!sceneManager.handleInput)
            {
             return;
            }
@@ -285,7 +287,7 @@ public class MONO_PlayerMovement : MonoBehaviour
  private IEnumerator WaitForInteraction()
     {
         // As soon as the wait starts, input should no longer be accepted.
-        handleInput = false;
+		sceneManager.handleInput = false;
 
         // Wait for the normal pause on interaction.
         yield return inputHoldWait;
@@ -297,7 +299,7 @@ public class MONO_PlayerMovement : MonoBehaviour
         }
 
         // Now input can be accepted again.
-        handleInput = true;
+		sceneManager.handleInput = true;
     }
 
 }

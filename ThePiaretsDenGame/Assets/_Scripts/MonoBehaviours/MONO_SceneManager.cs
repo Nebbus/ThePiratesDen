@@ -4,23 +4,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MONO_SceneManager : MonoBehaviour {
-
-	public string startScene;
-	public Canvas canvas;
-	public int fadeDelay;
+	[HideInInspector]
+	public bool handleInput = true;                 // Whether input is currently being handled.
+	public string startScene;						//The name of the starting scene as a string.
+	public Canvas canvas;							//The canvas holding the black image we fade to.
 
 	private MONO_Fade fade;
 
 	IEnumerator Start () 
 	{
+		//Find the instance holding the code for fading.
 		fade = FindObjectOfType<MONO_Fade>();
+
+		//Load first scene, set start position for player and fade in.
 		yield return StartCoroutine( LoadAndSetScene (startScene));
 		SetPlayerStartPosition ();
 		fade.Fade (0f);
 
 	}
 
+	/// <summary>
+	/// Changes the scene.
+	/// </summary>
+	/// <param name="sceneName">Scene to load.</param>
+	public void ChangeScene(string sceneName)
+	{
+		StartCoroutine (FadeAndLoad (sceneName));
+	}
 
+	/// <summary>
+	/// Load in the new scene ontop of the persistent scene and activate.
+	/// </summary>
+	/// <param name="sceneName">Scene to load.</param>
 	public IEnumerator LoadAndSetScene(string sceneName)
 	{
 		yield return SceneManager.LoadSceneAsync (sceneName, LoadSceneMode.Additive);
@@ -28,23 +43,40 @@ public class MONO_SceneManager : MonoBehaviour {
 		SceneManager.SetActiveScene (scene);
 	}
 
+	/// <summary>
+	/// Unloads the previous scene.
+	/// </summary>
 	public IEnumerator UnloadAndUnsetScene()
 	{
 		yield return SceneManager.UnloadSceneAsync (SceneManager.GetActiveScene ().buildIndex);
 	}
 
-	public void FadeAndLoad(string sceneName)
+	/// <summary>
+	/// Disable input, fade out, then switch scene before fading in.
+	/// </summary>
+	/// <param name="sceneName">Scene to load.</param>
+	public IEnumerator FadeAndLoad(string sceneName)
 	{
+		//disable input and fade out.
+		handleInput = false;
 		fade.Fade(1f);
-		//FMOD stuuuuffs
-		if(fade.canvas.alpha == 1f)
-		{
-			StartCoroutine(UnloadAndUnsetScene());
-			StartCoroutine(LoadAndSetScene(sceneName));	
-		}
+		yield return new WaitForSeconds (fade.fadeDuration);
+
+		//Unload old scene and load the new one.
+		StartCoroutine(UnloadAndUnsetScene());
+		StartCoroutine(LoadAndSetScene(sceneName));	
+
+		//anropa FMOD
+
+		//fade in and enable input.
 		fade.Fade (0f);
+		yield return new WaitForSeconds (fade.fadeDuration);
+		handleInput = true;
 	}
 
+	/// <summary>
+	/// Sets the player start position.
+	/// </summary>
 	private void SetPlayerStartPosition()
 	{
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
@@ -52,10 +84,12 @@ public class MONO_SceneManager : MonoBehaviour {
 		player.transform.position = pos.transform.position;
 		player.transform.localRotation = pos.transform.localRotation;
 	}
-	
 
-	void Update () 
+	/// <summary>
+	/// Changes the music.
+	/// </summary>
+	private void ChangeMusic(float scene)
 	{
-		
+		//This needs to be done with a musician.
 	}
 }

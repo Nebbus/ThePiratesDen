@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class MONO_Fade : MonoBehaviour 
 {
-	public float fadeDuration = 1f;
-	public CanvasGroup canvas;
+	[HideInInspector]
+	public bool isFading = false;					//whether we are currently fading or not.
+	public float fadeDuration = 1f;					//how long to fade for.
+	public CanvasGroup canvas;						//The canvas used to fade.
 
-	private bool isFading = false;
 	private float finalAlpha;
 
+	/// <summary>
+	/// Initalize the fade with a coroutine based on an input target alpha.
+	/// </summary>
+	/// <param name="final">The target alpha.</param>
 	public void Fade(float final)
 	{
 		finalAlpha = final;
-
-		StartCoroutine (DoFade (finalAlpha));
+		StartCoroutine(DoFade (finalAlpha));
 	}
-
+		
+	/// <summary>
+	/// Coroutine where the fade is actually done.
+	/// </summary>
+	/// <param name="targetAlpha">Target alpha sent from previous function.</param>
 	IEnumerator DoFade(float targetAlpha)
 	{
 		// Set the fading flag to true so the FadeAndSwitchScenes coroutine won't be called again.
 		isFading = true;
 
-		// Make sure the CanvasGroup blocks raycasts into the scene so no more input can be accepted.
-		canvas.blocksRaycasts = true;
-
-		// Calculate how fast the CanvasGroup should fade based on it's current alpha, it's final alpha and how long it has to change between the two.
+		/* Calculate how fast the CanvasGroup should fade based on it's current alpha, 
+		 * it's final alpha and how long it has to change between the two.
+		 */
 		float fadeSpeed = Mathf.Abs (canvas.alpha - targetAlpha) / fadeDuration;
 
 		// While the CanvasGroup hasn't reached the final alpha yet...
@@ -40,8 +47,5 @@ public class MONO_Fade : MonoBehaviour
 
 		// Set the flag to false since the fade has finished.
 		isFading = false;
-		// Stop the CanvasGroup from blocking raycasts so input is no longer ignored.
-		canvas.blocksRaycasts = false;
-
 	}
 }
