@@ -37,8 +37,11 @@ public class MONO_SceneManager : MonoBehaviour {
 	{
 		fade.Fade(1f);
 		//FMOD stuuuuffs
-		StartCoroutine(UnloadAndUnsetScene());
-		StartCoroutine(LoadAndSetScene(sceneName));
+		if(fade.canvas.alpha == 1f)
+		{
+			StartCoroutine(UnloadAndUnsetScene());
+			StartCoroutine(LoadAndSetScene(sceneName));	
+		}
 		fade.Fade (0f);
 	}
 
@@ -47,7 +50,7 @@ public class MONO_SceneManager : MonoBehaviour {
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		GameObject pos = GameObject.Find ("StartPosition");
 		player.transform.position = pos.transform.position;
-		player.transform.rotation = pos.transform.rotation;
+		player.transform.localRotation = pos.transform.localRotation;
 	}
 	
 
