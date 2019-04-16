@@ -17,6 +17,9 @@ public class MONO_Inventory : MonoBehaviour {
 
 
 
+    
+    
+
 
     public void HandleInventoryClick()
     {
@@ -29,7 +32,6 @@ public class MONO_Inventory : MonoBehaviour {
             showInventory();
         }
     }
-
 
     public void showInventory()
     {
@@ -55,6 +57,7 @@ public class MONO_Inventory : MonoBehaviour {
                 invetoryItems[i]               = itemToAdd;
                 invetoryItemsImages[i].sprite  = itemToAdd.sprite;
                 invetoryItemsImages[i].enabled = true;
+                pickUpReaction();
                  return;
              }
 
@@ -79,6 +82,10 @@ public class MONO_Inventory : MonoBehaviour {
          }
      }
 
+    private void pickUpReaction()
+    {
+        this.GetComponent<MONO_HiglightObject>().startFlashing();
+    }
 
 
 
