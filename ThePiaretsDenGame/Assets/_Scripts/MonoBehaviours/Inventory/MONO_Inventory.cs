@@ -18,8 +18,34 @@ public class MONO_Inventory : MonoBehaviour {
 
 
 
+    public void HandleInventoryClick()
+    {
+        if (inventoryGroup.activeSelf)
+        {
+            hideInventory();
+        }
+        else
+        {
+            showInventory();
+        }
+    }
 
 
+    public void showInventory()
+    {
+        inventoryGroup.SetActive(true);
+    }
+
+    public void hideInventory()
+    {
+        inventoryGroup.SetActive(false);
+    }
+
+
+    /// <summary>
+    /// Adds item to the inventory
+    /// </summary>
+    /// <param name="itemToAdd"> item to add</param>
     public void AddItem(SOBJ_Item itemToAdd)
      {
          for (int i = 0; i < invetoryItems.Length; i++)
@@ -34,7 +60,10 @@ public class MONO_Inventory : MonoBehaviour {
 
          }
      }
-
+    /// <summary>
+    /// Removes item from inventory
+    /// </summary>
+    /// <param name="itemToRemove">item to be removed</param>
      public void RemoveItem(SOBJ_Item itemToRemove)
      {
          for (int i = 0; i < invetoryItems.Length; i++)

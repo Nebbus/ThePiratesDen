@@ -13,4 +13,8 @@ using UnityEngine;
 public class SOBJ_Item : ScriptableObject
 {
     public Sprite sprite;
+
+    public SOBJ_Item combindsWith;
+    public SOBJ_Item toMake;
+
 }
