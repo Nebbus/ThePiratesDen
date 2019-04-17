@@ -13,12 +13,14 @@ public class EDI_Inventory : Editor {
     private SerializedProperty itemsProperty;
     private SerializedProperty inventorySlotsProperty;
     private SerializedProperty inventoryProperty;
+    private SerializedProperty inventoryBackImageProperty;
 
     private const string inventoryPropItemsImageName = "invetoryItemsImages";
     private const string inventoryPropItemsName      = "invetoryItems";
     private const string inventoryPropInventoryName  = "inventoryGroup";
     private const string inventorySlotPropsName      = "inventorySlots";
     private const string itemSlotImageChildeName     = "itemImage";
+    private const string inventoryBackImagePropName  = "inventoryImage";
     private const string pathToItemSlotPrethab       = "Assets/_Prefabs/Inventory/itemTemplet.prefab";
 
 
@@ -37,10 +39,11 @@ public class EDI_Inventory : Editor {
 
         itemTemplet = AssetDatabase.LoadAssetAtPath(pathToItemSlotPrethab, typeof(GameObject)) as GameObject;
 
-        itemsImagesProperty    = serializedObject.FindProperty(inventoryPropItemsImageName);
-        itemsProperty          = serializedObject.FindProperty(inventoryPropItemsName);
-        inventoryProperty      = serializedObject.FindProperty(inventoryPropInventoryName);
-        inventorySlotsProperty = serializedObject.FindProperty(inventorySlotPropsName);
+        itemsImagesProperty        = serializedObject.FindProperty(inventoryPropItemsImageName);
+        itemsProperty              = serializedObject.FindProperty(inventoryPropItemsName);
+        inventoryProperty          = serializedObject.FindProperty(inventoryPropInventoryName);
+        inventorySlotsProperty     = serializedObject.FindProperty(inventorySlotPropsName);
+        inventoryBackImageProperty = serializedObject.FindProperty(inventoryBackImagePropName);
 
         // Control that the count is upp to date 
         if (MONO_Inventory.numberItemSlots != monoInventory.inventorySlots.Length)
@@ -78,6 +81,7 @@ public class EDI_Inventory : Editor {
   
 
         EditorGUILayout.PropertyField(inventoryProperty);
+        EditorGUILayout.PropertyField(inventoryBackImageProperty);
 
         for (int i = 0; i < MONO_Inventory.numberItemSlots; i++)
          {

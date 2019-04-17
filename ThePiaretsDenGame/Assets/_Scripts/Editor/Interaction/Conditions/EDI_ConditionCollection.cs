@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using System.Collections.Generic;
 using UnityEditor;
 
 [CustomEditor(typeof(SOBJ_ConditionCollection))]
-public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_Condition, SOBJ_Condition>
+public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdvanced, SOBJ_ConditionAdvanced>
 {
     public SerializedProperty collectionsProperty;              // Represents the array of ConditionCollections that the target belongs to.
 
@@ -45,6 +47,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_Condition, S
 
         // Check if the Editors for the Conditions need creating and optionally create them.
         CheckAndCreateSubEditors(conditionCollection.requiredConditions);
+        SetReactionNamesArray();
     }
 
 
@@ -56,7 +59,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_Condition, S
 
 
     // This is called immediately when a subEditor is created.
-    protected override void SubEditorSetup(EDI_Condition editor)
+    protected override void SubEditorSetup(EDI_ConditionAdvanced editor)
     {
         // Set the editor type so that the correct GUI for Condition is shown.
         editor.editorType = EDI_Condition.EditorType.ConditionCollection;
@@ -136,7 +139,9 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_Condition, S
         EditorGUILayout.BeginVertical(GUI.skin.box);
         for (int i = 0; i < subEditors.Length; i++)
         {
+            EditorGUILayout.BeginVertical(GUI.skin.box);
             subEditors[i].OnInspectorGUI();
+            EditorGUILayout.EndHorizontal();
         }
         EditorGUILayout.EndHorizontal();
 
@@ -145,12 +150,18 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_Condition, S
          */ 
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        if (GUILayout.Button("+", GUILayout.Width(conditionButtonWidth)))
+     /*   if (GUILayout.Button("+", GUILayout.Width(conditionButtonWidth)))
         {
-            SOBJ_Condition newCondition = EDI_Condition.CreateCondition();
-            conditionsProperty.AddToObjectArray(newCondition);
-        }
+            // SOBJ_ConditionAdvanced newCondition = EDI_ConditionAdvanced.CreateCondition();
+            //conditionsProperty.AddToObjectArray(newCondition);
+            // Create a Rect for the left GUI controls.
+         
+        }*/
+     
+
+
         EditorGUILayout.EndHorizontal();
+        TypeSelectionGUI();
 
         EditorGUILayout.Space();
 
@@ -158,9 +169,111 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_Condition, S
         EditorGUILayout.PropertyField(reactionCollectionProperty);
     }
 
+    // Caching the vertical spacing between GUI elements.
+    private readonly float verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
+
+
+    private Type[] conditionTypes;                           // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
+    private string[] conditionTypeNames;                       // The names of all appropriate Reaction types.
+    private int selectedIndex;                           // The index of the currently selected Reaction type.
+
+
+    private const float dropAreaHeight = 50f;           // Height in pixels of the area for dropping scripts.
+    private const float controlSpacing = 5f;            // Width in pixels between the popup type selection and drop area.
+    private const float buttonWidth = 30f;                      // Width in pixels of the button to create Conditions.
+
+
+
+
+
+    private void TypeSelectionGUI()
+    {
+        Rect fullWidthRect = GUILayoutUtility.GetRect(GUIContent.none, GUIStyle.none, GUILayout.Height(dropAreaHeight + verticalSpacing));
+
+        Rect leftAreaRect = fullWidthRect;
+
+        // It should be in half a space from the top.
+        leftAreaRect.y += verticalSpacing * 0.5f;
+
+        /* The width should be slightly less than half 
+         * the width of the inspector.
+         */
+        leftAreaRect.width *= 0.5f;
+        leftAreaRect.width -= controlSpacing * 0.5f;
+
+        // The height should be the same as the drop area.
+        leftAreaRect.height = dropAreaHeight;
+
+
+        // Create Rects for the top and bottom half.
+        Rect topHalf = leftAreaRect;
+        topHalf.height *= 0.5f;
+        Rect bottomHalf = topHalf;
+        bottomHalf.y += bottomHalf.height;
+
+        // Display a popup in the top half showing all the reaction types.
+        selectedIndex = EditorGUI.Popup(topHalf, selectedIndex, conditionTypeNames);
+
+        // Display a button in the bottom half that if clicked...
+        if (GUI.Button(bottomHalf, "Add Selected Condition type"))
+        {
+            // ... finds the type selected by the popup, creates an appropriate reaction and adds it to the array.
+            Type reactionType = conditionTypes[selectedIndex];
+            SOBJ_ConditionAdvanced newReaction = EDI_ConditionAdvanced.CreateCondition(reactionType);
+            conditionsProperty.AddToObjectArray(newReaction);
+        }
+    }
+
+    private void SetReactionNamesArray()
+    {
+        // Store the Reaction type.
+        Type reactionType = typeof(SOBJ_ConditionAdvanced);
+
+        /* Get all the types that are in the same 
+         * Assembly (all the runtime scripts) as the Reaction type.
+         */
+        Type[] allTypes = reactionType.Assembly.GetTypes();
+
+        /* Create an empty list to store all the types 
+         * that are subtypes of Reaction.
+         */
+        List<Type> reactionSubTypeList = new List<Type>();
+
+        // Go through all the types in the Assembly...
+        for (int i = 0; i < allTypes.Length; i++)
+        {
+            /* ... and if they are a non-abstract subclass of 
+             * Reaction then add them to the list.
+             */
+            if (allTypes[i].IsSubclassOf(reactionType) && !allTypes[i].IsAbstract)
+            {
+                reactionSubTypeList.Add(allTypes[i]);
+            }
+        }
+
+        // Convert the list to an array and store it.
+        conditionTypes = reactionSubTypeList.ToArray();
+
+        /* Create an empty list of strings to store the names 
+         * of the Reaction types.
+         */
+        List<string> reactionTypeNameList = new List<string>();
+
+        // Go through all the Reaction types and add their names to the list.
+        for (int i = 0; i < conditionTypes.Length; i++)
+        {
+            reactionTypeNameList.Add(conditionTypes[i].Name);
+        }
+
+        // Convert the list to an array and store it.
+        conditionTypeNames = reactionTypeNameList.ToArray();
+    }
+
+
     /// <summary>
     /// This function is static such that it
     /// can be called without an editor being instanced.
+    /// creats a defult condition reaction
     /// </summary>
     /// <returns></returns>
     public static SOBJ_ConditionCollection CreateConditionCollection()
@@ -173,7 +286,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_Condition, S
 
         // Give it a single default Condition.
         newConditionCollection.requiredConditions    = new SOBJ_Condition[1];
-        newConditionCollection.requiredConditions[0] = EDI_Condition.CreateCondition();
+        newConditionCollection.requiredConditions[0] = EDI_ConditionAdvanced.CreateCondition();
         return newConditionCollection;
     }
 }

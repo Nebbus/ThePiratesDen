@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 
-[CustomEditor(typeof(SOBJ_PickedUpItemReaction))]
-public class EDI_PickedUpItemReaction : EDI_Reaction
+[CustomEditor(typeof(SOBJ_InventoryPickedUpItemReaction))]
+public class EDI_InventoryPickedUpItemReaction : EDI_Reaction
 {
     protected override string GetFoldoutLabel()
     {

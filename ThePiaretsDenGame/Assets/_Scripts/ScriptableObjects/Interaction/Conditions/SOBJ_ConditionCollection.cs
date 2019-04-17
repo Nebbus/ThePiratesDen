@@ -3,7 +3,7 @@
 public class SOBJ_ConditionCollection : ScriptableObject
 {
     public string                   description;                                 // Description of the ConditionCollection.  This is used purely for identification in the inspector.
-    public SOBJ_Condition[]        requiredConditions = new SOBJ_Condition[0];   // The Conditions that need to be met in order for the ReactionCollection to React.
+    public SOBJ_ConditionAdvanced[] requiredConditions = new SOBJ_ConditionAdvanced[0];   // The Conditions that need to be met in order for the ReactionCollection to React.
     public MONO_ReactionCollection reactionCollection;                           // Reference to the ReactionCollection that will React should all the Conditions be met.
 
 

@@ -12,9 +12,33 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SOBJ_Item : ScriptableObject
 {
-    public Sprite sprite;
-
+    public Sprite    sprite;
     public SOBJ_Item combindsWith;
     public SOBJ_Item toMake;
+
+
+    public int getHash
+    {
+        get
+        {
+            return Animator.StringToHash(this.name);
+        }
+    }
+
+    public int getCombindsWithHash
+    {
+        get
+        {
+            return Animator.StringToHash(combindsWith.name);
+        }
+    }
+
+    public int geTtoMakeHash
+    {
+        get
+        {
+            return Animator.StringToHash(toMake.name);
+        }
+    }
 
 }

@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEditor;
 
 [CustomEditor(typeof(SOBJ_Item))]
@@ -37,25 +37,28 @@ public class EDI_Item : Editor {
         float width = EditorGUIUtility.currentViewWidth;
         serializedObject.Update();
 
-        DrawImages( width);
+        DrawImages(width);
 
         EditorGUILayout.BeginHorizontal();
-         EditorGUILayout.LabelField("Combindes with", GUILayout.Width(width * ownSpriteWidth));
-         EditorGUILayout.LabelField("To make this", GUILayout.Width(width * ownSpriteWidth));
+        EditorGUILayout.LabelField("Combindes with", GUILayout.Width(width * ownSpriteWidth));
+        EditorGUILayout.LabelField("To make this", GUILayout.Width(width * ownSpriteWidth));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginVertical(GUI.skin.box);
-         EditorGUILayout.BeginHorizontal(GUI.skin.box);
-          EditorGUILayout.PropertyField(combindsWithProperty,GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
+        EditorGUILayout.BeginHorizontal(GUI.skin.box);
+        EditorGUILayout.PropertyField(combindsWithProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
         GUILayout.Space(spacing * width);
 
         EditorGUILayout.PropertyField(toMakeProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
-         EditorGUILayout.EndHorizontal();
+        EditorGUILayout.EndHorizontal();
         DrawCombindImages(width);
         EditorGUILayout.EndVertical();
         serializedObject.ApplyModifiedProperties();
-       // base.OnInspectorGUI();
+
     }
+
+
+
 
 
     private void DrawImages(float width)
@@ -90,4 +93,5 @@ public class EDI_Item : Editor {
 
         EditorGUILayout.EndHorizontal();
     }
+
 }

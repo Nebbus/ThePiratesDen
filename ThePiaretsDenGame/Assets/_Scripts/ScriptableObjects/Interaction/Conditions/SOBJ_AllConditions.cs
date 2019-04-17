@@ -5,7 +5,7 @@
 // reference.  
 public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
 {
-    public SOBJ_Condition[] conditions;                      // All the Conditions that exist in the game.
+    public SOBJ_ConditionAdvanced[] conditions;                      // All the Conditions that exist in the game.
 
 
     private static SOBJ_AllConditions instance;              // The singleton instance.
@@ -62,11 +62,11 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
     /// </summary>
     /// <param name="requiredCondition"></param>
     /// <returns></returns>
-    public static bool CheckCondition(SOBJ_Condition requiredCondition)
+    public static bool CheckCondition(SOBJ_ConditionAdvanced requiredCondition)
     {
         // Cache the condition array.
-        SOBJ_Condition[] allConditions   = Instance.conditions;
-        SOBJ_Condition   globalCondition = null;
+        SOBJ_ConditionAdvanced[] allConditions   = Instance.conditions;
+        SOBJ_ConditionAdvanced globalCondition = null;
 
         // If there is at least one condition...
         if (allConditions != null && allConditions[0] != null)
@@ -89,6 +89,6 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
             return false;
 
         // Return true if the satisfied states match, false otherwise.
-        return globalCondition.satisfied == requiredCondition.satisfied;
+        return globalCondition.satisfied == requiredCondition.IsSatesfied();
     }
 }

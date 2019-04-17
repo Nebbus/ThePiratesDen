@@ -1,14 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SOBJ_InventoryVisibilityReaction : SOBJ_Reaction
+﻿
+public class SOBJ_InventorInputReaction : SOBJ_Reaction
 {
-
-
-
     private MONO_Inventory monoInventory;    // Reference to the Inventory component.
-    public bool visible;               
+    public bool handelInput;
 
 
     protected override void SpecificInit()
@@ -20,6 +14,6 @@ public class SOBJ_InventoryVisibilityReaction : SOBJ_Reaction
 
     protected override void ImmediateReaction()
     {
-        monoInventory.HideInventory();
+        monoInventory.SetHandleINput(handelInput);
     }
 }
