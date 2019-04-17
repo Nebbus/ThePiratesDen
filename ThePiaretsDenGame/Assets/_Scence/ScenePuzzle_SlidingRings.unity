@@ -422,6 +422,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &970595252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 970595254}
+  - component: {fileID: 970595253}
+  m_Layer: 0
+  m_Name: AmbienceSounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &970595253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 970595252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Ambience/2D/AMB_Indoor_2D
+  PlayEvent: 1
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!4 &970595254
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 970595252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2952279, y: 3.1209514, z: -0.6403847}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &976406451
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +635,6 @@ GameObject:
   - component: {fileID: 1684474485}
   - component: {fileID: 1684474484}
   - component: {fileID: 1684474490}
-  - component: {fileID: 1684474489}
   - component: {fileID: 1684474488}
   - component: {fileID: 1684474428}
   - component: {fileID: 1684474429}
@@ -682,9 +732,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1684474425}
-  selectedCommands:
-  - {fileID: 1684474423}
+  - {fileID: 1684474427}
+  selectedCommands: []
   variables:
   - {fileID: 1684474433}
   - {fileID: 1684474432}
@@ -824,12 +873,11 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1684474416}
   commandList:
-  - {fileID: 1684474436}
-  - {fileID: 1684474429}
-  - {fileID: 1684474435}
-  - {fileID: 1684474423}
   - {fileID: 1684474428}
-  - {fileID: 1684474489}
+  - {fileID: 1684474429}
+  - {fileID: 1684474436}
+  - {fileID: 1684474423}
+  - {fileID: 1684474435}
 --- !u!114 &1684474426
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -854,11 +902,11 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1684474417}
   commandList:
-  - {fileID: 1684474438}
-  - {fileID: 1684474434}
-  - {fileID: 1684474437}
-  - {fileID: 1684474430}
   - {fileID: 1684474488}
+  - {fileID: 1684474434}
+  - {fileID: 1684474438}
+  - {fileID: 1684474430}
+  - {fileID: 1684474437}
 --- !u!114 &1684474427
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -884,11 +932,11 @@ MonoBehaviour:
     and past as many steps as you want the ring to take
   eventHandler: {fileID: 1684474418}
   commandList:
-  - {fileID: 1684474485}
-  - {fileID: 1684474424}
-  - {fileID: 1684474422}
-  - {fileID: 1684474484}
   - {fileID: 1684474490}
+  - {fileID: 1684474485}
+  - {fileID: 1684474422}
+  - {fileID: 1684474424}
+  - {fileID: 1684474484}
 --- !u!114 &1684474428
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -902,7 +950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 70
   indentLevel: 0
-  soundClip: {fileID: 8300000, guid: c18ae2c530c264a6880266d5e0a71337, type: 3}
+  soundClip: {fileID: 8300000, guid: 42cbdc45a002a1b45bc5488b55934138, type: 3}
   volume: 1
   waitUntilFinished: 0
 --- !u!114 &1684474429
@@ -1087,7 +1135,7 @@ MonoBehaviour:
   loopType: 35
   repeats: 0
   stopPreviousTweens: 0
-  waitUntilFinished: 1
+  waitUntilFinished: 0
   _toTransform:
     transformRef: {fileID: 0}
     transformVal: {fileID: 0}
@@ -1155,7 +1203,7 @@ MonoBehaviour:
   loopType: 35
   repeats: 0
   stopPreviousTweens: 0
-  waitUntilFinished: 1
+  waitUntilFinished: 0
   _toTransform:
     transformRef: {fileID: 0}
     transformVal: {fileID: 0}
@@ -1246,25 +1294,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 69
   indentLevel: 0
-  soundClip: {fileID: 8300000, guid: c18ae2c530c264a6880266d5e0a71337, type: 3}
+  soundClip: {fileID: 8300000, guid: 24d49390eb596744e84679baf071a927, type: 3}
   volume: 1
-  waitUntilFinished: 1
---- !u!114 &1684474489
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1684474415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd2f6be51b3d7490ba5633ee095d0391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 68
-  indentLevel: 0
-  soundClip: {fileID: 8300000, guid: 14a396b1562834718b2d52b9c4639264, type: 3}
-  volume: 1
-  waitUntilFinished: 1
+  waitUntilFinished: 0
 --- !u!114 &1684474490
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1278,9 +1310,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 67
   indentLevel: 0
-  soundClip: {fileID: 8300000, guid: 14a396b1562834718b2d52b9c4639264, type: 3}
+  soundClip: {fileID: 8300000, guid: bb4abb2a4e2ac7a4aa2ad33b4a7f5499, type: 3}
   volume: 1
-  waitUntilFinished: 1
+  waitUntilFinished: 0
 --- !u!1 &1936860209
 GameObject:
   m_ObjectHideFlags: 0
