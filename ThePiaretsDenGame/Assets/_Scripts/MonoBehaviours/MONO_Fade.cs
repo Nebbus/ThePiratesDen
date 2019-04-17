@@ -25,7 +25,7 @@ public class MONO_Fade : MonoBehaviour
 	/// Coroutine where the fade is actually done.
 	/// </summary>
 	/// <param name="targetAlpha">Target alpha sent from previous function.</param>
-	IEnumerator DoFade(float targetAlpha)
+	private IEnumerator DoFade(float targetAlpha)
 	{
 		// Set the fading flag to true so the FadeAndSwitchScenes coroutine won't be called again.
 		isFading = true;

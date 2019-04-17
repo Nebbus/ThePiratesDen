@@ -11,7 +11,7 @@ public class MONO_SceneManager : MonoBehaviour {
 
 	private MONO_Fade fade;
 
-	IEnumerator Start () 
+	private IEnumerator Start () 
 	{
 		//Find the instance holding the code for fading.
 		fade = FindObjectOfType<MONO_Fade>();
@@ -36,7 +36,7 @@ public class MONO_SceneManager : MonoBehaviour {
 	/// Load in the new scene ontop of the persistent scene and activate.
 	/// </summary>
 	/// <param name="sceneName">Scene to load.</param>
-	public IEnumerator LoadAndSetScene(string sceneName)
+	private IEnumerator LoadAndSetScene(string sceneName)
 	{
 		yield return SceneManager.LoadSceneAsync (sceneName, LoadSceneMode.Additive);
 		Scene scene = SceneManager.GetSceneAt (SceneManager.sceneCount - 1);
@@ -46,7 +46,7 @@ public class MONO_SceneManager : MonoBehaviour {
 	/// <summary>
 	/// Unloads the previous scene.
 	/// </summary>
-	public IEnumerator UnloadAndUnsetScene()
+	private IEnumerator UnloadAndUnsetScene()
 	{
 		yield return SceneManager.UnloadSceneAsync (SceneManager.GetActiveScene ().buildIndex);
 	}
@@ -55,7 +55,7 @@ public class MONO_SceneManager : MonoBehaviour {
 	/// Disable input, fade out, then switch scene before fading in.
 	/// </summary>
 	/// <param name="sceneName">Scene to load.</param>
-	public IEnumerator FadeAndLoad(string sceneName)
+	private IEnumerator FadeAndLoad(string sceneName)
 	{
 		//disable input and fade out.
 		handleInput = false;
