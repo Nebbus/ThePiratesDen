@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class MONO_PlayerFootStepPllayer : MonoBehaviour {
+public class MONO_PlayerFootStepPlayer : MonoBehaviour {
 
 
     [FMODUnity.EventRef]
