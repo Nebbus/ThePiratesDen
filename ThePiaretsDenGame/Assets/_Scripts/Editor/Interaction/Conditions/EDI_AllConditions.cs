@@ -12,6 +12,7 @@ public class EDI_AllConditions : Editor
     /// </summary>
     public static string[] AllConditionDescriptions
     {
+       
         get
         {
             // If the description array doesn't exist yet, set it.
@@ -24,26 +25,22 @@ public class EDI_AllConditions : Editor
         private set { allConditionDescriptions = value; }
     }
 
-
-    private static string[] allConditionDescriptions;           // Field to store the descriptions of all the Conditions.
-
-
- 
+    private static string[] allConditionDescriptions;                            // Field to store the descriptions of all the Conditions.
 
 
-    private EDI_ConditionAdvanced[] conditionEditors;                 // All of the subEditors to display the Conditions.
-    private SOBJ_AllConditions allConditions;                        // Reference to the target.
-    private string newConditionDescription = "New Condition";   // String to start off the naming of new Conditions.
+    private EDI_ConditionAdvanced[] conditionEditors;                            // All of the subEditors to display the Conditions.
+    private SOBJ_AllConditions      allConditions;                               // Reference to the target.
+    private string                  newConditionDescription = "New Condition";   // String to start off the naming of new Conditions.
 
 
     private const string creationPath = "Assets/Resources/SOBJ_AllConditions.asset";
     // The path that the AllConditions asset is created at.
 
     private SerializedProperty conditionsProperty;
-    private const string conditionsPropName = "conditions";
-    private Type[] conditionTypes;                           // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
-    private string[] conditionTypeNames;                       // The names of all appropriate Reaction types.
-    private int selectedIndex;                           // The index of the currently selected Reaction type.
+    private const string       conditionsPropName = "conditions";
+    private Type[]             conditionTypes;                    // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
+    private string[]           conditionTypeNames;                // The names of all appropriate Reaction types.
+    private int                selectedIndex;                     // The index of the currently selected Reaction type.
 
 
     private const float dropAreaHeight = 50f;           // Height in pixels of the area for dropping scripts.
@@ -78,7 +75,8 @@ public class EDI_AllConditions : Editor
             CreateEditors();
         }
         // Set the array of types and type names of subtypes of Reaction.
-        SetConditionNamesArray();
+       // SetConditionNamesArray();
+        EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_ConditionAdvanced),out conditionTypes,out conditionTypeNames);
     }
 
 
@@ -110,6 +108,7 @@ public class EDI_AllConditions : Editor
             AllConditionDescriptions[i] = TryGetConditionAt(i).description;
         }
     }
+
 
 
     public override void OnInspectorGUI()
@@ -183,6 +182,19 @@ public class EDI_AllConditions : Editor
         TypeSelectionGUI(leftAreaRect);
     }
 
+    private void TypeSelectionGUI(Rect containingRect)
+    {
+        // Create Rects for the top and bottom half.
+        Rect topHalf    = containingRect;
+        topHalf.height  *= 0.5f;
+        Rect bottomHalf = topHalf;
+        bottomHalf.y    += bottomHalf.height;
+
+        // Display a popup in the top half showing all the reaction types.
+        selectedIndex = EditorGUI.Popup(topHalf, selectedIndex, conditionTypeNames);
+
+    }
+
 
     private void CreateEditors()
     {
@@ -197,6 +209,7 @@ public class EDI_AllConditions : Editor
             conditionEditors[i].editorType = EDI_ConditionAdvanced.EditorType.AllConditionAsset;
         }
     }
+
 
 
     // Call this function when the menu item is selected.
@@ -314,6 +327,42 @@ public class EDI_AllConditions : Editor
         return -1;
     }
 
+    public static int TryGetConditionIndex(int hash)
+    {
+        // Go through all the Conditions...
+        for (int i = 0; i < TryGetConditionsLength(); i++)
+        {
+            // ... and if one matches the given Condition, return its index.
+            if (TryGetConditionAt(i).hash == hash)
+            {
+                return i;
+            }
+
+        }
+
+        // If the Condition wasn't found, return -1.
+        return -1;
+    }
+
+    public static int TryGetConditionIndex(string description)
+    {
+        int hash = Animator.StringToHash(description);
+        // Go through all the Conditions...
+        for (int i = 0; i < TryGetConditionsLength(); i++)
+        {
+            // ... and if one matches the given Condition, return its index.
+            if (TryGetConditionAt(i).hash == hash)
+            {
+                return i;
+            }
+
+        }
+
+        // If the Condition wasn't found, return -1.
+        return -1;
+    }
+
+
 
     public static SOBJ_ConditionAdvanced TryGetConditionAt(int index)
     {
@@ -338,6 +387,47 @@ public class EDI_AllConditions : Editor
     }
 
 
+    /// <summary>
+    /// Funktion for geting the alla the conditions of a 
+    /// specific condition reacion 
+    /// </summary>
+    /// <typeparam name="T"> the conditin type that is to be sorted out</typeparam>
+    /// <returns></returns>
+    public static string[] getListOfReleveantConditions<T>()
+    {
+        /* Create a new array that has the same number 
+         * of elements as there are Conditions.
+         */
+        string[] allConditions = AllConditionDescriptions;
+
+        /* Go through the array and assign the description 
+         * of the condition at the same index.
+         */
+        int count = 0;
+        for (int i = 0; i < allConditions.Length; i++)
+        {
+            T temp;
+            // attemts to cast the conditon to the wanted type,
+           // if it fails so is it set to null.
+            try
+            {
+                temp = (T)Convert.ChangeType(TryGetConditionAt(i), typeof(T));
+            }
+            catch(InvalidCastException)
+            {
+                temp = (T)Convert.ChangeType(null, typeof(T));
+            }
+           
+           if (temp != null)
+            {
+                allConditions[count] = TryGetConditionAt(i).description;
+                count++;
+            }
+        }
+        return allConditions;
+    }
+
+
     public static int TryGetConditionsLength()
     {
         // If there is no Conditions array, return a length of 0.
@@ -351,66 +441,55 @@ public class EDI_AllConditions : Editor
         return SOBJ_AllConditions.Instance.conditions.Length;
     }
 
-    private void TypeSelectionGUI(Rect containingRect)
-    {
-        // Create Rects for the top and bottom half.
-        Rect topHalf = containingRect;
-        topHalf.height *= 0.5f;
-        Rect bottomHalf = topHalf;
-        bottomHalf.y += bottomHalf.height;
-
-        // Display a popup in the top half showing all the reaction types.
-        selectedIndex = EditorGUI.Popup(topHalf, selectedIndex, conditionTypeNames);
-
-    }
+  
 
 
-    /// <summary>
-    /// Funktion that retrives the names of the conditions in the  
-    /// </summary>
-    private void SetConditionNamesArray()
-    {
-        // Store the Reaction type.
-        Type reactionType = typeof(SOBJ_ConditionAdvanced);
+    ///// <summary>
+    ///// Funktion that retrives the names of the conditions in the  
+    ///// </summary>
+    //private void SetConditionNamesArray()
+    //{
+    //    // Store the Reaction type.
+    //    Type reactionType = typeof(SOBJ_ConditionAdvanced);
 
-        /* Get all the types that are in the same 
-         * Assembly (all the runtime scripts) as the Reaction type.
-         */
-        Type[] allTypes = reactionType.Assembly.GetTypes();
+    //    /* Get all the types that are in the same 
+    //     * Assembly (all the runtime scripts) as the Reaction type.
+    //     */
+    //    Type[] allTypes = reactionType.Assembly.GetTypes();
 
-        /* Create an empty list to store all the types 
-         * that are subtypes of Reaction.
-         */
-        List<Type> reactionSubTypeList = new List<Type>();
+    //    /* Create an empty list to store all the types 
+    //     * that are subtypes of Reaction.
+    //     */
+    //    List<Type> reactionSubTypeList = new List<Type>();
 
-        // Go through all the types in the Assembly...
-        for (int i = 0; i < allTypes.Length; i++)
-        {
-            /* ... and if they are a non-abstract subclass of 
-             * Reaction then add them to the list.
-             */
-            if (allTypes[i].IsSubclassOf(reactionType) && !allTypes[i].IsAbstract)
-            {
-                reactionSubTypeList.Add(allTypes[i]);
-            }
-        }
+    //    // Go through all the types in the Assembly...
+    //    for (int i = 0; i < allTypes.Length; i++)
+    //    {
+    //        /* ... and if they are a non-abstract subclass of 
+    //         * Reaction then add them to the list.
+    //         */
+    //        if (allTypes[i].IsSubclassOf(reactionType) && !allTypes[i].IsAbstract)
+    //        {
+    //            reactionSubTypeList.Add(allTypes[i]);
+    //        }
+    //    }
 
-        // Convert the list to an array and store it.
-        conditionTypes = reactionSubTypeList.ToArray();
+    //    // Convert the list to an array and store it.
+    //    conditionTypes = reactionSubTypeList.ToArray();
 
-        /* Create an empty list of strings to store the names 
-         * of the Reaction types.
-         */
-        List<string> reactionTypeNameList = new List<string>();
+    //    /* Create an empty list of strings to store the names 
+    //     * of the Reaction types.
+    //     */
+    //    List<string> reactionTypeNameList = new List<string>();
 
-        // Go through all the Reaction types and add their names to the list.
-        for (int i = 0; i < conditionTypes.Length; i++)
-        {
-            reactionTypeNameList.Add(conditionTypes[i].Name);
-        }
+    //    // Go through all the Reaction types and add their names to the list.
+    //    for (int i = 0; i < conditionTypes.Length; i++)
+    //    {
+    //        reactionTypeNameList.Add(conditionTypes[i].Name);
+    //    }
 
-        // Convert the list to an array and store it.
-        conditionTypeNames = reactionTypeNameList.ToArray();
-    }
+    //    // Convert the list to an array and store it.
+    //    conditionTypeNames = reactionTypeNameList.ToArray();
+    //}
 
 }

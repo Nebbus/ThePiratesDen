@@ -23,15 +23,15 @@ public abstract class EDI_ConditionAdvanced : Editor
     protected SOBJ_ConditionAdvanced condition;                   // Reference to the target.
 
 
-    protected const float conditionButtonWidth = 30f;                    // Width in pixels of the button to remove this Condition from it's array.
-    protected const float toggleOffset = 30f;                   // Offset to line up the satisfied toggle with its label.
+    protected const float conditionButtonWidth        = 30f;                    // Width in pixels of the button to remove this Condition from it's array.
+    protected const float toggleOffset                = 30f;                   // Offset to line up the satisfied toggle with its label.
     private const string conditionPropDescriptionName = "description";         // Name of the field that represents the description.
 
-    private const string conditionPropHashName = "hash";                // Name of the field that represents the Condition's identifier.
-    private const string blankDescription = "No conditions set.";  // Description to use in case no Conditions have been created yet.
+    private const string conditionPropHashName        = "hash";                // Name of the field that represents the Condition's identifier.
+    private const string blankDescription             = "No conditions set.";  // Description to use in case no Conditions have been created yet.
+    protected string[] relevatnConditionDescriptions; // will be used in the edditor, drop down menu
 
 
-    
     private void OnEnable()
     {
 
@@ -94,9 +94,6 @@ public abstract class EDI_ConditionAdvanced : Editor
         // Display the description of the Condition.
         EditorGUILayout.LabelField(condition.description);
 
-        // Display the Condition type.
-        EditorGUILayout.LabelField(condition.GetType().ToString());
-
         DrawConditionAllConditionsAssetGUI();
 
         // Display a button showing a '-' that if clicked removes this Condition from the AllConditions asset.
@@ -108,7 +105,6 @@ public abstract class EDI_ConditionAdvanced : Editor
         EditorGUI.indentLevel--;
         EditorGUILayout.EndHorizontal();
     }
-
     /// <summary>
     /// Costum editor for how the condition 
     /// appers in the AllConditionsAsset GUI
@@ -119,17 +115,22 @@ public abstract class EDI_ConditionAdvanced : Editor
     }
 
 
-
     // This is displayed when a single Condition asset is selected as a child of the AllConditions asset.
     private void ConditionAssetGUI()
     {
         EditorGUILayout.BeginHorizontal(GUI.skin.box);
         EditorGUI.indentLevel++;
 
+        // Display the description of the Condition.
+        EditorGUILayout.LabelField(condition.description);
+
+        // Display the Condition type.
+        EditorGUILayout.LabelField(condition.GetType().ToString());
+        DrawConditionConditionAssetGUI();
+
         EditorGUI.indentLevel--;
         EditorGUILayout.EndHorizontal();
     }
-
     /// <summary>
     /// Costum editor for how the condition 
     /// appers in the AllConditionsAsset GUI
@@ -137,6 +138,11 @@ public abstract class EDI_ConditionAdvanced : Editor
     /// </summary>
     protected virtual void DrawConditionConditionAssetGUI()
     {
+    }
+
+    public T castin<T>(SOBJ_ConditionAdvanced test)
+    {
+        return (T)Convert.ChangeType(test, typeof(T));
     }
 
     private void InteractableGUI()
@@ -151,6 +157,9 @@ public abstract class EDI_ConditionAdvanced : Editor
 
         // Find the index for the target based on the AllConditions array.
         int conditionIndex = EDI_AllConditions.TryGetConditionIndex(condition);
+  
+
+
 
         /* If the target can't be found in the AllConditions 
          * array use the first condition.
@@ -159,19 +168,22 @@ public abstract class EDI_ConditionAdvanced : Editor
         {
             conditionIndex = 0;
         }
-
-
         /* Set the index based on the user selection 
          * of the condition by the user.
          */
         // conditionIndex = EditorGUILayout.Popup(conditionIndex, EDI_AllConditions.AllConditionDescriptions, GUILayout.Width(width));
-        EditorGUILayout.LabelField(EDI_AllConditions.AllConditionDescriptions[conditionIndex], GUILayout.Width(width));
+        conditionIndex = EditorGUILayout.Popup(conditionIndex, getListOfReleveantConditions(), GUILayout.Width(width));
+        //EditorGUILayout.LabelField(EDI_AllConditions.AllConditionDescriptions[conditionIndex], GUILayout.Width(width));
+        // Debug.Log(condition+ "    " + conditionIndex);
         // Find the equivalent condition in the AllConditions array.
-        SOBJ_ConditionAdvanced globalCondition = (SOBJ_ConditionAdvanced)EDI_AllConditions.TryGetConditionAt(conditionIndex);
+        //SOBJ_ConditionAdvanced globalCondition = (SOBJ_ConditionAdvanced)EDI_AllConditions.TryGetConditionAt(conditionIndex);
+      //  int allConditionIndex = EDI_AllConditions.TryGetConditionIndex(getListOfReleveantConditions()[conditionIndex]);
+        SOBJ_ConditionAdvanced globalCondition = EDI_AllConditions.TryGetConditionAt(conditionIndex);
 
+  
         // Set the description based on the globalCondition's description.
         descriptionProperty.stringValue = globalCondition != null ? globalCondition.description : blankDescription;
-
+      
         // Set the hash based on the description.
         hashProperty.intValue = Animator.StringToHash(descriptionProperty.stringValue);
 
@@ -198,7 +210,16 @@ public abstract class EDI_ConditionAdvanced : Editor
     /// </summary>
     protected abstract void DrawConditionInteractableGUI();
 
-
+    /// <summary>
+    /// This abstract funktion will return a
+    /// list off all the condition that is of the 
+    /// same type as the curent item, se the implemmentation
+    /// in SOBJ_Condition and SOBJ_ItemCondition, it should be
+    /// exaktly the same exemt that the type cast shoulde be shaged 
+    /// for new conditons.
+    /// </summary>
+    /// <returns></returns>
+    public abstract string[] getListOfReleveantConditions();    
 
 
     /// <summary>
@@ -257,7 +278,6 @@ public abstract class EDI_ConditionAdvanced : Editor
         return newCondition;
     }
 
- 
 
     private static void SetHash(SOBJ_ConditionAdvanced condition)
     {

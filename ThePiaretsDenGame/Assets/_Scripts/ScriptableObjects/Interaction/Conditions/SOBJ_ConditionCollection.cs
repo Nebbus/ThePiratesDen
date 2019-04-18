@@ -22,7 +22,10 @@ public class SOBJ_ConditionCollection : ScriptableObject
              * If they don't have the same satisfied flag, return false.
              */
             if (!SOBJ_AllConditions.CheckCondition(requiredConditions[i]))
+            {
                 return false;
+            }
+
         }
 
         // If there is an ReactionCollection assigned, call its React function.

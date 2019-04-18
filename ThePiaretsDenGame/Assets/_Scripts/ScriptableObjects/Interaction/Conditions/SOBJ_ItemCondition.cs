@@ -9,6 +9,13 @@ public class SOBJ_ItemCondition : SOBJ_ConditionAdvanced
 
     protected override bool advancedCondition()
     {
-        return holdingItem.getHash == MONO_PickedUpItem.instance.currentItem.getHash;
+        
+        if (MONO_itemGradFromTheInventory.instance.currentItem != null)
+        {
+       
+            return holdingItem.getHash == MONO_itemGradFromTheInventory.instance.currentItem.getHash;
+        }
+        
+        return false;
     }
 }

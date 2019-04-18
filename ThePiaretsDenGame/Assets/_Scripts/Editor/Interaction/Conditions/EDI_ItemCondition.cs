@@ -11,7 +11,7 @@ public class EDI_ItemCondition : EDI_ConditionAdvanced
     private const string conditionPropholdingItem = "holdingItem";           // Name of the field that represents whether or not the Condition is satisfied.
     protected SerializedProperty holdingItemProperty;       // Represents a bool of whether this Editor's target is satisfied.
 
-        private const float ownSpriteWidth = 1 / 3f;
+    private const float ownSpriteWidth = 1 / 3f;
     private const float ownSpriteHight = 1 / 3f;
     protected override void Init()
     {
@@ -27,6 +27,7 @@ public class EDI_ItemCondition : EDI_ConditionAdvanced
         DrawImages();
     }
 
+  
 
     /// <summary>
     /// Displays the sprite of the item in the conditions
@@ -46,5 +47,33 @@ public class EDI_ItemCondition : EDI_ConditionAdvanced
         EditorGUILayout.EndVertical();
     }
 
+    public override string[] getListOfReleveantConditions()
+    {
+        /* Create a new array that has the same number 
+         * of elements as there are Conditions.
+         */
+        string[] allConditions = EDI_AllConditions.AllConditionDescriptions;
 
+        /* Go through the array and assign the description 
+         * of the condition at the same index.
+         */
+        int count = 0;
+        for (int i = 0; i < allConditions.Length; i++)
+        {
+            SOBJ_ItemCondition temp = EDI_AllConditions.TryGetConditionAt(i) as SOBJ_ItemCondition;
+            if (temp != null)
+            {
+                allConditions[count] = EDI_AllConditions.TryGetConditionAt(i).description;
+                count++;
+            }
+        }
+        string[] releventConditionsName = new string[count];
+        for (int i = 0; i < count; i++)
+        {
+            releventConditionsName[i] = allConditions[i];
+        }
+
+        relevatnConditionDescriptions = releventConditionsName;
+        return releventConditionsName;
+    }
 }

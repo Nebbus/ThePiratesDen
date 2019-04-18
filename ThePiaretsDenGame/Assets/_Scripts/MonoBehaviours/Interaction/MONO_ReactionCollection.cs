@@ -34,18 +34,6 @@ public class MONO_ReactionCollection : MonoBehaviour
         }
     }
 
-
-    public void OnApplicationQuit()
-    {
-        // Go through all the Reactions and call their OnAppQuit function.
-        for (int i = 0; i < reactions.Length; i++)
-        {
-
-                reactions[i].OnAppQuit();
-        }
-    }
-
-
     public void React()
     {
         // Go through all the Reactions and call their React function.

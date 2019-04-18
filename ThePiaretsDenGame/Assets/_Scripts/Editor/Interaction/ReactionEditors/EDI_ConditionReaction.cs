@@ -33,7 +33,7 @@ public class EDI_ConditionReaction : EDI_Reaction
 
 
         // Get the index of the Condition in the AllConditions array.
-        int index = EDI_AllConditions.TryGetConditionIndex((SOBJ_Condition)conditionProperty.objectReferenceValue);
+        int index = EDI_AllConditions.TryGetConditionIndex((SOBJ_ConditionAdvanced)conditionProperty.objectReferenceValue);
 
         /* Use and set that index based on a popup of 
          * all the descriptions of the Conditions.

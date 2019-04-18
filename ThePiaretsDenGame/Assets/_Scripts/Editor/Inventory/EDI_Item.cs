@@ -8,6 +8,9 @@ using UnityEditor;
 public class EDI_Item : Editor {
 
 
+
+    //The target item
+
     private SerializedProperty spriteProperty;
     private SerializedProperty combindsWithProperty;
     private SerializedProperty toMakeProperty;
@@ -37,7 +40,7 @@ public class EDI_Item : Editor {
         float width = EditorGUIUtility.currentViewWidth;
         serializedObject.Update();
 
-        DrawImages(width);
+        CurentItem(width);
 
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Combindes with", GUILayout.Width(width * ownSpriteWidth));
@@ -45,14 +48,21 @@ public class EDI_Item : Editor {
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginVertical(GUI.skin.box);
-        EditorGUILayout.BeginHorizontal(GUI.skin.box);
-        EditorGUILayout.PropertyField(combindsWithProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
-        GUILayout.Space(spacing * width);
-
-        EditorGUILayout.PropertyField(toMakeProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
-        EditorGUILayout.EndHorizontal();
-        DrawCombindImages(width);
+          EditorGUILayout.BeginHorizontal(GUI.skin.box);
+          EditorGUILayout.PropertyField(combindsWithProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
+          GUILayout.Space(spacing * width);
+          EditorGUILayout.PropertyField(toMakeProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
+          EditorGUILayout.EndHorizontal();
+          DrawCombindImages(width);
         EditorGUILayout.EndVertical();
+
+
+
+
+
+
+
+
         serializedObject.ApplyModifiedProperties();
 
     }
@@ -60,8 +70,12 @@ public class EDI_Item : Editor {
 
 
 
-
-    private void DrawImages(float width)
+    /// <summary>
+    /// draws the image of that will reptrsetn 
+    /// this item in the inventory
+    /// </summary>
+    /// <param name="width"> width of the inventory box</param>
+    private void CurentItem(float width)
     {
         EditorGUILayout.BeginVertical(GUI.skin.box);
         EditorGUILayout.PropertyField(spriteProperty, GUIContent.none, 
@@ -75,6 +89,10 @@ public class EDI_Item : Editor {
 
         EditorGUILayout.EndVertical();
     }
+
+  
+
+
 
     private void DrawCombindImages(float width)
     {

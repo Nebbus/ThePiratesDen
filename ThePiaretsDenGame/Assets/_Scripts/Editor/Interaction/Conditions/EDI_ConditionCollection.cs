@@ -6,13 +6,12 @@ using UnityEditor;
 [CustomEditor(typeof(SOBJ_ConditionCollection))]
 public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdvanced, SOBJ_ConditionAdvanced>
 {
-    public SerializedProperty collectionsProperty;              // Represents the array of ConditionCollections that the target belongs to.
-
-
     private SOBJ_ConditionCollection conditionCollection;         // Reference to the target.
-    private SerializedProperty       descriptionProperty;         // Represents a string description for the target.
-    private SerializedProperty       conditionsProperty;          // Represents an array of Conditions for the target.
-    private SerializedProperty       reactionCollectionProperty;  // Represents the ReactionCollection that is referenced by the target.
+
+    public SerializedProperty  collectionsProperty;              // Represents the array of ConditionCollections that the target belongs to.  
+    private SerializedProperty descriptionProperty;         // Represents a string description for the target.
+    private SerializedProperty conditionsProperty;          // Represents an array of Conditions for the target.
+    private SerializedProperty reactionCollectionProperty;  // Represents the ReactionCollection that is referenced by the target.
 
 
     private const float conditionButtonWidth = 30f;             // Width of the button for adding a new Condition.
@@ -25,7 +24,25 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
     private const string conditionCollectionPropRequiredConditionsName = "requiredConditions"; 
     
     // Name of the field that represents the ReactionCollection that is referenced by the target.
-    private const string conditionCollectionPropReactionCollectionName = "reactionCollection";  
+    private const string conditionCollectionPropReactionCollectionName = "reactionCollection";
+
+
+    // Caching the vertical spacing between GUI elements.
+    private readonly float verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
+
+
+    private Type[]   conditionTypes;                           // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
+    private string[] conditionTypeNames;                       // The names of all appropriate Reaction types.
+    private int      selectedIndex;                           // The index of the currently selected Reaction type.
+
+
+    private const float dropAreaHeight = 50f;           // Height in pixels of the area for dropping scripts.
+    private const float controlSpacing = 5f;            // Width in pixels between the popup type selection and drop area.
+    private const float buttonWidth = 30f;                      // Width in pixels of the button to create Conditions.
+
+
+
+
 
 
     private void OnEnable()
@@ -47,7 +64,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
 
         // Check if the Editors for the Conditions need creating and optionally create them.
         CheckAndCreateSubEditors(conditionCollection.requiredConditions);
-        SetReactionNamesArray();
+        EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_ConditionAdvanced), out conditionTypes, out conditionTypeNames);
     }
 
 
@@ -75,10 +92,10 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
     {
         // Pull the information from the target into the serializedObject.
         serializedObject.Update();
-
+      
         /* Check if the Editors for the Conditions need 
          * creating and optionally create them.
-         */ 
+         */
         CheckAndCreateSubEditors(conditionCollection.requiredConditions);
 
         EditorGUILayout.BeginVertical(GUI.skin.box);
@@ -169,23 +186,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
         EditorGUILayout.PropertyField(reactionCollectionProperty);
     }
 
-    // Caching the vertical spacing between GUI elements.
-    private readonly float verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
-
-
-    private Type[] conditionTypes;                           // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
-    private string[] conditionTypeNames;                       // The names of all appropriate Reaction types.
-    private int selectedIndex;                           // The index of the currently selected Reaction type.
-
-
-    private const float dropAreaHeight = 50f;           // Height in pixels of the area for dropping scripts.
-    private const float controlSpacing = 5f;            // Width in pixels between the popup type selection and drop area.
-    private const float buttonWidth = 30f;                      // Width in pixels of the button to create Conditions.
-
-
-
-
-
+   
     private void TypeSelectionGUI()
     {
         Rect fullWidthRect = GUILayoutUtility.GetRect(GUIContent.none, GUIStyle.none, GUILayout.Height(dropAreaHeight + verticalSpacing));
@@ -224,50 +225,52 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
         }
     }
 
-    private void SetReactionNamesArray()
-    {
-        // Store the Reaction type.
-        Type reactionType = typeof(SOBJ_ConditionAdvanced);
 
-        /* Get all the types that are in the same 
-         * Assembly (all the runtime scripts) as the Reaction type.
-         */
-        Type[] allTypes = reactionType.Assembly.GetTypes();
+    //private void SetReactionNamesArray()
+    //{
 
-        /* Create an empty list to store all the types 
-         * that are subtypes of Reaction.
-         */
-        List<Type> reactionSubTypeList = new List<Type>();
+    //    // Store the Reaction type.
+    //    Type reactionType = typeof(SOBJ_ConditionAdvanced);
 
-        // Go through all the types in the Assembly...
-        for (int i = 0; i < allTypes.Length; i++)
-        {
-            /* ... and if they are a non-abstract subclass of 
-             * Reaction then add them to the list.
-             */
-            if (allTypes[i].IsSubclassOf(reactionType) && !allTypes[i].IsAbstract)
-            {
-                reactionSubTypeList.Add(allTypes[i]);
-            }
-        }
+    //    /* Get all the types that are in the same 
+    //     * Assembly (all the runtime scripts) as the Reaction type.
+    //     */
+    //    Type[] allTypes = reactionType.Assembly.GetTypes();
 
-        // Convert the list to an array and store it.
-        conditionTypes = reactionSubTypeList.ToArray();
+    //    /* Create an empty list to store all the types 
+    //     * that are subtypes of Reaction.
+    //     */
+    //    List<Type> reactionSubTypeList = new List<Type>();
 
-        /* Create an empty list of strings to store the names 
-         * of the Reaction types.
-         */
-        List<string> reactionTypeNameList = new List<string>();
+    //    // Go through all the types in the Assembly...
+    //    for (int i = 0; i < allTypes.Length; i++)
+    //    {
+    //        /* ... and if they are a non-abstract subclass of 
+    //         * Reaction then add them to the list.
+    //         */
+    //        if (allTypes[i].IsSubclassOf(reactionType) && !allTypes[i].IsAbstract)
+    //        {
+    //            reactionSubTypeList.Add(allTypes[i]);
+    //        }
+    //    }
 
-        // Go through all the Reaction types and add their names to the list.
-        for (int i = 0; i < conditionTypes.Length; i++)
-        {
-            reactionTypeNameList.Add(conditionTypes[i].Name);
-        }
+    //    // Convert the list to an array and store it.
+    //    conditionTypes = reactionSubTypeList.ToArray();
 
-        // Convert the list to an array and store it.
-        conditionTypeNames = reactionTypeNameList.ToArray();
-    }
+    //    /* Create an empty list of strings to store the names 
+    //     * of the Reaction types.
+    //     */
+    //    List<string> reactionTypeNameList = new List<string>();
+
+    //    // Go through all the Reaction types and add their names to the list.
+    //    for (int i = 0; i < conditionTypes.Length; i++)
+    //    {
+    //        reactionTypeNameList.Add(conditionTypes[i].Name);
+    //    }
+
+    //    // Convert the list to an array and store it.
+    //    conditionTypeNames = reactionTypeNameList.ToArray();
+    //}
 
 
     /// <summary>
@@ -285,8 +288,8 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
         newConditionCollection.description = "New condition collection";
 
         // Give it a single default Condition.
-        newConditionCollection.requiredConditions    = new SOBJ_Condition[1];
-        newConditionCollection.requiredConditions[0] = EDI_ConditionAdvanced.CreateCondition();
+       // newConditionCollection.requiredConditions    = new SOBJ_Condition[1];
+      //  newConditionCollection.requiredConditions[0] = EDI_ConditionAdvanced.CreateCondition();
         return newConditionCollection;
     }
 }

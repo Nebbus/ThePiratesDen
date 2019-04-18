@@ -108,10 +108,12 @@ public class EDI_Inventory : Editor {
         MONO_Inventory.numberItemSlots++;
 
         //Creates new invetory slot slot
-        GameObject newItemSLot = GameObject.Instantiate(itemTemplet);
-        newItemSLot.name       = "item" + (MONO_Inventory.numberItemSlots - 1);
+        GameObject newItemSLot                                  = GameObject.Instantiate(itemTemplet);
+        newItemSLot.name                                        = "item" + (MONO_Inventory.numberItemSlots - 1);
+        newItemSLot.GetComponent<MONO_InventoryItemLogic>().getStetIndex     = (MONO_Inventory.numberItemSlots - 1);
+        newItemSLot.GetComponent<MONO_InventoryItemLogic>().setMonoInventory = (MONO_Inventory)target;
         newItemSLot.transform.SetParent(monoInventory.inventoryGroup.transform);
-
+        newItemSLot.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f); // Ensure right scale
 
         // Updates all arrays
         EXT_SerializedProperty.AddToObjectArray<Image>(itemsImagesProperty, newItemSLot.transform.Find(itemSlotImageChildeName).GetComponent<Image>());
