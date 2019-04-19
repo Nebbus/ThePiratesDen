@@ -21,6 +21,11 @@ public class MONO_Interactable : MonoBehaviour
     // If none of the SOBJ_ConditionCollection are reacted to this one is used.
     public MONO_ReactionCollection defaultReactionCollection;    
 
+	void Start()
+	{
+		interactionLocation.position = new Vector3(interactionLocation.position.x, 0, interactionLocation.position.z);
+	}
+
 
     // This is called when the player arrives at the interactionLocation.
     public void Interact()
