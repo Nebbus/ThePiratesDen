@@ -23,7 +23,16 @@ public class EDI_ItemCondition : EDI_ConditionAdvanced
     {
         // The width for the Popup, Toggle and remove Button.
         float width = EditorGUIUtility.currentViewWidth / 3f;
+
+        // Display the toggle for the satisfied bool.
+        //
+        EditorGUILayout.BeginVertical();
         EditorGUILayout.PropertyField(holdingItemProperty, GUIContent.none, GUILayout.Width(width + toggleOffset));
+        EditorGUILayout.PropertyField(satisfiedProperty, GUIContent.none, GUILayout.Width(width + toggleOffset));
+
+
+
+        EditorGUILayout.EndVertical();
         DrawImages();
     }
 

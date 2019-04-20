@@ -10,23 +10,15 @@ using UnityEditor;
 [CustomEditor(typeof(SOBJ_Condition))]
 public class EDI_Condition : EDI_ConditionAdvanced
 {
-    private const string conditionPropSatisfiedName = "satisfied";           // Name of the field that represents whether or not the Condition is satisfied.
-    protected SerializedProperty satisfiedProperty;                         // Represents a bool of whether this Editor's target is satisfied.
-
 
     private const string conditionsPropName = "conditions";
     private Type[]      conditionTypes;                    // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
     private string[]    conditionTypeNames;                // The names of all appropriate Reaction types.
     private int         selectedIndex;                     // The index of the currently selected Reaction type.
 
-
-
-  
-
     protected override void Init()
     {
         condition = (SOBJ_Condition)target;
-        satisfiedProperty = serializedObject.FindProperty(conditionPropSatisfiedName);
         EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_Condition), out conditionTypes, out conditionTypeNames);
     }
 

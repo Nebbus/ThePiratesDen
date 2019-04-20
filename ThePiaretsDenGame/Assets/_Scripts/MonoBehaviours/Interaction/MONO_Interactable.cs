@@ -33,7 +33,6 @@ public class MONO_Interactable : MonoBehaviour
              */ 
             if (conditionCollections[i].CheckAndReact())
             {
-                Debug.Log("ON MOUSE  " + MONO_itemGradFromTheInventory.instance.currentItem);
                 return;
             }
 

@@ -17,6 +17,13 @@ public abstract class EDI_ConditionAdvanced : Editor
     public SerializedProperty conditionsProperty;     // The SerializedProperty representing an array of Conditions on a ConditionCollection.
 
 
+    private const string conditionPropSatisfiedName = "satisfied";         // Name of the field that represents whether or not the Condition is satisfied.
+
+    protected SerializedProperty satisfiedProperty;                         // Represents a bool of whether this Editor's target is satisfied.
+
+
+
+
     private SerializedProperty descriptionProperty;     // Represents a string description of this Editor's target.
 
     private SerializedProperty hashProperty;            // Represents the number that identified this Editor's target.
@@ -37,6 +44,9 @@ public abstract class EDI_ConditionAdvanced : Editor
 
         // Cache the target.
         condition = (SOBJ_ConditionAdvanced)target;
+
+        satisfiedProperty = serializedObject.FindProperty(conditionPropSatisfiedName);
+
 
         /* If this Editor has persisted through 
          *the destruction of it's target then destroy it.
@@ -140,11 +150,6 @@ public abstract class EDI_ConditionAdvanced : Editor
     {
     }
 
-    public T castin<T>(SOBJ_ConditionAdvanced test)
-    {
-        return (T)Convert.ChangeType(test, typeof(T));
-    }
-
     private void InteractableGUI()
     {
         // Pull the information from the target into the serializedObject.
@@ -157,9 +162,6 @@ public abstract class EDI_ConditionAdvanced : Editor
 
         // Find the index for the target based on the AllConditions array.
         int conditionIndex = EDI_AllConditions.TryGetConditionIndex(condition);
-  
-
-
 
         /* If the target can't be found in the AllConditions 
          * array use the first condition.
@@ -198,8 +200,7 @@ public abstract class EDI_ConditionAdvanced : Editor
         }
 
         EditorGUILayout.EndHorizontal();
-
-        // Push all changes made on the serializedObject back to the target.
+ 
         serializedObject.ApplyModifiedProperties();
     }
 

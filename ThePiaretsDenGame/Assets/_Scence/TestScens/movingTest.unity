@@ -446,7 +446,7 @@ MonoBehaviour:
   - Target: {fileID: 0}
     Params: []
   play: 1
---- !u!114 &282539471
+--- !u!114 &259375178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -457,10 +457,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: PickedUppClasses [SOBJ_Condition]
+  description: PickedUppCoin [SOBJ_Condition]
   satisfied: 0
-  hash: 209953633
-  holdingItem: {fileID: 11400000, guid: 207df38140bed8846828c3c460e5eb20, type: 2}
+  hash: -768085333
+  holdingItem: {fileID: 11400000, guid: 1dc48a203aa98db44a18f0df5226e5ba, type: 2}
 --- !u!114 &329360517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,19 +571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6ef1872a2268948b2283a0ef0761dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &368853616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe928d60a0a4fa14ba2fd39a7bc625cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  item: {fileID: 0}
 --- !u!1 &381546311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,7 +1640,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1656498379}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &771856095
 MonoBehaviour:
@@ -1684,7 +1671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: New condition collection
   requiredConditions:
-  - {fileID: 1003707896}
+  - {fileID: 259375178}
   reactionCollection: {fileID: 771856095}
 --- !u!1 &796325350
 GameObject:
@@ -1863,20 +1850,6 @@ MonoBehaviour:
   m_Spacing: {x: 50, y: 50}
   m_Constraint: 1
   m_ConstraintCount: 3
---- !u!114 &920410092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4b915d43e42a3d4a8ffd07f74f204a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition: {fileID: 114870807901733228, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
-    type: 2}
-  satisfied: 0
 --- !u!1 &923625974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,21 +1940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6ef1872a2268948b2283a0ef0761dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1003707896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: PickedUppCoin [SOBJ_Condition]
-  satisfied: 0
-  hash: -768085333
-  holdingItem: {fileID: 11400000, guid: 1dc48a203aa98db44a18f0df5226e5ba, type: 2}
 --- !u!1 &1008854721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,7 +2412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monoInventory: {fileID: 0}
-  currentItem: {fileID: 11400000, guid: 1dc48a203aa98db44a18f0df5226e5ba, type: 2}
+  currentItem: {fileID: 0}
   currentItemImage: {fileID: 1627166658}
 --- !u!114 &1627166658
 MonoBehaviour:
@@ -2502,7 +2460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: New condition collection
   requiredConditions:
-  - {fileID: 282539471}
+  - {fileID: 1776143753}
   reactionCollection: {fileID: 1648069886}
 --- !u!114 &1645455637 stripped
 MonoBehaviour:
@@ -2537,7 +2495,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1656498379}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1648069886
 MonoBehaviour:
@@ -2552,9 +2510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1913371702}
-  - {fileID: 920410092}
   - {fileID: 90712344}
-  - {fileID: 368853616}
 --- !u!1001 &1656498378
 Prefab:
   m_ObjectHideFlags: 0
@@ -2695,6 +2651,14 @@ Prefab:
       propertyPath: conditionCollections.Array.data[2]
       value: 
       objectReference: {fileID: 675868890}
+    - target: {fileID: 4059172711414434, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888913691793726, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
   m_IsPrefabParent: 0
@@ -2779,6 +2743,21 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &1776143753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: PickedUppCoin [SOBJ_Condition]
+  satisfied: 0
+  hash: -768085333
+  holdingItem: {fileID: 11400000, guid: 207df38140bed8846828c3c460e5eb20, type: 2}
 --- !u!1 &1789662912 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1087995526941880, guid: a4020da0d4f61f84287c6e1efa737707,

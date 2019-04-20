@@ -64,9 +64,20 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
     /// <returns></returns>
     public static bool CheckCondition(SOBJ_ConditionAdvanced requiredCondition)
     {
+        /*If the requiredCondition is a comparesons is a 
+      * comparesons condition (like SOBJ_ItemCondition)
+      * then just call the IsSatesfied(),
+      */
+        SOBJ_ItemCondition ItemCompareseon = (SOBJ_ItemCondition)requiredCondition;
+        if (ItemCompareseon)
+        {
+            return requiredCondition.IsSatesfied();
+        }
+
+
         // Cache the condition array.
-        SOBJ_ConditionAdvanced[] allConditions   = Instance.conditions;
-        SOBJ_ConditionAdvanced globalCondition = null;
+        SOBJ_ConditionAdvanced[] allConditions  = Instance.conditions;
+        SOBJ_ConditionAdvanced globalCondition  = null;
 
         // If there is at least one condition...
         if (allConditions != null && allConditions[0] != null)
@@ -86,9 +97,12 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
 
         // If by this point a globalCondition hasn't been found then return false.
         if (!globalCondition)
+        {
             return false;
+        }
 
+     
         // Return true if the satisfied states match, false otherwise.
-        return globalCondition.satisfied == requiredCondition.IsSatesfied();
+        return globalCondition.IsSatesfied() == requiredCondition.IsSatesfied();
     }
 }
