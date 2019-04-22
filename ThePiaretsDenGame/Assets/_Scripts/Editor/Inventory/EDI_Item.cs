@@ -7,17 +7,17 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class EDI_Item : Editor {
 
-
-
     //The target item
 
     private SerializedProperty spriteProperty;
     private SerializedProperty combindsWithProperty;
     private SerializedProperty toMakeProperty;
+    private SerializedProperty conditioAndReactionsProperty;
 
-    private const string spritePropertyName      = "sprite";
-    private const string combindWhitPropertyName = "combindsWith";
-    private const string toMakePropertyName      = "toMake";
+    private const string spritePropertyName               = "sprite";
+    private const string combindWhitPropertyName          = "combindsWith";
+    private const string toMakePropertyName               = "toMake";
+    private const string conditioAndReactionsPropertyName = "conditioAndReactions";
 
     private SOBJ_Item sobjItem;
 
@@ -29,44 +29,43 @@ public class EDI_Item : Editor {
     {
          sobjItem = (SOBJ_Item)target;
 
-        spriteProperty       = serializedObject.FindProperty(spritePropertyName);
-        combindsWithProperty = serializedObject.FindProperty(combindWhitPropertyName);
-        toMakeProperty       = serializedObject.FindProperty(toMakePropertyName);
+        spriteProperty               = serializedObject.FindProperty(spritePropertyName);
+        combindsWithProperty         = serializedObject.FindProperty(combindWhitPropertyName);
+        toMakeProperty               = serializedObject.FindProperty(toMakePropertyName);
+        conditioAndReactionsProperty = serializedObject.FindProperty(conditioAndReactionsPropertyName);
     }
 
+
+    //public override void OnInspectorGUI()
+    //{
+    //    float width = EditorGUIUtility.currentViewWidth;
+    //    serializedObject.Update();
+
+    //    CurentItem(width);
+
+    //    EditorGUILayout.BeginHorizontal();
+    //    EditorGUILayout.LabelField("Combindes with", GUILayout.Width(width * ownSpriteWidth));
+    //    EditorGUILayout.LabelField("To make this", GUILayout.Width(width * ownSpriteWidth));
+    //    EditorGUILayout.EndHorizontal();
+
+    //    EditorGUILayout.BeginVertical(GUI.skin.box);
+    //      EditorGUILayout.BeginHorizontal(GUI.skin.box);
+    //      EditorGUILayout.PropertyField(combindsWithProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
+    //      GUILayout.Space(spacing * width);
+    //      EditorGUILayout.PropertyField(toMakeProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
+    //      EditorGUILayout.EndHorizontal();
+    //      DrawCombindImages(width);
+    //    EditorGUILayout.EndVertical();
+
+    //    //EditorGUILayout.PropertyField(conditioAndReactionsProperty, GUIContent.none);
+    //    serializedObject.ApplyModifiedProperties();
+
+    //}
 
     public override void OnInspectorGUI()
     {
-        float width = EditorGUIUtility.currentViewWidth;
-        serializedObject.Update();
-
-        CurentItem(width);
-
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Combindes with", GUILayout.Width(width * ownSpriteWidth));
-        EditorGUILayout.LabelField("To make this", GUILayout.Width(width * ownSpriteWidth));
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginVertical(GUI.skin.box);
-          EditorGUILayout.BeginHorizontal(GUI.skin.box);
-          EditorGUILayout.PropertyField(combindsWithProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
-          GUILayout.Space(spacing * width);
-          EditorGUILayout.PropertyField(toMakeProperty, GUIContent.none, GUILayout.Width(width * ownSpriteWidth));
-          EditorGUILayout.EndHorizontal();
-          DrawCombindImages(width);
-        EditorGUILayout.EndVertical();
-
-
-
-
-
-
-
-
-        serializedObject.ApplyModifiedProperties();
-
+        base.OnInspectorGUI();
     }
-
 
 
 

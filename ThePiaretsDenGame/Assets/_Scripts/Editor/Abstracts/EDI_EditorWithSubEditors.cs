@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-// This class acts as a base class for Editors that have Editors
-// nested within them.  For example, the InteractableEditor has
-// an array of ConditionCollectionEditors.
-// It's generic types represent the type of Editor array that are
-// nested within this Editor and the target type of those Editors.
+/*
+* This class acts as a base class for Editors that have Editors
+* nested within them.  For example, the InteractableEditor has
+* an array of ConditionCollectionEditors.
+* It's generic types represent the type of Editor array that are
+* nested within this Editor and the target type of those Editors.
+*/
 public abstract class EDI_EditorWithSubEditors<TEditor, TTarget> : Editor
     where TEditor : Editor
     where TTarget : Object
@@ -20,7 +22,10 @@ public abstract class EDI_EditorWithSubEditors<TEditor, TTarget> : Editor
     {
         // If there are the correct number of subEditors then do nothing.
         if (subEditors != null && subEditors.Length == subEditorTargets.Length)
+        {
             return;
+        }
+
 
         // Otherwise get rid of the editors.
         CleanupEditors();
@@ -44,8 +49,10 @@ public abstract class EDI_EditorWithSubEditors<TEditor, TTarget> : Editor
     {
         // If there are no subEditors do nothing.
         if (subEditors == null)
+        {
             return;
-
+        }
+            
         // Otherwise destroy all the subEditors.
         for (int i = 0; i < subEditors.Length; i++)
         {

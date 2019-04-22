@@ -100,9 +100,14 @@ public abstract class EDI_ConditionAdvanced : Editor
         EditorGUILayout.BeginHorizontal(GUI.skin.box);
         EditorGUI.indentLevel++;
 
+        EditorGUILayout.BeginVertical();
+         // Display the description of the Condition.
+         EditorGUILayout.LabelField("Name: " + condition.description);
 
-        // Display the description of the Condition.
-        EditorGUILayout.LabelField(condition.description);
+         // Display the Condition type.
+         EditorGUILayout.LabelField("Type: " + condition.GetType().ToString());
+
+        EditorGUILayout.EndVertical();
 
         DrawConditionAllConditionsAssetGUI();
 
@@ -131,11 +136,15 @@ public abstract class EDI_ConditionAdvanced : Editor
         EditorGUILayout.BeginHorizontal(GUI.skin.box);
         EditorGUI.indentLevel++;
 
-        // Display the description of the Condition.
-        EditorGUILayout.LabelField(condition.description);
+        EditorGUILayout.BeginVertical();
+         // Display the description of the Condition.
+         EditorGUILayout.LabelField("Name: " + condition.description);
 
-        // Display the Condition type.
-        EditorGUILayout.LabelField(condition.GetType().ToString());
+         // Display the Condition type.
+         EditorGUILayout.LabelField("Type: " + condition.GetType().ToString());
+
+        EditorGUILayout.EndVertical();
+
         DrawConditionConditionAssetGUI();
 
         EditorGUI.indentLevel--;
@@ -156,10 +165,10 @@ public abstract class EDI_ConditionAdvanced : Editor
         serializedObject.Update();
 
         // The width for the Popup, Toggle and remove Button.
-        float width = EditorGUIUtility.currentViewWidth / 3f;
+        float width = EditorGUIUtility.currentViewWidth /3f;
 
         EditorGUILayout.BeginHorizontal();
-
+        
         // Find the index for the target based on the AllConditions array.
         int conditionIndex = EDI_AllConditions.TryGetConditionIndex(condition);
 
@@ -170,21 +179,16 @@ public abstract class EDI_ConditionAdvanced : Editor
         {
             conditionIndex = 0;
         }
+
         /* Set the index based on the user selection 
          * of the condition by the user.
          */
         // conditionIndex = EditorGUILayout.Popup(conditionIndex, EDI_AllConditions.AllConditionDescriptions, GUILayout.Width(width));
-        conditionIndex = EditorGUILayout.Popup(conditionIndex, getListOfReleveantConditions(), GUILayout.Width(width));
-        //EditorGUILayout.LabelField(EDI_AllConditions.AllConditionDescriptions[conditionIndex], GUILayout.Width(width));
-        // Debug.Log(condition+ "    " + conditionIndex);
-        // Find the equivalent condition in the AllConditions array.
-        //SOBJ_ConditionAdvanced globalCondition = (SOBJ_ConditionAdvanced)EDI_AllConditions.TryGetConditionAt(conditionIndex);
-      //  int allConditionIndex = EDI_AllConditions.TryGetConditionIndex(getListOfReleveantConditions()[conditionIndex]);
+        conditionIndex                         = EditorGUILayout.Popup(conditionIndex, getListOfReleveantConditions(), GUILayout.Width(width ));
         SOBJ_ConditionAdvanced globalCondition = EDI_AllConditions.TryGetConditionAt(conditionIndex);
 
-  
         // Set the description based on the globalCondition's description.
-        descriptionProperty.stringValue = globalCondition != null ? globalCondition.description : blankDescription;
+        descriptionProperty.stringValue = (globalCondition != null) ? globalCondition.description : blankDescription;
       
         // Set the hash based on the description.
         hashProperty.intValue = Animator.StringToHash(descriptionProperty.stringValue);
@@ -212,12 +216,8 @@ public abstract class EDI_ConditionAdvanced : Editor
     protected abstract void DrawConditionInteractableGUI();
 
     /// <summary>
-    /// This abstract funktion will return a
-    /// list off all the condition that is of the 
-    /// same type as the curent item, se the implemmentation
-    /// in SOBJ_Condition and SOBJ_ItemCondition, it should be
-    /// exaktly the same exemt that the type cast shoulde be shaged 
-    /// for new conditons.
+    /// Just a raper funktion for the EDI_AllCondition.getListOfReleveantConditions<T>()
+    /// ther the T is replaced whit th erelevant type
     /// </summary>
     /// <returns></returns>
     public abstract string[] getListOfReleveantConditions();    
@@ -274,12 +274,15 @@ public abstract class EDI_ConditionAdvanced : Editor
         SOBJ_ConditionAdvanced newCondition = (SOBJ_ConditionAdvanced)CreateInstance(condisionType);
 
         // Set the description and the hash based on it.
-        newCondition.description = description + " [" + condisionType.ToString() +"]";
+        newCondition.description = description;// + " [" + condisionType.ToString() +"]";
         SetHash(newCondition);
         return newCondition;
     }
 
-
+    /// <summary>
+    /// Sets the hase of conditon
+    /// </summary>
+    /// <param name="condition"> condition that is suposed to get hased</param>
     private static void SetHash(SOBJ_ConditionAdvanced condition)
     {
         condition.hash = Animator.StringToHash(condition.description);

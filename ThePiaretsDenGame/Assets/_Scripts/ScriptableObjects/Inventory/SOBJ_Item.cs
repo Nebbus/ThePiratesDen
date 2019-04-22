@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 /*
@@ -25,15 +26,15 @@ public class SOBJ_Item : ScriptableObject
     /// <summary>
     /// is planded to contain reactions and the conditons that accomplish them
     /// </summary>
+   [Serializable]
     public struct reactionAndCondition
     {
         // Description of the ConditionCollection.  This is used purely for identification in the inspector.
         public string description;              
 
         public SOBJ_ConditionAdvanced[] conditions;
-        public SOBJ_Reaction[] reactions;
+        public SOBJ_Reaction[]          reactions;
 
-     
         /// <summary>
         /// Initilices all the ractions in the racticons list
         /// </summary>
@@ -86,14 +87,14 @@ public class SOBJ_Item : ScriptableObject
         }
     }
 
-    public reactionAndCondition[] conditioAndReactions;
+    public reactionAndCondition[] conditioAndReactions = new reactionAndCondition[0];
 
     public void InitReaction()
     {
-       //foreach(reactionAndCondition interactables in conditioAndReactions)
-       // {
-       //     interactables.Init();
-       // } 
+        foreach (reactionAndCondition interactables in conditioAndReactions)
+        {
+            interactables.Init();
+        }
     }
 
     /// <summary>

@@ -398,7 +398,7 @@ public class EDI_AllConditions : Editor
         /* Create a new array that has the same number 
          * of elements as there are Conditions.
          */
-        string[] allConditions = AllConditionDescriptions;
+        string[] allConditions = new string[AllConditionDescriptions.Length];
 
         /* Go through the array and assign the description 
          * of the condition at the same index.
@@ -407,7 +407,7 @@ public class EDI_AllConditions : Editor
         for (int i = 0; i < allConditions.Length; i++)
         {
             T temp;
-            // attemts to cast the conditon to the wanted type,
+           // attemts to cast the conditon to the wanted type,
            // if it fails so is it set to null.
             try
             {

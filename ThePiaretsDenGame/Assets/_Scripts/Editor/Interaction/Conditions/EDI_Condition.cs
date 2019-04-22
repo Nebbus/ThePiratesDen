@@ -34,24 +34,6 @@ public class EDI_Condition : EDI_ConditionAdvanced
    
     public override string[] getListOfReleveantConditions()
     {
-    //    /* Create a new array that has the same number 
-    //     * of elements as there are Conditions.
-    //     */
-    //    string[] allConditions = EDI_AllConditions.AllConditionDescriptions;
-
-    //    /* Go through the array and assign the description 
-    //     * of the condition at the same index.
-    //     */
-    //    int count = 0;
-    //    for (int i = 0; i < allConditions.Length; i++)
-    //    {
-    //        SOBJ_Condition temp = EDI_AllConditions.TryGetConditionAt(i) as SOBJ_Condition;
-    //        if (temp != null)
-    //        {
-    //            allConditions[count] = EDI_AllConditions.TryGetConditionAt(i).description;
-    //            count++;
-    //        }
-    //    }
         return EDI_AllConditions.getListOfReleveantConditions<SOBJ_Condition>();
     }
 }

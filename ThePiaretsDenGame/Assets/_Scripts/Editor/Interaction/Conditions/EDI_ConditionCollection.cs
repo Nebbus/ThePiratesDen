@@ -8,7 +8,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
 {
     private SOBJ_ConditionCollection conditionCollection;         // Reference to the target.
 
-    public SerializedProperty  collectionsProperty;              // Represents the array of ConditionCollections that the target belongs to.  
+    public SerializedProperty  collectionsProperty;         // Represents the array of ConditionCollections that the target belongs to.  
     private SerializedProperty descriptionProperty;         // Represents a string description for the target.
     private SerializedProperty conditionsProperty;          // Represents an array of Conditions for the target.
     private SerializedProperty reactionCollectionProperty;  // Represents the ReactionCollection that is referenced by the target.
@@ -31,14 +31,14 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
     private readonly float verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
 
 
-    private Type[]   conditionTypes;                           // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
-    private string[] conditionTypeNames;                       // The names of all appropriate Reaction types.
-    private int      selectedIndex;                           // The index of the currently selected Reaction type.
+    private Type[]   conditionTypes;          // All the non-abstract types which inherit from SOBJ_ConditionAdvanced.  This is used for adding new Reactions.
+    private string[] conditionTypeNames;      // The names of all appropriate SOBJ_ConditionAdvanced types.
+    private int      selectedIndex;           // The index of the currently selected SOBJ_ConditionAdvanced type.
 
 
-    private const float dropAreaHeight = 50f;           // Height in pixels of the area for dropping scripts.
-    private const float controlSpacing = 5f;            // Width in pixels between the popup type selection and drop area.
-    private const float buttonWidth = 30f;                      // Width in pixels of the button to create Conditions.
+    private const float dropAreaHeight = 50f;  // Height in pixels of the area for dropping scripts.
+    private const float controlSpacing = 5f;   // Width in pixels between the popup type selection and drop area.
+    private const float buttonWidth    = 30f;  // Width in pixels of the button to create Conditions.
 
 
 
@@ -79,7 +79,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
     protected override void SubEditorSetup(EDI_ConditionAdvanced editor)
     {
         // Set the editor type so that the correct GUI for Condition is shown.
-        editor.editorType = EDI_Condition.EditorType.ConditionCollection;
+        editor.editorType = EDI_ConditionAdvanced.EditorType.ConditionCollection;
 
         /* Assign the conditions property so that the 
          * ConditionEditor can remove its target if necessary.
@@ -162,22 +162,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
         }
         EditorGUILayout.EndHorizontal();
 
-        /* Display a right aligned button which when clicked adds
-         * a Condition to the array.
-         */ 
-        EditorGUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
-     /*   if (GUILayout.Button("+", GUILayout.Width(conditionButtonWidth)))
-        {
-            // SOBJ_ConditionAdvanced newCondition = EDI_ConditionAdvanced.CreateCondition();
-            //conditionsProperty.AddToObjectArray(newCondition);
-            // Create a Rect for the left GUI controls.
-         
-        }*/
-     
 
-
-        EditorGUILayout.EndHorizontal();
         TypeSelectionGUI();
 
         EditorGUILayout.Space();
@@ -224,55 +209,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
             conditionsProperty.AddToObjectArray(newReaction);
         }
     }
-
-
-    //private void SetReactionNamesArray()
-    //{
-
-    //    // Store the Reaction type.
-    //    Type reactionType = typeof(SOBJ_ConditionAdvanced);
-
-    //    /* Get all the types that are in the same 
-    //     * Assembly (all the runtime scripts) as the Reaction type.
-    //     */
-    //    Type[] allTypes = reactionType.Assembly.GetTypes();
-
-    //    /* Create an empty list to store all the types 
-    //     * that are subtypes of Reaction.
-    //     */
-    //    List<Type> reactionSubTypeList = new List<Type>();
-
-    //    // Go through all the types in the Assembly...
-    //    for (int i = 0; i < allTypes.Length; i++)
-    //    {
-    //        /* ... and if they are a non-abstract subclass of 
-    //         * Reaction then add them to the list.
-    //         */
-    //        if (allTypes[i].IsSubclassOf(reactionType) && !allTypes[i].IsAbstract)
-    //        {
-    //            reactionSubTypeList.Add(allTypes[i]);
-    //        }
-    //    }
-
-    //    // Convert the list to an array and store it.
-    //    conditionTypes = reactionSubTypeList.ToArray();
-
-    //    /* Create an empty list of strings to store the names 
-    //     * of the Reaction types.
-    //     */
-    //    List<string> reactionTypeNameList = new List<string>();
-
-    //    // Go through all the Reaction types and add their names to the list.
-    //    for (int i = 0; i < conditionTypes.Length; i++)
-    //    {
-    //        reactionTypeNameList.Add(conditionTypes[i].Name);
-    //    }
-
-    //    // Convert the list to an array and store it.
-    //    conditionTypeNames = reactionTypeNameList.ToArray();
-    //}
-
-
+   
     /// <summary>
     /// This function is static such that it
     /// can be called without an editor being instanced.
@@ -287,9 +224,9 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
         // Give it a default description.
         newConditionCollection.description = "New condition collection";
 
-        // Give it a single default Condition.
-       // newConditionCollection.requiredConditions    = new SOBJ_Condition[1];
-      //  newConditionCollection.requiredConditions[0] = EDI_ConditionAdvanced.CreateCondition();
+        //Give it a single default Condition.
+        newConditionCollection.requiredConditions    = new SOBJ_Condition[1];
+        newConditionCollection.requiredConditions[0] = EDI_ConditionAdvanced.CreateCondition();
         return newConditionCollection;
     }
 }
