@@ -7,8 +7,10 @@ public abstract class EDI_Reaction : Editor
     public bool showReaction;                       // Is the Reaction editor expanded?
     public SerializedProperty reactionsProperty;    // Represents the SerializedProperty of the array the target belongs to.
 
+    public EDI_ItemInteractable2 parentEditor = null;  // not null if the reaction is in a itemInteractable
 
-    private SOBJ_Reaction reaction;                 // The target Reaction.
+
+    private SOBJ_Reaction reaction;  // The target Reaction
 
 
     private const float buttonWidth = 30f;          // Width in pixels of the button to remove this Reaction from the ReactionCollection array.
@@ -18,6 +20,10 @@ public abstract class EDI_Reaction : Editor
     {
         // Cache the target reference.
         reaction = (SOBJ_Reaction)target;
+        if (target == null)
+        {
+            DestroyImmediate(this);
+        }
 
         // Call an initialisation method for inheriting classes.
         Init();
@@ -41,15 +47,14 @@ public abstract class EDI_Reaction : Editor
         EditorGUILayout.BeginHorizontal();
 
         // Display a foldout for the Reaction with a custom label.
-        showReaction = EditorGUILayout.Foldout(showReaction, GetFoldoutLabel());
+        showReaction = EditorGUILayout.Foldout(showReaction, GetFoldoutLabel(), true);
+       
 
         /* Show a button which, if clicked, will remove this 
          * Reaction from the ReactionCollection.
-         */ 
-        if (GUILayout.Button("-", GUILayout.Width(buttonWidth)))
-        {
-            reactionsProperty.RemoveFromObjectArray(reaction);
-        }
+         */
+        bool destroyMe = GUILayout.Button("-", GUILayout.Width(buttonWidth));
+        
         EditorGUILayout.EndHorizontal();
 
         /* If the foldout is open, draw the GUI specific 
@@ -63,8 +68,33 @@ public abstract class EDI_Reaction : Editor
         EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
 
-        // Push data back from the serializedObject to the target.
         serializedObject.ApplyModifiedProperties();
+        
+        //Removes this object her to avoid errer from the line above
+        if (destroyMe)
+        {
+            if (parentEditor != null)
+            {
+                voidEdiorItemRemove();
+            }
+            else
+            {
+                reactionsProperty.RemoveFromObjectArray(reaction);
+
+            }
+
+
+        }
+
+    }
+
+    /// <summary>
+    /// used by the items to remove this item
+    /// </summary>
+    public void voidEdiorItemRemove()
+    {
+        parentEditor.RemoveReaction(reaction);
+
     }
 
 

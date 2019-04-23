@@ -27,7 +27,7 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
     protected override void Init()
     {
       
-            emitters    = serializedObject.FindProperty("Emitters");
+           emitters    = serializedObject.FindProperty("Emitters");
            targetEmitter = null;
             for (int i = 0; i < emitters.arraySize; i++)
             {

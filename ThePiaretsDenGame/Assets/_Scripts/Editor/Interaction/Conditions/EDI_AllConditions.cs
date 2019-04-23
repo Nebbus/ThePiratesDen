@@ -32,12 +32,13 @@ public class EDI_AllConditions : Editor
     private SOBJ_AllConditions      allConditions;                               // Reference to the target.
     private string                  newConditionDescription = "New Condition";   // String to start off the naming of new Conditions.
 
-
-    private const string creationPath = "Assets/Resources/SOBJ_AllConditions.asset";
     // The path that the AllConditions asset is created at.
+    private const string creationPath = "Assets/Resources/SOBJ_AllConditions.asset";
+
 
     private SerializedProperty conditionsProperty;
     private const string       conditionsPropName = "conditions";
+
     private Type[]             conditionTypes;                    // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
     private string[]           conditionTypeNames;                // The names of all appropriate Reaction types.
     private int                selectedIndex;                     // The index of the currently selected Reaction type.
@@ -427,7 +428,6 @@ public class EDI_AllConditions : Editor
         return allConditions;
     }
 
-
     public static int TryGetConditionsLength()
     {
         // If there is no Conditions array, return a length of 0.
@@ -440,56 +440,4 @@ public class EDI_AllConditions : Editor
         // Otherwise return the length of the array.
         return SOBJ_AllConditions.Instance.conditions.Length;
     }
-
-  
-
-
-    ///// <summary>
-    ///// Funktion that retrives the names of the conditions in the  
-    ///// </summary>
-    //private void SetConditionNamesArray()
-    //{
-    //    // Store the Reaction type.
-    //    Type reactionType = typeof(SOBJ_ConditionAdvanced);
-
-    //    /* Get all the types that are in the same 
-    //     * Assembly (all the runtime scripts) as the Reaction type.
-    //     */
-    //    Type[] allTypes = reactionType.Assembly.GetTypes();
-
-    //    /* Create an empty list to store all the types 
-    //     * that are subtypes of Reaction.
-    //     */
-    //    List<Type> reactionSubTypeList = new List<Type>();
-
-    //    // Go through all the types in the Assembly...
-    //    for (int i = 0; i < allTypes.Length; i++)
-    //    {
-    //        /* ... and if they are a non-abstract subclass of 
-    //         * Reaction then add them to the list.
-    //         */
-    //        if (allTypes[i].IsSubclassOf(reactionType) && !allTypes[i].IsAbstract)
-    //        {
-    //            reactionSubTypeList.Add(allTypes[i]);
-    //        }
-    //    }
-
-    //    // Convert the list to an array and store it.
-    //    conditionTypes = reactionSubTypeList.ToArray();
-
-    //    /* Create an empty list of strings to store the names 
-    //     * of the Reaction types.
-    //     */
-    //    List<string> reactionTypeNameList = new List<string>();
-
-    //    // Go through all the Reaction types and add their names to the list.
-    //    for (int i = 0; i < conditionTypes.Length; i++)
-    //    {
-    //        reactionTypeNameList.Add(conditionTypes[i].Name);
-    //    }
-
-    //    // Convert the list to an array and store it.
-    //    conditionTypeNames = reactionTypeNameList.ToArray();
-    //}
-
 }

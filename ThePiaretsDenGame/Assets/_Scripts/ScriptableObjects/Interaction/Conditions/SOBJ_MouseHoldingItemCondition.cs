@@ -16,6 +16,7 @@ public class SOBJ_MouseHoldingItemCondition : SOBJ_ConditionAdvanced
     private SOBJ_Item requierdHoldingItem;
 
 
+
     public SOBJ_Item getRequierdHoldingItem
     {
         get
@@ -30,7 +31,7 @@ protected override bool advancedCondition()
         
         if (MONO_itemGradFromTheInventory.instance.currentItem != null)
         {
-            return requierdHoldingItem.getHash == MONO_itemGradFromTheInventory.instance.currentItem.getHash;
+            return satisfied == (requierdHoldingItem.getHash == MONO_itemGradFromTheInventory.instance.currentItem.getHash);
         }
         
         return false;

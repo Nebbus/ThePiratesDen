@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SOBJ_ReturnItemToInventoryReaction : SOBJ_Reaction
+public class SOBJ_MouseRemoveGrabedItem : SOBJ_Reaction
 {
     protected override void ImmediateReaction()
     {

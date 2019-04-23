@@ -4,6 +4,19 @@
 // There are arrays of inheriting Reactions on ReactionCollections.
 public abstract class SOBJ_Reaction : ScriptableObject
 {
+
+
+    /// <summary>
+    /// used to find this item in the itemÍnteraction
+    /// </summary>
+    public int getHash
+    {
+        get
+        {
+            return Animator.StringToHash(this.name);
+        }
+    }
+
     /// <summary>
     /// This is called from ReactionCollection.
     /// This function contains everything that is required to be done for all

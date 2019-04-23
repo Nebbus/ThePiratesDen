@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 207df38140bed8846828c3c460e5eb20, type: 2}
+  item: {fileID: 11400000, guid: 987af89bf4ca51e42b42873f3dd85f80, type: 2}
 --- !u!114 &72024545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,7 +416,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 139548105}
---- !u!114 &152577571
+--- !u!114 &172683875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a1aa57e12d21643bb2cf611e927d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: New condition collection
+  requiredConditions:
+  - {fileID: 277784301}
+  reactionCollection: {fileID: 2023331853}
+--- !u!114 &241262547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -427,10 +442,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012a760d82037934992e0cd5ba2b0f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Emitters:
-  - Target: {fileID: 0}
-    Params: []
+  Emitters: []
   play: 1
+--- !u!114 &277784301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 1
+  hash: 514706441
+  requierdHoldingItem: {fileID: 11400000, guid: 2d424710d633ef649b4a5cbe507bef9f,
+    type: 2}
 --- !u!114 &296723953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +645,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &408556798
 Prefab:
@@ -665,7 +694,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1488700873102462, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_Name
@@ -675,7 +704,7 @@ Prefab:
         type: 2}
       propertyPath: conditionCollections.Array.data[0]
       value: 
-      objectReference: {fileID: 1954527072}
+      objectReference: {fileID: 172683875}
     - target: {fileID: 114510734336489586, guid: a4020da0d4f61f84287c6e1efa737707,
         type: 2}
       propertyPath: reactions.Array.data[0]
@@ -813,22 +842,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 1dc48a203aa98db44a18f0df5226e5ba, type: 2}
---- !u!114 &426645358
-MonoBehaviour:
+  item: {fileID: 0}
+--- !u!1 &474743219
+GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92a1aa57e12d21643bb2cf611e927d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: New condition collection
-  requiredConditions:
-  - {fileID: 0}
-  reactionCollection: {fileID: 771856095}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 474743220}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &474743220
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 474743219}
+  m_LocalRotation: {x: 0.18864624, y: 0.010057081, z: 0.018126465, w: 0.9818263}
+  m_LocalPosition: {x: 0, y: 5.98, z: -13.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &492127731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,7 +1082,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b915d43e42a3d4a8ffd07f74f204a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  condition: {fileID: 0}
+  condition: {fileID: 114769039418781968, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+    type: 2}
   satisfied: 1
 --- !u!114 &597990297
 MonoBehaviour:
@@ -1152,6 +1195,11 @@ MonoBehaviour:
   description: PickedUppCoin [SOBJ_Condition]
   satisfied: 0
   hash: -768085333
+--- !u!4 &690672197 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707,
+    type: 2}
+  m_PrefabInternal: {fileID: 408556798}
 --- !u!4 &694646443 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: fc762823ff3f23c42947b38ac72a7183, type: 3}
@@ -1264,7 +1312,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &748896898
 GameObject:
@@ -1716,7 +1764,7 @@ Transform:
   - {fileID: 1153451926}
   - {fileID: 1008854723}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &796325355
 MonoBehaviour:
@@ -1949,7 +1997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SOBJ_resettableScriptableObjects:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 3eed64145a2bddf4d820c14e09bb1ad8, type: 2}
 --- !u!4 &1008854723
 Transform:
   m_ObjectHideFlags: 0
@@ -1989,7 +2037,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b915d43e42a3d4a8ffd07f74f204a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  condition: {fileID: 0}
+  condition: {fileID: 114769039418781968, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+    type: 2}
   satisfied: 1
 --- !u!1 &1153451925
 GameObject:
@@ -2062,12 +2111,53 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153451925}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1195107119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/Shipwheel_Spinning
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &1234049007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a1aa57e12d21643bb2cf611e927d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: New condition collection
+  requiredConditions: []
+  reactionCollection: {fileID: 0}
 --- !u!114 &1327954716 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114977689446388268, guid: a4020da0d4f61f84287c6e1efa737707,
     type: 2}
   m_PrefabInternal: {fileID: 1656498378}
   m_Script: {fileID: 11500000, guid: 8865ee5b02f9ff041981e3bda8948dd8, type: 3}
+--- !u!114 &1357915354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 0
+  hash: 514706441
 --- !u!1 &1392156247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,7 +2255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 1dc48a203aa98db44a18f0df5226e5ba, type: 2}
+  item: {fileID: 11400000, guid: 2d424710d633ef649b4a5cbe507bef9f, type: 2}
 --- !u!1001 &1473442361
 Prefab:
   m_ObjectHideFlags: 0
@@ -2213,7 +2303,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1488700873102462, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_Name
@@ -2223,7 +2313,7 @@ Prefab:
         type: 2}
       propertyPath: conditionCollections.Array.data[0]
       value: 
-      objectReference: {fileID: 426645358}
+      objectReference: {fileID: 1234049007}
     - target: {fileID: 114510734336489586, guid: a4020da0d4f61f84287c6e1efa737707,
         type: 2}
       propertyPath: reactions.Array.data[0]
@@ -2311,6 +2401,21 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1473442361}
   m_Script: {fileID: 11500000, guid: 8865ee5b02f9ff041981e3bda8948dd8, type: 3}
+--- !u!114 &1497544559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a1aa57e12d21643bb2cf611e927d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  requiredConditions:
+  - {fileID: 1357915354}
+  reactionCollection: {fileID: 0}
 --- !u!114 &1577215675 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114977689446388268, guid: a4020da0d4f61f84287c6e1efa737707,
@@ -2365,7 +2470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monoInventory: {fileID: 0}
-  currentItem: {fileID: 0}
+  currentItem: {fileID: 11400000, guid: fbfcbf14d69c2884f9c900f6d2182593, type: 2}
   currentItemImage: {fileID: 1627166658}
 --- !u!114 &1627166658
 MonoBehaviour:
@@ -2512,7 +2617,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1488700873102462, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_Name
@@ -2632,7 +2737,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b915d43e42a3d4a8ffd07f74f204a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  condition: {fileID: 0}
+  condition: {fileID: 114769039418781968, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+    type: 2}
   satisfied: 1
 --- !u!1 &1723479824
 GameObject:
@@ -2664,7 +2770,7 @@ Transform:
   - {fileID: 1392156248}
   - {fileID: 333327254}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1723479829
 MonoBehaviour:
@@ -2805,7 +2911,7 @@ RectTransform:
   - {fileID: 631061999}
   - {fileID: 1627166656}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2824,7 +2930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 207df38140bed8846828c3c460e5eb20, type: 2}
+  item: {fileID: 0}
 --- !u!1 &1880989339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2982,20 +3088,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onShotEvent: event:/Objects/Boom
   theSorceOftheOneShot: {fileID: 1656498379}
---- !u!114 &1954527072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92a1aa57e12d21643bb2cf611e927d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: New condition collection
-  requiredConditions: []
-  reactionCollection: {fileID: 0}
 --- !u!114 &1954577698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3022,6 +3114,48 @@ MonoBehaviour:
   description: PickedUppCoin [SOBJ_Condition]
   satisfied: 0
   hash: -768085333
+--- !u!1 &2023331851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2023331852}
+  - component: {fileID: 2023331853}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2023331852
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2023331851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 690672197}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2023331853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2023331851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reactions:
+  - {fileID: 1195107119}
 --- !u!1001 &2037099326
 Prefab:
   m_ObjectHideFlags: 0
@@ -3032,6 +3166,11 @@ Prefab:
     - target: {fileID: 114510734336489586, guid: a4020da0d4f61f84287c6e1efa737707,
         type: 2}
       propertyPath: reactions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114977689446388268, guid: a4020da0d4f61f84287c6e1efa737707,
+        type: 2}
+      propertyPath: conditionCollections.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
@@ -3064,7 +3203,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3111,11 +3250,21 @@ Prefab:
         type: 2}
       propertyPath: reactions.Array.data[1]
       value: 
-      objectReference: {fileID: 152577571}
+      objectReference: {fileID: 241262547}
     - target: {fileID: 1488700873102462, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114977689446388268, guid: a4020da0d4f61f84287c6e1efa737707,
+        type: 2}
+      propertyPath: conditionCollections.Array.data[0]
+      value: 
+      objectReference: {fileID: 1497544559}
+    - target: {fileID: 114510734336489586, guid: a4020da0d4f61f84287c6e1efa737707,
+        type: 2}
+      propertyPath: reactions.Array.data[2]
+      value: 
+      objectReference: {fileID: 241262547}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
   m_IsPrefabParent: 0

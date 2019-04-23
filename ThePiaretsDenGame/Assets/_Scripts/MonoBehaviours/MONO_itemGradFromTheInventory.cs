@@ -11,14 +11,17 @@ public class MONO_itemGradFromTheInventory : MonoBehaviour
     public static MONO_itemGradFromTheInventory instance;
     public MONO_Inventory           monoInventory;
 
+
+    [Tooltip("Should be the null item at the start" +
+        "(a empty item thet represents null)")]
     public SOBJ_Item currentItem = null;
+ 
     public Image     currentItemImage;
     private int      currentItemInventoryIndex;
     private bool holding = false;
 
-   
-    
 
+    private SOBJ_Item nullStartItem;
 
     public int getSetIndex
     {
@@ -38,6 +41,7 @@ public class MONO_itemGradFromTheInventory : MonoBehaviour
         if( instance == null)
         {
             instance = this;
+            nullStartItem = currentItem;
             monoInventory = FindObjectOfType<MONO_Inventory>();
         }
         else
@@ -58,7 +62,7 @@ public class MONO_itemGradFromTheInventory : MonoBehaviour
 
     public void ReturnItemToInventory()
     {
-        currentItem               = null;
+        currentItem               = nullStartItem;
         currentItemImage.sprite   = null;
         currentItemImage.enabled  = false;
         holding                   = false;

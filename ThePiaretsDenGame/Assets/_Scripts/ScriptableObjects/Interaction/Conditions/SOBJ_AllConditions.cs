@@ -67,7 +67,7 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
         /*If the requiredCondition is a comparesons is a 
       * comparesons condition (like SOBJ_ItemCondition)
       * then just call the IsSatesfied()*/
-        SOBJ_MouseHoldingItemCondition ItemCompareseon = (SOBJ_MouseHoldingItemCondition)requiredCondition;
+        SOBJ_MouseHoldingItemCondition ItemCompareseon = requiredCondition as SOBJ_MouseHoldingItemCondition;
         if (ItemCompareseon)
         {
             return requiredCondition.IsSatesfied();

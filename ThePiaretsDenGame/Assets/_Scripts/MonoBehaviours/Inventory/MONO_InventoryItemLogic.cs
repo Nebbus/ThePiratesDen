@@ -6,7 +6,7 @@ public class MONO_InventoryItemLogic : MonoBehaviour
 {
 
     
-    public int hashCode;
+    public int hashCode = -1;
 
     private int  index;
     private bool hasBenGrabed = false;
@@ -20,6 +20,14 @@ public class MONO_InventoryItemLogic : MonoBehaviour
         }
 
     }
+
+    public void Start()
+    {
+        monoInventory = FindObjectOfType<MONO_Inventory>();
+
+    }
+
+
     public int getStetIndex
     {
         set
@@ -30,7 +38,6 @@ public class MONO_InventoryItemLogic : MonoBehaviour
         {
             return index;
         }
-
     }
 
 
@@ -39,14 +46,20 @@ public class MONO_InventoryItemLogic : MonoBehaviour
     /// </summary>
     public void HandleClickInput()
     {
-        if(MONO_itemGradFromTheInventory.instance.currentItem != null)
+        if(hashCode != -1)
         {
             React();
+
         }
-        else if ( hasBenGrabed && MONO_itemGradFromTheInventory.instance.currentItem == null)
-        {
-            PickMeUpp();
-        }
+     
+        //if (MONO_itemGradFromTheInventory.instance.currentItem != null)
+        //{
+        //    React();
+        //}
+        //else if ( hasBenGrabed && MONO_itemGradFromTheInventory.instance.currentItem == null)
+        //{
+        //    PickMeUpp();
+        //}
         
     }
 
@@ -55,18 +68,19 @@ public class MONO_InventoryItemLogic : MonoBehaviour
     /// dose this by calling a funktion in the inventory
     /// that set the mouse values
     /// </summary>
-    public void PickMeUpp()
-    {
-        monoInventory.GrabItem(getStetIndex);
-        hasBenGrabed = false;
-    }
+    //public void PickMeUpp()
+    //{
+    //    monoInventory.GrabItem(getStetIndex);
+    //    hasBenGrabed = false;
+    //}
 
     /// <summary>
     /// Run throug the ractions the item has attached to it.
     /// </summary>
     public void React()
     {
-        monoInventory.invetoryItems[index].InteractionRun(this);
+
+        monoInventory.GetItem(hashCode).InteractionRun(this);
     }
 
 }

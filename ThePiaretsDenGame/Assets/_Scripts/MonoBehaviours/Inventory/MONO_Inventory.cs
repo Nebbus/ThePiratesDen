@@ -23,11 +23,7 @@ public class MONO_Inventory : MonoBehaviour {
     public static int numberItemSlots = 0;
 
     private bool HandleInput = true;
-
-  
-
-
-
+    
     public void HandleInventoryClick()
     {
         if (HandleInput)
@@ -131,24 +127,85 @@ public class MONO_Inventory : MonoBehaviour {
     /// Sets the value of the item that the pointer is holdin
     /// </summary>
     /// <param name="itemIndex">index of item to grabe</param>
-    public void GrabItem(int itemIndex)
+    //public void GrabItem(int itemIndex)
+    //{
+    //    if (invetoryItemsImages[itemIndex].sprite != null && itemIndex < invetoryItems.Length && itemIndex > (-1))
+    //    {
+    //        MONO_itemGradFromTheInventory.instance.GrabdItem(invetoryItems[itemIndex], invetoryItemsImages[itemIndex].sprite, itemIndex);
+    //        invetoryItemsImages[itemIndex].enabled = false;
+    //    }
+    //}
+    /// <summary>
+    /// Set item hold by the mouspinter
+    /// </summary>
+    /// <param name="itemIndex">index of item to grabe</param>
+    public void GrabItem(int hash)
     {
+
+        int itemIndex = -1;
+
+        //gets the right index for the item
+        for (int i = 0; i < invetoryItems.Length; i++)
+        {
+           // Debug.Log((invetoryItems[i] != null && invetoryItems[i].getHash == hash));
+            if (invetoryItems[i]!=null && invetoryItems[i].getHash == hash)
+            {
+                itemIndex = i;
+                break;
+            }
+        }
+
+        if(itemIndex == -1)
+        {
+            Debug.LogError("Tryed to grab item that isent in the inventory");
+            return;
+        }
+
         if (invetoryItemsImages[itemIndex].sprite != null && itemIndex < invetoryItems.Length && itemIndex > (-1))
         {
+          
             MONO_itemGradFromTheInventory.instance.GrabdItem(invetoryItems[itemIndex], invetoryItemsImages[itemIndex].sprite, itemIndex);
             invetoryItemsImages[itemIndex].enabled = false;
         }
     }
+
+    public SOBJ_Item GetItem(int hash)
+    {
+
+        int itemIndex = -1;
+
+        //gets the right index for the item
+        for (int i = 0; i < invetoryItems.Length; i++)
+        {
+            if (invetoryItems[i].getHash == hash)
+            {
+                itemIndex = i;
+                break;
+            }
+        }
+
+        if (itemIndex == -1)
+        {
+            Debug.LogError("Tryed to grab item that isent in the inventory");
+            return null;
+        }
+
+        return invetoryItems[itemIndex];
+
+
+    }
+
+
+
     /// <summary>
     /// Activates the items that was holded by the mouse pointer
     /// </summary>
     /// <param name="itemIndex"></param>
     public void ReturnToInventory(int itemIndex)
     {
-        Debug.Log("osinrg  "+ itemIndex);
+     
         if (itemIndex < invetoryItems.Length && itemIndex > (-1))
         {
-            Debug.Log("osinrg2 " + itemIndex);
             invetoryItemsImages[itemIndex].enabled = true;
         }
     }

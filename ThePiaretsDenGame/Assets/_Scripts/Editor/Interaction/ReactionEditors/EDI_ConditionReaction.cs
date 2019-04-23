@@ -15,6 +15,7 @@ public class EDI_ConditionReaction : EDI_Reaction
 
     protected override void Init()
     {
+       
         // Cache the SerializedProperties.
         conditionProperty = serializedObject.FindProperty(conditionReactionPropConditionName);
         satisfiedProperty = serializedObject.FindProperty(conditionReactionPropSatisfiedName);
