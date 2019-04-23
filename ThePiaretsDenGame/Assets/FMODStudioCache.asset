@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114246064133070816}
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   EditorEvents:
   - {fileID: 114287801474131746}
   - {fileID: 114398482770745466}
@@ -48,11 +48,26 @@ MonoBehaviour:
   - {fileID: 114704498613353936}
   - {fileID: 114387738562793432}
   MasterBanks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   StringsBanks:
   - {fileID: 114246064133070816}
-  stringsBankWriteTime: 636911796468339230
+  stringsBankWriteTime: 636911136774115817
   cacheVersion: 3
+--- !u!114 &114001623691323790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Area
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114006374056937814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +98,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114048485120102944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: AMB_Switch
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114068361712092840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,12 +127,12 @@ MonoBehaviour:
   Path: event:/Ambience/2D/AMB_System_2D
   guid: 33042b421dc468468100bbd1f84aca0b
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114375354266799750}
+  - {fileID: 114663088845979008}
   MinDistance: 0
   MaxDistance: 0
   Length: 10000
@@ -120,7 +150,7 @@ MonoBehaviour:
   Path: event:/UI/Inventory
   guid: 13d76bfee6d5794aa433c78ba4c5d9f8
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -142,12 +172,12 @@ MonoBehaviour:
   Path: event:/Puzzles/RingPuzzle
   guid: dbbc07947b498440b3fd72a7875cae0f
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114444528952269690}
+  - {fileID: 114375522355668090}
   MinDistance: 0
   MaxDistance: 0
   Length: 36000
@@ -165,7 +195,7 @@ MonoBehaviour:
   Path: event:/UI/Sci-Fi/Hover-Over
   guid: f0b47e82e5f2a045a9d5c190b328ff8f
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -187,7 +217,7 @@ MonoBehaviour:
   Path: event:/UI/Cheat
   guid: 75640dd14dc4b043aa9c9d50fbe52577
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -209,7 +239,7 @@ MonoBehaviour:
   Path: event:/UI/Sci-Fi/Go Back_Short
   guid: 3ecaa3a60e9c534ab6eeb0e32c2f53e5
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -231,7 +261,7 @@ MonoBehaviour:
   Path: event:/UI/Hover-Over
   guid: c56134b5eb65a641b04b93bf8c3f2ceb
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -254,6 +284,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114230668089207692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: ChifferPuzzle
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114246064133070816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\_Audio\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636911796468339230
+  lastModified: 636911136774115817
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -286,12 +331,12 @@ MonoBehaviour:
   Path: event:/Ambience/2D/AMB_Outdoor_2D
   guid: 7fb423736727b843be4edfba1a53fc29
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114015746599964302}
+  - {fileID: 114048485120102944}
   MinDistance: 0
   MaxDistance: 0
   Length: 29000
@@ -309,12 +354,12 @@ MonoBehaviour:
   Path: event:/Music/Levelmusic
   guid: 1775e6dd2152d34c863d7c2c1a499053
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114006374056937814}
+  - {fileID: 114001623691323790}
   MinDistance: 0
   MaxDistance: 0
   Length: 57200
@@ -332,12 +377,12 @@ MonoBehaviour:
   Path: event:/Puzzles/ChifferPuzzle
   guid: 037bc13b4bf2b74891a8c7fc5a3d956b
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114452601676687540}
+  - {fileID: 114230668089207692}
   MinDistance: 0
   MaxDistance: 0
   Length: 900
@@ -356,6 +401,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114375522355668090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RingPuzzle
+  Min: 1
+  Max: 9
+  Default: 1
 --- !u!114 &114381302871518860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +430,7 @@ MonoBehaviour:
   Path: event:/UI/Sci-Fi/Go Back_Long
   guid: 69e688bc6844a340be7e6fea5a8700c4
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -392,7 +452,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Player_Movement/Player_Footsteps_Heels
   guid: ff3ae19ee50d9249b746a14e96d62c18
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -414,7 +474,7 @@ MonoBehaviour:
   Path: event:/Objects/Door/Door_Budge
   guid: 043385e0072dd74aa0d11ab43e6e54b8
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -436,7 +496,7 @@ MonoBehaviour:
   Path: event:/Objects/Book_Flickering
   guid: 12a355798a5b5a4b88525911a9e6035c
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -458,7 +518,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Player_Interact/Player_Combine
   guid: dd87c6ff0e442640a38941461e574315
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -510,7 +570,7 @@ MonoBehaviour:
   Path: event:/Objects/Canon/Canon_Explosion
   guid: 17f2cc3005a5764a80e726e9bc90b8c6
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -532,7 +592,7 @@ MonoBehaviour:
   Path: event:/Objects/Door/Door_Knocking
   guid: d8b5e4809728254a824cb62dc5e206fa
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -559,6 +619,25 @@ MonoBehaviour:
   - Name: 
     Value: 14829920
   Exists: 1
+--- !u!114 &114543208544895658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Emma\Documents\Pirater SP2\ThePiratesDen\ThePiaretsDenGame\Assets\_Audio\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636911136775734890
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 14829920
+  Exists: 1
 --- !u!114 &114562755516124624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,7 +652,7 @@ MonoBehaviour:
   Path: event:/Objects/Drawer_Pull
   guid: 1263749c8391794189b15d0a48fb19c7
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -595,7 +674,7 @@ MonoBehaviour:
   Path: event:/UI/Sci-Fi/Click
   guid: 5c127b4795ae6043b2fef0cf60d78733
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -617,7 +696,7 @@ MonoBehaviour:
   Path: event:/Objects/Map
   guid: 359d642574564548a55210631197eb3f
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -639,7 +718,7 @@ MonoBehaviour:
   Path: event:/UI/Settings
   guid: fbf801fef98e4542a1ae631f6483b809
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -647,6 +726,36 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 251
+--- !u!114 &114655908291153066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: AMB_Switch
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114663088845979008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: AMB_Switch
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114703438979418820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,7 +770,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Player_Movement/Player_Footsteps_Single
   guid: dba1d5bc58a72b4295b20a34a12f8dbf
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -683,7 +792,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Player_Interact/Player_PickUp
   guid: fd76676ee3610a4db23183b7d7263a39
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -720,7 +829,7 @@ MonoBehaviour:
   Path: event:/Characters/Player/Player_Interact/Player_PickUp_Bag
   guid: b2c7e9e474c6504f95cd8c55085158c4
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -742,7 +851,7 @@ MonoBehaviour:
   Path: event:/Objects/Paper_Scribble
   guid: 1e2341602476014984b51e9ec069be4e
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -764,7 +873,7 @@ MonoBehaviour:
   Path: event:/Objects/Door/Door_Open
   guid: 4f2be8898cd0a1469a47c87987abac54
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -786,7 +895,7 @@ MonoBehaviour:
   Path: event:/UI/Choose
   guid: c80573e9fb88224bad49031382540032
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -808,15 +917,30 @@ MonoBehaviour:
   Path: event:/Ambience/2D/AMB_Indoor_2D
   guid: ebfac2f5ba1f774c8f7aed731bdd0bef
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114705923906022484}
+  - {fileID: 114655908291153066}
   MinDistance: 0
   MaxDistance: 0
   Length: 29000
+--- !u!114 &114913368857630050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Steering_Length
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114972655275952604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +955,7 @@ MonoBehaviour:
   Path: event:/Ambience/3D/AMB_Wood_Creaking_3D
   guid: 2f254b83a8a28b409e78084c610acebc
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -853,7 +977,7 @@ MonoBehaviour:
   Path: event:/Ambience/3D/AMB_Sails_3D
   guid: 8dff7755b8e4ee498d918b04635aa48d
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -875,7 +999,7 @@ MonoBehaviour:
   Path: snapshot:/Outdoor_Indoor
   guid: bc06b2afdc33cb44bec9707bab89a3c2
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -897,12 +1021,12 @@ MonoBehaviour:
   Path: event:/Objects/Shipwheel_Spinning
   guid: 0c8b5fb79506bf4ebe730e9e8c3afba3
   Banks:
-  - {fileID: 114524703020670612}
+  - {fileID: 114543208544895658}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114215284921636158}
+  - {fileID: 114913368857630050}
   MinDistance: 0
   MaxDistance: 0
   Length: 12000
