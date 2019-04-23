@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using FMODUnity;
 
 public class MONO_SceneManager : MonoBehaviour {
-	[HideInInspector]
+	//[HideInInspector]
 	public bool handleInput = true;                 // Whether input is currently being handled.
 	public string startScene;						//The name of the starting scene as a string.
 	public Canvas canvas;							//The canvas holding the black image we fade to.
