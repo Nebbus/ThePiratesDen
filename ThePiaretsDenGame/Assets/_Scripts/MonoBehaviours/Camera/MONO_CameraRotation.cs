@@ -51,7 +51,9 @@ public class MONO_CameraRotation : MonoBehaviour
 		}
 
 		// Find a new rotation aimed at the player's position with a given offset.
+
 		Quaternion newRotation = Quaternion.LookRotation (currentPoint.transform.position - transform.position);
+
 
 		//Move towards closest point.
 		transform.rotation = Quaternion.Slerp (transform.rotation, newRotation, Time.deltaTime * smoothing);

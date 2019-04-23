@@ -271,7 +271,8 @@ public class MONO_PlayerMovement : MonoBehaviour
            currentInteractable = interactable;
 
            // Set the destination to the interaction location of the interactable.
-           destinationPosition = currentInteractable.interactionLocation.position;
+           destinationPosition.x = currentInteractable.interactionLocation.position.x;
+		   destinationPosition.z = currentInteractable.interactionLocation.position.z;
 
            /* Set the destination of the nav mesh agent to the found destination
             * position and start the nav mesh agent going.
@@ -293,10 +294,10 @@ public class MONO_PlayerMovement : MonoBehaviour
         yield return inputHoldWait;
 
         // Until the animator is in a state with the Locomotion tag, wait.
-       while (animator.GetCurrentAnimatorStateInfo(0).tagHash != hashLocomotionTag)
+		/*while (animator.GetCurrentAnimatorStateInfo(0).tagHash != hashLocomotionTag)
         {
             yield return null;
-        }
+        }*/
 
         // Now input can be accepted again.
 		sceneManager.handleInput = true;
