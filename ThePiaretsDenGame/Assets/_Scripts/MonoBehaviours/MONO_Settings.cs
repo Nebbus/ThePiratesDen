@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class MONO_Settings : MonoBehaviour {
 
 	public GameObject KeyboardToggle;
@@ -52,6 +53,7 @@ public class MONO_Settings : MonoBehaviour {
 	}
 
 	private void DeactivateMouse(){
+		
 	}
 
 }
