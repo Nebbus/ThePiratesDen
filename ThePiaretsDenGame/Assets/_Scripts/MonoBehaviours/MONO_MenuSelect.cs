@@ -9,25 +9,47 @@ public class MONO_MenuSelect : MonoBehaviour {
 	public EventSystem eventSystem;
 
 	[Tooltip("First button on panel")]
-	public GameObject selectedObject;	
+	public GameObject firstSelectedMenuItem;	
+    
 
 	private bool buttonSelected;
+    private GameObject currentSelectedMenuItem;
+    private MONO_CustomMouseCursor OurCustomCursor;
 
+    void Awake()
+    {
+        OurCustomCursor = FindObjectOfType<MONO_CustomMouseCursor>();
+
+    }
 
 
 	void Update () {
-		//selects a button depending on the up and down arrow
-		if (Input.GetAxisRaw ("Vertical") != 0 && !buttonSelected) 
-		{
-			eventSystem.SetSelectedGameObject (selectedObject);
-			buttonSelected = true;
-		}
-		else if(eventSystem.IsPointerOverGameObject ())
-		{
-			eventSystem.SetSelectedGameObject (null);
-			buttonSelected = false;
-		}
+
+        if (OurCustomCursor.UsingKeyboard)
+        {
+            SelectWithKeys();
+            Vector2 tempPos = new Vector2(currentSelectedMenuItem.GetComponent<RectTransform>().position.x - 500,
+                                          currentSelectedMenuItem.GetComponent<RectTransform>().position.y);
+
+            OurCustomCursor.CustomCursor.GetComponent<RectTransform>().position = tempPos;
+        }
+        else
+        {
+            eventSystem.SetSelectedGameObject(null);
+        }
 	}
+
+    private void SelectWithKeys()
+    {
+        
+        if (Input.GetAxisRaw("Vertical") != 0 && !buttonSelected)
+        {
+            eventSystem.SetSelectedGameObject(firstSelectedMenuItem);
+            currentSelectedMenuItem = eventSystem.currentSelectedGameObject;
+
+            buttonSelected = true;
+        }
+    }
 
 
 	private void OnDisable()
