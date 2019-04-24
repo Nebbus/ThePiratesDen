@@ -14,10 +14,9 @@ public class MONO_PlayerMovement : MonoBehaviour
     public float        slowingSpeed        = 0.175f;   // The speed the player moves as it reaches close to it's destination.
     public float        turnSpeedThreshold  = 0.5f;     // The speed beyond which the player can move and turn normally.
     public float        inputHoldDelay      = 0.5f;     // How long after reaching an interactable before input is allowed again.
+	public MONO_Interactable currentInteractable;   	// The interactable that is currently being headed towards. Used to be private.
+	public MONO_Interactable lastInteractable;			//Copy of last interactable that was headed towards, used for the interactionalternatives system
 
-    public MONO_Interactable currentInteractable;   // The interactable that is currently being headed towards.
-	public MONO_Interactable lastInteractable;
-	public bool cancelInteraction = false;
     
 	private Vector3 destinationPosition;             // The position that is currently being headed towards, this is the interactionLocation of the currentInteractable if it is not null.
     private WaitForSeconds inputHoldWait;            // The WaitForSeconds used to make the user wait before input is handled again.
@@ -156,7 +155,6 @@ public class MONO_PlayerMovement : MonoBehaviour
 
             // Start the WaitForInteraction coroutine so that input is ignored briefly.
             //StartCoroutine(WaitForInteraction());
-			//sceneManager.SetHandleInput(false);
         }
 
     }
@@ -219,7 +217,7 @@ public class MONO_PlayerMovement : MonoBehaviour
     /// <param name="data"></param>
     public void OnGroundClick(BaseEventData data)
     {
-		//cancelInteraction = true;
+		//Allow player to walk away from an interaction if said interaction is to show the interactionalternatives.
 		if(lastInteractable != null && lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> () != null)
 		{
 			lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> ().HideAlternatives ();
@@ -264,7 +262,6 @@ public class MONO_PlayerMovement : MonoBehaviour
          */ 
         agent.SetDestination(destinationPosition);
         agent.isStopped = false;
-		cancelInteraction = false;
     }
 
     /// <summary>
@@ -274,7 +271,7 @@ public class MONO_PlayerMovement : MonoBehaviour
     /// <param name="interactable"></param>
     public void OnInteractableClick(MONO_Interactable interactable)
        {
-           // If the handle input flag is set to false then do nothing.
+           // If the handle input flag is set to false and the object clicked is not a Pie Menu then do nothing.
 		if (!sceneManager.handleInput && !(interactable.gameObject.layer == 9))
            {
            		return;
@@ -297,10 +294,10 @@ public class MONO_PlayerMovement : MonoBehaviour
        }
   
    /// <summary>
-   /// Shuts down the intputs and waits until the animation is done to turn them on.
+   /// Shuts down the intputs and waits until the animation is done to turn them on.	OBSOLETE
    /// </summary>
-   /// <returns></returns>
- private IEnumerator WaitForInteraction()
+   /// <returns></returns> 
+/*private IEnumerator WaitForInteraction()
     {
         // As soon as the wait starts, input should no longer be accepted.
 		sceneManager.handleInput = false;
@@ -313,9 +310,10 @@ public class MONO_PlayerMovement : MonoBehaviour
         {
             yield return null;
         }*/
-
+	/*
         // Now input can be accepted again.
 		sceneManager.handleInput = true;
     }
+*/
 
 }

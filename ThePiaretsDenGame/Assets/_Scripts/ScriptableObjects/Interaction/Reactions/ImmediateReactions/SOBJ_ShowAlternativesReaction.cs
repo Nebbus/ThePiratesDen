@@ -2,11 +2,11 @@
 
 public class SOBJ_ShowAlternativesReaction : SOBJ_Reaction
 {
-	public GameObject thisObj;
+	public GameObject rootReaction;
 
 	protected override void ImmediateReaction()
 	{
-		thisObj.GetComponent<MONO_ShowAlternatives> ().ShowAlternatives ();
+		rootReaction.GetComponent<MONO_ShowAlternatives> ().ShowAlternatives ();
 	}
 }
 
