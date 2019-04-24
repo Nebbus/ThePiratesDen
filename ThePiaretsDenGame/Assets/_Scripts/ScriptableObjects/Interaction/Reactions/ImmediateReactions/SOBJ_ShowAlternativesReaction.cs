@@ -2,15 +2,11 @@
 
 public class SOBJ_ShowAlternativesReaction : SOBJ_Reaction
 {
-	
-	public GameObject[] reactions = new GameObject[3];
+	public GameObject thisObj;
 
 	protected override void ImmediateReaction()
 	{
-		for (int i = 0; i < reactions.Length; i++) 
-		{
-			reactions [i].SetActive (true);
-		}
+		thisObj.GetComponent<MONO_ShowAlternatives> ().ShowAlternatives ();
 	}
 }
 

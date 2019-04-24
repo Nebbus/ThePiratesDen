@@ -15,8 +15,11 @@ public class MONO_PlayerMovement : MonoBehaviour
     public float        turnSpeedThreshold  = 0.5f;     // The speed beyond which the player can move and turn normally.
     public float        inputHoldDelay      = 0.5f;     // How long after reaching an interactable before input is allowed again.
 
-    private MONO_Interactable currentInteractable;   // The interactable that is currently being headed towards.
-    private Vector3 destinationPosition;             // The position that is currently being headed towards, this is the interactionLocation of the currentInteractable if it is not null.
+    public MONO_Interactable currentInteractable;   // The interactable that is currently being headed towards.
+	public MONO_Interactable lastInteractable;
+	public bool cancelInteraction = false;
+    
+	private Vector3 destinationPosition;             // The position that is currently being headed towards, this is the interactionLocation of the currentInteractable if it is not null.
     private WaitForSeconds inputHoldWait;            // The WaitForSeconds used to make the user wait before input is handled again.
 	private MONO_SceneManager sceneManager;
 
@@ -142,6 +145,8 @@ public class MONO_PlayerMovement : MonoBehaviour
         // If the player is stopping at an interactable...
        if (currentInteractable)
         {
+			lastInteractable = currentInteractable;
+
             // ... set the player's rotation to match the interactionLocation's.
             transform.rotation = currentInteractable.interactionLocation.rotation;
 
@@ -150,7 +155,8 @@ public class MONO_PlayerMovement : MonoBehaviour
             currentInteractable = null;
 
             // Start the WaitForInteraction coroutine so that input is ignored briefly.
-            StartCoroutine(WaitForInteraction());
+            //StartCoroutine(WaitForInteraction());
+			//sceneManager.SetHandleInput(false);
         }
 
     }
@@ -213,9 +219,15 @@ public class MONO_PlayerMovement : MonoBehaviour
     /// <param name="data"></param>
     public void OnGroundClick(BaseEventData data)
     {
-
+		//cancelInteraction = true;
+		if(lastInteractable != null && lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> () != null)
+		{
+			lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> ().HideAlternatives ();
+			sceneManager.SetHandleInput (true);
+		}
+			
         // If the handle input flag is set to false then do nothing.
-        if (!sceneManager.handleInput)
+		if (!sceneManager.handleInput)
         {
             return;
         }
@@ -223,6 +235,7 @@ public class MONO_PlayerMovement : MonoBehaviour
 
         // The player is no longer headed for an interactable so set it to null.
        currentInteractable = null;
+		lastInteractable = null;
 
         /* This function needs information about a click so cast
          * the BaseEventData to a PointerEventData.
@@ -251,6 +264,7 @@ public class MONO_PlayerMovement : MonoBehaviour
          */ 
         agent.SetDestination(destinationPosition);
         agent.isStopped = false;
+		cancelInteraction = false;
     }
 
     /// <summary>
@@ -261,10 +275,11 @@ public class MONO_PlayerMovement : MonoBehaviour
     public void OnInteractableClick(MONO_Interactable interactable)
        {
            // If the handle input flag is set to false then do nothing.
-           if (!sceneManager.handleInput)
+		if (!sceneManager.handleInput && !(interactable.gameObject.layer == 9))
            {
-            return;
+           		return;
            }
+
 
 
            // Store the interactble that was clicked on.

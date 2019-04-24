@@ -14,6 +14,16 @@ public class MONO_SceneManager : MonoBehaviour {
 
 	private MONO_Fade fade;
 
+	public bool GetHandleInput()
+	{
+		return handleInput;
+	}
+
+	public void SetHandleInput(bool set)
+	{
+		handleInput = set;
+	}
+
 	private IEnumerator Start () 
 	{
 		//Find the instance holding the code for fading.
