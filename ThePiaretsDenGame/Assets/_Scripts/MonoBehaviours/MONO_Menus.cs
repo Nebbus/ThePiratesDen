@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MONO_Menus : MonoBehaviour {
 
+    public bool menuOpen;
+    public GameObject menuButton;
 	public enum menu {main, paus, settings};
 
 
@@ -55,6 +57,7 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	public void OpenMenu()
 	{
+        menuOpen = true;
 		switch (latestMenu) {
 		case menu.main:
 			mainMenu.SetActive (true);
@@ -68,6 +71,17 @@ public class MONO_Menus : MonoBehaviour {
 			break;
 		}
 	}
+
+    /// <summary>
+    /// Doesn't really close the menu, that is done by setting the specified 
+    /// menu object to non-active with the help of an on-click-event. 
+    /// This function just sets the boolean variable to false.
+    /// </summary>
+    public void CloseMenu()
+    {
+        menuOpen = false;
+        menuButton.SetActive(true);
+    }
 
 	/// <summary>
 	/// Quit game.

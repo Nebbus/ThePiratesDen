@@ -9,6 +9,8 @@ public class MONO_Settings : MonoBehaviour {
 	public GameObject KeyboardToggle;
 	public GameObject MouseToggle;
 
+    public MONO_CustomMouseCursor CustomCursor;
+    
 
 	public void MusicVolumeChanged()
 	{
@@ -30,30 +32,23 @@ public class MONO_Settings : MonoBehaviour {
 		if (KeyboardToggle.GetComponent<Toggle> ().isOn)
 		{
 			ActivateKeyboard ();
-			DeactivateMouse ();
 		} 
 		else if (MouseToggle.GetComponent<Toggle> ().isOn)
 		{
 			ActivateMouse ();
-			DeactivateKeyboard ();
 		}
 	}
 
 	private void ActivateKeyboard()
 	{
-		
+		Debug.Log ("activating keyboard");
+        CustomCursor.UsingKeyboard = true;
 	}
 
-	private void DeactivateKeyboard(){
-	}
 
 	private void ActivateMouse()
 	{
-
-	}
-
-	private void DeactivateMouse(){
-		
+        CustomCursor.UsingKeyboard = false;
 	}
 
 }

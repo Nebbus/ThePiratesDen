@@ -1,18 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MONO_CustomMouseCursor : MonoBehaviour {
 
-	public GameObject Cursor;
+    [HideInInspector]
+    public bool UsingKeyboard = false;
+    public GameObject CustomCursor;
+    
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    [SerializeField]
+    private readonly float CursorSpeed = 4;
+    private RectTransform CustomCursorTransform;
+    private MONO_Menus Menus;
+   
+
+    void Awake()
+    {
+        CustomCursorTransform = CustomCursor.GetComponent<RectTransform>();
+        Menus = FindObjectOfType<MONO_Menus>();
+    }
+
+
 	void Update () {
-		Input.GetAxis ("Horizontal");
-	}
+
+        if (UsingKeyboard)
+        {
+            if (!Menus.menuOpen)
+            {
+                MoveWithKeys();
+            }
+        }
+        else
+        {
+            MoveWithCursor();
+        }
+    }
+
+
+    private void MoveWithKeys()
+    {
+        float xTemp = CustomCursorTransform.anchoredPosition.x + (Input.GetAxis("Horizontal") * CursorSpeed);
+        float yTemp = CustomCursorTransform.anchoredPosition.y + (Input.GetAxis("Vertical") * CursorSpeed);
+        CustomCursorTransform.anchoredPosition = new Vector2(xTemp, CustomCursorTransform.anchoredPosition.y);
+        CustomCursorTransform.anchoredPosition = new Vector2(CustomCursorTransform.anchoredPosition.x, yTemp);
+    }
+
+    private void MoveWithCursor()
+    {
+        CustomCursorTransform.anchoredPosition = Input.mousePosition;
+    }
 }
