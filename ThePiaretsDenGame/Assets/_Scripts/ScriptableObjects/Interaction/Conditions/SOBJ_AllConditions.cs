@@ -5,7 +5,7 @@
 // reference.  
 public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
 {
-    public SOBJ_Condition[] conditions;                      // All the Conditions that exist in the game.
+    public SOBJ_ConditionAdvanced[] conditions;                      // All the Conditions that exist in the game.
 
 
     private static SOBJ_AllConditions instance;              // The singleton instance.
@@ -60,13 +60,23 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
     /// This is called from ConditionCollections when they 
     /// are being checked by an Interactable that has been clicked on.
     /// </summary>
-    /// <param name="requiredCondition"></param>
-    /// <returns></returns>
-    public static bool CheckCondition(SOBJ_Condition requiredCondition)
+    /// <param name="requiredCondition"> the condition to check</param>
+    /// <returns> true ore fales depending of if the condion was net</returns>
+    public static bool CheckCondition(SOBJ_ConditionAdvanced requiredCondition)
     {
+        /*If the requiredCondition is a comparesons is a 
+      * comparesons condition (like SOBJ_ItemCondition)
+      * then just call the IsSatesfied()*/
+        SOBJ_MouseHoldingItemCondition ItemCompareseon = requiredCondition as SOBJ_MouseHoldingItemCondition;
+        if (ItemCompareseon)
+        {
+            return requiredCondition.IsSatesfied();
+        }
+
+
         // Cache the condition array.
-        SOBJ_Condition[] allConditions   = Instance.conditions;
-        SOBJ_Condition   globalCondition = null;
+        SOBJ_ConditionAdvanced[] allConditions  = Instance.conditions;
+        SOBJ_ConditionAdvanced globalCondition  = null;
 
         // If there is at least one condition...
         if (allConditions != null && allConditions[0] != null)
@@ -86,9 +96,12 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
 
         // If by this point a globalCondition hasn't been found then return false.
         if (!globalCondition)
+        {
             return false;
+        }
 
+     
         // Return true if the satisfied states match, false otherwise.
-        return globalCondition.satisfied == requiredCondition.satisfied;
+        return globalCondition.IsSatesfied() == requiredCondition.IsSatesfied();
     }
 }

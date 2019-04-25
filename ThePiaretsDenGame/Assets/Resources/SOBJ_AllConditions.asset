@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Name: SOBJ_AllConditions
   m_EditorClassIdentifier: 
   conditions:
-  - {fileID: 114931656482768634}
-  - {fileID: 114992811597804904}
---- !u!114 &114931656482768634
+  - {fileID: 114769039418781968}
+  - {fileID: 114092430746488116}
+  - {fileID: 114852130113955232}
+--- !u!114 &114092430746488116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -23,22 +24,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
+  m_Name: PickedUpGlass
+  m_EditorClassIdentifier: 
+  description: PickedUpGlass
+  satisfied: 0
+  hash: 1955000041
+--- !u!114 &114769039418781968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
+  m_Name: PickedUpCoin
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 0
+  hash: 514706441
+--- !u!114 &114852130113955232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
   m_Name: New Condition
   m_EditorClassIdentifier: 
   description: New Condition
   satisfied: 0
   hash: -1182492049
---- !u!114 &114992811597804904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
-  m_Name: FinishedSlidingRings
-  m_EditorClassIdentifier: 
-  description: FinishedSlidingRings
-  satisfied: 0
-  hash: -1009276781
+  requierdHoldingItem: {fileID: 0}

@@ -21,15 +21,12 @@ public class EDI_ReactionCollection : EDI_EditorWithSubEditors<EDI_Reaction, SOB
     private string[]    reactionTypeNames;                       // The names of all appropriate Reaction types.
     private int         selectedIndex;                           // The index of the currently selected Reaction type.
 
-
     private const float     dropAreaHeight      = 50f;           // Height in pixels of the area for dropping scripts.
     private const float     controlSpacing      = 5f;            // Width in pixels between the popup type selection and drop area.
     private const string    reactionsPropName   = "reactions";   // Name of the field for the array of Reactions.
 
     // Caching the vertical spacing between GUI elements.
     private readonly float verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
-
-
 
     private void OnEnable()
     {
@@ -43,7 +40,7 @@ public class EDI_ReactionCollection : EDI_EditorWithSubEditors<EDI_Reaction, SOB
         CheckAndCreateSubEditors(reactionCollection.reactions);
 
         // Set the array of types and type names of subtypes of Reaction.
-        SetReactionNamesArray();
+        EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_Reaction), out reactionTypes, out reactionTypeNames);
     }
 
 
@@ -78,7 +75,7 @@ public class EDI_ReactionCollection : EDI_EditorWithSubEditors<EDI_Reaction, SOB
         // Display all the Reactions.
         for (int i = 0; i < subEditors.Length; i++)
         {
-            subEditors[i].OnInspectorGUI();
+            subEditors[i].OnReactionCollectionGUI();
         }
 
         // If there are Reactions, add a space.
@@ -259,48 +256,6 @@ public class EDI_ReactionCollection : EDI_EditorWithSubEditors<EDI_Reaction, SOB
     }
 
 
-    private void SetReactionNamesArray()
-    {
-        // Store the Reaction type.
-        Type reactionType = typeof(SOBJ_Reaction);
+    
 
-        /* Get all the types that are in the same 
-         * Assembly (all the runtime scripts) as the Reaction type.
-         */ 
-        Type[] allTypes = reactionType.Assembly.GetTypes();
-
-        /* Create an empty list to store all the types 
-         * that are subtypes of Reaction.
-         */ 
-        List<Type> reactionSubTypeList = new List<Type>();
-
-        // Go through all the types in the Assembly...
-        for (int i = 0; i < allTypes.Length; i++)
-        {
-            /* ... and if they are a non-abstract subclass of 
-             * Reaction then add them to the list.
-             */ 
-            if (allTypes[i].IsSubclassOf(reactionType) && !allTypes[i].IsAbstract)
-            {
-                reactionSubTypeList.Add(allTypes[i]);
-            }
-        }
-
-        // Convert the list to an array and store it.
-        reactionTypes = reactionSubTypeList.ToArray();
-
-        /* Create an empty list of strings to store the names 
-         * of the Reaction types.
-         */ 
-        List<string> reactionTypeNameList = new List<string>();
-
-        // Go through all the Reaction types and add their names to the list.
-        for (int i = 0; i < reactionTypes.Length; i++)
-        {
-            reactionTypeNameList.Add(reactionTypes[i].Name);
-        }
-
-        // Convert the list to an array and store it.
-        reactionTypeNames = reactionTypeNameList.ToArray();
-    }
 }

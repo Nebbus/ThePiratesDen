@@ -14,9 +14,8 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
 
     SerializedProperty emitters;
 
-        bool[] expanded;
+    bool[] expanded;
 
-    bool test;
 
     protected override string GetFoldoutLabel()
     {
@@ -26,26 +25,27 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
 
     protected override void Init()
     {
-      
-            emitters    = serializedObject.FindProperty("Emitters");
-           targetEmitter = null;
-            for (int i = 0; i < emitters.arraySize; i++)
+
+        emitters = serializedObject.FindProperty("Emitters");
+        targetEmitter = null;
+        for (int i = 0; i < emitters.arraySize; i++)
+        {
+            targetEmitter = emitters.GetArrayElementAtIndex(i).FindPropertyRelative("Target").objectReferenceValue as StudioEventEmitter;
+            if (targetEmitter != null)
             {
-                 targetEmitter = emitters.GetArrayElementAtIndex(i).FindPropertyRelative("Target").objectReferenceValue as StudioEventEmitter;
-                if (targetEmitter != null)
-                {
-                    expanded = new bool[targetEmitter.GetComponents<StudioEventEmitter>().Length];
-                    break;
-                }
+                expanded = new bool[targetEmitter.GetComponents<StudioEventEmitter>().Length];
+                break;
             }
         }
+    }
 
-        protected override void DrawReaction()
-        {
+    protected override void DrawReaction()
+    {
         SOBJ_AudioReaction_FMOD targetScript = (SOBJ_AudioReaction_FMOD)target;
         bool newSet2                         = GUILayout.Toggle(targetScript.play, "Play sound");
         targetScript.play                    = newSet2;
-        var newTargetEmitter = EditorGUILayout.ObjectField("Target", targetEmitter, typeof(StudioEventEmitter), true) as StudioEventEmitter;
+        var newTargetEmitter                 = EditorGUILayout.ObjectField("Target", targetEmitter, typeof(StudioEventEmitter), true) as StudioEventEmitter;
+
         if (newTargetEmitter != targetEmitter)
         {
             emitters.ClearArray();
@@ -59,7 +59,7 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
 
             List<StudioEventEmitter> newEmitters = new List<StudioEventEmitter>();
             targetEmitter.GetComponents<StudioEventEmitter>(newEmitters);
-            expanded = new bool[newEmitters.Count];
+            expanded                             = new bool[newEmitters.Count];
             foreach (var emitter in newEmitters)
             {
                 emitters.InsertArrayElementAtIndex(0);
@@ -146,13 +146,11 @@ public class EDI_AudioReaction_FMOD : EDI_Reaction
                     }
                 }
             }
-  
+
             emitterIndex++;
         }
 
         serializedObject.ApplyModifiedProperties();
     }
-
-  
 
 }

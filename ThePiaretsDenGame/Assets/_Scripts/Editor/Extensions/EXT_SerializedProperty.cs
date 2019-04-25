@@ -32,7 +32,30 @@ public static class EXT_SerializedProperty
 
         // Push all the information on the serializedObject back to the target.
         arrayProperty.serializedObject.ApplyModifiedProperties();
+
+
+
     }
+
+
+    public static void replace<T>(this SerializedProperty arrayProperty, int index, T elementToAdd)
+        where T : Object
+    {
+        // If the SerializedProperty this is being called from is not an array, throw an exception.
+        if (!arrayProperty.isArray)
+        {
+            throw new UnityException("SerializedProperty " + arrayProperty.name + " is not an array.");
+        }
+
+        // Pull all the information from the target of the serializedObject.
+        arrayProperty.serializedObject.Update();
+        arrayProperty.GetArrayElementAtIndex(index).objectReferenceValue = elementToAdd;   
+        arrayProperty.serializedObject.ApplyModifiedProperties();
+      
+    }
+
+ 
+
 
     /// <summary>
     ///  Use this to remove the object at an index from an object array represented by a SerializedProperty.

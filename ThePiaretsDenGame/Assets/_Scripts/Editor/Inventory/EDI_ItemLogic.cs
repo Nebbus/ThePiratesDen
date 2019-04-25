@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ADD_LATER : MonoBehaviour {
+public class EDI_ItemLogic : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using System.Collections.Generic;
 using UnityEditor;
 
 [CustomEditor(typeof(SOBJ_AllConditions))]
@@ -10,6 +12,7 @@ public class EDI_AllConditions : Editor
     /// </summary>
     public static string[] AllConditionDescriptions
     {
+       
         get
         {
             // If the description array doesn't exist yet, set it.
@@ -22,18 +25,31 @@ public class EDI_AllConditions : Editor
         private set { allConditionDescriptions = value; }
     }
 
-
-    private static string[] allConditionDescriptions;           // Field to store the descriptions of all the Conditions.
-
-
-    private EDI_Condition[] conditionEditors;                 // All of the subEditors to display the Conditions.
-    private SOBJ_AllConditions allConditions;                        // Reference to the target.
-    private string newConditionDescription = "New Condition";   // String to start off the naming of new Conditions.
+    private static string[] allConditionDescriptions;                            // Field to store the descriptions of all the Conditions.
 
 
-    private const string creationPath = "Assets/Resources/SOBJ_AllConditions.asset";
+    private EDI_ConditionAdvanced[] conditionEditors;                            // All of the subEditors to display the Conditions.
+    private SOBJ_AllConditions      allConditions;                               // Reference to the target.
+    private string                  newConditionDescription = "New Condition";   // String to start off the naming of new Conditions.
+
     // The path that the AllConditions asset is created at.
+    private const string creationPath = "Assets/Resources/SOBJ_AllConditions.asset";
+
+
+    private SerializedProperty conditionsProperty;
+    private const string       conditionsPropName = "conditions";
+
+    private Type[]             conditionTypes;                    // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
+    private string[]           conditionTypeNames;                // The names of all appropriate Reaction types.
+    private int                selectedIndex;                     // The index of the currently selected Reaction type.
+
+
+    private const float dropAreaHeight = 50f;           // Height in pixels of the area for dropping scripts.
+    private const float controlSpacing = 5f;            // Width in pixels between the popup type selection and drop area.
     private const float buttonWidth = 30f;                      // Width in pixels of the button to create Conditions.
+
+    // Caching the vertical spacing between GUI elements.
+    private readonly float verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
 
 
     private void OnEnable()
@@ -41,12 +57,16 @@ public class EDI_AllConditions : Editor
         // Cache the reference to the target.
         allConditions = (SOBJ_AllConditions)target;
 
+        // Cache the SerializedProperty
+        conditionsProperty = serializedObject.FindProperty(conditionsPropName);
+
+
         /* If there aren't any Conditions on the target, 
          * create an empty array of Conditions.
-         */ 
+         */
         if (allConditions.conditions == null)
         {
-            allConditions.conditions = new SOBJ_Condition[0];
+            allConditions.conditions = new SOBJ_ConditionAdvanced[0];
         }
 
 
@@ -55,6 +75,9 @@ public class EDI_AllConditions : Editor
         {
             CreateEditors();
         }
+        // Set the array of types and type names of subtypes of Reaction.
+       // SetConditionNamesArray();
+        EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_ConditionAdvanced),out conditionTypes,out conditionTypeNames);
     }
 
 
@@ -86,6 +109,7 @@ public class EDI_AllConditions : Editor
             AllConditionDescriptions[i] = TryGetConditionAt(i).description;
         }
     }
+
 
 
     public override void OnInspectorGUI()
@@ -128,26 +152,65 @@ public class EDI_AllConditions : Editor
          */ 
         if (GUILayout.Button("+", GUILayout.Width(buttonWidth)))
         {
+
             AddCondition(newConditionDescription);
             newConditionDescription = "New Condition";
         }
         EditorGUILayout.EndHorizontal();
+
+        /* Create a Rect for the full width of the
+         * inspector with enough height for the drop area.
+         */
+        Rect fullWidthRect = GUILayoutUtility.GetRect(GUIContent.none, GUIStyle.none, GUILayout.Height(dropAreaHeight + verticalSpacing));
+
+
+        // Create a Rect for the left GUI controls.
+        Rect leftAreaRect = fullWidthRect;
+
+        // It should be in half a space from the top.
+        leftAreaRect.y += verticalSpacing * 0.5f;
+
+        /* The width should be slightly less than half 
+         * the width of the inspector.
+         */
+        leftAreaRect.width *= 0.5f;
+        leftAreaRect.width -= controlSpacing * 0.5f;
+
+        // The height should be the same as the drop area.
+        leftAreaRect.height = dropAreaHeight;
+
+        // Display the GUI for the type popup and button on the left.
+        TypeSelectionGUI(leftAreaRect);
+    }
+
+    private void TypeSelectionGUI(Rect containingRect)
+    {
+        // Create Rects for the top and bottom half.
+        Rect topHalf    = containingRect;
+        topHalf.height  *= 0.5f;
+        Rect bottomHalf = topHalf;
+        bottomHalf.y    += bottomHalf.height;
+
+        // Display a popup in the top half showing all the reaction types.
+        selectedIndex = EditorGUI.Popup(topHalf, selectedIndex, conditionTypeNames);
+
     }
 
 
     private void CreateEditors()
     {
         // Create a new array for the editors which is the same length at the conditions array.
-        conditionEditors = new EDI_Condition[allConditions.conditions.Length];
+        conditionEditors = new EDI_ConditionAdvanced[allConditions.conditions.Length];
 
         // Go through all the empty array...
         for (int i = 0; i < conditionEditors.Length; i++)
         {
             // ... and create an editor with an editor type to display correctly.
-            conditionEditors[i] = CreateEditor(TryGetConditionAt(i)) as EDI_Condition;
-            conditionEditors[i].editorType = EDI_Condition.EditorType.AllConditionAsset;
+            conditionEditors[i]            = CreateEditor(TryGetConditionAt(i)) as EDI_ConditionAdvanced;
+            conditionEditors[i].editorType = EDI_ConditionAdvanced.EditorType.AllConditionAsset;
         }
     }
+
 
 
     // Call this function when the menu item is selected.
@@ -182,8 +245,13 @@ public class EDI_AllConditions : Editor
             return;
         }
 
+        // ... finds the type selected by the popup, creates an appropriate reaction and adds it to the array.
+        Type conditionType = conditionTypes[selectedIndex];
+
         // Create a condition based on the description.
-        SOBJ_Condition newCondition = EDI_Condition.CreateCondition(description);
+        SOBJ_ConditionAdvanced newCondition = EDI_ConditionAdvanced.CreateCondition(description, conditionType);
+
+
 
         // The name is what is displayed by the asset so set that too.
         newCondition.name = description;
@@ -208,7 +276,7 @@ public class EDI_AllConditions : Editor
     }
 
 
-    public static void RemoveCondition(SOBJ_Condition condition)
+    public static void RemoveCondition(SOBJ_ConditionAdvanced condition)
     {
         // If there isn't an AllConditions asset, do nothing.
         if (!SOBJ_AllConditions.Instance)
@@ -242,8 +310,7 @@ public class EDI_AllConditions : Editor
         SetAllConditionDescriptions();
     }
 
-
-    public static int TryGetConditionIndex(SOBJ_Condition condition)
+    public static int TryGetConditionIndex(SOBJ_ConditionAdvanced condition)
     {
         // Go through all the Conditions...
         for (int i = 0; i < TryGetConditionsLength(); i++)
@@ -260,18 +327,51 @@ public class EDI_AllConditions : Editor
         return -1;
     }
 
+    public static int TryGetConditionIndex(int hash)
+    {
+        // Go through all the Conditions...
+        for (int i = 0; i < TryGetConditionsLength(); i++)
+        {
+            // ... and if one matches the given Condition, return its index.
+            if (TryGetConditionAt(i).hash == hash)
+            {
+                return i;
+            }
 
-    public static SOBJ_Condition TryGetConditionAt(int index)
+        }
+
+        // If the Condition wasn't found, return -1.
+        return -1;
+    }
+
+    public static int TryGetConditionIndex(string description)
+    {
+        int hash = Animator.StringToHash(description);
+        // Go through all the Conditions...
+        for (int i = 0; i < TryGetConditionsLength(); i++)
+        {
+            // ... and if one matches the given Condition, return its index.
+            if (TryGetConditionAt(i).hash == hash)
+            {
+                return i;
+            }
+
+        }
+
+        // If the Condition wasn't found, return -1.
+        return -1;
+    }
+
+    public static SOBJ_ConditionAdvanced TryGetConditionAt(int index)
     {
         // Cache the AllConditions array.
-        SOBJ_Condition[] allConditions = SOBJ_AllConditions.Instance.conditions;
+        SOBJ_ConditionAdvanced[] allConditions = SOBJ_AllConditions.Instance.conditions;
 
         // If it doesn't exist or there are null elements, return null.
         if (allConditions == null || allConditions[0] == null)
         {
             return null;
         }
-
 
         // If the given index is beyond the length of the array return the first element.
         if (index >= allConditions.Length)
@@ -284,6 +384,45 @@ public class EDI_AllConditions : Editor
         return allConditions[index];
     }
 
+    /// <summary>
+    /// Funktion for geting the alla the conditions of a 
+    /// specific condition reacion 
+    /// </summary>
+    /// <typeparam name="T"> the conditin type that is to be sorted out</typeparam>
+    /// <returns></returns>
+    public static string[] getListOfReleveantConditions<T>()
+    {
+        /* Create a new array that has the same number 
+         * of elements as there are Conditions.
+         */
+        string[] allConditions = new string[AllConditionDescriptions.Length];
+
+        /* Go through the array and assign the description 
+         * of the condition at the same index.
+         */
+        int count = 0;
+        for (int i = 0; i < allConditions.Length; i++)
+        {
+            T temp;
+           // attemts to cast the conditon to the wanted type,
+           // if it fails so is it set to null.
+            try
+            {
+                temp = (T)Convert.ChangeType(TryGetConditionAt(i), typeof(T));
+            }
+            catch(InvalidCastException)
+            {
+                temp = (T)Convert.ChangeType(null, typeof(T));
+            }
+           
+           if (temp != null)
+            {
+                allConditions[count] = TryGetConditionAt(i).description;
+                count++;
+            }
+        }
+        return allConditions;
+    }
 
     public static int TryGetConditionsLength()
     {

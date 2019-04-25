@@ -8,7 +8,7 @@
 *  player to approach the interactionLocation and the 
 *  player should call the Interact function when they arrive.
 */
-public class MONO_Interactable : MonoBehaviour
+public class MONO_Interactable : MONO_interactionBase
 {
     /* The position and rotation the player should go 
      * to in order to interact with this Interactable.
@@ -37,8 +37,17 @@ public class MONO_Interactable : MonoBehaviour
             }
 
         }
-
         // If none of the reactions happened, use the default MONO_ReactionCollection.
         defaultReactionCollection.React();
+    }
+
+    public override void OnClick()
+    {
+        
+    }
+
+    public override void OnHovor()
+    {
+        
     }
 }

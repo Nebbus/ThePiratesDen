@@ -91,12 +91,12 @@ public class EDI_Interactable : EDI_EditorWithSubEditors<EDI_ConditionCollection
          * ConditionCollections array.
          */ 
         EditorGUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
-        if (GUILayout.Button("Add Collection", GUILayout.Width(collectionButtonWidth)))
-        {
-            SOBJ_ConditionCollection newCollection = EDI_ConditionCollection.CreateConditionCollection();
-            collectionsProperty.AddToObjectArray(newCollection);
-        }
+            GUILayout.FlexibleSpace();
+            if (GUILayout.Button("Add Collection", GUILayout.Width(collectionButtonWidth)))
+            {
+                SOBJ_ConditionCollection newCollection = EDI_ConditionCollection.CreateConditionCollection();
+                collectionsProperty.AddToObjectArray(newCollection);
+            }
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space();
