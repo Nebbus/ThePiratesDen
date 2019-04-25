@@ -38,6 +38,7 @@ public class MONO_Inventory : MonoBehaviour {
         m_Raycaster             = FindObjectOfType<GraphicRaycaster>();
         m_EventSystem           = FindObjectOfType<EventSystem>();
         wait                    = new WaitForSeconds(waitDelay);
+		HideInventory ();
     }
 
     /// <summary>

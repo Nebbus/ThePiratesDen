@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SOBJ_HideAlternatives : SOBJ_Reaction
+public class SOBJ_HideAlternatives : SOBJ_DelayedReaction
 {
 	public GameObject rootReaction;
 

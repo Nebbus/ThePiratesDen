@@ -28,12 +28,23 @@ public class MONO_pointerLogic : MonoBehaviour {
         m_Praycaster    = FindObjectOfType<PhysicsRaycaster>();
         m_Graycaster    = FindObjectOfType<GraphicRaycaster>();
         m_EventSystem   = FindObjectOfType<EventSystem>();
-        playerMovment   = FindObjectOfType<MONO_PlayerMovement>();
-    }
 	
+    }
+
+
+	private void getPlayerMomvent()
+	{
+		playerMovment   = FindObjectOfType<MONO_PlayerMovement>();
+	}
+
 	// Update is called once per frame
 	void Update ()
-    {
+	{
+		if (playerMovment == null) 
+		{
+			getPlayerMomvent ();
+		}
+		
      
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -43,6 +54,13 @@ public class MONO_pointerLogic : MonoBehaviour {
         {
                currentAction = action.HOVER;
         }
+
+		if (m_Praycaster == null) 
+		{
+			// temp fix to make it fin the physical raycaster i n every scene
+			m_Praycaster    = FindObjectOfType<PhysicsRaycaster>();
+		}
+
 
         resultsG = EXT_GraphicalRayCast.GrapphicRayCast(m_Graycaster, m_EventSystem);
         resultsP = EXT_GraphicalRayCast.PhysicalRayCast(m_Praycaster, m_EventSystem);
@@ -93,6 +111,8 @@ public class MONO_pointerLogic : MonoBehaviour {
     /// </summary>
     private void handleResult()
     {
+		
+
         interactableTarget = null;
         //Loks att the first item in the list to se if it has MONO_interactionBase
         foreach (RaycastResult result in resultsG)
