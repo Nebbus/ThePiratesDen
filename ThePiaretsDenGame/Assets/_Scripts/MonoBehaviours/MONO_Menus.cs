@@ -6,6 +6,7 @@ using UnityEngine;
 public class MONO_Menus : MonoBehaviour {
 
     public bool menuOpen;
+    public GameObject menuButton;
 	public enum menu {main, paus, settings};
 
 
@@ -79,6 +80,7 @@ public class MONO_Menus : MonoBehaviour {
     public void CloseMenu()
     {
         menuOpen = false;
+        menuButton.SetActive(true);
     }
 
 	/// <summary>

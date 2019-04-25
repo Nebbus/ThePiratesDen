@@ -24,7 +24,10 @@ public class MONO_MenuSelect : MonoBehaviour {
 
 
 	void Update () {
-
+        if (currentSelectedMenuItem != eventSystem.currentSelectedGameObject)
+        {
+            currentSelectedMenuItem = eventSystem.currentSelectedGameObject;
+        }
         if (OurCustomCursor.UsingKeyboard)
         {
             SelectWithKeys();
