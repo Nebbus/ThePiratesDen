@@ -24,21 +24,25 @@ public class MONO_MenuSelect : MonoBehaviour {
 
 
 	void Update () {
-        if (currentSelectedMenuItem != eventSystem.currentSelectedGameObject)
+		if (currentSelectedMenuItem != eventSystem.currentSelectedGameObject )
         {
             currentSelectedMenuItem = eventSystem.currentSelectedGameObject;
         }
         if (OurCustomCursor.UsingKeyboard)
         {
             SelectWithKeys();
-            Vector2 tempPos = new Vector2(currentSelectedMenuItem.GetComponent<RectTransform>().position.x - 500,
-                                          currentSelectedMenuItem.GetComponent<RectTransform>().position.y);
+			if (eventSystem.currentSelectedGameObject != null) 
+			{
+				Vector2 tempPos = new Vector2 (currentSelectedMenuItem.GetComponent<RectTransform> ().position.x - 500,
+					                          currentSelectedMenuItem.GetComponent<RectTransform> ().position.y);
 
-            OurCustomCursor.CustomCursor.GetComponent<RectTransform>().position = tempPos;
+				OurCustomCursor.CustomCursor.GetComponent<RectTransform> ().position = tempPos;
+			}
         }
         else
         {
             eventSystem.SetSelectedGameObject(null);
+			buttonSelected = false;
         }
 	}
 

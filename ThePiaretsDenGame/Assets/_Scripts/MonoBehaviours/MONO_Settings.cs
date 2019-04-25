@@ -41,6 +41,7 @@ public class MONO_Settings : MonoBehaviour {
 
 	private void ActivateKeyboard()
 	{
+		Debug.Log ("activating keyboard");
         CustomCursor.UsingKeyboard = true;
 	}
 
