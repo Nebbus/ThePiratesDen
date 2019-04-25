@@ -6,7 +6,13 @@ public class SOBJ_InventoryGrabItemToMouseReaction : SOBJ_Reaction
 {
     [SerializeField]
     private SOBJ_Item itemToGrab;
-
+    public SOBJ_Item getItemToGrabe
+    {
+        get
+        {
+            return itemToGrab;
+        }
+    }
 
     private MONO_Inventory monoInventory;    // Reference to the Inventory component.
 

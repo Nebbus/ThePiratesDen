@@ -60,8 +60,8 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
     /// This is called from ConditionCollections when they 
     /// are being checked by an Interactable that has been clicked on.
     /// </summary>
-    /// <param name="requiredCondition"></param>
-    /// <returns></returns>
+    /// <param name="requiredCondition"> the condition to check</param>
+    /// <returns> true ore fales depending of if the condion was net</returns>
     public static bool CheckCondition(SOBJ_ConditionAdvanced requiredCondition)
     {
         /*If the requiredCondition is a comparesons is a 

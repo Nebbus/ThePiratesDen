@@ -14,6 +14,7 @@ public class EDI_Inventory : Editor {
     private SerializedProperty inventorySlotsProperty;
     private SerializedProperty inventoryProperty;
     private SerializedProperty inventoryBackImageProperty;
+    private SerializedProperty inventoryWaitDelayProperty;
 
     private const string inventoryPropItemsImageName = "invetoryItemsImages";
     private const string inventoryPropItemsName      = "invetoryItems";
@@ -21,6 +22,7 @@ public class EDI_Inventory : Editor {
     private const string inventorySlotPropsName      = "inventorySlots";
     private const string itemSlotImageChildeName     = "itemImage";
     private const string inventoryBackImagePropName  = "inventoryImage";
+    private const string inventoryWaitDelayPropName  = "waitDelay";
     private const string pathToItemSlotPrethab       = "Assets/_Prefabs/Inventory/itemTemplet.prefab";
 
 
@@ -29,7 +31,7 @@ public class EDI_Inventory : Editor {
     private GameObject itemTemplet;
     private MONO_Inventory monoInventory;
 
-    private bool addSlot = false;
+    private bool addSlot    = false;
     private bool remobeSlot = false;
 
     private void OnEnable()
@@ -44,7 +46,7 @@ public class EDI_Inventory : Editor {
         inventoryProperty          = serializedObject.FindProperty(inventoryPropInventoryName);
         inventorySlotsProperty     = serializedObject.FindProperty(inventorySlotPropsName);
         inventoryBackImageProperty = serializedObject.FindProperty(inventoryBackImagePropName);
-
+        inventoryWaitDelayProperty = serializedObject.FindProperty(inventoryWaitDelayPropName);
         // Control that the count is upp to date 
         if (MONO_Inventory.numberItemSlots != monoInventory.inventorySlots.Length)
         {
@@ -52,9 +54,6 @@ public class EDI_Inventory : Editor {
         }
 
     }
-
-
-
 
     public override void OnInspectorGUI()
      {
@@ -86,15 +85,19 @@ public class EDI_Inventory : Editor {
         for (int i = 0; i < MONO_Inventory.numberItemSlots; i++)
          {
              ItemSlotGUI(i);
-           
          }
 
         // The buttosn for adding and removin item slots in the invetory
         EditorGUILayout.BeginHorizontal();
-         addSlot     = GUILayout.Button("+", GUILayout.Width(buttonWhidt));
-         remobeSlot  = GUILayout.Button("-", GUILayout.Width(buttonWhidt));
-        EditorGUILayout.EndHorizontal();
+            addSlot     = GUILayout.Button("+", GUILayout.Width(buttonWhidt));
+            remobeSlot  = GUILayout.Button("-", GUILayout.Width(buttonWhidt));
 
+            EditorGUILayout.BeginHorizontal(GUI.skin.box);
+                EditorGUILayout.HelpBox("Hide delay after item has ben lifted from inventory delay in seconds.", MessageType.Info);
+                EditorGUILayout.PropertyField(inventoryWaitDelayProperty,GUIContent.none);
+            EditorGUILayout.EndHorizontal();
+        EditorGUILayout.EndHorizontal();
+        
         serializedObject.ApplyModifiedProperties();
 
 

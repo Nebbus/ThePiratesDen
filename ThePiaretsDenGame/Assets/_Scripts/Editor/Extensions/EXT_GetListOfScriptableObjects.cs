@@ -1,7 +1,10 @@
 ﻿using System;
-using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor;
+using UnityEngine.EventSystems;
+using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public static class EXT_GetListOfScriptableObjects
 {
@@ -55,5 +58,29 @@ public static class EXT_GetListOfScriptableObjects
     }
 
 
+    public static List<RaycastResult> raycast(PointerEventData m_PointerEventData, GraphicRaycaster m_Raycaster, EventSystem m_EventSystem)
+    {
+       
 
+        //Set up the new Pointer event
+        m_PointerEventData = new PointerEventData(m_EventSystem);
+
+        //Set teh pointer event position to that of the mouse position
+        m_PointerEventData.position = Input.mousePosition;
+
+        //Create a list of raycast Result
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        //Raycast using the Graphics Raycaster and move mouse click position
+        m_Raycaster.Raycast(m_PointerEventData, results);
+
+        //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+        foreach (RaycastResult result in results)
+        {
+            Debug.Log("Hit " + result.gameObject.name);
+        }
+
+
+        return results;
+    }
 }

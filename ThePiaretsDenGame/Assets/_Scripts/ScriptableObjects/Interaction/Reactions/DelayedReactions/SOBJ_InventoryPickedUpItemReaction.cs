@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 public class SOBJ_InventoryPickedUpItemReaction : SOBJ_DelayedReaction
 {
-    public SOBJ_Item item;     // The item asset to be added to the Inventory.
+    public SOBJ_Item item;                   // The item asset to be added to the Inventory.
 
     private MONO_Inventory monoInventory;    // Reference to the Inventory component.
 

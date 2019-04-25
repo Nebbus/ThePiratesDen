@@ -2,15 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class MONO_InventoryItemLogic : MonoBehaviour
+public class MONO_InventoryItemLogic : MONO_interactionBase
 {
 
-    
+
     public int hashCode = -1;
 
-    private int  index;
+    private int index;
     private bool hasBenGrabed = false;
     private MONO_Inventory monoInventory;
+
+    private int realHashCode = -1;
+
+    public int getSetItemsHashCode
+    {
+        get
+        {
+            return realHashCode;
+        }
+        set
+        {
+            realHashCode = value;
+            hashCode = realHashCode;
+        }
+
+    }
+
 
     public MONO_Inventory setMonoInventory
     {
@@ -20,14 +37,10 @@ public class MONO_InventoryItemLogic : MonoBehaviour
         }
 
     }
-
-    public void Start()
-    {
-        monoInventory = FindObjectOfType<MONO_Inventory>();
-
-    }
-
-
+    /// <summary>
+    /// Sets the index of this itemSlot, 
+    /// is cald then the slot is created.
+    /// </summary>
     public int getStetIndex
     {
         set
@@ -41,46 +54,54 @@ public class MONO_InventoryItemLogic : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Will be caled by unitys event system
-    /// </summary>
-    public void HandleClickInput()
+    public void Start()
     {
-        if(hashCode != -1)
+        if(monoInventory == null)
         {
-            React();
+            monoInventory = FindObjectOfType<MONO_Inventory>();
 
         }
-     
-        //if (MONO_itemGradFromTheInventory.instance.currentItem != null)
-        //{
-        //    React();
-        //}
-        //else if ( hasBenGrabed && MONO_itemGradFromTheInventory.instance.currentItem == null)
-        //{
-        //    PickMeUpp();
-        //}
-        
+
     }
 
-    /// <summary>
-    /// cald by unity event system to pick upp the objet
-    /// dose this by calling a funktion in the inventory
-    /// that set the mouse values
-    /// </summary>
-    //public void PickMeUpp()
-    //{
-    //    monoInventory.GrabItem(getStetIndex);
-    //    hasBenGrabed = false;
-    //}
+    
 
     /// <summary>
     /// Run throug the ractions the item has attached to it.
     /// </summary>
-    public void React()
+    public void ClickReact()
     {
+        /*prevents the slot from caling
+        * reactions then no item
+        * is precent
+        */
+        if (getSetItemsHashCode != -1)
+        {
+            monoInventory.GetItem(getSetItemsHashCode).OnClickInteractionRun(this);
 
-        monoInventory.GetItem(hashCode).InteractionRun(this);
+        }
+
     }
 
+    /// <summary>
+    /// Run throug the ractions the item has attached to it.
+    /// </summary>
+    public void HovorReact()
+    {
+        if (getSetItemsHashCode != -1)
+        {
+            
+            monoInventory.GetItem(getSetItemsHashCode).OnHoverInteractionRun(this);
+        }
+    }
+
+    public override void OnClick()
+    {
+        ClickReact();
+    }
+
+    public override void OnHovor()
+    {
+        HovorReact();
+    }
 }

@@ -39,12 +39,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
     private const float dropAreaHeight = 50f;  // Height in pixels of the area for dropping scripts.
     private const float controlSpacing = 5f;   // Width in pixels between the popup type selection and drop area.
     private const float buttonWidth    = 30f;  // Width in pixels of the button to create Conditions.
-
-
-
-
-
-
+    
     private void OnEnable()
     {
         // Cache a reference to the target.

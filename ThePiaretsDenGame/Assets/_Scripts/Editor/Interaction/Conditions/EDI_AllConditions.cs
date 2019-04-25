@@ -310,7 +310,6 @@ public class EDI_AllConditions : Editor
         SetAllConditionDescriptions();
     }
 
-
     public static int TryGetConditionIndex(SOBJ_ConditionAdvanced condition)
     {
         // Go through all the Conditions...
@@ -363,8 +362,6 @@ public class EDI_AllConditions : Editor
         return -1;
     }
 
-
-
     public static SOBJ_ConditionAdvanced TryGetConditionAt(int index)
     {
         // Cache the AllConditions array.
@@ -386,7 +383,6 @@ public class EDI_AllConditions : Editor
         // Otherwise return the Condition at the given index.
         return allConditions[index];
     }
-
 
     /// <summary>
     /// Funktion for geting the alla the conditions of a 

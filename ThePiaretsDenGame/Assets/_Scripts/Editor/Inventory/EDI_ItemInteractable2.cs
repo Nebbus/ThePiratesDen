@@ -6,33 +6,41 @@ using UnityEditor;
 [CustomEditor(typeof(SOBJ_ItemInteractable))]
 public class EDI_ItemInteractable2 : Editor
 {
+
+
+    public SerializedProperty itemInteractableProperty;     // Represents the array of MONO_ItemInteractable that the target belongs to.  
+
+    public EDI_Item2 paranteEditor;                         // Referens to the parent so this can be removed
+    public EDI_Item2.CurentInteractions type;               // if this is hover or click interactable so this can be removed
+
     private SOBJ_ItemInteractable itemInteractabe;          // Reference to the target.
 
     private SerializedProperty descriptionProperty;         // Represents a string description for the target.
     private SerializedProperty reactionsProperty;           // Represents the array of Reactions.
     private SerializedProperty conditionsProperty;          // Represents an array of Conditions for the target.
 
-    public SerializedProperty itemInteractableProperty;     // Represents the array of MONO_ItemInteractable that the target belongs to.  
 
-    public EDI_Item2 paranteEditor; // referens to the parent so this can be removed
-
-
+    // Arrays that contains the objects edditors.
     private EDI_ConditionAdvanced[] conditionEditors;
     private EDI_Reaction[]          reactionsEditors;
+    private bool[]                  reactionShowCash;
 
-    private Type[]   reactionTypes;                           // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
-    private string[] reactionTypeNames;                       // The names of all appropriate Reaction types.
-    private int      reactionSelectedIndex;                   // The index of the currently selected Reaction type.
 
+    // reactions variables
+    private Type[]   reactionTypes;                         // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
+    private int      reactionSelectedIndex;                 // The index of the currently selected Reaction type.  
+    private string[] reactionTypeNames;                     // The names of all appropriate Reaction types.
+
+    // condition variables
     private Type[]   conditionTypes;                        // All the non-abstract types which inherit from SOBJ_ConditionAdvanced.  This is used for adding new Reactions.
-    private string[] conditionTypeNames;                    // The names of all appropriate SOBJ_ConditionAdvanced types.
     private int      conditionSelectedIndex;                // The index of the currently selected SOBJ_ConditionAdvanced type.
+    private string[] conditionTypeNames;                    // The names of all appropriate SOBJ_ConditionAdvanced types.
 
-    private const float dropAreaHeight = 50f;           // Height in pixels of the area for dropping scripts.
-    private const float controlSpacing = 5f;            // Width in pixels between the popup type selection and drop area.
-    private const float removeuttonWidth = 170f;
+    private const float dropAreaHeight    = 50f;           // Height in pixels of the area for dropping scripts.
+    private const float controlSpacing    = 5f;            // Width in pixels between the popup type selection and drop area.
+    private const float removeButtonWidth = 170f;
 
-
+    //Names of the variables in SOBJ_ItemInteractable2
     private const string reactionsPropName   = "itemInteractionReactions";
     private const string conditionsPropName  = "requiredConditions";
     private const string descriptionPropName = "description";
@@ -42,11 +50,28 @@ public class EDI_ItemInteractable2 : Editor
 
     public void OnEnable()
     {
-
         // Cache the target.
         itemInteractabe = (SOBJ_ItemInteractable)target;
 
-        if(target == null)
+        SaftetyCatch();
+
+        // Cache the SerializedProperty
+        reactionsProperty   = serializedObject.FindProperty(reactionsPropName);
+        descriptionProperty = serializedObject.FindProperty(descriptionPropName);
+        conditionsProperty  = serializedObject.FindProperty(conditionsPropName);
+
+        //Set the array of types and type names of subtypes of Reaction and condition.
+        EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_Reaction),          out reactionTypes,  out reactionTypeNames);
+        EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_ConditionAdvanced), out conditionTypes, out conditionTypeNames);
+    }
+
+    /// <summary>
+    /// Saftety catch to avoid errors
+    /// </summary>
+    private void SaftetyCatch()
+    {
+       
+        if (target == null)
         {
             DestroyImmediate(this);
         }
@@ -59,7 +84,12 @@ public class EDI_ItemInteractable2 : Editor
         if (itemInteractabe.itemInteractionReactions == null)
         {
             itemInteractabe.itemInteractionReactions = new SOBJ_Reaction[0];
+        }
 
+        // If there aren't any editors, create them.
+        if (reactionShowCash == null)
+        {
+            reactionShowCash = new bool[itemInteractabe.itemInteractionReactions.Length];
         }
 
         // If there aren't any editors, create them.
@@ -67,35 +97,39 @@ public class EDI_ItemInteractable2 : Editor
         {
             CreateConditionEditors();
         }
+    
         // If there aren't any editors, create them.
         if (reactionsEditors == null)
         {
             CreateReactionEditors();
         }
+     
 
-
-        // Cache the SerializedProperty
-        reactionsProperty   = serializedObject.FindProperty(reactionsPropName);
-        descriptionProperty = serializedObject.FindProperty(descriptionPropName);
-        conditionsProperty  = serializedObject.FindProperty(conditionsPropName);
-
-
-        //Set the array of types and type names of subtypes of Reaction and condition.
-        EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_Reaction), out reactionTypes, out reactionTypeNames);
-        EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_ConditionAdvanced), out conditionTypes, out conditionTypeNames);
     }
+
 
     private void OnDisable()
     {
-        // Destroy all the editors.
-        for (int i = 0; i < conditionEditors.Length; i++)
+        if(conditionEditors != null)
         {
-            DestroyImmediate(conditionEditors[i]);
+            // Destroy all the editors.
+            for (int i = 0; i < conditionEditors.Length; i++)
+            {
+                DestroyImmediate(conditionEditors[i]);
+            }
+            conditionEditors = null;
         }
-        for (int i = 0; i < reactionsEditors.Length; i++)
+       
+        if(reactionsEditors != null)
         {
-            DestroyImmediate(reactionsEditors[i]);
+            for (int i = 0; i < reactionsEditors.Length; i++)
+            {
+                DestroyImmediate(reactionsEditors[i]);
+            }
+            reactionsEditors = null;
+
         }
+
     }
 
     public override void OnInspectorGUI()
@@ -104,31 +138,36 @@ public class EDI_ItemInteractable2 : Editor
 
         serializedObject.Update();
         EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUI.indentLevel++;
+            EditorGUILayout.BeginHorizontal();
+                /* Use the isExpanded bool for the descriptionProperty 
+                 * to store whether the foldout is open or closed.
+                 */
+                descriptionProperty.isExpanded = EditorGUILayout.Foldout(descriptionProperty.isExpanded, descriptionProperty.stringValue, true);
 
-        EditorGUILayout.BeginHorizontal();
-        /* Use the isExpanded bool for the descriptionProperty 
-         * to store whether the foldout is open or closed.
-         */
-        descriptionProperty.isExpanded = EditorGUILayout.Foldout(descriptionProperty.isExpanded, descriptionProperty.stringValue, true);
+                /* Display a button with a 'Remove Item interactable' that when clicked removes
+                 * the target from the ConditionCollection's conditions array.
+                 */
 
-        /* Display a button with a 'Remove Item interactable' that when clicked removes
-        * the target from the ConditionCollection's conditions array.
-       */
+                bool destoryMe = GUILayout.Button("Remove Item interactable", GUILayout.Width(removeButtonWidth));
 
-        bool destoryMe = GUILayout.Button("Remove Item interactable", GUILayout.Width(removeuttonWidth));
-     
-        EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndHorizontal();
 
-        // If the foldout is open show the expanded GUI.
-        if (descriptionProperty.isExpanded)
-        {
-            ExpandedGUI();
-        }
+            // If the foldout is open show the expanded GUI.
+            if (descriptionProperty.isExpanded)
+            {
+                ExpandedGUI();
+            }
+            EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
         serializedObject.ApplyModifiedProperties();
+
+        /*Destroys the interactable object 
+         * and all underlaying reactions
+         * and conditions
+         */
         if (destoryMe)
         {
-
             for (int i = 0; i < reactionsEditors.Length; i++)
             {
                 reactionsEditors[i].voidEdiorItemRemove();
@@ -137,11 +176,13 @@ public class EDI_ItemInteractable2 : Editor
             {
                 conditionEditors[i].voidEdiorItemRemove();
             }
-            // itemInteractableProperty.RemoveFromObjectArray(itemInteractabe);
-            paranteEditor.RemoveItemInteractable(itemInteractabe);
+            paranteEditor.RemoveItemInteractable(itemInteractabe, type);
         }
     }
 
+    /// <summary>
+    /// The itemInteraction Editor
+    /// </summary>
     private void ExpandedGUI()
     { 
         EditorGUI.indentLevel++;
@@ -149,162 +190,175 @@ public class EDI_ItemInteractable2 : Editor
         EditorGUILayout.Space();
 
         // Display the description for editing.
-        //EditorGUILayout.PropertyField(descriptionProperty);
         itemInteractabe.description = EditorGUILayout.TextField(itemInteractabe.description);
 
         EditorGUILayout.Space();
-        // If new editors are required for Reactions and conditions, create them.
-        serializedObject.Update();
+
         DrawConditions();
-        serializedObject.ApplyModifiedProperties();
+
         EditorGUILayout.Space();
         EditorGUILayout.Space();
-        serializedObject.Update();
+
         DrawReactions();
-        serializedObject.ApplyModifiedProperties();
-        EditorGUI.indentLevel--;
-        
+
+        EditorGUI.indentLevel--;   
     }
 
-
+    /// <summary>
+    /// The conditons collection editor
+    /// </summary>
     private void DrawConditions()
     {
-        if (conditionEditors.Length != TryGetConditionsLength())
-        {
-            // Destroy all the old editors.
-            for (int i = 0; i < conditionEditors.Length; i++)
-            {
-                DestroyImmediate(conditionEditors[i]);
+        serializedObject.Update();
+        EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUI.indentLevel++;
+            //Uppdates teh conditions editors array
+            if (conditionEditors.Length != TryGetConditionsLength())
+                {
+                // Destroy all the old editors.
+                for (int i = 0; i < conditionEditors.Length; i++)
+                {
+                    DestroyImmediate(conditionEditors[i]);
+                }
+
+                // Create new editors.
+                CreateConditionEditors();
             }
 
-            // Create new editors.
-            CreateConditionEditors();
-        }
+            /* Display the Labels for the Conditions evenly split over
+            * the width of the inspector.
+            */
+            float space = EditorGUIUtility.currentViewWidth / 3f;
+            EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField("Condition", GUILayout.Width(space));
+                EditorGUILayout.LabelField("Satisfied?", GUILayout.Width(space));
+                EditorGUILayout.LabelField("Add/Remove", GUILayout.Width(space));
+            EditorGUILayout.EndHorizontal();
 
-        EditorGUILayout.BeginVertical(GUI.skin.box);
-        /* Display the Labels for the Conditions evenly split over
-         * the width of the inspector.
-         */
-        float space = EditorGUIUtility.currentViewWidth / 3f;
-
-        EditorGUI.indentLevel++;
-
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Condition", GUILayout.Width(space));
-        EditorGUILayout.LabelField("Satisfied?", GUILayout.Width(space));
-        EditorGUILayout.LabelField("Add/Remove", GUILayout.Width(space));
-        EditorGUILayout.EndHorizontal();
-
-        // Display each of the Conditions.
-        EditorGUILayout.BeginVertical(GUI.skin.box);
-        for (int i = 0; i < conditionEditors.Length; i++)
-        {
+            // Display each of the Conditions.
             EditorGUILayout.BeginVertical(GUI.skin.box);
-            conditionEditors[i].OnInspectorGUI();
+                for (int i = 0; i < conditionEditors.Length; i++)
+                {
+                    EditorGUILayout.BeginVertical(GUI.skin.box);
+                        conditionEditors[i].OnInspectorGUI();
+                    EditorGUILayout.EndVertical();
+                }
             EditorGUILayout.EndVertical();
-        }
+
+//-----------------------------------------------------------
+             /* Create a Rect for the full width of the
+              * inspector with enough height for the drop area.
+              */
+             Rect fullWidthRect = GUILayoutUtility.GetRect(GUIContent.none, GUIStyle.none, GUILayout.Height(dropAreaHeight + verticalSpacing));
+
+             // Create a Rect for the left GUI controls.
+             Rect leftAreaRect = fullWidthRect;
+
+             // It should be in half a space from the top.
+             leftAreaRect.y += verticalSpacing * 0.5f;
+
+             /* The width should be slightly less than half 
+              * the width of the inspector.
+              */
+             leftAreaRect.width *= 0.5f;
+             leftAreaRect.width -= controlSpacing * 0.5f;
+
+             // The height should be the same as the drop area.
+             leftAreaRect.height = dropAreaHeight;
+//-----------------------------------------------------------
+
+            ConditionTypeSelectionGUI(leftAreaRect);
+            EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
-
-        //-----------------------------------------------------------
-         /* Create a Rect for the full width of the
-          * inspector with enough height for the drop area.
-          */
-         Rect fullWidthRect = GUILayoutUtility.GetRect(GUIContent.none, GUIStyle.none, GUILayout.Height(dropAreaHeight + verticalSpacing));
-
-         // Create a Rect for the left GUI controls.
-         Rect leftAreaRect = fullWidthRect;
-
-         // It should be in half a space from the top.
-         leftAreaRect.y += verticalSpacing * 0.5f;
-
-         /* The width should be slightly less than half 
-          * the width of the inspector.
-          */
-         leftAreaRect.width *= 0.5f;
-         leftAreaRect.width -= controlSpacing * 0.5f;
-
-         // The height should be the same as the drop area.
-         leftAreaRect.height = dropAreaHeight;
-        //-----------------------------------------------------------
-
-        ConditionTypeSelectionGUI(leftAreaRect);
-        EditorGUI.indentLevel--;
-        EditorGUILayout.EndVertical();
-
+        serializedObject.ApplyModifiedProperties();
     }
+
+    /// <summary>
+    /// The editor for the reaction
+    /// collection
+    /// </summary>
     private void DrawReactions()
     {
+        serializedObject.Update();
         EditorGUILayout.BeginVertical(GUI.skin.box);
-        EditorGUI.indentLevel++;
+            EditorGUI.indentLevel++;
 
-        if (conditionEditors.Length != TryGetreactionLength())
-        {
-            // Destroy all the old editors.
-            for (int i = 0; i < reactionsEditors.Length; i++)
-            {
-                DestroyImmediate(reactionsEditors[i]);
-            }
+       
 
-            // Create new editors.
-            CreateReactionEditors();
-        }
+        //Uppdaes the condition editor array
+        if (reactionShowCash.Length != TryGetreactionLength() || reactionShowCash.Length != TryGetreactionLength())
+             {
+                // Destroy all the old editors.
+                for (int i = 0; i < reactionsEditors.Length; i++)
+                {
+                    DestroyImmediate(reactionsEditors[i]);
+                }
+
+                // Create new editors.
+                CreateReactionEditors();
+             }
+       
 
         // Display all the Reactions.
-        EditorGUILayout.BeginVertical(GUI.skin.box);
         for (int i = 0; i < reactionsEditors.Length; i++)
         {
-             reactionsEditors[i].showReaction = true;// simple fix for that the fold out button stop to work
-               reactionsEditors[i].OnInspectorGUI();
+            // reactionsEditors[i].showReaction = true;// simple fix for that the fold out button stop to work
+            reactionShowCash[i] = reactionsEditors[i].OnItemInteractionGui(reactionShowCash[i]);
       
-        }
+         }
+
+
+            // If there are Reactions, add a space.
+            if (itemInteractabe.itemInteractionReactions.Length > 0)
+            {
+                EditorGUILayout.Space();
+                EditorGUILayout.Space();
+            }
+
+//-----------------------------------------------------------
+            /* Create a Rect for the full width of the
+            * inspector with enough height for the drop area.
+            */
+            Rect fullWidthRect = GUILayoutUtility.GetRect(GUIContent.none, GUIStyle.none, GUILayout.Height(dropAreaHeight + verticalSpacing));
+
+            // Create a Rect for the left GUI controls.
+            Rect leftAreaRect = fullWidthRect;
+
+            // It should be in half a space from the top.
+            leftAreaRect.y += verticalSpacing * 0.5f;
+
+            /* The width should be slightly less than half 
+             * the width of the inspector.
+             */
+            leftAreaRect.width *= 0.5f;
+            leftAreaRect.width -= controlSpacing * 0.5f;
+
+            // The height should be the same as the drop area.
+            leftAreaRect.height = dropAreaHeight;
+//-----------------------------------------------------------
+
+            // Display the GUI for the type popup and button on the left.
+            ReactionTypeSelectionGUI(leftAreaRect);
+
+            EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
-
-        // If there are Reactions, add a space.
-        //if (itemInteractabe.itemInteractionReactions.Length > 0)
-        //{
-        //    EditorGUILayout.Space();
-        //    EditorGUILayout.Space();
-        //}
-
-        //-----------------------------------------------------------
-        /* Create a Rect for the full width of the
-         * inspector with enough height for the drop area.
-         */
-        Rect fullWidthRect = GUILayoutUtility.GetRect(GUIContent.none, GUIStyle.none, GUILayout.Height(dropAreaHeight + verticalSpacing));
-
-        // Create a Rect for the left GUI controls.
-        Rect leftAreaRect = fullWidthRect;
-
-        // It should be in half a space from the top.
-        leftAreaRect.y += verticalSpacing * 0.5f;
-
-        /* The width should be slightly less than half 
-         * the width of the inspector.
-         */
-        leftAreaRect.width *= 0.5f;
-        leftAreaRect.width -= controlSpacing * 0.5f;
-
-        // The height should be the same as the drop area.
-        leftAreaRect.height = dropAreaHeight;
-        //-----------------------------------------------------------
-
-
-        // Display the GUI for the type popup and button on the left.
-        ReactionTypeSelectionGUI(leftAreaRect);
-
-        EditorGUI.indentLevel--;
-        EditorGUILayout.EndVertical();
-
-
+        serializedObject.ApplyModifiedProperties();
     }
 
+
+    /// <summary>
+    /// The drop dow menu and button
+    /// for adding new conditions
+    /// </summary>
+    /// <param name="containingRect"> the rectangle that is
+    /// just to contin dropdow menu and button  </param>
     private void ConditionTypeSelectionGUI(Rect containingRect)
     {
         // Create Rects for the top and bottom half.
-        Rect topHalf = containingRect;
-        topHalf.height *= 0.5f;
-        Rect bottomHalf = topHalf;
-        bottomHalf.y += bottomHalf.height;
+        Rect topHalf     = containingRect;
+        topHalf.height  *= 0.5f;
+        Rect bottomHalf  = topHalf;
+        bottomHalf.y    += bottomHalf.height;
 
         // Display a popup in the top half showing all the reaction types.
         conditionSelectedIndex = EditorGUI.Popup(topHalf, conditionSelectedIndex, conditionTypeNames);
@@ -312,21 +366,24 @@ public class EDI_ItemInteractable2 : Editor
         // Display a button in the bottom half that if clicked...
         if (GUI.Button(bottomHalf, "Add Selected condition"))
         {
-            // ... finds the type selected by the popup, creates an appropriate condition and adds it to the array.
-            //Type conditionType = conditionTypes[conditionSelectedIndex];
-            //SOBJ_ConditionAdvanced newCondition = EDI_ConditionAdvanced.CreateCondition(conditionType);
-            //conditionsProperty.AddToObjectArray(newCondition);
             AddCondition();
-          
+
         }
     }
+
+    /// <summary>
+    /// The drop dow menu and button
+    /// for adding new reactions
+    /// </summary>
+    /// <param name="containingRect"> the rectangle that is
+    /// just to contin dropdow menu and button  </param>
     private void ReactionTypeSelectionGUI(Rect containingRect)
     {
         // Create Rects for the top and bottom half.
-        Rect topHalf = containingRect;
+        Rect topHalf    = containingRect;
         topHalf.height *= 0.5f;
         Rect bottomHalf = topHalf;
-        bottomHalf.y += bottomHalf.height;
+        bottomHalf.y    += bottomHalf.height;
 
         // Display a popup in the top half showing all the reaction types.
         reactionSelectedIndex = EditorGUI.Popup(topHalf, reactionSelectedIndex, reactionTypeNames);
@@ -334,37 +391,45 @@ public class EDI_ItemInteractable2 : Editor
         // Display a button in the bottom half that if clicked...
         if (GUI.Button(bottomHalf, "Add Selected Reaction"))
         {
-            // ... finds the type selected by the popup, creates an appropriate reaction and adds it to the array.
-
-            // reactionsProperty.AddToObjectArray(newReaction);
-            AddReaction();
-           
+            AddReaction(); 
         }
     }
 
+    /// <summary>
+    /// Creatse the new reactio and adds it 
+    /// to the SOBJ_item asset
+    /// </summary>
     private void AddReaction()
     {
+        //creat reaction ands sets its name
         Type reactionType         = reactionTypes[reactionSelectedIndex];
         SOBJ_Reaction newReaction = EDI_Reaction.CreateReaction(reactionType);
-
-        newReaction.name = reactionType.Name;
+        newReaction.name          = reactionType.Name;
 
         // Record all operations on the newConditions so they can be undone.
         Undo.RecordObject(newReaction, "Added SOBJ_Reaction");
 
         // Attach the Condition to the AllConditions asset.
         AssetDatabase.AddObjectToAsset(newReaction, itemInteractabe);
+       
 
-        //// Import the asset so it is recognised as a joined asset.
+        // Import the asset so it is recognised as a joined asset.
         AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(newReaction));
 
-        //// Add the Condition to the AllConditions array.
+        // Add the Condition to the AllConditions array.
         ArrayUtility.Add(ref itemInteractabe.itemInteractionReactions, newReaction);
 
-        //// Mark the AllConditions asset as dirty so the editor knows to save changes to it when a project save happens.
+        // Mark the AllConditions asset as dirty so the editor knows to save changes to it when a project save happens.
         EditorUtility.SetDirty(itemInteractabe);
+
+        //uppdats the reation editor arrays
         CreateReactionEditors();
     }
+
+    /// <summary>
+    /// Funktion that removes/delets a reaction
+    /// </summary>
+    /// <reaction>Reaction to be removed</reaction>
     public void RemoveReaction(SOBJ_Reaction reaction)
     {
 
@@ -380,7 +445,6 @@ public class EDI_ItemInteractable2 : Editor
          * save the assets to recognise the change.
          */
         DestroyImmediate(reaction, true);
-
         AssetDatabase.SaveAssets();
 
         /* Mark the AllConditions asset as dirty so the editor 
@@ -390,12 +454,17 @@ public class EDI_ItemInteractable2 : Editor
         CreateReactionEditors();
     }
 
+
+    /// <summary>
+    /// Creatse the new condition and adds it 
+    /// to the SOBJ_item asset
+    /// </summary>
     private void AddCondition()
     {
+        // Ceats a the conditon and sets its name
         Type conditionType                  = conditionTypes[conditionSelectedIndex];
-        SOBJ_ConditionAdvanced newCondition = EDI_ConditionAdvanced.CreateCondition(conditionType);
-        
-        newCondition.name = conditionType.Name;
+        SOBJ_ConditionAdvanced newCondition = EDI_ConditionAdvanced.CreateCondition(conditionType);     
+        newCondition.name                   = conditionType.Name; //Dosent hav controll over the naming since this shuold work as conditonCollection 
 
         // Record all operations on the newConditions so they can be undone.
         Undo.RecordObject(newCondition, "Added SOBJ_ConditionAdvanced");
@@ -413,6 +482,11 @@ public class EDI_ItemInteractable2 : Editor
         EditorUtility.SetDirty(itemInteractabe);
         CreateConditionEditors();
     }
+
+    /// <summary>
+    /// Function that removs and delets a conditon
+    /// </summary>
+    /// <param name="condition"> condition to be removed</param>
     public void RemoveCondition(SOBJ_ConditionAdvanced condition)
     {
 
@@ -427,32 +501,24 @@ public class EDI_ItemInteractable2 : Editor
         /* Destroy the condition, including it's asset and 
          * save the assets to recognise the change.
          */
-        //clean u
-        if (conditionEditors != null)
-        {
-            // Destroy all the old editors.
-            for (int i = 0; i < conditionEditors.Length; i++)
-            {
-                DestroyImmediate(conditionEditors[i]);
-            }
-        }
         DestroyImmediate(condition, true);
-
         AssetDatabase.SaveAssets();
      
         /* Mark the AllConditions asset as dirty so the editor 
          * knows to save changes to it when a project save happens.
          */
         EditorUtility.SetDirty(itemInteractabe);
+
+        // Updates the reaction editor array
         CreateReactionEditors();
 
     }
 
-
+    /// <summary>
+    /// Chaches the ediors for all conditions
+    /// </summary>
     private void CreateConditionEditors()
     {
-       
-
         // Create a new array for the editors which is the same length at the conditions array.
         conditionEditors = new EDI_ConditionAdvanced[itemInteractabe.requiredConditions.Length];
     
@@ -467,10 +533,39 @@ public class EDI_ItemInteractable2 : Editor
         }
 
     }
+
+    /// <summary>
+    /// Chaches the ediors for all reactions
+    /// </summary>
     private void CreateReactionEditors()
     {
         // Create a new array for the editors which is the same length at the conditions array.
         reactionsEditors = new EDI_Reaction[itemInteractabe.itemInteractionReactions.Length];
+        bool[] temp      = new bool[itemInteractabe.itemInteractionReactions.Length];
+
+        if (reactionShowCash.Length < temp.Length)
+        {
+            for (int i = 0; i < reactionShowCash.Length; i++)
+            {
+                temp[i] = reactionShowCash[i];
+            }
+        }
+        else if(reactionShowCash.Length > temp.Length)
+        {
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i] = reactionShowCash[i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i] = reactionShowCash[i];
+            }
+        }
+        reactionShowCash = temp;
+
 
         // Go through all the empty array...
         for (int i = 0; i < reactionsEditors.Length; i++)
@@ -479,6 +574,7 @@ public class EDI_ItemInteractable2 : Editor
             reactionsEditors[i]                   = CreateEditor(TryGetReactionAt(i)) as EDI_Reaction;
             reactionsEditors[i].reactionsProperty = reactionsProperty;
             reactionsEditors[i].parentEditor      = this;
+      
         }
     }
     
@@ -496,10 +592,10 @@ public class EDI_ItemInteractable2 : Editor
             return 0;
         }
 
-
         // Otherwise return the length of the array.
         return itemInteractabe.requiredConditions.Length;
     }
+    
     /// <summary>
     /// Attemts to get length of reactions array
     /// </summary>
@@ -512,19 +608,16 @@ public class EDI_ItemInteractable2 : Editor
         {
             return 0;
         }
-
-
         // Otherwise return the length of the array.
         return itemInteractabe.itemInteractionReactions.Length;
     }
-    
-    
+
+
     /// <summary>
     /// gets the reactions index in the condition array
-    /// returns -1 if it wastnt found
     /// </summary>
     /// <param name="condition"> the condition whos index we want</param>
-    /// <returns></returns>
+    /// <returns>returns -1 if it wasent found</returns>
     private int TryGetConditionIndex(SOBJ_ConditionAdvanced condition)
     {
         // Go through all the Conditions...
@@ -535,18 +628,17 @@ public class EDI_ItemInteractable2 : Editor
             {
                 return i;
             }
-
         }
 
         // If the Condition wasn't found, return -1.
         return -1;
     }
+   
     /// <summary>
     /// gets the reactions index in the reactions array
-    /// returns -1 if it wastnt found
     /// </summary>
     /// <param name="reaction"> the reaction whos index we want</param>
-    /// <returns></returns>
+    /// <returns>returns -1 if it wasent found</returns>
     private int TryGetReactionIndex(SOBJ_Reaction reaction)
     {
         // Go through all the Conditions...
@@ -557,9 +649,7 @@ public class EDI_ItemInteractable2 : Editor
             {
                 return i;
             }
-
         }
-
         // If the Condition wasn't found, return -1.
         return -1;
     }
@@ -593,6 +683,7 @@ public class EDI_ItemInteractable2 : Editor
         // Otherwise return the Condition at the given index.
         return conditions[index];
     }
+
     /// <summary>
     /// Atmtes to get condition, 
     /// </summary>
@@ -621,8 +712,4 @@ public class EDI_ItemInteractable2 : Editor
         // Otherwise return the Condition at the given index.
         return reactions[index];
     }
-    
-
-
-
 }

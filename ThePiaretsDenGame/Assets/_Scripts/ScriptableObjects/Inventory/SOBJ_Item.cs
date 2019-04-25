@@ -9,87 +9,26 @@ using UnityEngine;
 * this script instead of just sprites to ensure that items
 * are extensible.
 */
-
 [CreateAssetMenu(fileName = "newInventoryItem", menuName = "Inventory Item", order = 1)]
 public class SOBJ_Item : ScriptableObject
 {
+
     public Sprite sprite;
-    //public SOBJ_Item combindsWith;
-    //public SOBJ_Item toMake;
-
-    // /// <summary>
-    // /// is planded to contain reactions and the conditons that accomplish them
-    // /// </summary>
-    //[Serializable]
-    // public struct reactionAndCondition
-    // {
-    //     // Description of the ConditionCollection.  This is used purely for identification in the inspector.
-    //     public string description;              
-
-    //     public SOBJ_ConditionAdvanced[] conditions;
-    //     public SOBJ_Reaction[]          reactions;
-
-    //     /// <summary>
-    //     /// Initilices all the ractions in the racticons list
-    //     /// </summary>
-    //     public void Init()
-    //     {
-    //         foreach(SOBJ_Reaction reaction in reactions)
-    //         {
-    //             SOBJ_DelayedReaction delayedReaction = reaction as SOBJ_DelayedReaction;
-    //             if (delayedReaction)
-    //             {
-    //                 Debug.Log(delayedReaction.name);
-    //                 delayedReaction.Init();
-    //             }
-    //             else
-    //             {
-    //                 reaction.Init();
-    //             }
-    //         }
-    //     }
-
-    //     public bool KontrolAndReact(MonoBehaviour caller)
-    //     {
-    //         for (int i = 0; i < conditions.Length; i++)
-    //         {
-    //             if (!SOBJ_AllConditions.CheckCondition(conditions[i]))
-    //             {
-    //                 return false;
-    //             }
-
-    //         }
-
-
-    //         foreach(SOBJ_Reaction reaction in reactions)
-    //         {
-    //             SOBJ_DelayedReaction delayedReaction = reaction as SOBJ_DelayedReaction;
-
-    //             if (delayedReaction)
-    //             {
-    //                 delayedReaction.React(caller);
-    //             }
-    //             else
-    //             {
-    //                 reaction.React(caller);
-    //             }
-    //         }
-
-
-
-    //         return true;
-    //     }
-    // }
-
-
-    
-
-
-    public SOBJ_ItemInteractable[] conditioAndReactions = new SOBJ_ItemInteractable[0];
   
+    public SOBJ_ItemInteractable[] onClickConditionAndReactions = new SOBJ_ItemInteractable[0];
+    public SOBJ_ItemInteractable[] onHoverConditionAndReactions = new SOBJ_ItemInteractable[0];
+
+    /// <summary>
+    /// Initzilising all the reactions, is calld then 
+    /// this item is added to the inventory
+    /// </summary>
     public void InitReaction()
     {
-        foreach (SOBJ_ItemInteractable interactables in conditioAndReactions)
+        foreach (SOBJ_ItemInteractable interactables in onClickConditionAndReactions)
+        {
+            interactables.InitReactions();
+        }
+        foreach (SOBJ_ItemInteractable interactables in onHoverConditionAndReactions)
         {
             interactables.InitReactions();
         }
@@ -97,20 +36,47 @@ public class SOBJ_Item : ScriptableObject
 
     /// <summary>
     /// Run throug all the condition and runn appropriet 
-    /// reactions
+    /// reactions click
     /// </summary>
     /// <param name="caller"> the monobehavor that caled this funktion</param>
-    public void InteractionRun(MonoBehaviour caller)
+    public void OnClickInteractionRun(MonoBehaviour caller)
     {
-        foreach (SOBJ_ItemInteractable interactables in conditioAndReactions)
+        /* Runs froug the itemInteractions, if one happens so will
+         * the function be exited.
+         */ 
+        foreach (SOBJ_ItemInteractable interactables in onClickConditionAndReactions)
         {
-            interactables.Interact(caller);
+            if (interactables.Interact(caller))
+            {
+                return;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Run throug all the condition and runn appropriet 
+    /// reactions on hover over
+    /// </summary>
+    /// <param name="caller"> the monobehavor that caled this funktion</param>
+    public void OnHoverInteractionRun(MonoBehaviour caller)
+    {
+        /* Runs froug the itemInteractions, if one happens so will
+         * the function be exited.
+         */
+        foreach (SOBJ_ItemInteractable interactables in onHoverConditionAndReactions)
+        {
+            if (interactables.Interact(caller))
+            {
+                return;
+            }
         }
     }
 
 
-
-
+    /// <summary>
+    /// Gets the hash of this item, used to 
+    /// compare items
+    /// </summary>
     public int getHash
     {
         get
@@ -118,23 +84,5 @@ public class SOBJ_Item : ScriptableObject
             return Animator.StringToHash(this.name);
         }
     }
-
-    //public int getCombindsWithHash
-    //{
-    //    get
-    //    {
-    //        return Animator.StringToHash(combindsWith.name);
-    //    }
-    //}
-
-    //public int geTtoMakeHash
-    //{
-    //    get
-    //    {
-    //        return Animator.StringToHash(toMake.name);
-    //    }
-    //}
-
-
 
 }

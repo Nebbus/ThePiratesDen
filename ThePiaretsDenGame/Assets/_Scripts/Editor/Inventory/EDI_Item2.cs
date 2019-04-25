@@ -8,23 +8,26 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class EDI_Item2 : Editor
 {
+    public enum CurentInteractions { HOVER, CLICK };
 
     //The target item
-
-    private SerializedProperty spriteProperty;
-    private SerializedProperty conditioAndReactionsProperty;
-
-    private const string spritePropertyName = "sprite";
-    private const string conditioAndReactionsPropertyName = "conditioAndReactions";
-
-
-
-
     private SOBJ_Item sobjItem;
 
-    private EDI_ItemInteractable2[] itemInteractablesEditors;
+    private SerializedProperty spriteProperty;
+    private SerializedProperty onClickConditioAndReactionsProperty;
+    private SerializedProperty onHovorConditioAndReactionsProperty;
 
-    private const float collectionButtonWidth = 170f;  // Width in pixels of the button for adding to the conditioAndReactions array.             
+    private const string spritePropertyName                      = "sprite";
+    private const string onClickConditioAndReactionsPropertyName = "onCLickConditionAndReactions";
+    private const string onHovorConditioAndReactionsPropertyName = "onHoverConditionAndReactions";
+
+    private EDI_ItemInteractable2[] onClickItemInteractablesEditors;   // the list of interactions
+    private EDI_ItemInteractable2[] onHoverItemInteractablesEditors;   // the list of interactions
+
+    private bool showOnClickEditor = false;
+    private bool showOnHoverEditor = false;
+
+    private const float collectionButtonWidth = 180f;  // Width in pixels of the button for adding to the conditioAndReactions array.             
     private const float ownSpriteWidth        = 1 / 3f;
     private const float ownSpriteHight        = 1 / 3f;
     private const float spacing               = 1 / 5f;
@@ -34,164 +37,316 @@ public class EDI_Item2 : Editor
 
         sobjItem = (SOBJ_Item)target;
 
-        conditioAndReactionsProperty = serializedObject.FindProperty(conditioAndReactionsPropertyName);
-        spriteProperty = serializedObject.FindProperty(spritePropertyName);
+        saftyCache();
 
+        onClickConditioAndReactionsProperty = serializedObject.FindProperty(onClickConditioAndReactionsPropertyName);
+        onHovorConditioAndReactionsProperty = serializedObject.FindProperty(onHovorConditioAndReactionsPropertyName);
+        
+        spriteProperty               = serializedObject.FindProperty(spritePropertyName);
+
+    }
+
+    /// <summary>
+    /// Safty catches to avoid errors
+    /// </summary>
+    private void saftyCache()
+    {
         /* If there aren't any Conditions on the target, 
-       * create an empty array of Conditions.
-       */
-        if (sobjItem.conditioAndReactions == null)
+      * create an empty array of Conditions.
+      */
+        if (sobjItem.onClickConditionAndReactions == null)
         {
-            sobjItem.conditioAndReactions = new SOBJ_ItemInteractable[0];
+            sobjItem.onClickConditionAndReactions = new SOBJ_ItemInteractable[0];
+        }
+
+        if (sobjItem.onHoverConditionAndReactions == null)
+        {
+            sobjItem.onHoverConditionAndReactions = new SOBJ_ItemInteractable[0];
         }
 
 
         // If there aren't any editors, create them.
-        if (itemInteractablesEditors == null)
+        if (onClickItemInteractablesEditors == null)
         {
-            CreateEditors();
+            CreateEditors(CurentInteractions.CLICK);
         }
 
-    }
-    private void CreateEditors()
-    {
-        // Create a new array for the editors which is the same length at the conditions array.
-        itemInteractablesEditors = new EDI_ItemInteractable2[sobjItem.conditioAndReactions.Length];
-
-        // Go through all the empty array...
-        for (int i = 0; i < itemInteractablesEditors.Length; i++)
+        // If there aren't any editors, create them.
+        if (onHoverItemInteractablesEditors == null)
         {
-            // ... and create an editor with an editor type to display correctly.
-            itemInteractablesEditors[i] = CreateEditor(TryGetItemInteractionAt(i)) as EDI_ItemInteractable2;
-            itemInteractablesEditors[i].itemInteractableProperty = conditioAndReactionsProperty;
-            itemInteractablesEditors[i].paranteEditor = this;
+            CreateEditors(CurentInteractions.HOVER);
         }
     }
-  
+
+
 
     private void OnDisable()
     {
-        // Destroy all the editors.
-        for (int i = 0; i < itemInteractablesEditors.Length; i++)
+        if (onClickItemInteractablesEditors != null)
         {
-            DestroyImmediate(itemInteractablesEditors[i]);
+            // Destroy all the editors.
+            for (int i = 0; i < onClickItemInteractablesEditors.Length; i++)
+            {
+                DestroyImmediate(onClickItemInteractablesEditors[i]);
+            }
+
+            // Null out the editor array.
+            onClickItemInteractablesEditors = null;
         }
 
-        // Null out the editor array.
-        itemInteractablesEditors = null;
+        if (onHoverItemInteractablesEditors != null)
+        {
+            // Destroy all the editors.
+            for (int i = 0; i < onHoverItemInteractablesEditors.Length; i++)
+            {
+                DestroyImmediate(onHoverItemInteractablesEditors[i]);
+            }
+
+            // Null out the editor array.
+            onHoverItemInteractablesEditors = null;
+        }
+
+  
 
     }
 
     public override void OnInspectorGUI()
     {
-        serializedObject.Update();
-        //base.OnInspectorGUI();
+       // base.DrawDefaultInspector();
         CurentItem(EditorGUIUtility.currentViewWidth);
-        serializedObject.ApplyModifiedProperties();
-        serializedObject.Update();
-        DrawInteractableCollections();
-        serializedObject.ApplyModifiedProperties();
 
-    }
+      
 
+        EditorGUILayout.HelpBox("The itemInteractabel will be"+
+                                 "tested from top to bottom, if a reaction happesn " +
+                                 "will it stopp testing. So the order of them is important.",MessageType.Info);
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
 
-    private void DrawInteractableCollections()
-    { 
-        
-        
-        // Pull information from the target into the serializedObject.
-        serializedObject.Update();
-        if (itemInteractablesEditors.Length != TryGetItemInteractionsLength())
-        {
-            // Destroy all the old editors.
-            for (int i = 0; i < itemInteractablesEditors.Length; i++)
+        EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUI.indentLevel++;
+            showOnClickEditor = EditorGUILayout.Foldout(showOnClickEditor, "On click interactions", true);
+            if (showOnClickEditor)
             {
-                DestroyImmediate(itemInteractablesEditors[i]);
+                DrawInteractableCollections(CurentInteractions.CLICK);
+            }
+            EditorGUI.indentLevel--;
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
+        EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUI.indentLevel++;
+            showOnHoverEditor = EditorGUILayout.Foldout(showOnHoverEditor, "On hover interactions", true);
+            if (showOnHoverEditor)
+            {
+                DrawInteractableCollections(CurentInteractions.HOVER);
             }
 
-            // Create new editors.
-            CreateEditors();
-        }
-
-
-
-        // Display all of the itemInteractablesEditors.
-        for (int i = 0; i < itemInteractablesEditors.Length; i++)
-        {
-            itemInteractablesEditors[i].OnInspectorGUI();
-            EditorGUILayout.Space();
-        }
-
-        /* Create a right-aligned button which when clicked,
-         * creates a new ConditionCollection in the
-         * ConditionCollections array.
-         */
-        EditorGUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
-        if (GUILayout.Button("Add Item interactable", GUILayout.Width(collectionButtonWidth)))
-        {
-
-            AddItemInteractable("ItemInteraction" + sobjItem.conditioAndReactions.Length);
-            //conditioAndReactionsProperty.AddToObjectArray(newCollection);
-        }
-        EditorGUILayout.EndHorizontal();
-
-        /* Push information back to the target from the
-         * serializedObject.
-         */
-        serializedObject.ApplyModifiedProperties();
+            EditorGUI.indentLevel--;
+        EditorGUILayout.EndVertical();
     }
-
 
 
     /// <summary>
-    /// draws the image of that will reptrsetn 
-    /// this item in the inventory
+    /// Displays the property fieald for the selection 
+    /// of sprite to represent this item, also displays 
+    /// the sprite
     /// </summary>
     /// <param name="width"> width of the inventory box</param>
     private void CurentItem(float width)
     {
+        serializedObject.Update();
         EditorGUILayout.BeginVertical(GUI.skin.box);
-
-
-        EditorGUILayout.PropertyField(spriteProperty, GUIContent.none,
-                                                      GUILayout.Width(width * ownSpriteWidth));
-        if (sobjItem.sprite != null)
-        {
-            //  GUILayout.Box(sobjItem.sprite.texture, GUILayout.Width(width), GUILayout.Height(width * ownSpriteHight));
-            GUILayout.Box(sobjItem.sprite.texture, GUILayout.Width(width * ownSpriteWidth),
-                                                   GUILayout.Height(width * ownSpriteHight));
-        }
-
+            EditorGUILayout.PropertyField(spriteProperty, GUIContent.none,GUILayout.Width(width * ownSpriteWidth));
+            if (sobjItem.sprite != null)
+            {
+                GUILayout.Box(sobjItem.sprite.texture, GUILayout.Width(width * ownSpriteWidth), GUILayout.Height(width * ownSpriteHight));
+            }
         EditorGUILayout.EndVertical();
+        serializedObject.ApplyModifiedProperties();
     }
 
-    private void AddItemInteractable(string description)
+    /// <summary>
+    /// Displays teh editors for the SOBJ_intemInteractalbes
+    /// </summary>
+    private void DrawInteractableCollections(CurentInteractions type)
+    {
+        serializedObject.Update();
+        EditorGUILayout.BeginVertical();
+
+            uppdateEditorArray(type);
+            runThrougTheEditors(type);
+
+            /* Create a right-aligned button which when clicked,
+            * creates a new ConditionCollection in the
+            * ConditionCollections array.
+            */
+            EditorGUILayout.BeginHorizontal();
+                GUILayout.FlexibleSpace();
+                if (GUILayout.Button("Add "+type+" Item interactable", GUILayout.Width(collectionButtonWidth)))
+                {
+                    int number = (type == CurentInteractions.CLICK) ? sobjItem.onClickConditionAndReactions.Length : sobjItem.onHoverConditionAndReactions.Length;
+                    AddItemInteractable("ItemInteraction" + number, type);
+                }
+
+            EditorGUILayout.EndHorizontal();
+        EditorGUILayout.EndVertical();
+        serializedObject.ApplyModifiedProperties();
+    }
+
+    /// <summary>
+    /// run throug all the edditors
+    /// </summary>
+    /// <param name="type"></param>
+    private void uppdateEditorArray(CurentInteractions type)
+    {
+        if (type == CurentInteractions.CLICK)
+        {
+            // Updates the SOBJ_itemInteractabel editors array
+            if (onClickItemInteractablesEditors.Length != TryGetItemInteractionsLength(type))
+            {
+                // Destroy all the old editors.
+                for (int i = 0; i < onClickItemInteractablesEditors.Length; i++)
+                {
+                    DestroyImmediate(onClickItemInteractablesEditors[i]);
+                }
+
+                // Create new editors.
+                CreateEditors(type);
+            }
+        }
+        else
+        {
+            // Updates the SOBJ_itemInteractabel editors array
+            if (onHoverItemInteractablesEditors.Length != TryGetItemInteractionsLength(type))
+            {
+                // Destroy all the old editors.
+                for (int i = 0; i < onHoverItemInteractablesEditors.Length; i++)
+                {
+                    DestroyImmediate(onHoverItemInteractablesEditors[i]);
+                }
+
+                // Create new editors.
+                CreateEditors(type);
+            }
+        }
+    }
+    
+    /// <summary>
+    /// run throug all the edditors
+    /// </summary>
+    /// <param name="type"></param>
+    private void runThrougTheEditors(CurentInteractions type)
+    {
+        if (type == CurentInteractions.CLICK)
+        {
+            // Display all of the itemInteractablesEditors.
+            for (int i = 0; i < onClickItemInteractablesEditors.Length; i++)
+            {
+                onClickItemInteractablesEditors[i].OnInspectorGUI();
+                EditorGUILayout.Space();
+            }
+        }
+        else
+        {
+            // Display all of the itemInteractablesEditors.
+            for (int i = 0; i < onHoverItemInteractablesEditors.Length; i++)
+            {
+                onHoverItemInteractablesEditors[i].OnInspectorGUI();
+                EditorGUILayout.Space();
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// Caches the itemInteractavles editors
+    /// </summary>
+    private void CreateEditors(CurentInteractions type)
+    {
+        if (type == CurentInteractions.CLICK)
+        {
+            // Create a new array for the editors which is the same length at the conditions array.
+            onClickItemInteractablesEditors = new EDI_ItemInteractable2[sobjItem.onClickConditionAndReactions.Length];
+
+            // Go through all the empty array...
+            for (int i = 0; i < onClickItemInteractablesEditors.Length; i++)
+            {
+                // ... and create an editor with an editor type to display correctly.
+                onClickItemInteractablesEditors[i]                          = CreateEditor(TryGetItemInteractionAt(i, type)) as EDI_ItemInteractable2;
+                onClickItemInteractablesEditors[i].itemInteractableProperty = onClickConditioAndReactionsProperty;
+                onClickItemInteractablesEditors[i].paranteEditor            = this;
+                onClickItemInteractablesEditors[i].type                     = type;
+            }
+        }
+        else
+        {
+            // Create a new array for the editors which is the same length at the conditions array.
+            onHoverItemInteractablesEditors = new EDI_ItemInteractable2[sobjItem.onHoverConditionAndReactions.Length];
+
+            // Go through all the empty array...
+            for (int i = 0; i < onHoverItemInteractablesEditors.Length; i++)
+            {
+                // ... and create an editor with an editor type to display correctly.
+                onHoverItemInteractablesEditors[i]                          = CreateEditor(TryGetItemInteractionAt(i, type)) as EDI_ItemInteractable2;
+                onHoverItemInteractablesEditors[i].itemInteractableProperty = onHovorConditioAndReactionsProperty;
+                onHoverItemInteractablesEditors[i].paranteEditor            = this;
+                onHoverItemInteractablesEditors[i].type                     = type;
+            }
+        }
+
+    }
+
+    /// <summary>
+    /// Creates and adds a "conditioncollection" 
+    /// </summary>
+    /// <param name="description"> the name to give the new itemInteraction</param>
+    private void AddItemInteractable(string description, CurentInteractions type)
     {
 
         // Create a condition based on the description.
-        SOBJ_ItemInteractable newCondition = CreateInstance<SOBJ_ItemInteractable>();
-        // SOBJ_ConditionAdvanced newCondition = EDI_ConditionAdvanced.CreateCondition();
+        SOBJ_ItemInteractable newInteractable = CreateInstance<SOBJ_ItemInteractable>();
+        
         // The name is what is displayed by the asset so set that too.
-        newCondition.name = description;
-        newCondition.description = "New interaction";
+        newInteractable.name        = description;
+        newInteractable.description = "New interaction";
 
         // Record all operations on the newConditions so they can be undone.
-        Undo.RecordObject(newCondition, "Created new SOBJ_ItemInteractable");
+        Undo.RecordObject(newInteractable, "Created new SOBJ_ItemInteractable");
 
         // Attach the Condition to the AllConditions asset.
-        AssetDatabase.AddObjectToAsset(newCondition, sobjItem);
+        AssetDatabase.AddObjectToAsset(newInteractable, sobjItem);
+        AssetDatabase.GetDependencies(AssetDatabase.GetAssetPath(sobjItem));
 
-        //// Import the asset so it is recognised as a joined asset.
-        AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(newCondition));
+        // Import the asset so it is recognised as a joined asset.
+        AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(newInteractable));
 
-        //// Add the Condition to the AllConditions array.
-        ArrayUtility.Add(ref sobjItem.conditioAndReactions, newCondition);
+        if (type == CurentInteractions.CLICK)
+        {
+            // Add the Condition to the AllConditions array.
+            ArrayUtility.Add(ref sobjItem.onClickConditionAndReactions, newInteractable);
+        }
+        else
+        {
+            // Add the Condition to the AllConditions array.
+            ArrayUtility.Add(ref sobjItem.onHoverConditionAndReactions, newInteractable);
+        }
 
-        //// Mark the AllConditions asset as dirty so the editor knows to save changes to it when a project save happens.
+
+        /*Mark the AllConditions asset as dirty so
+         * the editor knows to save changes to it 
+         * when a project save happens.
+         */ 
         EditorUtility.SetDirty(sobjItem);
     }
-    public void RemoveItemInteractable(SOBJ_ItemInteractable itemInteraction)
+
+    /// <summary>
+    /// Deletets and Removes a itemIteractrable
+    /// </summary>
+    /// <param name="itemInteraction"> the thing to remove</param>
+    public void RemoveItemInteractable(SOBJ_ItemInteractable itemInteraction, CurentInteractions type)
     {
       
 
@@ -200,8 +355,17 @@ public class EDI_Item2 : Editor
          */
         Undo.RecordObject(sobjItem, "Removing SOBJ_ItemInteractable");
 
-        // Remove the specified condition from the AllConditions array.
-        ArrayUtility.Remove(ref sobjItem.conditioAndReactions, itemInteraction);
+        if(type == CurentInteractions.CLICK)
+        {
+            // Remove the specified condition from the on click interaction array.
+            ArrayUtility.Remove(ref sobjItem.onClickConditionAndReactions, itemInteraction);
+        }
+        else
+        {
+            // Remove the specified condition from the on hover interaction array.
+            ArrayUtility.Remove(ref sobjItem.onHoverConditionAndReactions, itemInteraction);
+        }
+
 
         /* Destroy the condition, including it's asset and 
          * save the assets to recognise the change.
@@ -216,10 +380,20 @@ public class EDI_Item2 : Editor
 
     }
 
-    private SOBJ_ItemInteractable TryGetItemInteractionAt(int index)
+    /// <summary>
+    /// Attemts to get the itemInteractable from teh array
+    /// </summary>
+    /// <param name="index"> the index of the item to get</param>
+    /// <returns>null: the array or item was null | 
+    /// returns the first object in the list if it was wanted 
+    /// or if the indix thas greter then the arrays length
+    /// | else return the wanted indez</returns>
+    private SOBJ_ItemInteractable TryGetItemInteractionAt(int index, CurentInteractions type)
     {
+      
         // Cache the AllConditions array.
-        SOBJ_ItemInteractable[] itemInteractions = sobjItem.conditioAndReactions;
+        SOBJ_ItemInteractable[] itemInteractions = (type == CurentInteractions.CLICK) ? sobjItem.onClickConditionAndReactions : sobjItem.onHoverConditionAndReactions;
+
 
         // If it doesn't exist or there are null elements, return null.
         if (itemInteractions == null || itemInteractions[0] == null)
@@ -236,18 +410,42 @@ public class EDI_Item2 : Editor
 
         // Otherwise return the Condition at the given index.
         return itemInteractions[index];
+
     }
-    private int TryGetItemInteractionsLength()
+
+    /// <summary>
+    /// Attemts to the the length of the 
+    /// itemInteractables array
+    /// </summary>
+    /// <returns>0: if array is null ellers return length</returns>
+    private int TryGetItemInteractionsLength(CurentInteractions type)
     {
-        // If there is no Conditions array, return a length of 0.
-        if (sobjItem.conditioAndReactions == null)
+        if(type == CurentInteractions.CLICK)
         {
-            return 0;
+            // If there is no Conditions array, return a length of 0.
+            if (sobjItem.onClickConditionAndReactions == null)
+            {
+                return 0;
+            }
+
+
+            // Otherwise return the length of the array.
+            return sobjItem.onClickConditionAndReactions.Length;
         }
+        else
+        { 
+            // If there is no Conditions array, return a length of 0.
+            if (sobjItem.onHoverConditionAndReactions == null)
+            {
+                return 0;
+            }
 
 
-        // Otherwise return the length of the array.
-        return sobjItem.conditioAndReactions.Length;
+            // Otherwise return the length of the array.
+            return sobjItem.onHoverConditionAndReactions.Length;
+
+        }
+       
     }
 
 

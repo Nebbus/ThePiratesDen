@@ -5,6 +5,7 @@
 public abstract class SOBJ_Reaction : ScriptableObject
 {
 
+ 
 
     /// <summary>
     /// used to find this item in the itemÍnteraction

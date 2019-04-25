@@ -19,9 +19,12 @@ public abstract class SOBJ_DelayedReaction : SOBJ_Reaction
     public new void Init()
     {
         wait = new WaitForSeconds(delay);
-
+        
         SpecificInit();
     }
+
+    
+
 
     /// <summary>
     /// This function 'hides' the React function from the Reaction class.

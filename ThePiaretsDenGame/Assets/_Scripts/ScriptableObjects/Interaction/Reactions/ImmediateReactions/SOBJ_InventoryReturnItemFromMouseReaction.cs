@@ -15,6 +15,6 @@ public class SOBJ_InventoryReturnItemFromMouseReaction : SOBJ_Reaction
     protected override void ImmediateReaction()
     {
         monoInventory.ReturnToInventory(MONO_itemGradFromTheInventory.instance.getSetIndex);
-        MONO_itemGradFromTheInventory.instance.ReturnItemToInventory();
+    
     }
 }

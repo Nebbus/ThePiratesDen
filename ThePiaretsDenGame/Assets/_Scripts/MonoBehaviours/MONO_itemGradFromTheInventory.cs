@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 /// <summary>
 /// This is a singleton 
@@ -9,17 +10,14 @@ using UnityEngine.UI;
 public class MONO_itemGradFromTheInventory : MonoBehaviour
 {
     public static MONO_itemGradFromTheInventory instance;
-    public MONO_Inventory           monoInventory;
-
-
+    
     [Tooltip("Should be the null item at the start" +
-        "(a empty item thet represents null)")]
+            "(a empty item thet represents null)")]
     public SOBJ_Item currentItem = null;
  
-    public Image     currentItemImage;
-    private int      currentItemInventoryIndex;
+    public Image currentItemImage;
+    private int  currentItemInventoryIndex;
     private bool holding = false;
-
 
     private SOBJ_Item nullStartItem;
 
@@ -35,14 +33,22 @@ public class MONO_itemGradFromTheInventory : MonoBehaviour
         }
     }
 
+    public bool isHoldingItem
+    {
+        get
+        {
+            return currentItem.getHash != nullStartItem.getHash;
+        }
+    }
+
+
     public void Start()
     {
-
+       
         if( instance == null)
         {
-            instance = this;
+            instance      = this;
             nullStartItem = currentItem;
-            monoInventory = FindObjectOfType<MONO_Inventory>();
         }
         else
         {
@@ -51,32 +57,45 @@ public class MONO_itemGradFromTheInventory : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Sets the item that is holded for the movment,
+    /// is caled from te MONO_Inventory script
+    /// </summary>
+    /// <param name="item"> item thats grabbed</param>
+    /// <param name="sprite"> the items sprite</param>
+    /// <param name="index"> the array index of the item in MONO_Inventory,
+    /// will ve used to return the item to the inventory later </param>
     public void GrabdItem(SOBJ_Item item, Sprite sprite, int index)
     {
         currentItem                 = item;
         currentItemImage.sprite     = sprite;
         currentItemImage.enabled    = true;
-        currentItemInventoryIndex   = index;
         holding                     = true;
+        getSetIndex                 = index;
+
     }
 
+    /// <summary>
+    /// This class only removes the item from teh mous,
+    /// it wont remove it, it cald from MONO_inventory
+    /// and from the reaction SOBJ_MouseRemoveGrabedObject
+    /// </summary>
     public void ReturnItemToInventory()
     {
         currentItem               = nullStartItem;
         currentItemImage.sprite   = null;
         currentItemImage.enabled  = false;
         holding                   = false;
-        currentItemInventoryIndex = -1;
+        getSetIndex               = -1;
     }
 
 
     void Update ()
     {
-     
+     // makes the image follow the mouse
         transform.position =  Input.mousePosition;
 
-	}
-
+    }
 
   
 }

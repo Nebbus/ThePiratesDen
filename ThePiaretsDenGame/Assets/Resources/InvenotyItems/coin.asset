@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Name: coin
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: be11ca0eaba3a8d4eb2b4478733ba9d9, type: 3}
-  conditioAndReactions:
-  - {fileID: 114963021856390168}
-  - {fileID: 114143849444167490}
-  - {fileID: 114262852233672480}
---- !u!114 &114004378262028780
+  onClickConditionAndReactions:
+  - {fileID: 114555959369379196}
+  - {fileID: 114516115259994482}
+  - {fileID: 114605070514398886}
+  onHoverConditionAndReactions: []
+--- !u!114 &114114253721486418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -28,44 +29,11 @@ MonoBehaviour:
   m_Name: SOBJ_MouseHoldingItemCondition
   m_EditorClassIdentifier: 
   description: PickedUpCoin
-  satisfied: 0
+  satisfied: 1
   hash: 514706441
-  requierdHoldingItem: {fileID: 11400000}
---- !u!114 &114143849444167490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
-  m_Name: ItemInteraction1
-  m_EditorClassIdentifier: 
-  description: Combind whit classes to make fish
-  requiredConditions:
-  - {fileID: 114598491839009330}
-  itemInteractionReactions:
-  - {fileID: 114906390568253568}
-  - {fileID: 114542716384387544}
-  - {fileID: 114880598900181526}
-  - {fileID: 114901161981362678}
---- !u!114 &114262852233672480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
-  m_Name: ItemInteraction2
-  m_EditorClassIdentifier: 
-  description: returnera det holda itemet
-  requiredConditions:
-  - {fileID: 114004378262028780}
-  itemInteractionReactions: []
---- !u!114 &114500099090813360
+  requierdHoldingItem: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee,
+    type: 2}
+--- !u!114 &114195968888643608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -81,7 +49,39 @@ MonoBehaviour:
   hash: 514706441
   requierdHoldingItem: {fileID: 11400000, guid: fbfcbf14d69c2884f9c900f6d2182593,
     type: 2}
---- !u!114 &114542716384387544
+--- !u!114 &114213760692984550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c479e1ed7f8b945b767b748c326f37, type: 3}
+  m_Name: SOBJ_InventoryGrabItemToMouseReaction
+  m_EditorClassIdentifier: 
+  itemToGrab: {fileID: 11400000}
+--- !u!114 &114516115259994482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction1
+  m_EditorClassIdentifier: 
+  description: Combind
+  requiredConditions:
+  - {fileID: 114114253721486418}
+  itemInteractionReactions:
+  - {fileID: 114555043298761790}
+  - {fileID: 114958929177763302}
+  - {fileID: 114762739115784182}
+  - {fileID: 114767736077282388}
+  - {fileID: 114822606066612030}
+--- !u!114 &114555043298761790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -93,8 +93,51 @@ MonoBehaviour:
   m_Name: SOBJ_InventoryLostItemRection
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 987af89bf4ca51e42b42873f3dd85f80, type: 2}
---- !u!114 &114598491839009330
+  item: {fileID: 11400000}
+--- !u!114 &114555959369379196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction0
+  m_EditorClassIdentifier: 
+  description: pick me upp
+  requiredConditions:
+  - {fileID: 114195968888643608}
+  itemInteractionReactions:
+  - {fileID: 114213760692984550}
+--- !u!114 &114605070514398886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction2
+  m_EditorClassIdentifier: 
+  description: put back
+  requiredConditions:
+  - {fileID: 114761702933759394}
+  itemInteractionReactions:
+  - {fileID: 114689040119891570}
+--- !u!114 &114689040119891570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741707cadc093f64d8fed8cf536190d2, type: 3}
+  m_Name: SOBJ_InventoryReturnItemFromMouseReaction
+  m_EditorClassIdentifier: 
+--- !u!114 &114761702933759394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -108,21 +151,8 @@ MonoBehaviour:
   description: PickedUpCoin
   satisfied: 1
   hash: 514706441
-  requierdHoldingItem: {fileID: 11400000, guid: 987af89bf4ca51e42b42873f3dd85f80,
-    type: 2}
---- !u!114 &114748488964896872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7c479e1ed7f8b945b767b748c326f37, type: 3}
-  m_Name: SOBJ_InventoryGrabItemToMouseReaction
-  m_EditorClassIdentifier: 
-  itemToGrab: {fileID: 11400000}
---- !u!114 &114880598900181526
+  requierdHoldingItem: {fileID: 11400000}
+--- !u!114 &114762739115784182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -134,8 +164,19 @@ MonoBehaviour:
   m_Name: SOBJ_InventoryPickedUpItemReaction
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: f5a7dda76c96edc419718e9499598bb5, type: 2}
---- !u!114 &114901161981362678
+  item: {fileID: 11400000, guid: a181ab8623c252142a8d9c7e03e77322, type: 2}
+--- !u!114 &114767736077282388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6ef1872a2268948b2283a0ef0761dc, type: 3}
+  m_Name: SOBJ_MouseRemoveGrabedItem
+  m_EditorClassIdentifier: 
+--- !u!114 &114822606066612030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -148,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onShotEvent: event:/Characters/Player/Player_Interact/Player_Combine
   theSorceOftheOneShot: {fileID: 0}
---- !u!114 &114906390568253568
+--- !u!114 &114958929177763302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -160,20 +201,4 @@ MonoBehaviour:
   m_Name: SOBJ_InventoryLostItemRection
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000}
---- !u!114 &114963021856390168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
-  m_Name: ItemInteraction0
-  m_EditorClassIdentifier: 
-  description: Pick up this item
-  requiredConditions:
-  - {fileID: 114500099090813360}
-  itemInteractionReactions:
-  - {fileID: 114748488964896872}
+  item: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee, type: 2}

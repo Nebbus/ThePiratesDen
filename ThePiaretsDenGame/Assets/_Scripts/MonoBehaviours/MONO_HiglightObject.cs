@@ -18,6 +18,7 @@ public class MONO_HiglightObject : MonoBehaviour {
     public float time = 10f;
     private float lastTime;
 
+    public bool showOnMouseOver = false;
 
     public Color originalFer;
 
@@ -44,24 +45,32 @@ public class MONO_HiglightObject : MonoBehaviour {
     }
 
 
-  /*  private void OnMouseOver()
+   private void OnMouseOver()
     {
-
-        lookingAtObject = true;
-        if(startedFlash == false)
+        if (showOnMouseOver)
         {
-            startedFlash = true;
-      
-            curentFlash = StartCoroutine(FlashObject());
+            lookingAtObject = true;
+            if (startedFlash == false)
+            {
+                startedFlash = true;
+
+                curentFlash = StartCoroutine(FlashObject());
+            }
         }
+
     }
     private void OnMouseExit()
     {
-        startedFlash = false;
-        lookingAtObject = false;
-        StopCoroutine(curentFlash);
-        selectedObject.GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 255);
-    }*/
+        if (showOnMouseOver)
+        {
+            startedFlash = false;
+            lookingAtObject = false;
+            StopCoroutine(curentFlash);
+            selectedObject.GetComponent<Renderer>().material.color = new Color32(255, 255, 255, 255);
+
+        }
+
+    }
 
 
     public void startFlashing()
@@ -75,10 +84,10 @@ public class MONO_HiglightObject : MonoBehaviour {
             originalFer = selectedObject.GetComponent<Renderer>().material.color;
         }
         
-        startedFlash = true;
+        startedFlash    = true;
         lookingAtObject = true;
-        lastTime = Time.realtimeSinceStartup;
-        curentFlash = StartCoroutine(FlashObject());
+        lastTime        = Time.realtimeSinceStartup;
+        curentFlash     = StartCoroutine(FlashObject());
     }
     public void StopFlashing()
     {
@@ -89,11 +98,16 @@ public class MONO_HiglightObject : MonoBehaviour {
         if (selectedObject.GetComponent<Renderer>() == null)
         {
             selectedObject.GetComponent<Image>().material.color = originalFer;
+
         }
         else
         {
             selectedObject.GetComponent<Renderer>().material.color = originalFer;
         }
+        strengt = 255;
+        redCol = strengt;
+        blueCol = strengt;
+        greenCol = strengt;
 
     }
 
@@ -112,10 +126,10 @@ public class MONO_HiglightObject : MonoBehaviour {
                 }
                 else
                 {
-                    strengt -= 25;
-                    redCol = strengt;
-                    blueCol = strengt;
-                    greenCol = strengt;
+                    strengt     -= 25;
+                    redCol      = strengt;
+                    blueCol     = strengt;
+                    greenCol    = strengt;
                 }
             }
             

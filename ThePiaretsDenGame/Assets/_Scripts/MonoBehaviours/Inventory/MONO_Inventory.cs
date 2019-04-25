@@ -1,29 +1,48 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-
-
+using UnityEngine.EventSystems;
+using System.Collections;
 
 public class MONO_Inventory : MonoBehaviour {
-
-    
-
-
 
     [Tooltip("The object that gas the Grid Layout Group on it, it will have all items as children")]
     public GameObject inventoryGroup;
     [SerializeField]
     private GameObject inventoryImage;
+    private Image inventoryDetectionImage; // used to sence then the mous is over the open inventory ( is trancparent)
 
     public Image[]      invetoryItemsImages = new Image[numberItemSlots];
     public SOBJ_Item[]  invetoryItems       = new SOBJ_Item[numberItemSlots];
     public GameObject[] inventorySlots      = new GameObject[numberItemSlots];
 
-
     public static int numberItemSlots = 0;
 
+    // for handeling the closing of the invenory after item is draged out
+    private GraphicRaycaster m_Raycaster;
+    private EventSystem      m_EventSystem;
+
+    private WaitForSeconds   wait; // Storing the wait created from the delay so it doesn't need to be created each time.
+    public float waitDelay;
+    private bool timerStarted = false;
+    private Coroutine curentTimer;
+
+    private bool startdFlashing = false;
+
     private bool HandleInput = true;
-    
+
+
+    private void Start()
+    {
+        inventoryDetectionImage = GetComponent<Image>();
+        m_Raycaster             = FindObjectOfType<GraphicRaycaster>();
+        m_EventSystem           = FindObjectOfType<EventSystem>();
+        wait                    = new WaitForSeconds(waitDelay);
+    }
+
+    /// <summary>
+    /// Handel clicks on the inventory
+    /// </summary>
     public void HandleInventoryClick()
     {
         if (HandleInput)
@@ -42,14 +61,17 @@ public class MONO_Inventory : MonoBehaviour {
 
     public void ShowInventory()
     {
+        StopPickUpReaction();
         inventoryGroup.SetActive(true);
         inventoryImage.SetActive(true);
+        inventoryDetectionImage.enabled = true;
     }
 
     public void HideInventory()
     {
         inventoryGroup.SetActive(false);
         inventoryImage.SetActive(false);
+        inventoryDetectionImage.enabled = false;
     }
 
  
@@ -77,7 +99,7 @@ public class MONO_Inventory : MonoBehaviour {
                 invetoryItems[i]               = itemToAdd;
                 invetoryItemsImages[i].sprite  = itemToAdd.sprite;
                 invetoryItemsImages[i].enabled = true;
-                inventorySlots[i].GetComponent<MONO_InventoryItemLogic>().hashCode = itemToAdd.getHash;
+                inventorySlots[i].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = itemToAdd.getHash;
                 PickUpReaction();
                 return;
              }
@@ -98,7 +120,7 @@ public class MONO_Inventory : MonoBehaviour {
                 invetoryItems[i]                = null;
                 invetoryItemsImages[i].sprite   = null;
                 invetoryItemsImages[i].enabled  = false;
-                inventorySlots[i].GetComponent<MONO_InventoryItemLogic>().hashCode = -1;
+                inventorySlots[i].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = -1;
                  return;
              }
 
@@ -117,24 +139,13 @@ public class MONO_Inventory : MonoBehaviour {
             invetoryItems[itemToRemoveIndex]               = null;
             invetoryItemsImages[itemToRemoveIndex].sprite  = null;
             invetoryItemsImages[itemToRemoveIndex].enabled = false;
-            inventorySlots[itemToRemoveIndex].GetComponent<MONO_InventoryItemLogic>().hashCode = -1;
+            inventorySlots[itemToRemoveIndex].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = -1;
         }
 
     }
 
 
-    /// <summary>
-    /// Sets the value of the item that the pointer is holdin
-    /// </summary>
-    /// <param name="itemIndex">index of item to grabe</param>
-    //public void GrabItem(int itemIndex)
-    //{
-    //    if (invetoryItemsImages[itemIndex].sprite != null && itemIndex < invetoryItems.Length && itemIndex > (-1))
-    //    {
-    //        MONO_itemGradFromTheInventory.instance.GrabdItem(invetoryItems[itemIndex], invetoryItemsImages[itemIndex].sprite, itemIndex);
-    //        invetoryItemsImages[itemIndex].enabled = false;
-    //    }
-    //}
+
     /// <summary>
     /// Set item hold by the mouspinter
     /// </summary>
@@ -169,9 +180,14 @@ public class MONO_Inventory : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// gets a item form the inventory
+    /// </summary>
+    /// <param name="hash"> the hash of the itenm</param>
+    /// <returns> returns null if the item isent in the inventory</returns>
     public SOBJ_Item GetItem(int hash)
     {
-
+       
         int itemIndex = -1;
 
         //gets the right index for the item
@@ -196,48 +212,96 @@ public class MONO_Inventory : MonoBehaviour {
     }
 
 
-
     /// <summary>
-    /// Activates the items that was holded by the mouse pointer
+    /// Activates the items that was holded by the mouse pointer,
+    /// allso nulls the item on the mouse
     /// </summary>
     /// <param name="itemIndex"></param>
     public void ReturnToInventory(int itemIndex)
     {
-     
         if (itemIndex < invetoryItems.Length && itemIndex > (-1))
         {
             invetoryItemsImages[itemIndex].enabled = true;
         }
+        MONO_itemGradFromTheInventory.instance.ReturnItemToInventory();
     }
 
 
     /// <summary>
-    /// Combinds to inventory object intwo a new, dose it by 
-    /// removing the towitems and crating the new one
+    /// starts the picked upp indication
     /// </summary>
-    /// <param name="hashPartOne"></param>
-    /// <param name="hashPartTwo"></param>
-    /// <param name="result"></param>
-    public void combindeItems(int indexPartOne, int indexPartTwo, SOBJ_Item result)
-    {
-        RemoveItem(indexPartOne);
-        RemoveItem(indexPartTwo);
-        AddItem(result);
-    }
-
-   
-
-
-
     private void PickUpReaction()
     {
-        this.GetComponent<MONO_HiglightObject>().startFlashing();
+        if (!startdFlashing)
+        {
+            startdFlashing = true;
+            this.GetComponent<MONO_HiglightObject>().startFlashing();
+        }
+
     }
 
-    private void OnMouseEnter()
+    /// <summary>
+    /// to sto the flashing then teh inventory is opend
+    /// </summary>
+    private void StopPickUpReaction()
     {
-     
+        if (startdFlashing)
+        {
+            startdFlashing = false;
+            this.GetComponent<MONO_HiglightObject>().StopFlashing();
+        }
+
     }
 
+
+
+    private void Update()
+    {
+        if (MONO_itemGradFromTheInventory.instance.isHoldingItem)
+        {
+            if (wait != null)
+                if (!raycast())
+                {
+                    if (!timerStarted)
+                    {
+                        timerStarted = true;
+                        curentTimer = StartCoroutine(ReactCoroutine());
+                    }
+
+                }
+                else if (timerStarted)
+                {
+                    StopCoroutine(curentTimer);
+                    timerStarted = false;
+                }
+        }
+       
+    }
+
+    private bool raycast()
+    {
+        List<RaycastResult> results = EXT_GraphicalRayCast.GrapphicRayCast(m_Raycaster, m_EventSystem);
+
+        //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject.name == this.gameObject.name)
+            {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+
+
+    private IEnumerator ReactCoroutine()
+    {
+        // Wait for the specified time.
+        yield return wait;
+
+        HideInventory();
+    }
 
 }

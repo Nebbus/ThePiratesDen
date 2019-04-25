@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class SOBJ_ItemInteractable : ScriptableObject
 {
+    // Description of the ConditionCollection.  This is used purely for identification in the inspector.
+    public string description;                                 
+    public SOBJ_ConditionAdvanced[] requiredConditions       = new SOBJ_ConditionAdvanced[0];   // Array of all the Conditions
+    public SOBJ_Reaction[]          itemInteractionReactions = new SOBJ_Reaction[0];            // Array of all the Reactions to play when React is called.
 
-    public string description;                                 // Description of the ConditionCollection.  This is used purely for identification in the inspector.
-    public SOBJ_ConditionAdvanced[] requiredConditions = new SOBJ_ConditionAdvanced[0]; // Array of all the Conditions
-    public SOBJ_Reaction[]          itemInteractionReactions = new SOBJ_Reaction[0];         // Array of all the Reactions to play when React is called.
-
+    /// <summary>
+    /// Funktion thet inizilising all the reactions
+    /// </summary>
     public void InitReactions()
     {
         // Go through all the Reactions and call their Init function.
@@ -23,7 +26,6 @@ public class SOBJ_ItemInteractable : ScriptableObject
 
             if (delayedReaction)
             {
-                Debug.Log(delayedReaction.name);
                 delayedReaction.Init();
             }
             else
@@ -35,9 +37,13 @@ public class SOBJ_ItemInteractable : ScriptableObject
     }
 
     // This is called when the player arrives at the interactionLocation.
-    public void Interact(MonoBehaviour caller)
+    /// <summary>
+    /// Starts a interactions
+    /// </summary>
+    /// <param name="caller">the monovehavor cald for the interaction</param>
+    public bool Interact(MonoBehaviour caller)
     {
-        CheckAndReact(caller);
+       return CheckAndReact(caller);
 
     }
 
@@ -66,6 +72,11 @@ public class SOBJ_ItemInteractable : ScriptableObject
         return true;
     }
 
+
+    /// <summary>
+    /// Runs throug and all the reactions
+    /// </summary>
+    /// <param name="caller">the monovehavor cald for the interaction</param>
     private void React(MonoBehaviour caller)
     {
         // Go through all the Reactions and call their React function.

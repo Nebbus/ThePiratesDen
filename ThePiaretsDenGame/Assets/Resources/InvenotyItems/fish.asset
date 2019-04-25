@@ -12,9 +12,72 @@ MonoBehaviour:
   m_Name: fish
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300002, guid: 4944c65a03c70b54a9c2b020aaaae283, type: 3}
-  conditioAndReactions:
-  - {fileID: 114788577150790980}
---- !u!114 &114434089946282304
+  onClickConditionAndReactions:
+  - {fileID: 114129571891506042}
+  - {fileID: 114254402419553398}
+  onHoverConditionAndReactions:
+  - {fileID: 114170188604815528}
+--- !u!114 &114117596258037370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneSHot_FMOD
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/Drawer_Pull
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114129571891506042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction0
+  m_EditorClassIdentifier: 
+  description: Pick upp
+  requiredConditions:
+  - {fileID: 114452976829325134}
+  itemInteractionReactions:
+  - {fileID: 114234829305540198}
+--- !u!114 &114170188604815528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction0
+  m_EditorClassIdentifier: 
+  description: 'On HOVER '
+  requiredConditions:
+  - {fileID: 114697087091114854}
+  itemInteractionReactions:
+  - {fileID: 114117596258037370}
+--- !u!114 &114196400570899522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 1
+  hash: 514706441
+  requierdHoldingItem: {fileID: 11400000}
+--- !u!114 &114234829305540198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -26,20 +89,7 @@ MonoBehaviour:
   m_Name: SOBJ_InventoryGrabItemToMouseReaction
   m_EditorClassIdentifier: 
   itemToGrab: {fileID: 11400000}
---- !u!114 &114535091721688304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe928d60a0a4fa14ba2fd39a7bc625cd, type: 3}
-  m_Name: SOBJ_InventoryLostItemRection
-  m_EditorClassIdentifier: 
-  delay: 0
-  item: {fileID: 0}
---- !u!114 &114788577150790980
+--- !u!114 &114254402419553398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -48,14 +98,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
-  m_Name: ItemInteraction0
+  m_Name: ItemInteraction1
   m_EditorClassIdentifier: 
-  description: pick up me
+  description: Place back
   requiredConditions:
-  - {fileID: 114850519422707650}
+  - {fileID: 114196400570899522}
   itemInteractionReactions:
-  - {fileID: 114434089946282304}
---- !u!114 &114850519422707650
+  - {fileID: 114874512339321072}
+--- !u!114 &114452976829325134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -71,3 +121,30 @@ MonoBehaviour:
   hash: 514706441
   requierdHoldingItem: {fileID: 11400000, guid: fbfcbf14d69c2884f9c900f6d2182593,
     type: 2}
+--- !u!114 &114697087091114854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 1
+  hash: 514706441
+  requierdHoldingItem: {fileID: 11400000, guid: fbfcbf14d69c2884f9c900f6d2182593,
+    type: 2}
+--- !u!114 &114874512339321072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741707cadc093f64d8fed8cf536190d2, type: 3}
+  m_Name: SOBJ_InventoryReturnItemFromMouseReaction
+  m_EditorClassIdentifier: 

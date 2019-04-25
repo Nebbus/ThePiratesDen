@@ -28,8 +28,6 @@ public class EDI_ReactionCollection : EDI_EditorWithSubEditors<EDI_Reaction, SOB
     // Caching the vertical spacing between GUI elements.
     private readonly float verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
 
-
-
     private void OnEnable()
     {
         // Cache the target.
@@ -77,7 +75,7 @@ public class EDI_ReactionCollection : EDI_EditorWithSubEditors<EDI_Reaction, SOB
         // Display all the Reactions.
         for (int i = 0; i < subEditors.Length; i++)
         {
-            subEditors[i].OnInspectorGUI();
+            subEditors[i].OnReactionCollectionGUI();
         }
 
         // If there are Reactions, add a space.

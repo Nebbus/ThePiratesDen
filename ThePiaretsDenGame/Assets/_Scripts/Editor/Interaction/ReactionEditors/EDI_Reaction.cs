@@ -4,8 +4,9 @@ using UnityEditor;
 
 public abstract class EDI_Reaction : Editor
 {
-    public bool showReaction;                       // Is the Reaction editor expanded?
+    private bool showReaction;                       // Is the Reaction editor expanded?
     public SerializedProperty reactionsProperty;    // Represents the SerializedProperty of the array the target belongs to.
+
 
     public EDI_ItemInteractable2 parentEditor = null;  // not null if the reaction is in a itemInteractable
 
@@ -35,9 +36,68 @@ public abstract class EDI_Reaction : Editor
     /// </summary>
     protected virtual void Init() { }
 
-
-    public override void OnInspectorGUI()
+    /// <summary>
+    /// Displays the edistor then reaction
+    /// is in MONO_ReactionCollection
+    /// </summary>
+    public  void OnReactionCollectionGUI()
     {
+        // Pull data from the target into the serializedObject.
+        serializedObject.Update();
+
+        EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUI.indentLevel++;
+
+            EditorGUILayout.BeginHorizontal();
+
+                // Display a foldout for the Reaction with a custom label.
+                // showReaction = EditorGUILayout.Foldout(showReaction, GetFoldoutLabel(), true);
+                showReaction = EditorGUILayout.Foldout(showReaction, GetFoldoutLabel(), true);
+
+
+                /* Show a button which, if clicked, will remove this 
+                 * Reaction from the ReactionCollection.
+                 */
+                bool destroyMe = GUILayout.Button("-", GUILayout.Width(buttonWidth));
+
+            EditorGUILayout.EndHorizontal();
+
+            /* If the foldout is open, draw the GUI specific 
+             * to the inheriting ReactionEditor.
+            */
+            if (showReaction)
+            {
+                DrawReaction();
+            }
+
+            EditorGUI.indentLevel--;
+        EditorGUILayout.EndVertical();
+
+        serializedObject.ApplyModifiedProperties();
+
+        //Removes this object her to avoid error from the line above
+        if (destroyMe)
+        {
+            if (parentEditor != null)
+            {
+                voidEdiorItemRemove();
+            }
+            else
+            {
+                reactionsProperty.RemoveFromObjectArray(reaction);
+
+            }
+        }
+
+    }
+
+    /// <summary>
+    /// Displays the edistor then reaction
+    /// is in EDI_ItemInteractable2
+    /// </summary>
+    public bool OnItemInteractionGui(bool lastshowReaction)
+    {
+
         // Pull data from the target into the serializedObject.
         serializedObject.Update();
 
@@ -47,19 +107,18 @@ public abstract class EDI_Reaction : Editor
         EditorGUILayout.BeginHorizontal();
 
         // Display a foldout for the Reaction with a custom label.
-        showReaction = EditorGUILayout.Foldout(showReaction, GetFoldoutLabel(), true);
-       
-
+        showReaction = EditorGUILayout.Foldout(lastshowReaction, GetFoldoutLabel(), true);
+  
         /* Show a button which, if clicked, will remove this 
          * Reaction from the ReactionCollection.
          */
         bool destroyMe = GUILayout.Button("-", GUILayout.Width(buttonWidth));
-        
+
         EditorGUILayout.EndHorizontal();
 
         /* If the foldout is open, draw the GUI specific 
          * to the inheriting ReactionEditor.
-         */ 
+         */
         if (showReaction)
         {
             DrawReaction();
@@ -69,8 +128,8 @@ public abstract class EDI_Reaction : Editor
         EditorGUILayout.EndVertical();
 
         serializedObject.ApplyModifiedProperties();
-        
-        //Removes this object her to avoid errer from the line above
+
+        //Removes this object her to avoid error from the line above
         if (destroyMe)
         {
             if (parentEditor != null)
@@ -86,36 +145,44 @@ public abstract class EDI_Reaction : Editor
 
         }
 
+
+        return showReaction;
     }
 
+
     /// <summary>
-    /// used by the items to remove this item
+    /// used by the EDI_itemsInteractable to remove this item
     /// </summary>
     public void voidEdiorItemRemove()
     {
         parentEditor.RemoveReaction(reaction);
-
     }
 
-
+    /// <summary>
+    /// Creates a reaction
+    /// </summary>
+    /// <param name="reactionType"> the type of reaction to be created</param>
+    /// <returns>the new reaction cast to a SOBJ_Reaction</returns>
     public static SOBJ_Reaction CreateReaction(Type reactionType)
     {
         // Create a reaction of a given type.
         return (SOBJ_Reaction)CreateInstance(reactionType);
     }
 
-
+    /// <summary>
+    /// This function can overridden by inheriting classes,
+    /// but if it isn't, draw the default for it's properties.
+    /// </summary>
     protected virtual void DrawReaction()
     {
-        /* This function can overridden by inheriting classes, 
-         * but if it isn't, draw the default for it's properties.
-         */ 
         DrawDefaultInspector();
     }
 
 
-    /* The inheriting class must override this function to 
-     * create the label of the foldout.
-     */ 
+    /// <summary>
+    /// The inheriting class must override this function to 
+    /// create the label of the foldout.
+    /// </summary>
+    /// <returns> the inehriting class name</returns>
     protected abstract string GetFoldoutLabel();
 }

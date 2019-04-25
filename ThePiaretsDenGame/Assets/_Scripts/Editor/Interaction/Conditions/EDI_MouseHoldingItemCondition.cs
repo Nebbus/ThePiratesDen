@@ -9,14 +9,14 @@ using UnityEditor.UI;
 public class EDI_MouseHoldingItemCondition : EDI_ConditionAdvanced
 {
     // Name of the field that represents requierd item
-    private const string         conditionPropholdingItem = "requierdHoldingItem";
+    private const string conditionPropholdingItem = "requierdHoldingItem";
 
+    private float imageSide = 125f;
 
     // The SOBJ_Item that represents requierd item
     protected SerializedProperty holdingItemProperty;         
 
-    private float imageSide = 125f;
-
+  
     protected override void Init()
     {
         holdingItemProperty = serializedObject.FindProperty(conditionPropholdingItem);
@@ -26,21 +26,19 @@ public class EDI_MouseHoldingItemCondition : EDI_ConditionAdvanced
     {
         // The width for the Popup, item window, the image and remove Button.
         float width = EditorGUIUtility.currentViewWidth /3f;
-
+        
         EditorGUILayout.BeginVertical(GUILayout.Width(imageSide));
-
-        EditorGUILayout.PropertyField(holdingItemProperty, GUIContent.none, GUILayout.Width(width + toggleOffset));
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("the mous is holdin: ", GUILayout.Width(170f));
-        EditorGUILayout.PropertyField(satisfiedProperty, GUIContent.none, GUILayout.Width(width/2f));
-        EditorGUILayout.EndHorizontal();
-        DrawImages(width + toggleOffset);
+            EditorGUILayout.PropertyField(holdingItemProperty, GUIContent.none, GUILayout.Width(width + toggleOffset));
+            EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField("the mous is holdin: ", GUILayout.Width(170f));
+               EditorGUILayout.PropertyField(satisfiedProperty, GUIContent.none, GUILayout.Width(width/2f));
+            EditorGUILayout.EndHorizontal();
+            DrawImages(width + toggleOffset);
 
         EditorGUILayout.EndVertical();
     }
 
   
-
     /// <summary>
     /// Displays the sprite of the item in the conditions
     /// </summary>
