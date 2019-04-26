@@ -9,9 +9,6 @@ public class MONO_Settings : MonoBehaviour {
 	public GameObject KeyboardToggle;
 	public GameObject MouseToggle;
 
-    public MONO_CustomMouseCursor CustomCursor;
-    
-
 	public void MusicVolumeChanged()
 	{
 		//FMOD stuff?
@@ -41,14 +38,16 @@ public class MONO_Settings : MonoBehaviour {
 
 	private void ActivateKeyboard()
 	{
-		Debug.Log ("activating keyboard");
-        CustomCursor.UsingKeyboard = true;
-	}
+	//Debug.Log ("activating keyboard");
+        MONO_AdventureCursor.instance.getMonoCustimMouseCursor.UsingKeyboard = true;
+        MONO_AdventureCursor.instance.getMonoPointerLogic.setKeyBordMode();
+    }
 
 
 	private void ActivateMouse()
 	{
-        CustomCursor.UsingKeyboard = false;
-	}
+        MONO_AdventureCursor.instance.getMonoCustimMouseCursor.UsingKeyboard = false;
+        MONO_AdventureCursor.instance.getMonoPointerLogic.setMouseMode();
+    }
 
 }

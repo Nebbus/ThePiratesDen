@@ -23,9 +23,29 @@ public class MONO_pointerLogic : MonoBehaviour {
 
     public action currentAction = action.HOVER;
 
-    public KeyCode clickKey     = KeyCode.Mouse0;
 
-  
+    //temporär lösnign
+    [SerializeField]
+    private KeyCode usedClickKey = KeyCode.Mouse0;
+    [SerializeField]
+    private KeyCode mouseKey    = KeyCode.Mouse0;
+    [SerializeField]
+    private KeyCode keabordKey   = KeyCode.Space;
+
+    public void setKeyBordMode()
+    {
+        usedClickKey = keabordKey;
+    }
+    public void setMouseMode()
+    {
+        usedClickKey = mouseKey;
+    }
+
+
+
+
+
+
 
 
     // Use this for initialization
@@ -45,7 +65,7 @@ public class MONO_pointerLogic : MonoBehaviour {
 	void Update ()
 	{
 	    
-        if (Input.GetKeyDown(clickKey))
+        if (Input.GetKeyDown(usedClickKey))
         {
             currentAction = action.CLICK;
         }
