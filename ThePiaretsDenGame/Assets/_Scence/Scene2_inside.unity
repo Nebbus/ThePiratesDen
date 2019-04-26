@@ -907,6 +907,19 @@ Transform:
   m_Father: {fileID: 413856266}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &234433083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/2D/Chest_Close
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &241519958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,6 +1385,19 @@ MonoBehaviour:
   reactions:
   - {fileID: 1621096002}
   - {fileID: 1739280611}
+--- !u!114 &391498580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/2D/Chest_Close
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &396856134
 GameObject:
   m_ObjectHideFlags: 0
@@ -5935,6 +5961,19 @@ Transform:
   m_Father: {fileID: 1418738793}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &547358110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a345377fd63d3d4697b58f472e50f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  rootReaction: {fileID: 1597837021}
 --- !u!1 &550258340
 GameObject:
   m_ObjectHideFlags: 0
@@ -6007,7 +6046,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactions: []
+  reactions:
+  - {fileID: 391498580}
+  - {fileID: 768955119}
 --- !u!114 &576926925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6376,6 +6417,19 @@ MonoBehaviour:
   hideCommands: []
   luaEnvironment: {fileID: 0}
   luaBindingName: flowchart
+--- !u!114 &690048428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a345377fd63d3d4697b58f472e50f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  rootReaction: {fileID: 1597837021}
 --- !u!1 &712413449
 GameObject:
   m_ObjectHideFlags: 0
@@ -10042,6 +10096,19 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ea9d3775dd92814ab6c2122fe557ad3, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &768955119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a345377fd63d3d4697b58f472e50f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  rootReaction: {fileID: 1597837021}
 --- !u!1 &781380727
 GameObject:
   m_ObjectHideFlags: 0
@@ -10793,6 +10860,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 877681718}
   m_Mesh: {fileID: 4300000, guid: bae44005e742b4343828a71080a3606f, type: 3}
+--- !u!114 &884647999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/2D/Chest_Open
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &897837097
 GameObject:
   m_ObjectHideFlags: 0
@@ -10911,7 +10991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactions: []
+  reactions:
+  - {fileID: 234433083}
+  - {fileID: 690048428}
 --- !u!1 &932779824
 GameObject:
   m_ObjectHideFlags: 0
@@ -12154,6 +12236,19 @@ Transform:
   m_Father: {fileID: 1032659456}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1112477367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/2D/Chest_Close
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &1129793660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13457,7 +13552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactions: []
+  reactions:
+  - {fileID: 1112477367}
+  - {fileID: 547358110}
 --- !u!1 &1371575459
 GameObject:
   m_ObjectHideFlags: 0
@@ -14122,7 +14219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactions: []
+  reactions:
+  - {fileID: 1893131361}
+  - {fileID: 884647999}
 --- !u!1 &1603649722
 GameObject:
   m_ObjectHideFlags: 0
@@ -15151,6 +15250,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reactions: []
+--- !u!114 &1893131361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9e92b6ce8da9048b1a742cc85c0b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootReaction: {fileID: 1597837021}
 --- !u!1 &1893227006
 GameObject:
   m_ObjectHideFlags: 0
