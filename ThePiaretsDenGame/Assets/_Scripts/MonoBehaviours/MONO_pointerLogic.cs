@@ -11,7 +11,6 @@ public class MONO_pointerLogic : MonoBehaviour {
 
     [Tooltip("Debug.Log the name of the things the raycast hits")]
     public bool debug = false;
-    public MONO_PlayerMovement playerMovment;
     private GraphicRaycaster m_Graycaster;
     private PhysicsRaycaster m_Praycaster;
     private EventSystem      m_EventSystem;
@@ -22,6 +21,8 @@ public class MONO_pointerLogic : MonoBehaviour {
 
     public action currentAction = action.HOVER;
 
+  
+
     // Use this for initialization
     void Start ()
     {
@@ -31,21 +32,10 @@ public class MONO_pointerLogic : MonoBehaviour {
 	
     }
 
-
-	private void getPlayerMomvent()
-	{
-		playerMovment   = FindObjectOfType<MONO_PlayerMovement>();
-	}
-
 	// Update is called once per frame
 	void Update ()
 	{
-		if (playerMovment == null) 
-		{
-			getPlayerMomvent ();
-		}
-		
-     
+	    
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             currentAction = action.CLICK;
@@ -63,14 +53,30 @@ public class MONO_pointerLogic : MonoBehaviour {
 
 
         resultsG = EXT_GraphicalRayCast.GrapphicRayCast(m_Graycaster, m_EventSystem);
-        resultsP = EXT_GraphicalRayCast.PhysicalRayCast(m_Praycaster, m_EventSystem);
+        if(m_Praycaster != null)
+        {
+            resultsP = EXT_GraphicalRayCast.PhysicalRayCast(m_Praycaster, m_EventSystem);
+        }
+        else
+        {
+            Debug.Log("ERROR: ingen PhysicsRaycaster hittat bugg undviken med quc fix");
+        }
+     
 
         if (debug)
         {
             DebugHits();
         }
+        if (m_Praycaster != null)
+        {
+            handleResult();
+        }
+        else
+        {
+            Debug.Log("ERROR: ingen PhysicsRaycaster hittat bugg undviken med quc fix");
+        }
 
-       handleResult();
+        
        
     }
 
@@ -99,6 +105,11 @@ public class MONO_pointerLogic : MonoBehaviour {
             {
                 Debug.Log("Physical Hit "+ count +" : " + result.gameObject.name + " Has a MONO_interactionBase");
             }
+            else if (tag == "GROUND")
+            {
+
+                Debug.Log("Physical Hit G " + count + " : " + result.gameObject.name + " Has a MONO_interactionBase");
+            }
             count++;
         }
       
@@ -110,9 +121,7 @@ public class MONO_pointerLogic : MonoBehaviour {
     /// Controls if a monotarget was hitted
     /// </summary>
     private void handleResult()
-    {
-		
-
+    {	
         interactableTarget = null;
         //Loks att the first item in the list to se if it has MONO_interactionBase
         foreach (RaycastResult result in resultsG)
@@ -120,42 +129,100 @@ public class MONO_pointerLogic : MonoBehaviour {
             interactableTarget = result.gameObject.GetComponentInParent<MONO_interactionBase>();
             if (interactableTarget)
             {
-                if (currentAction == action.CLICK)
-                {
-                    interactableTarget.OnClick();
-                }
-                else
-                {
-                    interactableTarget.OnHovor();
-                }
+                simpleInteract();
                 return;
             }
             break;
         }
         foreach (RaycastResult result in resultsP)
         {
-           
-           interactableTarget = result.gameObject.GetComponent<MONO_interactionBase>();
-           
+            interactableTarget = result.gameObject.GetComponent<MONO_interactionBase>();
+
+       
             if (interactableTarget)
             {
-                if (currentAction == action.CLICK)
+                if (Interactable(result, interactableTarget))
                 {
-                    if (playerMovment)
-                    {
-
-                        playerMovment.OnInteractableClick((MONO_Interactable)interactableTarget);
-                    }
-                 
-                }
-                else
+                    return;
+                } 
+                else 
                 {
-                    interactableTarget.OnHovor();
+                    simpleInteract();
                 }
-
-                return;
             }
+            else
+            {
+                GroundClick(result);
+            }
+           
+
+
             break;
         } 
+    }
+
+    /// <summary>
+    /// The interactable in the world 
+    /// </summary>
+    /// <param name="result">the curent click result</param>
+    /// <returns>tru if the click was on a interactblee , oter wise false</returns>
+    private bool Interactable(RaycastResult result, MONO_interactionBase interacTarget)
+    {
+       
+        MONO_Interactable test = (MONO_Interactable)interacTarget;
+        if (test)
+        {
+            if (currentAction == action.CLICK)
+            {
+                MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+                param.param6                       = interacTarget;
+                MONO_EventManager.TriggerEvent(MONO_EventManager.onInteractableEvnetManager_NAME, param);
+
+            }
+            else
+            {
+                interactableTarget.OnHovor();
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// the click on the grund
+    /// </summary>
+    /// <param name="result">the curent click result</param>
+    /// <returns>tru if the click was on teh ground, oter wise false</returns>
+    private bool GroundClick(RaycastResult result)
+    {
+        if (result.gameObject.tag == "GROUND" && currentAction == action.CLICK)
+        {
+
+            MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+            param.param5 = result.worldPosition;
+            MONO_EventManager.TriggerEvent(MONO_EventManager.onGroundEvnetManager_NAME, param);
+            return true;
+        }
+        return false;
+    }
+
+
+    /// <summary>
+    /// simple interaction, for gui buttons and alike
+    /// </summary>
+    private void simpleInteract()
+    {
+
+
+        if (currentAction == action.CLICK)
+        {
+            interactableTarget.OnClick();
+        }
+        else
+        {
+            interactableTarget.OnHovor();
+        }
+
     }
 }
