@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
+
 
 public class MONO_PlayerMovement : MonoBehaviour
 {
-    public Animator      animator;
+    public Animator     animator;
     public NavMeshAgent agent;                          
 //   public SaveData     playerSaveData;         // Reference to the save data asset containing the player's starting position.
     public float        turnSmoothing       = 15f;      // The amount of smoothing applied to the player's turning using spherical interpolation.
@@ -15,12 +16,13 @@ public class MONO_PlayerMovement : MonoBehaviour
     public float        turnSpeedThreshold  = 0.5f;     // The speed beyond which the player can move and turn normally.
     public float        inputHoldDelay      = 0.5f;     // How long after reaching an interactable before input is allowed again.
 	public MONO_Interactable currentInteractable;   	// The interactable that is currently being headed towards. Used to be private.
-	public MONO_Interactable lastInteractable;			//Copy of last interactable that was headed towards, used for the interactionalternatives system
+	public MONO_Interactable lastInteractable;          //Copy of last interactable that was headed towards, used for the interactionalternatives system
 
-    
-	private Vector3 destinationPosition;             // The position that is currently being headed towards, this is the interactionLocation of the currentInteractable if it is not null.
-    private WaitForSeconds inputHoldWait;            // The WaitForSeconds used to make the user wait before input is handled again.
+
+    public Vector3           destinationPosition;             // The position that is currently being headed towards, this is the interactionLocation of the currentInteractable if it is not null.
+    private WaitForSeconds    inputHoldWait;            // The WaitForSeconds used to make the user wait before input is handled again.
 	private MONO_SceneManager sceneManager;
+
 
 
 
@@ -35,7 +37,7 @@ public class MONO_PlayerMovement : MonoBehaviour
       private readonly int hashLocomotionTag = Animator.StringToHash("Locomotion");
 
     // The key used to retrieve the starting position from the playerSaveData.
-//      public const string startingPositionKey = "starting position";
+    //   public const string startingPositionKey = "starting position";
 
 
     /* The proportion of the nav mesh agent's 
@@ -47,9 +49,20 @@ public class MONO_PlayerMovement : MonoBehaviour
     // can be to be accepted.
     private const float navMeshSampleDistance = 4f;
 
+    //--------------------------
+    // Evnets
+    //--------------------------
+    private Action<MONO_EventManager.EventParam> moveOnGroundClick;
+
+
+    private Action<MONO_EventManager.EventParam> moveOnInteractClick;
+
 
     private void Awake()
     {
+        moveOnGroundClick = new Action<MONO_EventManager.EventParam>(onGroundEvent);
+        moveOnInteractClick = new Action<MONO_EventManager.EventParam>(onInteractEvent);
+
         // The player will be rotated by this script so the nav mesh agent should not rotate it.
         agent.updateRotation = false;
 
@@ -58,6 +71,14 @@ public class MONO_PlayerMovement : MonoBehaviour
 		sceneManager = FindObjectOfType<MONO_SceneManager> ();
     }
 
+    private void onGroundEvent(MONO_EventManager.EventParam evntParam)
+    {
+        OnGroundClick(evntParam.param5);
+    }
+    private void onInteractEvent(MONO_EventManager.EventParam evntParam)
+    {
+        OnInteractableClick((MONO_Interactable)evntParam.param6);
+    }
 
     private void Start()
     {
@@ -75,6 +96,20 @@ public class MONO_PlayerMovement : MonoBehaviour
         // Set the initial destination as the player's current position.
         destinationPosition = transform.position;
     }
+
+
+    private void OnEnable()
+    {
+        MONO_EventManager.StartListening(MONO_EventManager.onGroundEvnetManager_NAME, moveOnGroundClick);
+        MONO_EventManager.StartListening(MONO_EventManager.onInteractableEvnetManager_NAME, moveOnInteractClick);
+    }
+    private void OnDisable()
+    {
+        MONO_EventManager.StopListening(MONO_EventManager.onGroundEvnetManager_NAME, moveOnGroundClick);
+        MONO_EventManager.StopListening(MONO_EventManager.onInteractableEvnetManager_NAME, moveOnInteractClick);
+    }
+
+
 
 
     private void OnAnimatorMove()
@@ -214,11 +249,11 @@ public class MONO_PlayerMovement : MonoBehaviour
     ///  This function is called by the EventTrigger
     ///  on the scene's ground when it is clicked on.
     /// </summary>
-    /// <param name="data"></param>
-    public void OnGroundClick(BaseEventData data)
+    /// <param name="WorldPositiondata"> point in the world to walk to</param>
+    public void OnGroundClick(Vector3 WorldPositiondata)
     {
-		//Allow player to walk away from an interaction if said interaction is to show the interactionalternatives.
-		if(lastInteractable != null && lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> () != null)
+        //Allow player to walk away from an interaction if said interaction is to show the interactionalternatives.
+        if (lastInteractable != null && lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> () != null)
 		{
 			lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> ().HideAlternatives ();
 			sceneManager.SetHandleInput (true);
@@ -232,19 +267,17 @@ public class MONO_PlayerMovement : MonoBehaviour
     
 
         // The player is no longer headed for an interactable so set it to null.
-       currentInteractable = null;
-		lastInteractable = null;
+        currentInteractable = null;
+		lastInteractable    = null;
 
-        /* This function needs information about a click so cast
-         * the BaseEventData to a PointerEventData.
-         */ 
-        PointerEventData pData = (PointerEventData)data;
 
         /* Try and find a point on the nav mesh nearest to the world position
          * of the click and set the destination to that.
          */ 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(pData.pointerCurrentRaycast.worldPosition, out hit, navMeshSampleDistance, NavMesh.AllAreas))
+        //pData.pointerCurrentRaycast.worldPosition
+        
+        if (NavMesh.SamplePosition(WorldPositiondata, out hit, navMeshSampleDistance, NavMesh.AllAreas))
         {
             destinationPosition = hit.position;
         }
@@ -252,8 +285,8 @@ public class MONO_PlayerMovement : MonoBehaviour
         {
             /* In the event that the nearest position cannot be found, 
              * set the position as the world position of the click.
-             */ 
-            destinationPosition = pData.pointerCurrentRaycast.worldPosition;
+             */
+            destinationPosition = WorldPositiondata;
         }
 
 
