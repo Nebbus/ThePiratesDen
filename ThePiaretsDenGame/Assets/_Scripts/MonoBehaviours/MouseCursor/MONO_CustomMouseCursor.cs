@@ -11,6 +11,7 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     public GameObject CustomCursor;
 
     public Canvas canvas;
+ 
 
     [SerializeField]
     private  float  CursorSpeed = 4;
@@ -50,10 +51,12 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
 
             Vector3 pos = new Vector3(xTemp, yTemp, 0f);
-        
-            pos = Camera.main.ScreenToViewportPoint(pos);
-            pos.x = Mathf.Clamp(pos.x, 0f, 1f);
-            pos.y = Mathf.Clamp(pos.y, 0f, 1f);
+            Vector3 image = new Vector3(CustomCursorTransform.rect.width, CustomCursorTransform.rect.height, 0f);
+         
+                pos = Camera.main.ScreenToViewportPoint(pos);
+            image = Camera.main.ScreenToViewportPoint(image);
+            pos.x = Mathf.Clamp(pos.x, 0f, 1f + image.x);
+            pos.y = Mathf.Clamp(pos.y, 0f+ image.y, 1f + image.y);
 
             pos = Camera.main.ViewportToScreenPoint(pos);
             CustomCursorTransform.anchoredPosition = new Vector2(pos.x, pos.y);

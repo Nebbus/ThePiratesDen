@@ -81,12 +81,12 @@ public class MONO_pointerLogic : MonoBehaviour {
 			// temp fix to make it fin the physical raycaster i n every scene
 			m_Praycaster    = FindObjectOfType<PhysicsRaycaster>();
 		}
+        Vector3 pos = new Vector3(thisTransformer.position.x, thisTransformer.position.y, 0);
 
-
-        resultsG = EXT_GraphicalRayCast.GrapphicRayCast(m_Graycaster, m_EventSystem, thisTransformer.position);
+        resultsG = EXT_GraphicalRayCast.GrapphicRayCast(m_Graycaster, m_EventSystem, pos);
         if(m_Praycaster != null)
         {
-            resultsP = EXT_GraphicalRayCast.PhysicalRayCast(m_Praycaster, m_EventSystem, thisTransformer.position);
+            resultsP = EXT_GraphicalRayCast.PhysicalRayCast(m_Praycaster, m_EventSystem, pos);
         }
         else
         {
