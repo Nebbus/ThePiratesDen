@@ -7,10 +7,9 @@ using UnityEditor;
 /// <summary>
 /// This is a singleton 
 /// </summary>
-public class MONO_itemGradFromTheInventory : MonoBehaviour
+public class MONO_HoldedItem : MonoBehaviour
 {
-    public static MONO_itemGradFromTheInventory instance;
-    
+
     [Tooltip("Should be the null item at the start" +
             "(a empty item thet represents null)")]
     public SOBJ_Item currentItem = null;
@@ -41,20 +40,9 @@ public class MONO_itemGradFromTheInventory : MonoBehaviour
         }
     }
 
-
     public void Start()
     {
-       
-        if( instance == null)
-        {
-            instance      = this;
-            nullStartItem = currentItem;
-        }
-        else
-        {
-            GameObject.Destroy(this);
-        }
-        
+       nullStartItem = currentItem;
     }
 
     /// <summary>
@@ -90,12 +78,7 @@ public class MONO_itemGradFromTheInventory : MonoBehaviour
     }
 
 
-    void Update ()
-    {
-     // makes the image follow the mouse
-        transform.position =  Input.mousePosition;
-
-    }
+   
 
   
 }

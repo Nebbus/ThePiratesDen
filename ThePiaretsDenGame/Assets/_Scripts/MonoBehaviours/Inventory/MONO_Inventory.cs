@@ -175,8 +175,8 @@ public class MONO_Inventory : MonoBehaviour {
 
         if (invetoryItemsImages[itemIndex].sprite != null && itemIndex < invetoryItems.Length && itemIndex > (-1))
         {
-          
-            MONO_itemGradFromTheInventory.instance.GrabdItem(invetoryItems[itemIndex], invetoryItemsImages[itemIndex].sprite, itemIndex);
+
+            MONO_AdventureCursor.instance.getMonoHoldedItem.GrabdItem(invetoryItems[itemIndex], invetoryItemsImages[itemIndex].sprite, itemIndex);
             invetoryItemsImages[itemIndex].enabled = false;
         }
     }
@@ -224,7 +224,7 @@ public class MONO_Inventory : MonoBehaviour {
         {
             invetoryItemsImages[itemIndex].enabled = true;
         }
-        MONO_itemGradFromTheInventory.instance.ReturnItemToInventory();
+        MONO_AdventureCursor.instance.getMonoHoldedItem.ReturnItemToInventory();
     }
 
 
@@ -258,7 +258,7 @@ public class MONO_Inventory : MonoBehaviour {
 
     private void Update()
     {
-        if (MONO_itemGradFromTheInventory.instance.isHoldingItem)
+        if (MONO_AdventureCursor.instance.getMonoHoldedItem.isHoldingItem)
         {
             if (wait != null)
                 if (!raycast())
@@ -281,7 +281,7 @@ public class MONO_Inventory : MonoBehaviour {
 
     private bool raycast()
     {
-        List<RaycastResult> results = EXT_GraphicalRayCast.GrapphicRayCast(m_Raycaster, m_EventSystem);
+        List<RaycastResult> results = EXT_GraphicalRayCast.GrapphicRayCast(m_Raycaster, m_EventSystem, Input.mousePosition);
 
         //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
         foreach (RaycastResult result in results)

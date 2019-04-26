@@ -11,7 +11,7 @@ public static class EXT_GraphicalRayCast  {
     
 
 
-    public static List<RaycastResult> GrapphicRayCast(GraphicRaycaster m_Raycaster, EventSystem m_EventSystem)
+    public static List<RaycastResult> GrapphicRayCast(GraphicRaycaster m_Raycaster, EventSystem m_EventSystem, Vector3 position)
     {
         PointerEventData m_PointerEventData;
 
@@ -19,7 +19,7 @@ public static class EXT_GraphicalRayCast  {
         m_PointerEventData = new PointerEventData(m_EventSystem);
 
         //Set teh pointer event position to that of the mouse position
-        m_PointerEventData.position = Input.mousePosition;
+        m_PointerEventData.position = position;
         
         //Create a list of raycast Result
         List<RaycastResult> results = new List<RaycastResult>();
@@ -31,7 +31,7 @@ public static class EXT_GraphicalRayCast  {
     }
 
 
-    public static List<RaycastResult> PhysicalRayCast(PhysicsRaycaster m_Raycaster, EventSystem m_EventSystem)
+    public static List<RaycastResult> PhysicalRayCast(PhysicsRaycaster m_Raycaster, EventSystem m_EventSystem, Vector3 position)
     {
         PointerEventData m_PointerEventData;
         
@@ -39,7 +39,7 @@ public static class EXT_GraphicalRayCast  {
         m_PointerEventData = new PointerEventData(m_EventSystem);
 
         //Set teh pointer event position to that of the mouse position
-        m_PointerEventData.position = Input.mousePosition;
+        m_PointerEventData.position = position;
 
         //Create a list of raycast Result
         List<RaycastResult> results = new List<RaycastResult>();
