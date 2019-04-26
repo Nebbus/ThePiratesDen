@@ -11,15 +11,15 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     
 
     [SerializeField]
-    private readonly float CursorSpeed = 4;
-    private RectTransform CustomCursorTransform;
-    private MONO_Menus Menus;
+    private readonly float  CursorSpeed = 4;
+    private RectTransform   CustomCursorTransform;
+    private MONO_Menus      Menus;
    
 
     void Awake()
     {
         CustomCursorTransform = CustomCursor.GetComponent<RectTransform>();
-        Menus = FindObjectOfType<MONO_Menus>();
+        Menus                = FindObjectOfType<MONO_Menus>();
     }
 
 
@@ -41,8 +41,8 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
     private void MoveWithKeys()
     {
-        float xTemp = CustomCursorTransform.anchoredPosition.x + (Input.GetAxis("Horizontal") * CursorSpeed);
-        float yTemp = CustomCursorTransform.anchoredPosition.y + (Input.GetAxis("Vertical") * CursorSpeed);
+        float xTemp                            = CustomCursorTransform.anchoredPosition.x + (Input.GetAxis("Horizontal") * CursorSpeed);
+        float yTemp                            = CustomCursorTransform.anchoredPosition.y + (Input.GetAxis("Vertical") * CursorSpeed);
         CustomCursorTransform.anchoredPosition = new Vector2(xTemp, CustomCursorTransform.anchoredPosition.y);
         CustomCursorTransform.anchoredPosition = new Vector2(CustomCursorTransform.anchoredPosition.x, yTemp);
     }

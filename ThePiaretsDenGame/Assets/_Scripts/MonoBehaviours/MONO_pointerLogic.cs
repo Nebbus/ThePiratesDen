@@ -21,6 +21,7 @@ public class MONO_pointerLogic : MonoBehaviour {
 
     public action currentAction = action.HOVER;
 
+    public KeyCode clickKey = KeyCode.Mouse0;
   
 
     // Use this for initialization
@@ -36,7 +37,7 @@ public class MONO_pointerLogic : MonoBehaviour {
 	void Update ()
 	{
 	    
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(clickKey))
         {
             currentAction = action.CLICK;
         }
@@ -44,6 +45,8 @@ public class MONO_pointerLogic : MonoBehaviour {
         {
                currentAction = action.HOVER;
         }
+
+
 
 		if (m_Praycaster == null) 
 		{
