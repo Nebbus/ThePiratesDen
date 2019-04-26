@@ -9,7 +9,8 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     [HideInInspector]
     public bool       UsingKeyboard = false;
     public GameObject CustomCursor;
-    
+
+    public Canvas canvas;
 
     [SerializeField]
     private  float  CursorSpeed = 4;
@@ -35,27 +36,43 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
     }
 
+
     private void MoveVirtuelCursor()
     {
+        if (Camera.main != null)
+        {
+            // get movent of key 
+            float x = UsingKeyboard ? Input.GetAxis("Horizontal") : Input.GetAxis("Mouse X");
+            float y = UsingKeyboard ? Input.GetAxis("Vertical")   : Input.GetAxis("Mouse Y");
 
-        // get movent of key 
-        float x = UsingKeyboard ? Input.GetAxis("Horizontal") : Input.GetAxis("Mouse X");
-        float y = UsingKeyboard ? Input.GetAxis("Vertical")   : Input.GetAxis("Mouse Y") ;
-     
-        float xTemp                            = CustomCursorTransform.anchoredPosition.x + (x * CursorSpeed*Time.deltaTime);
-        float yTemp                            = CustomCursorTransform.anchoredPosition.y + (y * CursorSpeed * Time.deltaTime);
+            float xTemp = CustomCursorTransform.anchoredPosition.x + (x * CursorSpeed * Time.deltaTime);
+            float yTemp = CustomCursorTransform.anchoredPosition.y + (y * CursorSpeed * Time.deltaTime);
 
-        //Vector3 pos = Camera.main.WorldToViewportPoint(new Vector3(xTemp, yTemp,0));
-        //bool stopVertical = (1.0 > pos.y && pos.y > 0.0);
-        //bool stopHorizontal = (1.0 > pos.x && pos.x > 0.0);
 
-        //Camera.main.ed
+            Vector3 pos = new Vector3(xTemp, yTemp, 0f);
+        
+            pos = Camera.main.ScreenToViewportPoint(pos);
+            pos.x = Mathf.Clamp(pos.x, 0f, 1f);
+            pos.y = Mathf.Clamp(pos.y, 0f, 1f);
 
-        //yTemp = stopVertical ? CustomCursorTransform.anchoredPosition.y : 0;
-        //xTemp = stopHorizontal ? CustomCursorTransform.anchoredPosition.x : 0;
+            pos = Camera.main.ViewportToScreenPoint(pos);
+            CustomCursorTransform.anchoredPosition = new Vector2(pos.x, pos.y);
 
-        CustomCursorTransform.anchoredPosition = new Vector2(xTemp, CustomCursorTransform.anchoredPosition.y);
-        CustomCursorTransform.anchoredPosition = new Vector2(CustomCursorTransform.anchoredPosition.x, yTemp);
+        }
+
     }
-    
+
+    private void OnDrawGizmos()
+    {
+        if(Camera.main != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(new Vector3(0.0f, 0.0f, 0.0f), Camera.main.ViewportToScreenPoint(new Vector3(0.5f, 0.0f, 0.0f)));
+            Gizmos.DrawLine(new Vector3(0.0f, 0.0f, 0.0f), Camera.main.ViewportToScreenPoint(new Vector3(0.0f, 0.5f, 0.0f)));
+            Gizmos.DrawLine(new Vector3(0.0f, 0.0f, 0.0f), Camera.main.ViewportToScreenPoint(new Vector3(0.5f, 0.0f, 0.0f)));
+            Gizmos.DrawLine(new Vector3(0.0f, 0.0f, 0.0f), Camera.main.ViewportToScreenPoint(new Vector3(0.0f, 0.5f, 0.0f)));
+        }
+
+    }
+
 }

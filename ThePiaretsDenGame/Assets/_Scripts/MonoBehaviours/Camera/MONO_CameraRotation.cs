@@ -36,9 +36,13 @@ public class MONO_CameraRotation : MonoBehaviour
 		{
 			return;
 		}
+        if (currentPoint == null || playerPosition == null)
+        {
+            return;
+        }
+        //Update distance to compare other points with 
 
-		//Update distance to compare other points with 
-		currentDist = Vector3.Distance (currentPoint.transform.position, playerPosition.position);
+        currentDist = Vector3.Distance (currentPoint.transform.position, playerPosition.position);
 
 		//Find closest point by comparing distances between current point and all points.
 		for(int i = 0; i < camPoints.Length; i++)
