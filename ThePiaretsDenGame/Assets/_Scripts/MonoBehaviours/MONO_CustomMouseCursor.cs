@@ -47,8 +47,20 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
         CustomCursorTransform.anchoredPosition = new Vector2(CustomCursorTransform.anchoredPosition.x, yTemp);
     }
 
+    private void ClickWithKeys()
+    {
+        Input.GetKeyDown(KeyCode.Space); //ask designer which button
+        //do the clicking
+    }
+
     private void MoveWithCursor()
     {
         CustomCursorTransform.anchoredPosition = Input.mousePosition;
+    }
+
+    private void ClickWithMouse()
+    {
+        Input.GetMouseButtonDown(0); //primary mouse button
+        //do the clicking
     }
 }
