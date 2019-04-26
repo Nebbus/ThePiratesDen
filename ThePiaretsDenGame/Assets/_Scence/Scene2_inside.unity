@@ -5961,19 +5961,6 @@ Transform:
   m_Father: {fileID: 1418738793}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &547358110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a345377fd63d3d4697b58f472e50f44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  rootReaction: {fileID: 1597837021}
 --- !u!1 &550258340
 GameObject:
   m_ObjectHideFlags: 0
@@ -6430,6 +6417,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   rootReaction: {fileID: 1597837021}
+--- !u!114 &707849542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a7da765305aee489ed5501e45a451a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  animation: {fileID: 1481915068}
+  state: Take 001
 --- !u!1 &712413449
 GameObject:
   m_ObjectHideFlags: 0
@@ -10026,6 +10027,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowchart: {fileID: 323703084}
   interactionBlock: Talk
+--- !u!114 &747486714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a345377fd63d3d4697b58f472e50f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  rootReaction: {fileID: 1597837021}
 --- !u!1001 &757089453
 Prefab:
   m_ObjectHideFlags: 0
@@ -13554,7 +13568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1112477367}
-  - {fileID: 547358110}
+  - {fileID: 707849542}
+  - {fileID: 747486714}
 --- !u!1 &1371575459
 GameObject:
   m_ObjectHideFlags: 0
@@ -13851,6 +13866,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a037eb5bea38af749b82e3e05976e19b, type: 3}
   m_IsPrefabParent: 0
+--- !u!95 &1481915068 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: a037eb5bea38af749b82e3e05976e19b,
+    type: 3}
+  m_PrefabInternal: {fileID: 1481915067}
 --- !u!1 &1507859803
 GameObject:
   m_ObjectHideFlags: 0
