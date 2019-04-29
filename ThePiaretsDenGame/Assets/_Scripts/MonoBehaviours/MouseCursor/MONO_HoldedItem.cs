@@ -2,7 +2,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
 
 /// <summary>
 /// This is a singleton 
