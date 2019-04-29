@@ -3809,7 +3809,17 @@ GameObject:
   - component: {fileID: 531899069}
   - component: {fileID: 531899066}
   - component: {fileID: 531899068}
+  - component: {fileID: 531899083}
+  - component: {fileID: 531899082}
+  - component: {fileID: 531899081}
   - component: {fileID: 531899072}
+  - component: {fileID: 531899080}
+  - component: {fileID: 531899079}
+  - component: {fileID: 531899078}
+  - component: {fileID: 531899075}
+  - component: {fileID: 531899077}
+  - component: {fileID: 531899074}
+  - component: {fileID: 531899076}
   m_Layer: 0
   m_Name: Flowchart_intro
   m_TagString: Untagged
@@ -3840,10 +3850,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 531899067}
+  selectedBlocks: []
   selectedCommands: []
-  variables: []
+  variables:
+  - {fileID: 531899072}
   description: 
   stepPause: 0
   colorCommands: 1
@@ -3893,22 +3903,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 119
-    y: 76
-    width: 120
+    x: 195
+    y: 148
+    width: 139
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 0
-  blockName: New Block
+  blockName: IntroMonologue
   description: 
-  eventHandler: {fileID: 531899072}
+  eventHandler: {fileID: 0}
   commandList:
   - {fileID: 531899071}
   - {fileID: 531899070}
   - {fileID: 531899069}
   - {fileID: 531899066}
   - {fileID: 531899068}
+  - {fileID: 531899077}
 --- !u!114 &531899068
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4023,11 +4034,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 531899064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d02d9822eec54c98afe95bb497211b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentBlock: {fileID: 531899067}
-  waitForFrames: 1
+  scope: 0
+  key: GameStarted
+  value: 0
 --- !u!4 &531899073
 Transform:
   m_ObjectHideFlags: 0
@@ -4041,6 +4053,287 @@ Transform:
   m_Father: {fileID: 2125449345}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &531899074
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 13
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 2142067291}
+  targetComponentAssemblyName: MONO_AllConditionManager, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: MONO_AllConditionManager
+  targetMethod: SetCondition
+  targetMethodText: 'SetCondition (SOBJ_Condition, Boolean): Void'
+  methodParameters:
+  - objValue:
+      typeAssemblyname: SOBJ_Condition, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      typeFullname: SOBJ_Condition
+      intValue: 0
+      boolValue: 0
+      floatValue: 0
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 114168352985420362, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+        type: 2}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  - objValue:
+      typeAssemblyname: System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      typeFullname: System.Boolean
+      intValue: 0
+      boolValue: 1
+      floatValue: 0
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 0}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &531899075
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 200
+    y: 216
+    width: 129
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 11
+  blockName: SetConditions
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 531899074}
+  - {fileID: 531899076}
+--- !u!114 &531899076
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb77d0ce495044f6e9feb91b31798e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 14
+  indentLevel: 0
+  variable: {fileID: 531899072}
+  setOperator: 0
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
+--- !u!114 &531899077
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 12
+  indentLevel: 0
+  targetFlowchart: {fileID: 531899065}
+  targetBlock: {fileID: 531899075}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &531899078
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 531899083}
+  waitForFrames: 1
+--- !u!114 &531899079
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cb9773f2ca04e2bbf7a68ccfc23267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 10
+  indentLevel: 0
+--- !u!114 &531899080
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 9
+  indentLevel: 1
+  targetFlowchart: {fileID: 531899065}
+  targetBlock: {fileID: 531899067}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &531899081
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c5622b8a80845c980954170295f292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 8
+  indentLevel: 0
+  compareOperator: 0
+  variable: {fileID: 531899072}
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
+--- !u!114 &531899082
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 7
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 2142067291}
+  targetComponentAssemblyName: MONO_AllConditionManager, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: MONO_AllConditionManager
+  targetMethod: CheckCondition
+  targetMethodText: 'CheckCondition (SOBJ_ConditionAdvanced): Boolean'
+  methodParameters:
+  - objValue:
+      typeAssemblyname: SOBJ_ConditionAdvanced, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      typeFullname: SOBJ_ConditionAdvanced
+      intValue: 0
+      boolValue: 0
+      floatValue: 0
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 114168352985420362, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+        type: 2}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  saveReturnValue: 1
+  returnValueVariableKey: GameStarted
+  returnValueType: System.Boolean
+  showInherited: 0
+  callMode: 0
+--- !u!114 &531899083
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531899064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 192
+    y: 69
+    width: 146
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 6
+  blockName: CheckConditions
+  description: 
+  eventHandler: {fileID: 531899078}
+  commandList:
+  - {fileID: 531899082}
+  - {fileID: 531899081}
+  - {fileID: 531899080}
+  - {fileID: 531899079}
 --- !u!4 &536620996 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4160942993552490, guid: b8799a0da0fffe74ba0a1cbe4b3b8b5e,
@@ -4663,60 +4956,6 @@ MonoBehaviour:
   - {fileID: 929865218}
   - {fileID: 1657569960}
   - {fileID: 43701479}
---- !u!1001 &727306886
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 869900717}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.0225
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.0225
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.0225
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3bc52b02c681d37478355b8258b6e4da, type: 3}
-  m_IsPrefabParent: 0
 --- !u!1 &727342374
 GameObject:
   m_ObjectHideFlags: 0
@@ -6544,30 +6783,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4169167246957422, guid: 898c592848482aa479a40189fc9f5839, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4142739819086904, guid: 898c592848482aa479a40189fc9f5839, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4028752954075338, guid: 898c592848482aa479a40189fc9f5839, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1719961455743508, guid: 898c592848482aa479a40189fc9f5839, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 95416984719431810, guid: 898c592848482aa479a40189fc9f5839,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f8a8e58634e93d1458658bdb4b6ba079, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 898c592848482aa479a40189fc9f5839, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &869900717 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4527830281996770, guid: 898c592848482aa479a40189fc9f5839,
-    type: 2}
-  m_PrefabInternal: {fileID: 869900716}
 --- !u!114 &873428827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7326,7 +7549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 866379779}
+  selectedFlowchart: {fileID: 531899065}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -12592,7 +12815,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4873591708637212, guid: 081b6a4b7fb1def4eb9bedf51f1d1311, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4873591708637212, guid: 081b6a4b7fb1def4eb9bedf51f1d1311, type: 2}
       propertyPath: m_LocalScale.x
@@ -13199,6 +13422,46 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2142067291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2142067293}
+  - component: {fileID: 2142067292}
+  m_Layer: 0
+  m_Name: AllConditionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2142067292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2142067291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcdc194c74d8c704d9d33a2bdb2df83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2142067293
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2142067291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2142914950
 GameObject:
   m_ObjectHideFlags: 0
