@@ -622,6 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 874268159}
   - component: {fileID: 874268158}
+  - component: {fileID: 874268160}
   m_Layer: 0
   m_Name: SlidingRingsManager
   m_TagString: Untagged
@@ -654,6 +655,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &874268160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 874268157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcdc194c74d8c704d9d33a2bdb2df83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &970595252
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +914,8 @@ GameObject:
   - component: {fileID: 1684474429}
   - component: {fileID: 1684474423}
   - component: {fileID: 1684474434}
+  - component: {fileID: 1684474436}
+  - component: {fileID: 1684474435}
   m_Layer: 0
   m_Name: SlidingPuzzle
   m_TagString: Untagged
@@ -980,11 +994,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 312.53766, y: 107.33572}
+  scrollPos: {x: 473.56946, y: 217.70729}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 476
-  zoom: 0.67000014
+  zoom: 1
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -993,7 +1007,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 1684474442}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 1684474435}
   variables:
   - {fileID: 1684474433}
   - {fileID: 1684474432}
@@ -1077,7 +1092,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -338.61636
     y: 99.461075
-    width: 123.134315
+    width: 132
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1290,6 +1305,130 @@ MonoBehaviour:
     stringVal: 
   startIndex: 0
   callMode: 0
+--- !u!114 &1684474435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1684474415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 213
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 874268157}
+  targetComponentAssemblyName: MONO_AllConditionManager, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: MONO_AllConditionManager
+  targetMethod: SetCondition
+  targetMethodText: 'SetCondition (SOBJ_Condition, Boolean): Void'
+  methodParameters:
+  - objValue:
+      typeAssemblyname: SOBJ_Condition, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      typeFullname: SOBJ_Condition
+      intValue: 0
+      boolValue: 0
+      floatValue: 0
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 114349954445023364, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+        type: 2}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  - objValue:
+      typeAssemblyname: System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      typeFullname: System.Boolean
+      intValue: 0
+      boolValue: 0
+      floatValue: 0
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 0}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &1684474436
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1684474415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 212
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 874268157}
+  targetComponentAssemblyName: MONO_AllConditionManager, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: MONO_AllConditionManager
+  targetMethod: SetCondition
+  targetMethodText: 'SetCondition (SOBJ_Condition, Boolean): Void'
+  methodParameters:
+  - objValue:
+      typeAssemblyname: SOBJ_Condition, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      typeFullname: SOBJ_Condition
+      intValue: 0
+      boolValue: 0
+      floatValue: 0
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 114012207566158418, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+        type: 2}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  - objValue:
+      typeAssemblyname: System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      typeFullname: System.Boolean
+      intValue: 0
+      boolValue: 1
+      floatValue: 0
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 0}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!114 &1684474439
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1372,6 +1511,8 @@ MonoBehaviour:
   - {fileID: 1684474451}
   - {fileID: 1684474441}
   - {fileID: 1684474443}
+  - {fileID: 1684474436}
+  - {fileID: 1684474435}
 --- !u!114 &1684474443
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1768,7 +1909,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 292.38367
     y: 407.17517
-    width: 126.119385
+    width: 133
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1795,7 +1936,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 44.178787
     y: 93.31813
-    width: 129.10446
+    width: 137
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1885,7 +2026,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 383.5285
     y: 173.79558
-    width: 126.119385
+    width: 133
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2039,7 +2180,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 47.37993
     y: 173.19182
-    width: 129.10446
+    width: 137
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2143,7 +2284,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -340.49042
     y: 178.82233
-    width: 123.134315
+    width: 132
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2277,7 +2418,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 384.16327
     y: 257.62292
-    width: 132.08954
+    width: 140
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2381,7 +2522,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 110.461525
     y: 286.27454
-    width: 135.07462
+    width: 144
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2485,7 +2626,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -341.11096
     y: 255.77731
-    width: 129.10446
+    width: 139
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
