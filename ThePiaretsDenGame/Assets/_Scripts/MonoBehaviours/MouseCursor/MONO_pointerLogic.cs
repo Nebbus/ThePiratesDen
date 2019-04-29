@@ -11,6 +11,7 @@ public class MONO_pointerLogic : MonoBehaviour {
 
     [Tooltip("Debug.Log the name of the things the raycast hits")]
     public bool debug = false;
+    public bool debugOnlyFirstHit = true;
     private GraphicRaycaster m_Graycaster;
     private PhysicsRaycaster m_Praycaster;
     private EventSystem      m_EventSystem;
@@ -95,7 +96,7 @@ public class MONO_pointerLogic : MonoBehaviour {
         }
      
 
-        if (debug)
+        if (debug && m_Praycaster != null)
         {
             DebugHits();
         }
@@ -126,6 +127,10 @@ public class MONO_pointerLogic : MonoBehaviour {
             {
                 Debug.Log("Graphical Hit " + count + " : " + result.gameObject.name + " Has a MONO_interactionBase");
             }
+            if (debugOnlyFirstHit)
+            {
+                break;
+            }
             count++;
         }
         count = 0;
@@ -133,19 +138,26 @@ public class MONO_pointerLogic : MonoBehaviour {
         foreach (RaycastResult result in resultsP)
         {
             MONO_interactionBase interactable = result.gameObject.GetComponent<MONO_interactionBase>();
-            MONO_Interactable temp = (MONO_Interactable)interactable;
+
+            MONO_Interactable temp = interactable as MONO_Interactable;
+
             if (temp)
             {
-                Debug.Log("Physical Hit "+ count +" : " + result.gameObject.name + " Has a MONO_Interactable");
+                Debug.Log("Physical Hit " + count + " : " + result.gameObject.name + " Has a MONO_Interactable");
             }
             else if (interactable)
             {
                 Debug.Log("Physical Hit " + count + " : " + result.gameObject.name + " Has a MONO_interactionBase");
+
             }
             else if (tag == "GROUND")
             {
 
                 Debug.Log("Physical Hit " + count + " : " + result.gameObject.name + " is Ground");
+            }
+            if (debugOnlyFirstHit)
+            {
+                break;
             }
             count++;
         }
@@ -177,6 +189,7 @@ public class MONO_pointerLogic : MonoBehaviour {
        
             if (interactableTarget)
             {
+              
                 if (Interactable(result, interactableTarget))
                 {
                     return;
@@ -202,9 +215,9 @@ public class MONO_pointerLogic : MonoBehaviour {
     /// <returns>tru if the click was on a interactblee , oter wise false</returns>
     private bool Interactable(RaycastResult result, MONO_interactionBase interacTarget)
     {
-       
-        MONO_Interactable test = (MONO_Interactable)interacTarget;
-        if (test)
+        MONO_Interactable interactable = interacTarget as MONO_Interactable;// result.gameObject.GetComponent<MONO_Interactable>();
+
+        if (interactable)
         {
             if (currentAction == action.CLICK)
             {

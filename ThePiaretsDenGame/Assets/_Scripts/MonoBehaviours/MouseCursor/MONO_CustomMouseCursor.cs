@@ -44,10 +44,18 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
         if (Camera.main != null)
         {
             // get movent of key 
+            //using muse position
             float x = UsingKeyboard ? Input.GetAxis("Horizontal") : Input.mousePosition.x;// Input.GetAxis("Mouse X");
-            float y = UsingKeyboard ? Input.GetAxis("Vertical")   : Input.mousePosition.y;// Input.GetAxis("Mouse Y");
-                  x = UsingKeyboard ? CustomCursorTransform.anchoredPosition.x + (x * CursorSpeed * Time.deltaTime) : x;
-                  y = UsingKeyboard ? CustomCursorTransform.anchoredPosition.y +(y * CursorSpeed * Time.deltaTime) : y;
+            float y = UsingKeyboard ? Input.GetAxis("Vertical") : Input.mousePosition.y;// Input.GetAxis("Mouse Y");
+            x = UsingKeyboard ? CustomCursorTransform.anchoredPosition.x + (x * CursorSpeed * Time.deltaTime) : x;
+            y = UsingKeyboard ? CustomCursorTransform.anchoredPosition.y + (y * CursorSpeed * Time.deltaTime) : y;
+
+            // using axes
+            //float x = UsingKeyboard ? Input.GetAxis("Horizontal") :  Input.GetAxis("Mouse X");
+            //float y = UsingKeyboard ? Input.GetAxis("Vertical") : Input.GetAxis("Mouse Y");
+            //x = CustomCursorTransform.anchoredPosition.x + (x * CursorSpeed * Time.deltaTime);
+            //y = CustomCursorTransform.anchoredPosition.y + (y * CursorSpeed * Time.deltaTime);
+
 
             float xTemp = (x );
             float yTemp = (y );
