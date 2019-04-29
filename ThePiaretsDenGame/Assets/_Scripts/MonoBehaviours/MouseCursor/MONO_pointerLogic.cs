@@ -84,6 +84,7 @@ public class MONO_pointerLogic : MonoBehaviour {
         Vector3 pos = new Vector3(thisTransformer.position.x, thisTransformer.position.y, 0);
 
         resultsG = EXT_GraphicalRayCast.GrapphicRayCast(m_Graycaster, m_EventSystem, pos);
+
         if(m_Praycaster != null)
         {
             resultsP = EXT_GraphicalRayCast.PhysicalRayCast(m_Praycaster, m_EventSystem, pos);
