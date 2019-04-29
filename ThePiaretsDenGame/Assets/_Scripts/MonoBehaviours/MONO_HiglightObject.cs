@@ -34,7 +34,7 @@ public class MONO_HiglightObject : MonoBehaviour {
 
             if(selectedObject.GetComponent<Renderer>() == null)
             {
-                selectedObject.GetComponent<Image>().material.color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
+                selectedObject.GetComponent<Image>().color = new Color32((byte)redCol, (byte)greenCol, (byte)blueCol, 255);
             }
             else
             {
@@ -77,7 +77,7 @@ public class MONO_HiglightObject : MonoBehaviour {
     {
         if (selectedObject.GetComponent<Renderer>() == null)
         {
-            originalFer = selectedObject.GetComponent<Image>().material.color ;
+            originalFer = selectedObject.GetComponent<Image>().color ;
         }
         else
         {
@@ -97,7 +97,7 @@ public class MONO_HiglightObject : MonoBehaviour {
 
         if (selectedObject.GetComponent<Renderer>() == null)
         {
-            selectedObject.GetComponent<Image>().material.color = originalFer;
+            selectedObject.GetComponent<Image>().color = originalFer;
 
         }
         else
