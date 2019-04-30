@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 417658979}
   m_Layer: 5
   m_Name: Main
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5811,7 +5811,7 @@ GameObject:
   - component: {fileID: 1229762858}
   - component: {fileID: 1229762859}
   m_Layer: 5
-  m_Name: Menus
+  m_Name: MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5850,7 +5850,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuOpen: 0
   menuButton: {fileID: 1401079809}
-  sceneManager: {fileID: 0}
+  sceneManager: {fileID: 251660718}
+  mainMenuSound: {fileID: 383678349}
+  pausMenuSound: {fileID: 1040001670}
   mainMenu: {fileID: 417658978}
   pausMenu: {fileID: 913568513}
   settingsMenu: {fileID: 1888956639}
@@ -6544,17 +6546,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1401079809}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 746576834}
         m_MethodName: React
         m_Mode: 1
@@ -6686,7 +6677,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!225 &1428939495
 CanvasGroup:
   m_ObjectHideFlags: 0
