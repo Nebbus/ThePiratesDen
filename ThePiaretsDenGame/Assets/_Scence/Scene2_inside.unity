@@ -573,6 +573,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &77275254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &86727464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,7 +1986,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085b13b1ba3ec0c47966ea7206c82ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   sceneToBeLoaded: Scene1_outside
+  setStartPosition: 0
 --- !u!1 &428461578
 GameObject:
   m_ObjectHideFlags: 0
@@ -6300,6 +6315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1086724511}
+  - {fileID: 77275254}
 --- !u!1001 &513077371
 Prefab:
   m_ObjectHideFlags: 0
@@ -12620,6 +12636,11 @@ Prefab:
       propertyPath: reactions.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114196159055233964, guid: a4020da0d4f61f84287c6e1efa737707,
+        type: 2}
+      propertyPath: reactions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.35
@@ -12753,6 +12774,11 @@ Prefab:
       propertyPath: reactions.Array.data[0]
       value: 
       objectReference: {fileID: 1291336889}
+    - target: {fileID: 114196159055233964, guid: a4020da0d4f61f84287c6e1efa737707,
+        type: 2}
+      propertyPath: reactions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1211522125}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
   m_IsPrefabParent: 0
@@ -12832,6 +12858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1162857147}
+  - {fileID: 1087490997}
 --- !u!1 &1014120565
 GameObject:
   m_ObjectHideFlags: 0
@@ -13696,6 +13723,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   rootReaction: {fileID: 1034599454}
+--- !u!114 &1087490997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/2D/Book_Flickering
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!4 &1087836292 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: dd7e50e97438f4c4b9348ff8ad3f06c9, type: 3}
@@ -14391,6 +14431,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1211522125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/2D/Door/Door_Open
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &1236475538
 GameObject:
   m_ObjectHideFlags: 0

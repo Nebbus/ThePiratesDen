@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SOBJ_SceneChangeReaction : SOBJ_Reaction
+public class SOBJ_SceneChangeReaction : SOBJ_DelayedReaction
 {
 	public string sceneToBeLoaded;
     public bool setStartPosition = false;

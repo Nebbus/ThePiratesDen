@@ -11,6 +11,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4f44f203eba9d41ac90a96c2127f6f, type: 3}
   m_Name: Book(Ghosts)
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  onClickConditionAndReactions: []
+  sprite: {fileID: 21300000, guid: 823d8d95ee6340d4691c8901feb496e8, type: 3}
+  onClickConditionAndReactions:
+  - {fileID: 114750670128799396}
+  - {fileID: 114983316992392456}
   onHoverConditionAndReactions: []
+--- !u!114 &114091069322551290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneSHot_FMOD
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Inventory/Book_PickUp
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114546980772091462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneSHot_FMOD
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Inventory/Book_Place
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114750670128799396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction0
+  m_EditorClassIdentifier: 
+  description: PickUp_book
+  requiredConditions: []
+  itemInteractionReactions:
+  - {fileID: 114091069322551290}
+--- !u!114 &114983316992392456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction1
+  m_EditorClassIdentifier: 
+  description: Place_Book
+  requiredConditions: []
+  itemInteractionReactions:
+  - {fileID: 114546980772091462}

@@ -2877,6 +2877,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &379806462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/2D/Crate_wood_Open
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &380403491
 GameObject:
   m_ObjectHideFlags: 0
@@ -3611,7 +3624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee, type: 2}
+  item: {fileID: 0}
 --- !u!1 &511336810
 GameObject:
   m_ObjectHideFlags: 0
@@ -4811,6 +4824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085b13b1ba3ec0c47966ea7206c82ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0.4
   sceneToBeLoaded: Scene2_inside
   setStartPosition: 0
 --- !u!114 &655927312
@@ -5974,6 +5988,7 @@ MonoBehaviour:
   reactions:
   - {fileID: 651001303}
   - {fileID: 1158211307}
+  - {fileID: 829620271}
 --- !u!1 &811761312
 GameObject:
   m_ObjectHideFlags: 0
@@ -6133,6 +6148,19 @@ Transform:
   m_Father: {fileID: 628042029}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &829620271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Objects/2D/Door/Door_Open
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &833001771
 GameObject:
   m_ObjectHideFlags: 0
@@ -11359,6 +11387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085b13b1ba3ec0c47966ea7206c82ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   sceneToBeLoaded: ScenePuzzle_SlidingRings
   setStartPosition: 0
 --- !u!1 &962779993
@@ -12079,7 +12108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 866379779}
+  selectedFlowchart: {fileID: 1832624992}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -13064,7 +13093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a345377fd63d3d4697b58f472e50f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0
+  delay: 0.4
   rootReaction: {fileID: 1424489053}
 --- !u!114 &1164006786
 MonoBehaviour:
@@ -13308,6 +13337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085b13b1ba3ec0c47966ea7206c82ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   sceneToBeLoaded: Scene2_inside
   setStartPosition: 0
 --- !u!1 &1233065227
@@ -13689,6 +13719,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1260101222}
   m_Mesh: {fileID: 4300000, guid: 16c1823676baa4743b53f463beb6d00a, type: 3}
+--- !u!114 &1278705681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &1282756925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14020,6 +14063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 730291903}
+  - {fileID: 379806462}
 --- !u!4 &1316725426 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4764723541886416, guid: 37476896a9d97714a80f05c21d97751e,
@@ -14816,7 +14860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee, type: 2}
+  item: {fileID: 0}
 --- !u!114 &1453108156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14841,6 +14885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085b13b1ba3ec0c47966ea7206c82ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   sceneToBeLoaded: Scene2_inside
   setStartPosition: 0
 --- !u!1 &1465302890
@@ -16149,7 +16194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: a181ab8623c252142a8d9c7e03e77322, type: 2}
+  item: {fileID: 0}
 --- !u!114 &1712148635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17237,7 +17282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 3, y: 0}
+  scrollPos: {x: 113, y: 85}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -17249,7 +17294,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1832624991}
+  - {fileID: 1832625000}
   selectedCommands: []
   variables: []
   description: 
@@ -18039,6 +18084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085b13b1ba3ec0c47966ea7206c82ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   sceneToBeLoaded: ScenePuzzle_SlidingRings
   setStartPosition: 0
 --- !u!114 &1948343626
@@ -18800,7 +18846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onShotEvent: event:/Objects/2D/Canon/Canon_Explosion
+  onShotEvent: event:/Objects/2D/Canon/Canon_Event
   theSorceOftheOneShot: {fileID: 0}
 --- !u!4 &2101467541 stripped
 Transform:
@@ -18865,6 +18911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1164006786}
+  - {fileID: 1278705681}
 --- !u!1 &2125449344
 GameObject:
   m_ObjectHideFlags: 0

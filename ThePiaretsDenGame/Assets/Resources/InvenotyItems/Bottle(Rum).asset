@@ -11,6 +11,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4f44f203eba9d41ac90a96c2127f6f, type: 3}
   m_Name: Bottle(Rum)
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  onClickConditionAndReactions: []
+  sprite: {fileID: 21300000, guid: 495463060b1388842b305ac7f2b1d5bb, type: 3}
+  onClickConditionAndReactions:
+  - {fileID: 114689229041696656}
   onHoverConditionAndReactions: []
+--- !u!114 &114330268627265642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneSHot_FMOD
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Inventory/Bottle_Place
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114689229041696656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction0
+  m_EditorClassIdentifier: 
+  description: PickUp_Bottle
+  requiredConditions: []
+  itemInteractionReactions:
+  - {fileID: 114330268627265642}
