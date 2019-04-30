@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class SOBJ_AudioOneSHot_FMOD : SOBJ_Reaction
+public class SOBJ_AudioOneSHot_FMOD : SOBJ_FMODreaction
 {
     [FMODUnity.EventRef]
     public string onShotEvent;

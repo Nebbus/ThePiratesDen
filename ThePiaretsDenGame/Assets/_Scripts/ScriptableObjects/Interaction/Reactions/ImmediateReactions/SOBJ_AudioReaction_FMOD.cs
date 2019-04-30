@@ -2,7 +2,7 @@
 using System;
 using FMODUnity;
 
-public class SOBJ_AudioReaction_FMOD : SOBJ_Reaction 
+public class SOBJ_AudioReaction_FMOD : SOBJ_FMODreaction
 {
     [Serializable]
     public class EmitterRef
