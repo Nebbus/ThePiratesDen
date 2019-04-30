@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114195200477731060}
   - component: {fileID: 114328742128659994}
   - component: {fileID: 114963499755432218}
+  - component: {fileID: 114093573955870230}
   m_Layer: 0
   m_Name: INT_CannonballFlowchart
   m_TagString: Untagged
@@ -45,6 +46,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114093573955870230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586750743973318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49012bdc794e429686c1eff7d9ced90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 114100520297395778}
+  clickableObject: {fileID: 0}
+  waitFrames: 1
 --- !u!114 &114100520297395778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -60,14 +75,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 133
     y: 107
-    width: 120
+    width: 128
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 0
   blockName: Look
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 114093573955870230}
   commandList:
   - {fileID: 114155200840028152}
   - {fileID: 114195200477731060}
@@ -173,8 +188,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 114100520297395778}
-  selectedCommands:
-  - {fileID: 114195200477731060}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
