@@ -50,13 +50,14 @@ public class MONO_MenuSelect : MonoBehaviour {
 
 	public void ChooseHoverImage(UnityEngine.UI.Image HoverImage)
 	{
-		if (currentHoverImage == null) 
+		if (currentHoverImage == null || currentHoverImage == HoverImage) 
 		{
-			Debug.Log ("HoverImage is null");
+			Debug.Log (currentHoverImage);
 		}
 		else
 		{
 			currentHoverImage.enabled = false;
+			//Debug.Log (currentHoverImage);
 		}
 		currentHoverImage = HoverImage;
 		currentHoverImage.enabled = true;
