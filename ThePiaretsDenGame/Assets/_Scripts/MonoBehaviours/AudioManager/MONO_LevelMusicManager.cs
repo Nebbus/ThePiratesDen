@@ -6,47 +6,23 @@ using FMODUnity;
 public class MONO_LevelMusicManager : MonoBehaviour {
 
     public static MONO_LevelMusicManager instace;
-    //LjudControll
-    //settParametes
-    //level music och ambines
+
 
     public StudioEventEmitter AmbienceTarget;
     public StudioEventEmitter MusicTarget;
 
-
-    public static StudioEventEmitter getAmbienceTarget
-    {
-        get
-        {
-            if(instace == null)
-            {
-                instace = FindObjectOfType<MONO_LevelMusicManager>();
-            }
-
-
-
-            return instace.AmbienceTarget;
-        }
-    }
-
-    public static StudioEventEmitter getMusicTarget
-    {
-        get
-        {
-            if (instace == null)
-            {
-                instace = FindObjectOfType<MONO_LevelMusicManager>();
-            }
-
-            return instace.MusicTarget;
-        }
-    }
+    [Tooltip("The path to the VCA, used to control volume")]
+    public static string pathToVCA =  "vca:/VCA name";
+    FMOD.Studio.VCA volumController;
+    public string debug;
+ 
 
     private void Awake()
     {
         if (instace == null)
         {
             instace = this;
+            //volumController = FMODUnity.RuntimeManager.GetVCA(pathToVCA);
         }
         else
         {
@@ -57,30 +33,49 @@ public class MONO_LevelMusicManager : MonoBehaviour {
     /// <summary>
     /// set the paramters of the fmodEvent
     /// </summary>
-    /// <param name="parametersName"> name of the parameter</param>
-    /// <param name="parametersvalues"> new valus of parameters</param>
-    public void setMusicParamters(string[] parametersName, float[] parametersValues)
+    /// <param name="musicParams"> new valus of parameters</param>
+    public void setMusicParamters(ParamRef[] musicParams)
     {
-        for (int j = 0; j < MusicTarget.Params.Length; j++)
+        for (int j = 0; j < musicParams.Length; j++)
         {
-
-            MusicTarget.SetParameter(parametersName[j], parametersValues[j]);
+            
+            MusicTarget.SetParameter(musicParams[j].Name, musicParams[j].Value);
         }
     }
+
+
     /// <summary>
     /// set the paramters of the fmodEvent
     /// </summary>
-    /// <param name="parametersName"> name of the parameter</param>
-    /// <param name="parametersvalues"> new valus of parameters</param>
-    public void setAmbientParamters(string[] parametersName, float[] parametersValues)
+    /// <param name="ambientParams"> new valus of parameters</param>
+    public void setAmbientParamters(ParamRef[] ambientParams)
     {
-        for (int j = 0; j < MusicTarget.Params.Length; j++)
+        for (int j = 0; j < ambientParams.Length; j++)
         {
 
-            AmbienceTarget.SetParameter(parametersName[j], parametersValues[j]);
+            MusicTarget.SetParameter(ambientParams[j].Name, ambientParams[j].Value);
         }
     }
 
+
+    /// <summary>
+    /// to start and stop the emiters
+    /// </summary>
+    /// <param name="start">fals mans stoping the emiters and true starting them.</param>
+    public void StartStopSound(bool start)
+    {
+        if (start)
+        {
+            MusicTarget.Play();
+           // AmbienceTarget.Play();
+        }
+        else
+        {
+            MusicTarget.Stop();
+           // AmbienceTarget.Stop();
+        }
+       
+    }
 
 
 
@@ -92,6 +87,10 @@ public class MONO_LevelMusicManager : MonoBehaviour {
     public void changeVolume(float changeFactor)
     {
 
+        float oldVolume;
+        float dummy;
+        volumController.getVolume(out dummy, out oldVolume);
+        volumController.setVolume(oldVolume + changeFactor);
     }
 
 

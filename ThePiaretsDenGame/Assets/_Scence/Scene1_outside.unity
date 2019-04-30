@@ -1998,6 +1998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
   theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &223970449
@@ -2176,7 +2177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &258789373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3611,7 +3612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee, type: 2}
+  item: {fileID: 0}
 --- !u!1 &511336810
 GameObject:
   m_ObjectHideFlags: 0
@@ -4618,6 +4619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012a760d82037934992e0cd5ba2b0f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   Emitters:
   - Target: {fileID: 981444536}
     Params: []
@@ -4812,6 +4814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToBeLoaded: Scene2_inside
+  setStartPosition: 0
 --- !u!114 &655927312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7303,6 +7306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToBeLoaded: ScenePuzzle_SlidingRings
+  setStartPosition: 0
 --- !u!1 &962779993
 GameObject:
   m_ObjectHideFlags: 0
@@ -8537,6 +8541,102 @@ Transform:
   m_Father: {fileID: 833001772}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1098072961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1098072964}
+  - component: {fileID: 1098072963}
+  - component: {fileID: 1098072962}
+  m_Layer: 0
+  m_Name: LevelMusicParameterSeterPrefab (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1098072962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098072961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3619f2f6cfa7de84ca750dc634cb7165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FMODreactions:
+  - {fileID: 1189488888}
+--- !u!114 &1098072963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098072961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419c6bf4f4ac198418e2a98ce6095717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  myHoverkEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  otherReactionsTriggers:
+    myOnStartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    myOnAwaykeEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    myOnScriptEnableEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1098072962}
+          m_MethodName: React
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    myOnScriptDisableEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+--- !u!4 &1098072964
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098072961}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 189.33833, y: 144.54631, z: -34.599}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1099186630
 Prefab:
   m_ObjectHideFlags: 0
@@ -8922,6 +9022,32 @@ Transform:
   m_PrefabParentObject: {fileID: 4602100585999440, guid: 8ea9d3775dd92814ab6c2122fe557ad3,
     type: 2}
   m_PrefabInternal: {fileID: 1174127689}
+--- !u!114 &1189488888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcd34d881f2b3e40b1f7623c5fcf408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  musicEmittor:
+  - Target: {fileID: 114482181192587984, guid: 3498eed6685ba1f4083a5e8a0a8952a2, type: 2}
+    Params:
+    - Name: Area
+      Value: 1
+  ambienceEmittor:
+  - Target: {fileID: 114978991060141382, guid: 3498eed6685ba1f4083a5e8a0a8952a2, type: 2}
+    Params:
+    - Name: AMB_Switch
+      Value: 1
+  valuesAmb: []
+  valuesMus: []
+  namesAmb: []
+  namesMus: []
 --- !u!114 &1193542559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8933,6 +9059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/2D/Crate_wood_Open
   theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &1213644726
@@ -9013,6 +9140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToBeLoaded: Scene2_inside
+  setStartPosition: 0
 --- !u!1 &1233065227
 GameObject:
   m_ObjectHideFlags: 0
@@ -10288,7 +10416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1385620804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10337,6 +10465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
   theSorceOftheOneShot: {fileID: 0}
 --- !u!4 &1419140259 stripped
@@ -10356,7 +10485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 61a2f9f6ceeb5f24fa480430db76811c, type: 2}
+  item: {fileID: 0}
 --- !u!1 &1424489053
 GameObject:
   m_ObjectHideFlags: 0
@@ -10501,7 +10630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee, type: 2}
+  item: {fileID: 0}
 --- !u!114 &1459055539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10514,6 +10643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToBeLoaded: Scene2_inside
+  setStartPosition: 0
 --- !u!1 &1465302890
 GameObject:
   m_ObjectHideFlags: 0
@@ -10620,6 +10750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: 
   theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &1473276699
@@ -11465,6 +11596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/2D/Door/Door_Budge
   theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &1658344314
@@ -11834,7 +11966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: a181ab8623c252142a8d9c7e03e77322, type: 2}
+  item: {fileID: 0}
 --- !u!114 &1712148635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11846,6 +11978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012a760d82037934992e0cd5ba2b0f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   Emitters:
   - Target: {fileID: 0}
     Params: []
@@ -13571,6 +13704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToBeLoaded: ScenePuzzle_SlidingRings
+  setStartPosition: 0
 --- !u!114 &1948343626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13607,6 +13741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/2D/Canon/Canon_Event
   theSorceOftheOneShot: {fileID: 62745648}
 --- !u!1 &1961046842

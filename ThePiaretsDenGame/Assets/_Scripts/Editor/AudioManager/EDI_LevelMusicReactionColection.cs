@@ -5,7 +5,7 @@ using UnityEditor;
 
 
 [CustomEditor(typeof(MONO_LevelMusicReactionColection))]
-public class EDI_LevelMusicReactionColection : EDI_EditorWithSubEditors<EDI_Reaction, SOBJ_Reaction>
+public class EDI_LevelMusicReactionColection : EDI_EditorWithSubEditors<EDI_Reaction, SOBJ_FMODreaction>
 {
     private MONO_LevelMusicReactionColection FMODreactionCollection;          // Reference to the target.
     private SerializedProperty               FMODreactionsProperty;           // Represents the array of Reactions.
@@ -16,7 +16,7 @@ public class EDI_LevelMusicReactionColection : EDI_EditorWithSubEditors<EDI_Reac
 
     private const float dropAreaHeight = 50f;           // Height in pixels of the area for dropping scripts.
     private const float controlSpacing = 5f;            // Width in pixels between the popup type selection and drop area.
-    private const string reactionsPropName = "reactions";   // Name of the field for the array of Reactions.
+    private const string reactionsPropName = "FMODreactions";   // Name of the field for the array of Reactions.
 
     // Caching the vertical spacing between GUI elements.
     private readonly float verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
@@ -30,7 +30,7 @@ public class EDI_LevelMusicReactionColection : EDI_EditorWithSubEditors<EDI_Reac
         FMODreactionsProperty = serializedObject.FindProperty(reactionsPropName);
 
         // If new editors are required for Reactions, create them.
-        CheckAndCreateSubEditors(FMODreactionCollection.reactions);
+        CheckAndCreateSubEditors(FMODreactionCollection.FMODreactions);
 
         // Set the array of types and type names of subtypes of Reaction.
         EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_FMODreaction), out FMODreactionTypes, out FMODreactionTypeNames);
@@ -65,7 +65,7 @@ public class EDI_LevelMusicReactionColection : EDI_EditorWithSubEditors<EDI_Reac
         serializedObject.Update();
 
         // If new editors for Reactions are required, create them.
-        CheckAndCreateSubEditors(FMODreactionCollection.reactions);
+        CheckAndCreateSubEditors(FMODreactionCollection.FMODreactions);
 
         // Display all the Reactions.
         for (int i = 0; i < subEditors.Length; i++)
@@ -74,7 +74,7 @@ public class EDI_LevelMusicReactionColection : EDI_EditorWithSubEditors<EDI_Reac
         }
 
         // If there are Reactions, add a space.
-        if (FMODreactionCollection.reactions.Length > 0)
+        if (FMODreactionCollection.FMODreactions.Length > 0)
         {
             EditorGUILayout.Space();
             EditorGUILayout.Space();

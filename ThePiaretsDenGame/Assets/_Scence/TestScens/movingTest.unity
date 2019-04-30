@@ -275,7 +275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &42542444
 GameObject:
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee, type: 2}
+  item: {fileID: 0}
 --- !u!114 &72024545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,6 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
   theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &172683875
@@ -841,6 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012a760d82037934992e0cd5ba2b0f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   Emitters: []
   play: 1
 --- !u!114 &277784301
@@ -857,8 +859,7 @@ MonoBehaviour:
   description: PickedUpCoin
   satisfied: 1
   hash: 514706441
-  requierdHoldingItem: {fileID: 11400000, guid: a181ab8623c252142a8d9c7e03e77322,
-    type: 2}
+  requierdHoldingItem: {fileID: 0}
 --- !u!114 &296723953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1370,10 @@ Prefab:
       value: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
+    - target: {fileID: 1488700873102462, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114510734336489586, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
@@ -1424,6 +1429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/Canon/Canon_Explosion
   theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &474743219
@@ -1465,6 +1471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/Book_Flickering
   theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &503574017
@@ -1840,7 +1847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee, type: 2}
+  item: {fileID: 0}
 --- !u!4 &690672197 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707,
@@ -2330,7 +2337,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4250746531366702, guid: 898c592848482aa479a40189fc9f5839, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 898c592848482aa479a40189fc9f5839, type: 2}
@@ -2613,6 +2620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/Shipwheel_Spinning
   theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &1234049007
@@ -2910,7 +2918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 61a2f9f6ceeb5f24fa480430db76811c, type: 2}
+  item: {fileID: 0}
 --- !u!1 &1412293209
 GameObject:
   m_ObjectHideFlags: 0
@@ -2971,7 +2979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 61a2f9f6ceeb5f24fa480430db76811c, type: 2}
+  item: {fileID: 0}
 --- !u!1 &1433199778
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,6 +3198,10 @@ Prefab:
       propertyPath: m_Delegates.Array.data[0].callback.m_TypeName
       value: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488700873102462, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114510734336489586, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
@@ -3553,6 +3565,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1488700873102462, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
   m_IsPrefabParent: 0
@@ -3673,7 +3689,7 @@ Transform:
   - {fileID: 1392156248}
   - {fileID: 333327254}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1723479829
 MonoBehaviour:
@@ -4075,6 +4091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/Boom
   theSorceOftheOneShot: {fileID: 1656498379}
 --- !u!1 &1931010146
@@ -4350,7 +4367,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -4400,7 +4417,7 @@ Prefab:
       objectReference: {fileID: 241262547}
     - target: {fileID: 1488700873102462, guid: a4020da0d4f61f84287c6e1efa737707, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114977689446388268, guid: a4020da0d4f61f84287c6e1efa737707,
         type: 2}

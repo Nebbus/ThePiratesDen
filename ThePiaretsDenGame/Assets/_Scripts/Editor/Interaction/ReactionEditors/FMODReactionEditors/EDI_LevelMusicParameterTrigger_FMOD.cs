@@ -49,7 +49,7 @@ public class EDI_LevelMusicParameterTrigger_FMOD : EDI_Reaction {
             musicTargetEmitter = musicEmiterProperty.GetArrayElementAtIndex(i).FindPropertyRelative("Target").objectReferenceValue as StudioEventEmitter;
             if (musicTargetEmitter != null)
             {
-               musicTargetEmitter = MONO_LevelMusicManager.getMusicTarget;
+                musicTargetEmitter = SOBJ_LevelMusicAmbientEmiters.Instance.getMusicTarget;
                 musicExpanded      = new bool[musicTargetEmitter.GetComponents<StudioEventEmitter>().Length];
                 break;
             }
@@ -61,7 +61,7 @@ public class EDI_LevelMusicParameterTrigger_FMOD : EDI_Reaction {
             ambientargetEmitter = ambienceEmiterProperty.GetArrayElementAtIndex(i).FindPropertyRelative("Target").objectReferenceValue as StudioEventEmitter;
             if (ambientargetEmitter != null)
             {
-                ambientargetEmitter = MONO_LevelMusicManager.getAmbienceTarget;
+                ambientargetEmitter = SOBJ_LevelMusicAmbientEmiters.Instance.getAmbienceTarget;
                 abientExpanded = new bool[ambientargetEmitter.GetComponents<StudioEventEmitter>().Length];
                 break;
             }
@@ -77,14 +77,14 @@ public class EDI_LevelMusicParameterTrigger_FMOD : EDI_Reaction {
 
         EditorGUILayout.BeginVertical(GUI.skin.box);
         EditorGUI.indentLevel++;
-        DrawAmbientGUI(ref ambientargetEmitter, ref ambienceEmiterProperty, ref abientExpanded, MONO_LevelMusicManager.getAmbienceTarget);
+        DrawAmbientGUI(ref ambientargetEmitter, ref ambienceEmiterProperty, ref abientExpanded, SOBJ_LevelMusicAmbientEmiters.Instance.getAmbienceTarget);
         EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
         EditorGUILayout.Space();
 
         EditorGUILayout.BeginVertical(GUI.skin.box);
         EditorGUI.indentLevel++;
-        DrawAmbientGUI(ref musicTargetEmitter, ref musicEmiterProperty, ref musicExpanded, MONO_LevelMusicManager.getMusicTarget);
+        DrawAmbientGUI(ref musicTargetEmitter, ref musicEmiterProperty, ref musicExpanded, SOBJ_LevelMusicAmbientEmiters.Instance.getMusicTarget);
         EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
     }

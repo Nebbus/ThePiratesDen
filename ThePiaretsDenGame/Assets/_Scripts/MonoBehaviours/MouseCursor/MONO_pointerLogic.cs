@@ -178,7 +178,17 @@ public class MONO_pointerLogic : MonoBehaviour {
                 simpleInteract();
                 return;
             }
-            overCurentObject = "---------";
+
+            Button test = result.gameObject.GetComponent<Button>();
+            if (true)
+            {
+                overCurentObject = result.gameObject.name;
+            }
+            else
+            {
+                overCurentObject = "---------";
+            }
+
             break;        //Only considerts the first hit
         }
 
@@ -188,7 +198,7 @@ public class MONO_pointerLogic : MonoBehaviour {
         foreach (RaycastResult result in resultsP)
         {
             interactableTarget = result.gameObject.GetComponent<MONO_interactionBase>();
-
+        
             if (interactableTarget)
             {
                 /* If it wasent a interactable so 
@@ -207,6 +217,7 @@ public class MONO_pointerLogic : MonoBehaviour {
                 return;
             }
             overCurentObject = "---------";
+            overCurentObject = result.gameObject.name;
             break;
         }
 

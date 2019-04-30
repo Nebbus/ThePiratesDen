@@ -26,6 +26,7 @@ public class SOBJ_LevelMusicParameterTrigger_FMOD : SOBJ_FMODreaction {
 
     protected override void SpecificInit()
     {
+        
         int ambLenght = ambienceEmittor[0].Params.Length;
         int musLenght = musicEmittor[0].Params.Length;
         valuesAmb = new float[ambLenght];
@@ -51,8 +52,9 @@ public class SOBJ_LevelMusicParameterTrigger_FMOD : SOBJ_FMODreaction {
 
     protected override void ImmediateReaction()
     {
-        MONO_LevelMusicManager.instace.setMusicParamters(namesMus, valuesMus);
-        MONO_LevelMusicManager.instace.setAmbientParamters(namesAmb, valuesAmb);
+
+        MONO_LevelMusicManager.instace.setMusicParamters(musicEmittor[0].Params);
+        MONO_LevelMusicManager.instace.setAmbientParamters(ambienceEmittor[0].Params);
     }
 
   
