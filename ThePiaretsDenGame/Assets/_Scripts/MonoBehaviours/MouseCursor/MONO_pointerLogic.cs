@@ -20,9 +20,9 @@ public class MONO_pointerLogic : MonoBehaviour {
 //===========================================================================
 // Raycaster stuff
 //===========================================================================
-    private GraphicRaycaster m_Graycaster;
-    private PhysicsRaycaster m_Praycaster;
-    private EventSystem      m_EventSystem;
+    private GraphicRaycaster mainCameraGraycaster;
+    private PhysicsRaycaster presistentCanvansPraycaster;
+    private EventSystem      presistentSeneEventSystem;
 
     private List<RaycastResult> resultsG;
     private List<RaycastResult> resultsP;
@@ -33,19 +33,19 @@ public class MONO_pointerLogic : MonoBehaviour {
     {
         get
         {
-            if(m_Praycaster == null || !m_Praycaster.gameObject.activeSelf)
+            if(presistentCanvansPraycaster == null || !presistentCanvansPraycaster.gameObject.activeSelf)
             {
-                m_Praycaster = FindObjectOfType<PhysicsRaycaster>();
+                presistentCanvansPraycaster = FindObjectOfType<PhysicsRaycaster>();
             }
 
-            return m_Praycaster;
+            return presistentCanvansPraycaster;
         }
     }
+
 
 //===========================================================================
 // detection and action stuff (desidig that to do)
 //===========================================================================
-
     private MONO_interactionBase interactableTarget;
     public action currentAction = action.HOVER;
 
@@ -83,9 +83,9 @@ public class MONO_pointerLogic : MonoBehaviour {
     {
         thisTransformer = GetComponent<RectTransform>();
 
-        m_Praycaster    = FindObjectOfType<PhysicsRaycaster>();
-        m_Graycaster    = FindObjectOfType<GraphicRaycaster>();
-        m_EventSystem   = FindObjectOfType<EventSystem>();
+        presistentCanvansPraycaster    = FindObjectOfType<PhysicsRaycaster>();
+        mainCameraGraycaster    = FindObjectOfType<GraphicRaycaster>();
+        presistentSeneEventSystem   = FindObjectOfType<EventSystem>();
      
 
 
@@ -96,8 +96,8 @@ public class MONO_pointerLogic : MonoBehaviour {
     {
         currentAction = Input.GetKeyDown(usedClickKey) ? action.CLICK : action.HOVER;
 
-        resultsP = EXT_GraphicalRayCast.PhysicalRayCast(getPraycaster, m_EventSystem, thisTransformer.position);
-        resultsG = EXT_GraphicalRayCast.GrapphicRayCast(m_Graycaster , m_EventSystem, thisTransformer.position);
+        resultsP = EXT_GraphicalRayCast.PhysicalRayCast(getPraycaster, presistentSeneEventSystem, thisTransformer.position);
+        resultsG = EXT_GraphicalRayCast.GrapphicRayCast(mainCameraGraycaster , presistentSeneEventSystem, thisTransformer.position);
         
         //if (debug)
         //{

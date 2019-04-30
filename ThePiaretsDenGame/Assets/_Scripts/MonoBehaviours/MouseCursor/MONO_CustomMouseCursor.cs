@@ -26,7 +26,7 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     void Awake()
     {
         CustomCursorTransform = CustomCursor.GetComponent<RectTransform>();
-        Menus                = FindObjectOfType<MONO_Menus>();
+        Menus                 = FindObjectOfType<MONO_Menus>();
     }
 
 
