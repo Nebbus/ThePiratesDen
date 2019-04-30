@@ -9,21 +9,50 @@ public class MONO_pointerLogic : MonoBehaviour {
 
     public enum action { HOVER, CLICK};
 
-    [Tooltip("Debug.Log the name of the things the raycast hits")]
-    public bool debug = false;
-    public bool debugOnlyFirstHit = true;
+    //[Tooltip("Debug.Log the name of the things the raycast hits")]
+    //public bool debug             = false;
+    //public bool debugOnlyFirstHit = true;
+
+    [Tooltip("The name of the interactable object (graphical or fysikal) the raycast hits")]
+    public string overCurentObject;
+    [Space]
+
+//===========================================================================
+// Raycaster stuff
+//===========================================================================
     private GraphicRaycaster m_Graycaster;
     private PhysicsRaycaster m_Praycaster;
     private EventSystem      m_EventSystem;
 
-    private List<RaycastResult>     resultsG;
-    private List<RaycastResult>     resultsP;
-    private MONO_interactionBase    interactableTarget;
+    private List<RaycastResult> resultsG;
+    private List<RaycastResult> resultsP;
 
     private RectTransform thisTransformer;
 
+    private PhysicsRaycaster getPraycaster
+    {
+        get
+        {
+            if(m_Praycaster == null || !m_Praycaster.gameObject.activeSelf)
+            {
+                m_Praycaster = FindObjectOfType<PhysicsRaycaster>();
+            }
+
+            return m_Praycaster;
+        }
+    }
+
+//===========================================================================
+// detection and action stuff (desidig that to do)
+//===========================================================================
+
+    private MONO_interactionBase interactableTarget;
     public action currentAction = action.HOVER;
 
+
+//===========================================================================
+// Ínput stuff
+//===========================================================================
 
     //temporär lösnign
     [SerializeField]
@@ -62,108 +91,72 @@ public class MONO_pointerLogic : MonoBehaviour {
 
     }
 
-	// Update is called once per frame
-	void Update ()
-	{
-	    
-        if (Input.GetKeyDown(usedClickKey))
-        {
-            currentAction = action.CLICK;
-        }
-        else
-        {
-               currentAction = action.HOVER;
-        }
+    // Update is called once per frame
+    void Update()
+    {
+        currentAction = Input.GetKeyDown(usedClickKey) ? action.CLICK : action.HOVER;
 
-
-
-		if (m_Praycaster == null) 
-		{
-			// temp fix to make it fin the physical raycaster i n every scene
-			m_Praycaster    = FindObjectOfType<PhysicsRaycaster>();
-		}
-        Vector3 pos = new Vector3(thisTransformer.position.x, thisTransformer.position.y, 0);
-
-        resultsG = EXT_GraphicalRayCast.GrapphicRayCast(m_Graycaster, m_EventSystem, pos);
-
-        if(m_Praycaster != null)
-        {
-            resultsP = EXT_GraphicalRayCast.PhysicalRayCast(m_Praycaster, m_EventSystem, pos);
-        }
-        else
-        {
-            Debug.Log("ERROR: ingen PhysicsRaycaster hittat bugg undviken med quc fix");
-        }
-     
-
-        if (debug && m_Praycaster != null)
-        {
-            DebugHits();
-        }
-
-        if (m_Praycaster != null)
-        {
-            handleResult();
-        }
-        else
-        {
-            Debug.Log("ERROR: ingen PhysicsRaycaster hittat bugg undviken med quc fix");
-        }
-
+        resultsP = EXT_GraphicalRayCast.PhysicalRayCast(getPraycaster, m_EventSystem, thisTransformer.position);
+        resultsG = EXT_GraphicalRayCast.GrapphicRayCast(m_Graycaster , m_EventSystem, thisTransformer.position);
         
-       
+        //if (debug)
+        //{
+        //    DebugHits();
+        //}
+        handleResult();
     }
 
-    /// <summary>
-    /// Debugs out all hits that hitted a MONO_interactionBase
-    /// </summary>
-    private void DebugHits()
-    {
-        int count = 0;
-        foreach (RaycastResult result in resultsG)
-        {
-            MONO_interactionBase interactable = result.gameObject.GetComponentInParent<MONO_interactionBase>();
-            if (interactable)
-            {
-                Debug.Log("Graphical Hit " + count + " : " + result.gameObject.name + " Has a MONO_interactionBase");
-            }
-            if (debugOnlyFirstHit)
-            {
-                break;
-            }
-            count++;
-        }
-        count = 0;
+    ///// <summary>
+    ///// Debugs out all hits that hitted a MONO_interactionBase
+    ///// </summary>
+    //private void DebugHits()
+    //{
+    //    //Debugs ut
+    //    int count = 0;
+    //    foreach (RaycastResult result in resultsG)
+    //    {
+    //        MONO_interactionBase interactable = result.gameObject.GetComponentInParent<MONO_interactionBase>();
+    //        if (interactable)
+    //        {
+    //            Debug.Log("Graphical Hit " + count + " : " + result.gameObject.name + " Has a MONO_interactionBase");
+    //        }
+    //        if (debugOnlyFirstHit)
+    //        {
+    //            break;
+    //        }
+    //        count++;
+    //    }
+    //    count = 0;
 
-        foreach (RaycastResult result in resultsP)
-        {
-            MONO_interactionBase interactable = result.gameObject.GetComponent<MONO_interactionBase>();
+    //    foreach (RaycastResult result in resultsP)
+    //    {
+    //        MONO_interactionBase interactable = result.gameObject.GetComponent<MONO_interactionBase>();
 
-            MONO_Interactable temp = interactable as MONO_Interactable;
+    //        MONO_Interactable temp = interactable as MONO_Interactable;
 
-            if (temp)
-            {
-                Debug.Log("Physical Hit " + count + " : " + result.gameObject.name + " Has a MONO_Interactable");
-            }
-            else if (interactable)
-            {
-                Debug.Log("Physical Hit " + count + " : " + result.gameObject.name + " Has a MONO_interactionBase");
+    //        if (temp)
+    //        {
+    //            Debug.Log("Physical Hit " + count + " : " + result.gameObject.name + " Has a MONO_Interactable");
+    //        }
+    //        else if (interactable)
+    //        {
+    //            Debug.Log("Physical Hit " + count + " : " + result.gameObject.name + " Has a MONO_interactionBase");
 
-            }
-            else if (tag == "GROUND")
-            {
+    //        }
+    //        else if (tag == "GROUND")
+    //        {
 
-                Debug.Log("Physical Hit " + count + " : " + result.gameObject.name + " is Ground");
-            }
-            if (debugOnlyFirstHit)
-            {
-                break;
-            }
-            count++;
-        }
+    //            Debug.Log("Physical Hit " + count + " : " + result.gameObject.name + " is Ground");
+    //        }
+    //        if (debugOnlyFirstHit)
+    //        {
+    //            break;
+    //        }
+    //        count++;
+    //    }
       
   
-    }
+    //}
 
     /// <summary>
     /// Controls if a monotarget was hitted
@@ -171,40 +164,53 @@ public class MONO_pointerLogic : MonoBehaviour {
     private void handleResult()
     {	
         interactableTarget = null;
-        //Loks att the first item in the list to se if it has MONO_interactionBase
+
+
+        //==================================================================================
+        // Handel Graphical interactions
+        //==================================================================================
         foreach (RaycastResult result in resultsG)
         {
             interactableTarget = result.gameObject.GetComponentInParent<MONO_interactionBase>();
             if (interactableTarget)
             {
+                overCurentObject = result.gameObject.name;
                 simpleInteract();
                 return;
             }
-            break;
+            overCurentObject = "---------";
+            break;        //Only considerts the first hit
         }
+
+        //==================================================================================
+        // Handel physical interactions
+        //==================================================================================
         foreach (RaycastResult result in resultsP)
         {
             interactableTarget = result.gameObject.GetComponent<MONO_interactionBase>();
 
-       
             if (interactableTarget)
             {
-              
-                if (Interactable(result, interactableTarget))
-                {
-                    return;
-                } 
-                else 
+                /* If it wasent a interactable so 
+                 * was it a simpleInteraction*/
+                if (!Interactable(result, interactableTarget))
                 {
                     simpleInteract();
                 }
+                overCurentObject = result.gameObject.name;
+                return;
             }
-            else
+            else if(result.gameObject.tag == "GROUND")
             {
                 GroundClick(result);
+                overCurentObject = result.gameObject.name;
+                return;
             }
+            overCurentObject = "---------";
             break;
-        } 
+        }
+
+        overCurentObject = "---------";
     }
 
 
@@ -243,11 +249,11 @@ public class MONO_pointerLogic : MonoBehaviour {
     /// <returns>tru if the click was on teh ground, oter wise false</returns>
     private bool GroundClick(RaycastResult result)
     {
-        if (result.gameObject.tag == "GROUND" && currentAction == action.CLICK)
+        if (currentAction == action.CLICK)
         {
 
             MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
-            param.param5 = result.worldPosition;
+            param.param5                       = result.worldPosition;
             MONO_EventManager.TriggerEvent(MONO_EventManager.onGroundEvnetManager_NAME, param);
             return true;
         }
