@@ -16,7 +16,7 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
 	public void Exit()
 	{
-		sceneManager.ChangeScene("Scene1_outside");
+		sceneManager.ChangeScene("Scene1_outside", false);
 	}
 
 	private void Start()
@@ -55,7 +55,7 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 		flowChart.ExecuteBlock ("Finished");
 		yield return new WaitForSeconds (3);
 		//Here's where we change the condition allowing us to use the door normally
-		sceneManager.ChangeScene("Scene2_inside");
+		sceneManager.ChangeScene("Scene2_inside", false);
 
 	}
 

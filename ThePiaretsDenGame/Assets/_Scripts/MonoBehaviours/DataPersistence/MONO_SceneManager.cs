@@ -12,6 +12,9 @@ public class MONO_SceneManager : MonoBehaviour {
 	public StudioParameterTrigger musicTrigger;
 	public StudioParameterTrigger ambienceTrigger;
 
+
+    public Camera cameraTemp;
+
 	private MONO_Fade fade;
 
 	/// <summary>
@@ -38,18 +41,25 @@ public class MONO_SceneManager : MonoBehaviour {
 
 		//Load first scene, set start position for player and fade in.
 		yield return StartCoroutine( LoadAndSetScene (startScene));
-		SetPlayerStartPosition ();
-		fade.Fade (0f);
+        cameraTemp.gameObject.SetActive(false);// TEMP CAMERA=================================================================================================================
+        //SetPlayerStartPosition ();
+        fade.Fade (0f);
 
 	}
 
-	/// <summary>
-	/// Changes the scene.
-	/// </summary>
-	/// <param name="sceneName">Scene to load.</param>
-	public void ChangeScene(string sceneName)
+
+
+
+
+
+    /// <summary>
+    /// Changes the scene.
+    /// </summary>
+    /// <param name="sceneName">Scene to load.</param>
+    /// <param name="sceneName">Sets if the start position shuld be set.</param>
+    public void ChangeScene(string sceneName, bool setStartPos)
 	{
-		StartCoroutine (FadeAndLoad (sceneName));
+		StartCoroutine (FadeAndLoad (sceneName, setStartPos));
 	}
 
 	/// <summary>
@@ -61,6 +71,7 @@ public class MONO_SceneManager : MonoBehaviour {
 		yield return SceneManager.LoadSceneAsync (sceneName, LoadSceneMode.Additive);
 		Scene scene = SceneManager.GetSceneAt (SceneManager.sceneCount - 1);
 		SceneManager.SetActiveScene (scene);
+   
 	}
 
 	/// <summary>
@@ -71,11 +82,12 @@ public class MONO_SceneManager : MonoBehaviour {
 		yield return SceneManager.UnloadSceneAsync (SceneManager.GetActiveScene ().buildIndex);
 	}
 
-	/// <summary>
-	/// Disable input, fade out, then switch scene before fading in.
-	/// </summary>
-	/// <param name="sceneName">Scene to load.</param>
-	private IEnumerator FadeAndLoad(string sceneName)
+    /// <summary>
+    /// Disable input, fade out, then switch scene before fading in.
+    /// </summary>
+    /// <param name="sceneName">Scene to load.</param>
+    /// <param name="sceneName">Sets if the start position shuld be set.</param>
+    private IEnumerator FadeAndLoad(string sceneName, bool setStartPos)
 	{
 		//disable input and fade out.
 		handleInput = false;
@@ -84,14 +96,21 @@ public class MONO_SceneManager : MonoBehaviour {
 
 		//Unload old scene and load the new one.
 		StartCoroutine(UnloadAndUnsetScene());
-		StartCoroutine(LoadAndSetScene(sceneName));	
+        cameraTemp.gameObject.SetActive(true);// TEMP CAMERA=================================================================================================================
+        yield return StartCoroutine(LoadAndSetScene(sceneName));
+        cameraTemp.gameObject.SetActive(false); // TEMP CAMERA=================================================================================================================
+        if (setStartPos)
+        {
+            SetPlayerStartPosition();
+        }
+        //anropa FMOD
 
-		//anropa FMOD
-
-		//fade in and enable input.
-		fade.Fade (0f);
+        //fade in and enable input.
+        fade.Fade (0f);
 		yield return new WaitForSeconds (fade.fadeDuration);
-		handleInput = true;
+      
+
+        handleInput = true;
 	}
 
 	/// <summary>
@@ -99,9 +118,9 @@ public class MONO_SceneManager : MonoBehaviour {
 	/// </summary>
 	private void SetPlayerStartPosition()
 	{
-		GameObject player = GameObject.FindGameObjectWithTag ("Player");
-		GameObject pos = GameObject.Find ("StartPosition");
-		player.transform.position = pos.transform.position;
+		GameObject player              = GameObject.FindGameObjectWithTag ("Player");
+		GameObject pos                 = GameObject.Find ("StartPosition");
+		player.transform.position      = pos.transform.position;
 		player.transform.localRotation = pos.transform.localRotation;
 	}
 

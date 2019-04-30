@@ -3,6 +3,8 @@
 public class SOBJ_SceneChangeReaction : SOBJ_Reaction
 {
 	public string sceneToBeLoaded;
+    public bool setStartPosition = false;
+
 
 	private GameObject sceneManager;
 	private MONO_SceneManager managerScript;
@@ -15,7 +17,7 @@ public class SOBJ_SceneChangeReaction : SOBJ_Reaction
 
 	protected override void ImmediateReaction()
 	{
-		sceneManager.GetComponent<MONO_SceneManager> ().ChangeScene(sceneToBeLoaded);
+		sceneManager.GetComponent<MONO_SceneManager> ().ChangeScene(sceneToBeLoaded, setStartPosition);
 	}
 }
 
