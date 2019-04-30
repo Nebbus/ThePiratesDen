@@ -16,6 +16,8 @@ public class MONO_MenuSelect : MonoBehaviour {
     private GameObject currentSelectedMenuItem;
     private MONO_CustomMouseCursor OurCustomCursor;
 
+	private UnityEngine.UI.Image currentHoverImage;
+
     void Awake()
     {
         OurCustomCursor = FindObjectOfType<MONO_CustomMouseCursor>();
@@ -46,6 +48,21 @@ public class MONO_MenuSelect : MonoBehaviour {
         }
 	}
 
+	public void ChooseHoverImage(UnityEngine.UI.Image HoverImage)
+	{
+		if (currentHoverImage == null) 
+		{
+			Debug.Log ("HoverImage is null");
+		}
+		else
+		{
+			currentHoverImage.enabled = false;
+		}
+		currentHoverImage = HoverImage;
+		currentHoverImage.enabled = true;
+	}
+
+
     private void SelectWithKeys()
     {
         
@@ -64,6 +81,5 @@ public class MONO_MenuSelect : MonoBehaviour {
 		eventSystem.SetSelectedGameObject (null);
 		buttonSelected = false;		//resets the menu so that no button is selected
 	}
-
 
 }
