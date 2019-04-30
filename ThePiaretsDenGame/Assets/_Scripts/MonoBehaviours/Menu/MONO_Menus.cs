@@ -8,6 +8,7 @@ public class MONO_Menus : MonoBehaviour {
     public bool menuOpen;
     public GameObject menuButton;
 	public enum menu {main, paus, settings};
+	public MONO_SceneManager sceneManager;
 
 
 	private menu latestMenu;
@@ -26,7 +27,7 @@ public class MONO_Menus : MonoBehaviour {
 
 	public void StartNewGame()
 	{
-		
+		sceneManager.ChangeScene ("Scene1_outside", false);
 	}
 
 	public void LoadLatestGame()
