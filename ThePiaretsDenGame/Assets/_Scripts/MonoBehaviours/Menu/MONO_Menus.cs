@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class MONO_Menus : MonoBehaviour {
 
-    public bool menuOpen;
+	[HideInInspector]
+	public bool menuOpen = true;
     public GameObject menuButton;
-	public enum menu {main, paus, settings};
 	public MONO_SceneManager sceneManager;
+	public MONO_ReactionCollection mainMenuSound;
+	public MONO_ReactionCollection pausMenuSound;
+
+	public enum menu {main, paus, settings};
 
 
 	private menu latestMenu;
@@ -21,13 +25,17 @@ public class MONO_Menus : MonoBehaviour {
 
 	void Start()
 	{
-		latestMenu = menu.paus; 	//paus menu is the default menu
+		if(latestMenu == null){
+			latestMenu = menu.paus; 	//paus menu is the default menu
+		}
 	}
 
 
 	public void StartNewGame()
 	{
-		sceneManager.ChangeScene ("Scene1_outside", false);
+		CloseMenu ();
+		ChangeLatestMenu (pausMenu);
+		sceneManager.ChangeScene ("Scene1_outside", true);
 	}
 
 	public void LoadLatestGame()
@@ -35,11 +43,10 @@ public class MONO_Menus : MonoBehaviour {
 		
 	}
 
-
-
 	public void ChangeLatestMenu(GameObject menuObject)
 	{
-		if (menuObject.name == "Main") {
+		if (menuObject.name == "Main") 
+		{
 			latestMenu = menu.main;
 		} 
 		else if (menuObject.name == "Paus")
@@ -59,6 +66,8 @@ public class MONO_Menus : MonoBehaviour {
 	public void OpenMenu()
 	{
         menuOpen = true;
+		menuButton.SetActive (false);
+
 		switch (latestMenu) {
 		case menu.main:
 			mainMenu.SetActive (true);
@@ -83,6 +92,28 @@ public class MONO_Menus : MonoBehaviour {
         menuOpen = false;
         menuButton.SetActive(true);
     }
+
+	/// <summary>
+	/// Plays the click sound depending on whether you're in the main menu or the paus menu
+	/// </summary>
+	public void PlayClickSound()
+	{
+		switch (latestMenu) 
+		{
+		case menu.main:
+			mainMenuSound.React ();
+			break;
+
+		case menu.paus:
+			pausMenuSound.React ();
+			break;
+
+		default:
+			break;
+
+		}
+	}
+
 
 	/// <summary>
 	/// Quit game.
