@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1529519, g: 0.19843343, b: 0.45517552, a: 1}
+  m_IndirectSpecularColor: {r: 0.15295216, g: 0.19843298, b: 0.4551764, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -558,7 +558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &213751883 stripped
 Transform:
@@ -627,6 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
   theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &233776417
@@ -709,7 +710,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4232609696157738, guid: 65455aac3f6678e48bbd19077e1e83e1, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114999458601538360, guid: 65455aac3f6678e48bbd19077e1e83e1,
         type: 2}
@@ -832,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee, type: 2}
+  item: {fileID: 0}
 --- !u!114 &508961737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,7 +1431,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4409185874116362, guid: f168d6b3554c04357b2611f59bfb8e0a, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f168d6b3554c04357b2611f59bfb8e0a, type: 2}
@@ -2150,7 +2151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5fb5e9f7dd8e34387e88474fe174b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowchart: {fileID: 866379779}
+  flowchart: {fileID: 1234644509}
   interactionBlock: Look
 --- !u!1 &768454584 stripped
 GameObject:
@@ -2413,7 +2414,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &813893917
 MonoBehaviour:
@@ -7048,7 +7049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 206227899}
+  selectedFlowchart: {fileID: 1234644509}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -7853,6 +7854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/2D/Crate_wood_Open
   theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &1194821672 stripped
@@ -7920,6 +7922,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1234644508
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2125449345}
+    m_Modifications:
+    - target: {fileID: 4074049405666544, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074049405666544, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074049405666544, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074049405666544, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074049405666544, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074049405666544, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074049405666544, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074049405666544, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &1234644509 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114314193311209716, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1234644508}
+  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
+--- !u!4 &1234644510 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4074049405666544, guid: b85a9f669cbc6aa4a84f19d25e7e3ef0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1234644508}
 --- !u!114 &1239418050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7995,7 +8050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5fb5e9f7dd8e34387e88474fe174b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowchart: {fileID: 866379779}
+  flowchart: {fileID: 1234644509}
   interactionBlock: Talk
 --- !u!4 &1338842179 stripped
 Transform:
@@ -8236,7 +8291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 61a2f9f6ceeb5f24fa480430db76811c, type: 2}
+  item: {fileID: 0}
 --- !u!1 &1424489053 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1565380630182974, guid: 7ea35722fd3ad4b14a17319d96642a67,
@@ -8273,7 +8328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: 9cbc992d7232ba94fb64ef865365c9ee, type: 2}
+  item: {fileID: 0}
 --- !u!114 &1459055539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8298,6 +8353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: 
   theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &1473276699
@@ -8669,6 +8725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/2D/Door/Door_Budge
   theSorceOftheOneShot: {fileID: 0}
 --- !u!1001 &1663131617
@@ -9783,6 +9840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Objects/2D/Canon/Canon_Event
   theSorceOftheOneShot: {fileID: 62745648}
 --- !u!114 &1981335023
@@ -10158,8 +10216,9 @@ Transform:
   - {fileID: 802813035}
   - {fileID: 2147428707}
   - {fileID: 1832624990}
+  - {fileID: 1234644510}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2142067291 stripped
 GameObject:
@@ -10203,7 +10262,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4973707219517832, guid: 65dabb4bb9b824d2eaf90e0ffbef9300, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65dabb4bb9b824d2eaf90e0ffbef9300, type: 2}
