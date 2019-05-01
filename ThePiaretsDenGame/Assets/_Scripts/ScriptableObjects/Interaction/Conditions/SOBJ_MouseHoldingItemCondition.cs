@@ -26,14 +26,10 @@ public class SOBJ_MouseHoldingItemCondition : SOBJ_ConditionAdvanced
       }
 
 
-protected override bool advancedCondition()
+    protected override bool advancedCondition()
     {
 
-        if (MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem != null)
-        {
-            return satisfied == (requierdHoldingItem.getHash == MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.getHash);
-        }
-        
-        return false;
+             return satisfied == (requierdHoldingItem.getHash == MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.getHash);
+
     }
 }
