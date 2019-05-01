@@ -18,7 +18,7 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
     private RectTransform   CustomCursorTransform;
     private MONO_Menus      Menus;
-    public bool useMosePosition = true;
+   // public bool useMosePosition = true;
 
   
     
