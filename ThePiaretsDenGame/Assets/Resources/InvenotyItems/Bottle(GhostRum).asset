@@ -16,6 +16,18 @@ MonoBehaviour:
   - {fileID: 114485183253610440}
   - {fileID: 114558798134171608}
   onHoverConditionAndReactions: []
+--- !u!114 &114072836503420108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c479e1ed7f8b945b767b748c326f37, type: 3}
+  m_Name: SOBJ_InventoryGrabItemToMouseReaction
+  m_EditorClassIdentifier: 
+  itemToGrab: {fileID: 11400000}
 --- !u!114 &114485183253610440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,9 +40,26 @@ MonoBehaviour:
   m_Name: ItemInteraction0
   m_EditorClassIdentifier: 
   description: PickUp_GhostBottle
-  requiredConditions: []
+  requiredConditions:
+  - {fileID: 114662682608226866}
   itemInteractionReactions:
   - {fileID: 114599246828017402}
+  - {fileID: 114072836503420108}
+--- !u!114 &114508484648640524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 1
+  hash: 514706441
+  requierdHoldingItem: {fileID: 11400000}
 --- !u!114 &114558798134171608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +71,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
   m_Name: ItemInteraction1
   m_EditorClassIdentifier: 
-  description: Place_Bottle
-  requiredConditions: []
+  description: Place_GhostBottle
+  requiredConditions:
+  - {fileID: 114508484648640524}
   itemInteractionReactions:
   - {fileID: 114950024664055946}
+  - {fileID: 114672042232882606}
 --- !u!114 &114599246828017402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,8 +88,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: SOBJ_AudioOneSHot_FMOD
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Inventory/Bottle_PickUp
   theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114662682608226866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 1
+  hash: 514706441
+  requierdHoldingItem: {fileID: 11400000, guid: fbfcbf14d69c2884f9c900f6d2182593,
+    type: 2}
+--- !u!114 &114672042232882606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741707cadc093f64d8fed8cf536190d2, type: 3}
+  m_Name: SOBJ_InventoryReturnItemFromMouseReaction
+  m_EditorClassIdentifier: 
 --- !u!114 &114950024664055946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,5 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: SOBJ_AudioOneSHot_FMOD
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Inventory/Bottle_Place
   theSorceOftheOneShot: {fileID: 0}

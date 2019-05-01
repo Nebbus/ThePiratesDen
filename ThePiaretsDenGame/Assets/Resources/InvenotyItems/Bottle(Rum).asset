@@ -14,7 +14,24 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 495463060b1388842b305ac7f2b1d5bb, type: 3}
   onClickConditionAndReactions:
   - {fileID: 114689229041696656}
+  - {fileID: 114314405238540974}
   onHoverConditionAndReactions: []
+--- !u!114 &114314405238540974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction1
+  m_EditorClassIdentifier: 
+  description: Place_Bottle
+  requiredConditions: []
+  itemInteractionReactions:
+  - {fileID: 114759321871445436}
+  - {fileID: 114422365195129522}
 --- !u!114 &114330268627265642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26,8 +43,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: SOBJ_AudioOneSHot_FMOD
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Inventory/Bottle_Place
   theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114422365195129522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741707cadc093f64d8fed8cf536190d2, type: 3}
+  m_Name: SOBJ_InventoryReturnItemFromMouseReaction
+  m_EditorClassIdentifier: 
 --- !u!114 &114689229041696656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,6 +69,50 @@ MonoBehaviour:
   m_Name: ItemInteraction0
   m_EditorClassIdentifier: 
   description: PickUp_Bottle
-  requiredConditions: []
+  requiredConditions:
+  - {fileID: 114980668151889936}
   itemInteractionReactions:
   - {fileID: 114330268627265642}
+  - {fileID: 114841263126452492}
+--- !u!114 &114759321871445436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneSHot_FMOD
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Inventory/Bottle_Place
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114841263126452492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c479e1ed7f8b945b767b748c326f37, type: 3}
+  m_Name: SOBJ_InventoryGrabItemToMouseReaction
+  m_EditorClassIdentifier: 
+  itemToGrab: {fileID: 11400000}
+--- !u!114 &114980668151889936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 1
+  hash: 514706441
+  requierdHoldingItem: {fileID: 11400000, guid: fbfcbf14d69c2884f9c900f6d2182593,
+    type: 2}
