@@ -173,6 +173,8 @@ public class MONO_PlayerMovement : MonoBehaviour
         // Set the player's position to the destination.
         transform.position = destinationPosition;
 
+		animator.SetBool ("Walk", false);
+
         // Set the speed (which is what the animator will use) to zero.
         speed = 0f;
 
@@ -243,6 +245,7 @@ public class MONO_PlayerMovement : MonoBehaviour
 
         // Interpolate the player's rotation towards the target rotation.
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSmoothing * Time.deltaTime);
+		animator.SetBool ("Walk", true);
     }
 
     /// <summary>
