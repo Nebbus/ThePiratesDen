@@ -40,6 +40,7 @@ public class MONO_Menus : MonoBehaviour {
 		ChangeLatestMenu (pausMenu);
 		sceneManager.ChangeScene ("Scene1_outside", true);
 		inventory.SetActive (true);
+		sceneManager.handleInput = false;
 	}
 
 	public void LoadLatestGame()
