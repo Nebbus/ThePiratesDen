@@ -16,6 +16,18 @@ MonoBehaviour:
   - {fileID: 114177558927512978}
   - {fileID: 114130766383314368}
   onHoverConditionAndReactions: []
+--- !u!114 &114040518512469524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c479e1ed7f8b945b767b748c326f37, type: 3}
+  m_Name: SOBJ_InventoryGrabItemToMouseReaction
+  m_EditorClassIdentifier: 
+  itemToGrab: {fileID: 11400000}
 --- !u!114 &114130766383314368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,9 +40,11 @@ MonoBehaviour:
   m_Name: ItemInteraction1
   m_EditorClassIdentifier: 
   description: Place_Cannonball
-  requiredConditions: []
+  requiredConditions:
+  - {fileID: 114583819267433524}
   itemInteractionReactions:
   - {fileID: 114546094533833258}
+  - {fileID: 114773052710770170}
 --- !u!114 &114177558927512978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,9 +57,11 @@ MonoBehaviour:
   m_Name: ItemInteraction0
   m_EditorClassIdentifier: 
   description: PickUp_Cannonbal
-  requiredConditions: []
+  requiredConditions:
+  - {fileID: 114844983997450628}
   itemInteractionReactions:
   - {fileID: 114812029635559722}
+  - {fileID: 114040518512469524}
 --- !u!114 &114546094533833258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,8 +73,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: SOBJ_AudioOneSHot_FMOD
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Inventory/Canonball_Place
   theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114583819267433524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 1
+  hash: 514706441
+  requierdHoldingItem: {fileID: 11400000}
+--- !u!114 &114773052710770170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741707cadc093f64d8fed8cf536190d2, type: 3}
+  m_Name: SOBJ_InventoryReturnItemFromMouseReaction
+  m_EditorClassIdentifier: 
 --- !u!114 &114812029635559722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,5 +113,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
   m_Name: SOBJ_AudioOneSHot_FMOD
   m_EditorClassIdentifier: 
+  delay: 0
   onShotEvent: event:/Inventory/Canonball_PickUp
   theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114844983997450628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: PickedUpCoin
+  satisfied: 1
+  hash: 514706441
+  requierdHoldingItem: {fileID: 11400000, guid: fbfcbf14d69c2884f9c900f6d2182593,
+    type: 2}
