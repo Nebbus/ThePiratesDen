@@ -67,7 +67,9 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
         /*If the requiredCondition is a comparesons is a 
       * comparesons condition (like SOBJ_ItemCondition)
       * then just call the IsSatesfied()*/
+
         SOBJ_MouseHoldingItemCondition ItemCompareseon = requiredCondition as SOBJ_MouseHoldingItemCondition;
+
         if (ItemCompareseon)
         {
             return requiredCondition.IsSatesfied();
@@ -87,14 +89,13 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
                 /* ... and if they match the given condition then this
                  * is the global version of the requiredConditiond.
                  * */
-                Debug.Log(allConditions[i].description + "  i " + i);
                 if (allConditions[i].hash == requiredCondition.hash)
                 {
                     globalCondition = allConditions[i];
                 }
             }
         }
-
+        //Debug.Log("globalCondition: " + globalCondition.ToString());
         // If by this point a globalCondition hasn't been found then return false.
         if (!globalCondition)
         {
@@ -105,4 +106,7 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
         // Return true if the satisfied states match, false otherwise.
         return globalCondition.IsSatesfied() == requiredCondition.IsSatesfied();
     }
+
+
+
 }

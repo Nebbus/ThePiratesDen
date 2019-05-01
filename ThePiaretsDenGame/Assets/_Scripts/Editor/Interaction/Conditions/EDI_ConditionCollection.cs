@@ -200,8 +200,8 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
         {
             // ... finds the type selected by the popup, creates an appropriate reaction and adds it to the array.
             Type reactionType                  = conditionTypes[selectedIndex];
-            SOBJ_ConditionAdvanced newReaction = EDI_ConditionAdvanced.CreateCondition(reactionType);
-            conditionsProperty.AddToObjectArray(newReaction);
+            SOBJ_ConditionAdvanced newCondition = EDI_ConditionAdvanced.CreateCondition(reactionType);
+            conditionsProperty.AddToObjectArray(newCondition);
         }
     }
    

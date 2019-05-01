@@ -41,6 +41,8 @@ public abstract class EDI_ConditionAdvanced : Editor
     //  private variables
     //-------------------------------------------------------------------------------
 
+    private bool showDebug;
+
     private SerializedProperty descriptionProperty;  // Represents a string description of this Editor's target.
     private SerializedProperty hashProperty;         // Represents the number that identified this Editor's target.
 
@@ -186,11 +188,31 @@ public abstract class EDI_ConditionAdvanced : Editor
         // Pull the information from the target into the serializedObject.
         serializedObject.Update();
 
+
+
+        //====================================================================================================================
+        showDebug = EditorGUILayout.Toggle("Debug: about this condition", showDebug);
+        if (showDebug)
+        {
+            EditorGUILayout.BeginVertical(GUI.skin.box);
+            // Display the description of the Condition.
+            EditorGUILayout.LabelField("Name: " + condition.description);
+
+            // Display the Condition type.  
+            EditorGUILayout.LabelField("Type: " + condition.GetType().ToString());
+
+            // Display the hash.
+            EditorGUILayout.LabelField("Hash: " + condition.hash.ToString());
+            EditorGUILayout.EndVertical();
+        }
+        //====================================================================================================================
+
         // The width for the Popup, Toggle and remove Button.
         float width = EditorGUIUtility.currentViewWidth /3f;
 
         EditorGUILayout.BeginHorizontal();
-        
+
+          
         // Find the index for the target based on the AllConditions array.
         int conditionIndex = EDI_AllConditions.TryGetConditionIndex(condition);
 
@@ -206,6 +228,7 @@ public abstract class EDI_ConditionAdvanced : Editor
          * of the relevant condition by the user.
          */
         conditionIndex                         = EditorGUILayout.Popup(conditionIndex, getListOfReleveantConditions(), GUILayout.Width(width ));
+       // conditionIndex = EditorGUILayout.Popup(conditionIndex, EDI_AllConditions.AllConditionDescriptions, GUILayout.Width(width));
         SOBJ_ConditionAdvanced globalCondition = EDI_AllConditions.TryGetConditionAt(conditionIndex);
 
         // Set the description based on the globalCondition's description.

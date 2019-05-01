@@ -111,7 +111,6 @@ public class EDI_AllConditions : Editor
     }
 
 
-
     public override void OnInspectorGUI()
     {
         /* If there are different number of editors to Conditions,
@@ -418,7 +417,7 @@ public class EDI_AllConditions : Editor
            
            if (temp != null)
             {
-                allConditions[count] = TryGetConditionAt(i).description;
+                allConditions[i] = TryGetConditionAt(i).description;
                 count++;
             }
         }
