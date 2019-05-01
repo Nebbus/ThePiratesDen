@@ -392,16 +392,17 @@ public class EDI_AllConditions : Editor
     /// <returns></returns>
     public static string[] getListOfReleveantConditions<T>()
     {
+        SetAllConditionDescriptions();
         /* Create a new array that has the same number 
          * of elements as there are Conditions.
          */
-        string[] allConditions = new string[AllConditionDescriptions.Length];
+        string[] allConditions = new string[TryGetConditionsLength()];
 
         /* Go through the array and assign the description 
          * of the condition at the same index.
          */
         int count = 0;
-        for (int i = 0; i < allConditions.Length; i++)
+        for (int i = 0; i < TryGetConditionsLength(); i++)
         {
             T temp;
            // attemts to cast the conditon to the wanted type,

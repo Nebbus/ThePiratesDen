@@ -21,6 +21,7 @@ public class SOBJ_ConditionCollection : ScriptableObject
             /* ... and check them against the AllConditions version of the Condition. 
              * If they don't have the same satisfied flag, return false.
              */
+            Debug.Log(requiredConditions[i].description);
             if (!SOBJ_AllConditions.CheckCondition(requiredConditions[i]))
             {
                 return false;

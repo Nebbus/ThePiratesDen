@@ -76,7 +76,7 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
 
         // Cache the condition array.
         SOBJ_ConditionAdvanced[] allConditions  = Instance.conditions;
-        SOBJ_ConditionAdvanced globalCondition  = null;
+        SOBJ_ConditionAdvanced   globalCondition  = null;
 
         // If there is at least one condition...
         if (allConditions != null && allConditions[0] != null)
@@ -87,6 +87,7 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
                 /* ... and if they match the given condition then this
                  * is the global version of the requiredConditiond.
                  * */
+                Debug.Log(allConditions[i].description + "  i " + i);
                 if (allConditions[i].hash == requiredCondition.hash)
                 {
                     globalCondition = allConditions[i];
