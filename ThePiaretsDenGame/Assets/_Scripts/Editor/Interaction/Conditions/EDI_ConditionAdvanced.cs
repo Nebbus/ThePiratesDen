@@ -131,6 +131,9 @@ public abstract class EDI_ConditionAdvanced : Editor
          // Display the Condition type.
          EditorGUILayout.LabelField("Type: " + condition.GetType().ToString());
 
+        // Display the hash.
+        EditorGUILayout.LabelField("Hash: " + condition.hash.ToString());
+
         EditorGUILayout.EndVertical();
 
         DrawConditionAllConditionsAssetGUI();
@@ -162,6 +165,9 @@ public abstract class EDI_ConditionAdvanced : Editor
 
          // Display the Condition type.
          EditorGUILayout.LabelField("Type: " + condition.GetType().ToString());
+
+        // Display the hash.
+        EditorGUILayout.LabelField("Hash: " + condition.hash.ToString());
 
         EditorGUILayout.EndVertical();
 
