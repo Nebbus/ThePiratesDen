@@ -26,8 +26,8 @@ public class MONO_pointerLogic : MonoBehaviour {
 //===========================================================================
 // Raycaster stuff
 //===========================================================================
-    private GraphicRaycaster mainCameraGraycaster;
-    private PhysicsRaycaster presistentCanvansPraycaster;
+    public GraphicRaycaster mainCameraGraycaster;
+    public PhysicsRaycaster presistentCanvansPraycaster;
     private EventSystem      presistentSeneEventSystem;
 
     private List<RaycastResult> resultsG;
