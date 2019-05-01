@@ -12,6 +12,7 @@ public class MONO_Menus : MonoBehaviour {
 	public MONO_ReactionCollection mainMenuSound;
 	public MONO_ReactionCollection pausMenuSound;
 
+
 	public enum menu {main, paus, settings};
 
 
@@ -22,6 +23,8 @@ public class MONO_Menus : MonoBehaviour {
 	private GameObject pausMenu;
 	[SerializeField]
 	private GameObject settingsMenu;
+	[SerializeField]
+	private GameObject inventory;
 
 	void Start()
 	{
@@ -36,6 +39,7 @@ public class MONO_Menus : MonoBehaviour {
 		CloseMenu ();
 		ChangeLatestMenu (pausMenu);
 		sceneManager.ChangeScene ("Scene1_outside", true);
+		inventory.SetActive (true);
 	}
 
 	public void LoadLatestGame()
