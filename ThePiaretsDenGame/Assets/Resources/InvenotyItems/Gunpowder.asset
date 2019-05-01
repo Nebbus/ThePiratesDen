@@ -12,5 +12,63 @@ MonoBehaviour:
   m_Name: Gunpowder
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: abd7232cfcb2f744f9477b29e08cbb2b, type: 3}
-  onClickConditionAndReactions: []
+  onClickConditionAndReactions:
+  - {fileID: 114453141264467084}
+  - {fileID: 114971633567543538}
   onHoverConditionAndReactions: []
+--- !u!114 &114334448271371060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneSHot_FMOD
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Inventory/Gunpowder_Place
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114453141264467084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction0
+  m_EditorClassIdentifier: 
+  description: PickUp_Gunpowder
+  requiredConditions: []
+  itemInteractionReactions:
+  - {fileID: 114937419696055306}
+--- !u!114 &114937419696055306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneSHot_FMOD
+  m_EditorClassIdentifier: 
+  onShotEvent: event:/Inventory/Gunpowder_PickUp
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114971633567543538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction1
+  m_EditorClassIdentifier: 
+  description: Place_Gunpowder
+  requiredConditions: []
+  itemInteractionReactions:
+  - {fileID: 114334448271371060}

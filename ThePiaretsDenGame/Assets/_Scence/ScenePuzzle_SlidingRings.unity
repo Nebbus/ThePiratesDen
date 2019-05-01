@@ -675,6 +675,8 @@ GameObject:
   m_Component:
   - component: {fileID: 970595254}
   - component: {fileID: 970595253}
+  - component: {fileID: 970595256}
+  - component: {fileID: 970595255}
   m_Layer: 0
   m_Name: AmbienceSounds
   m_TagString: Untagged
@@ -693,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/Ambience/2D/AMB_Indoor_2D
+  Event: event:/Ambience/2D/AMB_Puzzle_2D
   PlayEvent: 1
   StopEvent: 0
   CollisionTag: 
@@ -717,6 +719,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &970595255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 970595252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Ambience/3D/AMB_Wood_Creaking_Puzzle_3D
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 7.6
+  OverrideMaxDistance: 20
+--- !u!114 &970595256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 970595252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Ambience/3D/AMB_Sails_Puzzle_3D
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 4.6499996
+  OverrideMaxDistance: 70
 --- !u!1 &976406451
 GameObject:
   m_ObjectHideFlags: 0
