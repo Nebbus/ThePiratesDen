@@ -102,6 +102,7 @@ public class MONO_SceneManager : MonoBehaviour {
         if (setStartPos)
         {
             SetPlayerStartPosition();
+			//SetGhostStartPosition ();
         }
         //anropa FMOD
 
@@ -119,10 +120,26 @@ public class MONO_SceneManager : MonoBehaviour {
 	private void SetPlayerStartPosition()
 	{
 		GameObject player              = GameObject.FindGameObjectWithTag ("Player");
-		GameObject pos                 = GameObject.Find ("StartPosition");
+		GameObject pos                 = GameObject.Find ("PlayerStartPosition");
+		GameObject ghost              = GameObject.FindGameObjectWithTag ("Ghost");
+		GameObject gpos                 = GameObject.Find ("GhostStartPosition");
 		player.transform.position      = pos.transform.position;
 		player.transform.localRotation = pos.transform.localRotation;
+		ghost.transform.position      = gpos.transform.position;
+		ghost.transform.localRotation = gpos.transform.localRotation;
+		ghost.SetActive (false);
 	}
+
+	/// <summary>
+	/// Sets the ghost start position.
+	/// </summary>
+	/*private void SetGhostStartPosition()
+	{
+		GameObject ghost              = GameObject.FindGameObjectWithTag ("Ghost");
+		GameObject gpos                 = GameObject.Find ("GhostStartPosition");
+		ghost.transform.position      = gpos.transform.position;
+		ghost.transform.localRotation = gpos.transform.localRotation;
+	}*/
 
 	/// <summary>
 	/// Changes the music.
