@@ -15,7 +15,21 @@ MonoBehaviour:
   onClickConditionAndReactions:
   - {fileID: 114750670128799396}
   - {fileID: 114983316992392456}
+  - {fileID: 114224626651776122}
   onHoverConditionAndReactions: []
+--- !u!114 &114006538515551150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe928d60a0a4fa14ba2fd39a7bc625cd, type: 3}
+  m_Name: SOBJ_InventoryLostItemRection
+  m_EditorClassIdentifier: 
+  delay: 0
+  item: {fileID: 11400000}
 --- !u!114 &114091069322551290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,6 +44,39 @@ MonoBehaviour:
   delay: 0
   onShotEvent: event:/Inventory/Book_PickUp
   theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114224626651776122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction2
+  m_EditorClassIdentifier: 
+  description: combind whit rom
+  requiredConditions:
+  - {fileID: 114827767517675906}
+  itemInteractionReactions:
+  - {fileID: 114006538515551150}
+  - {fileID: 114267503602156238}
+  - {fileID: 114448521929673950}
+  - {fileID: 114702762915767386}
+  - {fileID: 114420536603248886}
+--- !u!114 &114267503602156238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe928d60a0a4fa14ba2fd39a7bc625cd, type: 3}
+  m_Name: SOBJ_InventoryLostItemRection
+  m_EditorClassIdentifier: 
+  delay: 0
+  item: {fileID: 11400000, guid: 9421b2017bb3d354da753f3b86146777, type: 2}
 --- !u!114 &114290066790619776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,6 +88,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741707cadc093f64d8fed8cf536190d2, type: 3}
   m_Name: SOBJ_InventoryReturnItemFromMouseReaction
   m_EditorClassIdentifier: 
+--- !u!114 &114420536603248886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6ef1872a2268948b2283a0ef0761dc, type: 3}
+  m_Name: SOBJ_MouseRemoveGrabedItem
+  m_EditorClassIdentifier: 
+--- !u!114 &114448521929673950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneSHot_FMOD
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_Combine
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &114546980772091462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +154,19 @@ MonoBehaviour:
   satisfied: 1
   hash: -829145576
   requierdHoldingItem: {fileID: 11400000}
+--- !u!114 &114702762915767386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8143682e53d9a45a77e736b1fa1e21, type: 3}
+  m_Name: SOBJ_InventoryPickedUpItemReaction
+  m_EditorClassIdentifier: 
+  delay: 0
+  item: {fileID: 11400000, guid: 79cbbc68bb3aa8348878047467fe4602, type: 2}
 --- !u!114 &114750670128799396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +184,22 @@ MonoBehaviour:
   itemInteractionReactions:
   - {fileID: 114091069322551290}
   - {fileID: 114559671111636002}
+--- !u!114 &114827767517675906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: MouseCompareItem
+  satisfied: 1
+  hash: -829145576
+  requierdHoldingItem: {fileID: 11400000, guid: 9421b2017bb3d354da753f3b86146777,
+    type: 2}
 --- !u!114 &114921212894191442
 MonoBehaviour:
   m_ObjectHideFlags: 0

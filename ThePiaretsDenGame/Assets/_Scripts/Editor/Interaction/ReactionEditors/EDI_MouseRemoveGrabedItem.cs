@@ -8,7 +8,7 @@ public class EDI_ReturnItemToInventoryReaction : EDI_Reaction
 {
     protected override string GetFoldoutLabel()
     {
-        return "Return Item To Inventory Reaction";
+        return "Removes grabed item, not returns to inventory";
     }
 
 }
