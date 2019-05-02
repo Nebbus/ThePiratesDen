@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MONO_FadeObject : MonoBehaviour {
+	public float fadeDuration = 1.0f;
 
 	private Color startColor;
 	private Color targetColor;
 	private float objectAlpha;
-	private float startTime;
-	public float fadeDuration = 1.0f;
-
-	private float isFading;
+	private bool isFading;
 
 	public void StartFade(float targetAlpha)
 	{
-		
 		StartCoroutine (Fade (targetAlpha));
 	}
 
 
-
 	private IEnumerator Fade(float targetAlpha)
 	{
-		objectAlpha = gameObject.GetComponent<MeshRenderer> ().material.color.a;
-		// Set the fading flag to true so the FadeAndSwitchScenes coroutine won't be called again.
+		startColor = gameObject.GetComponent<MeshRenderer> ().material.color;
+		targetColor = startColor;
+		targetColor.a = targetAlpha;
+		objectAlpha = startColor.a;
+
+
 		isFading = true;
 
 		/* Calculate how fast the object should fade based on it's current alpha, 
@@ -34,8 +34,9 @@ public class MONO_FadeObject : MonoBehaviour {
 		// While the CanvasGroup hasn't reached the final alpha yet...
 		while (!Mathf.Approximately (objectAlpha, targetAlpha))
 		{
-			gameObject.GetComponent<MeshRenderer> ().material.color = Color.Lerp (startColor, targetColor, fadeSpeed);
-
+			Color objectColor = Color.Lerp (startColor, targetColor, fadeSpeed);
+			objectAlpha = objectColor.a;
+			gameObject.GetComponent<MeshRenderer> ().material.color = objectColor;
 
 			// Wait for a frame then continue.
 			yield return null;
