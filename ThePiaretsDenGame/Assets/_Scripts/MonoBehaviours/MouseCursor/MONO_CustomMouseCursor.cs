@@ -27,6 +27,7 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     {
         CustomCursorTransform = CustomCursor.GetComponent<RectTransform>();
         Menus                 = FindObjectOfType<MONO_Menus>();
+
     }
 
 
@@ -41,8 +42,9 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
             //Locks the cursor 
             if (Cursor.lockState != CursorLockMode.Locked)
             {
-            Cursor.lockState = CursorLockMode.None; // herd this culd prevent editor bugg
-            Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.None; // herd this culd prevent editor bugg
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible  = false;
             }
 
             // Gets the movment direction

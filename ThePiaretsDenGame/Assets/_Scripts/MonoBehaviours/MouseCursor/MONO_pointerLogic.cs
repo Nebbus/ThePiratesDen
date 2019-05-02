@@ -84,7 +84,7 @@ public class MONO_pointerLogic : MonoBehaviour {
         thisTransformer = GetComponent<RectTransform>();
 
         presistentCanvansPraycaster    = FindObjectOfType<PhysicsRaycaster>();
-        mainCameraGraycaster    = FindObjectOfType<GraphicRaycaster>();
+        mainCameraGraycaster        = FindObjectOfType<GraphicRaycaster>();
         presistentSeneEventSystem   = FindObjectOfType<EventSystem>();
      
 
