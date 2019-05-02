@@ -124,6 +124,8 @@ namespace Fungus
 
         protected virtual void Start()
         {
+  
+
             // Dialog always starts invisible, will be faded in when writing starts
             GetCanvasGroup().alpha = 0f;
 
@@ -283,7 +285,7 @@ namespace Fungus
         /// Sets the active state of the Say Dialog gameobject.
         /// </summary>
         public virtual void SetActive(bool state)
-        {
+        { 
             gameObject.SetActive(state);
         }
 

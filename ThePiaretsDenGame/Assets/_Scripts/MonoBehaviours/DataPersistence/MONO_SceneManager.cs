@@ -13,7 +13,7 @@ public class MONO_SceneManager : MonoBehaviour {
 	public StudioParameterTrigger ambienceTrigger;
 
 
-    public Camera cameraTemp;
+    public Camera loadCamera;
 
 	private MONO_Fade fade;
 
@@ -39,12 +39,15 @@ public class MONO_SceneManager : MonoBehaviour {
 		//Find the instance holding the code for fading.
 		fade = FindObjectOfType<MONO_Fade>();
 
-		//Load first scene, set start position for player and fade in.
-		yield return StartCoroutine( LoadAndSetScene (startScene));
-        cameraTemp.gameObject.SetActive(false);// TEMP CAMERA=================================================================================================================
+        loadCamera.gameObject.SetActive(true);
+
+        //Load first scene, set start position for player and fade in.
+        yield return StartCoroutine( LoadAndSetScene (startScene));
+
+        loadCamera.gameObject.SetActive(false);
+
         //SetPlayerStartPosition ();
         fade.Fade (0f);
-
 	}
 
 
@@ -96,9 +99,9 @@ public class MONO_SceneManager : MonoBehaviour {
 
 		//Unload old scene and load the new one.
 		StartCoroutine(UnloadAndUnsetScene());
-        cameraTemp.gameObject.SetActive(true);// TEMP CAMERA=================================================================================================================
+        loadCamera.gameObject.SetActive(true);// TEMP CAMERA=================================================================================================================
         yield return StartCoroutine(LoadAndSetScene(sceneName));
-        cameraTemp.gameObject.SetActive(false); // TEMP CAMERA=================================================================================================================
+        loadCamera.gameObject.SetActive(false); // TEMP CAMERA=================================================================================================================
         if (setStartPos)
         {
             SetPlayerStartPosition();
@@ -121,12 +124,12 @@ public class MONO_SceneManager : MonoBehaviour {
 	{
 		GameObject player              = GameObject.FindGameObjectWithTag ("Player");
 		GameObject pos                 = GameObject.Find ("PlayerStartPosition");
-		GameObject ghost              = GameObject.FindGameObjectWithTag ("Ghost");
-		GameObject gpos                 = GameObject.Find ("GhostStartPosition");
+		GameObject ghost               = GameObject.FindGameObjectWithTag ("Ghost");
+		GameObject gpos                = GameObject.Find ("GhostStartPosition");
 		player.transform.position      = pos.transform.position;
 		player.transform.localRotation = pos.transform.localRotation;
-		ghost.transform.position      = gpos.transform.position;
-		ghost.transform.localRotation = gpos.transform.localRotation;
+		ghost.transform.position       = gpos.transform.position;
+		ghost.transform.localRotation  = gpos.transform.localRotation;
 		ghost.SetActive (false);
 	}
 

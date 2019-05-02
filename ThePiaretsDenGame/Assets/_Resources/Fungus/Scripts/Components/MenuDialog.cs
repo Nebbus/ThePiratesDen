@@ -24,6 +24,10 @@ namespace Fungus
         private int nextOptionIndex;
 
         #region Public members
+//===============================================================================================================  
+        public MONO_ReactionCollection interactOff; //  used on lines 54 -> 59
+        public MONO_ReactionCollection interactOn;//  used on lines 254 -> 259
+//===============================================================================================================  
 
         /// <summary>
         /// Currently active Menu Dialog used to display Menu options
@@ -47,6 +51,12 @@ namespace Fungus
         /// </summary>
         public virtual void SetActive(bool state)
         {
+//===============================================================================================================
+            if(interactOff != null)
+            {
+                interactOff.React();
+            }
+//===============================================================================================================       
             gameObject.SetActive(state);
         }
 
@@ -240,7 +250,15 @@ namespace Fungus
                     // Select the new target block in the Flowchart window
                     flowchart.SelectedBlock = block;
 #endif
-                    gameObject.SetActive(false);
+                 gameObject.SetActive(false);
+//===============================================================================================================
+                if(interactOn != null)
+                {
+                    interactOn.React();
+                }
+//===============================================================================================================  
+
+
                     // Use a coroutine to call the block on the next frame
                     // Have to use the Flowchart gameobject as the MenuDialog is now inactive
                     flowchart.StartCoroutine(CallBlock(block));

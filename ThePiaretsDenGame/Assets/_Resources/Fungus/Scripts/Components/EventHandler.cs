@@ -64,13 +64,13 @@ namespace Fungus
             }
 
             var flowchart = ParentBlock.GetFlowchart();
-
+     
             // Auto-follow the executing block if none is currently selected
             if (flowchart.SelectedBlock == null)
             {
                 flowchart.SelectedBlock = ParentBlock;
             }
-
+           
             return flowchart.ExecuteBlock(ParentBlock);
         }
 
