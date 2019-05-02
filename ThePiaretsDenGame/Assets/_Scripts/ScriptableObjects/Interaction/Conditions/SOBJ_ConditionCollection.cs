@@ -6,8 +6,6 @@ public class SOBJ_ConditionCollection : ScriptableObject
     public SOBJ_ConditionAdvanced[] requiredConditions = new SOBJ_ConditionAdvanced[0];   // The Conditions that need to be met in order for the ReactionCollection to React.
     public MONO_ReactionCollection reactionCollection;                           // Reference to the ReactionCollection that will React should all the Conditions be met.
 
-
-
     /// <summary>
     /// This is called by the Interactable one at a time for 
     /// each of its ConditionCollections until one returns true.

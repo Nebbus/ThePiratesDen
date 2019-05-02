@@ -187,10 +187,10 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
 
 
         // Create Rects for the top and bottom half.
-        Rect topHalf = leftAreaRect;
-        topHalf.height *= 0.5f;
-        Rect bottomHalf = topHalf;
-        bottomHalf.y += bottomHalf.height;
+        Rect topHalf     = leftAreaRect;
+        topHalf.height  *= 0.5f;
+        Rect bottomHalf  = topHalf;
+        bottomHalf.y    += bottomHalf.height;
 
         // Display a popup in the top half showing all the reaction types.
         selectedIndex = EditorGUI.Popup(topHalf, selectedIndex, conditionTypeNames);
@@ -200,8 +200,8 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
         {
             // ... finds the type selected by the popup, creates an appropriate reaction and adds it to the array.
             Type reactionType                  = conditionTypes[selectedIndex];
-            SOBJ_ConditionAdvanced newReaction = EDI_ConditionAdvanced.CreateCondition(reactionType);
-            conditionsProperty.AddToObjectArray(newReaction);
+            SOBJ_ConditionAdvanced newCondition = EDI_ConditionAdvanced.CreateCondition(reactionType);
+            conditionsProperty.AddToObjectArray(newCondition);
         }
     }
    

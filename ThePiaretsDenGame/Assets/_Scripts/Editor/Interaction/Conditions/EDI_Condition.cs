@@ -16,6 +16,7 @@ public class EDI_Condition : EDI_ConditionAdvanced
     private string[]    conditionTypeNames;                // The names of all appropriate Reaction types.
     private int         selectedIndex;                     // The index of the currently selected Reaction type.
 
+
     protected override void Init()
     {
         condition = (SOBJ_Condition)target;
@@ -27,6 +28,7 @@ public class EDI_Condition : EDI_ConditionAdvanced
         // The width for the Popup, Toggle and remove Button.
         float width = EditorGUIUtility.currentViewWidth / 3f;
 
+
         // Display the toggle for the satisfied bool.
         EditorGUILayout.PropertyField(satisfiedProperty, GUIContent.none, GUILayout.Width(width + toggleOffset));
 
@@ -34,7 +36,8 @@ public class EDI_Condition : EDI_ConditionAdvanced
    
     public override string[] getListOfReleveantConditions()
     {
-        return EDI_AllConditions.getListOfReleveantConditions<SOBJ_Condition>();
+         
+        return  EDI_AllConditions.getListOfReleveantConditions<SOBJ_Condition>();
     }
 }
 
