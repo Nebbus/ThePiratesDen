@@ -42,6 +42,8 @@ public abstract class EDI_ConditionAdvanced : Editor
     //-------------------------------------------------------------------------------
 
     private bool showDebug;
+    private bool showCondition;                       // Is the Condition editor expanded?
+
 
     private SerializedProperty descriptionProperty;  // Represents a string description of this Editor's target.
     private SerializedProperty hashProperty;         // Represents the number that identified this Editor's target.
@@ -107,7 +109,12 @@ public abstract class EDI_ConditionAdvanced : Editor
                 ConditionAssetGUI();
                 break;
             case EditorType.ConditionCollection:
-                InteractableGUI();
+                // Display a foldout for the Condition with a custom label.
+                showCondition = EditorGUILayout.Foldout(showCondition, descriptionProperty.stringValue, true);
+                if (showCondition)
+                {
+                    InteractableGUI();
+                }
                 break;
             default:
                 throw new UnityException("Unknown EDI_Condition.EditorType.");
@@ -228,7 +235,6 @@ public abstract class EDI_ConditionAdvanced : Editor
          * of the relevant condition by the user.
          */
         conditionIndex                         = EditorGUILayout.Popup(conditionIndex, getListOfReleveantConditions(), GUILayout.Width(width ));
-       // conditionIndex = EditorGUILayout.Popup(conditionIndex, EDI_AllConditions.AllConditionDescriptions, GUILayout.Width(width));
         SOBJ_ConditionAdvanced globalCondition = EDI_AllConditions.TryGetConditionAt(conditionIndex);
 
         // Set the description based on the globalCondition's description.

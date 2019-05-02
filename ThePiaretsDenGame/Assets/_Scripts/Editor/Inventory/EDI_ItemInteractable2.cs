@@ -224,6 +224,7 @@ public class EDI_ItemInteractable2 : Editor
                 // Create new editors.
                 CreateConditionEditors();
             }
+            EditorGUILayout.LabelField("-[CONDITIONS]-");
 
             /* Display the Labels for the Conditions evenly split over
             * the width of the inspector.
@@ -282,12 +283,11 @@ public class EDI_ItemInteractable2 : Editor
         serializedObject.Update();
         EditorGUILayout.BeginVertical(GUI.skin.box);
             EditorGUI.indentLevel++;
-
-       
-
-        //Uppdaes the condition editor array
-        if (reactionShowCash.Length != TryGetreactionLength() || reactionShowCash.Length != TryGetreactionLength())
-             {
+            EditorGUILayout.LabelField("-[REACTIONS]-");
+            
+            //Uppdaes the condition editor array
+            if (reactionShowCash.Length != TryGetreactionLength() || reactionShowCash.Length != TryGetreactionLength())
+            {
                 // Destroy all the old editors.
                 for (int i = 0; i < reactionsEditors.Length; i++)
                 {
@@ -299,21 +299,21 @@ public class EDI_ItemInteractable2 : Editor
              }
        
 
-        // Display all the Reactions.
-        for (int i = 0; i < reactionsEditors.Length; i++)
-        {
-            // reactionsEditors[i].showReaction = true;// simple fix for that the fold out button stop to work
-            reactionShowCash[i] = reactionsEditors[i].OnItemInteractionGui(reactionShowCash[i]);
-      
-         }
-
-
-            // If there are Reactions, add a space.
-            if (itemInteractabe.itemInteractionReactions.Length > 0)
+            // Display all the Reactions.
+            for (int i = 0; i < reactionsEditors.Length; i++)
             {
-                EditorGUILayout.Space();
-                EditorGUILayout.Space();
+                // reactionsEditors[i].showReaction = true;// simple fix for that the fold out button stop to work
+                reactionShowCash[i] = reactionsEditors[i].OnItemInteractionGui(reactionShowCash[i]);
+      
             }
+
+
+                // If there are Reactions, add a space.
+                if (itemInteractabe.itemInteractionReactions.Length > 0)
+                {
+                    EditorGUILayout.Space();
+                    EditorGUILayout.Space();
+                }
 
 //-----------------------------------------------------------
             /* Create a Rect for the full width of the

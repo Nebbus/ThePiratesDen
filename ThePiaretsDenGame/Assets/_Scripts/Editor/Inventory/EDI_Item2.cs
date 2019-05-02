@@ -129,6 +129,7 @@ public class EDI_Item2 : Editor
             if (showOnClickEditor)
             {
                 DrawInteractableCollections(CurentInteractions.CLICK);
+          
             }
             EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
@@ -136,12 +137,14 @@ public class EDI_Item2 : Editor
         EditorGUILayout.Space();
         EditorGUILayout.Space();
 
+
         EditorGUILayout.BeginVertical(GUI.skin.box);
             EditorGUI.indentLevel++;
             showOnHoverEditor = EditorGUILayout.Foldout(showOnHoverEditor, "On hover interactions", true);
             if (showOnHoverEditor)
             {
                 DrawInteractableCollections(CurentInteractions.HOVER);
+                EditorGUILayout.Space();
             }
 
             EditorGUI.indentLevel--;
