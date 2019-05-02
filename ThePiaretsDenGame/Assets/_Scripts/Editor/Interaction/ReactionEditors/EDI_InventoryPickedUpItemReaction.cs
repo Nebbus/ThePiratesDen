@@ -4,13 +4,13 @@ using UnityEngine;
 [CustomEditor(typeof(SOBJ_InventoryPickedUpItemReaction))]
 public class EDI_InventoryPickedUpItemReaction : EDI_Reaction
 {
-    private SOBJ_InventoryPickedUpItemReaction targetCondition;
+    private SOBJ_InventoryPickedUpItemReaction targetReaction;
 
     private float imageSide = 125f;
 
     protected override void Init()
     {
-         targetCondition = (SOBJ_InventoryPickedUpItemReaction)target;
+         targetReaction = (SOBJ_InventoryPickedUpItemReaction)target;
 
     }
 
@@ -33,11 +33,11 @@ public class EDI_InventoryPickedUpItemReaction : EDI_Reaction
     {
 
      
-        if (targetCondition != null &&
-            targetCondition.item != null &&
-            targetCondition.item.sprite != null)
+        if (targetReaction != null &&
+            targetReaction.item != null &&
+            targetReaction.item.sprite != null)
         {
-            GUILayout.Box(targetCondition.item.sprite.texture, GUILayout.Width(imageSide), GUILayout.Height(imageSide));
+            GUILayout.Box(targetReaction.item.sprite.texture, GUILayout.Width(imageSide), GUILayout.Height(imageSide));
 
         }
     }
