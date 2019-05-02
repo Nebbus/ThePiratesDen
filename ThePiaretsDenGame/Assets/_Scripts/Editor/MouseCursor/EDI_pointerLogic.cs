@@ -10,6 +10,11 @@ public class EDI_pointerLogic : Editor {
 
     private SerializedProperty currentActionProperty;
 
+
+    private SerializedProperty mainCameraGraycasterProperty;
+    private SerializedProperty presistentCanvansPraycasterProperty;
+
+
     private SerializedProperty debugAllPrayHitProperty;
     private SerializedProperty debugAllGrayHitProperty;
     private SerializedProperty debugCurentHitProperty;
@@ -20,29 +25,34 @@ public class EDI_pointerLogic : Editor {
     private SerializedProperty usedClickKeyProperty;
 
 
-    private const string monoPointerLogicName        = "currentAction";
+    private const string mainCameraGraycasterPropertyName           = "mainCameraGraycaster";
+    private const string presistentCanvansPraycasterPropertyName    = "presistentCanvansPraycaster";
 
-    private const string debugAllPrayHitPropertyName = "allGraphicalHitsDebug";
-    private const string debugAllGrayHitPropertyName = "allPhysicalHitsDebug";
-    private const string debugCurentHitPropertyName  = "overCurentObject";
+    private const string monoPointerLogicName                       = "currentAction";
 
-    private const string museButtonPropertyyName    = "mouseKey";
-    private const string keyButtonPropertyName      = "keabordKey";
-    private const string usedClickKeyPropertyName   = "usedClickKey";
+    private const string debugAllPrayHitPropertyName                = "allGraphicalHitsDebug";
+    private const string debugAllGrayHitPropertyName                = "allPhysicalHitsDebug";
+    private const string debugCurentHitPropertyName                 = "overCurentObject";
+
+    private const string museButtonPropertyyName                    = "mouseKey";
+    private const string keyButtonPropertyName                      = "keabordKey";
+    private const string usedClickKeyPropertyName                   = "usedClickKey";
 
 
     public void OnEnable()
     {
         monoPointerLogic = (MONO_pointerLogic)target;
 
+        mainCameraGraycasterProperty        = serializedObject.FindProperty(mainCameraGraycasterPropertyName);
+        presistentCanvansPraycasterProperty = serializedObject.FindProperty(presistentCanvansPraycasterPropertyName);
 
-        currentActionProperty       = serializedObject.FindProperty(monoPointerLogicName);
-        debugAllPrayHitProperty     = serializedObject.FindProperty(debugAllPrayHitPropertyName);
-        debugAllGrayHitProperty     = serializedObject.FindProperty(debugAllGrayHitPropertyName);
-        debugCurentHitProperty      = serializedObject.FindProperty(debugCurentHitPropertyName);
-        museButtonProperty          = serializedObject.FindProperty(museButtonPropertyyName);
-        keyButtonProperty           = serializedObject.FindProperty(keyButtonPropertyName);
-        usedClickKeyProperty        = serializedObject.FindProperty(usedClickKeyPropertyName);
+        currentActionProperty               = serializedObject.FindProperty(monoPointerLogicName);
+        debugAllPrayHitProperty             = serializedObject.FindProperty(debugAllPrayHitPropertyName);
+        debugAllGrayHitProperty             = serializedObject.FindProperty(debugAllGrayHitPropertyName);
+        debugCurentHitProperty              = serializedObject.FindProperty(debugCurentHitPropertyName);
+        museButtonProperty                  = serializedObject.FindProperty(museButtonPropertyyName);
+        keyButtonProperty                   = serializedObject.FindProperty(keyButtonPropertyName);
+        usedClickKeyProperty                = serializedObject.FindProperty(usedClickKeyPropertyName);
 
     }
 
@@ -84,9 +94,11 @@ public class EDI_pointerLogic : Editor {
             {
                 EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.BeginVertical(GUI.skin.box);
+                        EditorGUILayout.PropertyField(presistentCanvansPraycasterProperty, true);
                         EditorGUILayout.PropertyField(debugAllPrayHitProperty, true);
                     EditorGUILayout.EndVertical();
                     EditorGUILayout.BeginVertical(GUI.skin.box);
+                         EditorGUILayout.PropertyField(mainCameraGraycasterProperty, true);
                         EditorGUILayout.PropertyField(debugAllGrayHitProperty, true);
                     EditorGUILayout.EndVertical();
                 EditorGUILayout.EndHorizontal();
