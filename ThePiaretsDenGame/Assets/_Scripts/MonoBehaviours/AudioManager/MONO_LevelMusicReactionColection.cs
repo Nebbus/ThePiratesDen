@@ -22,7 +22,6 @@ public class MONO_LevelMusicReactionColection : MonoBehaviour
 
             if (delayedReaction)
             {
-                Debug.Log(delayedReaction.name);
                 delayedReaction.Init();
             }
             else

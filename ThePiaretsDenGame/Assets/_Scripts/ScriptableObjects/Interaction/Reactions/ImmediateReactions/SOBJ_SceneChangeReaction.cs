@@ -4,9 +4,9 @@ public class SOBJ_SceneChangeReaction : SOBJ_DelayedReaction
 {
 	public string sceneToBeLoaded;
     public bool setStartPosition = false;
+    public bool HandelInputAfterFade = true;
 
-
-	private GameObject sceneManager;
+    private GameObject sceneManager;
 	private MONO_SceneManager managerScript;
 
 
@@ -17,7 +17,7 @@ public class SOBJ_SceneChangeReaction : SOBJ_DelayedReaction
 
 	protected override void ImmediateReaction()
 	{
-		sceneManager.GetComponent<MONO_SceneManager> ().ChangeScene(sceneToBeLoaded, setStartPosition);
+		sceneManager.GetComponent<MONO_SceneManager> ().ChangeScene(sceneToBeLoaded, setStartPosition, HandelInputAfterFade);
 	}
 }
 

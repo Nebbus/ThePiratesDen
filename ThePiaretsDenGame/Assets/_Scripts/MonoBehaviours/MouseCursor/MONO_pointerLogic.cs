@@ -28,7 +28,7 @@ public class MONO_pointerLogic : MonoBehaviour {
 //===========================================================================
     public GraphicRaycaster mainCameraGraycaster;
     public PhysicsRaycaster presistentCanvansPraycaster;
-    private EventSystem      presistentSeneEventSystem;
+    private EventSystem     presistentSeneEventSystem;
 
     private List<RaycastResult> resultsG;
     private List<RaycastResult> resultsP;
@@ -48,10 +48,23 @@ public class MONO_pointerLogic : MonoBehaviour {
         }
     }
 
+    private GraphicRaycaster getGraycaster
+    {
+        get
+        {
+            if (mainCameraGraycaster == null || !mainCameraGraycaster.gameObject.activeSelf)
+            {
+                mainCameraGraycaster = FindObjectOfType<GraphicRaycaster>();
+            }
 
-//===========================================================================
-// detection and action stuff (desidig that to do)
-//===========================================================================
+            return mainCameraGraycaster;
+        }
+    }
+
+
+    //===========================================================================
+    // detection and action stuff (desidig that to do)
+    //===========================================================================
     private MONO_interactionBase interactableTarget;
     private Button               buttonTarger;
     public action currentAction = action.HOVER;
@@ -84,11 +97,8 @@ public class MONO_pointerLogic : MonoBehaviour {
         thisTransformer = GetComponent<RectTransform>();
 
         presistentCanvansPraycaster    = FindObjectOfType<PhysicsRaycaster>();
-        mainCameraGraycaster        = FindObjectOfType<GraphicRaycaster>();
-        presistentSeneEventSystem   = FindObjectOfType<EventSystem>();
-     
-
-
+        mainCameraGraycaster           = FindObjectOfType<GraphicRaycaster>();
+        presistentSeneEventSystem      = FindObjectOfType<EventSystem>();
     }
 
     // Update is called once per frame
@@ -97,7 +107,7 @@ public class MONO_pointerLogic : MonoBehaviour {
         currentAction = Input.GetKeyDown(usedClickKey) ? action.CLICK : action.HOVER;
 
         resultsP = EXT_GraphicalRayCast.PhysicalRayCast(getPraycaster, presistentSeneEventSystem, thisTransformer.position);
-        resultsG = EXT_GraphicalRayCast.GrapphicRayCast(mainCameraGraycaster , presistentSeneEventSystem, thisTransformer.position);
+        resultsG = EXT_GraphicalRayCast.GrapphicRayCast(getGraycaster, presistentSeneEventSystem, thisTransformer.position);
 
         if (debugAll)
         {

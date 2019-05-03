@@ -62,7 +62,7 @@ namespace Fungus
 
                     menuDialog.AddOption(displayText, interactable, hideOption, targetBlock);
                 }
-            
+           
             Continue();
         }
 
