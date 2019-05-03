@@ -3705,6 +3705,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1558290184}
+--- !u!1001 &392130567
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1717311941}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 20ec50887104eca41bcb0e77ba4515ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 20ec50887104eca41bcb0e77ba4515ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 20ec50887104eca41bcb0e77ba4515ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 20ec50887104eca41bcb0e77ba4515ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 20ec50887104eca41bcb0e77ba4515ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 20ec50887104eca41bcb0e77ba4515ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 20ec50887104eca41bcb0e77ba4515ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 20ec50887104eca41bcb0e77ba4515ff, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 20ec50887104eca41bcb0e77ba4515ff, type: 3}
+  m_IsPrefabParent: 0
 --- !u!114 &393831114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6011,7 +6053,6 @@ GameObject:
   m_Component:
   - component: {fileID: 565534275}
   - component: {fileID: 565534278}
-  - component: {fileID: 565534277}
   - component: {fileID: 565534276}
   m_Layer: 0
   m_Name: INT_Parrot
@@ -6053,37 +6094,6 @@ MonoBehaviour:
   interactionLocation: {fileID: 1419376093}
   conditionCollections: []
   defaultReactionCollection: {fileID: 390256397}
---- !u!114 &565534277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114010911412200308, guid: 2bc6777f52f7fbc46966e7891cab0b09,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 565534274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: 
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 565534276}
-            m_ObjectArgumentAssemblyTypeName: MONO_Interactable, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!65 &565534278
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25196,7 +25206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1234644509}
+  selectedFlowchart: {fileID: 2068424186}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -37365,9 +37375,22 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.59
       objectReference: {fileID: 0}
+    - target: {fileID: 4797454296985162, guid: 2b34eedb0b24146e0ae9fd526cbd7380, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059824659454300, guid: 2b34eedb0b24146e0ae9fd526cbd7380, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b34eedb0b24146e0ae9fd526cbd7380, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1717311941 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4335633188428070, guid: 2b34eedb0b24146e0ae9fd526cbd7380,
+    type: 2}
+  m_PrefabInternal: {fileID: 1717311940}
 --- !u!1 &1726217286
 GameObject:
   m_ObjectHideFlags: 0
@@ -51924,6 +51947,7 @@ GameObject:
   - component: {fileID: 2068424319}
   - component: {fileID: 2068424215}
   - component: {fileID: 2068424211}
+  - component: {fileID: 2068424326}
   m_Layer: 0
   m_Name: INT_ParrotFlowchart
   m_TagString: Untagged
@@ -51944,11 +51968,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 1833.1622, y: 657.5174}
+  scrollPos: {x: -1.2531757, y: 379.92407}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 0.7000002
+  zoom: 0.82000005
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -51956,9 +51980,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 2068424299}
+  - {fileID: 2068424191}
   selectedCommands:
-  - {fileID: 2068424232}
+  - {fileID: 2068424326}
   variables:
   - {fileID: 2068424322}
   - {fileID: 2068424325}
@@ -52090,8 +52114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 600.6393
-    y: -6.452621
+    x: 601.85876
+    y: -7.672133
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -52100,7 +52124,8 @@ MonoBehaviour:
   blockName: LookArc1
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 2068424326}
 --- !u!114 &2068424192
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -52297,7 +52322,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1155.3884
     y: -0.25873184
-    width: 168.57138
+    width: 179.26828
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53301,7 +53326,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1133.1144
     y: -294.03604
-    width: 120
+    width: 121.95122
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53329,7 +53354,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -902.9781
     y: -157.3858
-    width: 147.14282
+    width: 156.09756
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53356,7 +53381,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -893.3515
     y: -66.219154
-    width: 137.14282
+    width: 145.12195
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53382,7 +53407,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -887.57983
     y: -240.81998
-    width: 127.14283
+    width: 134.14633
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53409,7 +53434,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -892.84204
     y: -294.93787
-    width: 132.85712
+    width: 141.46341
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53885,7 +53910,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1673.0776
     y: 133.4155
-    width: 139.99997
+    width: 146.34146
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53938,7 +53963,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1403.2135
     y: 103.278366
-    width: 127.14283
+    width: 134.14633
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53965,7 +53990,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1203.2135
     y: 103.278366
-    width: 187.1428
+    width: 198.78047
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53991,7 +54016,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -896.3628
     y: 147.11395
-    width: 129.99997
+    width: 134.14633
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54403,7 +54428,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -668.5911
     y: 88.24193
-    width: 159.99997
+    width: 169.51218
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54601,7 +54626,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -642.9518
     y: -555.5499
-    width: 132.85712
+    width: 140.2439
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54627,7 +54652,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -653.34625
     y: -481.5669
-    width: 145.71426
+    width: 157.31708
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54712,7 +54737,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -649.6381
     y: -376.87534
-    width: 142.85712
+    width: 151.21951
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54742,7 +54767,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -626.78723
     y: -156.42722
-    width: 120
+    width: 123.17073
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -55106,7 +55131,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 395.2752
     y: 69.832756
-    width: 131.42854
+    width: 141.46341
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -55137,7 +55162,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -108.34324
     y: 69.56469
-    width: 128.57141
+    width: 139.02438
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -55329,6 +55354,32 @@ MonoBehaviour:
   scope: 1
   key: DoorPuzzleFinished
   value: 0
+--- !u!114 &2068424326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068424185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 270
+  indentLevel: 0
+  storyText: Odd  to see a parrot on a haunted ship.
+  description: 
+  character: {fileID: 1760775792}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &2083340226
 GameObject:
   m_ObjectHideFlags: 0
