@@ -8,27 +8,24 @@ public class MONO_FadeObject : MonoBehaviour {
 	private Color startColor;
 	private Color targetColor;
 	private float objectAlpha;
+	private float targetAlpha;
 	private bool isFading;
 
-	public void StartFade(float targetAlpha)
-	{
-		StartCoroutine (Fade (targetAlpha));
-	}
 
-
-	private IEnumerator Fade(float targetAlpha)
+	public void StartFade(float newAlpha)
 	{
+		targetAlpha = newAlpha;
 		startColor = gameObject.GetComponent<MeshRenderer> ().material.color;
 		targetColor = startColor;
 		targetColor.a = targetAlpha;
 		objectAlpha = startColor.a;
-
-
 		isFading = true;
+		//StartCoroutine (Fade (targetAlpha));
+	}
 
-		/* Calculate how fast the object should fade based on it's current alpha, 
-		 * it's final alpha and how long it has to change between the two.
-		 */
+
+	void Update()
+	{
 		float fadeSpeed = Mathf.Abs (objectAlpha - targetAlpha) / fadeDuration;
 
 		// While the CanvasGroup hasn't reached the final alpha yet...
@@ -37,13 +34,9 @@ public class MONO_FadeObject : MonoBehaviour {
 			Color objectColor = Color.Lerp (startColor, targetColor, fadeSpeed);
 			objectAlpha = objectColor.a;
 			gameObject.GetComponent<MeshRenderer> ().material.color = objectColor;
-
-			// Wait for a frame then continue.
-			yield return null;
 		}
-
-		// Set the flag to false since the fade has finished.
 		isFading = false;
 	}
+
 
 }

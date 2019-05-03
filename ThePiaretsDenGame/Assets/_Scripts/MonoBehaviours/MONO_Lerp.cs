@@ -8,7 +8,7 @@ public class MONO_Lerp : MonoBehaviour {
 	public Transform endPosition;
 	public float lerpSpeed = 1.0f;
 	public bool alwaysLerping;
-
+	public bool turn;
 
 
 	private bool lerping;
@@ -39,12 +39,21 @@ public class MONO_Lerp : MonoBehaviour {
 			float fracJourney = distCovered / journeyLength;
 			transform.position = Vector3.Lerp (startMarker, endMarker, fracJourney);
 
+			if (turn) 
+			{
+				transform.rotation = Quaternion.Slerp (startPosition.rotation, endPosition.rotation, fracJourney);
+			}
+
 			if (Mathf.Approximately (transform.position.x, endMarker.x)
 				&& Mathf.Approximately (transform.position.z, endMarker.z)) 
 			{
 				lerping = false;
-				transform.Rotate (new Vector3 (0, 180, 0));
+				if (!turn) {
+					transform.Rotate (new Vector3 (0, 180, 0));
+				}
 			}
+
+
 		} 
 		else if(alwaysLerping)
 		{
