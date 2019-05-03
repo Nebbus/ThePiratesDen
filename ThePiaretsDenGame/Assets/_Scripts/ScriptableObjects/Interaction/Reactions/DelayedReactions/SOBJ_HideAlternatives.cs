@@ -3,7 +3,7 @@
 public class SOBJ_HideAlternatives : SOBJ_DelayedReaction
 {
 	public GameObject rootReaction;
-    
+    public bool handelInputThenDon = false;
 
 	protected override void ImmediateReaction()
 	{
@@ -11,7 +11,7 @@ public class SOBJ_HideAlternatives : SOBJ_DelayedReaction
 		 * interactionalternatives, then unlock the player.
 		 */
 		rootReaction.GetComponent<MONO_ShowAlternatives> ().HideAlternatives ();
-		//FindObjectOfType<MONO_SceneManager> ().SetHandleInput (true);
+		FindObjectOfType<MONO_SceneManager> ().SetHandleInput (handelInputThenDon);
 	}
 }
 
