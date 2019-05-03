@@ -38,7 +38,7 @@ public class MONO_Menus : MonoBehaviour {
 	{
 		CloseMenu ();
 		ChangeLatestMenu (pausMenu);
-		sceneManager.ChangeScene ("Scene1_outside", true);
+		sceneManager.ChangeScene ("Scene1_outside", true, false);
 		inventory.SetActive (true);
 		sceneManager.handleInput = false;
 	}

@@ -48,21 +48,18 @@ public class MONO_SceneManager : MonoBehaviour {
 
         //SetPlayerStartPosition ();
         fade.Fade (0f);
-	}
-
-
-
-
-
-
+       // Debug.log("Afsef");
+    }
+   
+    
     /// <summary>
     /// Changes the scene.
     /// </summary>
     /// <param name="sceneName">Scene to load.</param>
     /// <param name="sceneName">Sets if the start position shuld be set.</param>
-    public void ChangeScene(string sceneName, bool setStartPos)
+    public void ChangeScene(string sceneName, bool setStartPos, bool handelUnputAfterFade)
 	{
-		StartCoroutine (FadeAndLoad (sceneName, setStartPos));
+		StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelUnputAfterFade));
 	}
 
 	/// <summary>
@@ -90,7 +87,7 @@ public class MONO_SceneManager : MonoBehaviour {
     /// </summary>
     /// <param name="sceneName">Scene to load.</param>
     /// <param name="sceneName">Sets if the start position shuld be set.</param>
-    private IEnumerator FadeAndLoad(string sceneName, bool setStartPos)
+    private IEnumerator FadeAndLoad(string sceneName, bool setStartPos, bool handelUnputAfterFade)
 	{
 		//disable input and fade out.
 		handleInput = false;
@@ -114,7 +111,7 @@ public class MONO_SceneManager : MonoBehaviour {
 		yield return new WaitForSeconds (fade.fadeDuration);
       
 
-        handleInput = true;
+        handleInput = handelUnputAfterFade;
 	}
 
 	/// <summary>
