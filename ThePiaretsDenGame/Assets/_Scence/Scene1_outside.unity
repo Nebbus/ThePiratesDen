@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1529519, g: 0.19843343, b: 0.45517552, a: 1}
+  m_IndirectSpecularColor: {r: 0.15295216, g: 0.19843298, b: 0.4551764, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2285,7 +2285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  onShotEvent: event:/Objects/2D/Canon/Canon_Explosion
+  onShotEvent: event:/Objects/2D/Canon/Canon_Event
   theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &239201785
 GameObject:
@@ -20432,20 +20432,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1364358907}
---- !u!114 &876278870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  onShotEvent: event:/Objects/2D/Canon/Canon_Event
-  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &881555725
 GameObject:
   m_ObjectHideFlags: 0
@@ -25206,7 +25192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 2068424186}
+  selectedFlowchart: {fileID: 1234644509}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -33687,8 +33673,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 694902259}
-  selectedCommands: []
+  - {fileID: 694902253}
+  selectedCommands:
+  - {fileID: 694902154}
   variables:
   - {fileID: 694902121}
   - {fileID: 694902120}
@@ -36276,7 +36263,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 609453582}
-  - {fileID: 876278870}
 --- !u!4 &1574378515
 Transform:
   m_ObjectHideFlags: 0
@@ -46555,9 +46541,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1847003055}
-  selectedCommands:
-  - {fileID: 1847003056}
+  - {fileID: 1847003057}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
