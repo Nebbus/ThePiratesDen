@@ -70,9 +70,15 @@ public class MONO_pointerLogic : MonoBehaviour {
     public action currentAction = action.HOVER;
 
 
-//===========================================================================
-// Ínput stuff
-//===========================================================================
+    public double lastClickTime = 0f;
+    public double timeThreshold = 0.1f;
+
+    public double timedelta = 0.1f;
+
+
+    //===========================================================================
+    // Ínput stuff
+    //===========================================================================
 
     //temporär lösnign
     [SerializeField]
@@ -104,7 +110,22 @@ public class MONO_pointerLogic : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
+
         currentAction = Input.GetKeyDown(usedClickKey) ? action.CLICK : action.HOVER;
+        if(currentAction == action.CLICK)
+        {
+       ;
+            timedelta        = Time.time - lastClickTime;
+            lastClickTime    = Time.time;
+            if ( timedelta <= timeThreshold)
+            {
+                currentAction = action.HOVER;
+            }
+     
+        }
+
+
 
         resultsP = EXT_GraphicalRayCast.PhysicalRayCast(getPraycaster, presistentSeneEventSystem, thisTransformer.position);
         resultsG = EXT_GraphicalRayCast.GrapphicRayCast(getGraycaster, presistentSeneEventSystem, thisTransformer.position);
