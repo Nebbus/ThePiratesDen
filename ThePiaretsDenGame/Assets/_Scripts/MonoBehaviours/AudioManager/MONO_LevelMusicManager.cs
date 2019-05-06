@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
@@ -11,9 +12,13 @@ public class MONO_LevelMusicManager : MonoBehaviour {
     public StudioEventEmitter AmbienceTarget;
     public StudioEventEmitter MusicTarget;
 
-    [Tooltip("The path to the VCA, used to control volume")]
-    public static string pathToVCA =  "vca:/VCA name";
-    FMOD.Studio.VCA volumController;
+
+    public static string pathToMasterVCA =  "vca:/Music";
+    public static string pathToMusicVCA = "vca:/Music";
+    public static string pathToSFXVCA = "vca:/Music";
+    FMOD.Studio.VCA masterVolumController;
+    FMOD.Studio.VCA musicVolumController;
+    FMOD.Studio.VCA sfxVolumController;
     public string debug;
  
 
@@ -22,7 +27,7 @@ public class MONO_LevelMusicManager : MonoBehaviour {
         if (instace == null)
         {
             instace = this;
-            //volumController = FMODUnity.RuntimeManager.GetVCA(pathToVCA);
+            masterVolumController = FMODUnity.RuntimeManager.GetVCA(pathToMasterVCA);
         }
         else
         {
@@ -89,8 +94,8 @@ public class MONO_LevelMusicManager : MonoBehaviour {
 
         float oldVolume;
         float dummy;
-        volumController.getVolume(out dummy, out oldVolume);
-        volumController.setVolume(oldVolume + changeFactor);
+        masterVolumController.getVolume(out dummy, out oldVolume);
+        masterVolumController.setVolume(oldVolume + changeFactor);
     }
 
 
