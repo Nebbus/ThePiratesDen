@@ -110,7 +110,7 @@ public class EDI_pointerLogic : Editor {
             //Debugs the time since the last click
             EditorGUILayout.BeginHorizontal(GUI.skin.box);
                 GUI.enabled = false;
-                EditorGUILayout.LabelField("Time between clicks");
+                 EditorGUILayout.HelpBox("The time between the two most resent clicks",MessageType.Info);
                 EditorGUILayout.PropertyField(debugTimedeltaProperty,GUIContent.none);
                 GUI.enabled = true;
             EditorGUILayout.EndHorizontal();
