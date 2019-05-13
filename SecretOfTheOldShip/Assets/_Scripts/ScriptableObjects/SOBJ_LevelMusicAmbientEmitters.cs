@@ -7,7 +7,7 @@ public class SOBJ_LevelMusicAmbientEmitters : ScriptableObject {
 
     private static SOBJ_LevelMusicAmbientEmitters instance;
 
-    private const string loadPath = "SOBJ_LevelMusicAmbientEmiters";
+    private const string loadPath = "SOBJ_LevelMusicAmbientEmitters";
 
     
     public StudioEventEmitter AmbienceTarget;
@@ -50,7 +50,7 @@ public class SOBJ_LevelMusicAmbientEmitters : ScriptableObject {
             // If the instance is still null, report that it has not been created yet.
             if (!instance)
             {
-                Debug.LogError("SOBJ_LevelMusicAmbientEmiters has not been created yet.  Go to Assets > Create > SOBJ_LevelMusicAmbientEmiters.");
+                Debug.LogError("SOBJ_LevelMusicAmbientEmitters has not been created yet.  Go to Assets > Create > SOBJ_LevelMusicAmbientEmitters.");
             }
 
             return instance;
