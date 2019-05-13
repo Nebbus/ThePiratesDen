@@ -15,7 +15,7 @@ public class MONO_FadeObject : MonoBehaviour {
 	public void StartFade(float newAlpha)
 	{
 		targetAlpha = newAlpha;
-		startColor = gameObject.GetComponent<MeshRenderer> ().material.color;
+		startColor = gameObject.GetComponentInChildren<MeshRenderer> ().material.color;
 		targetColor = startColor;
 		targetColor.a = targetAlpha;
 		objectAlpha = startColor.a;
