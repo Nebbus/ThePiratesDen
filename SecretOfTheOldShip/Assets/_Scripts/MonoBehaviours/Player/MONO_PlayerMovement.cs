@@ -159,6 +159,8 @@ public class MONO_PlayerMovement : MonoBehaviour
          * speed that the nav mesh agent wants to move at.
          */ 
         animator.SetFloat(hashSpeedPara, speed, speedDampTime, Time.deltaTime);
+
+		KeyboardMovement ();
     }
 
     /// <summary>
@@ -329,27 +331,38 @@ public class MONO_PlayerMovement : MonoBehaviour
            agent.isStopped = false;
        }
   
-   /// <summary>
-   /// Shuts down the intputs and waits until the animation is done to turn them on.	OBSOLETE
-   /// </summary>
-   /// <returns></returns> 
-/*private IEnumerator WaitForInteraction()
-    {
-        // As soon as the wait starts, input should no longer be accepted.
-		sceneManager.handleInput = false;
 
-        // Wait for the normal pause on interaction.
-        yield return inputHoldWait;
+	public void KeyboardMovement()
+	{
+		if (sceneManager.handleInput) 
+		{
+			GameObject keyboardInteractable;
 
-        // Until the animator is in a state with the Locomotion tag, wait.
-		/*while (animator.GetCurrentAnimatorStateInfo(0).tagHash != hashLocomotionTag)
-        {
-            yield return null;
-        }*/
-	/*
-        // Now input can be accepted again.
-		sceneManager.handleInput = true;
-    }
-*/
+			if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
+				keyboardInteractable = new GameObject ();
 
+				keyboardInteractable.transform.position = this.transform.position;
+
+				if (Input.GetAxis ("Horizontal") < 0.5f || Input.GetAxis ("Horizontal") > -0.5f) {
+					keyboardInteractable.transform.position = 
+						new Vector3 (keyboardInteractable.transform.position.x - Input.GetAxis ("Horizontal"), keyboardInteractable.transform.position.y, keyboardInteractable.transform.position.z);
+					destinationPosition.x = keyboardInteractable.transform.position.x;
+				} 
+
+				if (Input.GetAxisRaw ("Vertical") < 0.5f || Input.GetAxis ("Vertical") > -0.5f) {
+					keyboardInteractable.transform.position = 
+						new Vector3 (keyboardInteractable.transform.position.x, keyboardInteractable.transform.position.y, keyboardInteractable.transform.position.z - Input.GetAxis ("Vertical"));
+					destinationPosition.z = keyboardInteractable.transform.position.z;
+				}
+
+
+				agent.SetDestination (destinationPosition);
+				agent.isStopped = false;
+
+				keyboardInteractable.transform.position = this.transform.position;
+
+				Destroy (keyboardInteractable);
+			}
+		}	
+	}
 }
