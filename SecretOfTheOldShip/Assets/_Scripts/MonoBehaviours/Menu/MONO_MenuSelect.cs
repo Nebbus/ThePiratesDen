@@ -13,6 +13,7 @@ public class MONO_MenuSelect : MonoBehaviour {
     
 
 	private bool buttonSelected;
+	private float offset = 0;
     private GameObject currentSelectedMenuItem;
     private MONO_CustomMouseCursor OurCustomCursor;
 
@@ -21,7 +22,6 @@ public class MONO_MenuSelect : MonoBehaviour {
     void Awake()
     {
         OurCustomCursor = FindObjectOfType<MONO_CustomMouseCursor>();
-
     }
 
 
@@ -35,7 +35,7 @@ public class MONO_MenuSelect : MonoBehaviour {
             SelectWithKeys();
 			if (eventSystem.currentSelectedGameObject != null) 
 			{
-				Vector2 tempPos = new Vector2 (currentSelectedMenuItem.GetComponent<RectTransform> ().position.x - 500,
+				Vector2 tempPos = new Vector2 (currentSelectedMenuItem.GetComponent<RectTransform> ().position.x - offset,
 					                          currentSelectedMenuItem.GetComponent<RectTransform> ().position.y);
 
 				OurCustomCursor.CustomCursor.GetComponent<RectTransform> ().position = tempPos;

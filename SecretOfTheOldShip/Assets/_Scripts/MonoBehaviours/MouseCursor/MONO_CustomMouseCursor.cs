@@ -9,11 +9,10 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     [HideInInspector]
     public bool       UsingKeyboard = false;
     public GameObject CustomCursor;
+    public  float  CursorSpeed = 4;
 
     [SerializeField]
-    private  float  CursorSpeed = 4;
-    [SerializeField]
-    [Tooltip("Pixels distans the muse points out on the right side and on the bottom")]
+    [Tooltip("Pixel distance the mouse points out on the right side and on the bottom")]
     private float pointerSafeDist = 5;
 
     private RectTransform   CustomCursorTransform;
