@@ -43,11 +43,22 @@ public class MONO_Interactable : MONO_InteractionBase
 
     public override void OnClick()
     {
+        // Not used, the interact is cald from player movment
         
+    }
+
+    public override void OnHoverEnterd()
+    {
+        //notify the the mouse is over
     }
 
     public override void OnHover()
     {
         
+    }
+
+    public override void OnHoverExit()
+    {
+        // turn of on hover 
     }
 }
