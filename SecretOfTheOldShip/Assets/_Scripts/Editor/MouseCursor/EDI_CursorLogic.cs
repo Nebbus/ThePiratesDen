@@ -19,6 +19,7 @@ public class EDI_CursorLogic : Editor {
     private SerializedProperty debugAllGrayHitProperty;
     private SerializedProperty debugCurentHitProperty;
 
+
  
     private SerializedProperty museButtonProperty;
     private SerializedProperty keyButtonProperty;
@@ -32,10 +33,11 @@ public class EDI_CursorLogic : Editor {
     private const string presistentCanvansPraycasterPropertyName    = "presistentCanvansPraycaster";
 
     private const string monoPointerLogicName                       = "currentAction";
-
-    private const string debugAllPrayHitPropertyName                = "allGraphicalHitsDebug";
-    private const string debugAllGrayHitPropertyName                = "allPhysicalHitsDebug";
+    
+    private const string debugAllPrayHitPropertyName                = "allPhysicalHitsDebug";  
+    private const string debugAllGrayHitPropertyName                = "allGraphicalHitsDebug";
     private const string debugCurentHitPropertyName                 = "overCurentObject";
+
 
     private const string museButtonPropertyyName                    = "mouseKey";
     private const string keyButtonPropertyName                      = "keabordKey";
@@ -122,11 +124,11 @@ public class EDI_CursorLogic : Editor {
                     EditorGUILayout.BeginHorizontal();
                         EditorGUILayout.BeginVertical(GUI.skin.box);
                             EditorGUILayout.PropertyField(presistentCanvansPraycasterProperty, true);
-                            EditorGUILayout.PropertyField(debugAllPrayHitProperty, true);
+                            EditorGUILayout.PropertyField(debugAllGrayHitProperty, true);
                         EditorGUILayout.EndVertical();
                         EditorGUILayout.BeginVertical(GUI.skin.box);
                             EditorGUILayout.PropertyField(mainCameraGraycasterProperty, true);
-                            EditorGUILayout.PropertyField(debugAllGrayHitProperty, true);
+                            EditorGUILayout.PropertyField(debugAllPrayHitProperty, true);
                         EditorGUILayout.EndVertical();
                     EditorGUILayout.EndHorizontal();
                 }

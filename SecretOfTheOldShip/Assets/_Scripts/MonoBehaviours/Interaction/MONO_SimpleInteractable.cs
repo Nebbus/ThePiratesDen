@@ -118,11 +118,13 @@ public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListe
     }
 
 
-
-
     public UnityEvent myClickEvent;
 
-    public UnityEvent myHoverkEvent;
+    public UnityEvent myHoverEnterdEvent;
+
+    public UnityEvent myHoverEvent;
+
+    public UnityEvent myHoverExitEvent;
 
     public otherReactions otherReactionsTriggers;
 
@@ -163,9 +165,9 @@ public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListe
         {
             myClickEvent = new UnityEvent();
         }
-        if (myHoverkEvent == null)
+        if (myHoverEvent == null)
         {
-            myHoverkEvent = new UnityEvent();
+            myHoverEvent = new UnityEvent();
         }
         fungusRactionsTriggers.init();
         otherReactionsTriggers.init();
@@ -193,19 +195,27 @@ public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListe
         myClickEvent.Invoke();
     }
 
+    public override void OnHoverEnterd()
+    {
+        myHoverEnterdEvent.Invoke();
+    }
+
     public override void OnHover()
     {
-        myHoverkEvent.Invoke();
+        myHoverEvent.Invoke();
+    }
+
+    public override void OnHoverExit()
+    {
+        myHoverExitEvent.Invoke();
     }
 
 
 
-    //===============================================================================================
-    // Fungus Events
-    //===============================================================================================
-
-
-    
+//===============================================================================================
+// Fungus Events
+//===============================================================================================
+  
     public void OnEnd(bool stopAudio)
     {
         fungusRactionsTriggers.FungusOnEnd.Invoke();

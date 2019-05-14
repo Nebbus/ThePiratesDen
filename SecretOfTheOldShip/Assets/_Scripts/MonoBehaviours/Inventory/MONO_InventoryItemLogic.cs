@@ -100,8 +100,17 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         ClickReact();
     }
 
-    public override void OnHover()
+    public override void OnHoverEnterd()
     {
         HovorReact();
+    }
+    public override void OnHover()
+    {
+      
+    }
+
+    public override void OnHoverExit()
+    {
+
     }
 }

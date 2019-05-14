@@ -16,6 +16,14 @@ public abstract class MONO_InteractionBase : MonoBehaviour {
     /// </summary>
     public abstract void OnClick();
 
+    public abstract void OnHoverEnterd();
+
     public abstract void OnHover();
+
+    public abstract void OnHoverExit();
+
+
+
+
 
 }
