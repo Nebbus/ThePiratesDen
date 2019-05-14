@@ -1575,7 +1575,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4912277336794754}
-  - component: {fileID: 114878459024661864}
+  - component: {fileID: 114533360692156546}
   m_Layer: 0
   m_Name: giveGhostRum
   m_TagString: Untagged
@@ -2133,7 +2133,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4631704329888220}
-  - component: {fileID: 114626130407165708}
+  - component: {fileID: 114966505804269974}
   m_Layer: 0
   m_Name: DefaultReaction
   m_TagString: Untagged
@@ -2347,7 +2347,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4358660082966822}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4113844254913738
 Transform:
@@ -2483,7 +2483,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4358660082966822}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4209005553963702
 Transform:
@@ -2784,10 +2784,10 @@ Transform:
   m_LocalPosition: {x: -2.68, y: 0.137, z: -3.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4208414565829698}
   - {fileID: 4818959119551936}
   - {fileID: 4631704329888220}
   - {fileID: 4112599751409974}
-  - {fileID: 4208414565829698}
   - {fileID: 4912277336794754}
   - {fileID: 4002119291958640}
   - {fileID: 4867877317376894}
@@ -3233,7 +3233,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4358660082966822}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4632958409810824
 Transform:
@@ -3691,7 +3691,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4358660082966822}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4825419718468962
 Transform:
@@ -4332,19 +4332,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactions: []
---- !u!114 &114626130407165708
+  reactions:
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &114533360692156546
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1980459311155742}
+  m_GameObject: {fileID: 1688940733659930}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactions: []
+  reactions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114635420429853720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4357,7 +4363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: Reed
-  nameColor: {r: 0.75735295, g: 1, b: 1, a: 1}
+  nameColor: {r: 1, g: 1, b: 1, a: 1}
   soundEffect: {fileID: 0}
   portraits: []
   portraitsFace: 0
@@ -4375,20 +4381,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionLocation: {fileID: 4818959119551936}
-  conditionCollections: []
-  defaultReactionCollection: {fileID: 0}
---- !u!114 &114878459024661864
+  conditionCollections:
+  - {fileID: 0}
+  - {fileID: 0}
+  defaultReactionCollection: {fileID: 114966505804269974}
+--- !u!114 &114966505804269974
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1688940733659930}
+  m_GameObject: {fileID: 1980459311155742}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactions: []
+  reactions:
+  - {fileID: 0}
 --- !u!137 &137989945994842854
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
