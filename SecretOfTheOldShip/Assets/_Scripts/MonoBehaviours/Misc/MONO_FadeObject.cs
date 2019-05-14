@@ -60,9 +60,7 @@ public class MONO_FadeObject : MonoBehaviour {
 		{
 			for (int i = 0; i < meshRenderers.Length; i++)
 			{
-				Color objectColor = meshRenderers [i].material.color;
-				objectColor = Color.Lerp (objectColor, targetColor[i], fadeSpeed);
-				meshRenderers [i].material.color = objectColor;
+				meshRenderers[i].material.color = Color.Lerp (meshRenderers[i].material.color, targetColor[i], fadeSpeed);
 			}
 			for (int i = 0; i < skinnedMeshRenderers.Length; i++)
 			{
