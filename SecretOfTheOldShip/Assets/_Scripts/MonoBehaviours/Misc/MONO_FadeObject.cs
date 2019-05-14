@@ -5,7 +5,7 @@ using UnityEngine;
 public class MONO_FadeObject : MonoBehaviour {
 	public float fadeDuration = 1.0f;
 	[Tooltip("Mesh renderer of the object to fade")]
-	public MeshRenderer meshRenderer;
+	public SkinnedMeshRenderer meshRenderer;
 
 	private Color startColor;
 	private Color targetColor;
@@ -35,7 +35,7 @@ public class MONO_FadeObject : MonoBehaviour {
 		{
 			Color objectColor = Color.Lerp (startColor, targetColor, fadeSpeed);
 			objectAlpha = objectColor.a;
-			gameObject.GetComponent<MeshRenderer> ().material.color = objectColor;
+			meshRenderer.material.color = objectColor;
 		}
 		isFading = false;
 	}
