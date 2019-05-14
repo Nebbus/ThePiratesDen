@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MONO_FadeObject : MonoBehaviour {
 	public float fadeDuration = 1.0f;
+	[Tooltip("Mesh renderer of the object to fade")]
+	public MeshRenderer meshRenderer;
 
 	private Color startColor;
 	private Color targetColor;
@@ -12,15 +14,15 @@ public class MONO_FadeObject : MonoBehaviour {
 	private bool isFading;
 
 
+
 	public void StartFade(float newAlpha)
 	{
 		targetAlpha = newAlpha;
-		startColor = gameObject.GetComponentInChildren<MeshRenderer> ().material.color;
+		startColor = meshRenderer.material.color;
 		targetColor = startColor;
 		targetColor.a = targetAlpha;
 		objectAlpha = startColor.a;
 		isFading = true;
-		//StartCoroutine (Fade (targetAlpha));
 	}
 
 

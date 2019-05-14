@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class MONO_Menus : MonoBehaviour {
@@ -9,54 +10,70 @@ public class MONO_Menus : MonoBehaviour {
 	public bool menuOpen = true;
     public GameObject menuButton;
 	public MONO_SceneManager sceneManager;
+	[Space]
+	public MONO_CustomMouseCursor cursor;
+	[Tooltip("The UI text object in main settings menu for cursor speed.")]
+	public Text cursorSpeedMain;
+	[Tooltip("The UI text object in pause settings menu for cursor speed.")]
+	public Text cursorSpeedPause;
+	[Space]
 	public MONO_ReactionCollection mainMenuSound;
-	public MONO_ReactionCollection pausMenuSound;
-
-
-	public enum menu {main, paus, settings};
-
+	public MONO_ReactionCollection pauseMenuSound;
+	public enum menu {main, pause, settings};
 
 	private menu latestMenu;
+	[Space]
 	[SerializeField]
 	private GameObject mainMenu;
 	[SerializeField]
-	private GameObject pausMenu;
+	private GameObject pauseMenu;
 	[SerializeField]
 	private GameObject settingsMenu;
 	[SerializeField]
 	private GameObject inventory;
 
+
 	void Start()
 	{
+		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
+		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
 		if(latestMenu == null){
-			latestMenu = menu.paus; 	//paus menu is the default menu
+			latestMenu = menu.pause; 	//paus menu is the default menu
 		}
 	}
 
 
 	public void StartNewGame()
 	{
+		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		CloseMenu ();
-		ChangeLatestMenu (pausMenu);
-		sceneManager.ChangeScene ("Scene1_outside", true, false);
-		inventory.SetActive (true);
 		sceneManager.handleInput = false;
-	}
+		ChangeLatestMenu (pauseMenu);
+		sceneManager.ChangeScene ("Scene1_outside", true, false);
 
+		WaitSomeTime(delay);
+		mainMenu.SetActive (false);
+		inventory.SetActive (true);
+	}
+		
 	public void LoadLatestGame()
 	{
 		
 	}
 
+	/// <summary>
+	/// Changes the latest menu variable. Used to help the system  knowing which menu to open.
+	/// </summary>
+	/// <param name="menuObject">Gameobject of the current menu.</param>
 	public void ChangeLatestMenu(GameObject menuObject)
 	{
 		if (menuObject.name == "Main") 
 		{
 			latestMenu = menu.main;
 		} 
-		else if (menuObject.name == "Paus")
+		else if (menuObject.name == "Pause")
 		{
-			latestMenu = menu.paus;	
+			latestMenu = menu.pause;	
 		}
 
 	}
@@ -78,8 +95,8 @@ public class MONO_Menus : MonoBehaviour {
 			mainMenu.SetActive (true);
 			break;
 
-		case menu.paus:
-			pausMenu.SetActive (true);
+		case menu.pause:
+			pauseMenu.SetActive (true);
 			break;
 
 		default:
@@ -98,6 +115,7 @@ public class MONO_Menus : MonoBehaviour {
         menuButton.SetActive(true);
     }
 
+
 	/// <summary>
 	/// Plays the click sound depending on whether you're in the main menu or the paus menu
 	/// </summary>
@@ -109,8 +127,8 @@ public class MONO_Menus : MonoBehaviour {
 			mainMenuSound.React ();
 			break;
 
-		case menu.paus:
-			pausMenuSound.React ();
+		case menu.pause:
+			pauseMenuSound.React ();
 			break;
 
 		default:
@@ -119,6 +137,27 @@ public class MONO_Menus : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Changes the cursor speed by float parameter.
+	/// </summary>
+	/// <param name="offset">The amount cursor speed will change.</param>
+	public void ChangeCursorSpeed(float offset)
+	{
+		cursor.CursorSpeed = cursor.CursorSpeed + offset;
+		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
+		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
+	}
+
+
+	/// <summary>
+	/// Wait for seconds.
+	/// </summary>
+	/// <returns>The some time.</returns>
+	/// <param name="seconds">Seconds.</param>
+	IEnumerator WaitSomeTime(float seconds)
+	{
+		yield return new WaitForSeconds (seconds);
+	}
 
 	/// <summary>
 	/// Quit game.
