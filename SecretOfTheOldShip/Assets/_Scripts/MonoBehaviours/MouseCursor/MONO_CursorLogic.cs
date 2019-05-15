@@ -8,6 +8,11 @@ public class MONO_CursorLogic : MonoBehaviour
 {
     public enum action { HOVER_ENTERD, HOVER_OVER, HOVER_EXIT, HOVER, CLICK };
 
+	//===========================================================================
+	// Cursor sprite
+	//===========================================================================
+	private MONO_CursorSprite cursorSprite;
+
     //===========================================================================
     // DEBUG
     //===========================================================================
@@ -107,6 +112,7 @@ public class MONO_CursorLogic : MonoBehaviour
     void Start()
     {
         thisTransformer = GetComponent<RectTransform>();
+		cursorSprite = GetComponent<MONO_CursorSprite> ();
 
         presistentCanvansPraycaster = FindObjectOfType<GraphicRaycaster>();
         mainCameraGraycaster        = FindObjectOfType<PhysicsRaycaster>();
