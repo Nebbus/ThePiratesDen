@@ -3,26 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MONO_IntroManager : MonoBehaviour {
+	
+	public GameObject introBook;
+	public GameObject[] introDrawings;
+
 	private MONO_SceneManager sceneManager;
 	private MONO_Menus menuManager;
-	public GameObject mainMenu;
-
-	private MONO_MenuSelect temp;
+	private GameObject mainMenu;
 
 	void Awake()
 	{
 		sceneManager = FindObjectOfType<MONO_SceneManager> ();
 		menuManager = FindObjectOfType <MONO_Menus> ();
+
 	}
 
-
-	void Start () {
-		
-	}
-
-	void LateStart()
+	void Start()
 	{
-		menuManager.ChangeLatestMenu (mainMenu);
-		//menuManager.OpenMenu ();
+		menuManager.introManager = gameObject.GetComponent<MONO_IntroManager>();
+	}
+
+
+	public void StartIntro()
+	{
+		introBook.SetActive (true);
+		introBook.GetComponent<MONO_ReactionCollection> ().React();
+	}
+
+
+	public void StartGame()
+	{
+		menuManager.StartGame ();
 	}
 }

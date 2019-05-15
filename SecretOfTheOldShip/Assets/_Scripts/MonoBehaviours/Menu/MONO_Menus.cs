@@ -10,12 +10,16 @@ public class MONO_Menus : MonoBehaviour {
 	public bool menuOpen = true;
     public GameObject menuButton;
 	public MONO_SceneManager sceneManager;
+	[HideInInspector]
+	public MONO_IntroManager introManager;
+
 	[Space]
 	public MONO_CustomMouseCursor cursor;
 	[Tooltip("The UI text object in main settings menu for cursor speed.")]
 	public Text cursorSpeedMain;
 	[Tooltip("The UI text object in pause settings menu for cursor speed.")]
 	public Text cursorSpeedPause;
+
 	[Space]
 	public MONO_ReactionCollection mainMenuSound;
 	public MONO_ReactionCollection pauseMenuSound;
@@ -34,6 +38,7 @@ public class MONO_Menus : MonoBehaviour {
 	private MONO_Fade fader;
 
 
+
 	void Start()
 	{
 		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
@@ -41,11 +46,16 @@ public class MONO_Menus : MonoBehaviour {
 
 		fader = sceneManager.gameObject.GetComponent<MONO_Fade> ();
 
+
 		if(latestMenu == null){
-			latestMenu = menu.pause; 	//paus menu is the default menu
+			latestMenu = menu.main; 	//main menu is the menu the game is started with
 		}
 	}
 
+	void LateStart()
+	{
+		introManager = FindObjectOfType<MONO_IntroManager> ();
+	}
 
 	public void StartGame()
 	{
@@ -69,8 +79,10 @@ public class MONO_Menus : MonoBehaviour {
 	{
 		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		fader.Fade (1);		//fades screen to black
-		WaitSomeTime(delay);
+		WaitSomeTime(delay + 1);
 		mainMenu.SetActive (false);
+		fader.Fade (0);		//fades screen from black
+		introManager.StartIntro ();
 	}
 
 	/// <summary>
@@ -162,7 +174,7 @@ public class MONO_Menus : MonoBehaviour {
 
 
 	/// <summary>
-	/// Wait for seconds.
+	/// Starts a new  wait for seconds.
 	/// </summary>
 	/// <returns>The some time.</returns>
 	/// <param name="seconds">Seconds.</param>
