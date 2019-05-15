@@ -8,20 +8,25 @@ public class MONO_FadeObject : MonoBehaviour {
 	public MeshRenderer[] meshRenderers;
 	[Tooltip("Skinned mesh rendererers of the object to fade")]
 	public SkinnedMeshRenderer[] skinnedMeshRenderers;
+	[Tooltip("Sprites to fade")]
+	public SpriteRenderer[] spriteRenderers;
 
 
-	private Color[] startColor;
-	private Color[] skinnedStartColor;
-	private Color[] targetColor;
-	private Color[] skinnedTargetColor;
+	private Color[] meshStartColor;
+	private Color[] meshTargetColor;
+	private Color[] skinnedMeshStartColor;
+	private Color[] skinnedMeshTargetColor;
+	private Color[] spriteStartColor;
+	private Color[] spriteTargetColor;
 	private float currentAlpha;
 	private float targetAlpha;
 	private bool isFading;
 
 	void Start()
 	{
-		startColor = new Color[meshRenderers.Length];
-		skinnedStartColor = new Color[skinnedMeshRenderers.Length];
+		meshStartColor = new Color[meshRenderers.Length];
+		skinnedMeshStartColor = new Color[skinnedMeshRenderers.Length];
+		spriteStartColor = new Color[spriteRenderers.Length];
 	}
 
 
@@ -34,17 +39,24 @@ public class MONO_FadeObject : MonoBehaviour {
 			Debug.LogError ("You cannot fade an object without at least one mesh renderer or skinned mesh renderer.");
 			return;
 		}
+
 		for (int i = 0; i < meshRenderers.Length; i++) 
 		{
-			startColor[i] = meshRenderers [i].material.color;
-			targetColor [i] = startColor [i];
-			targetColor [i].a = targetAlpha;
+			meshStartColor[i] = meshRenderers [i].material.color;
+			meshTargetColor [i] = meshStartColor [i];
+			meshTargetColor [i].a = targetAlpha;
 		}
 		for (int i = 0; i < skinnedMeshRenderers.Length; i++) 
 		{
-			skinnedStartColor[i] = skinnedMeshRenderers [i].material.color;
-			targetColor [i] = startColor [i];
-			targetColor [i].a = targetAlpha;
+			skinnedMeshStartColor[i] = skinnedMeshRenderers [i].material.color;
+			meshTargetColor [i] = meshStartColor [i];
+			meshTargetColor [i].a = targetAlpha;
+		}
+		for(int i = 0; i < spriteRenderers.Length; i++)
+		{
+			spriteStartColor [i] = spriteRenderers [i].material.color;
+			spriteTargetColor[i] = spriteStartColor[i];
+			spriteTargetColor [i].a = targetAlpha;
 		}
 
 		isFading = true;
@@ -60,24 +72,34 @@ public class MONO_FadeObject : MonoBehaviour {
 		{
 			for (int i = 0; i < meshRenderers.Length; i++)
 			{
-				meshRenderers[i].material.color = Color.Lerp (meshRenderers[i].material.color, targetColor[i], fadeSpeed);
+				meshRenderers[i].material.color = Color.Lerp (meshRenderers[i].material.color, meshTargetColor[i], fadeSpeed);
 			}
 			for (int i = 0; i < skinnedMeshRenderers.Length; i++)
 			{
-				skinnedMeshRenderers[i].material.color = Color.Lerp (skinnedMeshRenderers[i].material.color, targetColor[i], fadeSpeed);
+				skinnedMeshRenderers[i].material.color = Color.Lerp (skinnedMeshRenderers[i].material.color, meshTargetColor[i], fadeSpeed);
 			}
+			for (int i = 0; i < spriteRenderers.Length; i++)
+			{
+				spriteRenderers[i].material.color = Color.Lerp (spriteRenderers[i].material.color, spriteTargetColor[i], fadeSpeed);
+			}
+
+
 
 			if (meshRenderers [0] != null)
 			{
 				currentAlpha = meshRenderers [0].material.color.a;
-			} 
+			}
 			else if (skinnedMeshRenderers [0] != null) 
 			{
 				currentAlpha = skinnedMeshRenderers [0].material.color.a;
 			} 
+			else if (spriteRenderers [0] != null) 
+			{
+				currentAlpha = spriteRenderers [0].material.color.a;
+			}
 			else
 			{
-				Debug.Log ("There is no mesh renderer or skinned mesh renderer to be faded.");
+				Debug.Log ("There is no renderer to be faded.");
 			}
 
 		}
