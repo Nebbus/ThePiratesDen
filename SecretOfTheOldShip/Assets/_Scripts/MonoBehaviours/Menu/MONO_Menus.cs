@@ -31,19 +31,23 @@ public class MONO_Menus : MonoBehaviour {
 	private GameObject settingsMenu;
 	[SerializeField]
 	private GameObject inventory;
+	private MONO_Fade fader;
 
 
 	void Start()
 	{
 		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
 		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
+
+		fader = sceneManager.gameObject.GetComponent<MONO_Fade> ();
+
 		if(latestMenu == null){
 			latestMenu = menu.pause; 	//paus menu is the default menu
 		}
 	}
 
 
-	public void StartNewGame()
+	public void StartGame()
 	{
 		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		CloseMenu ();
@@ -59,6 +63,14 @@ public class MONO_Menus : MonoBehaviour {
 	public void LoadLatestGame()
 	{
 		
+	}
+
+	public void StartIntro()
+	{
+		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
+		fader.Fade (1);		//fades screen to black
+		WaitSomeTime(delay);
+		mainMenu.SetActive (false);
 	}
 
 	/// <summary>
