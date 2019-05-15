@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MONO_CursorSprite : MonoBehaviour {
 
-
-	public SpriteRenderer cursorSpriteRenderer;
+	public Image cursorSpriteImage;
+	//public SpriteRenderer cursorSpriteRenderer;
 	public cursorSprite[] cursorSprites = new cursorSprite[0];
 
 	/// <summary>
@@ -19,7 +19,7 @@ public class MONO_CursorSprite : MonoBehaviour {
 		{
 			if (cursorSprites [i].tag == objectTag) 
 			{
-				cursorSpriteRenderer.sprite = cursorSprites [i].sprite;
+				cursorSpriteImage.sprite = cursorSprites [i].sprite;
 				return;
 			}
 
@@ -28,6 +28,7 @@ public class MONO_CursorSprite : MonoBehaviour {
 	}
 }
 
+[System.Serializable]
 public class cursorSprite 
 {
 	public string tag;
