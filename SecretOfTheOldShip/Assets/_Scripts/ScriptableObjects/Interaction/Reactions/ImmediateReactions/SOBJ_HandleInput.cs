@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SOBJ_HandleInput : SOBJ_Reaction
+public class SOBJ_HandleInput : SOBJ_DelayedReaction
 {
 	public bool enabled;
 
