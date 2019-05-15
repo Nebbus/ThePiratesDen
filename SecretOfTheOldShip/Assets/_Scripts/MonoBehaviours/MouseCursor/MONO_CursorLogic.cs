@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class MONO_CursorLogic : MonoBehaviour
 {
-
+	public SpriteRenderer cursorSpriteRenderer;
+	public cursorSprite[] sprites;
 
     public enum action { HOVER_ENTERD, HOVER_OVER, HOVER_EXIT, HOVER, CLICK };
 
@@ -384,4 +385,32 @@ public class MONO_CursorLogic : MonoBehaviour
             }
         }
     }
+
+
+
+	/// <summary>
+	/// Compares the tag of object being hovered over with the tag of the cursorSprite. 
+	/// If they match, the sprite of the cursor changes to the sprite of the cursorSprite.
+	/// </summary>
+	/// <param name="objectTag">Tag of the object currently being hovered over.</param>
+	private void ChangeCursorSprite(string objectTag)
+	{
+		for (int i = 0; i < sprites.Length; i++) 
+		{
+			if (sprites [i].tag == objectTag) 
+			{
+				cursorSpriteRenderer.sprite = sprites [i].sprite;
+				return;
+			}
+		}
+		Debug.LogError ("No sprite with matching tag found");
+	}
+}
+
+
+
+public class cursorSprite 
+{
+	public string tag;
+	public Sprite sprite;
 }
