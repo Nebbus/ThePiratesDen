@@ -60,7 +60,7 @@ public class MONO_PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        moveOnGroundClick = new Action<MONO_EventManager.EventParam>(onGroundEvent);
+        moveOnGroundClick   = new Action<MONO_EventManager.EventParam>(onGroundEvent);
         moveOnInteractClick = new Action<MONO_EventManager.EventParam>(onInteractEvent);
 
         // The player will be rotated by this script so the nav mesh agent should not rotate it.

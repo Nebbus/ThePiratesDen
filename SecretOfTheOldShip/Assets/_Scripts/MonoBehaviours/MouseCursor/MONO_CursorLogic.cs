@@ -202,10 +202,10 @@ public class MONO_CursorLogic : MonoBehaviour
     /// </summary>
     private void handleResult()
     {
-        overCurentObject = "---------";
-        currentHoverOver = null;
-        currentInteractableTarget = null;
-        currentButtonTarger = null;
+        overCurentObject            = "---------";
+        currentHoverOver            = null;
+        currentInteractableTarget   = null;
+        currentButtonTarger         = null;
 
 
         //RaycastResult theLa
@@ -270,7 +270,13 @@ public class MONO_CursorLogic : MonoBehaviour
                 overCurentObject = "GROUND: " + currentHoverOver.name;
             }
             interactableHover();
-            break;
+            return;// Only considerts the first hit
+        }
+
+        if (lastInteractableTarget != null)
+        {
+            lastInteractableTarget.OnHoverExit();
+            lastInteractableTarget = null;
         }
     }
 
