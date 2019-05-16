@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4696315294893320}
   - component: {fileID: 114077509272709326}
   - component: {fileID: 114378905940852080}
+  - component: {fileID: 114359241698858946}
   m_Layer: 0
   m_Name: HarmmonikaDescription
   m_TagString: Untagged
@@ -66,7 +67,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 114378905940852080}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 114359241698858946}
   variables: []
   description: 
   stepPause: 0
@@ -78,9 +80,37 @@ MonoBehaviour:
   hideCommands: []
   luaEnvironment: {fileID: 0}
   luaBindingName: flowchart
---- !u!114 &114378905940852080
+--- !u!114 &114359241698858946
 MonoBehaviour:
   m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385373840242666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1
+  indentLevel: 0
+  storyText: 'Harmmanika description
+
+'
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &114378905940852080
+MonoBehaviour:
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385373840242666}
@@ -101,4 +131,5 @@ MonoBehaviour:
   blockName: Description
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 114359241698858946}
