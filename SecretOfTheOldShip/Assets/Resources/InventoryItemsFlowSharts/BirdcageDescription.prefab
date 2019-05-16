@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4279631156819956}
   - component: {fileID: 114686677455603752}
   - component: {fileID: 114683287625188658}
+  - component: {fileID: 114443077580150040}
   m_Layer: 0
   m_Name: BirdcageDescription
   m_TagString: Untagged
@@ -41,9 +42,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114683287625188658
+--- !u!114 &114443077580150040
 MonoBehaviour:
   m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976664517445590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1
+  indentLevel: 0
+  storyText: This makeshift cage ought to hold the bird once the ship goes up in flames.
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &114683287625188658
+MonoBehaviour:
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976664517445590}
@@ -64,7 +91,8 @@ MonoBehaviour:
   blockName: Description
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 114443077580150040}
 --- !u!114 &114686677455603752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,7 +118,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 114683287625188658}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 114443077580150040}
   variables: []
   description: 
   stepPause: 0
