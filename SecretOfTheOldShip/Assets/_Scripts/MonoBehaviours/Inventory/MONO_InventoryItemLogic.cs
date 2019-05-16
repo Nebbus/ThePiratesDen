@@ -82,6 +82,7 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         // if no reaction was don ore no item is held, return to inventory
         if (doNotreturnItem)
         {
+            FMODUnity.RuntimeManager.PlayOneShot(MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.putDownSound);
             monoInventory.ReturnToInventory(MONO_AdventureCursor.instance.getMonoHoldedItem.getSetIndex);
         }
 
