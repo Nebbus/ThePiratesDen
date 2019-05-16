@@ -82,21 +82,22 @@ public class EDI_Inventory : Editor {
         EditorGUILayout.PropertyField(inventoryProperty);
         EditorGUILayout.PropertyField(inventoryBackImageProperty);
 
+        // The buttosn for adding and removin item slots in the invetory
+        EditorGUILayout.BeginHorizontal();
+            addSlot = GUILayout.Button("+", GUILayout.Width(buttonWhidt));
+            remobeSlot = GUILayout.Button("-", GUILayout.Width(buttonWhidt));
+        EditorGUILayout.EndHorizontal();
+
         for (int i = 0; i < MONO_Inventory.numberItemSlots; i++)
          {
              ItemSlotGUI(i);
          }
 
-        // The buttosn for adding and removin item slots in the invetory
-        EditorGUILayout.BeginHorizontal();
-            addSlot     = GUILayout.Button("+", GUILayout.Width(buttonWhidt));
-            remobeSlot  = GUILayout.Button("-", GUILayout.Width(buttonWhidt));
-
-            EditorGUILayout.BeginHorizontal(GUI.skin.box);
-                EditorGUILayout.HelpBox("Hide delay after item has ben lifted from inventory delay in seconds.", MessageType.Info);
-                EditorGUILayout.PropertyField(inventoryWaitDelayProperty,GUIContent.none);
-            EditorGUILayout.EndHorizontal();
-        EditorGUILayout.EndHorizontal();
+         EditorGUILayout.BeginHorizontal(GUI.skin.box);
+            EditorGUILayout.HelpBox("Hide delay after item has ben lifted from inventory delay in seconds.", MessageType.Info);
+            EditorGUILayout.PropertyField(inventoryWaitDelayProperty,GUIContent.none);
+         EditorGUILayout.EndHorizontal();
+      
         
         serializedObject.ApplyModifiedProperties();
 
