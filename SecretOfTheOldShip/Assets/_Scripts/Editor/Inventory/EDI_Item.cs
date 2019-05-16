@@ -14,10 +14,13 @@ public class EDI_Item : Editor
     private SOBJ_Item sobjItem;
 
     private SerializedProperty spriteProperty;
+    private SerializedProperty onHowerTextProperty;
     private SerializedProperty onClickConditioAndReactionsProperty;
     private SerializedProperty onHovorConditioAndReactionsProperty;
 
+
     private const string spritePropertyName                      = "sprite";
+    private const string onHowerTextPropertyName                  = "onHowerText";
     private const string onClickConditioAndReactionsPropertyName = "onCLickConditionAndReactions";
     private const string onHovorConditioAndReactionsPropertyName = "onHoverConditionAndReactions";
 
@@ -38,11 +41,12 @@ public class EDI_Item : Editor
         sobjItem = (SOBJ_Item)target;
 
         saftyCache();
-
+        
         onClickConditioAndReactionsProperty = serializedObject.FindProperty(onClickConditioAndReactionsPropertyName);
         onHovorConditioAndReactionsProperty = serializedObject.FindProperty(onHovorConditioAndReactionsPropertyName);
         
         spriteProperty               = serializedObject.FindProperty(spritePropertyName);
+        onHowerTextProperty          = serializedObject.FindProperty(onHowerTextPropertyName);
 
     }
 
@@ -137,18 +141,18 @@ public class EDI_Item : Editor
         EditorGUILayout.Space();
         EditorGUILayout.Space();
 
+  //if reactions is wanted for on hover, un coment 
+        //EditorGUILayout.BeginVertical(GUI.skin.box);
+        //    EditorGUI.indentLevel++;
+        //    showOnHoverEditor = EditorGUILayout.Foldout(showOnHoverEditor, "On hover interactions", true);
+        //    if (showOnHoverEditor)
+        //    {
+        //        DrawInteractableCollections(CurentInteractions.HOVER);
+        //        EditorGUILayout.Space();
+        //    }
 
-        EditorGUILayout.BeginVertical(GUI.skin.box);
-            EditorGUI.indentLevel++;
-            showOnHoverEditor = EditorGUILayout.Foldout(showOnHoverEditor, "On hover interactions", true);
-            if (showOnHoverEditor)
-            {
-                DrawInteractableCollections(CurentInteractions.HOVER);
-                EditorGUILayout.Space();
-            }
-
-            EditorGUI.indentLevel--;
-        EditorGUILayout.EndVertical();
+        //    EditorGUI.indentLevel--;
+        //EditorGUILayout.EndVertical();
     }
 
 
@@ -168,6 +172,7 @@ public class EDI_Item : Editor
                 GUILayout.Box(sobjItem.sprite.texture, GUILayout.Width(width * ownSpriteWidth), GUILayout.Height(width * ownSpriteHight));
             }
         EditorGUILayout.EndVertical();
+        EditorGUILayout.PropertyField(onHowerTextProperty);
         serializedObject.ApplyModifiedProperties();
     }
 

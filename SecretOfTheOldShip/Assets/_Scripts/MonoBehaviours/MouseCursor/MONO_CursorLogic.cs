@@ -99,7 +99,18 @@ public class MONO_CursorLogic : MonoBehaviour
     [SerializeField]
     private KeyCode keabordKey  = KeyCode.Space;
 
-
+    public Vector3 getPointerPosition
+    {
+        get
+        {
+            if (thisTransformer != null)
+            {
+                thisTransformer = GetComponent<RectTransform>();
+            }
+            return thisTransformer.position;
+        }
+       
+    }
 
 
     public void setKeyBordMode()
