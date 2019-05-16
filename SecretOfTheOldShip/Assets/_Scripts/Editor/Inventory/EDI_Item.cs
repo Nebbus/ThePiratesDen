@@ -17,12 +17,14 @@ public class EDI_Item : Editor
     private SerializedProperty onHowerTextProperty;
     private SerializedProperty onClickConditioAndReactionsProperty;
     private SerializedProperty onHovorConditioAndReactionsProperty;
+    private SerializedProperty putDownSoundProperty;
 
 
     private const string spritePropertyName                      = "sprite";
     private const string onHowerTextPropertyName                  = "onHowerText";
     private const string onClickConditioAndReactionsPropertyName = "onCLickConditionAndReactions";
     private const string onHovorConditioAndReactionsPropertyName = "onHoverConditionAndReactions";
+    private const string putDownSoundPropertyName                = "putDownSound";
 
     private EDI_ItemInteractable[] onClickItemInteractablesEditors;   // the list of interactions
     private EDI_ItemInteractable[] onHoverItemInteractablesEditors;   // the list of interactions
@@ -47,6 +49,7 @@ public class EDI_Item : Editor
         
         spriteProperty               = serializedObject.FindProperty(spritePropertyName);
         onHowerTextProperty          = serializedObject.FindProperty(onHowerTextPropertyName);
+        putDownSoundProperty         = serializedObject.FindProperty(putDownSoundPropertyName);
 
     }
 
@@ -173,6 +176,7 @@ public class EDI_Item : Editor
             }
         EditorGUILayout.EndVertical();
         EditorGUILayout.PropertyField(onHowerTextProperty);
+        EditorGUILayout.PropertyField(putDownSoundProperty);
         serializedObject.ApplyModifiedProperties();
     }
 
