@@ -38,7 +38,7 @@ public class MONO_Settings : MonoBehaviour {
 
 	private void ActivateKeyboard()
 	{
-	//Debug.Log ("activating keyboard");
+
         MONO_AdventureCursor.instance.getMonoCustimMouseCursor.UsingKeyboard = true;
         MONO_AdventureCursor.instance.getMonoPointerLogic.setKeyBordMode();
     }

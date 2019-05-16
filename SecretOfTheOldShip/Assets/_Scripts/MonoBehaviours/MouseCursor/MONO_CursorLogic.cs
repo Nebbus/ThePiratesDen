@@ -95,9 +95,12 @@ public class MONO_CursorLogic : MonoBehaviour
     [SerializeField]
     private KeyCode usedClickKey = KeyCode.Mouse0;
     [SerializeField]
-    private KeyCode mouseKey = KeyCode.Mouse0;
+    private KeyCode mouseKey    = KeyCode.Mouse0;
     [SerializeField]
-    private KeyCode keabordKey = KeyCode.Space;
+    private KeyCode keabordKey  = KeyCode.Space;
+
+
+
 
     public void setKeyBordMode()
     {
@@ -202,10 +205,10 @@ public class MONO_CursorLogic : MonoBehaviour
     /// </summary>
     private void handleResult()
     {
-        overCurentObject = "---------";
-        currentHoverOver = null;
-        currentInteractableTarget = null;
-        currentButtonTarger = null;
+        overCurentObject            = "---------";
+        currentHoverOver            = null;
+        currentInteractableTarget   = null;
+        currentButtonTarger         = null;
 
 
         //RaycastResult theLa
@@ -270,7 +273,12 @@ public class MONO_CursorLogic : MonoBehaviour
                 overCurentObject = "GROUND: " + currentHoverOver.name;
             }
             interactableHover();
-            break;
+            return;// Only considerts the first hit
+        }
+
+        if (lastInteractableTarget != null)
+        {
+            OnHoverExitRaper();
         }
     }
 
@@ -330,9 +338,7 @@ public class MONO_CursorLogic : MonoBehaviour
                 MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
                 param.param6                       = currentInteractableTarget;
                 MONO_EventManager.TriggerEvent(MONO_EventManager.onInteractableEvnetManager_NAME, param);
-
             }
-
 
             return true;
         }
@@ -364,13 +370,12 @@ public class MONO_CursorLogic : MonoBehaviour
         {
             if (lastInteractableTarget)
             {
-                lastInteractableTarget.OnHoverExit();
+                OnHoverExitRaper();
             }
 
             if (currentInteractableTarget)
             {
-                currentInteractableTarget.OnHoverEnterd();
-
+                OnHoverEnterRaper();          
             }
 
             lastInteractableTarget = currentInteractableTarget;
@@ -384,4 +389,17 @@ public class MONO_CursorLogic : MonoBehaviour
             }
         }
     }
+
+
+    private void OnHoverEnterRaper()
+    {
+        currentInteractableTarget.OnHoverEnterd();
+    }
+
+    private void OnHoverExitRaper()
+    {
+        lastInteractableTarget.OnHoverExit();
+        lastInteractableTarget = null;
+    }
+
 }

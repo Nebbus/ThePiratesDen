@@ -16,15 +16,17 @@ public class MONO_EventManager : MonoBehaviour
         public bool     param4;
         public Vector3  param5;
         public MONO_InteractionBase param6;
+
     }
 
     private Dictionary<string, Action<EventParam>> eventDictionary;
 
     private static MONO_EventManager monoEventManager;
 
-    public const string onInteractableEvnetManager_NAME = "moveInteractPlayer";
-    public const string onGroundEvnetManager_NAME       = "moveGround";
-
+    public const string onInteractableEvnetManager_NAME        = "moveInteractPlayer";
+    public const string onGroundEvnetManager_NAME              = "moveGround";
+    public const string onHiglightAllInteractablesInScene_NAME = "onHigligtAll";
+    public const string offHiglightAllInteractablesInScene_NAME = "offHigligtAll";
 
     /// <summary>
     /// getter for the MONO_EventManager
@@ -125,6 +127,7 @@ public class MONO_EventManager : MonoBehaviour
 
         if(instance.eventDictionary.TryGetValue(eventName, out thisEvent))
         {
+            Debug.Log((thisEvent == null) ? "null" : thisEvent.ToString());
             thisEvent.Invoke(eventParam);
         }
     }

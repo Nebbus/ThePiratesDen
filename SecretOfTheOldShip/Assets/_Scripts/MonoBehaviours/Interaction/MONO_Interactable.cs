@@ -8,6 +8,7 @@
 *  player to approach the interactionLocation and the 
 *  player should call the Interact function when they arrive.
 */
+[RequireComponent(typeof(MONO_GlowObject))]// this is for the glow
 public class MONO_Interactable : MONO_InteractionBase
 {
     /* The position and rotation the player should go 
@@ -19,7 +20,38 @@ public class MONO_Interactable : MONO_InteractionBase
      */ 
     public SOBJ_ConditionCollection[] conditionCollections = new SOBJ_ConditionCollection[0];
     // If none of the SOBJ_ConditionCollection are reacted to this one is used.
-    public MONO_ReactionCollection defaultReactionCollection;    
+    public MONO_ReactionCollection defaultReactionCollection;
+
+
+
+    private MONO_GlowObject glowObjectComponent;
+    private MONO_GlowObject getGlowObjectComponent
+    {
+        get
+        {
+            if (glowObjectComponent == null)
+            {
+                glowObjectComponent = GetComponent<MONO_GlowObject>();
+                // attemts to add the component
+                if (glowObjectComponent == null)
+                {
+                    glowObjectComponent = gameObject.AddComponent(typeof(MONO_GlowObject)) as MONO_GlowObject;
+                    if (glowObjectComponent == null)
+                    {
+                        Debug.LogError(gameObject.ToString() + " : It was inpossible to retrive the MONO_GlowObject from this object");
+                    }
+                }
+            }
+            
+           
+            return glowObjectComponent;
+        }
+
+    }
+
+
+
+
 
 
     // This is called when the player arrives at the interactionLocation.
@@ -49,7 +81,9 @@ public class MONO_Interactable : MONO_InteractionBase
 
     public override void OnHoverEnterd()
     {
-        //notify the the mouse is over
+        //MONO_AdventureCursor.instance.MONO_CursorSprite.setSprite(gameObject.tag);
+
+        getGlowObjectComponent.HigligtON();
     }
 
     public override void OnHover()
@@ -59,6 +93,8 @@ public class MONO_Interactable : MONO_InteractionBase
 
     public override void OnHoverExit()
     {
-        // turn of on hover 
+       // MONO_AdventureCursor.instance.MONO_CursorSprite.setSprite(gameObject.tag);
+
+        getGlowObjectComponent.HigligtOFF();
     }
 }
