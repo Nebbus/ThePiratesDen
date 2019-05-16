@@ -7,11 +7,10 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
 
 
     public int hashCode = -1;
-
     private int index;
     private bool hasBenGrabed = false;
     private MONO_Inventory monoInventory;
-
+    private Fungus.Flowchart FlowhartToShow = null;
     private int realHashCode = -1;
 
     public int getSetItemsHashCode
@@ -67,7 +66,7 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
     /// <summary>
     /// Run throug the ractions the item has attached to it.
     /// </summary>
-    public void ClickReact()
+    private void ClickReact()
     {
         /*prevents the slot from caling
         * reactions then no item
@@ -89,34 +88,68 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
     }
 
     /// <summary>
-    /// Run throug the ractions the item has attached to it.
+    /// Creates and starts a flowshart whit the description
     /// </summary>
-    public void HovorReact()
+    private void HovorEnterdReact()
     {
+        MONO_AdventureCursor.instance.getMonoHoldedItem.isAbove = getSetItemsHashCode;
+
         if (getSetItemsHashCode != -1)
         {
-            
+            MONO_AdventureCursor.instance.getMonoHoldedItem.isAbove = hashCode;
+            FlowhartToShow = GameObject.Instantiate(monoInventory.GetItem(getSetItemsHashCode).onHowerText);
+            FlowhartToShow.ExecuteBlock("Description");
+        }
+    }
+
+    /// <summary>
+    /// not used for the moment 
+    /// </summary>
+    private void HovorReact()
+    {
+      
+        if (getSetItemsHashCode != -1)
+        {
+
             monoInventory.GetItem(getSetItemsHashCode).OnHoverInteractionRun(this);
+        }
+    }
+
+ 
+    /// <summary>
+    /// if the description is activated, stop it and destroy it
+    /// </summary>
+    private void HovorExitReact()
+    {
+        MONO_AdventureCursor.instance.getMonoHoldedItem.isAbove = -1;
+        if (FlowhartToShow != null)
+        {
+            FlowhartToShow.StopAllBlocks();
+            Destroy(FlowhartToShow.gameObject);// maybe is exist better solution, but worsk for now
         }
     }
 
     public override void OnClick()
     {
+        HovorExitReact();
         ClickReact();
     }
 
     public override void OnHoverEnterd()
     {
-        HovorReact();
+
+        HovorEnterdReact();
+
     }
 
     public override void OnHover()
     {
-      
+        //not used for the moment
+        // HovorReact()
     }
 
     public override void OnHoverExit()
     {
-       
+        HovorExitReact();
     }
 }

@@ -14,6 +14,8 @@ public class SOBJ_Item : ScriptableObject
 {
 
     public Sprite sprite;
+    public Fungus.Flowchart onHowerText;
+
   
     public SOBJ_ItemInteractable[] onClickConditionAndReactions = new SOBJ_ItemInteractable[0];
     public SOBJ_ItemInteractable[] onHoverConditionAndReactions = new SOBJ_ItemInteractable[0];
