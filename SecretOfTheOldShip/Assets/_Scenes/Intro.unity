@@ -379,19 +379,6 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 212914932680739678, guid: 075cc1d752efaf64f9cee53e8a1fa358,
     type: 2}
   m_PrefabInternal: {fileID: 362100301}
---- !u!114 &362100307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 362100302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reactions:
-  - {fileID: 1021834408}
 --- !u!114 &362100308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,7 +624,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 081b6a4b7fb1def4eb9bedf51f1d1311, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1021834408
+--- !u!114 &1027138621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -934,16 +921,14 @@ GameObject:
   - component: {fileID: 1539640160}
   - component: {fileID: 1539640159}
   - component: {fileID: 1539640149}
-  - component: {fileID: 1539640158}
   - component: {fileID: 1539640157}
   - component: {fileID: 1539640156}
-  - component: {fileID: 1539640155}
-  - component: {fileID: 1539640154}
   - component: {fileID: 1539640153}
   - component: {fileID: 1539640152}
   - component: {fileID: 1539640151}
-  - component: {fileID: 1539640150}
   - component: {fileID: 1539640148}
+  - component: {fileID: 1539640163}
+  - component: {fileID: 1539640150}
   m_Layer: 0
   m_Name: IntroFlowchart
   m_TagString: Untagged
@@ -976,8 +961,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1539640161}
-  selectedCommands: []
+  - {fileID: 1539640160}
+  selectedCommands:
+  - {fileID: 1539640157}
   variables: []
   description: 
   stepPause: 0
@@ -1052,10 +1038,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 12
+  itemId: 15
   indentLevel: 0
   targetFlowchart: {fileID: 1539640147}
-  targetBlock: {fileID: 1539640149}
+  targetBlock: {fileID: 1539640160}
   startLabel:
     stringRef: {fileID: 0}
     stringVal: 
@@ -1159,70 +1145,6 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
---- !u!114 &1539640154
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539640146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 8
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 362100305}
-  targetComponentAssemblyName: MONO_FadeObject, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: MONO_FadeObject
-  targetMethod: StartFade
-  targetMethodText: 'StartFade (Single): Void'
-  methodParameters:
-  - objValue:
-      typeAssemblyname: System.Single, mscorlib, Version=2.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      typeFullname: System.Single
-      intValue: 0
-      boolValue: 0
-      floatValue: 1
-      stringValue: 
-      colorValue: {r: 0, g: 0, b: 0, a: 0}
-      gameObjectValue: {fileID: 0}
-      materialValue: {fileID: 0}
-      objectValue: {fileID: 0}
-      spriteValue: {fileID: 0}
-      textureValue: {fileID: 0}
-      vector2Value: {x: 0, y: 0}
-      vector3Value: {x: 0, y: 0, z: 0}
-    variableKey: 
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &1539640155
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539640146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 7
-  indentLevel: 0
-  targetFlowchart: {fileID: 1539640147}
-  targetBlock: {fileID: 1539640159}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
 --- !u!114 &1539640156
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1275,26 +1197,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &1539640158
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539640146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 4
-  indentLevel: 0
-  targetFlowchart: {fileID: 1539640147}
-  targetBlock: {fileID: 1539640160}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
 --- !u!114 &1539640159
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1323,7 +1225,6 @@ MonoBehaviour:
   - {fileID: 1539640153}
   - {fileID: 1539640152}
   - {fileID: 1539640151}
-  - {fileID: 1539640150}
 --- !u!114 &1539640160
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1349,10 +1250,8 @@ MonoBehaviour:
     NOT wait for click (but probably for the voiceover?).
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 1539640154}
   - {fileID: 1539640157}
   - {fileID: 1539640156}
-  - {fileID: 1539640155}
 --- !u!114 &1539640161
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1378,7 +1277,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 1539640158}
+  - {fileID: 1539640150}
 --- !u!4 &1539640162
 Transform:
   m_ObjectHideFlags: 0
@@ -1392,6 +1291,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1539640163
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1539640146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 492
+    y: 94
+    width: 120
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 14
+  blockName: Debug
+  description: 
+  eventHandler: {fileID: 0}
+  commandList: []
 --- !u!1 &1571651081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,6 +1571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1713975618}
   - component: {fileID: 1713975617}
+  - component: {fileID: 1713975619}
   m_Layer: 0
   m_Name: IntroManager
   m_TagString: Untagged
@@ -1683,6 +1607,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1713975619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713975616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reactions:
+  - {fileID: 1027138621}
 --- !u!114 &1740591133
 MonoBehaviour:
   m_ObjectHideFlags: 0

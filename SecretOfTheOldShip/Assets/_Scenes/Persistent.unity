@@ -1324,6 +1324,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114398876284408404, guid: beb5c8bf4f4a87f4180c0f115158a4a4,
+        type: 2}
+      propertyPath: currentItemImage
+      value: 
+      objectReference: {fileID: 1592138440}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: beb5c8bf4f4a87f4180c0f115158a4a4, type: 2}
   m_IsPrefabParent: 0
@@ -1344,6 +1349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorSpriteImage: {fileID: 530236791}
+  currentTag: 
   cursorSprites:
   - tag: NotInteractable
     sprite: {fileID: 21300000, guid: b482c0182c537c847a36864915d621ec, type: 3}
@@ -3296,7 +3302,7 @@ GameObject:
   - component: {fileID: 1504644865}
   - component: {fileID: 1504644864}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PausMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3668,6 +3674,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab5d56ea5fa75f34c8099576a3a4a857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1592138440 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114799312889536184, guid: beb5c8bf4f4a87f4180c0f115158a4a4,
+    type: 2}
+  m_PrefabInternal: {fileID: 530236788}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1596312002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4271,7 +4283,7 @@ Prefab:
     - target: {fileID: 114484314006889242, guid: 09285f318ab214fe5b31a10116d0542e,
         type: 2}
       propertyPath: myClickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartIntro
+      value: StartGame
       objectReference: {fileID: 0}
     - target: {fileID: 114484314006889242, guid: 09285f318ab214fe5b31a10116d0542e,
         type: 2}
@@ -4442,6 +4454,11 @@ Prefab:
       propertyPath: loadCamera
       value: 
       objectReference: {fileID: 1254727435}
+    - target: {fileID: 114430892306878384, guid: d41c044bbbb5f4d2a9a4dd2020d2e102,
+        type: 2}
+      propertyPath: fadeDuration
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d41c044bbbb5f4d2a9a4dd2020d2e102, type: 2}
   m_IsPrefabParent: 0
@@ -4860,6 +4877,22 @@ RectTransform:
   m_AnchoredPosition: {x: 179.40001, y: -25}
   m_SizeDelta: {x: 50.4, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2136322515 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1964929229954480, guid: d41c044bbbb5f4d2a9a4dd2020d2e102,
+    type: 2}
+  m_PrefabInternal: {fileID: 1858295764}
+--- !u!114 &2136322516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2136322515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeff4c6bec8824f7ebbe318c50ead01b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2142592496
 GameObject:
   m_ObjectHideFlags: 0

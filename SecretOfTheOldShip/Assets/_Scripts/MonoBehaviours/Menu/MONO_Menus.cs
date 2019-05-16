@@ -36,7 +36,12 @@ public class MONO_Menus : MonoBehaviour {
 	[SerializeField]
 	private GameObject inventory;
 	private MONO_Fade fader;
+	//private MONO_Wait waitManager;
 
+
+
+	private float timerTime;
+	private bool timerUpdating;
 
 
 	void Start()
@@ -45,27 +50,23 @@ public class MONO_Menus : MonoBehaviour {
 		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
 
 		fader = sceneManager.gameObject.GetComponent<MONO_Fade> ();
-
+		//waitManager = sceneManager.gameObject.GetComponent<MONO_Wait> ();
 
 		if(latestMenu == null){
 			latestMenu = menu.main; 	//main menu is the menu the game is started with
 		}
 	}
 
-	void LateStart()
-	{
-		introManager = FindObjectOfType<MONO_IntroManager> ();
-	}
+
 
 	public void StartGame()
 	{
 		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		CloseMenu ();
-		sceneManager.handleInput = false;
 		ChangeLatestMenu (pauseMenu);
 		sceneManager.ChangeScene ("Scene1_outside", true, false);
 
-		WaitSomeTime(delay);
+		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
 		inventory.SetActive (true);
 	}
@@ -75,14 +76,29 @@ public class MONO_Menus : MonoBehaviour {
 		
 	}
 
+
+	void Update()
+	{
+		if (timerUpdating) 
+		{
+			timerTime += Time.deltaTime;
+		}
+	}
+
+
 	public void StartIntro()
 	{
-		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
-		fader.Fade (1);		//fades screen to black
-		WaitSomeTime(delay + 1);
+		menuOpen = false;
+
+		float delay = sceneManager.gameObject.GetComponent<MONO_Fade> ().fadeDuration;
+		timerTime = 0;
+		timerUpdating = true;
+		fader.StartFade (1);		//fades screen to black
+		//StartCoroutine (WaitSomeTime(delay));
+
+	
 		mainMenu.SetActive (false);
-		fader.Fade (0);		//fades screen from black
-		introManager.StartIntro ();
+		introManager.InitiateIntro ();
 	}
 
 	/// <summary>
@@ -171,6 +187,7 @@ public class MONO_Menus : MonoBehaviour {
 		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
 		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
 	}
+
 
 
 	/// <summary>

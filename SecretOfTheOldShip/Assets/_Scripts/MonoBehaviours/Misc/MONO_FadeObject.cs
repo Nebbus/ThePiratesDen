@@ -107,7 +107,7 @@ public class MONO_FadeObject : MonoBehaviour {
 		float fadeSpeed = (Mathf.Abs (currentAlpha - targetAlpha)) / fadeDuration;
 
 		// While the renderers hasn't reached the final alpha
-		while (!Mathf.Approximately (currentAlpha, targetAlpha))
+		if (!Mathf.Approximately (currentAlpha, targetAlpha))
 		{
 			//Lerp the alpha of each object
 			for (int i = 0; i < meshRenderers.Length; i++)
@@ -143,6 +143,7 @@ public class MONO_FadeObject : MonoBehaviour {
 			{
 				Debug.Log ("There is no renderer to be faded.");
 				currentAlpha = targetAlpha;
+				return;
 			}
 		}
 
