@@ -49,8 +49,13 @@ public class MONO_Interactable : MONO_InteractionBase
 
     }
 
-
-
+    /// <summary>
+    /// creates the higlight
+    /// </summary>
+    public void Start()
+    {
+        MONO_GlowObject temp = getGlowObjectComponent;
+    }
 
 
 

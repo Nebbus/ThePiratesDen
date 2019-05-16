@@ -9,7 +9,8 @@ public class MONO_Menus : MonoBehaviour {
 	[HideInInspector]
 	public bool menuOpen = true;
     public GameObject menuButton;
-	public MONO_SceneManager sceneManager;
+    public GameObject hintButton;
+    public MONO_SceneManager sceneManager;
 	[HideInInspector]
 	public MONO_IntroManager introManager;
 
@@ -129,8 +130,10 @@ public class MONO_Menus : MonoBehaviour {
 	{
         menuOpen = true;
 		menuButton.SetActive (false);
+        hintButton.SetActive(false);
 
-		switch (latestMenu) {
+
+        switch (latestMenu) {
 		case menu.main:
 			mainMenu.SetActive (true);
 			break;
@@ -153,6 +156,7 @@ public class MONO_Menus : MonoBehaviour {
     {
         menuOpen = false;
         menuButton.SetActive(true);
+        hintButton.SetActive(true);
     }
 
 
