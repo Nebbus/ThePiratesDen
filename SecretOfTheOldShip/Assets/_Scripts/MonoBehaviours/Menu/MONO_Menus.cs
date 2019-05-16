@@ -10,12 +10,16 @@ public class MONO_Menus : MonoBehaviour {
 	public bool menuOpen = true;
     public GameObject menuButton;
 	public MONO_SceneManager sceneManager;
+	[HideInInspector]
+	public MONO_IntroManager introManager;
+
 	[Space]
 	public MONO_CustomMouseCursor cursor;
 	[Tooltip("The UI text object in main settings menu for cursor speed.")]
 	public Text cursorSpeedMain;
 	[Tooltip("The UI text object in pause settings menu for cursor speed.")]
 	public Text cursorSpeedPause;
+
 	[Space]
 	public MONO_ReactionCollection mainMenuSound;
 	public MONO_ReactionCollection pauseMenuSound;
@@ -31,27 +35,38 @@ public class MONO_Menus : MonoBehaviour {
 	private GameObject settingsMenu;
 	[SerializeField]
 	private GameObject inventory;
+	private MONO_Fade fader;
+	//private MONO_Wait waitManager;
+
+
+
+	private float timerTime;
+	private bool timerUpdating;
 
 
 	void Start()
 	{
 		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
 		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
+
+		fader = sceneManager.gameObject.GetComponent<MONO_Fade> ();
+		//waitManager = sceneManager.gameObject.GetComponent<MONO_Wait> ();
+
 		if(latestMenu == null){
-			latestMenu = menu.pause; 	//paus menu is the default menu
+			latestMenu = menu.main; 	//main menu is the menu the game is started with
 		}
 	}
 
 
-	public void StartNewGame()
+
+	public void StartGame()
 	{
 		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		CloseMenu ();
-		sceneManager.handleInput = false;
 		ChangeLatestMenu (pauseMenu);
 		sceneManager.ChangeScene ("Scene1_outside", true, false);
 
-		WaitSomeTime(delay);
+		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
 		inventory.SetActive (true);
 	}
@@ -59,6 +74,31 @@ public class MONO_Menus : MonoBehaviour {
 	public void LoadLatestGame()
 	{
 		
+	}
+
+
+	void Update()
+	{
+		if (timerUpdating) 
+		{
+			timerTime += Time.deltaTime;
+		}
+	}
+
+
+	public void StartIntro()
+	{
+		menuOpen = false;
+
+		float delay = sceneManager.gameObject.GetComponent<MONO_Fade> ().fadeDuration;
+		timerTime = 0;
+		timerUpdating = true;
+		fader.StartFade (1);		//fades screen to black
+		//StartCoroutine (WaitSomeTime(delay));
+
+	
+		mainMenu.SetActive (false);
+		introManager.InitiateIntro ();
 	}
 
 	/// <summary>
@@ -149,8 +189,9 @@ public class MONO_Menus : MonoBehaviour {
 	}
 
 
+
 	/// <summary>
-	/// Wait for seconds.
+	/// Starts a new  wait for seconds.
 	/// </summary>
 	/// <returns>The some time.</returns>
 	/// <param name="seconds">Seconds.</param>

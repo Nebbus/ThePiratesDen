@@ -39,13 +39,39 @@ public class MONO_Fade : MonoBehaviour
 		while (!Mathf.Approximately (canvas.alpha, targetAlpha))
 		{
 			// ... move the alpha towards it's target alpha.
-			canvas.alpha = Mathf.MoveTowards (canvas.alpha, targetAlpha,
-				fadeSpeed * Time.deltaTime);
+			canvas.alpha = Mathf.MoveTowards (canvas.alpha, targetAlpha, fadeSpeed * Time.deltaTime);
 			// Wait for a frame then continue.
 			yield return null;
 		}
 
 		// Set the flag to false since the fade has finished.
 		isFading = false;
+	}
+
+
+	/// <summary>
+	/// Initiate screen fade. If target alpha is set to 0, the screen fades from black. 
+	/// If target alpha is set to 1, the screen fades to black.
+	/// </summary>
+	/// <param name="targetAlpha">Target alpha of screen fade.</param>
+	public void StartFade(float targetAlpha)
+	{
+		isFading = true;
+		finalAlpha = targetAlpha;
+	}
+
+
+	void Update()
+	{
+		while (isFading) 
+		{
+			Debug.Log ("Fading");
+			float fadeSpeed = ((Mathf.Abs (canvas.alpha - finalAlpha)) / fadeDuration);
+			canvas.alpha = Mathf.MoveTowards (canvas.alpha, finalAlpha, fadeSpeed * Time.deltaTime);
+			if (Mathf.Abs(finalAlpha - canvas.alpha) <=0.01)
+			{
+				isFading = false;
+			}
+		}	
 	}
 }
