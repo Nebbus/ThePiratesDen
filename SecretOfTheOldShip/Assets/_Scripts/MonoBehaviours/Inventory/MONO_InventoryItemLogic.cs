@@ -92,11 +92,10 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
     /// </summary>
     private void HovorEnterdReact()
     {
-        MONO_AdventureCursor.instance.getMonoHoldedItem.isAbove = getSetItemsHashCode;
 
-        if (getSetItemsHashCode != -1)
+
+        if (getSetItemsHashCode != -1 && getSetItemsHashCode != MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.getHash)
         {
-            MONO_AdventureCursor.instance.getMonoHoldedItem.isAbove = hashCode;
             FlowhartToShow = GameObject.Instantiate(monoInventory.GetItem(getSetItemsHashCode).onHowerText);
             FlowhartToShow.ExecuteBlock("Description");
         }
@@ -121,7 +120,6 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
     /// </summary>
     private void HovorExitReact()
     {
-        MONO_AdventureCursor.instance.getMonoHoldedItem.isAbove = -1;
         if (FlowhartToShow != null)
         {
             FlowhartToShow.StopAllBlocks();
