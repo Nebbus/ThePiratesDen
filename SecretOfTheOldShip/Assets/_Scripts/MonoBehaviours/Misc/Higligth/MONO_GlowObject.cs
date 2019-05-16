@@ -20,6 +20,9 @@ public class MONO_GlowObject : MonoBehaviour
     [Space]
 
 
+    [Tooltip("For acteveting and de acteveting the higligt ")]
+    public bool doHiglight = true;
+
 //==========================================================
 // Local operation variables
 //==========================================================
@@ -76,9 +79,6 @@ public class MONO_GlowObject : MonoBehaviour
         get { return _currentColor; }
     }
 
-  
-
-
     void Start()
 	{
         Renderers = GetComponentsInChildren<Renderer>();
@@ -89,18 +89,14 @@ public class MONO_GlowObject : MonoBehaviour
 		}
 	}
 
-
-
-
-
-
 //==========================================================
 // Higligt on and offf
 //==========================================================
     public void HigligtON()
     {
+
         _targetColor = GetGlowColor;
-        enabled      = true;
+        enabled      = doHiglight;
     }
     public void HigligtOFF()
     {

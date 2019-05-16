@@ -23,12 +23,7 @@ public class MONO_GlowComposite : MonoBehaviour
 
 	private Material _compositeMat;
 
-    [Space]
-    [Tooltip("Will activete the higligt for all higligt objects")]
-    public bool DEBUGhiglightAll = false;
-
-
-
+   
 
     private void Awake()
     {
@@ -44,16 +39,7 @@ public class MONO_GlowComposite : MonoBehaviour
 
 
 
-    private void Update()
-    {
-        if (DEBUGhiglightAll)
-        {
-            
-            MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
-            MONO_EventManager.TriggerEvent(MONO_EventManager.onHiglightAllInteractablesInScene_NAME, param);
-            MONO_EventManager.TriggerEvent(MONO_EventManager.onGroundEvnetManager_NAME, param);
-        }
-    }
+   
 
 
 
