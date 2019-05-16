@@ -14,5 +14,35 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: ce59604c12e2c6f42988b528e786478e, type: 3}
   onHowerText: {fileID: 114987432491598988, guid: 7dffd00e8c7ee1b40aa00f1f9b6c53f6,
     type: 2}
-  onClickConditionAndReactions: []
+  onClickConditionAndReactions:
+  - {fileID: 114406614227529252}
   onHoverConditionAndReactions: []
+--- !u!114 &114406614227529252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction0
+  m_EditorClassIdentifier: 
+  description: PickUp_Shell
+  requiredConditions: []
+  itemInteractionReactions:
+  - {fileID: 114657402752343380}
+--- !u!114 &114657402752343380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneShot_FMOD
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Inventory/Seashell_PickUp
+  theSorceOftheOneShot: {fileID: 0}

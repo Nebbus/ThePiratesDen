@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15295216, g: 0.19843298, b: 0.4551764, a: 1}
+  m_IndirectSpecularColor: {r: 0.1529519, g: 0.19843343, b: 0.45517552, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5063,6 +5063,18 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
+--- !u!114 &1017722108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1017722106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 2
 --- !u!114 &1017722111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5354,7 +5366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1986073627}
+  selectedFlowchart: {fileID: 1986073567}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -5894,6 +5906,37 @@ Transform:
   m_Father: {fileID: 217034449}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1126864255
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 966
+  m_Height: 279
+  m_AntiAliasing: 4
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!114 &1132746237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7023,37 +7066,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.66, y: 0.75, z: 0.59}
   m_Center: {x: 0, y: 0.35, z: 0}
---- !u!84 &1269806069
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 232
-  m_Height: 604
-  m_AntiAliasing: 4
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1272536771
 Prefab:
   m_ObjectHideFlags: 0
@@ -8695,6 +8707,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1221090065}
     m_Modifications:
+    - target: {fileID: 114446359036839244, guid: a8a9ab7ec5cdd469fa8ec130987c7186,
+        type: 2}
+      propertyPath: reactions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4687628327319308, guid: a8a9ab7ec5cdd469fa8ec130987c7186, type: 2}
       propertyPath: m_LocalPosition.x
       value: -3.98
@@ -8771,6 +8788,11 @@ Prefab:
       propertyPath: m_Name
       value: INT_Clock
       objectReference: {fileID: 0}
+    - target: {fileID: 114446359036839244, guid: a8a9ab7ec5cdd469fa8ec130987c7186,
+        type: 2}
+      propertyPath: reactions.Array.data[0]
+      value: 
+      objectReference: {fileID: 2013084645}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8a9ab7ec5cdd469fa8ec130987c7186, type: 2}
   m_IsPrefabParent: 0
@@ -9937,7 +9959,8 @@ Prefab:
       propertyPath: nameColor.b
       value: 0.134
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114907834956130670, guid: 898c592848482aa479a40189fc9f5839, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 898c592848482aa479a40189fc9f5839, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1772754639
@@ -10979,7 +11002,7 @@ Prefab:
     - target: {fileID: 114329817577586536, guid: 38c022276c5b34d43905d354c478c041,
         type: 2}
       propertyPath: commandList.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114541240397828808, guid: 38c022276c5b34d43905d354c478c041,
         type: 2}
@@ -12895,27 +12918,27 @@ Prefab:
         type: 2}
       propertyPath: commandList.Array.data[1]
       value: 
-      objectReference: {fileID: 1986073721}
+      objectReference: {fileID: 1986074044}
     - target: {fileID: 114329817577586536, guid: 38c022276c5b34d43905d354c478c041,
         type: 2}
       propertyPath: commandList.Array.data[2]
       value: 
-      objectReference: {fileID: 1986073630}
+      objectReference: {fileID: 1986073721}
     - target: {fileID: 114329817577586536, guid: 38c022276c5b34d43905d354c478c041,
         type: 2}
       propertyPath: commandList.Array.data[3]
       value: 
-      objectReference: {fileID: 1986073719}
+      objectReference: {fileID: 1986073630}
     - target: {fileID: 114329817577586536, guid: 38c022276c5b34d43905d354c478c041,
         type: 2}
       propertyPath: commandList.Array.data[4]
       value: 
-      objectReference: {fileID: 1986073718}
+      objectReference: {fileID: 1986073719}
     - target: {fileID: 114329817577586536, guid: 38c022276c5b34d43905d354c478c041,
         type: 2}
       propertyPath: commandList.Array.data[5]
       value: 
-      objectReference: {fileID: 1986073717}
+      objectReference: {fileID: 1986073718}
     - target: {fileID: 114329817577586536, guid: 38c022276c5b34d43905d354c478c041,
         type: 2}
       propertyPath: commandList.Array.data[6]
@@ -14257,7 +14280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
 --- !u!114 &1986073577 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114385930162342194, guid: 38c022276c5b34d43905d354c478c041,
+  m_PrefabParentObject: {fileID: 114329817577586536, guid: 38c022276c5b34d43905d354c478c041,
     type: 2}
   m_PrefabInternal: {fileID: 1986073566}
   m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
@@ -23767,6 +23790,20 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList: []
+--- !u!114 &1986074044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 46
+  indentLevel: 1
+  pathToFMODSound: event:/Objects/2D/Poof
 --- !u!1001 &1995399834
 Prefab:
   m_ObjectHideFlags: 0
@@ -23907,6 +23944,20 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c7c029af6d3f9140b9f01ce33f39d0d, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2013084645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Objects/2D/Clock_Ticking
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &2015500781
 GameObject:
   m_ObjectHideFlags: 0

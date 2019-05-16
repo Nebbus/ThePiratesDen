@@ -14,5 +14,50 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 774937d97a7af344987c6a2e98162946, type: 3}
   onHowerText: {fileID: 114105087077402564, guid: 10cfcce3fff7ac347bdc505cd34d60a7,
     type: 2}
-  onClickConditionAndReactions: []
+  onClickConditionAndReactions:
+  - {fileID: 114801316902145476}
+  - {fileID: 114624747897510872}
   onHoverConditionAndReactions: []
+--- !u!114 &114261007660448124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneShot_FMOD
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Inventory/Rope_PickUp
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114624747897510872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction1
+  m_EditorClassIdentifier: 
+  description: Combine_With_Umbrella
+  requiredConditions: []
+  itemInteractionReactions: []
+--- !u!114 &114801316902145476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction0
+  m_EditorClassIdentifier: 
+  description: PickUp_Rope
+  requiredConditions: []
+  itemInteractionReactions:
+  - {fileID: 114261007660448124}
