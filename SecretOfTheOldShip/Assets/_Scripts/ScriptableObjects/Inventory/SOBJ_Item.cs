@@ -34,12 +34,14 @@ public class SOBJ_Item : ScriptableObject
         }
     }
 
+
     /// <summary>
     /// Run throug all the condition and runn appropriet 
     /// reactions click
     /// </summary>
     /// <param name="caller"> the monobehavor that caled this funktion</param>
-    public void OnClickInteractionRun(MonoBehaviour caller)
+    /// <returns> True if a interaction was done, otherwiseFalse</returns>
+    public bool OnClickInteractionRun(MonoBehaviour caller)
     {
         /* Runs froug the itemInteractions, if one happens so will
          * the function be exited.
@@ -48,9 +50,11 @@ public class SOBJ_Item : ScriptableObject
         {
             if (interactables.Interact(caller))
             {
-                return;
+                return true;
             }
+         
         }
+        return false;
     }
 
     /// <summary>

@@ -9,14 +9,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a4f44f203eba9d41ac90a96c2127f6f, type: 3}
-  m_Name: Bottle(GhostRum)
+  m_Name: Book(Ghost)
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 63f7dad73b81a3444892ae851f4ee421, type: 3}
+  sprite: {fileID: 21300000, guid: 823d8d95ee6340d4691c8901feb496e8, type: 3}
   onClickConditionAndReactions:
-  - {fileID: 114485183253610440}
-  - {fileID: 114558798134171608}
+  - {fileID: 114014735767840486}
+  - {fileID: 114249408498292952}
+  - {fileID: 114491113110960562}
   onHoverConditionAndReactions: []
---- !u!114 &114072836503420108
+--- !u!114 &114014735767840486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
+  m_Name: ItemInteraction0
+  m_EditorClassIdentifier: 
+  description: Pick upp
+  requiredConditions:
+  - {fileID: 114817891511526156}
+  itemInteractionReactions:
+  - {fileID: 114420071601935088}
+  - {fileID: 114154457998209602}
+--- !u!114 &114154457998209602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -28,7 +46,7 @@ MonoBehaviour:
   m_Name: SOBJ_InventoryGrabItemToMouseReaction
   m_EditorClassIdentifier: 
   itemToGrab: {fileID: 11400000}
---- !u!114 &114485183253610440
+--- !u!114 &114249408498292952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -37,15 +55,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
-  m_Name: ItemInteraction0
+  m_Name: ItemInteraction1
   m_EditorClassIdentifier: 
-  description: PickUp_GhostBottle
+  description: Combind whit rum
   requiredConditions:
-  - {fileID: 114662682608226866}
-  itemInteractionReactions:
-  - {fileID: 114599246828017402}
-  - {fileID: 114072836503420108}
---- !u!114 &114508484648640524
+  - {fileID: 114490989878786272}
+  itemInteractionReactions: []
+--- !u!114 &114420071601935088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneShot_FMOD
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Inventory/Book_PickUp
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114490989878786272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -59,8 +89,8 @@ MonoBehaviour:
   description: MouseCompareItem
   satisfied: 1
   hash: -829145576
-  requierdHoldingItem: {fileID: 11400000}
---- !u!114 &114558798134171608
+  requierdHoldingItem: {fileID: 0}
+--- !u!114 &114491113110960562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -69,29 +99,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
-  m_Name: ItemInteraction1
+  m_Name: ItemInteraction2
   m_EditorClassIdentifier: 
-  description: Place_GhostBottle
-  requiredConditions:
-  - {fileID: 114508484648640524}
-  itemInteractionReactions:
-  - {fileID: 114950024664055946}
-  - {fileID: 114672042232882606}
---- !u!114 &114599246828017402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
-  m_Name: SOBJ_AudioOneSHot_FMOD
-  m_EditorClassIdentifier: 
-  delay: 0
-  onShotEvent: event:/Inventory/Bottle_PickUp
-  theSorceOftheOneShot: {fileID: 0}
---- !u!114 &114662682608226866
+  description: New interaction
+  requiredConditions: []
+  itemInteractionReactions: []
+--- !u!114 &114817891511526156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -107,28 +120,3 @@ MonoBehaviour:
   hash: -829145576
   requierdHoldingItem: {fileID: 11400000, guid: a936a94886a01724c823998d7c651173,
     type: 2}
---- !u!114 &114672042232882606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 741707cadc093f64d8fed8cf536190d2, type: 3}
-  m_Name: SOBJ_InventoryReturnItemFromMouseReaction
-  m_EditorClassIdentifier: 
---- !u!114 &114950024664055946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
-  m_Name: SOBJ_AudioOneSHot_FMOD
-  m_EditorClassIdentifier: 
-  delay: 0
-  onShotEvent: event:/Inventory/Bottle_Place
-  theSorceOftheOneShot: {fileID: 0}
