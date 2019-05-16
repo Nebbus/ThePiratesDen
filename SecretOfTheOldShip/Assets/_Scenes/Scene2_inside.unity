@@ -376,6 +376,34 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 32387696}
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+--- !u!114 &60585428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Objects/2D/Chest_Open
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &75209290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Objects/2D/Book_Flickering
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1001 &121526878
 Prefab:
   m_ObjectHideFlags: 0
@@ -386,7 +414,7 @@ Prefab:
     - target: {fileID: 114429183336023830, guid: eee5728c9093ad645a2c4cb97782ae4b,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4744073506579558, guid: eee5728c9093ad645a2c4cb97782ae4b, type: 2}
       propertyPath: m_LocalPosition.x
@@ -469,6 +497,24 @@ Prefab:
       propertyPath: reactions.Array.data[0]
       value: 
       objectReference: {fileID: 792701670}
+    - target: {fileID: 1208620830912550, guid: eee5728c9093ad645a2c4cb97782ae4b, type: 2}
+      propertyPath: m_Name
+      value: DefaultReaction
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168222561559510, guid: eee5728c9093ad645a2c4cb97782ae4b, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114429183336023830, guid: eee5728c9093ad645a2c4cb97782ae4b,
+        type: 2}
+      propertyPath: reactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 997758117}
+    - target: {fileID: 114429183336023830, guid: eee5728c9093ad645a2c4cb97782ae4b,
+        type: 2}
+      propertyPath: reactions.Array.data[2]
+      value: 
+      objectReference: {fileID: 957887651}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eee5728c9093ad645a2c4cb97782ae4b, type: 2}
   m_IsPrefabParent: 0
@@ -838,7 +884,9 @@ MonoBehaviour:
       Value: 1
   ambienceEmittor:
   - Target: {fileID: 114900551189115810, guid: 5897231331641db4d8c62c41adad930f, type: 2}
-    Params: []
+    Params:
+    - Name: AMB_Switch
+      Value: 1
   valuesAmb: []
   valuesMus: []
   namesAmb: []
@@ -5801,7 +5849,7 @@ Prefab:
     - target: {fileID: 114608405283570858, guid: 3563b3a596dce0d409ec4cf261504360,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4887227280487996, guid: 3563b3a596dce0d409ec4cf261504360, type: 2}
       propertyPath: m_LocalPosition.x
@@ -5876,6 +5924,11 @@ Prefab:
       propertyPath: reactions.Array.data[0]
       value: 
       objectReference: {fileID: 8793642}
+    - target: {fileID: 114608405283570858, guid: 3563b3a596dce0d409ec4cf261504360,
+        type: 2}
+      propertyPath: reactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1221150048}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3563b3a596dce0d409ec4cf261504360, type: 2}
   m_IsPrefabParent: 0
@@ -6376,6 +6429,11 @@ Prefab:
       propertyPath: reactions.Array.data[0]
       value: 
       objectReference: {fileID: 1728925212}
+    - target: {fileID: 114237472274512364, guid: 395d95e836180b04b8a907800725f95d,
+        type: 2}
+      propertyPath: reactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1997269171}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 395d95e836180b04b8a907800725f95d, type: 2}
   m_IsPrefabParent: 0
@@ -10249,6 +10307,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &729435768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1001 &757089453
 Prefab:
   m_ObjectHideFlags: 0
@@ -10579,9 +10651,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 815554416}
-  - component: {fileID: 815554415}
-  - component: {fileID: 815554418}
-  - component: {fileID: 815554417}
   m_Layer: 0
   m_Name: AmbienceSounds
   m_TagString: Untagged
@@ -10589,28 +10658,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &815554415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 815554414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: event:/Ambience/2D/AMB_Indoor_2D
-  PlayEvent: 1
-  StopEvent: 2
-  CollisionTag: 
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
 --- !u!4 &815554416
 Transform:
   m_ObjectHideFlags: 0
@@ -10624,50 +10671,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &815554417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 815554414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: event:/Ambience/3D/AMB_Chandelier_Swinging_3D
-  PlayEvent: 1
-  StopEvent: 2
-  CollisionTag: 
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 1
-  OverrideMinDistance: 5.03
-  OverrideMaxDistance: 7.82
---- !u!114 &815554418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 815554414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: event:/Ambience/3D/AMB_Wood_Creaking_Indoor_3D
-  PlayEvent: 1
-  StopEvent: 2
-  CollisionTag: 
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 1
-  OverrideMinDistance: 7.44
-  OverrideMaxDistance: 8.8
 --- !u!1 &823843807
 GameObject:
   m_ObjectHideFlags: 0
@@ -10715,7 +10718,7 @@ Prefab:
     - target: {fileID: 114528443826205342, guid: f67d648aa60f24c98bb8c08d23562eaa,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4922853108144784, guid: f67d648aa60f24c98bb8c08d23562eaa, type: 2}
       propertyPath: m_LocalPosition.x
@@ -10798,6 +10801,11 @@ Prefab:
       propertyPath: reactions.Array.data[0]
       value: 
       objectReference: {fileID: 208749338}
+    - target: {fileID: 114528443826205342, guid: f67d648aa60f24c98bb8c08d23562eaa,
+        type: 2}
+      propertyPath: reactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 2077881384}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f67d648aa60f24c98bb8c08d23562eaa, type: 2}
   m_IsPrefabParent: 0
@@ -11088,6 +11096,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 952730833}
   m_Mesh: {fileID: 4300000, guid: b82d4ca04b096bd4cbbc16d248321b0c, type: 3}
+--- !u!114 &957887651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.3
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &970905213
 GameObject:
   m_ObjectHideFlags: 0
@@ -13515,6 +13537,20 @@ Transform:
   m_PrefabParentObject: {fileID: 4067081072880590, guid: a4020da0d4f61f84287c6e1efa737707,
     type: 2}
   m_PrefabInternal: {fileID: 975830586}
+--- !u!114 &997758117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Objects/2D/Drawer_Pull
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &1014120565
 GameObject:
   m_ObjectHideFlags: 0
@@ -14165,6 +14201,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   onShotEvent: event:/Objects/2D/Door/Door_Open
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &1221150048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
   theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &1240550640
 GameObject:
@@ -15662,6 +15712,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4602100585999440, guid: 8ea9d3775dd92814ab6c2122fe557ad3,
     type: 2}
   m_PrefabInternal: {fileID: 528043146}
+--- !u!1 &1570926574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1570926575}
+  - component: {fileID: 1570926576}
+  m_Layer: 0
+  m_Name: PickUpReaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1570926575
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1570926574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1418738793}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1570926576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1570926574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reactions:
+  - {fileID: 729435768}
 --- !u!1001 &1572137679
 Prefab:
   m_ObjectHideFlags: 0
@@ -15672,7 +15764,7 @@ Prefab:
     - target: {fileID: 114900228263725410, guid: 0a7a93a41526ffa4186e284f78a7ef36,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4815977433555956, guid: 0a7a93a41526ffa4186e284f78a7ef36, type: 2}
       propertyPath: m_LocalPosition.x
@@ -15763,6 +15855,11 @@ Prefab:
       propertyPath: reactions.Array.data[0]
       value: 
       objectReference: {fileID: 1919489140}
+    - target: {fileID: 114900228263725410, guid: 0a7a93a41526ffa4186e284f78a7ef36,
+        type: 2}
+      propertyPath: reactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 2033006573}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a7a93a41526ffa4186e284f78a7ef36, type: 2}
   m_IsPrefabParent: 0
@@ -16183,7 +16280,7 @@ Prefab:
     - target: {fileID: 114966384169154084, guid: 88d317b511910334e9b4cdb474b57e27,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4867133593788842, guid: 88d317b511910334e9b4cdb474b57e27, type: 2}
       propertyPath: m_LocalPosition.x
@@ -16274,6 +16371,11 @@ Prefab:
       propertyPath: reactions.Array.data[0]
       value: 
       objectReference: {fileID: 2108701306}
+    - target: {fileID: 114966384169154084, guid: 88d317b511910334e9b4cdb474b57e27,
+        type: 2}
+      propertyPath: reactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 75209290}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 88d317b511910334e9b4cdb474b57e27, type: 2}
   m_IsPrefabParent: 0
@@ -17353,7 +17455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 2068932535}
+  selectedFlowchart: {fileID: 970905214}
 --- !u!4 &1804600061
 Transform:
   m_ObjectHideFlags: 1
@@ -17649,6 +17751,34 @@ Transform:
   m_Father: {fileID: 1704374494}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1997269171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
+  theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &2033006573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &2038364365
 GameObject:
   m_ObjectHideFlags: 0
@@ -22530,6 +22660,20 @@ MonoBehaviour:
   itemId: 192
   indentLevel: 0
   pathToFMODSound: event:/Characters/NPC_2/Thinking/Thinking
+--- !u!114 &2077881384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &2090774307
 GameObject:
   m_ObjectHideFlags: 0
@@ -22940,7 +23084,7 @@ Prefab:
     - target: {fileID: 114536227127212668, guid: f31a3e910d539114db2d75b09b7f37c5,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4270061987082804, guid: f31a3e910d539114db2d75b09b7f37c5, type: 2}
       propertyPath: m_LocalPosition.x
@@ -22984,6 +23128,15 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 00667890c9620a94fbca3661b5d58f33, type: 2}
+    - target: {fileID: 114536227127212668, guid: f31a3e910d539114db2d75b09b7f37c5,
+        type: 2}
+      propertyPath: reactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 60585428}
+    - target: {fileID: 4955063479405492, guid: f31a3e910d539114db2d75b09b7f37c5, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f31a3e910d539114db2d75b09b7f37c5, type: 2}
   m_IsPrefabParent: 0
