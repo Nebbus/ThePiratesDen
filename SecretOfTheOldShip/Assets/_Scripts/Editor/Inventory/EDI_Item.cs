@@ -30,7 +30,7 @@ public class EDI_Item : Editor
     private EDI_ItemInteractable[] onHoverItemInteractablesEditors;   // the list of interactions
 
     private bool showOnClickEditor = false;
-    private bool showOnHoverEditor = false;
+  //  private bool showOnHoverEditor = false;
 
     private const float collectionButtonWidth = 180f;  // Width in pixels of the button for adding to the conditioAndReactions array.             
     private const float ownSpriteWidth        = 1 / 3f;

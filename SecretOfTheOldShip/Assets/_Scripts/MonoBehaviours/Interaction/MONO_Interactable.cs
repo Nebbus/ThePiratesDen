@@ -8,6 +8,7 @@
 *  player to approach the interactionLocation and the 
 *  player should call the Interact function when they arrive.
 */
+
 [RequireComponent(typeof(MONO_GlowObject))]// this is for the glow
 public class MONO_Interactable : MONO_InteractionBase
 {

@@ -14,12 +14,12 @@ public class MONO_GlowPrePass : MonoBehaviour
 	{
         PrePass = new RenderTexture(Screen.width, Screen.height, 24);
 		PrePass.antiAliasing = QualitySettings.antiAliasing;
-   
 		Blurred = new RenderTexture(Screen.width >> 1, Screen.height >> 1, 0);
+
 
         var camera = GetComponent<Camera>();
         var glowShader = Shader.Find("Hidden/GlowReplace");
-       // Debug.Log(gameObject.name +" PrePass antia: " + PrePass.antiAliasing + " Q " + QualitySettings.antiAliasing);
+
         camera.targetTexture = PrePass;
 		camera.SetReplacementShader(glowShader, "Glowable");
 

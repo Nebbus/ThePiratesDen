@@ -38,7 +38,7 @@ public class MONO_GlowObject : MonoBehaviour
 	private Color _currentColor;
 	private Color _targetColor;
 
-
+    private bool isHintButtonCalled = false;
 
 
 //==========================================================
@@ -92,33 +92,31 @@ public class MONO_GlowObject : MonoBehaviour
 //==========================================================
 // Higligt on and offf
 //==========================================================
-    public void HigligtON()
+    public void HigligtON(bool isPartOfHint)
     {
-
-        //Fungus.Flowchart[] tats = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
-        //foreach (Fungus.Flowchart t in tats)
-        //{
-        //    int i = 0;
-        //    foreach (Fungus.Variable ts in t.Variables)
-        //    {
-        //        i++;
-
-
-        //        Debug.Log(t.GetName() + " KEY: " + ts.Key);
-        //    }
-        //    foreach (string ts in t.GetVariableNames())
-        //    {
-        //        Debug.Log(t.GetName() + " NAME: " + ts);
-        //    }
-        //}
-
+        isHintButtonCalled = isPartOfHint;
         _targetColor = GetGlowColor;
         enabled      = doHiglight;
     }
-    public void HigligtOFF()
+    public void HigligtOFF(bool isCalldFromHintButton)
     {
-        _targetColor = Color.black;
-        enabled      = true;
+        //uggli butt works
+        if (isHintButtonCalled)
+        {
+            if (isCalldFromHintButton)
+            {
+                _targetColor = Color.black;
+                enabled = true;
+                isHintButtonCalled = false;
+            }
+
+        }
+        else 
+        {
+            _targetColor = Color.black;
+            enabled = true;
+        }
+       
     }
 
 

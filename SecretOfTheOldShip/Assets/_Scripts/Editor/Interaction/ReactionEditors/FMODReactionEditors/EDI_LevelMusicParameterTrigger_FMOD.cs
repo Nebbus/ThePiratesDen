@@ -28,7 +28,7 @@ public class EDI_LevelMusicParameterTrigger_FMOD : EDI_Reaction {
     private bool[] musicExpanded;
     private bool[] abientExpanded;
 
-    private SOBJ_LevelMusicParameterTrigger_FMOD targetScript ;
+   // private SOBJ_LevelMusicParameterTrigger_FMOD targetScript ;
 
 
     protected override string GetFoldoutLabel()
@@ -37,7 +37,7 @@ public class EDI_LevelMusicParameterTrigger_FMOD : EDI_Reaction {
     }
     protected override void Init()
     {
-        targetScript = (SOBJ_LevelMusicParameterTrigger_FMOD)target;
+       // targetScript = (SOBJ_LevelMusicParameterTrigger_FMOD)target;
         musicEmiterProperty     = serializedObject.FindProperty(musicEmiterPropertyName);
         ambienceEmiterProperty  = serializedObject.FindProperty(ambienceEmiterPropertyName);
  

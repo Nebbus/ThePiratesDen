@@ -48,23 +48,7 @@ public class MONO_GlowObject_higlightAll : MonoBehaviour {
     // Events for higligting all interactables in scene
     //==========================================================
     private void OnHigligtAll(MONO_EventManager.EventParam evntParam)
-    {
-        Fungus.Flowchart[] tats = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
-        foreach(Fungus.Flowchart t in tats)
-        {
-            int i = 0;
-            //foreach (Fungus.Variable ts in t.Variables)
-            //{
-            //    i++;
-
-
-            //    Debug.Log(t.GetName() + " variable: "+ts.Key +" type: " +ts.GetType()+ " VALUE: " + Convert.ChangeType(ts, ts.GetType()));
-            //}
-            foreach (string ts in t.GetVariableNames())
-            {
-                Debug.Log(t.GetName() + " variable: " + ts);
-            }
-        }
+    {  
         higligthScript.HigligtON();
     }
     private void OffHigligtAll(MONO_EventManager.EventParam evntParam)
