@@ -14,6 +14,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: fbbb1c6340f6d0843af0d45a66643cc6, type: 3}
   onHowerText: {fileID: 114077509272709326, guid: 58ae3d5486e62944b977d30d79e22621,
     type: 2}
+  putDownSound: event:/Inventory/Harmonica_Place
   onClickConditionAndReactions:
   - {fileID: 114149060123878962}
   onHoverConditionAndReactions: []
@@ -29,9 +30,11 @@ MonoBehaviour:
   m_Name: ItemInteraction0
   m_EditorClassIdentifier: 
   description: PickUp_Harmmonika
-  requiredConditions: []
+  requiredConditions:
+  - {fileID: 114382356560124216}
   itemInteractionReactions:
   - {fileID: 114342774669869878}
+  - {fileID: 114641625907850484}
 --- !u!114 &114342774669869878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,3 +49,31 @@ MonoBehaviour:
   delay: 0
   onShotEvent: event:/Inventory/Harmonica_Pickup
   theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114382356560124216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: MouseCompareItem
+  satisfied: 1
+  hash: -829145576
+  requierdHoldingItem: {fileID: 11400000, guid: a936a94886a01724c823998d7c651173,
+    type: 2}
+--- !u!114 &114641625907850484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c479e1ed7f8b945b767b748c326f37, type: 3}
+  m_Name: SOBJ_InventoryGrabItemToMouseReaction
+  m_EditorClassIdentifier: 
+  itemToGrab: {fileID: 11400000}

@@ -14,6 +14,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 823d8d95ee6340d4691c8901feb496e8, type: 3}
   onHowerText: {fileID: 114138778985027684, guid: 3f2ea84ea1f737f418752978a35baa2e,
     type: 2}
+  putDownSound: event:/Inventory/Book_Place
   onClickConditionAndReactions:
   - {fileID: 114014735767840486}
   - {fileID: 114249408498292952}
@@ -80,7 +81,8 @@ MonoBehaviour:
   - {fileID: 114920334599198000}
   - {fileID: 114762821906285694}
   - {fileID: 114742760167942918}
-  - {fileID: 114539356015342924}
+  - {fileID: 114496380722758704}
+  - {fileID: 114768757148500594}
 --- !u!114 &114420071601935088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +113,7 @@ MonoBehaviour:
   hash: -829145576
   requierdHoldingItem: {fileID: 11400000, guid: 9421b2017bb3d354da753f3b86146777,
     type: 2}
---- !u!114 &114539356015342924
+--- !u!114 &114496380722758704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -119,12 +121,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4b915d43e42a3d4a8ffd07f74f204a2, type: 3}
-  m_Name: SOBJ_ConditionReaction
+  m_Script: {fileID: 11500000, guid: 5c6ef1872a2268948b2283a0ef0761dc, type: 3}
+  m_Name: SOBJ_MouseRemoveGrabbedItem
   m_EditorClassIdentifier: 
-  condition: {fileID: 114340623565394834, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
-    type: 2}
-  satisfied: 1
 --- !u!114 &114742760167942918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +150,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   item: {fileID: 11400000, guid: 9421b2017bb3d354da753f3b86146777, type: 2}
+--- !u!114 &114768757148500594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b915d43e42a3d4a8ffd07f74f204a2, type: 3}
+  m_Name: SOBJ_ConditionReaction
+  m_EditorClassIdentifier: 
+  condition: {fileID: 114340623565394834, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+    type: 2}
+  satisfied: 1
 --- !u!114 &114817891511526156
 MonoBehaviour:
   m_ObjectHideFlags: 0
