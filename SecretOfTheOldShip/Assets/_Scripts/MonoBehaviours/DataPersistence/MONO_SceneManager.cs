@@ -11,7 +11,7 @@ public class MONO_SceneManager : MonoBehaviour {
 	public Canvas canvas;							//The canvas holding the black image we fade to.
 	public StudioParameterTrigger musicTrigger;
 	public StudioParameterTrigger ambienceTrigger;
-
+    public MONO_SaveAndLoad saveLoad;
 
     public Camera loadCamera;
 
@@ -59,8 +59,11 @@ public class MONO_SceneManager : MonoBehaviour {
     /// <param name="sceneName">Sets if the start position shuld be set.</param>
     public void ChangeScene(string sceneName, bool setStartPos, bool handelUnputAfterFade)
 	{
-		StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelUnputAfterFade));
-	}
+     
+
+        StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelUnputAfterFade));
+
+    }
 
 	/// <summary>
 	/// Load in the new scene ontop of the persistent scene and activate.
@@ -71,8 +74,10 @@ public class MONO_SceneManager : MonoBehaviour {
 		yield return SceneManager.LoadSceneAsync (sceneName, LoadSceneMode.Additive);
 		Scene scene = SceneManager.GetSceneAt (SceneManager.sceneCount - 1);
 		SceneManager.SetActiveScene (scene);
-   
-	}
+        
+
+
+    }
 
 	/// <summary>
 	/// Unloads the previous scene.

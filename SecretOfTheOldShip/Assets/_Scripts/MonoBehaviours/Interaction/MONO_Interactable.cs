@@ -75,6 +75,7 @@ public class MONO_Interactable : MONO_InteractionBase
 
         }
         // If none of the reactions happened, use the default MONO_ReactionCollection.
+        if(defaultReactionCollection != null)
         defaultReactionCollection.React();
     }
 
