@@ -95,6 +95,23 @@ public class MONO_GlowObject : MonoBehaviour
     public void HigligtON()
     {
 
+        //Fungus.Flowchart[] tats = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
+        //foreach (Fungus.Flowchart t in tats)
+        //{
+        //    int i = 0;
+        //    foreach (Fungus.Variable ts in t.Variables)
+        //    {
+        //        i++;
+
+
+        //        Debug.Log(t.GetName() + " KEY: " + ts.Key);
+        //    }
+        //    foreach (string ts in t.GetVariableNames())
+        //    {
+        //        Debug.Log(t.GetName() + " NAME: " + ts);
+        //    }
+        //}
+
         _targetColor = GetGlowColor;
         enabled      = doHiglight;
     }
