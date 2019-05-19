@@ -94,22 +94,22 @@ public class MONO_GlowObject : MonoBehaviour
 //==========================================================
     public void HigligtON(bool isPartOfHint)
     {
-        isHintButtonCalled = isPartOfHint;
-        _targetColor = GetGlowColor;
-        enabled      = doHiglight;
+        if (enabled)
+        {
+            isHintButtonCalled = isPartOfHint;
+            _targetColor       = GetGlowColor;
+            enabled            = doHiglight;
+        }
+  
     }
     public void HigligtOFF(bool isCalldFromHintButton)
     {
         //uggli butt works
-        if (isHintButtonCalled)
+        if (isHintButtonCalled && isCalldFromHintButton)
         {
-            if (isCalldFromHintButton)
-            {
-                _targetColor = Color.black;
-                enabled = true;
-                isHintButtonCalled = false;
-            }
-
+            _targetColor        = Color.black;
+            enabled             = true;
+            isHintButtonCalled  = false;
         }
         else 
         {

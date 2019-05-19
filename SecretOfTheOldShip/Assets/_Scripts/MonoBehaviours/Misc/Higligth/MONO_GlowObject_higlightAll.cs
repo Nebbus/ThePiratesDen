@@ -49,11 +49,11 @@ public class MONO_GlowObject_higlightAll : MonoBehaviour {
     //==========================================================
     private void OnHigligtAll(MONO_EventManager.EventParam evntParam)
     {  
-        higligthScript.HigligtON();
+        higligthScript.HigligtON(true);
     }
     private void OffHigligtAll(MONO_EventManager.EventParam evntParam)
     {
-        higligthScript.HigligtOFF();
+        higligthScript.HigligtOFF(true);
     }
 
 

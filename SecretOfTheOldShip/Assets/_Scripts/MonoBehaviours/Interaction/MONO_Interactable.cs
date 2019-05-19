@@ -90,7 +90,7 @@ public class MONO_Interactable : MONO_InteractionBase
     {
         //MONO_AdventureCursor.instance.MONO_CursorSprite.setSprite(gameObject.tag);
 
-        getGlowObjectComponent.HigligtON();
+        getGlowObjectComponent.HigligtON(false);
     }
 
     public override void OnHover()
@@ -102,6 +102,6 @@ public class MONO_Interactable : MONO_InteractionBase
     {
        // MONO_AdventureCursor.instance.MONO_CursorSprite.setSprite(gameObject.tag);
 
-        getGlowObjectComponent.HigligtOFF();
+        getGlowObjectComponent.HigligtOFF(false);
     }
 }
