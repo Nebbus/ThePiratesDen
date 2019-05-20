@@ -87,14 +87,16 @@ public class MONO_GlowObject : MonoBehaviour
 		{	
 			_materials.AddRange(renderer.materials);
 		}
-	}
+
+
+    }
 
 //==========================================================
 // Higligt on and offf
 //==========================================================
     public void HigligtON(bool isPartOfHint)
     {
-        if (enabled)
+        if (doHiglight)
         {
             isHintButtonCalled = isPartOfHint;
             _targetColor       = GetGlowColor;
