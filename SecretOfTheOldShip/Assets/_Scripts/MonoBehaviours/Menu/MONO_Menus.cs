@@ -65,7 +65,7 @@ public class MONO_Menus : MonoBehaviour {
 		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		CloseMenu ();
 		ChangeLatestMenu (pauseMenu);
-		sceneManager.ChangeScene ("Scene1_outside", true, false);
+		sceneManager.ChangeScene ("Intro", false, true);
 
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);

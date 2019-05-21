@@ -23,7 +23,7 @@ public class MONO_IntroManager : MonoBehaviour {
 
 	void Start()
 	{
-		menuManager.introManager = gameObject.GetComponent<MONO_IntroManager>();
+	//	menuManager.introManager = gameObject.GetComponent<MONO_IntroManager>();
 	}
 
 
