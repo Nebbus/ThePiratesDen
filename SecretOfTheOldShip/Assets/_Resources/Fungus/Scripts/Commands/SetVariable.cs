@@ -56,7 +56,7 @@ namespace Fungus
         [SerializeField] protected StringDataMulti stringData;
 
         protected virtual void DoSetOperation()
-        {
+		{
             if (variable == null)
             {
                 return;
@@ -222,6 +222,12 @@ namespace Fungus
             return new Color32(253, 253, 150, 255);
         }
 
+
+		public void SetNewVariable(Variable newVariable, SetOperator newOperator, bool newData){
+			this.variable = newVariable;
+			setOperator = newOperator;
+			booleanData.Value = newData;
+		}
         #endregion
     }
 }
