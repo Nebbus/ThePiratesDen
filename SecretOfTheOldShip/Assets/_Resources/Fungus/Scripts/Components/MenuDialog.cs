@@ -52,12 +52,20 @@ namespace Fungus
         public virtual void SetActive(bool state)
         {
 //===============================================================================================================
-            if(interactOff != null)
-            {
-                interactOff.React();
-            }
+			if (interactOff != null && interactOn != null) {
+				if (this.IsActive()) 
+				{
+					interactOn.React ();
+					gameObject.SetActive(false);
+				}
+				else 
+				{
+					gameObject.SetActive(true);
+					interactOff.React ();
+				}
+			} 
+
 //===============================================================================================================       
-            gameObject.SetActive(state);
         }
 
 
@@ -252,10 +260,10 @@ namespace Fungus
 #endif
                  gameObject.SetActive(false);
 //===============================================================================================================
-                if(interactOn != null)
-                {
-                    interactOn.React();
-                }
+                //if(interactOn != null)
+              //  {
+                //    interactOn.React();
+               // }
 //===============================================================================================================  
 
 
