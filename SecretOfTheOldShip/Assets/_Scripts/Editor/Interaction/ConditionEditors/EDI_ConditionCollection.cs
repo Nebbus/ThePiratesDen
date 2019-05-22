@@ -39,7 +39,8 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
     private const float dropAreaHeight = 50f;  // Height in pixels of the area for dropping scripts.
     private const float controlSpacing = 5f;   // Width in pixels between the popup type selection and drop area.
     private const float buttonWidth    = 30f;  // Width in pixels of the button to create Conditions.
-    
+
+    public float space = 0;
     private void OnEnable()
     {
         // Cache a reference to the target.
@@ -85,6 +86,7 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
 
     public override void OnInspectorGUI()
     {
+       
         // Pull the information from the target into the serializedObject.
         serializedObject.Update();
       
@@ -93,33 +95,33 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
          */
         CheckAndCreateSubEditors(conditionCollection.requiredConditions);
 
-        EditorGUILayout.BeginVertical(GUI.skin.box);
-        EditorGUI.indentLevel++;
+        EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(space));
+            EditorGUI.indentLevel++;
 
-        EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.BeginHorizontal(GUILayout.Width(space));
 
-        /* Use the isExpanded bool for the descriptionProperty 
-         * to store whether the foldout is open or closed.
-         */ 
-        descriptionProperty.isExpanded = EditorGUILayout.Foldout(descriptionProperty.isExpanded, descriptionProperty.stringValue);
+                    /* Use the isExpanded bool for the descriptionProperty 
+                     * to store whether the foldout is open or closed.
+                     */ 
+                    descriptionProperty.isExpanded = EditorGUILayout.Foldout(descriptionProperty.isExpanded, descriptionProperty.stringValue);
 
-        /* Display a button showing 'Remove Collection' which 
-         * removes the target from the Interactable when clicked.
-         */
-        if (GUILayout.Button("Remove Collection", GUILayout.Width(collectionButtonWidth)))
-        {
-            collectionsProperty.RemoveFromObjectArray(conditionCollection);
-        }
+                    /* Display a button showing 'Remove Collection' which 
+                     * removes the target from the Interactable when clicked.
+                     */
+                    if (GUILayout.Button("Remove Collection", GUILayout.Width(collectionButtonWidth)))
+                    {
+                        collectionsProperty.RemoveFromObjectArray(conditionCollection);
+                    }
 
-        EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndHorizontal();
 
-        // If the foldout is open show the expanded GUI.
-        if (descriptionProperty.isExpanded)
-        {
-            ExpandedGUI();
-        }
+            // If the foldout is open show the expanded GUI.
+            if (descriptionProperty.isExpanded)
+            {
+                ExpandedGUI();
+            }
 
-        EditorGUI.indentLevel--;
+            EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
 
         // Push all changes made on the serializedObject back to the target.
@@ -139,23 +141,23 @@ public class EDI_ConditionCollection : EDI_EditorWithSubEditors<EDI_ConditionAdv
         /* Display the Labels for the Conditions evenly split over
          * the width of the inspector.
          */ 
-        float space = EditorGUIUtility.currentViewWidth / 3f;
+        float space2 = EditorGUIUtility.currentViewWidth / 3f;
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Condition", GUILayout.Width(space));
-        EditorGUILayout.LabelField("Satisfied?", GUILayout.Width(space));
-        EditorGUILayout.LabelField("Add/Remove", GUILayout.Width(space));
+        EditorGUILayout.LabelField("Condition", GUILayout.Width(space2));
+        EditorGUILayout.LabelField("Satisfied?", GUILayout.Width(space2));
+        EditorGUILayout.LabelField("Add/Remove", GUILayout.Width(space2));
         EditorGUILayout.EndHorizontal();
 
         // Display each of the Conditions.
-        EditorGUILayout.BeginVertical(GUI.skin.box);
-        for (int i = 0; i < subEditors.Length; i++)
-        {
-            EditorGUILayout.BeginVertical(GUI.skin.box);
-            subEditors[i].OnInspectorGUI();
-            EditorGUILayout.EndHorizontal();
-        }
-        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(space2));
+            for (int i = 0; i < subEditors.Length; i++)
+            {
+                EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(space2));
+                    subEditors[i].OnInspectorGUI();
+                EditorGUILayout.EndVertical();
+            }
+        EditorGUILayout.EndVertical();
 
 
         TypeSelectionGUI();

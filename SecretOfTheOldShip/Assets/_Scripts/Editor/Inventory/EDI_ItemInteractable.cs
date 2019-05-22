@@ -48,6 +48,8 @@ public class EDI_ItemInteractable : Editor
     // Caching the vertical spacing between GUI elements.
     private readonly float verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
 
+    private float space = 0;
+
     public void OnEnable()
     {
         // Cache the target.
@@ -134,12 +136,13 @@ public class EDI_ItemInteractable : Editor
 
     public override void OnInspectorGUI()
     {
+        space = EditorGUIUtility.currentViewWidth / 1.2f;
       // base.OnInspectorGUI();
 
         serializedObject.Update();
-        EditorGUILayout.BeginVertical(GUI.skin.box);
+        EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(space));
             EditorGUI.indentLevel++;
-            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.BeginHorizontal(GUILayout.Width(space));
                 /* Use the isExpanded bool for the descriptionProperty 
                  * to store whether the foldout is open or closed.
                  */
@@ -190,7 +193,7 @@ public class EDI_ItemInteractable : Editor
         EditorGUILayout.Space();
 
         // Display the description for editing.
-        itemInteractabe.description = EditorGUILayout.TextField(itemInteractabe.description);
+        itemInteractabe.description = EditorGUILayout.TextField(itemInteractabe.description,GUILayout.Width(space));
 
         EditorGUILayout.Space();
 
@@ -210,7 +213,7 @@ public class EDI_ItemInteractable : Editor
     private void DrawConditions()
     {
         serializedObject.Update();
-        EditorGUILayout.BeginVertical(GUI.skin.box);
+        EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(space));
             EditorGUI.indentLevel++;
             //Uppdates teh conditions editors array
             if (conditionEditors.Length != TryGetConditionsLength())
@@ -229,18 +232,18 @@ public class EDI_ItemInteractable : Editor
             /* Display the Labels for the Conditions evenly split over
             * the width of the inspector.
             */
-            float space = EditorGUIUtility.currentViewWidth / 3f;
+            float space2 = EditorGUIUtility.currentViewWidth / 3f;
             EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField("Condition", GUILayout.Width(space));
-                EditorGUILayout.LabelField("Satisfied?", GUILayout.Width(space));
-                EditorGUILayout.LabelField("Add/Remove", GUILayout.Width(space));
+                EditorGUILayout.LabelField("Condition", GUILayout.Width(space2));
+                EditorGUILayout.LabelField("Satisfied?", GUILayout.Width(space2));
+                EditorGUILayout.LabelField("Add/Remove", GUILayout.Width(space2));
             EditorGUILayout.EndHorizontal();
 
             // Display each of the Conditions.
             EditorGUILayout.BeginVertical(GUI.skin.box);
                 for (int i = 0; i < conditionEditors.Length; i++)
                 {
-                    EditorGUILayout.BeginVertical(GUI.skin.box);
+                    EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(space));
                         conditionEditors[i].OnInspectorGUI();
                     EditorGUILayout.EndVertical();
                 }
@@ -281,7 +284,8 @@ public class EDI_ItemInteractable : Editor
     private void DrawReactions()
     {
         serializedObject.Update();
-        EditorGUILayout.BeginVertical(GUI.skin.box);
+  
+        EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(space));
             EditorGUI.indentLevel++;
             EditorGUILayout.LabelField("-[REACTIONS]-");
             

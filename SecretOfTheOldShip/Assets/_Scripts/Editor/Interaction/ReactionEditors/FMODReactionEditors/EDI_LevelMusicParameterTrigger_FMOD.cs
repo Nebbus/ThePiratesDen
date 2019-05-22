@@ -92,7 +92,7 @@ public class EDI_LevelMusicParameterTrigger_FMOD : EDI_Reaction {
 
     private void DrawAmbientGUI(ref StudioEventEmitter targetEmitter, ref SerializedProperty emitters, ref bool[] expanded, StudioEventEmitter newTargetEmitter)
     {
-
+        base.DrawDefaultInspector();
 
         //var newTargetEmitter = EditorGUILayout.ObjectField("Target", targetEmitter, typeof(StudioEventEmitter), true) as StudioEventEmitter;
 

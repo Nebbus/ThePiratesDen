@@ -28,8 +28,8 @@ public class EDI_Interactable : EDI_EditorWithSubEditors<EDI_ConditionCollection
      * none of the ConditionCollections are.
      */ 
     private const string interactablePropDefaultReactionCollectionName   = "defaultReactionCollection";
-  
 
+    private float space = 0;
 
     private void OnEnable()
     {
@@ -70,6 +70,9 @@ public class EDI_Interactable : EDI_EditorWithSubEditors<EDI_ConditionCollection
 
     public override void OnInspectorGUI()
     {
+
+        space = EditorGUIUtility.currentViewWidth / 1.2f;
+
         // Pull information from the target into the serializedObject.
         serializedObject.Update();
 

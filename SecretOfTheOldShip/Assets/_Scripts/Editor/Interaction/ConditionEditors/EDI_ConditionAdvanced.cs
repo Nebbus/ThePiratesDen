@@ -110,11 +110,16 @@ public abstract class EDI_ConditionAdvanced : Editor
                 break;
             case EditorType.ConditionCollection:
                 // Display a foldout for the Condition with a custom label.
+                EditorGUILayout.BeginHorizontal();
                 showCondition = EditorGUILayout.Foldout(showCondition, descriptionProperty.stringValue, true);
+                EditorGUILayout.EndHorizontal();
                 if (showCondition)
                 {
                     InteractableGUI();
+              
                 }
+                DebugThis();
+              
                 break;
             default:
                 throw new UnityException("Unknown EDI_Condition.EditorType.");
@@ -195,27 +200,10 @@ public abstract class EDI_ConditionAdvanced : Editor
         // Pull the information from the target into the serializedObject.
         serializedObject.Update();
 
-
-
-        //====================================================================================================================
-        showDebug = EditorGUILayout.Toggle("Debug: about this condition", showDebug);
-        if (showDebug)
-        {
-            EditorGUILayout.BeginVertical(GUI.skin.box);
-            // Display the description of the Condition.
-            EditorGUILayout.LabelField("Name: " + condition.description);
-
-            // Display the Condition type.  
-            EditorGUILayout.LabelField("Type: " + condition.GetType().ToString());
-
-            // Display the hash.
-            EditorGUILayout.LabelField("Hash: " + condition.hash.ToString());
-            EditorGUILayout.EndVertical();
-        }
-        //====================================================================================================================
-
         // The width for the Popup, Toggle and remove Button.
         float width = EditorGUIUtility.currentViewWidth /3f;
+
+
 
         EditorGUILayout.BeginHorizontal();
 
@@ -243,19 +231,28 @@ public abstract class EDI_ConditionAdvanced : Editor
         // Set the hash based on the description.
         hashProperty.intValue = Animator.StringToHash(descriptionProperty.stringValue);
 
-         DrawConditionInteractableGUI();
+        DrawConditionInteractableGUI();
+
         /* Display a button with a '-' that when clicked removes
-          * the target from the ConditionCollection's conditions array.
-          */
+        * the target from the ConditionCollection's conditions array.
+        */
         bool destroyMe = GUILayout.Button("-", GUILayout.Width(conditionButtonWidth));
-       
+
         EditorGUILayout.EndHorizontal();
  
-        serializedObject.ApplyModifiedProperties();
 
+
+
+        serializedObject.ApplyModifiedProperties();
+        DestroyMe(destroyMe);
+
+    }
+
+    private void DestroyMe(bool destroyMe)
+    {
         /*Removers this after  serializedObject.ApplyModifiedProperties();
-         * to avoid attemt to update null
-         */
+       * to avoid attemt to update null
+       */
         if (destroyMe)
         {
 
@@ -270,10 +267,37 @@ public abstract class EDI_ConditionAdvanced : Editor
         }
     }
 
-//-----------------------------------------------------------------------------------
-//  The custom editors for the condition individual conditions
-//  if custom editor is wanted.
-//-----------------------------------------------------------------------------------
+
+
+
+
+    private void DebugThis()
+    {
+        //====================================================================================================================
+        EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(100f));
+            showDebug = EditorGUILayout.Toggle("Debug: about this condition", showDebug);
+            if (showDebug)
+            {
+     
+                // Display the description of the Condition.
+                EditorGUILayout.LabelField("Name: " + condition.description);
+
+                // Display the Condition type.  
+                EditorGUILayout.LabelField("Type: " + condition.GetType().ToString());
+
+                // Display the hash.
+                EditorGUILayout.LabelField("Hash: " + condition.hash.ToString());
+         
+            }
+        EditorGUILayout.EndVertical();
+        //====================================================================================================================
+
+    }
+
+    //-----------------------------------------------------------------------------------
+    //  The custom editors for the condition individual conditions
+    //  if custom editor is wanted.
+    //-----------------------------------------------------------------------------------
 
     /// <summary>
     /// Costum editor for how the condition 
