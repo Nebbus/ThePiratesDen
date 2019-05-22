@@ -65,7 +65,7 @@ public class MONO_Menus : MonoBehaviour {
 		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		CloseMenu ();
 		ChangeLatestMenu (pauseMenu);
-		sceneManager.ChangeScene ("Scene1_outside", false, true);
+		sceneManager.ChangeScene ("Scene1_outside", true, false);
 
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
@@ -94,12 +94,12 @@ public class MONO_Menus : MonoBehaviour {
 		float delay = sceneManager.gameObject.GetComponent<MONO_Fade> ().fadeDuration;
 		timerTime = 0;
 		timerUpdating = true;
-		fader.StartFade (1);		//fades screen to black
-		//StartCoroutine (WaitSomeTime(delay));
+		//fader.Fade (1);		//fades screen to black
+		StartCoroutine (FadeAndWait());
 
 	
-		mainMenu.SetActive (false);
-		introManager.InitiateIntro ();
+		//mainMenu.SetActive (false);
+		//introManager.InitiateIntro ();
 	}
 
 	/// <summary>
@@ -199,9 +199,16 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	/// <returns>The some time.</returns>
 	/// <param name="seconds">Seconds.</param>
-	IEnumerator WaitSomeTime(float seconds)
+	IEnumerator FadeAndWait()
 	{
-		yield return new WaitForSeconds (seconds);
+		if (!fader.isFading) 
+		{
+			fader.Fade (1);
+			yield return new WaitForSeconds (fader.fadeDuration);
+			//mainMenu.SetActive (false);
+			//introManager.InitiateIntro ();
+			
+		}
 	}
 
 	/// <summary>

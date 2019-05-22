@@ -222,7 +222,7 @@ Prefab:
         type: 2}
       propertyPath: otherReactionsTriggers.myOnScriptEnableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 214996297}
+      objectReference: {fileID: 214996298}
     - target: {fileID: 114636686186420036, guid: 90fb50a205e253f409742c2638ef19bd,
         type: 2}
       propertyPath: otherReactionsTriggers.myOnScriptEnableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -237,16 +237,29 @@ Prefab:
         type: 2}
       propertyPath: FMODreactions.Array.data[1]
       value: 
-      objectReference: {fileID: 2034569123}
-    m_RemovedComponents: []
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114154579536713584, guid: 90fb50a205e253f409742c2638ef19bd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 90fb50a205e253f409742c2638ef19bd, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &214996297 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114154579536713584, guid: 90fb50a205e253f409742c2638ef19bd,
+--- !u!1 &214996297 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1056433483245906, guid: 90fb50a205e253f409742c2638ef19bd,
     type: 2}
   m_PrefabInternal: {fileID: 214996296}
+--- !u!114 &214996298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 214996297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b7408fbc87c79040a25d3aaab8b4363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FMODreactions:
+  - {fileID: 354801451}
 --- !u!1 &241939824
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +338,19 @@ MonoBehaviour:
   keepMoving: 0
   fadeScript: {fileID: 362100308}
   lerpScript: {fileID: 362100313}
+--- !u!114 &354801451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85354fd55db698741a61634857d964b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onReaction: 0
 --- !u!1001 &362100301
 Prefab:
   m_ObjectHideFlags: 0
@@ -370,7 +396,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1309265329254158, guid: 075cc1d752efaf64f9cee53e8a1fa358, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 075cc1d752efaf64f9cee53e8a1fa358, type: 2}
@@ -1028,10 +1054,7 @@ GameObject:
   - component: {fileID: 1539640151}
   - component: {fileID: 1539640163}
   - component: {fileID: 1539640150}
-  - component: {fileID: 1539640149}
   - component: {fileID: 1539640148}
-  - component: {fileID: 1539640154}
-  - component: {fileID: 1539640153}
   m_Layer: 0
   m_Name: IntroFlowchart
   m_TagString: Untagged
@@ -1066,7 +1089,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1539640159}
   selectedCommands:
-  - {fileID: 1539640153}
+  - {fileID: 1539640152}
   variables: []
   description: 
   stepPause: 0
@@ -1098,19 +1121,6 @@ MonoBehaviour:
     stringVal: 
   startIndex: 0
   callMode: 0
---- !u!114 &1539640149
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539640146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 1539640161}
-  waitForFrames: 1
 --- !u!114 &1539640150
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1185,60 +1195,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &1539640153
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539640146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 19
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 362100303}
-  targetComponentAssemblyName: MONO_ReactionCollection, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: MONO_ReactionCollection
-  targetMethod: React
-  targetMethodText: 'React (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
---- !u!114 &1539640154
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539640146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 18
-  indentLevel: 0
-  description: 
-  targetObject: {fileID: 362100305}
-  targetComponentAssemblyName: MONO_ReactionCollection, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: MONO_ReactionCollection
-  targetMethod: React
-  targetMethodText: 'React (): Void'
-  methodParameters: []
-  saveReturnValue: 0
-  returnValueVariableKey: 
-  returnValueType: System.Void
-  showInherited: 0
-  callMode: 0
 --- !u!114 &1539640156
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1316,7 +1272,6 @@ MonoBehaviour:
     NOT wait for click (but probably for the voiceover?).
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 1539640153}
   - {fileID: 1539640152}
   - {fileID: 1539640151}
 --- !u!114 &1539640160
@@ -1344,7 +1299,6 @@ MonoBehaviour:
     NOT wait for click (but probably for the voiceover?).
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 1539640154}
   - {fileID: 1539640157}
   - {fileID: 1539640156}
   - {fileID: 1539640148}
@@ -1371,7 +1325,7 @@ MonoBehaviour:
   itemId: 0
   blockName: StartIntro
   description: 
-  eventHandler: {fileID: 1539640149}
+  eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1539640150}
 --- !u!4 &1539640162
@@ -1658,28 +1612,6 @@ RectTransform:
   m_AnchoredPosition: {x: -750, y: 0}
   m_SizeDelta: {x: 1500, y: 335}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1684866283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdcd34d881f2b3e40b1f7623c5fcf408, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  musicEmittor:
-  - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
-    Params: []
-  ambienceEmittor:
-  - Target: {fileID: 114900551189115810, guid: 5897231331641db4d8c62c41adad930f, type: 2}
-    Params: []
-  valuesAmb: []
-  valuesMus: []
-  namesAmb: []
-  namesMus: []
 --- !u!1 &1713975616
 GameObject:
   m_ObjectHideFlags: 0

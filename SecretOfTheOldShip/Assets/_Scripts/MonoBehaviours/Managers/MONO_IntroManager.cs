@@ -23,19 +23,18 @@ public class MONO_IntroManager : MonoBehaviour {
 
 	void Start()
 	{
-	//	menuManager.introManager = gameObject.GetComponent<MONO_IntroManager>();
+		menuManager.introManager = gameObject.GetComponent<MONO_IntroManager>();
 	}
 
 
 	public void InitiateIntro()
 	{
 		Debug.Log ("Initiating intro");
-		introBook.SetActive (true);
-		sceneManager.GetComponent<MONO_Fade> ().Fade (0);
+		//sceneManager.GetComponent<MONO_Fade> ().Fade (0);
 
 
-		//float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration * 10.0f;
-		//StartCoroutine (WaitSomeTime (delay));
+		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
+		StartCoroutine (FadeAndWait (delay));
 		this.gameObject.GetComponent<MONO_ReactionCollection> ().React ();
 	}
 
@@ -52,8 +51,11 @@ public class MONO_IntroManager : MonoBehaviour {
 	/// </summary>
 	/// <returns>The some time.</returns>
 	/// <param name="seconds">Seconds.</param>
-	IEnumerator WaitSomeTime(float seconds)
+	IEnumerator FadeAndWait(float seconds)
 	{
+		//sceneManager.GetComponent<MONO_Fade> ().Fade (1);
+		introBook.SetActive (true);
+		sceneManager.GetComponent<MONO_Fade> ().Fade (0);
 		yield return new WaitForSeconds (seconds);
 	}
 }
