@@ -4,8 +4,9 @@
 [RequireComponent(typeof(Camera))]
 public class MONO_GlowPrePass : MonoBehaviour
 {
+    [SerializeField]
+    private int antiAilising = 2;
 	private static RenderTexture PrePass;
-    private static RenderTexture DistortionPass;
     private static RenderTexture Blurred;
 
 	private Material _blurMat;
@@ -14,11 +15,13 @@ public class MONO_GlowPrePass : MonoBehaviour
     void OnEnable()
 	{
         PrePass = new RenderTexture(Screen.width, Screen.height, 24);
-		PrePass.antiAliasing = QualitySettings.antiAliasing;
-		Blurred = new RenderTexture(Screen.width >> 1, Screen.height >> 1, 0);
+
+        PrePass.antiAliasing = (QualitySettings.antiAliasing == 0) ? antiAilising : QualitySettings.antiAliasing; 
+        Blurred = new RenderTexture(Screen.width >> 1, Screen.height >> 1, 0);
+
 
         var camera = GetComponent<Camera>();
-        var glowShader = Shader.Find("Hidden/GlowReplace"); 
+        var glowShader = Shader.Find("Hidden/GlowReplace");
 
         camera.targetTexture = PrePass;
 		camera.SetReplacementShader(glowShader, "Glowable");

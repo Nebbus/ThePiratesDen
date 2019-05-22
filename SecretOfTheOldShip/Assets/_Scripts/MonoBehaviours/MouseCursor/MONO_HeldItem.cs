@@ -15,7 +15,7 @@ public class MONO_HeldItem : MonoBehaviour
  
     public Image currentItemImage;
     private int  currentItemInventoryIndex;
-    private bool holding = false;
+
 
     private SOBJ_Item nullStartItem;
 
@@ -57,7 +57,6 @@ public class MONO_HeldItem : MonoBehaviour
         currentItem                 = item;
         currentItemImage.sprite     = sprite;
         currentItemImage.enabled    = true;
-        holding                     = true;
         getSetIndex                 = index;
 
     }
@@ -72,7 +71,6 @@ public class MONO_HeldItem : MonoBehaviour
         currentItem               = nullStartItem;
         currentItemImage.sprite   = null;
         currentItemImage.enabled  = false;
-        holding                   = false;
         getSetIndex               = -1;
     }
 

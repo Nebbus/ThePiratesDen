@@ -30,12 +30,14 @@ public class EDI_Item : Editor
     private EDI_ItemInteractable[] onHoverItemInteractablesEditors;   // the list of interactions
 
     private bool showOnClickEditor = false;
-    private bool showOnHoverEditor = false;
+  //  private bool showOnHoverEditor = false;
 
     private const float collectionButtonWidth = 180f;  // Width in pixels of the button for adding to the conditioAndReactions array.             
     private const float ownSpriteWidth        = 1 / 3f;
     private const float ownSpriteHight        = 1 / 3f;
     private const float spacing               = 1 / 5f;
+    float space = 0;
+
 
     private void OnEnable()
     {
@@ -119,7 +121,8 @@ public class EDI_Item : Editor
 
     public override void OnInspectorGUI()
     {
-       // base.DrawDefaultInspector();
+        space = EditorGUIUtility.currentViewWidth / 1.2f;
+        // base.DrawDefaultInspector();
         CurentItem(EditorGUIUtility.currentViewWidth);
 
       
@@ -129,8 +132,9 @@ public class EDI_Item : Editor
                                  "will it stopp testing. So the order of them is important.",MessageType.Info);
         EditorGUILayout.Space();
         EditorGUILayout.Space();
+   
 
-        EditorGUILayout.BeginVertical(GUI.skin.box);
+        EditorGUILayout.BeginVertical(GUI.skin.box,GUILayout.Width(space));
             EditorGUI.indentLevel++;
             showOnClickEditor = EditorGUILayout.Foldout(showOnClickEditor, "On click interactions", true);
             if (showOnClickEditor)
@@ -168,15 +172,15 @@ public class EDI_Item : Editor
     private void CurentItem(float width)
     {
         serializedObject.Update();
-        EditorGUILayout.BeginVertical(GUI.skin.box);
+        EditorGUILayout.BeginVertical(GUI.skin.box, GUILayout.Width( space));
             EditorGUILayout.PropertyField(spriteProperty, GUIContent.none,GUILayout.Width(width * ownSpriteWidth));
             if (sobjItem.sprite != null)
             {
                 GUILayout.Box(sobjItem.sprite.texture, GUILayout.Width(width * ownSpriteWidth), GUILayout.Height(width * ownSpriteHight));
             }
         EditorGUILayout.EndVertical();
-        EditorGUILayout.PropertyField(onHowerTextProperty);
-        EditorGUILayout.PropertyField(putDownSoundProperty);
+        EditorGUILayout.PropertyField(onHowerTextProperty, GUILayout.Width(space));
+        EditorGUILayout.PropertyField(putDownSoundProperty, GUILayout.Width(space));
         serializedObject.ApplyModifiedProperties();
     }
 
@@ -186,7 +190,8 @@ public class EDI_Item : Editor
     private void DrawInteractableCollections(CurentInteractions type)
     {
         serializedObject.Update();
-        EditorGUILayout.BeginVertical();
+    
+        EditorGUILayout.BeginVertical(GUILayout.Width(space));
 
             uppdateEditorArray(type);
             runThrougTheEditors(type);
@@ -195,9 +200,10 @@ public class EDI_Item : Editor
             * creates a new ConditionCollection in the
             * ConditionCollections array.
             */
-            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.BeginHorizontal(GUILayout.Width(space));
                 GUILayout.FlexibleSpace();
-                if (GUILayout.Button("Add "+type+" Item interactable", GUILayout.Width(collectionButtonWidth)))
+
+                if (GUILayout.Button("Add "+type+" Item interactable", GUILayout.Width(space)))
                 {
                     int number = (type == CurentInteractions.CLICK) ? sobjItem.onClickConditionAndReactions.Length : sobjItem.onHoverConditionAndReactions.Length;
                     AddItemInteractable("ItemInteraction" + number, type);

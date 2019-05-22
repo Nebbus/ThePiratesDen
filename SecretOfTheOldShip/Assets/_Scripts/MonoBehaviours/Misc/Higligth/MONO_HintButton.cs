@@ -21,7 +21,7 @@ public class MONO_HintButton : MonoBehaviour {
     {
         if (higlightedOn)
         {
-            higligtAllON();
+         
             if (!timerStarted)
             {
                 wait = new WaitForSeconds(timeTheHiglightIsOn);

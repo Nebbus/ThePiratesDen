@@ -151,24 +151,24 @@ public class EDI_Inventory : Editor {
     {
 
         EditorGUILayout.BeginVertical(GUI.skin.box);
-        EditorGUI.indentLevel++;
+            EditorGUI.indentLevel++;
 
-        //Saftety Catch
-        if(    showItemSlosts.Length != MONO_Inventory.numberItemSlots)
-        {
-            showItemSlosts = new bool[MONO_Inventory.numberItemSlots];
-        }
+            //Saftety Catch
+            if(    showItemSlosts.Length != MONO_Inventory.numberItemSlots)
+            {
+                showItemSlosts = new bool[MONO_Inventory.numberItemSlots];
+            }
 
        
-        showItemSlosts[index] = EditorGUILayout.Foldout(showItemSlosts[index], "Item slot " + index);
+            showItemSlosts[index] = EditorGUILayout.Foldout(showItemSlosts[index], "Item slot " + index);
 
-        if (showItemSlosts[index])
-        {
-            EditorGUILayout.PropertyField(itemsImagesProperty.GetArrayElementAtIndex(index));
-            EditorGUILayout.PropertyField(itemsProperty.GetArrayElementAtIndex(index));
+            if (showItemSlosts[index])
+            {
+                EditorGUILayout.PropertyField(itemsImagesProperty.GetArrayElementAtIndex(index));
+                EditorGUILayout.PropertyField(itemsProperty.GetArrayElementAtIndex(index));
 
-        }
-        EditorGUI.indentLevel--;
+            }
+            EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
 
     }

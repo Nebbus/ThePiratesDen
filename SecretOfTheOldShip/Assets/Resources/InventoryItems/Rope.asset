@@ -14,10 +14,40 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 774937d97a7af344987c6a2e98162946, type: 3}
   onHowerText: {fileID: 114105087077402564, guid: 10cfcce3fff7ac347bdc505cd34d60a7,
     type: 2}
+  putDownSound: event:/Inventory/Rope_PickPlace
   onClickConditionAndReactions:
   - {fileID: 114801316902145476}
   - {fileID: 114624747897510872}
   onHoverConditionAndReactions: []
+--- !u!114 &114001467470125546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8143682e53d9a45a77e736b1fa1e21, type: 3}
+  m_Name: SOBJ_InventoryPickedUpItemReaction
+  m_EditorClassIdentifier: 
+  delay: 0
+  item: {fileID: 11400000, guid: be38f7286fcdc884d8d81b2187967b49, type: 2}
+--- !u!114 &114215916442033928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: MouseCompareItem
+  satisfied: 0
+  hash: -829145576
+  requierdHoldingItem: {fileID: 11400000, guid: a936a94886a01724c823998d7c651173,
+    type: 2}
 --- !u!114 &114261007660448124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,6 +62,43 @@ MonoBehaviour:
   delay: 0
   onShotEvent: event:/Inventory/Rope_PickUp
   theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114271776514715906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe928d60a0a4fa14ba2fd39a7bc625cd, type: 3}
+  m_Name: SOBJ_InventoryLostItemRection
+  m_EditorClassIdentifier: 
+  delay: 0
+  item: {fileID: 11400000, guid: 0e0c93b7b43ccea49acf5cd5b00837ed, type: 2}
+--- !u!114 &114520842228917322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe928d60a0a4fa14ba2fd39a7bc625cd, type: 3}
+  m_Name: SOBJ_InventoryLostItemRection
+  m_EditorClassIdentifier: 
+  delay: 0
+  item: {fileID: 11400000}
+--- !u!114 &114583616871648038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6ef1872a2268948b2283a0ef0761dc, type: 3}
+  m_Name: SOBJ_MouseRemoveGrabbedItem
+  m_EditorClassIdentifier: 
 --- !u!114 &114624747897510872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,8 +111,56 @@ MonoBehaviour:
   m_Name: ItemInteraction1
   m_EditorClassIdentifier: 
   description: Combine_With_Umbrella
-  requiredConditions: []
-  itemInteractionReactions: []
+  requiredConditions:
+  - {fileID: 114728007861988938}
+  itemInteractionReactions:
+  - {fileID: 114271776514715906}
+  - {fileID: 114520842228917322}
+  - {fileID: 114738576027834716}
+  - {fileID: 114001467470125546}
+  - {fileID: 114583616871648038}
+--- !u!114 &114706890737346382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c479e1ed7f8b945b767b748c326f37, type: 3}
+  m_Name: SOBJ_InventoryGrabItemToMouseReaction
+  m_EditorClassIdentifier: 
+  itemToGrab: {fileID: 11400000}
+--- !u!114 &114728007861988938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: MouseCompareItem
+  satisfied: 1
+  hash: -829145576
+  requierdHoldingItem: {fileID: 11400000, guid: 0e0c93b7b43ccea49acf5cd5b00837ed,
+    type: 2}
+--- !u!114 &114738576027834716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
+  m_Name: SOBJ_AudioOneShot_FMOD
+  m_EditorClassIdentifier: 
+  delay: 0
+  onShotEvent: event:/Characters/Player/Player_Interact/Player_Combine
+  theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &114801316902145476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,6 +173,8 @@ MonoBehaviour:
   m_Name: ItemInteraction0
   m_EditorClassIdentifier: 
   description: PickUp_Rope
-  requiredConditions: []
+  requiredConditions:
+  - {fileID: 114215916442033928}
   itemInteractionReactions:
   - {fileID: 114261007660448124}
+  - {fileID: 114706890737346382}

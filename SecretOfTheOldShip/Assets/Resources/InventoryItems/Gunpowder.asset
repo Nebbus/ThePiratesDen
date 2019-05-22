@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Name: Gunpowder
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: abd7232cfcb2f744f9477b29e08cbb2b, type: 3}
+  onHowerText: {fileID: 114071808814424946, guid: b5c60e9a67e95e64cac30a204346e5e6,
+    type: 2}
+  putDownSound: event:/Inventory/Gunpowder_Place
   onClickConditionAndReactions:
   - {fileID: 114453141264467084}
-  - {fileID: 114971633567543538}
   onHoverConditionAndReactions: []
 --- !u!114 &114071706025786370
 MonoBehaviour:
@@ -28,20 +30,6 @@ MonoBehaviour:
   m_Name: SOBJ_InventoryGrabItemToMouseReaction
   m_EditorClassIdentifier: 
   itemToGrab: {fileID: 11400000}
---- !u!114 &114334448271371060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
-  m_Name: SOBJ_AudioOneSHot_FMOD
-  m_EditorClassIdentifier: 
-  delay: 0
-  onShotEvent: event:/Inventory/Gunpowder_Place
-  theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &114453141264467084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,21 +48,6 @@ MonoBehaviour:
   - {fileID: 114937419696055306}
   - {fileID: 114071706025786370}
 --- !u!114 &114485556589617326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
-  m_Name: SOBJ_MouseHoldingItemCondition
-  m_EditorClassIdentifier: 
-  description: MouseCompareItem
-  satisfied: 1
-  hash: -829145576
-  requierdHoldingItem: {fileID: 11400000}
---- !u!114 &114791138113939910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -114,20 +87,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741707cadc093f64d8fed8cf536190d2, type: 3}
   m_Name: SOBJ_InventoryReturnItemFromMouseReaction
   m_EditorClassIdentifier: 
---- !u!114 &114971633567543538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
-  m_Name: ItemInteraction1
-  m_EditorClassIdentifier: 
-  description: Place_Gunpowder
-  requiredConditions:
-  - {fileID: 114791138113939910}
-  itemInteractionReactions:
-  - {fileID: 114334448271371060}
-  - {fileID: 114962857757104242}

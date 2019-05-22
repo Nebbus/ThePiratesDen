@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MONO_CustomMouseCursor : MonoBehaviour {
 
+    public bool lockkurso = true;
     [HideInInspector]
     public bool       UsingKeyboard = false;
     public GameObject CustomCursor;
@@ -17,7 +18,7 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
     private RectTransform   CustomCursorTransform;
     private MONO_Menus      Menus;
-   // public bool useMosePosition = true;
+
 
   
     
@@ -39,7 +40,7 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     private void MoveVirtuelCursor()
     {
             //Locks the cursor 
-            if (Cursor.lockState != CursorLockMode.Locked)
+            if (Cursor.lockState != CursorLockMode.Locked && lockkurso)
             {
                 Cursor.lockState = CursorLockMode.None; // herd this culd prevent editor bugg
                 Cursor.lockState = CursorLockMode.Locked;

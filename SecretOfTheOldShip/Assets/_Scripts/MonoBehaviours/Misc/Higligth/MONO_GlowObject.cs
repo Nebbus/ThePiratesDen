@@ -38,7 +38,7 @@ public class MONO_GlowObject : MonoBehaviour
 	private Color _currentColor;
 	private Color _targetColor;
 
-
+    private bool isHintButtonCalled = false;
 
 
 //==========================================================
@@ -87,21 +87,38 @@ public class MONO_GlowObject : MonoBehaviour
 		{	
 			_materials.AddRange(renderer.materials);
 		}
-	}
+
+
+    }
 
 //==========================================================
 // Higligt on and offf
 //==========================================================
-    public void HigligtON()
+    public void HigligtON(bool isPartOfHint)
     {
-
-        _targetColor = GetGlowColor;
-        enabled      = doHiglight;
+        if (doHiglight)
+        {
+            isHintButtonCalled = isPartOfHint;
+            _targetColor       = GetGlowColor;
+            enabled            = doHiglight;
+        }
+  
     }
-    public void HigligtOFF()
+    public void HigligtOFF(bool isCalldFromHintButton)
     {
-        _targetColor = Color.black;
-        enabled      = true;
+        //uggli butt works
+        if (isHintButtonCalled && isCalldFromHintButton)
+        {
+            _targetColor        = Color.black;
+            enabled             = true;
+            isHintButtonCalled  = false;
+        }
+        else 
+        {
+            _targetColor = Color.black;
+            enabled = true;
+        }
+       
     }
 
 

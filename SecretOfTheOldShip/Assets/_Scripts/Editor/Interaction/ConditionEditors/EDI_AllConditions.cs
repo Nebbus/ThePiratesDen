@@ -36,8 +36,8 @@ public class EDI_AllConditions : Editor
     private const string creationPath = "Assets/Resources/SOBJ_AllConditions.asset";
 
 
-    private SerializedProperty conditionsProperty;
-    private const string       conditionsPropName = "conditions";
+    //private SerializedProperty conditionsProperty;
+    //private const string       conditionsPropName = "conditions";
 
     private Type[]             conditionTypes;                    // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
     private string[]           conditionTypeNames;                // The names of all appropriate Reaction types.
@@ -58,7 +58,7 @@ public class EDI_AllConditions : Editor
         allConditions = (SOBJ_AllConditions)target;
 
         // Cache the SerializedProperty
-        conditionsProperty = serializedObject.FindProperty(conditionsPropName);
+        //conditionsProperty = serializedObject.FindProperty(conditionsPropName);
 
 
         /* If there aren't any Conditions on the target, 

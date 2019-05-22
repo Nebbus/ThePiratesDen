@@ -14,9 +14,22 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 006ca6165b099c04eae46971f1f188fa, type: 3}
   onHowerText: {fileID: 114757304987326930, guid: e0e9bdc1a87beda4286f0ef74dc31884,
     type: 2}
+  putDownSound: event:/Inventory/Cookie_Place
   onClickConditionAndReactions:
   - {fileID: 114669499116333398}
   onHoverConditionAndReactions: []
+--- !u!114 &114002784608696974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c479e1ed7f8b945b767b748c326f37, type: 3}
+  m_Name: SOBJ_InventoryGrabItemToMouseReaction
+  m_EditorClassIdentifier: 
+  itemToGrab: {fileID: 11400000}
 --- !u!114 &114365821210211526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,6 +56,24 @@ MonoBehaviour:
   m_Name: ItemInteraction0
   m_EditorClassIdentifier: 
   description: PickUp_Cookie
-  requiredConditions: []
+  requiredConditions:
+  - {fileID: 114813272316625068}
   itemInteractionReactions:
   - {fileID: 114365821210211526}
+  - {fileID: 114002784608696974}
+--- !u!114 &114813272316625068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: MouseCompareItem
+  satisfied: 1
+  hash: -829145576
+  requierdHoldingItem: {fileID: 11400000, guid: a936a94886a01724c823998d7c651173,
+    type: 2}

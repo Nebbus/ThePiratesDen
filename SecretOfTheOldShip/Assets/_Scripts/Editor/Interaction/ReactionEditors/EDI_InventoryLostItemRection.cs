@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+
 [CustomEditor(typeof(SOBJ_InventoryLostItemRection))]
 public class EDI_InventoryLostItemRection : EDI_Reaction
 {
@@ -22,8 +23,12 @@ public class EDI_InventoryLostItemRection : EDI_Reaction
 
     protected override void DrawReaction()
     {
-        base.DrawReaction();
+
+
         DrawImages();
+        base.DrawReaction();
+
+
     }
 
     /// <summary>
@@ -31,15 +36,12 @@ public class EDI_InventoryLostItemRection : EDI_Reaction
     /// </summary>
     private void DrawImages()
     {
-
-
+    
         if (targetReaction != null &&
             targetReaction.item != null &&
             targetReaction.item.sprite != null)
         {
-            GUILayout.Box(targetReaction.item.sprite.texture, GUILayout.Width(imageSide), GUILayout.Height(imageSide));
-
-
+            GUILayout.Box(targetReaction.item.sprite.texture, GUILayout.Width(imageSide ), GUILayout.Height(imageSide));
         }
     }
 }

@@ -18,10 +18,9 @@ public class MONO_GlowComposite : MonoBehaviour
     public float globalLerpFactor = 10;
 
 
-    private MONO_GlowPrePass prePass;
 
 
-	private Material _compositeMat;
+	public Material _compositeMat;
 
    
 
@@ -30,6 +29,7 @@ public class MONO_GlowComposite : MonoBehaviour
         if (glowCompositeInstance == null)
         {
             glowCompositeInstance = this;
+            _compositeMat = new Material(Shader.Find("Hidden/GlowComposite"));
         }
         else
         {
@@ -45,12 +45,12 @@ public class MONO_GlowComposite : MonoBehaviour
 
     void OnEnable()
 	{
+        if(_compositeMat == null)
 		_compositeMat = new Material(Shader.Find("Hidden/GlowComposite"));
     }
 
 	void OnRenderImage(RenderTexture src, RenderTexture dst)
 	{
-
 		_compositeMat.SetFloat("_Intensity", glowIntensity);
         Graphics.Blit(src, dst, _compositeMat, 0);
 	}

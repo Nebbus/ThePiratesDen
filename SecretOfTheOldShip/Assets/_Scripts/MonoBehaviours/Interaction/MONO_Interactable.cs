@@ -8,6 +8,7 @@
 *  player to approach the interactionLocation and the 
 *  player should call the Interact function when they arrive.
 */
+
 [RequireComponent(typeof(MONO_GlowObject))]// this is for the glow
 public class MONO_Interactable : MONO_InteractionBase
 {
@@ -75,6 +76,7 @@ public class MONO_Interactable : MONO_InteractionBase
 
         }
         // If none of the reactions happened, use the default MONO_ReactionCollection.
+        if(defaultReactionCollection != null)
         defaultReactionCollection.React();
     }
 
@@ -88,7 +90,7 @@ public class MONO_Interactable : MONO_InteractionBase
     {
         //MONO_AdventureCursor.instance.MONO_CursorSprite.setSprite(gameObject.tag);
 
-        getGlowObjectComponent.HigligtON();
+        getGlowObjectComponent.HigligtON(false);
     }
 
     public override void OnHover()
@@ -100,6 +102,6 @@ public class MONO_Interactable : MONO_InteractionBase
     {
        // MONO_AdventureCursor.instance.MONO_CursorSprite.setSprite(gameObject.tag);
 
-        getGlowObjectComponent.HigligtOFF();
+        getGlowObjectComponent.HigligtOFF(false);
     }
 }

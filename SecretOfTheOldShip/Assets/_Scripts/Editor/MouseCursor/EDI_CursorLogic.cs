@@ -25,7 +25,7 @@ public class EDI_CursorLogic : Editor {
     private SerializedProperty keyButtonProperty;
     private SerializedProperty usedClickKeyProperty;
 
-    private SerializedProperty lastClickTimeProperty;
+   // private SerializedProperty lastClickTimeProperty;
     private SerializedProperty timeThresholdProperty;
     private SerializedProperty debugTimedeltaProperty;
 
@@ -62,7 +62,7 @@ public class EDI_CursorLogic : Editor {
         museButtonProperty                  = serializedObject.FindProperty(museButtonPropertyyName);
         keyButtonProperty                   = serializedObject.FindProperty(keyButtonPropertyName);
         usedClickKeyProperty                = serializedObject.FindProperty(usedClickKeyPropertyName);
-        lastClickTimeProperty               = serializedObject.FindProperty(lastClickTimePropertyName);
+       // lastClickTimeProperty               = serializedObject.FindProperty(lastClickTimePropertyName);
         timeThresholdProperty               = serializedObject.FindProperty(timeThresholdPropertyName);
         debugTimedeltaProperty              = serializedObject.FindProperty(debugTimedeltaPropertyName);
 

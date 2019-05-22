@@ -38,22 +38,22 @@ public class MONO_GlowObject_higlightAll : MonoBehaviour {
     }
     private void OnDisable()
     {
-        //MONO_EventManager.StopListening(MONO_EventManager.onHiglightAllInteractablesInScene_NAME, onHigligtAll);
-        //MONO_EventManager.StopListening(MONO_EventManager.offHiglightAllInteractablesInScene_NAME, offHigligtAll);
-
+        MONO_EventManager.StopListening(MONO_EventManager.onHiglightAllInteractablesInScene_NAME, onHigligtAll);
+        MONO_EventManager.StopListening(MONO_EventManager.offHiglightAllInteractablesInScene_NAME, offHigligtAll);
+       
     }
 
 
-//==========================================================
-// Events for higligting all interactables in scene
-//==========================================================
+    //==========================================================
+    // Events for higligting all interactables in scene
+    //==========================================================
     private void OnHigligtAll(MONO_EventManager.EventParam evntParam)
-    {
-        higligthScript.HigligtON();
+    {  
+        higligthScript.HigligtON(true);
     }
     private void OffHigligtAll(MONO_EventManager.EventParam evntParam)
     {
-        higligthScript.HigligtOFF();
+        higligthScript.HigligtOFF(true);
     }
 
 
