@@ -53,6 +53,13 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
         for (int i = 0; i < conditions.Length; i++)
         {
             conditions[i].satisfied = false;
+
+            SOBJ_Condition boolVariable = conditions[i] as SOBJ_Condition;
+            if (boolVariable)
+            {
+                conditions[i].satisfied = boolVariable.getStartValue;
+            }
+
         }
     }
 

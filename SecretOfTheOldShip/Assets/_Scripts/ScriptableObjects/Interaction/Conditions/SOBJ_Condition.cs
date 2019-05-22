@@ -11,8 +11,18 @@
 // should happen.
 public class SOBJ_Condition : SOBJ_ConditionAdvanced
 {
+    [SerializeField]
+    private bool startValue = false;
 
-   
+    public bool getStartValue
+    {
+        get
+        {
+            return startValue;
+        }
+    }
+
+    
     protected override bool advancedCondition()
     {
         return satisfied;

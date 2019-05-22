@@ -12,9 +12,13 @@ public class EDI_Condition : EDI_ConditionAdvanced
 {
 
     private const string conditionsPropName = "conditions";
+
+    private const string startValuePropName = "startValue";
     //private Type[]      conditionTypes;                    // All the non-abstract types which inherit from Reaction.  This is used for adding new Reactions.
-   // private string[]    conditionTypeNames;                // The names of all appropriate Reaction types.
+    // private string[]    conditionTypeNames;                // The names of all appropriate Reaction types.
     private int         selectedIndex;                     // The index of the currently selected Reaction type.
+
+    private SerializedProperty startValueProperty;
 
 
     protected override void Init()
@@ -22,6 +26,7 @@ public class EDI_Condition : EDI_ConditionAdvanced
         string[]    conditionTypeNames;
         Type[]      conditionTypes;
         condition = (SOBJ_Condition)target;
+        startValueProperty = serializedObject.FindProperty(startValuePropName);
         EXT_GetListOfScriptableObjects.SetGenericNamesArray(typeof(SOBJ_Condition), out conditionTypes, out conditionTypeNames);
     }
 
@@ -40,6 +45,13 @@ public class EDI_Condition : EDI_ConditionAdvanced
     {
          
         return  EDI_AllConditions.getListOfReleveantConditions<SOBJ_Condition>();
+    }
+
+
+    protected override void DrawConditionAllConditionsAssetGUI()
+    {
+        EditorGUILayout.PropertyField(startValueProperty);
+        base.DrawConditionAllConditionsAssetGUI();
     }
 }
 
