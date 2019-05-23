@@ -39,7 +39,7 @@ public class MONO_CursorSprite : MonoBehaviour {
                 return true;
             }
         }
-        Debug.LogError("No sprite with matching tag found");
+        //Debug.LogError("No sprite with matching tag found");
         return false;
     }
 
