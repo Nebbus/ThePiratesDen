@@ -11,11 +11,19 @@ public class MONO_Fade : MonoBehaviour
 
 	private float finalAlpha;
 
-	/// <summary>
-	/// Initalize the fade with a coroutine based on an input target alpha.
-	/// </summary>
-	/// <param name="final">The target alpha.</param>
-	public void Fade(float final)
+
+
+    public void Start()
+    {
+        canvas.gameObject.SetActive(true); // so it can be turned off in the editor but automatikal turned on then starting the game
+    }
+
+
+    /// <summary>
+    /// Initalize the fade with a coroutine based on an input target alpha.
+    /// </summary>
+    /// <param name="final">The target alpha.</param>
+    public void Fade(float final)
 	{
 		finalAlpha = final;
 		StartCoroutine(DoFade (finalAlpha));
