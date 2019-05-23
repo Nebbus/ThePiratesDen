@@ -2285,6 +2285,11 @@ Prefab:
       propertyPath: reactions.Array.data[2]
       value: 
       objectReference: {fileID: 1304156925}
+    - target: {fileID: 114635420429853720, guid: ea40f4e697a8f4bbd958dc4d4dc2856f,
+        type: 2}
+      propertyPath: nameText
+      value: Paloma
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea40f4e697a8f4bbd958dc4d4dc2856f, type: 2}
   m_IsPrefabParent: 0
@@ -2324,6 +2329,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   item: {fileID: 11400000, guid: 79cbbc68bb3aa8348878047467fe4602, type: 2}
+--- !u!1 &479460878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 479460880}
+  - component: {fileID: 479460879}
+  m_Layer: 0
+  m_Name: handleInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &479460879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479460878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df7cf56ac90cce48b8373546a75cb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &479460880
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479460878}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1895348081}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496804777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,6 +2664,37 @@ Transform:
   m_PrefabParentObject: {fileID: 4474292856315246, guid: 73cae2dff07a64a27a9e2b428d873d5f,
     type: 2}
   m_PrefabInternal: {fileID: 864997292}
+--- !u!84 &576987320
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 234
+  m_Height: 610
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &581201368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,6 +2728,7 @@ MonoBehaviour:
   interactionLocation: {fileID: 971530375}
   conditionCollections: []
   defaultReactionCollection: {fileID: 924747509}
+  onHoverEnterdconditionCollections: []
 --- !u!65 &581201370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3332,6 +3409,30 @@ Transform:
   m_PrefabParentObject: {fileID: 4405353393055766, guid: 9e58b534bac5c724d92f8355caff617f,
     type: 2}
   m_PrefabInternal: {fileID: 741034866}
+--- !u!21 &742219179
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!114 &745919785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4315,6 +4416,7 @@ MonoBehaviour:
   interactionLocation: {fileID: 448182325}
   conditionCollections: []
   defaultReactionCollection: {fileID: 874949961}
+  onHoverEnterdconditionCollections: []
 --- !u!65 &942376550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4624,7 +4726,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 1156430251}
+  _compositeMat: {fileID: 742219179}
 --- !u!92 &1017722109
 Behaviour:
   m_ObjectHideFlags: 0
@@ -4939,7 +5041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1986073627}
+  selectedFlowchart: {fileID: 1986073567}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -5404,30 +5506,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1140212878}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!21 &1156430251
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!4 &1167233551 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4358660082966822, guid: ea40f4e697a8f4bbd958dc4d4dc2856f,
@@ -6058,6 +6136,7 @@ MonoBehaviour:
   interactionLocation: {fileID: 1619978485}
   conditionCollections: []
   defaultReactionCollection: {fileID: 2128917855}
+  onHoverEnterdconditionCollections: []
 --- !u!65 &1224182565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6297,6 +6376,7 @@ MonoBehaviour:
   interactionLocation: {fileID: 1371768089}
   conditionCollections: []
   defaultReactionCollection: {fileID: 1202697393}
+  onHoverEnterdconditionCollections: []
 --- !u!114 &1268401744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6553,7 +6633,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: a03624331a9496c4c89e84a3ca962618, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: a03624331a9496c4c89e84a3ca962618, type: 3}
       propertyPath: m_LocalScale.x
@@ -7582,7 +7662,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1895348081}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1483652599 stripped
 RectTransform:
@@ -7841,6 +7921,7 @@ MonoBehaviour:
   interactionLocation: {fileID: 708228495}
   conditionCollections: []
   defaultReactionCollection: {fileID: 161534502}
+  onHoverEnterdconditionCollections: []
 --- !u!65 &1528589132
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8382,37 +8463,6 @@ Transform:
   m_Father: {fileID: 1367910369}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 265, z: 0}
---- !u!84 &1641909445
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 333
-  m_Height: 495
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!4 &1656721417 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4532370593693718, guid: 066cdbb8f2476814e97ab9392ff7e279,
@@ -9545,7 +9595,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1641909445}
+  m_TargetTexture: {fileID: 576987320}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -9782,6 +9832,7 @@ Transform:
   - {fileID: 708228495}
   - {fileID: 737926446}
   - {fileID: 1424489054}
+  - {fileID: 479460880}
   - {fileID: 1478370100}
   - {fileID: 145582710}
   m_Father: {fileID: 1221090065}
@@ -10372,9 +10423,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986074100}
+  - {fileID: 1986073577}
   selectedCommands:
-  - {fileID: 1986074127}
+  - {fileID: 1986074278}
   variables: []
   description: 
   stepPause: 0
@@ -10679,7 +10730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 873.9547
+    x: 872.46216
     y: 195.49991
     width: 120
     height: 40
@@ -10691,6 +10742,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986073722}
+  - {fileID: 1986074278}
   - {fileID: 1986074274}
   - {fileID: 1986074277}
   - {fileID: 1986074044}
@@ -12461,6 +12513,7 @@ GameObject:
   - component: {fileID: 1986074127}
   - component: {fileID: 1986074277}
   - component: {fileID: 1986074274}
+  - component: {fileID: 1986074278}
   m_Layer: 0
   m_Name: INT_DoorFlowchart
   m_TagString: Untagged
@@ -28609,6 +28662,50 @@ MonoBehaviour:
     floatRef: {fileID: 0}
     floatVal: 1
   durationOLD: 0
+--- !u!114 &1986074278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 434
+  indentLevel: 1
+  description: 
+  targetObject: {fileID: 479460878}
+  targetComponentAssemblyName: MONO_HandleInput, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: MONO_HandleInput
+  targetMethod: HandleInput
+  targetMethodText: 'HandleInput (Boolean): Void'
+  methodParameters:
+  - objValue:
+      typeAssemblyname: System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      typeFullname: System.Boolean
+      intValue: 0
+      boolValue: 0
+      floatValue: 0
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 0}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!114 &1989247714
 MonoBehaviour:
   m_ObjectHideFlags: 0
