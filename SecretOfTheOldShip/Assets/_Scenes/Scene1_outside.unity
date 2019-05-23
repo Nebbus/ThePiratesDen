@@ -2078,6 +2078,30 @@ MonoBehaviour:
   hash: -829145576
   requierdHoldingItem: {fileID: 11400000, guid: 79cbbc68bb3aa8348878047467fe4602,
     type: 2}
+--- !u!21 &438782243
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!114 &444368607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2644,6 +2668,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 556708753}
   m_Mesh: {fileID: 4300008, guid: 0a4f3ae23e72cb641b37adac6190838c, type: 3}
+--- !u!84 &560357048
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 271
+  m_Height: 576
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!114 &563789749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2664,37 +2719,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4474292856315246, guid: 73cae2dff07a64a27a9e2b428d873d5f,
     type: 2}
   m_PrefabInternal: {fileID: 864997292}
---- !u!84 &576987320
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 234
-  m_Height: 610
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &581201368
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,30 +3433,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4405353393055766, guid: 9e58b534bac5c724d92f8355caff617f,
     type: 2}
   m_PrefabInternal: {fileID: 741034866}
---- !u!21 &742219179
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!114 &745919785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4726,7 +4726,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 742219179}
+  _compositeMat: {fileID: 438782243}
 --- !u!92 &1017722109
 Behaviour:
   m_ObjectHideFlags: 0
@@ -5041,7 +5041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1986073567}
+  selectedFlowchart: {fileID: 1986074157}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -6258,6 +6258,14 @@ Prefab:
     - target: {fileID: 4647816102762360, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 118.52801
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349348045035942, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256847177285754, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
@@ -9389,6 +9397,14 @@ Prefab:
       propertyPath: reactions.Array.data[2]
       value: 
       objectReference: {fileID: 175277197}
+    - target: {fileID: 1440505588750896, guid: 41f9796293dba5f45a257dbbefc1b293, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537447938224272, guid: 41f9796293dba5f45a257dbbefc1b293, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41f9796293dba5f45a257dbbefc1b293, type: 2}
   m_IsPrefabParent: 0
@@ -9595,7 +9611,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 576987320}
+  m_TargetTexture: {fileID: 560357048}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -29472,6 +29488,18 @@ Prefab:
       propertyPath: reactions.Array.data[2]
       value: 
       objectReference: {fileID: 62640273}
+    - target: {fileID: 1231619597891462, guid: 621912cbea9c6304f95ab58f02f16626, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401174654009494, guid: 621912cbea9c6304f95ab58f02f16626, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220756055418958, guid: 621912cbea9c6304f95ab58f02f16626, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 621912cbea9c6304f95ab58f02f16626, type: 2}
   m_IsPrefabParent: 0
