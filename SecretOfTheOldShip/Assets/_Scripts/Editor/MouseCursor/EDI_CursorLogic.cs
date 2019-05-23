@@ -139,24 +139,22 @@ public class EDI_CursorLogic : Editor {
                 GUI.enabled = true;
             EditorGUILayout.EndHorizontal();
 
-
-
             EditorGUILayout.BeginVertical(GUI.skin.box);
+                GUI.enabled = false;
+                EditorGUILayout.PropertyField(debugCurrentHoverOverProperty);
+                EditorGUILayout.PropertyField(debugCurrentInteractableTargetProperty);
+                EditorGUILayout.PropertyField(debugCurrentButtonTargerProperty);
+                EditorGUILayout.PropertyField(debugLastHoverOverProperty);
+                EditorGUILayout.PropertyField(debugLastInteractableTargetProperty);
+                EditorGUILayout.PropertyField(debugLastButtonTargerProperty);
+                GUI.enabled = true;
+            EditorGUILayout.EndVertical();
+
+        EditorGUILayout.BeginVertical(GUI.skin.box);
                 monoPointerLogic.debugAll = EditorGUILayout.Toggle("Debug all raycast hits", monoPointerLogic.debugAll);
                 EditorGUILayout.PropertyField(debugCurentHitProperty);
                 if (monoPointerLogic.debugAll)
                 {
-                    EditorGUILayout.BeginVertical(GUI.skin.box);
-                        GUI.enabled = false;
-                        EditorGUILayout.PropertyField(debugCurrentHoverOverProperty);
-                        EditorGUILayout.PropertyField(debugCurrentInteractableTargetProperty);
-                        EditorGUILayout.PropertyField(debugCurrentButtonTargerProperty);
-                        EditorGUILayout.PropertyField(debugLastHoverOverProperty);
-                        EditorGUILayout.PropertyField(debugLastInteractableTargetProperty);
-                        EditorGUILayout.PropertyField(debugLastButtonTargerProperty);
-                        GUI.enabled = true;
-                    EditorGUILayout.EndVertical();
-
                     EditorGUILayout.BeginHorizontal();
                         EditorGUILayout.BeginVertical(GUI.skin.box);
                             EditorGUILayout.PropertyField(presistentCanvansPraycasterProperty, true);

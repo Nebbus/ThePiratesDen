@@ -10,7 +10,7 @@ using UnityEditor;
 public class EDI_Interactable : EDI_EditorWithSubEditors<EDI_ConditionCollection, SOBJ_ConditionCollection>
 {
     private MONO_Interactable   interactable;                        // Reference to the target.
-    private SerializedProperty  interactionLocationProperty;         // Represents the Transform which is where the player walks to in order to Interact with the Interactable.
+    private SerializedProperty  conditionCollectionsProperty;         // Represents the Transform which is where the player walks to in order to Interact with the Interactable.
     private SerializedProperty  collectionsProperty;                 // Represents the ConditionCollection array on the Interactable.
     private SerializedProperty  defaultReactionCollectionProperty;   // Represents the ReactionCollection which is used if none of the ConditionCollections are.
 
@@ -19,15 +19,9 @@ public class EDI_Interactable : EDI_EditorWithSubEditors<EDI_ConditionCollection
     /* Name of the Transform field for where the player walks 
      * to in order to Interact with the Interactable.
      */ 
-    private const string interactablePropInteractionLocationName        = "interactionLocation";
-
-    // Name of the ConditionCollection array.
-    private const string interactablePropConditionCollectionsName       = "conditionCollections";
-
-    /* Name of the ReactionCollection field which is used if
-     * none of the ConditionCollections are.
-     */ 
-    private const string interactablePropDefaultReactionCollectionName   = "defaultReactionCollection";
+    private const string interactablePropInteractionLocationName  = "interactionLocation";
+    private const string conditionCollectionsPropertyName         = "conditionCollections";
+    private const string defaultReactionCollectionName            = "defaultReactionCollection";
 
     private float space = 0;
 
@@ -37,9 +31,9 @@ public class EDI_Interactable : EDI_EditorWithSubEditors<EDI_ConditionCollection
         interactable = (MONO_Interactable)target;
 
         // Cache the SerializedProperties.
-        collectionsProperty                 = serializedObject.FindProperty(interactablePropConditionCollectionsName);
-        interactionLocationProperty         = serializedObject.FindProperty(interactablePropInteractionLocationName);
-        defaultReactionCollectionProperty   = serializedObject.FindProperty(interactablePropDefaultReactionCollectionName);
+        collectionsProperty                 = serializedObject.FindProperty(conditionCollectionsPropertyName);
+        conditionCollectionsProperty        = serializedObject.FindProperty(interactablePropInteractionLocationName);
+        defaultReactionCollectionProperty   = serializedObject.FindProperty(defaultReactionCollectionName);
 
         // Create the necessary Editors for the ConditionCollections.
         CheckAndCreateSubEditors(interactable.conditionCollections);
@@ -67,6 +61,9 @@ public class EDI_Interactable : EDI_EditorWithSubEditors<EDI_ConditionCollection
         editor.collectionsProperty = collectionsProperty;
     }
 
+   
+
+
 
     public override void OnInspectorGUI()
     {
@@ -80,7 +77,7 @@ public class EDI_Interactable : EDI_EditorWithSubEditors<EDI_ConditionCollection
         CheckAndCreateSubEditors(interactable.conditionCollections);
 
         // Use the default object field GUI for the interactionLocation.
-        EditorGUILayout.PropertyField(interactionLocationProperty);
+        EditorGUILayout.PropertyField(conditionCollectionsProperty);
 
         // Display all of the ConditionCollections.
         for (int i = 0; i < subEditors.Length; i++)

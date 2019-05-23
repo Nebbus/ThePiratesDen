@@ -247,18 +247,13 @@ public class MONO_CursorLogic : MonoBehaviour
                 ButtonInteraction();
 
             }
-            interactableHover();
+            InteractableHover();
+            ButtonHover();
             return;// Only considerts the first hit
         }
 
 
-        // deselect lastbuttn, not over it now
-        if(lastButtonTarger != null)
-        {
-            presistentSeneEventSystem.SetSelectedGameObject(null);
-            lastButtonTarger = null;
-
-        }
+    
 
 
         //==================================================================================
@@ -285,7 +280,8 @@ public class MONO_CursorLogic : MonoBehaviour
                 HandleGroundClick(result);
                 overCurentObject = "GROUND: " + currentHoverOver.name;
             }
-            interactableHover();
+            InteractableHover();
+            ButtonHover();
             return;// Only considerts the first hit
         }
 
@@ -322,15 +318,6 @@ public class MONO_CursorLogic : MonoBehaviour
         if (currentAction == action.CLICK)
         {
             currentButtonTarger.onClick.Invoke();
-        }
-        else
-        {
-            if (lastButtonTarger != currentButtonTarger)
-            {
-                lastButtonTarger = currentButtonTarger;
-                currentButtonTarger.Select();
-            }
-   
         }
 
     }
@@ -372,12 +359,41 @@ public class MONO_CursorLogic : MonoBehaviour
     }
 
 
+   private void ButtonHover()
+    {
+
+
+        //// deselect lastbuttn, not over it now
+        //if (lastButtonTarger != currentInteractableTarget)
+        //{
+        //    presistentSeneEventSystem.SetSelectedGameObject(null);
+        //    lastButtonTarger = null;
+
+        //}
+
+        if (lastButtonTarger != currentButtonTarger)
+        {
+            lastButtonTarger = currentButtonTarger;
+            if (currentButtonTarger)
+            {
+                currentButtonTarger.Select();
+            }
+            else
+            {
+                presistentSeneEventSystem.SetSelectedGameObject(null);
+
+            }
+      
+        }
+      
+    }
+
 
     /// <summary>
     /// handle the hover reaction, 
     /// it calls the on enterd/ented/leaft
     /// </summary>
-    private void interactableHover()
+    private void InteractableHover()
     {
         if(lastInteractableTarget != currentInteractableTarget)
         {
@@ -401,6 +417,7 @@ public class MONO_CursorLogic : MonoBehaviour
 
             }
         }
+     
     }
 
 

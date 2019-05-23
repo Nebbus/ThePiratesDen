@@ -8,38 +8,58 @@ public class MONO_CursorSprite : MonoBehaviour {
 	[SerializeField]
 	private string currentTag;
 
-	//public SpriteRenderer cursorSpriteRenderer;
-	[Space]
-	public cursorSprite[] cursorSprites = new cursorSprite[0];
+    public string getCurrentTag
+    {
+        get
+        {
+            return currentTag;
+        }
+    }
 
 
-	/// <summary>
-	/// Compares the tag of object being hovered over with the tag of the cursorSprite. 
-	/// If they match, the sprite of the cursor changes to the sprite of the cursorSprite.
-	/// </summary>
-	/// <param name="objectTag">Tag of the object currently being hovered over.</param>
-	private bool ChangeCursorSprite(string objectTag)
-	{
-		for (int i = 0; i < cursorSprites.Length; i++) 
-		{
-			if (cursorSprites [i].tag == objectTag) 
-			{
-				cursorSpriteImage.sprite = cursorSprites [i].sprite;
-				currentTag = objectTag;
-				return true;
-			}
 
-		}
-		Debug.LogError ("No sprite with matching tag found");
-		return false;
-	}
+    public string[] cursorTag    = new string[numberOfCursorMods];
+    public Sprite[] cursorSprits = new Sprite[numberOfCursorMods];
+
+    public static int numberOfCursorMods = 0;
+
+    /// <summary>
+    /// Compares the tag of object being hovered over with the tag of the cursorSprite. 
+    /// If they match, the sprite of the cursor changes to the sprite of the cursorSprite.
+    /// </summary>
+    /// <param name="objectTag">Tag of the object currently being hovered over.</param>
+    public bool ChangeCursorSprite(string objectTag)
+    {
+        for (int i = 0; i < cursorTag.Length; i++)
+        {
+            if (cursorTag[i] == objectTag)
+            {
+                cursorSpriteImage.sprite = cursorSprits[i];
+                currentTag = objectTag;
+                return true;
+            }
+        }
+        //Debug.LogError("No sprite with matching tag found");
+        return false;
+    }
 
 
-	/// <summary>
-	/// Get current tag. Returns tag of object currently being hovered over.
-	/// </summary>
-	/// <value>Current tag of object hovered being hovered over.</value>
-	public string getTag
+    /// <summary>
+    /// Sets the defult (nonInteractable) cursotr
+    /// </summary>
+    public void setDefultCursor()
+    {
+      
+        cursorSpriteImage.sprite = cursorSprits[0];
+        currentTag = cursorTag[0];
+    }
+
+
+    /// <summary>
+    /// Get current tag. Returns tag of object currently being hovered over.
+    /// </summary>
+    /// <value>Current tag of object hovered being hovered over.</value>
+    public string getTag
 	{
 		get
 		{ 
@@ -49,9 +69,9 @@ public class MONO_CursorSprite : MonoBehaviour {
 	}
 }
 
-[System.Serializable]
-public class cursorSprite 
-{
-	public string tag;
-	public Sprite sprite;
-}
+//[System.Serializable]
+//public class cursorSprite 
+//{
+//	public string tag;
+//	public Sprite sprite;
+//}

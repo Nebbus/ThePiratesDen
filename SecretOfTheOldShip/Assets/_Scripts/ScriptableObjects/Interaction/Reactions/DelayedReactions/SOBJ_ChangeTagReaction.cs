@@ -2,12 +2,13 @@
 
 public class SOBJ_ChangeTagReaction : SOBJ_DelayedReaction
 {
-	public GameObject objectWithNewTag;
+	public GameObject target;
 	public string newTag;
 
-	protected override void ImmediateReaction()
+
+    protected override void ImmediateReaction()
 	{
-		objectWithNewTag.tag = newTag;
+		target.tag = newTag;
 	}
 }
 

@@ -43,7 +43,8 @@ public class MONO_MenuSelect : MonoBehaviour {
         }
         else
         {
-            eventSystem.SetSelectedGameObject(null);
+            //Franz tog bort dena rad, pga ´för att få select buton att fungera
+            //eventSystem.SetSelectedGameObject(null);
 			buttonSelected = false;
         }
 	}

@@ -23,7 +23,7 @@ public class MONO_Interactable : MONO_InteractionBase
     // If none of the SOBJ_ConditionCollection are reacted to this one is used.
     public MONO_ReactionCollection defaultReactionCollection;
 
-
+    public SOBJ_ConditionCollection[] onHoverEnterdconditionCollections = new SOBJ_ConditionCollection[0];
 
     private MONO_GlowObject glowObjectComponent;
     private MONO_GlowObject getGlowObjectComponent
@@ -58,8 +58,6 @@ public class MONO_Interactable : MONO_InteractionBase
         MONO_GlowObject temp = getGlowObjectComponent;
     }
 
-
-
     // This is called when the player arrives at the interactionLocation.
     public void Interact()
     {
@@ -88,19 +86,22 @@ public class MONO_Interactable : MONO_InteractionBase
 
     public override void OnHoverEnterd()
     {
-        //MONO_AdventureCursor.instance.MONO_CursorSprite.setSprite(gameObject.tag);
+        MONO_AdventureCursor.instance.getMonoCursorSprite.ChangeCursorSprite(gameObject.tag);
 
         getGlowObjectComponent.HigligtON(false);
     }
 
     public override void OnHover()
     {
-        
+        if(MONO_AdventureCursor.instance.getMonoCursorSprite.getCurrentTag != gameObject.tag)
+        {
+            MONO_AdventureCursor.instance.getMonoCursorSprite.ChangeCursorSprite(gameObject.tag);
+        }
     }
 
     public override void OnHoverExit()
     {
-       // MONO_AdventureCursor.instance.MONO_CursorSprite.setSprite(gameObject.tag);
+        MONO_AdventureCursor.instance.getMonoCursorSprite.setDefultCursor();
 
         getGlowObjectComponent.HigligtOFF(false);
     }
