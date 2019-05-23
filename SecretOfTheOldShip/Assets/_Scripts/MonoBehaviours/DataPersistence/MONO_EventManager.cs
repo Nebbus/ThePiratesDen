@@ -23,10 +23,13 @@ public class MONO_EventManager : MonoBehaviour
 
     private static MONO_EventManager monoEventManager;
 
-    public const string onInteractableEvnetManager_NAME        = "moveInteractPlayer";
-    public const string onGroundEvnetManager_NAME              = "moveGround";
-    public const string onHiglightAllInteractablesInScene_NAME = "onHigligtAll";
+    // All the event that exist
+    public const string onInteractableEvnetManager_NAME         = "moveInteractPlayer";
+    public const string onGroundEvnetManager_NAME               = "moveGround";
+    public const string onHiglightAllInteractablesInScene_NAME  = "onHigligtAll";
     public const string offHiglightAllInteractablesInScene_NAME = "offHigligtAll";
+    public const string setInputHandling_NAME                    = "setInputHandling";
+
 
     /// <summary>
     /// getter for the MONO_EventManager

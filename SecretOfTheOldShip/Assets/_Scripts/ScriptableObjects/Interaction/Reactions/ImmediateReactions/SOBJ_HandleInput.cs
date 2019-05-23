@@ -6,7 +6,7 @@ public class SOBJ_HandleInput : SOBJ_DelayedReaction
 
 	protected override void ImmediateReaction()
 	{
-		FindObjectOfType<MONO_SceneManager> ().SetHandleInput (enabled);
+		FindObjectOfType<MONO_SceneManager> ().getSetHandleInput = enabled;
 	}
 }
 
