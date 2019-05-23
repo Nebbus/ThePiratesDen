@@ -19,8 +19,16 @@ public class EDI_CursorLogic : Editor {
     private SerializedProperty debugAllGrayHitProperty;
     private SerializedProperty debugCurentHitProperty;
 
+    private SerializedProperty debugCurrentHoverOverProperty;
+    private SerializedProperty debugCurrentInteractableTargetProperty;
+    private SerializedProperty debugCurrentButtonTargerProperty;
 
- 
+
+    private SerializedProperty debugLastHoverOverProperty;
+    private SerializedProperty debugLastInteractableTargetProperty;
+    private SerializedProperty debugLastButtonTargerProperty;
+
+
     private SerializedProperty museButtonProperty;
     private SerializedProperty keyButtonProperty;
     private SerializedProperty usedClickKeyProperty;
@@ -39,6 +47,14 @@ public class EDI_CursorLogic : Editor {
     private const string debugCurentHitPropertyName                 = "overCurentObject";
 
 
+    private const string debugCurrentHoverOverPropertyName          = "currentHoverOver";
+    private const string debugCurrentInteractableTargetPropertyName = "currentInteractableTarget";
+    private const string debugCurrentButtonTargerPropertyName       = "currentButtonTarger";
+
+    private const string debugLastHoverOverPropertyName             = "lastHoverOver";
+    private const string debugLastInteractableTargetPropertyName    = "lastInteractableTarget";
+    private const string debugLastButtonTargerPropertyName          = "lastButtonTarger";
+
     private const string museButtonPropertyyName                    = "mouseKey";
     private const string keyButtonPropertyName                      = "keabordKey";
     private const string usedClickKeyPropertyName                   = "usedClickKey";
@@ -55,16 +71,22 @@ public class EDI_CursorLogic : Editor {
         mainCameraGraycasterProperty        = serializedObject.FindProperty(mainCameraGraycasterPropertyName);
         presistentCanvansPraycasterProperty = serializedObject.FindProperty(presistentCanvansPraycasterPropertyName);
 
-        currentActionProperty               = serializedObject.FindProperty(monoPointerLogicName);
-        debugAllPrayHitProperty             = serializedObject.FindProperty(debugAllPrayHitPropertyName);
-        debugAllGrayHitProperty             = serializedObject.FindProperty(debugAllGrayHitPropertyName);
-        debugCurentHitProperty              = serializedObject.FindProperty(debugCurentHitPropertyName);
-        museButtonProperty                  = serializedObject.FindProperty(museButtonPropertyyName);
-        keyButtonProperty                   = serializedObject.FindProperty(keyButtonPropertyName);
-        usedClickKeyProperty                = serializedObject.FindProperty(usedClickKeyPropertyName);
-       // lastClickTimeProperty               = serializedObject.FindProperty(lastClickTimePropertyName);
-        timeThresholdProperty               = serializedObject.FindProperty(timeThresholdPropertyName);
-        debugTimedeltaProperty              = serializedObject.FindProperty(debugTimedeltaPropertyName);
+        currentActionProperty                   = serializedObject.FindProperty(monoPointerLogicName);
+        debugAllPrayHitProperty                 = serializedObject.FindProperty(debugAllPrayHitPropertyName);
+        debugAllGrayHitProperty                 = serializedObject.FindProperty(debugAllGrayHitPropertyName);
+        debugCurentHitProperty                  = serializedObject.FindProperty(debugCurentHitPropertyName);
+        museButtonProperty                      = serializedObject.FindProperty(museButtonPropertyyName);
+        keyButtonProperty                       = serializedObject.FindProperty(keyButtonPropertyName);
+        usedClickKeyProperty                    = serializedObject.FindProperty(usedClickKeyPropertyName);
+       // lastClickTimeProperty                 = serializedObject.FindProperty(lastClickTimePropertyName);
+        timeThresholdProperty                   = serializedObject.FindProperty(timeThresholdPropertyName);
+        debugTimedeltaProperty                  = serializedObject.FindProperty(debugTimedeltaPropertyName);
+        debugCurrentHoverOverProperty           = serializedObject.FindProperty(debugCurrentHoverOverPropertyName);
+        debugCurrentInteractableTargetProperty  = serializedObject.FindProperty(debugCurrentInteractableTargetPropertyName);
+        debugCurrentButtonTargerProperty        = serializedObject.FindProperty(debugCurrentButtonTargerPropertyName);
+        debugLastHoverOverProperty              = serializedObject.FindProperty(debugLastHoverOverPropertyName);
+        debugLastInteractableTargetProperty     = serializedObject.FindProperty(debugLastInteractableTargetPropertyName);
+        debugLastButtonTargerProperty           = serializedObject.FindProperty(debugLastButtonTargerPropertyName);
 
     }
 
@@ -116,11 +138,25 @@ public class EDI_CursorLogic : Editor {
                 EditorGUILayout.PropertyField(debugTimedeltaProperty,GUIContent.none);
                 GUI.enabled = true;
             EditorGUILayout.EndHorizontal();
+
+
+
             EditorGUILayout.BeginVertical(GUI.skin.box);
                 monoPointerLogic.debugAll = EditorGUILayout.Toggle("Debug all raycast hits", monoPointerLogic.debugAll);
                 EditorGUILayout.PropertyField(debugCurentHitProperty);
                 if (monoPointerLogic.debugAll)
                 {
+                    EditorGUILayout.BeginVertical(GUI.skin.box);
+                        GUI.enabled = false;
+                        EditorGUILayout.PropertyField(debugCurrentHoverOverProperty);
+                        EditorGUILayout.PropertyField(debugCurrentInteractableTargetProperty);
+                        EditorGUILayout.PropertyField(debugCurrentButtonTargerProperty);
+                        EditorGUILayout.PropertyField(debugLastHoverOverProperty);
+                        EditorGUILayout.PropertyField(debugLastInteractableTargetProperty);
+                        EditorGUILayout.PropertyField(debugLastButtonTargerProperty);
+                        GUI.enabled = true;
+                    EditorGUILayout.EndVertical();
+
                     EditorGUILayout.BeginHorizontal();
                         EditorGUILayout.BeginVertical(GUI.skin.box);
                             EditorGUILayout.PropertyField(presistentCanvansPraycasterProperty, true);
