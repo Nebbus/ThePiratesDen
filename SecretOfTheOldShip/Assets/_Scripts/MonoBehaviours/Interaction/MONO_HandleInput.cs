@@ -13,6 +13,6 @@ public class MONO_HandleInput : MonoBehaviour {
 	
 	public void HandleInput(bool handle)
 	{
-		scenemanager.SetHandleInput (handle); 
+		scenemanager.getSetHandleInput = handle; 
 	}
 }

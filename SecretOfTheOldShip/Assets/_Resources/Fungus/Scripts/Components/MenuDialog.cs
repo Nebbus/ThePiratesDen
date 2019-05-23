@@ -24,10 +24,13 @@ namespace Fungus
         private int nextOptionIndex;
 
         #region Public members
-//===============================================================================================================  
-        public MONO_ReactionCollection interactOff; //  used on lines 54 -> 59
-        public MONO_ReactionCollection interactOn;//  used on lines 254 -> 259
-//===============================================================================================================  
+        /*
+         * From Franz: has don changes to 
+         *  line 259 and 57 ->62
+         * 
+         */
+
+
 
         /// <summary>
         /// Currently active Menu Dialog used to display Menu options
@@ -52,21 +55,17 @@ namespace Fungus
         public virtual void SetActive(bool state)
         {
 //===============================================================================================================
-			if (interactOff != null && interactOn != null) {
-				if (this.IsActive()) 
-				{
-					interactOn.React ();
-					gameObject.SetActive(false);
-				}
-				else 
-				{
-					gameObject.SetActive(true);
-					interactOff.React ();
-				}
-			} 
-
+            MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+            param.param4 = !state;
+            MONO_EventManager.TriggerEvent(MONO_EventManager.setInputHandling_NAME, param);
 //===============================================================================================================       
+            gameObject.SetActive(state);
+
         }
+
+
+
+        
 
 
 
@@ -82,6 +81,7 @@ namespace Fungus
                 if (md != null)
                 {
                     ActiveMenuDialog = md;
+                        ActiveMenuDialog.SetActive(false);/////////////////////////////////////////////////////////////////////
                 }
 
                 if (ActiveMenuDialog == null)
@@ -258,15 +258,9 @@ namespace Fungus
                     // Select the new target block in the Flowchart window
                     flowchart.SelectedBlock = block;
 #endif
-                 gameObject.SetActive(false);
-//===============================================================================================================
-                //if(interactOn != null)
-              //  {
-                //    interactOn.React();
-               // }
-//===============================================================================================================  
-
-
+                 // makes sure that this version of setActiv is used
+                 this.SetActive(false);//gameObject.SetActive(false);
+                    
                     // Use a coroutine to call the block on the next frame
                     // Have to use the Flowchart gameobject as the MenuDialog is now inactive
                     flowchart.StartCoroutine(CallBlock(block));

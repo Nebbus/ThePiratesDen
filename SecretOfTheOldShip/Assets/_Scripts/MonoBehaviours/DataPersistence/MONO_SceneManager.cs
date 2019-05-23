@@ -1,12 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using FMODUnity;
 
 public class MONO_SceneManager : MonoBehaviour {
-	//[HideInInspector]
-	public bool handleInput = true;                 // Whether input is currently being handled.
+
 	public string startScene;						//The name of the starting scene as a string.
 	public Canvas canvas;							//The canvas holding the black image we fade to.
 	public StudioParameterTrigger musicTrigger;
@@ -17,24 +17,57 @@ public class MONO_SceneManager : MonoBehaviour {
 
 	private MONO_Fade fade;
 
-	/// <summary>
-	/// Get the handleinput bool.
-	/// </summary>
-	public bool GetHandleInput()
-	{
-		return handleInput;
-	}
 
-	/// <summary>
-	/// Set the handleinput bool.
-	/// </summary>
-	/// <param name="set">If set to <c>true</c> set.</param>
-	public void SetHandleInput(bool set)
-	{
-		handleInput = set;
-	}
 
-	private IEnumerator Start () 
+//==========================================================
+// Everything that has with handle inupt to do
+//==========================================================
+    [SerializeField]
+    private bool handleInput = true;                 // Whether input is currently being handled.
+
+    /// <summary>
+    /// Get set for if input should be handled
+    /// </summary>
+    public bool getSetHandleInput
+    {
+        get
+        {
+            return handleInput;
+        }
+        set
+        {
+            handleInput = value;
+        }
+    }
+
+    //EVENTS
+    private Action<MONO_EventManager.EventParam> setInputHandling;
+
+    //==========================================================
+    // Setup and turn of stuff
+    //==========================================================
+    private void Awake()
+    {
+        setInputHandling = new Action<MONO_EventManager.EventParam>(SetHandleInput);
+    }
+    private void OnEnable()
+    {
+        MONO_EventManager.StartListening(MONO_EventManager.setInputHandling_NAME, setInputHandling);
+    }
+    private void OnDisable()
+    {
+        MONO_EventManager.StopListening(MONO_EventManager.setInputHandling_NAME, setInputHandling);
+
+    }
+
+    private void SetHandleInput(MONO_EventManager.EventParam evntParam)
+    {
+        handleInput = evntParam.param4;
+    }
+
+
+
+    private IEnumerator Start () 
 	{
 		//Find the instance holding the code for fading.
 		fade = FindObjectOfType<MONO_Fade>();

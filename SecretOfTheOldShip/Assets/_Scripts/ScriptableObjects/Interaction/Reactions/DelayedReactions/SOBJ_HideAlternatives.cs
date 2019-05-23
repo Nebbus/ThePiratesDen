@@ -11,7 +11,7 @@ public class SOBJ_HideAlternatives : SOBJ_DelayedReaction
 		 * interactionalternatives, then unlock the player.
 		 */
 		rootReaction.GetComponent<MONO_ShowAlternatives> ().HideAlternatives ();
-		FindObjectOfType<MONO_SceneManager> ().SetHandleInput (handelInputThenDon);
+		FindObjectOfType<MONO_SceneManager> ().getSetHandleInput = handelInputThenDon;
 	}
 }
 
