@@ -18,29 +18,28 @@ public class MONO_AdventureCursor : MonoBehaviour {
     private MONO_CustomMouseCursor  monoCustimMouseCursor;
     private MONO_CursorSprite       monoCursorSprite;
 
-    public MONO_CursorLogic getMonoPointerLogic
+    public MONO_CursorLogic         getMonoPointerLogic
     {
         get
         {
             return monoPointerLogic;
         }
     }
-    public MONO_HeldItem     getMonoHoldedItem
+    public MONO_HeldItem            getMonoHoldedItem
     {
         get
         {
             return monoHoldedItem;
         }
     }
-    public MONO_CustomMouseCursor getMonoCustimMouseCursor
+    public MONO_CustomMouseCursor   getMonoCustimMouseCursor
     {
         get
         {
             return monoCustimMouseCursor;
         }
     }
-
-    public MONO_CursorSprite getMonoCursorSprite
+    public MONO_CursorSprite        getMonoCursorSprite
     {
         get
         {
