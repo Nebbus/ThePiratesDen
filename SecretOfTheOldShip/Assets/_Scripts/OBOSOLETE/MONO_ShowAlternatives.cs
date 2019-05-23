@@ -22,7 +22,7 @@ public class MONO_ShowAlternatives : MonoBehaviour {
 	/// </summary>
 	public void ShowAlternatives()
 	{
-		sceneManager.SetHandleInput (false);
+		sceneManager.getSetHandleInput = false;
 		foreach (Transform child in transform) 
 		{
 			children.Add (child.gameObject);

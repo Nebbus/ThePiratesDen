@@ -261,11 +261,11 @@ public class MONO_PlayerMovement : MonoBehaviour
         if (lastInteractable != null && lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> () != null)
 		{
 			lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> ().HideAlternatives ();
-			sceneManager.SetHandleInput (true);
+			sceneManager.getSetHandleInput = true;
 		}
 			
         // If the handle input flag is set to false then do nothing.
-		if (!sceneManager.handleInput)
+		if (!sceneManager.getSetHandleInput)
         {
             return;
         }
@@ -310,7 +310,7 @@ public class MONO_PlayerMovement : MonoBehaviour
     public void OnInteractableClick(MONO_Interactable interactable)
        {
            // If the handle input flag is set to false and the object clicked is not a Pie Menu then do nothing.
-		if (!sceneManager.handleInput && !(interactable.gameObject.layer == 9))
+		if (!sceneManager.getSetHandleInput && !(interactable.gameObject.layer == 9))
            {
            		return;
            }
@@ -334,7 +334,7 @@ public class MONO_PlayerMovement : MonoBehaviour
 
 	public void KeyboardMovement()
 	{
-		if (sceneManager.handleInput) 
+		if (sceneManager.getSetHandleInput) 
 		{
 			GameObject keyboardInteractable;
 

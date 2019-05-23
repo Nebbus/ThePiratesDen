@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class MONO_HandleInput : MonoBehaviour {
 
-	private MONO_SceneManager scenemanager;
 
-	void Start () 
+
+
+    /// <summary>
+    /// Triggers the setInputHandling event ( fuktion in the SceneManager)
+    /// </summary>
+    /// <param name="handleInput"></param>
+    public void HandleInput(bool handle)
 	{
-		scenemanager = FindObjectOfType<MONO_SceneManager> ();
-	}
-	
-	public void HandleInput(bool handle)
-	{
-		scenemanager.SetHandleInput (handle); 
-	}
+        //===============================================================================================================
+        MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+        param.param4 = handle;
+        MONO_EventManager.TriggerEvent(MONO_EventManager.setInputHandling_NAME, param);
+        //===============================================================================================================     
+    }
 }

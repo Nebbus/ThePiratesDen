@@ -67,13 +67,14 @@ public class MONO_CursorLogic : MonoBehaviour
     //===========================================================================
     // detection and action stuff (desidig that to do)
     //===========================================================================
-    private GameObject           currentHoverOver           = null;
-    private MONO_InteractionBase currentInteractableTarget  = null;
-    private Button               currentButtonTarger        = null;
 
-    private GameObject           lastHoverOver              = null;
-    private MONO_InteractionBase lastInteractableTarget     = null;
-    private Button               lastButtonTarger           = null;
+    public GameObject           currentHoverOver           = null;
+    public MONO_InteractionBase currentInteractableTarget  = null;
+    public Button               currentButtonTarger        = null;
+
+    public GameObject           lastHoverOver              = null;
+    public MONO_InteractionBase lastInteractableTarget     = null;
+    public Button               lastButtonTarger           = null;
 
     public action currentAction = action.HOVER;
 
