@@ -1070,7 +1070,6 @@ MonoBehaviour:
   interactionLocation: {fileID: 1083507724}
   conditionCollections: []
   defaultReactionCollection: {fileID: 160502119}
-  onHoverEnterdconditionCollections: []
 --- !u!65 &198264810
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5277,37 +5276,6 @@ Transform:
   m_Father: {fileID: 1586739398}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &291012935
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 437
-  m_Height: 358
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!95 &298323497 stripped
 Animator:
   m_PrefabParentObject: {fileID: 95130414918184498, guid: f31a3e910d539114db2d75b09b7f37c5,
@@ -5375,7 +5343,6 @@ MonoBehaviour:
   interactionLocation: {fileID: 0}
   conditionCollections: []
   defaultReactionCollection: {fileID: 0}
-  onHoverEnterdconditionCollections: []
 --- !u!114 &315581700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6831,6 +6798,30 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 395d95e836180b04b8a907800725f95d, type: 2}
   m_IsPrefabParent: 0
+--- !u!21 &649945083
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1 &669418421
 GameObject:
   m_ObjectHideFlags: 0
@@ -7097,6 +7088,37 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 678723812}
+--- !u!84 &700272866
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 887
+  m_Height: 499
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &702632346
 GameObject:
   m_ObjectHideFlags: 0
@@ -11285,7 +11307,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 1519399343}
+  _compositeMat: {fileID: 649945083}
 --- !u!114 &1141340949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12240,6 +12262,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1371575460}
+  - component: {fileID: 1371575461}
   m_Layer: 0
   m_Name: FlowCharts
   m_TagString: Untagged
@@ -12265,6 +12288,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1371575461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1371575459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7236250ae68b94da961db784c5d48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toRunOnSceneStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2068932535}
+        m_MethodName: ExecuteBlock
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: First Start
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1384844076
 GameObject:
   m_ObjectHideFlags: 0
@@ -12440,7 +12490,6 @@ MonoBehaviour:
   interactionLocation: {fileID: 1694294446}
   conditionCollections: []
   defaultReactionCollection: {fileID: 440064627}
-  onHoverEnterdconditionCollections: []
 --- !u!65 &1422921123
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12575,30 +12624,6 @@ Transform:
   m_Father: {fileID: 823843808}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!21 &1519399343
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1 &1523003866
 GameObject:
   m_ObjectHideFlags: 0
@@ -14271,7 +14296,6 @@ MonoBehaviour:
   interactionLocation: {fileID: 0}
   conditionCollections: []
   defaultReactionCollection: {fileID: 0}
-  onHoverEnterdconditionCollections: []
 --- !u!65 &1767104670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14374,7 +14398,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 291012935}
+  m_TargetTexture: {fileID: 700272866}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -18044,7 +18068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 970905214}
+  selectedFlowchart: {fileID: 2068932535}
 --- !u!4 &1804600061
 Transform:
   m_ObjectHideFlags: 1
@@ -25670,9 +25694,7 @@ GameObject:
   - component: {fileID: 2068932714}
   - component: {fileID: 2068932682}
   - component: {fileID: 2068932775}
-  - component: {fileID: 2068932774}
   - component: {fileID: 2068932686}
-  - component: {fileID: 2068932776}
   - component: {fileID: 2068932779}
   - component: {fileID: 2068932778}
   - component: {fileID: 2068932777}
@@ -25696,11 +25718,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 547.3343, y: 809.1231}
+  scrollPos: {x: 533.73145, y: 711.0901}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 402
-  zoom: 0.6399999
+  zoom: 0.8499998
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -25709,8 +25731,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 2068932691}
-  selectedCommands:
-  - {fileID: 2068932685}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -25777,7 +25798,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -523.60425
     y: 317.12933
-    width: 146.875
+    width: 158.23532
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -25847,7 +25868,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -695.30664
     y: 392.5426
-    width: 120
+    width: 124.11767
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -25911,7 +25932,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -697.86066
     y: 318.63345
-    width: 120.31251
+    width: 128.82355
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -26018,7 +26039,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -696.57153
     y: 250.31622
-    width: 131.25
+    width: 137.05884
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -26095,7 +26116,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -703.71375
     y: 168.88773
-    width: 126.56251
+    width: 134.7059
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -26229,7 +26250,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1927.1775
     y: -440.11163
-    width: 120
+    width: 124.11767
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -27695,7 +27716,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1681.1588
     y: -217.04808
-    width: 120
+    width: 127.64708
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -28177,7 +28198,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -912.579
     y: -171.01137
-    width: 120.31251
+    width: 128.82355
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -28727,7 +28748,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -661.1894
     y: -112.467896
-    width: 128.125
+    width: 137.05884
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -28963,7 +28984,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -742.85626
     y: -459.15143
-    width: 120
+    width: 125.294136
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -29044,7 +29065,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -524.9464
     y: -417.36057
-    width: 131.25
+    width: 140.58826
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -29216,7 +29237,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -371.2151
     y: -465.12158
-    width: 150.00002
+    width: 162.94121
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -29293,7 +29314,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -190.7796
     y: -415.37772
-    width: 123.43751
+    width: 131.17648
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -29322,7 +29343,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -190.7796
     y: -511.4302
-    width: 140.625
+    width: 148.82355
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -29574,7 +29595,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -21.042435
     y: -449.58804
-    width: 120
+    width: 126.470604
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -29587,7 +29608,6 @@ MonoBehaviour:
   - {fileID: 2068932679}
   - {fileID: 2068932682}
   - {fileID: 2068932683}
-  - {fileID: 2068932776}
   - {fileID: 2068932684}
 --- !u!114 &2068932692
 MonoBehaviour:
@@ -31194,19 +31214,6 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 1
   targetGameObjectOLD: {fileID: 0}
---- !u!114 &2068932774
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2068932534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 2068932775}
-  waitForFrames: 1
 --- !u!114 &2068932775
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -31229,36 +31236,9 @@ MonoBehaviour:
   itemId: 256
   blockName: First Start
   description: 
-  eventHandler: {fileID: 2068932774}
+  eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932686}
---- !u!114 &2068932776
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2068932534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb77d0ce495044f6e9feb91b31798e8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 258
-  indentLevel: 1
-  variable: {fileID: 1657403389}
-  setOperator: 0
-  booleanData:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
-  integerData:
-    integerRef: {fileID: 0}
-    integerVal: 1
-  floatData:
-    floatRef: {fileID: 0}
-    floatVal: 0
-  stringData:
-    stringRef: {fileID: 0}
-    stringVal: 
 --- !u!114 &2068932777
 MonoBehaviour:
   m_ObjectHideFlags: 2
