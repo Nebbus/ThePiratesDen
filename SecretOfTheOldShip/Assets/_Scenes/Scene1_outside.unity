@@ -1698,7 +1698,7 @@ Prefab:
     - target: {fileID: 114943759465183268, guid: 37476896a9d97714a80f05c21d97751e,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4381750055651594, guid: 37476896a9d97714a80f05c21d97751e, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1782,7 +1782,7 @@ Prefab:
         type: 2}
       propertyPath: reactions.Array.data[2]
       value: 
-      objectReference: {fileID: 2106459218}
+      objectReference: {fileID: 1673962059}
     - target: {fileID: 1814851469085870, guid: 37476896a9d97714a80f05c21d97751e, type: 2}
       propertyPath: m_Icon
       value: 
@@ -2078,30 +2078,6 @@ MonoBehaviour:
   hash: -829145576
   requierdHoldingItem: {fileID: 11400000, guid: 79cbbc68bb3aa8348878047467fe4602,
     type: 2}
---- !u!21 &438782243
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!114 &444368607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2668,37 +2644,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 556708753}
   m_Mesh: {fileID: 4300008, guid: 0a4f3ae23e72cb641b37adac6190838c, type: 3}
---- !u!84 &560357048
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 271
-  m_Height: 576
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!114 &563789749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3741,6 +3686,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1717565217}
+--- !u!1 &833851738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 833851739}
+  - component: {fileID: 833851740}
+  m_Layer: 0
+  m_Name: Caw_3D Emitter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &833851739
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 833851738}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8507774, y: 3.3627534, z: -0.23120928}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1185707583}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &833851740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 833851738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Characters/NPC_3_1/Caw_3D
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 2.71
+  OverrideMaxDistance: 7.5
 --- !u!1 &837996123
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,7 +4091,6 @@ MonoBehaviour:
   - {fileID: 551611435}
   - {fileID: 1439725633}
   - {fileID: 583658022}
-  - {fileID: 2135972439}
 --- !u!1 &879017410
 GameObject:
   m_ObjectHideFlags: 0
@@ -4726,7 +4721,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 438782243}
+  _compositeMat: {fileID: 1979006907}
 --- !u!92 &1017722109
 Behaviour:
   m_ObjectHideFlags: 0
@@ -5041,7 +5036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1986074157}
+  selectedFlowchart: {fileID: 1986073571}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -5612,6 +5607,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a1a51e4ba3864893b5f28ec1e8620df, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1185707583 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4809002007389836, guid: 1a1a51e4ba3864893b5f28ec1e8620df,
+    type: 2}
+  m_PrefabInternal: {fileID: 1185707582}
 --- !u!1 &1189165211
 GameObject:
   m_ObjectHideFlags: 0
@@ -6662,20 +6662,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a03624331a9496c4c89e84a3ca962618, type: 3}
   m_IsPrefabParent: 0
---- !u!114 &1340946827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
-  theSorceOftheOneShot: {fileID: 0}
 --- !u!4 &1349785343
 Transform:
   m_ObjectHideFlags: 0
@@ -7953,7 +7939,7 @@ Prefab:
     - target: {fileID: 114881651665052786, guid: 85f61fad86efe464ab7b2b9564b1cb2b,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4367856838383072, guid: 85f61fad86efe464ab7b2b9564b1cb2b, type: 2}
       propertyPath: m_LocalPosition.x
@@ -8055,7 +8041,7 @@ Prefab:
         type: 2}
       propertyPath: reactions.Array.data[2]
       value: 
-      objectReference: {fileID: 1340946827}
+      objectReference: {fileID: 1311135546}
     - target: {fileID: 114881651665052786, guid: 85f61fad86efe464ab7b2b9564b1cb2b,
         type: 2}
       propertyPath: reactions.Array.data[3]
@@ -8471,6 +8457,37 @@ Transform:
   m_Father: {fileID: 1367910369}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 265, z: 0}
+--- !u!84 &1631369691
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 437
+  m_Height: 358
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!4 &1656721417 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4532370593693718, guid: 066cdbb8f2476814e97ab9392ff7e279,
@@ -9553,6 +9570,7 @@ GameObject:
   - component: {fileID: 1843033803}
   - component: {fileID: 1843033807}
   - component: {fileID: 1843033804}
+  - component: {fileID: 1843033805}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -9585,6 +9603,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   antiAilising: 2
+--- !u!114 &1843033805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1843033802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 2
 --- !u!20 &1843033807
 Camera:
   m_ObjectHideFlags: 0
@@ -9611,7 +9641,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 560357048}
+  m_TargetTexture: {fileID: 1631369691}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -10414,6 +10444,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!21 &1979006907
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!114 &1986073567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10427,11 +10481,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -364.6588, y: 205.22}
+  scrollPos: {x: -531.6963, y: 95.50052}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 370
-  zoom: 0.6700002
+  zoom: 0.90999997
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -10439,9 +10493,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986073577}
+  - {fileID: 1986074131}
   selectedCommands:
-  - {fileID: 1986074278}
+  - {fileID: 1986074279}
   variables: []
   description: 
   stepPause: 0
@@ -10556,11 +10610,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 0, y: 0}
+  scrollPos: {x: 236.44762, y: 49.51761}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.97
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -10568,7 +10622,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986073640}
+  - {fileID: 1986073636}
   selectedCommands: []
   variables: []
   description: 
@@ -10620,6 +10674,15 @@ GameObject:
   - component: {fileID: 1986074046}
   - component: {fileID: 1986074047}
   - component: {fileID: 1986074048}
+  - component: {fileID: 1986074285}
+  - component: {fileID: 1986074284}
+  - component: {fileID: 1986074283}
+  - component: {fileID: 1986074282}
+  - component: {fileID: 1986074281}
+  - component: {fileID: 1986074280}
+  - component: {fileID: 1986074288}
+  - component: {fileID: 1986074286}
+  - component: {fileID: 1986074287}
   m_Layer: 0
   m_Name: INT_MiscFlowchart
   m_TagString: Untagged
@@ -12530,6 +12593,7 @@ GameObject:
   - component: {fileID: 1986074277}
   - component: {fileID: 1986074274}
   - component: {fileID: 1986074278}
+  - component: {fileID: 1986074279}
   m_Layer: 0
   m_Name: INT_DoorFlowchart
   m_TagString: Untagged
@@ -12608,6 +12672,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986073631}
+  - {fileID: 1986074288}
 --- !u!114 &1986073633
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -12710,6 +12775,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986073635}
+  - {fileID: 1986074286}
   - {fileID: 1986073756}
 --- !u!114 &1986073637
 MonoBehaviour:
@@ -12830,6 +12896,7 @@ MonoBehaviour:
   - {fileID: 1986073734}
   - {fileID: 1986073732}
   - {fileID: 1986073733}
+  - {fileID: 1986074285}
   - {fileID: 1986073720}
   - {fileID: 1986073637}
   - {fileID: 1986073736}
@@ -12911,6 +12978,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986073642}
+  - {fileID: 1986074280}
   - {fileID: 1986073729}
 --- !u!114 &1986073644
 MonoBehaviour:
@@ -18496,6 +18564,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 1986074287}
   - {fileID: 1986073865}
 --- !u!114 &1986073867
 MonoBehaviour:
@@ -22859,7 +22928,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 303.683
     y: 188.9269
-    width: 131
+    width: 133.50516
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -24837,7 +24906,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 871.49963
     y: 108.063835
-    width: 129.10446
+    width: 144.5055
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -24966,7 +25035,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 869.64813
     y: 45.340725
-    width: 124.62685
+    width: 140.1099
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -24975,6 +25044,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 1986074279}
   - {fileID: 1986073724}
 --- !u!114 &1986074132
 MonoBehaviour:
@@ -25224,7 +25294,7 @@ MonoBehaviour:
   - {fileID: 1986073701}
 --- !u!114 &1986074142
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 114319809988752244, guid: 38c022276c5b34d43905d354c478c041,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -25252,7 +25322,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1986074143
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 114251649637854956, guid: 38c022276c5b34d43905d354c478c041,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -25276,10 +25346,11 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986074142}
+  - {fileID: 1986074282}
   - {fileID: 1986073730}
 --- !u!114 &1986074144
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 114595038721055656, guid: 38c022276c5b34d43905d354c478c041,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -25306,7 +25377,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1986074145
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 114541240397828808, guid: 38c022276c5b34d43905d354c478c041,
     type: 2}
   m_PrefabInternal: {fileID: 0}
@@ -25330,6 +25401,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986074144}
+  - {fileID: 1986074281}
   - {fileID: 1986073731}
 --- !u!4 &1986074146
 Transform:
@@ -28680,7 +28752,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &1986074278
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073629}
@@ -28722,6 +28794,157 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+--- !u!114 &1986074279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 435
+  indentLevel: 0
+  pathToFMODSound: event:/Objects/2D/Door/Door_Open
+--- !u!114 &1986074280
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 37
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
+--- !u!114 &1986074281
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 36
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
+--- !u!114 &1986074282
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 35
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
+--- !u!114 &1986074283
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 34
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
+--- !u!114 &1986074284
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 571
+    y: 191
+    width: 120
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 33
+  blockName: PickUp_Lid
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 1986074283}
+--- !u!114 &1986074285
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 32
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
+--- !u!114 &1986074286
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 39
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
+--- !u!114 &1986074287
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 40
+  indentLevel: 0
+  pathToFMODSound: event:/Objects/2D/Door/Door_Break
+--- !u!114 &1986074288
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 38
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
 --- !u!114 &1989247714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29845,20 +30068,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4405353393055766, guid: 9e58b534bac5c724d92f8355caff617f,
     type: 2}
   m_PrefabInternal: {fileID: 2084750759}
---- !u!114 &2106459218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
-  theSorceOftheOneShot: {fileID: 0}
 --- !u!4 &2113103869 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4601984419677436, guid: 0c7c029af6d3f9140b9f01ce33f39d0d,
@@ -30121,20 +30330,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1957021185}
---- !u!114 &2135972439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  onShotEvent: event:/Characters/Player/Player_Interact/Player_PickUp
-  theSorceOftheOneShot: {fileID: 0}
 --- !u!1 &2139170670 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1051363560150066, guid: ea40f4e697a8f4bbd958dc4d4dc2856f,
