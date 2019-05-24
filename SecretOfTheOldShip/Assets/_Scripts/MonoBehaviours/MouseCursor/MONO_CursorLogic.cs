@@ -28,9 +28,11 @@ public class MONO_CursorLogic : MonoBehaviour
     //===========================================================================
     // Raycaster stuff
     //===========================================================================
-    public GraphicRaycaster presistentCanvansPraycaster;
-    public PhysicsRaycaster mainCameraGraycaster;
-    private EventSystem presistentSeneEventSystem;
+    public  GraphicRaycaster presistentCanvansPraycaster;
+    public  PhysicsRaycaster mainCameraGraycaster;
+    private EventSystem      presistentSeneEventSystem;
+    private MONO_SceneManager monoSceneManager;
+
 
     private List<RaycastResult> resultsG;
     private List<RaycastResult> resultsP;
@@ -132,6 +134,7 @@ public class MONO_CursorLogic : MonoBehaviour
         presistentCanvansPraycaster = FindObjectOfType<GraphicRaycaster>();
         mainCameraGraycaster        = FindObjectOfType<PhysicsRaycaster>();
         presistentSeneEventSystem   = FindObjectOfType<EventSystem>();
+        monoSceneManager            = FindObjectOfType<MONO_SceneManager>();
     }
 
 
@@ -147,8 +150,11 @@ public class MONO_CursorLogic : MonoBehaviour
             debugAllG();
             debugAllP();
         }
-        if (debugAll)
+        if (monoSceneManager.getSetHandleInput)
+        {
             handleResult();
+        }
+      
     }
 
 
