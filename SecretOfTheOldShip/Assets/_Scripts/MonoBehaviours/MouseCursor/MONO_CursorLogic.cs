@@ -147,8 +147,8 @@ public class MONO_CursorLogic : MonoBehaviour
             debugAllG();
             debugAllP();
         }
-
-        handleResult();
+        if (debugAll)
+            handleResult();
     }
 
 

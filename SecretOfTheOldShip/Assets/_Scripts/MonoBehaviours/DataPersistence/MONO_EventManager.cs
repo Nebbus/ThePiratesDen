@@ -28,7 +28,10 @@ public class MONO_EventManager : MonoBehaviour
     public const string onGroundEvnetManager_NAME               = "moveGround";
     public const string onHiglightAllInteractablesInScene_NAME  = "onHigligtAll";
     public const string offHiglightAllInteractablesInScene_NAME = "offHigligtAll";
-    public const string setInputHandling_NAME                    = "setInputHandling";
+    public const string setInputHandling_NAME                   = "setInputHandling";
+    public const string sceneStartSetup_NAME                    = "sceneStartSetup";
+
+
 
 
     /// <summary>

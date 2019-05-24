@@ -12,7 +12,7 @@ using System;
 public class MONO_GlowObject_higlightAll : MonoBehaviour {
    
     //EVENTS
-    private Action<MONO_EventManager.EventParam> onHigligtAll;
+    public Action<MONO_EventManager.EventParam> onHigligtAll;
     private Action<MONO_EventManager.EventParam> offHigligtAll;
 
     private MONO_GlowObject higligthScript;

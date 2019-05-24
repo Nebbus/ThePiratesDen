@@ -92,10 +92,7 @@ public class MONO_SceneManager : MonoBehaviour {
     /// <param name="sceneName">Sets if the start position shuld be set.</param>
     public void ChangeScene(string sceneName, bool setStartPos, bool handelUnputAfterFade)
 	{
-     
-
         StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelUnputAfterFade));
-
     }
 
 	/// <summary>
@@ -107,9 +104,6 @@ public class MONO_SceneManager : MonoBehaviour {
 		yield return SceneManager.LoadSceneAsync (sceneName, LoadSceneMode.Additive);
 		Scene scene = SceneManager.GetSceneAt (SceneManager.sceneCount - 1);
 		SceneManager.SetActiveScene (scene);
-        
-
-
     }
 
 	/// <summary>
@@ -137,6 +131,7 @@ public class MONO_SceneManager : MonoBehaviour {
         loadCamera.gameObject.SetActive(true);// TEMP CAMERA=================================================================================================================
         yield return StartCoroutine(LoadAndSetScene(sceneName));
         loadCamera.gameObject.SetActive(false); // TEMP CAMERA=================================================================================================================
+
         if (setStartPos)
         {
             SetPlayerStartPosition();
@@ -144,10 +139,15 @@ public class MONO_SceneManager : MonoBehaviour {
         }
         //anropa FMOD
 
+        // runs the start upp in the new scene
+        MONO_EventManager.EventParam paramFiller = new MONO_EventManager.EventParam();
+        MONO_EventManager.TriggerEvent(MONO_EventManager.sceneStartSetup_NAME, paramFiller);
+
         //fade in and enable input.
         fade.Fade (0f);
 		yield return new WaitForSeconds (fade.fadeDuration);
-      
+
+    
 
         handleInput = handelUnputAfterFade;
 	}
