@@ -28,9 +28,11 @@ public class MONO_CursorLogic : MonoBehaviour
     //===========================================================================
     // Raycaster stuff
     //===========================================================================
-    public GraphicRaycaster presistentCanvansPraycaster;
-    public PhysicsRaycaster mainCameraGraycaster;
-    private EventSystem presistentSeneEventSystem;
+    public  GraphicRaycaster presistentCanvansPraycaster;
+    public  PhysicsRaycaster mainCameraGraycaster;
+    private EventSystem      presistentSeneEventSystem;
+    private MONO_SceneManager monoSceneManager;
+
 
     private List<RaycastResult> resultsG;
     private List<RaycastResult> resultsP;
@@ -132,6 +134,7 @@ public class MONO_CursorLogic : MonoBehaviour
         presistentCanvansPraycaster = FindObjectOfType<GraphicRaycaster>();
         mainCameraGraycaster        = FindObjectOfType<PhysicsRaycaster>();
         presistentSeneEventSystem   = FindObjectOfType<EventSystem>();
+        monoSceneManager            = FindObjectOfType<MONO_SceneManager>();
     }
 
 
@@ -149,6 +152,7 @@ public class MONO_CursorLogic : MonoBehaviour
         }
 
         handleResult();
+      
     }
 
 
@@ -235,7 +239,7 @@ public class MONO_CursorLogic : MonoBehaviour
             currentInteractableTarget   = currentHoverOver.GetComponentInParent<MONO_InteractionBase>();
             currentButtonTarger         = currentHoverOver.GetComponentInParent<Button>();
 
-            if (currentInteractableTarget)
+            if (currentInteractableTarget && monoSceneManager.getSetHandleInput)
             {
                 overCurentObject = currentHoverOver.name;
                 HandleSimpleInteract();
@@ -252,7 +256,14 @@ public class MONO_CursorLogic : MonoBehaviour
             return;// Only considerts the first hit
         }
 
-
+        /* dot read inputs (exept buttons to make pause
+         * pause button work, as well as fungus
+         * menu dialog
+         */ 
+        if (!monoSceneManager.getSetHandleInput)
+        {
+            return;
+        }
     
 
 

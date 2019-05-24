@@ -135,34 +135,23 @@ public abstract class EDI_ConditionAdvanced : Editor
     /// </summary>
     private void AllConditionsAssetGUI()
     {
-        EditorGUILayout.BeginHorizontal(GUI.skin.box);
-        EditorGUI.indentLevel++;
+        EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUI.indentLevel++;
 
-        EditorGUILayout.BeginVertical();
-         // Display the description of the Condition.
-         EditorGUILayout.LabelField("Name: " + condition.description);
+            EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(condition.description);
+                DrawConditionAllConditionsAssetGUI();
+                // Display a button showing a '-' that if clicked removes this Condition from the AllConditions asset.
+                if (GUILayout.Button("-", GUILayout.Width(conditionButtonWidth)))
+                {
+                    EDI_AllConditions.RemoveCondition(condition);
+                }
 
-         // Display the Condition type.
-         EditorGUILayout.LabelField("Type: " + condition.GetType().ToString());
-
-        // Display the hash.
-        EditorGUILayout.LabelField("Hash: " + condition.hash.ToString());
-
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space();
+            DebugThis();
+            EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
-
-        DrawConditionAllConditionsAssetGUI();
-
-        // Display a button showing a '-' that if clicked removes this Condition from the AllConditions asset.
-        if (GUILayout.Button("-", GUILayout.Width(conditionButtonWidth)))
-        {
-          
-            
-                EDI_AllConditions.RemoveCondition(condition);
-       
-        }
-
-        EditorGUI.indentLevel--;
-        EditorGUILayout.EndHorizontal();
     }
 
     /// <summary>

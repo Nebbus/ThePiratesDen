@@ -58,7 +58,7 @@ public class MONO_LevelMusicManager : MonoBehaviour {
         for (int j = 0; j < ambientParams.Length; j++)
         {
 
-            MusicTarget.SetParameter(ambientParams[j].Name, ambientParams[j].Value);
+            AmbienceTarget.SetParameter(ambientParams[j].Name, ambientParams[j].Value);
         }
     }
 
@@ -72,12 +72,12 @@ public class MONO_LevelMusicManager : MonoBehaviour {
         if (start)
         {
             MusicTarget.Play();
-           // AmbienceTarget.Play();
+            AmbienceTarget.Play();
         }
         else
         {
             MusicTarget.Stop();
-           // AmbienceTarget.Stop();
+            AmbienceTarget.Stop();
         }
        
     }

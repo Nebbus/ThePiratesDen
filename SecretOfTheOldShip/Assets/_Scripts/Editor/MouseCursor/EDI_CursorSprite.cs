@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 [CustomEditor(typeof(MONO_CursorSprite))]
-public class EDI_test :  Editor{
+public class EDI_CursorSprite :  Editor{
 
     private bool[] showItemSlosts = new bool[MONO_CursorSprite.numberOfCursorMods];
     private int[] selectedTags    = new int[MONO_CursorSprite.numberOfCursorMods];

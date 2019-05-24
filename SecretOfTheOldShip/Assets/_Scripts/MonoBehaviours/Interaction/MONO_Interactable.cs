@@ -23,8 +23,6 @@ public class MONO_Interactable : MONO_InteractionBase
     // If none of the SOBJ_ConditionCollection are reacted to this one is used.
     public MONO_ReactionCollection defaultReactionCollection;
 
-    public SOBJ_ConditionCollection[] onHoverEnterdconditionCollections = new SOBJ_ConditionCollection[0];
-
     private MONO_GlowObject glowObjectComponent;
     private MONO_GlowObject getGlowObjectComponent
     {

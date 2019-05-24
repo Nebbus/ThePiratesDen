@@ -8,8 +8,8 @@ public class MONO_Menus : MonoBehaviour {
 
 	[HideInInspector]
 	public bool menuOpen = true;
-    public GameObject menuButton;
-    public GameObject hintButton;
+    //public GameObject menuButton;
+    //public GameObject hintButton;
     public MONO_SceneManager sceneManager;
 	[HideInInspector]
 	public MONO_IntroManager introManager;
@@ -34,8 +34,8 @@ public class MONO_Menus : MonoBehaviour {
 	private GameObject pauseMenu;
 	[SerializeField]
 	private GameObject settingsMenu;
-	[SerializeField]
-	private GameObject inventory;
+	//[SerializeField]
+	//private GameObject inventory;
 	private MONO_Fade fader;
 	//private MONO_Wait waitManager;
 
@@ -69,7 +69,7 @@ public class MONO_Menus : MonoBehaviour {
 
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
-		inventory.SetActive (true);
+		//inventory.SetActive (true);
 	}
 		
 	public void LoadLatestGame()
@@ -129,9 +129,6 @@ public class MONO_Menus : MonoBehaviour {
 	public void OpenMenu()
 	{
         menuOpen = true;
-		menuButton.SetActive (false);
-        hintButton.SetActive(false);
-
 
         switch (latestMenu) {
 		case menu.main:
@@ -155,8 +152,7 @@ public class MONO_Menus : MonoBehaviour {
     public void CloseMenu()
     {
         menuOpen = false;
-        menuButton.SetActive(true);
-        hintButton.SetActive(true);
+
     }
 
 
