@@ -133,8 +133,16 @@ public class MONO_EventManager : MonoBehaviour
 
         if(instance.eventDictionary.TryGetValue(eventName, out thisEvent))
         {
-            Debug.Log((thisEvent == null) ? "null" : thisEvent.ToString());
-            thisEvent.Invoke(eventParam);
+            
+            if((thisEvent != null))
+            {
+                thisEvent.Invoke(eventParam);
+            }
+            else
+            {
+                Debug.Log((thisEvent == null) ? "null: " + eventName + " dosent exist" : thisEvent.ToString());
+            }
+
         }
     }
 

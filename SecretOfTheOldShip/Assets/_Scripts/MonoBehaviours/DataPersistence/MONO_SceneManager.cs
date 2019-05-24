@@ -125,9 +125,10 @@ public class MONO_SceneManager : MonoBehaviour {
 		handleInput = false;
 		fade.Fade(1f);
 		yield return new WaitForSeconds (fade.fadeDuration);
+        saveLoad.Save(true);
 
-		//Unload old scene and load the new one.
-		StartCoroutine(UnloadAndUnsetScene());
+        //Unload old scene and load the new one.
+        StartCoroutine(UnloadAndUnsetScene());
         loadCamera.gameObject.SetActive(true);// TEMP CAMERA=================================================================================================================
         yield return StartCoroutine(LoadAndSetScene(sceneName));
         loadCamera.gameObject.SetActive(false); // TEMP CAMERA=================================================================================================================
@@ -140,6 +141,7 @@ public class MONO_SceneManager : MonoBehaviour {
         //anropa FMOD
 
         // runs the start upp in the new scene
+        saveLoad.handLoad(true);
         MONO_EventManager.EventParam paramFiller = new MONO_EventManager.EventParam();
         MONO_EventManager.TriggerEvent(MONO_EventManager.sceneStartSetup_NAME, paramFiller);
 

@@ -34,8 +34,8 @@ public class MONO_Menus : MonoBehaviour {
 	private GameObject pauseMenu;
 	[SerializeField]
 	private GameObject settingsMenu;
-	[SerializeField]
-	private GameObject inventory;
+	//[SerializeField]
+	//private GameObject inventory;
 	private MONO_Fade fader;
 	//private MONO_Wait waitManager;
 
@@ -69,7 +69,7 @@ public class MONO_Menus : MonoBehaviour {
 
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
-		inventory.SetActive (true);
+		//inventory.SetActive (true);
 	}
 		
 	public void LoadLatestGame()

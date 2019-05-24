@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class MONO_SaveAndLoad : MonoBehaviour
 {
-
     public enum fungusVariableData { STRING, INT, BOOL, FLOAT };
 
     public string filename = "/SecretOfTheOldShip.dat";
@@ -21,14 +20,19 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
     [SerializeField]
     private SaveData data = null;
-
+    
 
     //Only used to Keep track of saved flowcharts;
     // string: name of flowchart, int: index in data varaialbe
     [SerializeField]
     Dictionary<String, int> hasBenSaved = new Dictionary<string, int>();
 
- 
+    public void Start()
+    {
+        loadData();
+        UppdateSavedReckord();
+    }
+
     /// <summary>
     ///  Save 
     /// </summary>
@@ -146,7 +150,6 @@ public class MONO_SaveAndLoad : MonoBehaviour
     /// </summary>
     private void UppdateSavedReckord()
     {
-
         //uppdate the saved dictonary
         hasBenSaved.Clear();
         for (int i = 0; i < data.flowChartVariableData.Length; i++)
@@ -154,7 +157,21 @@ public class MONO_SaveAndLoad : MonoBehaviour
             hasBenSaved.Add(data.flowChartVariableData[i].flowChartName, i);
         }
     }
+    /// <summary>
+    /// Uppdates the dictionary that has tarack of
+    /// what flowchart that has ben saved
+    /// </summary>
+    public void UppdateSavedReckordEditor()
+    {
 
+        //uppdate the saved dictonary
+        loadData();
+        hasBenSaved.Clear();
+        for (int i = 0; i < data.flowChartVariableData.Length; i++)
+        {
+            hasBenSaved.Add(data.flowChartVariableData[i].flowChartName, i);
+        }
+    }
 
     //==========================================================================================
     // SAVE HELPER
@@ -224,10 +241,11 @@ public class MONO_SaveAndLoad : MonoBehaviour
             {
                 flowchartsFromCurrentScene.Add(variableFlowCharts[i].GetName(),i );
             }
-
+           
             List<int>              indexToCepFromOld = new List<int>();
             for (int i = 0; i < data.flowChartVariableData.Length; i++)
             {
+
                 int  indexInData;
                 string serceName = data.flowChartVariableData[i].flowChartName;
                 bool isNotInThisScene = !flowchartsFromCurrentScene.TryGetValue(serceName, out indexInData);
@@ -246,7 +264,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
             {
                 completeDataTosave.Add(data.flowChartVariableData[index]);
             }
-            foreach (Fungus.Flowchart flowchart in variableFlowCharts)
+        foreach (Fungus.Flowchart flowchart in variableFlowCharts)
             {
                 variableData variabledata = new variableData(flowchart);
                 completeDataTosave.Add(variabledata);
@@ -281,14 +299,22 @@ public class MONO_SaveAndLoad : MonoBehaviour
     }
 
  
-
+    /// <summary>
+    /// Contins the ovar information thant need
+    /// to be saved ( i.e like flowcharts and curent scene scene)
+    /// </summary>
     [System.Serializable]
     class SaveData
     {
         public variableData[] flowChartVariableData = new variableData[1];
-
-
     }
+    /// <summary>
+    /// Contains a list all the variables
+    /// (and the name) of flowchart, variable 
+    /// data can be instantiated from a nother
+    /// variable data (then it gets cept on
+    /// a save) and from a flowchart)
+    /// </summary>
     [System.Serializable]
     class variableData
     {
@@ -316,6 +342,13 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
 
     }
+    /// <summary>
+    /// Contains variable data from 
+    /// a single fungus variable, to 
+    /// save it must be broken donw
+    /// to base values like strings,
+    /// float, int and bool.
+    /// </summary>
     [System.Serializable]
     class valueData
     {

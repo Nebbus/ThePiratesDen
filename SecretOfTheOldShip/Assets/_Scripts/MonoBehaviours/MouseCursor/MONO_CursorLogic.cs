@@ -150,10 +150,8 @@ public class MONO_CursorLogic : MonoBehaviour
             debugAllG();
             debugAllP();
         }
-        if (monoSceneManager.getSetHandleInput)
-        {
-            handleResult();
-        }
+
+        handleResult();
       
     }
 
@@ -241,7 +239,7 @@ public class MONO_CursorLogic : MonoBehaviour
             currentInteractableTarget   = currentHoverOver.GetComponentInParent<MONO_InteractionBase>();
             currentButtonTarger         = currentHoverOver.GetComponentInParent<Button>();
 
-            if (currentInteractableTarget)
+            if (currentInteractableTarget && monoSceneManager.getSetHandleInput)
             {
                 overCurentObject = currentHoverOver.name;
                 HandleSimpleInteract();
@@ -258,7 +256,14 @@ public class MONO_CursorLogic : MonoBehaviour
             return;// Only considerts the first hit
         }
 
-
+        /* dot read inputs (exept buttons to make pause
+         * pause button work, as well as fungus
+         * menu dialog
+         */ 
+        if (!monoSceneManager.getSetHandleInput)
+        {
+            return;
+        }
     
 
 
