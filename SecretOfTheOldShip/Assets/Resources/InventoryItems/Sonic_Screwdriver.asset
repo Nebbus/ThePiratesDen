@@ -9,16 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a4f44f203eba9d41ac90a96c2127f6f, type: 3}
-  m_Name: Matches
+  m_Name: Sonic_Screwdriver
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 72901853b455d314ea53056d6c6ff75a, type: 3}
-  onHowerText: {fileID: 114166411521436422, guid: b0a39a61c361fbf43928f9fe9976bdca,
-    type: 2}
-  putDownSound: event:/Inventory/Matches_Place
+  sprite: {fileID: 21300000, guid: 654cb6b1b2631b24abdd0cdc988ad432, type: 3}
+  onHowerText: {fileID: 0}
+  putDownSound: event:/Inventory/Screwdriver_Place
   onClickConditionAndReactions:
-  - {fileID: 114305496123799806}
+  - {fileID: 114380472721869614}
   onHoverConditionAndReactions: []
---- !u!114 &114055240085516706
+--- !u!114 &114209048961427772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -34,7 +33,7 @@ MonoBehaviour:
   hash: -829145576
   requierdHoldingItem: {fileID: 11400000, guid: a936a94886a01724c823998d7c651173,
     type: 2}
---- !u!114 &114305496123799806
+--- !u!114 &114380472721869614
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -45,13 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa7adc5bce4baf40b7265136d75a339, type: 3}
   m_Name: ItemInteraction0
   m_EditorClassIdentifier: 
-  description: PickUp_Matches
+  description: Pickup Screwdriver
   requiredConditions:
-  - {fileID: 114055240085516706}
+  - {fileID: 114209048961427772}
   itemInteractionReactions:
-  - {fileID: 114381627088084482}
-  - {fileID: 114861868896519352}
---- !u!114 &114381627088084482
+  - {fileID: 114572534295486998}
+  - {fileID: 114821513613093724}
+--- !u!114 &114572534295486998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -63,9 +62,9 @@ MonoBehaviour:
   m_Name: SOBJ_AudioOneShot_FMOD
   m_EditorClassIdentifier: 
   delay: 0
-  onShotEvent: event:/Inventory/Matches_PickUp
+  onShotEvent: event:/Inventory/Screwdriver_PickUp
   theSorceOftheOneShot: {fileID: 0}
---- !u!114 &114861868896519352
+--- !u!114 &114821513613093724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}

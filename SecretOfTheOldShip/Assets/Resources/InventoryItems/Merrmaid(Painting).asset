@@ -18,6 +18,22 @@ MonoBehaviour:
   onClickConditionAndReactions:
   - {fileID: 114801603772997876}
   onHoverConditionAndReactions: []
+--- !u!114 &114223276718992460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8540ebb75ad86fa4fa8c41fc7630dade, type: 3}
+  m_Name: SOBJ_MouseHoldingItemCondition
+  m_EditorClassIdentifier: 
+  description: GameStarted
+  satisfied: 1
+  hash: 2041670362
+  requierdHoldingItem: {fileID: 11400000, guid: a936a94886a01724c823998d7c651173,
+    type: 2}
 --- !u!114 &114419424210750904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,6 +48,18 @@ MonoBehaviour:
   delay: 0
   onShotEvent: event:/Inventory/Picture_PickUp
   theSorceOftheOneShot: {fileID: 0}
+--- !u!114 &114741505163295626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c479e1ed7f8b945b767b748c326f37, type: 3}
+  m_Name: SOBJ_InventoryGrabItemToMouseReaction
+  m_EditorClassIdentifier: 
+  itemToGrab: {fileID: 11400000}
 --- !u!114 &114801603772997876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,6 +72,8 @@ MonoBehaviour:
   m_Name: ItemInteraction0
   m_EditorClassIdentifier: 
   description: PickUp_Foto
-  requiredConditions: []
+  requiredConditions:
+  - {fileID: 114223276718992460}
   itemInteractionReactions:
   - {fileID: 114419424210750904}
+  - {fileID: 114741505163295626}

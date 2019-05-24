@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
@@ -18,6 +19,10 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
     private RectTransform   CustomCursorTransform;
     private MONO_Menus      Menus;
+
+	//private GameObject[] objects;
+	//private MONO_InteractionBase currentInteractableTarget;
+	//public action currentAction = action.HOVER;
 
 
   
@@ -73,5 +78,38 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
             CustomCursorTransform.anchoredPosition = new Vector2(xTemp, yTemp);
 
     }
+
+//	private void ToggleObjects()
+//	{
+//		GameObject.Find ("Interactable");
+//	}
+//
+//	private bool HandleInteractable()
+//	{
+//		MONO_Interactable interactable = currentInteractableTarget as MONO_Interactable;
+//
+//		if (interactable)
+//		{
+//			if (currentAction == action.CLICK)
+//			{
+//				MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+//				param.param6                       = currentInteractableTarget;
+//				MONO_EventManager.TriggerEvent(MONO_EventManager.onInteractableEvnetManager_NAME, param);
+//			}
+//
+//			return true;
+//		}
+//		return false;
+//	}
+//
+//	private void HandleSimpleInteract()
+//	{
+//		if (currentAction == action.CLICK)
+//		{
+//			currentInteractableTarget.OnClick();
+//		}
+//
+//
+//	}
 
 }

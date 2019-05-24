@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4527274218347808}
   - component: {fileID: 114987432491598988}
   - component: {fileID: 114047309332269902}
+  - component: {fileID: 114063639842121248}
   m_Layer: 0
   m_Name: SeaShellDescription
   m_TagString: Untagged
@@ -43,7 +44,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114047309332269902
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1524457406752960}
@@ -64,7 +65,36 @@ MonoBehaviour:
   blockName: Description
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 114063639842121248}
+--- !u!114 &114063639842121248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524457406752960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1
+  indentLevel: 0
+  storyText: If you put it up to your ear, you can hear the sound of the sea. When
+    I think about it, you can hear the sound even when you don't hold it up to your
+    ear. That's probably because I'm at the sea.
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!114 &114987432491598988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,8 +118,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 114047309332269902}
+  selectedCommands:
+  - {fileID: 114063639842121248}
   variables: []
   description: 
   stepPause: 0

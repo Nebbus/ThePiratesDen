@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4254854261979020}
   - component: {fileID: 114128182558568188}
   - component: {fileID: 114941385916294592}
+  - component: {fileID: 114685553229587354}
   m_Layer: 0
   m_Name: Thin(cover)Description
   m_TagString: Untagged
@@ -66,7 +67,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 114941385916294592}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 114685553229587354}
   variables: []
   description: 
   stepPause: 0
@@ -78,9 +80,36 @@ MonoBehaviour:
   hideCommands: []
   luaEnvironment: {fileID: 0}
   luaBindingName: flowchart
---- !u!114 &114941385916294592
+--- !u!114 &114685553229587354
 MonoBehaviour:
   m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418232515392414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1
+  indentLevel: 0
+  storyText: Why did I take the bottom? Doesn't it look the same as the top? Am I
+    sure this isn't the top of a barrel?
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &114941385916294592
+MonoBehaviour:
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1418232515392414}
@@ -101,4 +130,5 @@ MonoBehaviour:
   blockName: Description
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 114685553229587354}
