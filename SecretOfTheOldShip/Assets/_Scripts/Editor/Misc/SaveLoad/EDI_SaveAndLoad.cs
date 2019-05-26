@@ -22,7 +22,7 @@ public class EDI_SaveAndLoad : Editor {
        
         if (EditorGUILayout.Toggle(restSace))
         {
-            monoSaveLoad.Save(false);
+            monoSaveLoad.handleSave(false);
         }
         base.OnInspectorGUI();
     }

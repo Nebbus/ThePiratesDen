@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MONO_SaveAndLoad : MonoBehaviour
 {
@@ -15,39 +16,62 @@ public class MONO_SaveAndLoad : MonoBehaviour
              " act 1 (outsie is named VariableFlowchartAct1). this is to make it" +
              " esayer to lokate them then saving ")]
     public string baseNameOfVariableCharts = "VariableFlowchartAct";
-    public int lastLevel;
+
+    [Space]
+    public MONO_Inventory monoInventory = null;
 
 
     [SerializeField]
     private SaveData data = null;
+
+    public SaveData GetData
+    {
+        get
+        {
+            if(data == null && loadData())
+            {
+                return data;
+            }
+            return (data == null) ? new SaveData() : data;
+        }
+    }
     
+    [Space]
+    [SerializeField]
+    private SaveData dataToSave = null;
+
+    public SaveData GetdataToSave
+    {
+        get
+        {
+          
+            return (dataToSave == null) ? new SaveData() : dataToSave;
+        }
+        set
+        {
+            dataToSave = value;
+        }
+    }
+
+
+
 
     //Only used to Keep track of saved flowcharts;
     // string: name of flowchart, int: index in data varaialbe
     [SerializeField]
     Dictionary<String, int> hasBenSaved = new Dictionary<string, int>();
 
-    public void Start()
-    {
-        loadData();
-        UppdateSavedReckord();
-    }
-
     /// <summary>
     ///  Save 
     /// </summary>
     /// <param name="loadAllredySavedData"> TRUE: loads allready saved data and combinds whit new saved data to prevent lost of data ( normal save)
     ///                                     FALSE: Writes over old data ( then startin a new game )</param>
-    public void Save(bool loadAllredySavedData)
+    public void handleSave(bool loadAllredySavedData)
     {
 
-        /*Creats data variabel to be saved
-         *Gets savaed data if wated 
-         */
-        SaveData dataToSave = new SaveData();
+        GetdataToSave = new SaveData();
 
-        Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
-       
+        Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];     
         Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
 
         if (loadAllredySavedData && loadData())
@@ -62,39 +86,124 @@ public class MONO_SaveAndLoad : MonoBehaviour
                 variableData variabledata = new variableData(variabelChart);
                 completeDataTosave.Add(variabledata);
             }
-            dataToSave.flowChartVariableData = completeDataTosave.ToArray();
+            GetdataToSave.flowChartVariableData = completeDataTosave.ToArray();
         }
 
-     //===============================
-     // saves the data
-     //===============================
-        BinaryFormatter bf  = new BinaryFormatter();
-        FileStream file     = File.Open(Application.persistentDataPath + filename, FileMode.OpenOrCreate);
+        //spare down the inventory items;
+        GetdataToSave.itemsInInentory = DeconstructInventoryItem(monoInventory.invetoryItems);
 
-        bf.Serialize(file, dataToSave);
+        // gets the name the current scene, counts on presistent to be 0
+        GetdataToSave.currentScene = SceneManager.GetSceneAt(1).name;
+
+        //Save all condition variables
+        GetdataToSave.conditions.spareAllcondition();
+
+        /* save player postion stuff 
+         * ( only saves stuff if player 
+         * is in scene and is taged "Player")
+         */
+        GetdataToSave.playerPosData.savePlayerPosition();
+
+        //===============================
+        // saves the data
+        //===============================
+
+        Save();
+    }
+    /// <summary>
+    /// Same as noraml but set the name to the next scene ( to be used in the save fromt than changing scene)
+    /// </summary>
+    /// <param name="loadAllredySavedData"></param>
+    /// <param name="nextScene"></param>
+    public void handleSave(bool loadAllredySavedData,string nextScene)
+    {
+
+        /*Creats data variabel to be saved
+         *Gets savaed data if wated 
+         */
+        GetdataToSave = new SaveData();
+
+        Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
+
+        Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
+
+        if (loadAllredySavedData && loadData())
+        {
+            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
+        }
+        else
+        {
+            List<variableData> completeDataTosave = new List<variableData>();
+            foreach (Fungus.Flowchart variabelChart in variableFlowCharts)
+            {
+                variableData variabledata = new variableData(variabelChart);
+                completeDataTosave.Add(variabledata);
+            }
+            GetdataToSave.flowChartVariableData = completeDataTosave.ToArray();
+        }
+
+        //spare down the inventory items;
+        GetdataToSave.itemsInInentory    = DeconstructInventoryItem(monoInventory.invetoryItems);
+
+        //Save curent scene
+        dataToSave.currentScene       = nextScene;
+
+        //Save all condition variables
+        GetdataToSave.conditions.spareAllcondition();
+
+        /* the save position will be uppdatet
+         * from the scene manager after 
+         * the new scene has ben loaded,
+         * in the other version of this 
+         * funktion is the player position grabbed 
+         * directly from the player, this is becus it will ony
+         * be called from the level scenes (and from the 
+         * editor but it has if to avid errors*/
+
+        //===============================
+        // saves the data
+        //===============================
+        Save();
+
+    }
+
+
+
+
+    public void Save()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file    = File.Open(Application.persistentDataPath + filename, FileMode.OpenOrCreate);
+
+        bf.Serialize(file, GetdataToSave);
         file.Close();
-        data = dataToSave;
+        data = GetdataToSave;
         UppdateSavedReckord();
 
     }
-   
+
+
+
+  
+
     /// <summary>
-    /// Loads data from save file if it exsist
+    /// Loades data from the save file
     /// </summary>
-    /// <param name="applayLodedData"> TRUE: emidiet applays the loaded infomration 
-    ///                                FALSE: only loade the values</param>
-    public void handLoad(bool applayLodedData)
+    /// <returns>TRUE: it existed saved data and it was loaded
+    ///          FALSE: Dident exist anny saved data, nothing was loaded</returns>
+    private bool loadData()
     {
-
-        if (loadData())
+        if (File.Exists(Application.persistentDataPath + filename))
         {
-            UppdateSavedReckord();
-            if (applayLodedData)
-            {
-                UppdateFlowcharts();
-            }
 
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + filename, FileMode.Open);
+            data = (SaveData)bf.Deserialize(file);
+            file.Close();
+            return true;
         }
+
+        return false;
     }
 
 
@@ -229,8 +338,6 @@ public class MONO_SaveAndLoad : MonoBehaviour
     /// <returns> array of all flowcharts to save</returns>
     private variableData[] getAllVariableFlowchartToSave(Fungus.Flowchart[] variableFlowCharts)
     {   
-            
-
          //========================================================
          // Gets all flowcharts that arent in the new scene but 
          // that are in the saved data, to make sure that nothing 
@@ -274,39 +381,74 @@ public class MONO_SaveAndLoad : MonoBehaviour
         return completeDataTosave.ToArray();
     }
 
-    //==========================================================================================
-    // LOAD HELPER
-    //==========================================================================================
-
-    /// <summary>
-    /// Loades data from the save file
-    /// </summary>
-    /// <returns>TRUE: it existed saved data and it was loaded
-    ///          FALSE: Dident exist anny saved data, nothing was loaded</returns>
-    private bool loadData()
+    private string[] DeconstructInventoryItem(SOBJ_Item[] itemsInInventory)
     {
-        if (File.Exists(Application.persistentDataPath + filename))
+        // string[] names = new string[itemsInInventory.Length];
+        List<string> names = new List<string>();
+        for (int i = 0; i < itemsInInventory.Length; i++)
         {
-           
-            BinaryFormatter bf  = new BinaryFormatter();
-            FileStream file     = File.Open(Application.persistentDataPath + filename, FileMode.Open);
-            data                = (SaveData)bf.Deserialize(file);
-            file.Close();
-            return true;
+            // names[i] = itemsInInventory[i].name;
+            if(itemsInInventory[i] != null)
+            {
+                names.Add(itemsInInventory[i].getName);
+            }
         }
-
-        return false;
+        return names.ToArray();
+    }
+    public SOBJ_Item[] ReconstructInventoryItems(string[] names)
+    {
+        SOBJ_Item[] items = new SOBJ_Item[names.Length];
+        for (int i = 0; i < names.Length; i++)
+        {
+            items[i] = Resources.Load<SOBJ_Item>("InventoryItems/" + names[i]);
+        }
+        return items;
     }
 
- 
+
+//==========================================================================================
+// LOAD HELPER
+//==========================================================================================
+
+    /// <summary>
+    /// Loads data from save file if it exsist
+    /// </summary>
+    /// <param name="applayLodedData"> TRUE: emidiet applays the loaded infomration 
+    ///                                FALSE: only loade the values</param>
+    public void handLoad(bool applayLodedData)
+    {
+
+        if (loadData())
+        {
+            UppdateSavedReckord();
+            if (applayLodedData)
+            {
+                UppdateFlowcharts();
+            }
+
+        }
+    }
+
+
+
     /// <summary>
     /// Contins the ovar information thant need
     /// to be saved ( i.e like flowcharts and curent scene scene)
     /// </summary>
     [System.Serializable]
-    class SaveData
+    public class SaveData
     {
-        public variableData[] flowChartVariableData = new variableData[1];
+        public string currentScene = "";
+        public string[] itemsInInentory          = new string[0];
+        public variableData[] flowChartVariableData = new variableData[0];
+
+        public PlayerPositionData playerPosData = new PlayerPositionData();
+
+        public AllCondition_ConditiondsValues conditions = new AllCondition_ConditiondsValues();
+
+
+
+
     }
     /// <summary>
     /// Contains a list all the variables
@@ -316,7 +458,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
     /// a save) and from a flowchart)
     /// </summary>
     [System.Serializable]
-    class variableData
+    public class variableData
     {
         public string flowChartName;
 
@@ -350,7 +492,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
     /// float, int and bool.
     /// </summary>
     [System.Serializable]
-    class valueData
+    public class valueData
     {
         public fungusVariableData variableType;
         public string valueKey;
@@ -472,4 +614,126 @@ public class MONO_SaveAndLoad : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// Apperantly so will scriptable object not
+    /// presist betwene plays then the game is
+    /// builded, so we must manula save all the bool
+    /// variabels. this contains a list of hashs and
+    /// a list of bools
+    /// </summary>
+    [System.Serializable]
+    public class AllCondition_ConditiondsValues
+    {
+       // public int[]    hashes      = new int[0];
+        public int[]    allConditionConditionIndex      = new int[0];
+        public bool[]   allConditionConditionsatesfied  = new bool[0];
+
+        /// <summary>
+        /// Spares all the values in all conditioon,
+        /// will be cald then saving
+        /// </summary>
+        public void spareAllcondition()
+        {
+            SOBJ_ConditionAdvanced[] conditions = SOBJ_AllConditions.Instance.conditions;
+            int length = conditions.Length;
+
+            allConditionConditionIndex      = new int[length];
+            allConditionConditionsatesfied                       = new bool[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                SOBJ_Condition condition = conditions[i] as SOBJ_Condition;
+
+                allConditionConditionIndex[i]   = (condition == null) ? -1 : i;
+                allConditionConditionsatesfied[i]                    = conditions[i].satisfied;
+            }  
+        }
+        /// <summary>
+        /// Uppdates all the valus in all condition, 
+        /// will be called form MONO_Menu then loading
+        /// </summary>
+        public void uppdatAllCondition()
+        {
+            for (int i = 0; i < allConditionConditionsatesfied.Length; i++)
+            {
+                if(allConditionConditionIndex[i] != -1)
+                {
+                    SOBJ_AllConditions.Instance.setConditionValues(allConditionConditionIndex[i], allConditionConditionsatesfied[i]);
+                }
+
+
+            }
+        }
+
+    }
+
+
+    /// <summary>
+    /// Contains data from that position the 
+    /// player thas on then save occured.
+    /// has funktion to uppdate the position
+    /// </summary>
+    [System.Serializable]
+    public class PlayerPositionData
+    {
+
+        [SerializeField]
+        public float tX, tY, tZ;
+        [SerializeField]
+        public float qX, qY, qZ, qW;
+
+
+        public Vector3 getPos
+        {
+            get
+            {
+                return new Vector3(tX, tY, tZ);
+            }
+        }
+        public Quaternion getRotation
+        {
+            get
+            {
+                return new Quaternion(qX, qY, qZ, qW);
+            }
+
+        }
+
+        ///// <summary>
+        ///// OnlyCalled then the game is loaded
+        ///// from a old save, needs the player
+        ///// to exist int the scene
+        ///// </summary>
+        //public void UppdatePlayersLastPosition()
+        //{
+
+        //    GameObject.FindGameObjectWithTag("Player").transform.position = getPos;
+        //    GameObject.FindGameObjectWithTag("Player").transform.rotation = getRotation;
+        //}
+
+        /// <summary>
+        /// Saves curent transoforms rotation and stuff
+        /// </summary>
+        public void savePlayerPosition()
+        {
+            GameObject playerTransform = GameObject.FindGameObjectWithTag("Player");
+
+            if (playerTransform != null)
+            {
+                tX = playerTransform.transform.position.x;
+                tY = playerTransform.transform.position.y;
+                tZ = playerTransform.transform.position.z;
+                
+                qX = playerTransform.transform.rotation.x;
+                qY = playerTransform.transform.rotation.y;
+                qZ = playerTransform.transform.rotation.z;
+                qW = playerTransform.transform.rotation.w;
+            }
+
+
+        }
+    }
+
+
 }

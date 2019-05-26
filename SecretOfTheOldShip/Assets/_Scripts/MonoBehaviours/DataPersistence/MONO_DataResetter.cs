@@ -13,7 +13,7 @@ public class MONO_DataResetter : MonoBehaviour
     public SOBJ_ResettableScriptableObject[] SOBJ_resettableScriptableObjects;    // All of the scriptable object assets that should be reset at the start of the game.
 
 
-    private void Awake()
+    public void ResetAll()
     {
         // Go through all the scriptable objects and call their Reset function.
         for (int i = 0; i < SOBJ_resettableScriptableObjects.Length; i++)

@@ -148,8 +148,8 @@ public abstract class EDI_ConditionAdvanced : Editor
                 }
 
             EditorGUILayout.EndHorizontal();
-            EditorGUILayout.Space();
-            DebugThis();
+            //EditorGUILayout.Space();
+            //DebugThis();
             EditorGUI.indentLevel--;
         EditorGUILayout.EndVertical();
     }

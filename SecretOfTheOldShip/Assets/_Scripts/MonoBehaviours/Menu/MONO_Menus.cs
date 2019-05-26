@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class MONO_Menus : MonoBehaviour {
 
-	[HideInInspector]
+    public string sceneToLoadeOnStarteGame = "Scene1_outside";
+    [HideInInspector]
 	public bool menuOpen = true;
     //public GameObject menuButton;
     //public GameObject hintButton;
-    public MONO_SceneManager sceneManager;
+    public MONO_SceneManager    sceneManager;
+    public MONO_SaveAndLoad     monoSaveAndLoad;
+    public MONO_Inventory       monoInventory;
 	[HideInInspector]
 	public MONO_IntroManager introManager;
 
@@ -62,22 +65,41 @@ public class MONO_Menus : MonoBehaviour {
 
 	public void StartGame()
 	{
-		float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
+		//float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		CloseMenu ();
 		ChangeLatestMenu (pauseMenu);
-		sceneManager.ChangeScene ("Scene1_outside", false, true);
+       
+		sceneManager.ChangeScene (sceneToLoadeOnStarteGame, false, false);
 
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
 		//inventory.SetActive (true);
 	}
-		
-	public void LoadLatestGame()
-	{
-		
-	}
+
+    public void LoadLastGame()
+    {
+        MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
+        CloseMenu();
+        ChangeLatestMenu(pauseMenu);
+
+        SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
+        // gets all the inventory items from last game
+        for(int i = 0; i < data.itemsInInentory.Length; i++)
+        {
+            monoInventory.AddItem(items[i]);
+        }
+
+        //Update all condition
+        data.conditions.uppdatAllCondition();
 
 
+        sceneManager.ChangeScene(data.currentScene, true, true);
+
+        mainMenu.SetActive(false);
+
+
+    }
+   
 	void Update()
 	{
 		if (timerUpdating) 
