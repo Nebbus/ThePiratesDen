@@ -22978,6 +22978,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &377623313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b915d43e42a3d4a8ffd07f74f204a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: {fileID: 114003105595025806, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+    type: 2}
+  satisfied: 1
 --- !u!1001 &384442058
 Prefab:
   m_ObjectHideFlags: 0
@@ -23478,6 +23492,11 @@ Prefab:
       propertyPath: nameText
       value: Paloma
       objectReference: {fileID: 0}
+    - target: {fileID: 114467322915268978, guid: ea40f4e697a8f4bbd958dc4d4dc2856f,
+        type: 2}
+      propertyPath: reactions.Array.data[3]
+      value: 
+      objectReference: {fileID: 1594509690}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea40f4e697a8f4bbd958dc4d4dc2856f, type: 2}
   m_IsPrefabParent: 0
@@ -36185,7 +36204,7 @@ Prefab:
     - target: {fileID: 114865285004592162, guid: 12417a5b40bb0f840b3dcf3fc27eebe1,
         type: 2}
       propertyPath: reactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
       propertyPath: m_LocalPosition.x
@@ -36228,6 +36247,11 @@ Prefab:
       propertyPath: reactions.Array.data[0]
       value: 
       objectReference: {fileID: 1350785486}
+    - target: {fileID: 114865285004592162, guid: 12417a5b40bb0f840b3dcf3fc27eebe1,
+        type: 2}
+      propertyPath: reactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 377623313}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
   m_IsPrefabParent: 0
@@ -40853,7 +40877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1018200283}
+  selectedFlowchart: {fileID: 1986073567}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -76238,6 +76262,20 @@ MonoBehaviour:
   valuesMus: []
   namesAmb: []
   namesMus: []
+--- !u!114 &1594509690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b915d43e42a3d4a8ffd07f74f204a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: {fileID: 114003105595025806, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+    type: 2}
+  satisfied: 1
 --- !u!1 &1603128387
 GameObject:
   m_ObjectHideFlags: 0
@@ -85555,7 +85593,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 1986073577}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 1986073649}
   variables: []
   description: 
   stepPause: 0
@@ -85883,6 +85922,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986073722}
+  - {fileID: 1986073649}
   - {fileID: 1986074278}
   - {fileID: 1986074274}
   - {fileID: 1986074277}
@@ -87646,6 +87686,7 @@ GameObject:
   - component: {fileID: 1986074274}
   - component: {fileID: 1986074278}
   - component: {fileID: 1986074279}
+  - component: {fileID: 1986073649}
   m_Layer: 0
   m_Name: INT_DoorFlowchart
   m_TagString: Untagged
@@ -88119,6 +88160,22 @@ MonoBehaviour:
   itemId: 20
   indentLevel: 1
   condition: {fileID: 114168352985420362, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+    type: 2}
+  setSatisfiedTo: 1
+--- !u!114 &1986073649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806affeb667289d448f8506cafba4501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 436
+  indentLevel: 1
+  condition: {fileID: 114911750729118412, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
     type: 2}
   setSatisfiedTo: 1
 --- !u!114 &1986073651
