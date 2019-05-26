@@ -10,6 +10,7 @@ using UnityEngine;
 * are extensible.
 */
 [CreateAssetMenu(fileName = "newInventoryItem", menuName = "Inventory Item", order = 1)]
+[System.Serializable]
 public class SOBJ_Item : ScriptableObject
 {
 
@@ -89,6 +90,14 @@ public class SOBJ_Item : ScriptableObject
         get
         {
             return Animator.StringToHash(this.name);
+        }
+    }
+
+   public string getName
+    {
+        get
+        {
+            return this.name;
         }
     }
 

@@ -3,7 +3,8 @@
 public class SOBJ_SceneChangeReaction : SOBJ_DelayedReaction
 {
 	public string sceneToBeLoaded;
-    public bool setStartPosition = false;
+
+    private bool setStartPosition = false;// only used from the load game button in the menu
     public bool HandelInputAfterFade = true;
 
     private GameObject sceneManager;

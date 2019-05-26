@@ -9,6 +9,8 @@ public class MONO_OnSceneStart : MonoBehaviour {
 
     public UnityEvent toRunOnSceneStart = new UnityEvent();
 
+    public UnityEvent startFlowChart = new UnityEvent();
+
     private Action<MONO_EventManager.EventParam> sceneStartSetup;
 
     private void Awake()
@@ -21,6 +23,10 @@ public class MONO_OnSceneStart : MonoBehaviour {
         if (toRunOnSceneStart == null)
         {
             toRunOnSceneStart = new UnityEvent();
+        }
+        if(startFlowChart == null)
+        {
+            startFlowChart = new UnityEvent();
         }
     }
 
@@ -44,6 +50,6 @@ public class MONO_OnSceneStart : MonoBehaviour {
     public void RunThisAtStart(MONO_EventManager.EventParam eventParam)
     {
         toRunOnSceneStart.Invoke();
- 
+        startFlowChart.Invoke();
     }
 }

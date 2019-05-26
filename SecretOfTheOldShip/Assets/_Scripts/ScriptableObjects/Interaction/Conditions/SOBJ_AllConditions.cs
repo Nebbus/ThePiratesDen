@@ -115,5 +115,14 @@ public class SOBJ_AllConditions : SOBJ_ResettableScriptableObject
     }
 
 
-
+    /// <summary>
+    /// will be used to update the alla condition 
+    /// then the game gets loaded.
+    /// </summary>
+    /// <param name="index">index of condition in conditions</param>
+    /// <param name="satesfied"></param>
+    public void setConditionValues(int index, bool satesfied)
+    {
+        conditions[index].satisfied = satesfied;
+    }
 }

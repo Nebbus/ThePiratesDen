@@ -156,7 +156,6 @@ MonoBehaviour:
   interactionLocation: {fileID: 0}
   conditionCollections: []
   defaultReactionCollection: {fileID: 0}
-  onHoverEnterdconditionCollections: []
 --- !u!1 &66994259
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +242,21 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &70700748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: GameStarted
+  satisfied: 1
+  hash: 2041670362
+  startValue: 0
 --- !u!1 &92765136
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,30 +338,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.07273102, y: -0.85063934, z: -0.009241104}
     m_Extent: {x: 62.03495, y: 28.2804, z: 14.800857}
   m_DirtyAABB: 0
---- !u!21 &241436514
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1 &244678032
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +455,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   item: {fileID: 11400000, guid: 1019890d37693f14d89301f8cde37073, type: 2}
+--- !u!114 &359963284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: GameStarted
+  satisfied: 0
+  hash: 2041670362
+  startValue: 0
 --- !u!1 &367660195
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +484,7 @@ GameObject:
   - component: {fileID: 367660197}
   - component: {fileID: 367660200}
   - component: {fileID: 367660202}
+  - component: {fileID: 367660203}
   m_Layer: 0
   m_Name: Parrot_Rig (2)
   m_TagString: Talk
@@ -554,7 +560,6 @@ MonoBehaviour:
   interactionLocation: {fileID: 2135807505}
   conditionCollections: []
   defaultReactionCollection: {fileID: 367660202}
-  onHoverEnterdconditionCollections: []
 --- !u!95 &367660201
 Animator:
   serializedVersion: 3
@@ -586,6 +591,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1965832249}
+--- !u!114 &367660203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 367660195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bb9f26b5539954cb25e1600d1ed64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  conditiosns:
+  - {fileID: 359963284}
+  reactionCollection: {fileID: 0}
+  setGamobjectTo: 0
 --- !u!1 &392908734
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +757,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 241436514}
+  _compositeMat: {fileID: 1414705538}
 --- !u!124 &527728808
 Behaviour:
   m_ObjectHideFlags: 0
@@ -882,7 +903,6 @@ MonoBehaviour:
   conditionCollections:
   - {fileID: 611775560}
   defaultReactionCollection: {fileID: 0}
-  onHoverEnterdconditionCollections: []
 --- !u!114 &655591501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1422,7 +1442,6 @@ MonoBehaviour:
   interactionLocation: {fileID: 2135807505}
   conditionCollections: []
   defaultReactionCollection: {fileID: 1037169927}
-  onHoverEnterdconditionCollections: []
 --- !u!1 &1053589255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,6 +1676,30 @@ Transform:
   m_Father: {fileID: 520696618}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1414705538
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!114 &1419927226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2017,6 +2060,7 @@ GameObject:
   - component: {fileID: 1866422309}
   - component: {fileID: 1866422310}
   - component: {fileID: 1866422306}
+  - component: {fileID: 1866422311}
   m_Layer: 0
   m_Name: Parrot_Rig (1)
   m_TagString: Look
@@ -2123,7 +2167,22 @@ MonoBehaviour:
   interactionLocation: {fileID: 2135807505}
   conditionCollections: []
   defaultReactionCollection: {fileID: 1866422306}
-  onHoverEnterdconditionCollections: []
+--- !u!114 &1866422311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1866422303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bb9f26b5539954cb25e1600d1ed64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  conditiosns:
+  - {fileID: 70700748}
+  reactionCollection: {fileID: 0}
+  setGamobjectTo: 0
 --- !u!1 &1880989339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,6 +2192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1880989341}
   - component: {fileID: 1880989340}
+  - component: {fileID: 1880989342}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -2189,6 +2249,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1880989342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1880989339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7236250ae68b94da961db784c5d48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toRunOnSceneStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  toRunOnSceneStart_objects:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1927229187
 GameObject:
   m_ObjectHideFlags: 0
