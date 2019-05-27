@@ -34,7 +34,8 @@ namespace Fungus
 		}
 
 		private void ConditionToVariable (){
-			setVariableCommand.SetNewVariable (variable, SetOperator.Assign, condition.satisfied);
+			SetOperator assign = SetOperator.Assign;
+			setVariableCommand.SetNewBoolVariable (variable, assign, condition.satisfied);
 			setVariableCommand.OnEnter ();
 		}
 	}

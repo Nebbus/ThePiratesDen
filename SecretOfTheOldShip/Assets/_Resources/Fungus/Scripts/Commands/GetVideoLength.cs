@@ -27,7 +27,8 @@ namespace Fungus
 
 		private void LengthToVariable (){
 			videoClip = videoPlayer.clip;
-			setVariableCommand.SetNewVariable (variable, SetOperator.Assign, videoClip.length);
+			float length = (float)videoClip.length;
+			setVariableCommand.SetNewFloatVariable (variable, SetOperator.Assign, length);
 			setVariableCommand.OnEnter ();
 		}
 	}
