@@ -9,8 +9,9 @@ public class MONO_Menus : MonoBehaviour {
     public string sceneToLoadeOnStarteGame = "Scene1_outside";
     [HideInInspector]
 	public bool menuOpen = true;
-    //public GameObject menuButton;
-    //public GameObject hintButton;
+
+    public Button loadButton;
+
     public MONO_SceneManager    sceneManager;
     public MONO_SaveAndLoad     monoSaveAndLoad;
     public MONO_Inventory       monoInventory;
@@ -54,12 +55,14 @@ public class MONO_Menus : MonoBehaviour {
 		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
 
 		fader = sceneManager.gameObject.GetComponent<MONO_Fade> ();
-		//waitManager = sceneManager.gameObject.GetComponent<MONO_Wait> ();
 
-		if(latestMenu == null){
-			latestMenu = menu.main; 	//main menu is the menu the game is started with
-		}
-	}
+        latestMenu = menu.main; 	//main menu is the menu the game is started with
+
+        // Sets if the load button shuld be usavle
+        MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
+        loadButton.interactable         = data.hasSAveData;
+
+    }
 
 
 
