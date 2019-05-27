@@ -22,7 +22,8 @@ public class EDI_SaveAndLoad : Editor {
        
         if (EditorGUILayout.Toggle(restSace))
         {
-            monoSaveLoad.handleSave(false);
+            monoSaveLoad.GetdataToSave = new MONO_SaveAndLoad.SaveData();
+            monoSaveLoad.Save();
         }
         base.OnInspectorGUI();
     }

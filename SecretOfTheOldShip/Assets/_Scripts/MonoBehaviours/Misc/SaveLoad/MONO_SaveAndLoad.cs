@@ -104,6 +104,9 @@ public class MONO_SaveAndLoad : MonoBehaviour
          */
         GetdataToSave.playerPosData.savePlayerPosition();
 
+        // Register that data has ben saved
+        GetdataToSave.hasSAveData = true;
+
         //===============================
         // saves the data
         //===============================
@@ -151,6 +154,11 @@ public class MONO_SaveAndLoad : MonoBehaviour
         //Save all condition variables
         GetdataToSave.conditions.spareAllcondition();
 
+        // Register that data has ben saved
+        GetdataToSave.hasSAveData = true;
+
+
+
         /* the save position will be uppdatet
          * from the scene manager after 
          * the new scene has ben loaded,
@@ -174,7 +182,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file    = File.Open(Application.persistentDataPath + filename, FileMode.OpenOrCreate);
-
+     
         bf.Serialize(file, GetdataToSave);
         file.Close();
         data = GetdataToSave;
@@ -438,13 +446,14 @@ public class MONO_SaveAndLoad : MonoBehaviour
     [System.Serializable]
     public class SaveData
     {
-        public string currentScene = "";
-        public string[] itemsInInentory          = new string[0];
-        public variableData[] flowChartVariableData = new variableData[0];
+        public bool hasSAveData                     = false;                // to set if load button is interactable
+        public string currentScene                  = "";                   // to load rigth scene
+        public string[] itemsInInentory             = new string[0];       // for reqonstrukting the inventory
+        public variableData[] flowChartVariableData = new variableData[0]; // all the flowchart variables
 
-        public PlayerPositionData playerPosData = new PlayerPositionData();
+        public PlayerPositionData playerPosData = new PlayerPositionData(); // to set the players position
 
-        public AllCondition_ConditiondsValues conditions = new AllCondition_ConditiondsValues();
+        public AllCondition_ConditiondsValues conditions = new AllCondition_ConditiondsValues(); 
 
 
 
@@ -699,18 +708,6 @@ public class MONO_SaveAndLoad : MonoBehaviour
             }
 
         }
-
-        ///// <summary>
-        ///// OnlyCalled then the game is loaded
-        ///// from a old save, needs the player
-        ///// to exist int the scene
-        ///// </summary>
-        //public void UppdatePlayersLastPosition()
-        //{
-
-        //    GameObject.FindGameObjectWithTag("Player").transform.position = getPos;
-        //    GameObject.FindGameObjectWithTag("Player").transform.rotation = getRotation;
-        //}
 
         /// <summary>
         /// Saves curent transoforms rotation and stuff

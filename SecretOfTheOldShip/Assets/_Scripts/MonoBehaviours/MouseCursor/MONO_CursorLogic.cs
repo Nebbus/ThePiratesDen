@@ -326,7 +326,7 @@ public class MONO_CursorLogic : MonoBehaviour
     /// </summary>
     private void ButtonInteraction()
     {
-        if (currentAction == action.CLICK)
+        if (currentAction == action.CLICK && currentButtonTarger.interactable)
         {
             currentButtonTarger.onClick.Invoke();
         }
