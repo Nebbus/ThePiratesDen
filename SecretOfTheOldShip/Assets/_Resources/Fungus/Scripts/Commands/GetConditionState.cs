@@ -28,13 +28,15 @@ namespace Fungus
 
 		private SetVariable setVariableCommand;
 
+		private SetOperator assign = SetOperator.Assign;
+
 		public override void OnEnter()
 		{
 			ConditionToVariable();
 		}
 
 		private void ConditionToVariable (){
-			setVariableCommand.SetNewVariable (variable, SetOperator.Assign, condition.satisfied);
+			setVariableCommand.SetNewBoolVariable (variable, assign, condition.satisfied);
 			setVariableCommand.OnEnter ();
 		}
 	}
