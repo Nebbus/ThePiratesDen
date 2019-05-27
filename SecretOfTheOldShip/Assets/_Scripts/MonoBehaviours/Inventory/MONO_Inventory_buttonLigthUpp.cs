@@ -28,7 +28,7 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
         private Sprite              defultSprite;
         private List<RaycastResult> resultsG;
         public GraphicRaycaster     presistentCanvansPraycaster;
-        private EventSystem         presistentSeneEventSystem;
+        public EventSystem         presistentSeneEventSystem;
 
 
         public void ItemImageMoveINIT()
@@ -37,6 +37,8 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
             image                 = lobedItem.GetComponent<Image>();
             defultSprite          = image.sprite;
             imageTransform        = lobedItem.GetComponent<RectTransform>();
+            presistentSeneEventSystem = FindObjectOfType<EventSystem>();
+            presistentCanvansPraycaster = FindObjectOfType<GraphicRaycaster>();
             startPosition         = imageTransform.position;
             rigedBody2D.simulated = false;
             lobedItem.SetActive(false);
@@ -184,10 +186,10 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
 
 
 
-
+   
     private void Update()
     {
-        
+       
 
         if (flashing || flashingOff)
         {
@@ -204,7 +206,7 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
         }
         else if (lobingTheItemToInventoryn)
         {
-            lobingItemEffectStruct.debbug();
+         
 
             if (lobingItemEffectStruct.overInvenotyButton())
             {
