@@ -46,7 +46,7 @@ public class MONO_Inventory : MonoBehaviour {
         m_EventSystem           = FindObjectOfType<EventSystem>();
         wait                    = new WaitForSeconds(waitDelay);
 		HideInventory ();
-        higligtImage = buttonHiglight.higlightEffect.itemImageObject.GetComponent<Image>();
+        higligtImage = buttonHiglight.lobingItemEffectStruct.lobedItem.GetComponent<Image>();
     }
 
     /// <summary>
@@ -70,6 +70,7 @@ public class MONO_Inventory : MonoBehaviour {
 
     public void ShowInventory()
     {
+      
         StopPickUpReaction();
         inventoryGroup.SetActive(true);
         inventoryImage.SetActive(true);
@@ -248,9 +249,11 @@ public class MONO_Inventory : MonoBehaviour {
         //{
         //    startdFlashing = true;
         //    //  this.GetComponent<MONO_HiglightObject>().startFlashing();
-       
+
         //}
-        buttonHiglight.startFlashing();
+
+        HideInventory();
+        buttonHiglight.startHigligtReaction();
 
     }
 

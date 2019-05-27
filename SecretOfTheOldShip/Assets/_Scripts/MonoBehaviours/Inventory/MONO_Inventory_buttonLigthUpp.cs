@@ -6,47 +6,57 @@ using System.Collections;
 
 public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
 
-
+    /// <summary>
+    /// a struct for hangeling the lobing of the item.
+    /// </summary>
     [System.Serializable]
     public struct itemImageMove
     {
+        [Tooltip("The uppwards velosity of the item")]
         public float pushUpForce;
 
-        [Space]
-        [Space]
-        public Vector3 startPosition;
-        public RectTransform imageTransform;
-        public Rigidbody2D rigedBody2D;
-        public Image image;
-        public Sprite defultSprite;
-        [Space]
-        [Space]
+        public string debug;
+        public string[] debuug;
+        public bool debugg;
+        public GameObject lobedItem;
+        public GameObject inventoryButton;
 
-        public GameObject itemImageObject;
+        private Vector3             startPosition;
+        private RectTransform       imageTransform;
+        private Rigidbody2D         rigedBody2D;
+        private Image               image;
+        private Sprite              defultSprite;
+        private List<RaycastResult> resultsG;
+        public GraphicRaycaster     presistentCanvansPraycaster;
+        private EventSystem         presistentSeneEventSystem;
+
 
         public void ItemImageMoveINIT()
         {
-            rigedBody2D          = itemImageObject.GetComponent<Rigidbody2D>();
-            image                = itemImageObject.GetComponent<Image>();
-            defultSprite         = image.sprite;
-            imageTransform       = itemImageObject.GetComponent<RectTransform>();
-            startPosition        = imageTransform.position;
+            rigedBody2D           = lobedItem.GetComponent<Rigidbody2D>();
+            image                 = lobedItem.GetComponent<Image>();
+            defultSprite          = image.sprite;
+            imageTransform        = lobedItem.GetComponent<RectTransform>();
+            startPosition         = imageTransform.position;
             rigedBody2D.simulated = false;
-            itemImageObject.SetActive(false);
+            lobedItem.SetActive(false);
 
         }
 
-
+        /// <summary>
+        /// acctivates the item (the sprite was set in the 
+        /// add item funtkion in MONO_Invnetory.
+        /// (sacrefised dignigty and embraised cuppllings to get the thing working quick)
+        /// </summary>
         public void addItemToInventory()
         {
-            itemImageObject.SetActive(true);
+            lobedItem.SetActive(true);
             rigedBody2D.simulated = true;
             rigedBody2D.AddForce(new Vector2(0f, pushUpForce));
+            rigedBody2D.velocity = new Vector2(0f, pushUpForce);
         }
 
-        private List<RaycastResult> resultsG;
-        public GraphicRaycaster presistentCanvansPraycaster;
-        private EventSystem presistentSeneEventSystem;
+
 
         private GraphicRaycaster getGraycaster
         {
@@ -61,6 +71,34 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
             }
         }
 
+        public void debbug()
+        {
+            resultsG = EXT_RayCast.GraphicRayCast(getGraycaster, presistentSeneEventSystem, imageTransform.position);
+            RaycastResult[] temp = resultsG.ToArray();
+
+            debuug = new string[temp.Length];
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                debuug[i] = temp[i].gameObject.name;
+            }
+
+            //foreach (RaycastResult result in resultsG)
+            //{
+            //    debug = result.gameObject.name;
+            //    debugg = result.gameObject.name == inventoryButton.name;
+               
+            //}
+        }
+
+
+
+
+
+        /// <summary>
+        /// Controlls if the item has hitted the inventory yet
+        /// </summary>
+        /// <returns></returns>
         public bool overInvenotyButton()
         {
             resultsG = EXT_RayCast.GraphicRayCast(getGraycaster, presistentSeneEventSystem, imageTransform.position);
@@ -72,14 +110,14 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
             //==================================================================================
             foreach (RaycastResult result in resultsG)
             {
-
-                bool r = result.gameObject.name == "InventoryButtonImage";
-                if (r)
+                debug = result.gameObject.name;
+                debugg = result.gameObject.name == inventoryButton.name;
+                if (result.gameObject.name == inventoryButton.name)
                 {
-                    itemImageObject.SetActive(false);
+                    lobedItem.SetActive(false);
                     rigedBody2D.simulated = false;
-                    imageTransform.position = startPosition;
-                    image.sprite = defultSprite;
+                    imageTransform.position     = startPosition;
+                    image.sprite                = defultSprite;
 
                     return true;
 
@@ -96,38 +134,19 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
     }
 
 
-    public itemImageMove higlightEffect = new itemImageMove();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public itemImageMove lobingItemEffectStruct = new itemImageMove();
 
     public GameObject selectedObject;
 
     public Animator buttonAnimator;
 
     [Space]
-    public bool flashing        = false;
-    public bool flashingOff     = false;
-    public bool flashingIn      = true;
-    public bool startedFlash    = false;
-    public bool startUseLowBound = false;
+    public bool flashing                    = false;
+    public bool startedFlash                = false;
+    public bool flashingOff                 = false;
+    public bool flashingIn                  = true;
+    public bool startUseLowBound            = false;
+    private bool lobingTheItemToInventoryn = false;
     [Space]
 
     public Coroutine curentFlash;
@@ -136,7 +155,9 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
     [Range(0, 224)]
     public int loweBound = 100;
 
-
+    /// <summary>
+    /// to set a lowe bund to be actiw only after it first has loaded in
+    /// </summary>
     private int getLowBound
     {
         get
@@ -158,7 +179,7 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
 
     private void Start()
     {
-        higlightEffect.ItemImageMoveINIT();
+        lobingItemEffectStruct.ItemImageMoveINIT();
     }
 
 
@@ -166,6 +187,7 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
 
     private void Update()
     {
+        
 
         if (flashing || flashingOff)
         {
@@ -180,40 +202,33 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
             }
 
         }
-    }
-
-
-    private bool t = false;
-    public void startFlashing()
-    {
-        if (!t && !flashing)
+        else if (lobingTheItemToInventoryn)
         {
-            t = true;
-            flashing = true;
-            StartCoroutine(lobbItem());
+            lobingItemEffectStruct.debbug();
+
+            if (lobingItemEffectStruct.overInvenotyButton())
+            {
+                realsStaert();
+                lobingTheItemToInventoryn = false;
+            }
         }
     }
 
-    public void StopFlashing()
-    {
-        startedFlash    = false;
-        flashing        = false;
-        flashingOff     = true;
-        startUseLowBound = false;
-        StopCoroutine(curentFlash);
 
-        curentFlash = StartCoroutine(FadeOffHiglight());
-        t = false;
+   //FindObjectOfType<MONO_Inventory>().SetHandleINput(handelInput)
+    public void startHigligtReaction()
+    {
+        if (!lobingTheItemToInventoryn && !flashing)
+        {
+            lobingTheItemToInventoryn = true;
+
+            lobingItemEffectStruct.addItemToInventory();
+        }
     }
 
-
-
-    public IEnumerator lobbItem()
+    private void realsStaert()
     {
-
-        higlightEffect.addItemToInventory();
-        yield return higlightEffect.overInvenotyButton();
-
+      
 
         if (selectedObject.GetComponent<Renderer>() == null)
         {
@@ -225,13 +240,25 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
 
         flashingIn = false;
         flashingOff = false;
-
+        flashing = true;
         lastTime = Time.realtimeSinceStartup;
         curentFlash = StartCoroutine(FlashObject());
-
-
-
     }
+    public void StopFlashing()
+    {
+        startedFlash    = false;
+        flashing        = false;
+        flashingOff     = true;
+        startUseLowBound = false;
+        StopCoroutine(curentFlash);
+
+        curentFlash = StartCoroutine(FadeOffHiglight());
+        lobingTheItemToInventoryn = false;
+    }
+
+
+
+  
 
 
     IEnumerator FadeOffHiglight()
