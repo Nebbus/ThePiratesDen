@@ -6,8 +6,15 @@ using System.Collections;
 
 public class MONO_Inventory : MonoBehaviour {
 
+
+    public Image higligtImage;
+
+
     [Tooltip("The object that gas the Grid Layout Group on it, it will have all items as children")]
     public GameObject inventoryGroup;
+
+    public MONO_Inventory_buttonLigthUpp buttonHiglight;
+
     [SerializeField]
     private GameObject inventoryImage;
     private Image inventoryDetectionImage; // used to sence then the mous is over the open inventory ( is trancparent)
@@ -39,6 +46,7 @@ public class MONO_Inventory : MonoBehaviour {
         m_EventSystem           = FindObjectOfType<EventSystem>();
         wait                    = new WaitForSeconds(waitDelay);
 		HideInventory ();
+        higligtImage = buttonHiglight.higlightEffect.itemImageObject.GetComponent<Image>();
     }
 
     /// <summary>
@@ -99,6 +107,9 @@ public class MONO_Inventory : MonoBehaviour {
                 itemToAdd.InitReaction();// ini all reactions
                 invetoryItems[i]               = itemToAdd;
                 invetoryItemsImages[i].sprite  = itemToAdd.sprite;
+
+                higligtImage.sprite = itemToAdd.sprite;
+
                 invetoryItemsImages[i].enabled = true;
                 inventorySlots[i].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = itemToAdd.getHash;
                 PickUpReaction();
@@ -233,11 +244,13 @@ public class MONO_Inventory : MonoBehaviour {
     /// </summary>
     private void PickUpReaction()
     {
-        if (!startdFlashing)
-        {
-            startdFlashing = true;
-            this.GetComponent<MONO_HiglightObject>().startFlashing();
-        }
+        //if (!startdFlashing)
+        //{
+        //    startdFlashing = true;
+        //    //  this.GetComponent<MONO_HiglightObject>().startFlashing();
+       
+        //}
+        buttonHiglight.startFlashing();
 
     }
 
@@ -246,11 +259,8 @@ public class MONO_Inventory : MonoBehaviour {
     /// </summary>
     private void StopPickUpReaction()
     {
-        if (startdFlashing)
-        {
-            startdFlashing = false;
-            this.GetComponent<MONO_HiglightObject>().StopFlashing();
-        }
+ 
+        buttonHiglight.StopFlashing();
 
     }
 
@@ -295,8 +305,6 @@ public class MONO_Inventory : MonoBehaviour {
         return false;
     }
 
-
-
     private IEnumerator ReactCoroutine()
     {
         // Wait for the specified time.
@@ -304,5 +312,9 @@ public class MONO_Inventory : MonoBehaviour {
 
         HideInventory();
     }
+
+
+
+
 
 }

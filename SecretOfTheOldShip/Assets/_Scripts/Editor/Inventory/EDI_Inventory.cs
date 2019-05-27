@@ -15,15 +15,17 @@ public class EDI_Inventory : Editor {
     private SerializedProperty inventoryProperty;
     private SerializedProperty inventoryBackImageProperty;
     private SerializedProperty inventoryWaitDelayProperty;
+    private SerializedProperty inventoryButtonHiglightProperty;
 
-    private const string inventoryPropItemsImageName = "invetoryItemsImages";
-    private const string inventoryPropItemsName      = "invetoryItems";
-    private const string inventoryPropInventoryName  = "inventoryGroup";
-    private const string inventorySlotPropsName      = "inventorySlots";
-    private const string itemSlotImageChildeName     = "itemImage";
-    private const string inventoryBackImagePropName  = "inventoryImage";
-    private const string inventoryWaitDelayPropName  = "waitDelay";
-    private const string pathToItemSlotPrethab       = "Assets/_Prefabs/UI/Inventory/itemTemplet.prefab";
+    private const string inventoryPropItemsImageName            = "invetoryItemsImages";
+    private const string inventoryPropItemsName                 = "invetoryItems";
+    private const string inventoryPropInventoryName             = "inventoryGroup";
+    private const string inventorySlotPropsName                 = "inventorySlots";
+    private const string itemSlotImageChildeName                = "itemImage";
+    private const string inventoryBackImagePropName             = "inventoryImage";
+    private const string inventoryWaitDelayPropName             = "waitDelay";
+    private const string inventoryButtonHiglightPropertyName    = "buttonHiglight";
+    private const string pathToItemSlotPrethab                  = "Assets/_Prefabs/UI/Inventory/itemTemplet.prefab";
 
 
 
@@ -41,12 +43,14 @@ public class EDI_Inventory : Editor {
 
         itemTemplet = AssetDatabase.LoadAssetAtPath(pathToItemSlotPrethab, typeof(GameObject)) as GameObject;
 
-        itemsImagesProperty        = serializedObject.FindProperty(inventoryPropItemsImageName);
-        itemsProperty              = serializedObject.FindProperty(inventoryPropItemsName);
-        inventoryProperty          = serializedObject.FindProperty(inventoryPropInventoryName);
-        inventorySlotsProperty     = serializedObject.FindProperty(inventorySlotPropsName);
-        inventoryBackImageProperty = serializedObject.FindProperty(inventoryBackImagePropName);
-        inventoryWaitDelayProperty = serializedObject.FindProperty(inventoryWaitDelayPropName);
+        itemsImagesProperty             = serializedObject.FindProperty(inventoryPropItemsImageName);
+        itemsProperty                   = serializedObject.FindProperty(inventoryPropItemsName);
+        inventoryProperty               = serializedObject.FindProperty(inventoryPropInventoryName);
+        inventorySlotsProperty          = serializedObject.FindProperty(inventorySlotPropsName);
+        inventoryBackImageProperty      = serializedObject.FindProperty(inventoryBackImagePropName);
+        inventoryWaitDelayProperty      = serializedObject.FindProperty(inventoryWaitDelayPropName);
+        inventoryButtonHiglightProperty = serializedObject.FindProperty(inventoryButtonHiglightPropertyName);
+
         // Control that the count is upp to date 
         if (MONO_Inventory.numberItemSlots != monoInventory.inventorySlots.Length)
         {
@@ -81,6 +85,7 @@ public class EDI_Inventory : Editor {
 
         EditorGUILayout.PropertyField(inventoryProperty);
         EditorGUILayout.PropertyField(inventoryBackImageProperty);
+        EditorGUILayout.PropertyField(inventoryButtonHiglightProperty);
 
         // The buttosn for adding and removin item slots in the invetory
         EditorGUILayout.BeginHorizontal();
