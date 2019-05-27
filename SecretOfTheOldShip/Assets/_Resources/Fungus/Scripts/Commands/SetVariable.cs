@@ -223,10 +223,16 @@ namespace Fungus
         }
 
 
-		public void SetNewVariable(Variable newVariable, SetOperator newOperator, bool newData){
+		public void SetNewBoolVariable(Variable newVariable, SetOperator newOperator, bool newData){
 			this.variable = newVariable;
 			setOperator = newOperator;
 			booleanData.Value = newData;
+		}
+
+		public void SetNewFloatVariable(Variable newVariable, SetOperator newOperator, float newData){
+			this.variable = newVariable;
+			setOperator = newOperator;
+			floatData.Value = newData;
 		}
         #endregion
     }

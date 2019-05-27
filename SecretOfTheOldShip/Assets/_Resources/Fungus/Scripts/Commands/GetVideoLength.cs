@@ -17,6 +17,7 @@ namespace Fungus
 		private UnityEngine.Video.VideoClip videoClip;
 
 		private SetVariable setVariableCommand;
+		private SetOperator assign = SetOperator.Assign;
 
 		public override void OnEnter() 
 		{
@@ -27,7 +28,8 @@ namespace Fungus
 
 		private void LengthToVariable (){
 			videoClip = videoPlayer.clip;
-			setVariableCommand.SetNewVariable (variable, SetOperator.Assign, videoClip.length);
+			float length = (float)videoClip.length;
+			setVariableCommand.SetNewFloatVariable (variable, assign, length);
 			setVariableCommand.OnEnter ();
 		}
 	}
