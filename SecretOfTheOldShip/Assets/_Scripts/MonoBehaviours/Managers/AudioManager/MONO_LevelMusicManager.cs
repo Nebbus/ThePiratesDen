@@ -121,10 +121,10 @@ public class MONO_LevelMusicManager : MonoBehaviour {
 		musicVolumeController.getVolume (out percentageVolume, out currentVolume);
 
 		currentVolume = currentVolume + changeFactor;
-		currentVolume *= 100;
+		currentVolume *= 100f;
 		currentVolume = Mathf.Round (currentVolume);
 		percentageVolume = currentVolume;
-		currentVolume *= 0.01;
+		currentVolume *= 0.01f;
 
 		musicVolumeController.setVolume (currentVolume);
 
@@ -141,7 +141,7 @@ public class MONO_LevelMusicManager : MonoBehaviour {
 		float currentVolume, percentageVolume;
 		musicVolumeController.getVolume (out percentageVolume, out currentVolume);
 
-		percentageVolume = Mathf.Round (currentVolume * 100);
+		percentageVolume = Mathf.Round (currentVolume * 100f);
 
 		return percentageVolume.ToString();
 	}
