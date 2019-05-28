@@ -67,21 +67,35 @@ public class MONO_LevelMusicManager : MonoBehaviour {
     /// to start and stop the emiters
     /// </summary>
     /// <param name="start">fals mans stoping the emiters and true starting them.</param>
-    public void StartStopSound(bool start)
+    public void StartStopSound(bool start, bool startAmbience, bool startMusic)
     {
         if (start)
         {
-            MusicTarget.Play();
-            AmbienceTarget.Play();
+            if (startMusic)
+            {
+                if (!MusicTarget.IsPlaying())
+                {
+                    MusicTarget.Play();
+                }
+
+            }
+            if (startAmbience)
+            {
+                if (AmbienceTarget.IsPlaying())
+                {
+                    AmbienceTarget.Play();
+                }
+
+            }
+
         }
         else
         {
             MusicTarget.Stop();
             AmbienceTarget.Stop();
         }
-       
-    }
 
+    }
 
 
 

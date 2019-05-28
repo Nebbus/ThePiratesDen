@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class MONO_GlowObject : MonoBehaviour
 {
 
+    public bool DebugHigligth = false;
 
 //==========================================================
 // Opperation mode bools
@@ -22,6 +23,9 @@ public class MONO_GlowObject : MonoBehaviour
 
     [Tooltip("For acteveting and de acteveting the higligt ")]
     public bool doHiglight = true;
+
+    [Tooltip("Disides if the higligt all call should be ignored")]
+    public bool ignorHigligtAll = false;
 
 //==========================================================
 // Local operation variables
@@ -98,7 +102,7 @@ public class MONO_GlowObject : MonoBehaviour
     {
         if (doHiglight && !isHintButtonCalled)
         {
-            isHintButtonCalled = isPartOfHint;
+            isHintButtonCalled = isPartOfHint && !ignorHigligtAll;
             _targetColor       = GetGlowColor;
             enabled            = doHiglight;
         }
@@ -107,7 +111,7 @@ public class MONO_GlowObject : MonoBehaviour
     public void HigligtOFF(bool isCalldFromHintButton)
     {
         //uggli butt works
-        if (isCalldFromHintButton)
+        if (isCalldFromHintButton && !ignorHigligtAll)
         {
             _targetColor        = Color.black;
             enabled             = true;
@@ -132,6 +136,13 @@ public class MONO_GlowObject : MonoBehaviour
 	/// </summary>
 	private void Update()
 	{
+
+        if (DebugHigligth)
+        {
+            HigligtON(false);
+            DebugHigligth = false;
+        }
+
 		_currentColor = Color.Lerp(_currentColor, _targetColor, Time.deltaTime * GetlerpFacto);
 
 		for (int i = 0; i < _materials.Count; i++)

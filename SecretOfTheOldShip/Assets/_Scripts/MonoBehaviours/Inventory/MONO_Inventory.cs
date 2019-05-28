@@ -3,11 +3,19 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System;
 
 public class MONO_Inventory : MonoBehaviour {
 
+
+    public Image higligtImage;
+
+
     [Tooltip("The object that gas the Grid Layout Group on it, it will have all items as children")]
     public GameObject inventoryGroup;
+
+    public MONO_Inventory_buttonLigthUpp buttonHiglight;
+
     [SerializeField]
     private GameObject inventoryImage;
     private Image inventoryDetectionImage; // used to sence then the mous is over the open inventory ( is trancparent)
@@ -31,6 +39,43 @@ public class MONO_Inventory : MonoBehaviour {
 
     private bool HandleInput = true;
 
+    public Action<MONO_EventManager.EventParam> setLocalInvntoryHandelInput;
+    public Action<MONO_EventManager.EventParam> setVisibilityOfInvnetory;
+
+
+    private void Awake()
+    {
+        setVisibilityOfInvnetory    = new Action<MONO_EventManager.EventParam>(SetInvnetoryVisability);
+        setLocalInvntoryHandelInput = new Action<MONO_EventManager.EventParam>(SetHandleINput);
+    }
+
+
+    private void OnEnable()
+    {
+        MONO_EventManager.StartListening(MONO_EventManager.setLocalInvntoryHandelInput_NAME, setLocalInvntoryHandelInput);
+        MONO_EventManager.StartListening(MONO_EventManager.setVisibilityOfInvnetory_NAME, setVisibilityOfInvnetory);
+    }
+    private void OnDisable()
+    {
+        MONO_EventManager.StopListening(MONO_EventManager.setLocalInvntoryHandelInput_NAME, setLocalInvntoryHandelInput);
+        MONO_EventManager.StopListening(MONO_EventManager.setVisibilityOfInvnetory_NAME, setVisibilityOfInvnetory);
+
+    }
+    private void SetInvnetoryVisability(MONO_EventManager.EventParam param)
+    {
+        if (param.param4)
+        {
+            ShowInventory();
+        }
+        else
+        {
+            HideInventory();
+        }
+    }
+    private void SetHandleINput(MONO_EventManager.EventParam param)
+    {
+        HandleInput = param.param4;
+    }
 
     private void Start()
     {
@@ -39,6 +84,7 @@ public class MONO_Inventory : MonoBehaviour {
         m_EventSystem           = FindObjectOfType<EventSystem>();
         wait                    = new WaitForSeconds(waitDelay);
 		HideInventory ();
+        higligtImage = buttonHiglight.lobingItemEffectStruct.lobedItem.GetComponent<Image>();
     }
 
     /// <summary>
@@ -62,6 +108,7 @@ public class MONO_Inventory : MonoBehaviour {
 
     public void ShowInventory()
     {
+      
         StopPickUpReaction();
         inventoryGroup.SetActive(true);
         inventoryImage.SetActive(true);
@@ -75,13 +122,14 @@ public class MONO_Inventory : MonoBehaviour {
         inventoryDetectionImage.enabled = false;
     }
 
- 
+
+
     /// <summary>
     /// Sets if the inventory should handel input or not
     /// </summary>
     /// <param name="setTo"> the value the HandleInpu variabler 
     ///  is going to be set to</param>
-    public void SetHandleINput( bool setTo)
+    public void SetHandleINput(bool setTo)
     {
         HandleInput = setTo;
     }
@@ -99,6 +147,9 @@ public class MONO_Inventory : MonoBehaviour {
                 itemToAdd.InitReaction();// ini all reactions
                 invetoryItems[i]               = itemToAdd;
                 invetoryItemsImages[i].sprite  = itemToAdd.sprite;
+
+                higligtImage.sprite = itemToAdd.sprite;
+
                 invetoryItemsImages[i].enabled = true;
                 inventorySlots[i].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = itemToAdd.getHash;
                 PickUpReaction();
@@ -233,11 +284,8 @@ public class MONO_Inventory : MonoBehaviour {
     /// </summary>
     private void PickUpReaction()
     {
-        if (!startdFlashing)
-        {
-            startdFlashing = true;
-            this.GetComponent<MONO_HiglightObject>().startFlashing();
-        }
+        HideInventory();
+        buttonHiglight.startHigligtReaction();
 
     }
 
@@ -246,11 +294,8 @@ public class MONO_Inventory : MonoBehaviour {
     /// </summary>
     private void StopPickUpReaction()
     {
-        if (startdFlashing)
-        {
-            startdFlashing = false;
-            this.GetComponent<MONO_HiglightObject>().StopFlashing();
-        }
+ 
+        buttonHiglight.StopFlashing();
 
     }
 
@@ -295,8 +340,6 @@ public class MONO_Inventory : MonoBehaviour {
         return false;
     }
 
-
-
     private IEnumerator ReactCoroutine()
     {
         // Wait for the specified time.
@@ -304,5 +347,9 @@ public class MONO_Inventory : MonoBehaviour {
 
         HideInventory();
     }
+
+
+
+
 
 }
