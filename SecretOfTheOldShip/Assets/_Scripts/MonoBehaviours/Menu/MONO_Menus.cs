@@ -7,16 +7,22 @@ using UnityEngine.UI;
 public class MONO_Menus : MonoBehaviour {
 
     public string sceneToLoadeOnStarteGame = "Scene1_outside";
-    [HideInInspector]
-	public bool menuOpen = true;
-
-    public Button loadButton;
-
-    public MONO_SceneManager    sceneManager;
-    public MONO_SaveAndLoad     monoSaveAndLoad;
-    public MONO_Inventory       monoInventory;
+	[Space]
+	public MONO_SceneManager    sceneManager;
+	public MONO_LevelMusicManager audioManager;
+	[HideInInspector]
+	public MONO_SaveAndLoad     monoSaveAndLoad;
 	[HideInInspector]
 	public MONO_IntroManager introManager;
+
+
+    [HideInInspector]
+	public bool menuOpen = true;
+	[Space]
+    public Button loadButton;
+    public MONO_Inventory       monoInventory;
+
+
 
 	[Space]
 	public MONO_CustomMouseCursor cursor;
@@ -25,9 +31,22 @@ public class MONO_Menus : MonoBehaviour {
 	[Tooltip("The UI text object in pause settings menu for cursor speed.")]
 	public Text cursorSpeedPause;
 
+
 	[Space]
 	public MONO_ReactionCollection mainMenuSound;
 	public MONO_ReactionCollection pauseMenuSound;
+
+	[Space]
+	public Text musicVolumeMain;
+	public Text musicVolumePaus;
+	public Text soundVolumeMain;
+	public Text soundVolumePaus;
+	public Text voiceVolumeMain;
+	public Text voiceVolumePaus;
+
+	private float minVolume = 0;
+	private float maxVolume = 1;
+
 	public enum menu {main, pause, settings};
 
 	private menu latestMenu;
@@ -51,22 +70,23 @@ public class MONO_Menus : MonoBehaviour {
 
 	void Start()
 	{
-		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
-		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
+		SetTextComponents ();
+
 
 		fader = sceneManager.gameObject.GetComponent<MONO_Fade> ();
+		monoSaveAndLoad = sceneManager.gameObject.GetComponent<MONO_SaveAndLoad> ();
 
         latestMenu = menu.main; 	//main menu is the menu the game is started with
 
         // Sets if the load button shuld be usavle
-        MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
+        MONO_SaveAndLoad.SaveData data  = monoSaveAndLoad.GetData;
         loadButton.interactable         = data.hasSAveData;
 
     }
 
 
 
-	public void StartGame()
+	public void StartNewGame()
 	{
 		//float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		CloseMenu ();
@@ -208,9 +228,23 @@ public class MONO_Menus : MonoBehaviour {
 	/// <param name="offset">The amount cursor speed will change.</param>
 	public void ChangeCursorSpeed(float offset)
 	{
+		if (cursor.CursorSpeed + offset <= 0 || cursor.CursorSpeed + offset >= 5000) 
+		{
+			return;
+		}
 		cursor.CursorSpeed = cursor.CursorSpeed + offset;
 		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
 		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
+	}
+		
+
+	public void ChangeMusicVolume(float offset)
+	{
+		Debug.Log ("changing music volume");
+		Text tempText = musicVolumeMain;
+		tempText.text = audioManager.changeMusicVolume (offset);
+		musicVolumeMain.text = tempText.text;
+		musicVolumePaus.text = tempText.text;
 	}
 
 
@@ -230,6 +264,19 @@ public class MONO_Menus : MonoBehaviour {
 			//introManager.InitiateIntro ();
 			
 		}
+	}
+
+	private void SetTextComponents()
+	{
+		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
+		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
+
+		musicVolumeMain.text = audioManager.GetMusicVolume ();
+	/*	musicVolumePaus;
+		soundVolumeMain;
+		soundVolumePaus;
+		voiceVolumeMain;
+		voiceVolumePaus;*/
 	}
 
 	/// <summary>
