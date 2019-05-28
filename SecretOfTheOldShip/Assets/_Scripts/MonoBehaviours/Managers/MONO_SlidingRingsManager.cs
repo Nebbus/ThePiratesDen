@@ -31,7 +31,7 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 		if (tempInner == 0 && tempMiddle == 0 && tempOuter == 0 && !finished) 
 		{
 			finished = true;
-			StartCoroutine (PuzzleFinished ());
+			PuzzleFinished ();
 		}
 	}
 
@@ -50,12 +50,12 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 		flowChart.SetIntegerVariable ("OuterCircle", tempOuter);
 	}
 
-	private IEnumerator PuzzleFinished()
+	private void PuzzleFinished()
 	{
 		flowChart.ExecuteBlock ("Finished");
-		yield return new WaitForSeconds (3);
+		//yield return new WaitForSeconds (3);
 		//Here's where we change the condition allowing us to use the door normally
-		sceneManager.ChangeScene("Scene2_inside", false, false);
+		//sceneManager.ChangeScene("Scene2_inside", false, false);
 
 	}
 
