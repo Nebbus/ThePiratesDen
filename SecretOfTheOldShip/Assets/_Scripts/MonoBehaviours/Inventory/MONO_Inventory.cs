@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System;
 
 public class MONO_Inventory : MonoBehaviour {
 
@@ -38,6 +39,43 @@ public class MONO_Inventory : MonoBehaviour {
 
     private bool HandleInput = true;
 
+    public Action<MONO_EventManager.EventParam> setLocalInvntoryHandelInput;
+    public Action<MONO_EventManager.EventParam> setVisibilityOfInvnetory;
+
+
+    private void Awake()
+    {
+        setVisibilityOfInvnetory    = new Action<MONO_EventManager.EventParam>(SetInvnetoryVisability);
+        setLocalInvntoryHandelInput = new Action<MONO_EventManager.EventParam>(SetHandleINput);
+    }
+
+
+    private void OnEnable()
+    {
+        MONO_EventManager.StartListening(MONO_EventManager.setLocalInvntoryHandelInput_NAME, setLocalInvntoryHandelInput);
+        MONO_EventManager.StartListening(MONO_EventManager.setVisibilityOfInvnetory_NAME, setVisibilityOfInvnetory);
+    }
+    private void OnDisable()
+    {
+        MONO_EventManager.StopListening(MONO_EventManager.setLocalInvntoryHandelInput_NAME, setLocalInvntoryHandelInput);
+        MONO_EventManager.StopListening(MONO_EventManager.setVisibilityOfInvnetory_NAME, setVisibilityOfInvnetory);
+
+    }
+    private void SetInvnetoryVisability(MONO_EventManager.EventParam param)
+    {
+        if (param.param4)
+        {
+            ShowInventory();
+        }
+        else
+        {
+            HideInventory();
+        }
+    }
+    private void SetHandleINput(MONO_EventManager.EventParam param)
+    {
+        HandleInput = param.param4;
+    }
 
     private void Start()
     {
@@ -84,13 +122,14 @@ public class MONO_Inventory : MonoBehaviour {
         inventoryDetectionImage.enabled = false;
     }
 
- 
+
+
     /// <summary>
     /// Sets if the inventory should handel input or not
     /// </summary>
     /// <param name="setTo"> the value the HandleInpu variabler 
     ///  is going to be set to</param>
-    public void SetHandleINput( bool setTo)
+    public void SetHandleINput(bool setTo)
     {
         HandleInput = setTo;
     }
@@ -245,13 +284,6 @@ public class MONO_Inventory : MonoBehaviour {
     /// </summary>
     private void PickUpReaction()
     {
-        //if (!startdFlashing)
-        //{
-        //    startdFlashing = true;
-        //    //  this.GetComponent<MONO_HiglightObject>().startFlashing();
-
-        //}
-
         HideInventory();
         buttonHiglight.startHigligtReaction();
 

@@ -182,6 +182,7 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
     private void Start()
     {
         lobingItemEffectStruct.ItemImageMoveINIT();
+
     }
 
 
@@ -222,6 +223,13 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
     {
         if (!lobingTheItemToInventoryn && !flashing)
         {
+
+            MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+            param.param4 = false;
+            MONO_EventManager.TriggerEvent(MONO_EventManager.setLocalInvntoryHandelInput_NAME, param);
+            MONO_EventManager.TriggerEvent(MONO_EventManager.setVisibilityOfInvnetory_NAME, param);
+
+
             lobingTheItemToInventoryn = true;
 
             lobingItemEffectStruct.addItemToInventory();
@@ -248,14 +256,21 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
     }
     public void StopFlashing()
     {
-        startedFlash    = false;
-        flashing        = false;
-        flashingOff     = true;
-        startUseLowBound = false;
-        StopCoroutine(curentFlash);
+        if (startedFlash)
+        {
+            startedFlash = false;
+            flashing = false;
+            flashingOff = true;
+            startUseLowBound = false;
+            StopCoroutine(curentFlash);
 
-        curentFlash = StartCoroutine(FadeOffHiglight());
-        lobingTheItemToInventoryn = false;
+            curentFlash = StartCoroutine(FadeOffHiglight());
+            lobingTheItemToInventoryn = false;
+
+            MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+            param.param4 = true;
+            MONO_EventManager.TriggerEvent(MONO_EventManager.setLocalInvntoryHandelInput_NAME, param);
+        }
     }
 
 
