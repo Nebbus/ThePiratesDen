@@ -125,6 +125,62 @@ public class MONO_CursorLogic : MonoBehaviour
         usedClickKey = mouseKey;
     }
 
+    //===========================================================================
+    // Kebord accesebility stuff
+    //===========================================================================
+
+    public GameObject[] interacrablebaseObjectsInScene = new GameObject[1];
+
+    public GameObject[] inventorySLots                 = new GameObject[1];
+
+    [SerializeField]
+    private KeyCode cykleThroInteractable = KeyCode.Tab;
+
+    [SerializeField]
+    private KeyCode higligthAllButton = KeyCode.Q;
+
+    [SerializeField]
+    private KeyCode bringUppInvnetorye = KeyCode.W;
+
+
+//===========================================================================
+// Kebord accesebility stuff
+//===========================================================================
+    
+    private void getAllObjectsInScene()
+    {
+        List<GameObject> tempinteractablesBase  = new List<GameObject>();
+        List<GameObject> tempInvnetorySlots     = new List<GameObject>();
+        foreach (Selectable selectableUI in Selectable.allSelectables)
+        {
+            if (selectableUI.gameObject.GetComponent<MONO_InteractionBase>() != null)
+            {
+
+                if(selectableUI.gameObject.GetComponent<MONO_InventoryItemLogic>() != null)
+                {
+
+                    tempinteractablesBase.Add(selectableUI.gameObject);
+                }
+                else
+                {
+                    tempInvnetorySlots.Add(selectableUI.gameObject);
+                }
+
+            }
+
+        }
+        interacrablebaseObjectsInScene  = tempinteractablesBase.ToArray();
+        inventorySLots                  = tempInvnetorySlots.ToArray(); 
+    }
+
+    private void getClosetsItem()
+    {
+
+    }
+
+
+
+
 
     void Start()
     {
@@ -136,7 +192,6 @@ public class MONO_CursorLogic : MonoBehaviour
         presistentSeneEventSystem   = FindObjectOfType<EventSystem>();
         monoSceneManager            = FindObjectOfType<MONO_SceneManager>();
     }
-
 
     void Update()
     {
@@ -152,7 +207,7 @@ public class MONO_CursorLogic : MonoBehaviour
         }
 
         handleResult();
-      
+        getAllObjectsInScene();
     }
 
 
@@ -442,6 +497,13 @@ public class MONO_CursorLogic : MonoBehaviour
         lastInteractableTarget.OnHoverExit();
         lastInteractableTarget = null;
     }
+
+
+
+
+
+
+
 
 }
 

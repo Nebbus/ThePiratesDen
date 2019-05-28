@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 /// <summary>
@@ -10,8 +11,20 @@ using UnityEngine;
 /// </summary>
 public abstract class MONO_InteractionBase : MonoBehaviour {
 
-   
-    
+
+    private void Start()
+    {
+
+            gameObject.AddComponent(typeof(Selectable));
+
+        Init();
+    }
+
+    /// <summary>
+    /// private version off start
+    /// </summary>
+    protected virtual void Init() { }
+
     /// <summary>
     /// To work as the new click event
     /// </summary>

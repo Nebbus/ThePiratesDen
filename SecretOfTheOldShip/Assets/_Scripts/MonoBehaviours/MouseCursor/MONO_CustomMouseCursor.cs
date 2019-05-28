@@ -20,13 +20,13 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     private RectTransform   CustomCursorTransform;
     private MONO_Menus      Menus;
 
-	//private GameObject[] objects;
-	//private MONO_InteractionBase currentInteractableTarget;
-	//public action currentAction = action.HOVER;
+    //private GameObject[] objects;
+    //private MONO_InteractionBase currentInteractableTarget;
+    //public action currentAction = action.HOVER;
 
 
-  
-    
+
+
 
     void Awake()
     {
@@ -79,37 +79,37 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
     }
 
-//	private void ToggleObjects()
-//	{
-//		GameObject.Find ("Interactable");
-//	}
-//
-//	private bool HandleInteractable()
-//	{
-//		MONO_Interactable interactable = currentInteractableTarget as MONO_Interactable;
-//
-//		if (interactable)
-//		{
-//			if (currentAction == action.CLICK)
-//			{
-//				MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
-//				param.param6                       = currentInteractableTarget;
-//				MONO_EventManager.TriggerEvent(MONO_EventManager.onInteractableEvnetManager_NAME, param);
-//			}
-//
-//			return true;
-//		}
-//		return false;
-//	}
-//
-//	private void HandleSimpleInteract()
-//	{
-//		if (currentAction == action.CLICK)
-//		{
-//			currentInteractableTarget.OnClick();
-//		}
-//
-//
-//	}
+    //private void ToggleObjects()
+    //{
+    //    GameObject.Find("Interactable");
+    //}
+
+    //private bool HandleInteractable()
+    //{
+    //    MONO_Interactable interactable = currentInteractableTarget as MONO_Interactable;
+
+    //    if (interactable)
+    //    {
+    //        if (currentAction == action.CLICK)
+    //        {
+    //            MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+    //            param.param6 = currentInteractableTarget;
+    //            MONO_EventManager.TriggerEvent(MONO_EventManager.onInteractableEvnetManager_NAME, param);
+    //        }
+
+    //        return true;
+    //    }
+    //    return false;
+    //}
+
+    //private void HandleSimpleInteract()
+    //{
+    //    if (currentAction == action.CLICK)
+    //    {
+    //        currentInteractableTarget.OnClick();
+    //    }
+
+
+    //}
 
 }

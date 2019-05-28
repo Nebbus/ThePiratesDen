@@ -51,10 +51,13 @@ public class MONO_Interactable : MONO_InteractionBase
     /// <summary>
     /// creates the higlight
     /// </summary>
-    public void Start()
+    protected override void Init()
     {
         MONO_GlowObject temp = getGlowObjectComponent;
+
     }
+
+
 
     // This is called when the player arrives at the interactionLocation.
     public void Interact()

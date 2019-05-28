@@ -19,6 +19,7 @@ public class EDI_CursorLogic : Editor {
     private SerializedProperty debugAllGrayHitProperty;
     private SerializedProperty debugCurentHitProperty;
 
+
     private SerializedProperty debugCurrentHoverOverProperty;
     private SerializedProperty debugCurrentInteractableTargetProperty;
     private SerializedProperty debugCurrentButtonTargerProperty;
@@ -33,36 +34,39 @@ public class EDI_CursorLogic : Editor {
     private SerializedProperty keyButtonProperty;
     private SerializedProperty usedClickKeyProperty;
 
-   // private SerializedProperty lastClickTimeProperty;
+    private SerializedProperty interacrablebaseObjectsInScenePropertys;
+
+    // private SerializedProperty lastClickTimeProperty;
     private SerializedProperty timeThresholdProperty;
     private SerializedProperty debugTimedeltaProperty;
 
-    private const string mainCameraGraycasterPropertyName           = "mainCameraGraycaster";
-    private const string presistentCanvansPraycasterPropertyName    = "presistentCanvansPraycaster";
+    private const string mainCameraGraycasterPropertyName            = "mainCameraGraycaster";
+    private const string presistentCanvansPraycasterPropertyName     = "presistentCanvansPraycaster";
 
-    private const string monoPointerLogicName                       = "currentAction";
+    private const string monoPointerLogicName                        = "currentAction";
     
-    private const string debugAllPrayHitPropertyName                = "allPhysicalHitsDebug";  
-    private const string debugAllGrayHitPropertyName                = "allGraphicalHitsDebug";
-    private const string debugCurentHitPropertyName                 = "overCurentObject";
+    private const string debugAllPrayHitPropertyName                 = "allPhysicalHitsDebug";  
+    private const string debugAllGrayHitPropertyName                 = "allGraphicalHitsDebug";
+    private const string debugCurentHitPropertyName                  = "overCurentObject";
 
 
-    private const string debugCurrentHoverOverPropertyName          = "currentHoverOver";
-    private const string debugCurrentInteractableTargetPropertyName = "currentInteractableTarget";
-    private const string debugCurrentButtonTargerPropertyName       = "currentButtonTarger";
+    private const string debugCurrentHoverOverPropertyName           = "currentHoverOver";
+    private const string debugCurrentInteractableTargetPropertyName  = "currentInteractableTarget";
+    private const string debugCurrentButtonTargerPropertyName        = "currentButtonTarger";
 
-    private const string debugLastHoverOverPropertyName             = "lastHoverOver";
-    private const string debugLastInteractableTargetPropertyName    = "lastInteractableTarget";
-    private const string debugLastButtonTargerPropertyName          = "lastButtonTarger";
+    private const string debugLastHoverOverPropertyName              = "lastHoverOver";
+    private const string debugLastInteractableTargetPropertyName     = "lastInteractableTarget";
+    private const string debugLastButtonTargerPropertyName           = "lastButtonTarger";
 
-    private const string museButtonPropertyyName                    = "mouseKey";
-    private const string keyButtonPropertyName                      = "keabordKey";
-    private const string usedClickKeyPropertyName                   = "usedClickKey";
+    private const string museButtonPropertyyName                     = "mouseKey";
+    private const string keyButtonPropertyName                       = "keabordKey";
+    private const string usedClickKeyPropertyName                    = "usedClickKey";
 
-    private const string lastClickTimePropertyName                  = "lastClickTime";
-    private const string timeThresholdPropertyName                  = "timeThreshold";
-    private const string debugTimedeltaPropertyName                 = "timedelta";
+    private const string lastClickTimePropertyName                   = "lastClickTime";
+    private const string timeThresholdPropertyName                   = "timeThreshold";
+    private const string debugTimedeltaPropertyName                  = "timedelta";
 
+    private const string interacrablebaseObjectsInScenePropertysName = "interacrablebaseObjectsInScene";
 
     public void OnEnable()
     {
@@ -87,6 +91,7 @@ public class EDI_CursorLogic : Editor {
         debugLastHoverOverProperty              = serializedObject.FindProperty(debugLastHoverOverPropertyName);
         debugLastInteractableTargetProperty     = serializedObject.FindProperty(debugLastInteractableTargetPropertyName);
         debugLastButtonTargerProperty           = serializedObject.FindProperty(debugLastButtonTargerPropertyName);
+        interacrablebaseObjectsInScenePropertys = serializedObject.FindProperty(interacrablebaseObjectsInScenePropertysName);
 
     }
 
@@ -98,8 +103,9 @@ public class EDI_CursorLogic : Editor {
         DrawEditor();
         DrawDebug();
 
-
-
+        EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUILayout.PropertyField(interacrablebaseObjectsInScenePropertys,true);
+        EditorGUILayout.EndVertical();
         serializedObject.ApplyModifiedProperties();
     }
 
@@ -119,6 +125,8 @@ public class EDI_CursorLogic : Editor {
                 EditorGUILayout.PropertyField(museButtonProperty);
                 EditorGUILayout.PropertyField(keyButtonProperty);
             EditorGUILayout.EndHorizontal();
+
+      
         EditorGUILayout.EndVertical();
 
     }

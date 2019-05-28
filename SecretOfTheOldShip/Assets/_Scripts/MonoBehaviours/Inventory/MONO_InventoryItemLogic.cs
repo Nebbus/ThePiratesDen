@@ -55,16 +55,26 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         }
     }
 
-
-    public void Start()
+    protected override void Init()
     {
-        if(monoInventory == null)
+        if (monoInventory == null)
         {
             monoInventory = FindObjectOfType<MONO_Inventory>();
 
         }
 
     }
+    //public void Start()
+    //{
+    //    //if(monoInventory == null)
+    //    //{
+    //    //    monoInventory = FindObjectOfType<MONO_Inventory>();
+
+    //    //}
+
+    //}
+
+
 
     /// <summary>
     /// Run throug the ractions the item has attached to it.
