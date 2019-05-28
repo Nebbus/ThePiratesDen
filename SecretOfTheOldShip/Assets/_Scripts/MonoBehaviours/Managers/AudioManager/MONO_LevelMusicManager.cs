@@ -16,9 +16,9 @@ public class MONO_LevelMusicManager : MonoBehaviour {
     public static string pathToMasterVCA =  "vca:/Music";
     public static string pathToMusicVCA = "vca:/Music";
     public static string pathToSFXVCA = "vca:/Music";
-    FMOD.Studio.VCA masterVolumController;
-    FMOD.Studio.VCA musicVolumController;
-    FMOD.Studio.VCA sfxVolumController;
+	private FMOD.Studio.VCA masterVolumeController;
+    private FMOD.Studio.VCA musicVolumeController;
+	private FMOD.Studio.VCA sfxVolumeController;
     public string debug;
  
 
@@ -27,7 +27,9 @@ public class MONO_LevelMusicManager : MonoBehaviour {
         if (instace == null)
         {
             instace = this;
-            masterVolumController = FMODUnity.RuntimeManager.GetVCA(pathToMasterVCA);
+            masterVolumeController = FMODUnity.RuntimeManager.GetVCA(pathToMasterVCA);
+			musicVolumeController = FMODUnity.RuntimeManager.GetVCA(pathToMusicVCA);
+			sfxVolumeController = FMODUnity.RuntimeManager.GetVCA(pathToSFXVCA);
         }
         else
         {
@@ -103,17 +105,45 @@ public class MONO_LevelMusicManager : MonoBehaviour {
     /// Shange the overal volume
     /// </summary>
     /// <param name="changeFactor"> how muthce the sounds changes</param>
-    public void changeVolume(float changeFactor)
+    public void changeMasterVolume(float changeFactor)
     {
 
         float oldVolume;
         float dummy;
-        masterVolumController.getVolume(out dummy, out oldVolume);
-        masterVolumController.setVolume(oldVolume + changeFactor);
+        masterVolumeController.getVolume(out dummy, out oldVolume);
+        masterVolumeController.setVolume(oldVolume + changeFactor);
     }
 
 
+	public string changeMusicVolume(float changeFactor)
+	{
+		float currentVolume, percentageVolume;
+		musicVolumeController.getVolume (out percentageVolume, out currentVolume);
 
+		currentVolume = currentVolume + changeFactor;
+		currentVolume *= 100;
+		currentVolume = Mathf.Round (currentVolume);
+		percentageVolume = currentVolume;
+		currentVolume *= 0.01;
 
+		musicVolumeController.setVolume (currentVolume);
+
+		return percentageVolume.ToString();
+	}
+
+	public void changeSFXVolume(float changeFactor, UnityEngine.UI.Text text)
+	{
+
+	}
+
+	public string GetMusicVolume()
+	{
+		float currentVolume, percentageVolume;
+		musicVolumeController.getVolume (out percentageVolume, out currentVolume);
+
+		percentageVolume = Mathf.Round (currentVolume * 100);
+
+		return percentageVolume.ToString();
+	}
 
 }
