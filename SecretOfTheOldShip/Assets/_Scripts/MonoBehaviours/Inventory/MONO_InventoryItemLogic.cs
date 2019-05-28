@@ -55,8 +55,13 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         }
     }
 
-    protected override void Init()
+
+    private void Start()
     {
+        if (gameObject.GetComponent(typeof(UnityEngine.UI.Selectable)) == null)
+        {
+            gameObject.AddComponent(typeof(UnityEngine.UI.Selectable));
+        }
         if (monoInventory == null)
         {
             monoInventory = FindObjectOfType<MONO_Inventory>();
@@ -64,9 +69,6 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         }
 
     }
-
-
-
 
     /// <summary>
     /// Run throug the ractions the item has attached to it.

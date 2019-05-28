@@ -16,27 +16,40 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     private float pointerSafeDist = 5;
 
     private RectTransform   CustomCursorTransform;
-    private MONO_Menus      Menus;
+    private Canvas presistentCanvas; // must be presisten canvas to work
 
     //===========================================================================
     // Kebord accesebility stuff
     //===========================================================================
-
+    [Space]
+    public int selectedIndex = 0;
+    public int currentIndex = -1;
+    [Space]
     public Selectable[] interacrablebaseObjectsInScene = new Selectable[1];
 
-    public Selectable[] inventorySLots = new Selectable[1];
-
-    private int selectedItem = 0;
-    private bool inventoryMod = false;
+    public Selectable[] inventorySLots = null;
 
 
-    private Selectable selected;
 
-    public Selectable curretItem
+    public bool inventoryMod = false;
+
+    public bool inventoryOppen
     {
         get
         {
-            return (inventorySLots != null) ? inventorySLots[selectedItem] : interacrablebaseObjectsInScene[selectedItem];
+            inventoryMod = (inventorySLots.Length != 0);
+            return inventoryMod;
+        }
+    }
+
+    public GameObject selecetGamobject;
+    public Selectable getCurretItem
+    {
+        get
+        {
+            Selectable temp = (inventoryOppen) ? inventorySLots[currentIndex] : interacrablebaseObjectsInScene[currentIndex];
+            selecetGamobject = temp.gameObject;
+            return temp;
         }
 
     }
@@ -47,12 +60,13 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     void Awake()
     {
         CustomCursorTransform = CustomCursor.GetComponent<RectTransform>();
-        Menus                 = FindObjectOfType<MONO_Menus>();
+        presistentCanvas = FindObjectOfType(typeof(Canvas)) as Canvas;
 
     }
 
 
     void Update () {
+ 
         MoveVirtuelCursor();
 
     }
@@ -109,39 +123,65 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     private void KeybordMovment()
     {
 
-        if (MONO_Settings.instance.getInventoryButton)
-        {
-            getAllObjectsInScene();
-        }
 
         if (MONO_Settings.instance.getToNextInteractable)
         {
             getAllObjectsInScene();
             getNextIndex();
-            if(selected != curretItem)
-            {
-                CustomCursorTransform.anchoredPosition = Camera.current.WorldToScreenPoint(curretItem.gameObject.transform.position);
-                selected = curretItem;
-            }
+            setCurentItem();
 
         }
     }
 
+    private void setCurentItem()
+    {
+        if (currentIndex != selectedIndex)
+        {
+
+       
 
 
+            currentIndex = selectedIndex;
+            if (inventoryOppen)
+            {
 
+    
+
+                //now you can set the position of the ui element
+                CustomCursorTransform.position = getCurretItem.gameObject.GetComponent<RectTransform>().position;
+                CustomCursorTransform.position = new Vector3(CustomCursorTransform.position.x, CustomCursorTransform.position.y, 1f);
+            }
+            else
+            {
+                RectTransform CanvasRect = presistentCanvas.GetComponent<RectTransform>();
+
+                Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(getCurretItem.gameObject.transform.position);
+                Vector2 WorldObject_ScreenPosition = new Vector2((ViewportPosition.x * CanvasRect.sizeDelta.x), (ViewportPosition.y * CanvasRect.sizeDelta.y));
+
+                //now you can set the position of the ui element
+                CustomCursorTransform.anchoredPosition = WorldObject_ScreenPosition;
+            }
+
+
+        }
+    }
+    public Vector2 temp0;
+    public Vector3 temp1;
+    public Vector3 temp2;
+    public Vector3 temp3;
+    public Vector3 temp4;
     private void getAllObjectsInScene()
     {
         interacrablebaseObjectsInScene = null;
-        inventorySLots = null;
+        inventorySLots                 = null;
         List<Selectable> tempinteractablesBase = new List<Selectable>();
-        List<Selectable> tempInvnetorySlots = new List<Selectable>();
+        List<Selectable> tempInvnetorySlots     = new List<Selectable>();
         foreach (Selectable selectableUI in Selectable.allSelectables)
         {
             if (selectableUI.gameObject.GetComponent<MONO_InteractionBase>() != null)
             {
-
-                if (selectableUI.gameObject.GetComponent<MONO_InventoryItemLogic>() != null)
+                
+                if (selectableUI.gameObject.GetComponent<MONO_InventoryItemLogic>() == null)
                 {
 
                     tempinteractablesBase.Add(selectableUI);
@@ -155,7 +195,7 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
         }
         interacrablebaseObjectsInScene = tempinteractablesBase.ToArray();
-        inventorySLots = tempInvnetorySlots.ToArray();
+        inventorySLots                 = tempInvnetorySlots.ToArray();
     }
 
    
@@ -164,23 +204,15 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     /// </summary>
     private void getNextIndex()
     {
-        int length = (inventorySLots != null) ? inventorySLots.Length : interacrablebaseObjectsInScene.Length;
+        int length = (inventoryOppen) ? inventorySLots.Length : interacrablebaseObjectsInScene.Length;
+        length --;
 
-        if (inventorySLots != null && !inventoryMod)
-        {
-            selectedItem = 0;
-            inventoryMod = true;
-        }
-        else
-        {
-            inventoryMod = false;
-            //esentyaly a clamp, don like this just becuss..
-            selectedItem = ((selectedItem > length) || (selectedItem < 0)) ? ((selectedItem < 0) ? 0 : length) : selectedItem;
-        }
+        // selectedIndex = ((selectedIndex > length) || (selectedIndex < 0)) ? ((selectedIndex < 0) ? 0 : length) : selectedIndex;
 
-        selectedItem += 1;
+
+        selectedIndex ++;
         //esentyaly a modulus, don like this just becuss..
-        selectedItem = ((selectedItem > length) || (selectedItem < 0)) ? ((selectedItem < 0) ? length : 0) : selectedItem;
+        selectedIndex = ((selectedIndex > length) || (selectedIndex < 0)) ? ((selectedIndex < 0) ? length : 0) : selectedIndex;
     }
 
 

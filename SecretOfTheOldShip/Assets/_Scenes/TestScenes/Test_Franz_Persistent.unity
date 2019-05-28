@@ -650,7 +650,7 @@ Prefab:
     - target: {fileID: 224012761715408260, guid: 79dac115898bb49e8a7bc8a3f8b6f127,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224012761715408260, guid: 79dac115898bb49e8a7bc8a3f8b6f127,
         type: 2}
@@ -1728,17 +1728,17 @@ Prefab:
     - target: {fileID: 224096164170916590, guid: beb5c8bf4f4a87f4180c0f115158a4a4,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224096164170916590, guid: beb5c8bf4f4a87f4180c0f115158a4a4,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 742.6052
+      value: 1503
       objectReference: {fileID: 0}
     - target: {fileID: 224096164170916590, guid: beb5c8bf4f4a87f4180c0f115158a4a4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 631
+      value: 379
       objectReference: {fileID: 0}
     - target: {fileID: 224096164170916590, guid: beb5c8bf4f4a87f4180c0f115158a4a4,
         type: 2}
@@ -1802,6 +1802,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 8d7491090096cac4eb06a8c530df6252,
         type: 3}
+    - target: {fileID: 114452712594500460, guid: beb5c8bf4f4a87f4180c0f115158a4a4,
+        type: 2}
+      propertyPath: presistentCanvas
+      value: 
+      objectReference: {fileID: 613497259}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: beb5c8bf4f4a87f4180c0f115158a4a4, type: 2}
   m_IsPrefabParent: 0
@@ -3644,6 +3649,7 @@ MonoBehaviour:
     lobedItem: {fileID: 1441500837}
     inventoryButton: {fileID: 250500419}
     presistentCanvansPraycaster: {fileID: 0}
+    presistentSeneEventSystem: {fileID: 0}
   selectedObject: {fileID: 1232707391}
   buttonAnimator: {fileID: 250500424}
   flashing: 0
@@ -4179,6 +4185,7 @@ GameObject:
   - component: {fileID: 1963792841}
   - component: {fileID: 1963792839}
   - component: {fileID: 1963792840}
+  - component: {fileID: 1963792844}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: SceneManager
@@ -4220,7 +4227,7 @@ MonoBehaviour:
   monoInventory: {fileID: 0}
   data:
     hasSAveData: 1
-    currentScene: Test_Franz
+    currentScene: Scene1_outside
     itemsInInentory: []
     flowChartVariableData: []
     playerPosData:
@@ -4232,8 +4239,8 @@ MonoBehaviour:
       qZ: 0
       qW: 0
     conditions:
-      allConditionConditionIndex: 0000000001000000ffffffff030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a000000
-      allConditionConditionsatesfied: 010000000000000000000000000000000000000000000000000000
+      allConditionConditionIndex: 0000000001000000ffffffff030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+      allConditionConditionsatesfied: 00000000000000000000000000000000000000000000000000000000
   dataToSave:
     hasSAveData: 0
     currentScene: 
@@ -4298,6 +4305,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1963792844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1963792837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4064436bf824f34eb1f046dc6dfb3d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingKeybodInput: 1
+  KeyboardToggle: {fileID: 0}
+  MouseToggle: {fileID: 0}
+  mouseKey: 323
+  keabordKey: 32
+  toNextInteractable: 9
+  higligthAllButton: 113
+  inventoryButton: 119
 --- !u!1001 &2083095704
 Prefab:
   m_ObjectHideFlags: 0
@@ -4378,7 +4404,7 @@ Prefab:
     - target: {fileID: 224947622187026012, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224947622187026012, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
         type: 2}
