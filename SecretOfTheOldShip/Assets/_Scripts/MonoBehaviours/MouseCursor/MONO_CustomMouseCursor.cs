@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class MONO_CustomMouseCursor : MonoBehaviour {
 
     public bool lockkurso = true;
-    [HideInInspector]
-    public bool       UsingKeyboard = false;
     public GameObject CustomCursor;
     public  float  CursorSpeed = 4;
 
@@ -20,10 +18,28 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     private RectTransform   CustomCursorTransform;
     private MONO_Menus      Menus;
 
-    //private GameObject[] objects;
-    //private MONO_InteractionBase currentInteractableTarget;
-    //public action currentAction = action.HOVER;
+    //===========================================================================
+    // Kebord accesebility stuff
+    //===========================================================================
 
+    public Selectable[] interacrablebaseObjectsInScene = new Selectable[1];
+
+    public Selectable[] inventorySLots = new Selectable[1];
+
+    private int selectedItem = 0;
+    private bool inventoryMod = false;
+
+
+    private Selectable selected;
+
+    public Selectable curretItem
+    {
+        get
+        {
+            return (inventorySLots != null) ? inventorySLots[selectedItem] : interacrablebaseObjectsInScene[selectedItem];
+        }
+
+    }
 
 
 
@@ -41,75 +57,134 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
     }
 
-
     private void MoveVirtuelCursor()
     {
-            //Locks the cursor 
-            if (Cursor.lockState != CursorLockMode.Locked && lockkurso)
-            {
-                Cursor.lockState = CursorLockMode.None; // herd this culd prevent editor bugg
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible  = false;
-            }
+        //Locks the cursor 
+        if (Cursor.lockState != CursorLockMode.Locked && lockkurso)
+        {
+            Cursor.lockState = CursorLockMode.None; // herd this culd prevent editor bugg
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
-            // Gets the movment direction
-            float x = UsingKeyboard ? Input.GetAxis("Horizontal") : Input.GetAxis("Mouse X");
-            float y = UsingKeyboard ? Input.GetAxis("Vertical")   : Input.GetAxis("Mouse Y");
-
-
-            // Adds the momvent
-            float xTemp = CustomCursorTransform.anchoredPosition.x + (x * CursorSpeed * Time.deltaTime);
-            float yTemp = CustomCursorTransform.anchoredPosition.y + (y * CursorSpeed * Time.deltaTime);
-
-
-            // Bounds code Vigfus
-            float refHeight = 1080;// the referens hight
-            float refWidth  = ((float)Screen.width / (float)Screen.height) * refHeight;// the referens whidt that works with diffrent higts
-
-
-            float minX = 0f;
-            float minY = 0f       + pointerSafeDist;
-            float maxX = refWidth - pointerSafeDist; 
-            float maxY = refHeight;
-
-            xTemp = Mathf.Clamp(xTemp, minX, maxX );
-            yTemp = Mathf.Clamp(yTemp, minY , maxY);
-
-            CustomCursorTransform.anchoredPosition = new Vector2(xTemp, yTemp);
-
+        if (MONO_Settings.instance.usingKeybodInput)
+        {
+            KeybordMovment();
+        }
+        else
+        {
+            MouseMovment();
+        }
+      
     }
 
-    //private void ToggleObjects()
-    //{
-    //    GameObject.Find("Interactable");
-    //}
-
-    //private bool HandleInteractable()
-    //{
-    //    MONO_Interactable interactable = currentInteractableTarget as MONO_Interactable;
-
-    //    if (interactable)
-    //    {
-    //        if (currentAction == action.CLICK)
-    //        {
-    //            MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
-    //            param.param6 = currentInteractableTarget;
-    //            MONO_EventManager.TriggerEvent(MONO_EventManager.onInteractableEvnetManager_NAME, param);
-    //        }
-
-    //        return true;
-    //    }
-    //    return false;
-    //}
-
-    //private void HandleSimpleInteract()
-    //{
-    //    if (currentAction == action.CLICK)
-    //    {
-    //        currentInteractableTarget.OnClick();
-    //    }
+    private void MouseMovment()
+    {
+        float x = MONO_Settings.instance.getMouseHorizontal;// Input.GetAxis("Mouse X");
+        float y = MONO_Settings.instance.getMouyseVertical; //Input.GetAxis("Mouse Y");
 
 
-    //}
+
+        // Adds the momvent
+        float xTemp = CustomCursorTransform.anchoredPosition.x + (x * CursorSpeed * Time.deltaTime);
+        float yTemp = CustomCursorTransform.anchoredPosition.y + (y * CursorSpeed * Time.deltaTime);
+
+
+        // Bounds code Vigfus
+        float refHeight = 1080;// the referens hight
+        float refWidth = ((float)Screen.width / (float)Screen.height) * refHeight;// the referens whidt that works with diffrent higts
+
+
+        float minX = 0f;
+        float minY = 0f + pointerSafeDist;
+        float maxX = refWidth - pointerSafeDist;
+        float maxY = refHeight;
+
+        xTemp = Mathf.Clamp(xTemp, minX, maxX);
+        yTemp = Mathf.Clamp(yTemp, minY, maxY);
+
+        CustomCursorTransform.anchoredPosition = new Vector2(xTemp, yTemp);
+    }
+
+    private void KeybordMovment()
+    {
+
+        if (MONO_Settings.instance.getInventoryButton)
+        {
+            getAllObjectsInScene();
+        }
+
+        if (MONO_Settings.instance.getToNextInteractable)
+        {
+            getAllObjectsInScene();
+            getNextIndex();
+            if(selected != curretItem)
+            {
+                CustomCursorTransform.anchoredPosition = Camera.current.WorldToScreenPoint(curretItem.gameObject.transform.position);
+                selected = curretItem;
+            }
+
+        }
+    }
+
+
+
+
+    private void getAllObjectsInScene()
+    {
+        interacrablebaseObjectsInScene = null;
+        inventorySLots = null;
+        List<Selectable> tempinteractablesBase = new List<Selectable>();
+        List<Selectable> tempInvnetorySlots = new List<Selectable>();
+        foreach (Selectable selectableUI in Selectable.allSelectables)
+        {
+            if (selectableUI.gameObject.GetComponent<MONO_InteractionBase>() != null)
+            {
+
+                if (selectableUI.gameObject.GetComponent<MONO_InventoryItemLogic>() != null)
+                {
+
+                    tempinteractablesBase.Add(selectableUI);
+                }
+                else
+                {
+                    tempInvnetorySlots.Add(selectableUI);
+                }
+
+            }
+
+        }
+        interacrablebaseObjectsInScene = tempinteractablesBase.ToArray();
+        inventorySLots = tempInvnetorySlots.ToArray();
+    }
+
+   
+    /// <summary>
+    /// gets the nex index
+    /// </summary>
+    private void getNextIndex()
+    {
+        int length = (inventorySLots != null) ? inventorySLots.Length : interacrablebaseObjectsInScene.Length;
+
+        if (inventorySLots != null && !inventoryMod)
+        {
+            selectedItem = 0;
+            inventoryMod = true;
+        }
+        else
+        {
+            inventoryMod = false;
+            //esentyaly a clamp, don like this just becuss..
+            selectedItem = ((selectedItem > length) || (selectedItem < 0)) ? ((selectedItem < 0) ? 0 : length) : selectedItem;
+        }
+
+        selectedItem += 1;
+        //esentyaly a modulus, don like this just becuss..
+        selectedItem = ((selectedItem > length) || (selectedItem < 0)) ? ((selectedItem < 0) ? length : 0) : selectedItem;
+    }
+
+
+
+    
 
 }

@@ -30,7 +30,7 @@ public class MONO_MenuSelect : MonoBehaviour {
         {
             currentSelectedMenuItem = eventSystem.currentSelectedGameObject;
         }
-        if (OurCustomCursor.UsingKeyboard)
+        if (MONO_Settings.instance.usingKeybodInput)
         {
             SelectWithKeys();
 			if (eventSystem.currentSelectedGameObject != null) 

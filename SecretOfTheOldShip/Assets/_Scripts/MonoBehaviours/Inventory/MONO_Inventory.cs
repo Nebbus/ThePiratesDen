@@ -42,13 +42,21 @@ public class MONO_Inventory : MonoBehaviour {
     public Action<MONO_EventManager.EventParam> setLocalInvntoryHandelInput;
     public Action<MONO_EventManager.EventParam> setVisibilityOfInvnetory;
 
-
     private void Awake()
     {
-        setVisibilityOfInvnetory    = new Action<MONO_EventManager.EventParam>(SetInvnetoryVisability);
+        setVisibilityOfInvnetory = new Action<MONO_EventManager.EventParam>(SetInvnetoryVisability);
         setLocalInvntoryHandelInput = new Action<MONO_EventManager.EventParam>(SetHandleINput);
     }
 
+    private void Start()
+    {
+        inventoryDetectionImage = GetComponent<Image>();
+        m_Raycaster             = FindObjectOfType<GraphicRaycaster>();
+        m_EventSystem           = FindObjectOfType<EventSystem>();
+        wait                    = new WaitForSeconds(waitDelay);
+		HideInventory ();
+        higligtImage = buttonHiglight.lobingItemEffectStruct.lobedItem.GetComponent<Image>();
+    }
 
     private void OnEnable()
     {
@@ -77,15 +85,40 @@ public class MONO_Inventory : MonoBehaviour {
         HandleInput = param.param4;
     }
 
-    private void Start()
+
+
+
+    private void Update()
     {
-        inventoryDetectionImage = GetComponent<Image>();
-        m_Raycaster             = FindObjectOfType<GraphicRaycaster>();
-        m_EventSystem           = FindObjectOfType<EventSystem>();
-        wait                    = new WaitForSeconds(waitDelay);
-		HideInventory ();
-        higligtImage = buttonHiglight.lobingItemEffectStruct.lobedItem.GetComponent<Image>();
+        if (MONO_Settings.instance.getInventoryButton)
+        {
+            HandleInventoryClick();
+        }
+
+
+
+
+        if (MONO_AdventureCursor.instance.getMonoHoldedItem.isHoldingItem)
+        {
+            if (wait != null)
+                if (!raycast())
+                {
+                    if (!timerStarted)
+                    {
+                        timerStarted = true;
+                        curentTimer = StartCoroutine(ReactCoroutine());
+                    }
+
+                }
+                else if (timerStarted)
+                {
+                    StopCoroutine(curentTimer);
+                    timerStarted = false;
+                }
+        }
+
     }
+
 
     /// <summary>
     /// Handel clicks on the inventory
@@ -109,7 +142,7 @@ public class MONO_Inventory : MonoBehaviour {
     public void ShowInventory()
     {
       
-        StopPickUpReaction();
+       // StopPickUpReaction();
         inventoryGroup.SetActive(true);
         inventoryImage.SetActive(true);
         inventoryDetectionImage.enabled = true;
@@ -292,37 +325,14 @@ public class MONO_Inventory : MonoBehaviour {
     /// <summary>
     /// to sto the flashing then teh inventory is opend
     /// </summary>
-    private void StopPickUpReaction()
-    {
+    //private void StopPickUpReaction()
+    //{
  
-        buttonHiglight.StopFlashing();
+    //    buttonHiglight.StopFlashing();
 
-    }
+    //}
 
 
-
-    private void Update()
-    {
-        if (MONO_AdventureCursor.instance.getMonoHoldedItem.isHoldingItem)
-        {
-            if (wait != null)
-                if (!raycast())
-                {
-                    if (!timerStarted)
-                    {
-                        timerStarted = true;
-                        curentTimer = StartCoroutine(ReactCoroutine());
-                    }
-
-                }
-                else if (timerStarted)
-                {
-                    StopCoroutine(curentTimer);
-                    timerStarted = false;
-                }
-        }
-       
-    }
 
     private bool raycast()
     {

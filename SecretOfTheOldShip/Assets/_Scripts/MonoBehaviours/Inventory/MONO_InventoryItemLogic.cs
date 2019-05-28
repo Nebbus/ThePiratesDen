@@ -64,15 +64,7 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         }
 
     }
-    //public void Start()
-    //{
-    //    //if(monoInventory == null)
-    //    //{
-    //    //    monoInventory = FindObjectOfType<MONO_Inventory>();
 
-    //    //}
-
-    //}
 
 
 

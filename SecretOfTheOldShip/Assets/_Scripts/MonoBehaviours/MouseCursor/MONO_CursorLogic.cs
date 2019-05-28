@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MONO_CursorLogic : MonoBehaviour
 {
@@ -72,11 +73,12 @@ public class MONO_CursorLogic : MonoBehaviour
 
     public GameObject           currentHoverOver           = null;
     public MONO_InteractionBase currentInteractableTarget  = null;
-    public Button               currentButtonTarger        = null;
+    public Selectable           currentUIelemt             = null;
 
     public GameObject           lastHoverOver              = null;
     public MONO_InteractionBase lastInteractableTarget     = null;
-    public Button               lastButtonTarger           = null;
+    public Selectable           lastUIelemt                = null;
+
 
     public action currentAction = action.HOVER;
 
@@ -94,13 +96,7 @@ public class MONO_CursorLogic : MonoBehaviour
     // Ínput stuff
     //===========================================================================
 
-    //temporär lösnign
-    [SerializeField]
-    private KeyCode usedClickKey = KeyCode.Mouse0;
-    [SerializeField]
-    private KeyCode mouseKey    = KeyCode.Mouse0;
-    [SerializeField]
-    private KeyCode keabordKey  = KeyCode.Space;
+   
 
     public Vector3 getPointerPosition
     {
@@ -115,73 +111,7 @@ public class MONO_CursorLogic : MonoBehaviour
        
     }
 
-
-    public void setKeyBordMode()
-    {
-        usedClickKey = keabordKey;
-    }
-    public void setMouseMode()
-    {
-        usedClickKey = mouseKey;
-    }
-
-    //===========================================================================
-    // Kebord accesebility stuff
-    //===========================================================================
-
-    public GameObject[] interacrablebaseObjectsInScene = new GameObject[1];
-
-    public GameObject[] inventorySLots                 = new GameObject[1];
-
-    [SerializeField]
-    private KeyCode cykleThroInteractable = KeyCode.Tab;
-
-    [SerializeField]
-    private KeyCode higligthAllButton = KeyCode.Q;
-
-    [SerializeField]
-    private KeyCode bringUppInvnetorye = KeyCode.W;
-
-
-//===========================================================================
-// Kebord accesebility stuff
-//===========================================================================
-    
-    private void getAllObjectsInScene()
-    {
-        List<GameObject> tempinteractablesBase  = new List<GameObject>();
-        List<GameObject> tempInvnetorySlots     = new List<GameObject>();
-        foreach (Selectable selectableUI in Selectable.allSelectables)
-        {
-            if (selectableUI.gameObject.GetComponent<MONO_InteractionBase>() != null)
-            {
-
-                if(selectableUI.gameObject.GetComponent<MONO_InventoryItemLogic>() != null)
-                {
-
-                    tempinteractablesBase.Add(selectableUI.gameObject);
-                }
-                else
-                {
-                    tempInvnetorySlots.Add(selectableUI.gameObject);
-                }
-
-            }
-
-        }
-        interacrablebaseObjectsInScene  = tempinteractablesBase.ToArray();
-        inventorySLots                  = tempInvnetorySlots.ToArray(); 
-    }
-
-    private void getClosetsItem()
-    {
-
-    }
-
-
-
-
-
+  
     void Start()
     {
         thisTransformer = GetComponent<RectTransform>();
@@ -207,7 +137,7 @@ public class MONO_CursorLogic : MonoBehaviour
         }
 
         handleResult();
-        getAllObjectsInScene();
+
     }
 
 
@@ -256,7 +186,7 @@ public class MONO_CursorLogic : MonoBehaviour
 
         currentAction = action.HOVER; 
 
-        if (Input.GetKeyDown(usedClickKey))
+        if (MONO_Settings.instance.getClickKey)
         {
             //Prevents dubble click from causing truble
             timedelta      = Time.time - lastClickTime;
@@ -280,7 +210,7 @@ public class MONO_CursorLogic : MonoBehaviour
         overCurentObject            = "---------";
         currentHoverOver            = null;
         currentInteractableTarget   = null;
-        currentButtonTarger         = null;
+
 
 
         //RaycastResult theLa
@@ -292,22 +222,20 @@ public class MONO_CursorLogic : MonoBehaviour
             // get the object and all that is attached to it
             currentHoverOver            = result.gameObject;
             currentInteractableTarget   = currentHoverOver.GetComponentInParent<MONO_InteractionBase>();
-            currentButtonTarger         = currentHoverOver.GetComponentInParent<Button>();
+            currentUIelemt = currentHoverOver.GetComponentInParent<Selectable>();
 
             if (currentInteractableTarget && monoSceneManager.getSetHandleInput)
             {
                 overCurentObject = currentHoverOver.name;
                 HandleSimpleInteract();
-
             }
-            else if (currentButtonTarger)
+            else if (currentUIelemt)
             {
-                overCurentObject = "Button: " + currentHoverOver.name;
-                ButtonInteraction();
-
+                overCurentObject = "UI: " +currentHoverOver.name;
+                HandleSelectabeUIinteraction();
             }
             InteractableHover();
-            ButtonHover();
+            SelactableUIhover();
             return;// Only considerts the first hit
         }
 
@@ -347,7 +275,7 @@ public class MONO_CursorLogic : MonoBehaviour
                 overCurentObject = "GROUND: " + currentHoverOver.name;
             }
             InteractableHover();
-            ButtonHover();
+            SelactableUIhover();
             return;// Only considerts the first hit
         }
 
@@ -377,13 +305,31 @@ public class MONO_CursorLogic : MonoBehaviour
 
    
     /// <summary>
-    /// for handeling GUI buttons
+    /// for handeling GUI buttons annd toggles
     /// </summary>
-    private void ButtonInteraction()
+    private void HandleSelectabeUIinteraction()
     {
-        if (currentAction == action.CLICK && currentButtonTarger.interactable)
+
+
+        if (currentAction == action.CLICK && currentUIelemt.interactable)
         {
-            currentButtonTarger.onClick.Invoke();
+           
+            Button buttonTarget = currentUIelemt as Button;
+            Toggle toggleTarget = currentUIelemt as Toggle;
+           // Slider sliderTarget = currentUIelemt as Slider;
+
+            if (buttonTarget)
+            {
+                buttonTarget.onClick.Invoke();
+
+            }
+            if (toggleTarget)
+            {
+                toggleTarget.isOn = !toggleTarget.isOn; 
+            }
+
+
+
         }
 
     }
@@ -425,33 +371,24 @@ public class MONO_CursorLogic : MonoBehaviour
     }
 
 
-   private void ButtonHover()
+   private void SelactableUIhover()
     {
-
-
-        //// deselect lastbuttn, not over it now
-        //if (lastButtonTarger != currentInteractableTarget)
-        //{
-        //    presistentSeneEventSystem.SetSelectedGameObject(null);
-        //    lastButtonTarger = null;
-
-        //}
-
-        if (lastButtonTarger != currentButtonTarger)
+        if (lastUIelemt != currentUIelemt)
         {
-            lastButtonTarger = currentButtonTarger;
-            if (currentButtonTarger)
+            lastUIelemt = currentUIelemt;
+            if (currentUIelemt)
             {
-                currentButtonTarger.Select();
+                currentUIelemt.Select();
             }
             else
             {
                 presistentSeneEventSystem.SetSelectedGameObject(null);
 
             }
-      
+
         }
-      
+        
+
     }
 
 
