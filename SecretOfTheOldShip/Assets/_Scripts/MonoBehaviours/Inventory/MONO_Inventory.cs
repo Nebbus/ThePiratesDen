@@ -7,6 +7,7 @@ using System;
 
 public class MONO_Inventory : MonoBehaviour {
 
+    public MONO_SceneManager monoSceneManager;
 
     public Image higligtImage;
 
@@ -37,7 +38,7 @@ public class MONO_Inventory : MonoBehaviour {
 
     private bool startdFlashing = false;
 
-    private bool HandleInput = true;
+    public bool localHandleInput = false;
 
     public Action<MONO_EventManager.EventParam> setLocalInvntoryHandelInput;
     public Action<MONO_EventManager.EventParam> setVisibilityOfInvnetory;
@@ -82,7 +83,7 @@ public class MONO_Inventory : MonoBehaviour {
     }
     private void SetHandleINput(MONO_EventManager.EventParam param)
     {
-        HandleInput = param.param4;
+        localHandleInput = param.param4;
     }
 
 
@@ -90,7 +91,7 @@ public class MONO_Inventory : MonoBehaviour {
 
     private void Update()
     {
-        if (MONO_Settings.instance.getInventoryButton)
+        if (MONO_Settings.instance.getInventoryButton )
         {
             HandleInventoryClick();
         }
@@ -125,7 +126,7 @@ public class MONO_Inventory : MonoBehaviour {
     /// </summary>
     public void HandleInventoryClick()
     {
-        if (HandleInput)
+        if (localHandleInput)
         {
             if (inventoryGroup.activeSelf)
             {
@@ -164,7 +165,7 @@ public class MONO_Inventory : MonoBehaviour {
     ///  is going to be set to</param>
     public void SetHandleINput(bool setTo)
     {
-        HandleInput = setTo;
+        localHandleInput = setTo;
     }
 
     /// <summary>

@@ -111,4 +111,8 @@ public class MONO_Interactable : MONO_InteractionBase
 
         getGlowObjectComponent.HigligtOFF(false);
     }
+
+
+
+
 }

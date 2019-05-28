@@ -13,10 +13,14 @@ public class MONO_HandleInput : MonoBehaviour {
     /// <param name="handleInput"></param>
     public void HandleInput(bool handle)
 	{
+
+     
         //===============================================================================================================
         MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
         param.param4 = handle;
         MONO_EventManager.TriggerEvent(MONO_EventManager.setInputHandling_NAME, param);
+        MONO_EventManager.TriggerEvent(MONO_EventManager.setLocalInvntoryHandelInput_NAME, param);
         //===============================================================================================================     
+
     }
 }

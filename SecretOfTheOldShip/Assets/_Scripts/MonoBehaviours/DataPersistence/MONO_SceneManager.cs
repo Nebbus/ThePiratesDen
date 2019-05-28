@@ -32,10 +32,14 @@ public class MONO_SceneManager : MonoBehaviour {
     {
         get
         {
+           
+
             return handleInput;
         }
         set
         {
+          
+
             handleInput = value;
         }
     }

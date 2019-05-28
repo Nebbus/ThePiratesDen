@@ -24,7 +24,6 @@ public abstract class MONO_InteractionBase : MonoBehaviour {
 
     public abstract void OnHoverExit();
 
-  
 
 
 
