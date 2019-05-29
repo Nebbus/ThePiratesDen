@@ -32,10 +32,14 @@ public class MONO_SceneManager : MonoBehaviour {
     {
         get
         {
+           
+
             return handleInput;
         }
         set
         {
+          
+
             handleInput = value;
         }
     }
@@ -110,6 +114,11 @@ public class MONO_SceneManager : MonoBehaviour {
 
        saveLoad.handleSave(true, sceneName);
 
+
+        // runs the shut down in the old scene
+        MONO_EventManager.EventParam paramFiller = new MONO_EventManager.EventParam();
+        MONO_EventManager.TriggerEvent(MONO_EventManager.sceneShutdownSetup_NAME, paramFiller);
+
         //Unload old scene and load the new one.
         StartCoroutine(UnloadAndUnsetScene());
         loadCamera.gameObject.SetActive(true);// TEMP CAMERA=================================================================================================================
@@ -119,7 +128,6 @@ public class MONO_SceneManager : MonoBehaviour {
         saveLoad.handLoad(true);
 
         // runs the start upp in the new scene
-        MONO_EventManager.EventParam paramFiller = new MONO_EventManager.EventParam();
         MONO_EventManager.TriggerEvent(MONO_EventManager.sceneStartSetup_NAME, paramFiller);
 
        

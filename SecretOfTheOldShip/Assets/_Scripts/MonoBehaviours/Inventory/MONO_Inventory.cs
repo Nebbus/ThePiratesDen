@@ -7,6 +7,7 @@ using System;
 
 public class MONO_Inventory : MonoBehaviour {
 
+ 
 
     public Image higligtImage;
 
@@ -27,28 +28,36 @@ public class MONO_Inventory : MonoBehaviour {
     public static int numberItemSlots = 0;
 
     // for handeling the closing of the invenory after item is draged out
-    private GraphicRaycaster m_Raycaster;
-    private EventSystem      m_EventSystem;
+    public GraphicRaycaster m_Raycaster;
+    public EventSystem      m_EventSystem;
 
-    private WaitForSeconds   wait; // Storing the wait created from the delay so it doesn't need to be created each time.
+    public WaitForSeconds   wait; // Storing the wait created from the delay so it doesn't need to be created each time.
     public float waitDelay;
-    private bool timerStarted = false;
+    public bool timerStarted = false;
     private Coroutine curentTimer;
 
     private bool startdFlashing = false;
 
-    private bool HandleInput = true;
+    public bool localHandleInput = false;
 
     public Action<MONO_EventManager.EventParam> setLocalInvntoryHandelInput;
     public Action<MONO_EventManager.EventParam> setVisibilityOfInvnetory;
 
-
     private void Awake()
     {
-        setVisibilityOfInvnetory    = new Action<MONO_EventManager.EventParam>(SetInvnetoryVisability);
+        setVisibilityOfInvnetory = new Action<MONO_EventManager.EventParam>(SetInvnetoryVisability);
         setLocalInvntoryHandelInput = new Action<MONO_EventManager.EventParam>(SetHandleINput);
     }
 
+    private void Start()
+    {
+        inventoryDetectionImage = GetComponent<Image>();
+        m_Raycaster             = FindObjectOfType<GraphicRaycaster>();
+        m_EventSystem           = FindObjectOfType<EventSystem>();
+        wait                    = new WaitForSeconds(waitDelay);
+		HideInventory ();
+        higligtImage = buttonHiglight.lobingItemEffectStruct.lobedItem.GetComponent<Image>();
+    }
 
     private void OnEnable()
     {
@@ -74,25 +83,54 @@ public class MONO_Inventory : MonoBehaviour {
     }
     private void SetHandleINput(MONO_EventManager.EventParam param)
     {
-        HandleInput = param.param4;
+        localHandleInput = param.param4;
     }
 
-    private void Start()
+
+
+
+    private void Update()
     {
-        inventoryDetectionImage = GetComponent<Image>();
-        m_Raycaster             = FindObjectOfType<GraphicRaycaster>();
-        m_EventSystem           = FindObjectOfType<EventSystem>();
-        wait                    = new WaitForSeconds(waitDelay);
-		HideInventory ();
-        higligtImage = buttonHiglight.lobingItemEffectStruct.lobedItem.GetComponent<Image>();
+        if (MONO_Settings.instance.getInventoryButton )
+        {
+            HandleInventoryClick();
+        }
+
+        if (MONO_AdventureCursor.instance.getMonoHoldedItem.isHoldingItem && inventoryGroup.activeSelf)
+        {
+            if (wait != null)
+            {
+                Debug.Log("! 1");
+                if (!raycast() && !timerStarted)
+                {
+                    Debug.Log("! 2");
+                    timerStarted = true;
+                    curentTimer = StartCoroutine(ReactCoroutine());
+                  
+
+                }
+                else if (raycast() && timerStarted)
+                {
+                    Debug.Log("! 4");
+                    StopCoroutine(curentTimer);
+                    timerStarted = false;
+                }
+            }
+        }
+        else if (timerStarted)
+        {
+            timerStarted = false;
+        }
+
     }
+
 
     /// <summary>
     /// Handel clicks on the inventory
     /// </summary>
     public void HandleInventoryClick()
     {
-        if (HandleInput)
+        if (localHandleInput)
         {
             if (inventoryGroup.activeSelf)
             {
@@ -109,10 +147,11 @@ public class MONO_Inventory : MonoBehaviour {
     public void ShowInventory()
     {
       
-        StopPickUpReaction();
+       // StopPickUpReaction();
         inventoryGroup.SetActive(true);
         inventoryImage.SetActive(true);
         inventoryDetectionImage.enabled = true;
+        timerStarted = false;
     }
 
     public void HideInventory()
@@ -120,6 +159,7 @@ public class MONO_Inventory : MonoBehaviour {
         inventoryGroup.SetActive(false);
         inventoryImage.SetActive(false);
         inventoryDetectionImage.enabled = false;
+        timerStarted = false;
     }
 
 
@@ -131,7 +171,7 @@ public class MONO_Inventory : MonoBehaviour {
     ///  is going to be set to</param>
     public void SetHandleINput(bool setTo)
     {
-        HandleInput = setTo;
+        localHandleInput = setTo;
     }
 
     /// <summary>
@@ -289,49 +329,19 @@ public class MONO_Inventory : MonoBehaviour {
 
     }
 
-    /// <summary>
-    /// to sto the flashing then teh inventory is opend
-    /// </summary>
-    private void StopPickUpReaction()
-    {
- 
-        buttonHiglight.StopFlashing();
-
-    }
 
 
 
-    private void Update()
-    {
-        if (MONO_AdventureCursor.instance.getMonoHoldedItem.isHoldingItem)
-        {
-            if (wait != null)
-                if (!raycast())
-                {
-                    if (!timerStarted)
-                    {
-                        timerStarted = true;
-                        curentTimer = StartCoroutine(ReactCoroutine());
-                    }
-
-                }
-                else if (timerStarted)
-                {
-                    StopCoroutine(curentTimer);
-                    timerStarted = false;
-                }
-        }
-       
-    }
 
     private bool raycast()
     {
-        List<RaycastResult> results = EXT_RayCast.GraphicRayCast(m_Raycaster, m_EventSystem, Input.mousePosition);
-
+        RectTransform rectransform = MONO_AdventureCursor.instance.gameObject.GetComponent<RectTransform>();
+        List<RaycastResult> results = EXT_RayCast.GraphicRayCast(m_Raycaster, m_EventSystem, rectransform.position);
         //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
         foreach (RaycastResult result in results)
         {
-            if (result.gameObject.name == this.gameObject.name)
+
+            if (result.gameObject.name == gameObject.name)
             {
                 return true;
             }

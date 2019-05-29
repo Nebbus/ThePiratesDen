@@ -11,7 +11,8 @@ public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListe
 {
 
 
-   
+  
+
 
     [Serializable]
     public struct otherReactions
@@ -117,7 +118,10 @@ public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListe
         }
     }
 
+    public bool canMoveMouseOver = false;
 
+    [Space]
+    [Space]
     public UnityEvent myClickEvent;
 
     public UnityEvent myHoverEnterdEvent;
@@ -135,9 +139,18 @@ public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListe
     //===============================================================================================
 
 
+    public void Start()
+    {
+        {
+            if (canMoveMouseOver && gameObject.GetComponent(typeof(UnityEngine.UI.Selectable)) == null)
+            {
+                gameObject.AddComponent(typeof(UnityEngine.UI.Selectable));
+     
+            }
+        }
+    }
 
-
-    private void Update()
+        private void Update()
     {
         
 

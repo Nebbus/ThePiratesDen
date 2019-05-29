@@ -30,6 +30,7 @@ public class MONO_EventManager : MonoBehaviour
     public const string offHiglightAllInteractablesInScene_NAME = "offHigligtAll";
     public const string setInputHandling_NAME                   = "setInputHandling";
     public const string sceneStartSetup_NAME                    = "sceneStartSetup";
+    public const string sceneShutdownSetup_NAME                 = "sceneShutdownSetup";
     public const string setVisibilityOfInvnetory_NAME           = "setVisibilityOfInvnetory";
     public const string setLocalInvntoryHandelInput_NAME        = "setLocalInvntoryHandelInput";
 

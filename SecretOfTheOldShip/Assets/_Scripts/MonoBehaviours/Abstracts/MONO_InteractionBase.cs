@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 /// <summary>
@@ -10,8 +11,8 @@ using UnityEngine;
 /// </summary>
 public abstract class MONO_InteractionBase : MonoBehaviour {
 
-   
-    
+
+  
     /// <summary>
     /// To work as the new click event
     /// </summary>
@@ -23,7 +24,6 @@ public abstract class MONO_InteractionBase : MonoBehaviour {
 
     public abstract void OnHoverExit();
 
-  
 
 
 

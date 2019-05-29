@@ -51,10 +51,18 @@ public class MONO_Interactable : MONO_InteractionBase
     /// <summary>
     /// creates the higlight
     /// </summary>
-    public void Start()
+    private void Start()
     {
+        if (gameObject.GetComponent(typeof(UnityEngine.UI.Selectable)) == null)
+        {
+            gameObject.AddComponent(typeof(UnityEngine.UI.Selectable));
+        }
         MONO_GlowObject temp = getGlowObjectComponent;
     }
+   
+    
+
+
 
     // This is called when the player arrives at the interactionLocation.
     public void Interact()
@@ -103,4 +111,8 @@ public class MONO_Interactable : MONO_InteractionBase
 
         getGlowObjectComponent.HigligtOFF(false);
     }
+
+
+
+
 }

@@ -267,9 +267,7 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
             curentFlash = StartCoroutine(FadeOffHiglight());
             lobingTheItemToInventoryn = false;
 
-            MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
-            param.param4 = true;
-            MONO_EventManager.TriggerEvent(MONO_EventManager.setLocalInvntoryHandelInput_NAME, param);
+
         }
     }
 
@@ -295,6 +293,10 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
             selectedObject.GetComponent<Image>().color = originalFer;
 
         }
+
+        MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+        param.param4 = true;
+        MONO_EventManager.TriggerEvent(MONO_EventManager.setLocalInvntoryHandelInput_NAME, param);
 
         flashingOff = false;
 

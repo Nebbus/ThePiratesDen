@@ -19,6 +19,13 @@ public class MONO_HintButton : MonoBehaviour {
 
     private void Update()
     {
+
+
+        if (MONO_Settings.instance.getHiglightAllButton)
+        {
+            HandleInventoryClick();
+        }
+
         if (higlightedOn)
         {
          

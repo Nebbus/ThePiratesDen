@@ -6,48 +6,126 @@ using UnityEngine.UI;
 
 public class MONO_Settings : MonoBehaviour {
 
+    public bool usingKeybodInput = false;
+
+    public static MONO_Settings instance;
+
+
 	public GameObject KeyboardToggle;
 	public GameObject MouseToggle;
 
-	public void MusicVolumeChanged()
-	{
-		//FMOD stuff?
-	}
 
-	public void SoundVolumeChanged()
-	{
-		//FMOD stuff?
-	}
+    //===========================================================================
+    // controlls
+    //===========================================================================
+
+    [SerializeField]
+    private KeyCode mouseKey = KeyCode.Mouse0;
+
+    [SerializeField]
+    private KeyCode keabordKey = KeyCode.Space;
+    [SerializeField]
+    private KeyCode toNextInteractable = KeyCode.Tab;
+    [SerializeField]
+    private KeyCode higligthAllButton = KeyCode.Q;
+    [SerializeField]
+    private KeyCode inventoryButton = KeyCode.W;
+
+    public bool getClickKey
+    {
+        get
+        {
+            return Input.GetKeyDown((usingKeybodInput) ? keabordKey : mouseKey);
+        }
+    }
+
+    public bool getHiglightAllButton
+    {
+        get
+        {
+            return Input.GetKeyDown(higligthAllButton);
+        }
+    }
+    public bool getToNextInteractable
+    {
+        get
+        {
+            return Input.GetKeyDown(toNextInteractable);
+        }
+    }
+    public bool getInventoryButton
+    {
+        get
+        {
+            return Input.GetKeyDown(inventoryButton);
+        }
+    }
 
 
 
-	/// <summary>
-	/// Switch between the controls being used.
-	/// </summary>
-	public void SwitchControls()
+    public float getKeybordHorizontal
+    {
+        get
+        {
+            return Input.GetAxis("Horizontal");
+        }
+    }
+    public float getKeybordVertical
+    {
+        get
+        {
+            return Input.GetAxis("Vertical");
+        }
+    }
+
+    public float getMouseHorizontal
+    {
+        get
+        {
+            return Input.GetAxis("Mouse X");
+        }
+    }
+    public float getMouyseVertical
+    {
+        get
+        {
+            return Input.GetAxis("Mouse Y");
+        }
+    }
+
+
+
+    public void Start()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogError(this.ToString() + " tryed to creat two setings");
+        }
+    }
+
+    /// <summary>
+    /// Switch between the controls being used.
+    /// </summary>
+    public void SwitchControls()
 	{
 		if (KeyboardToggle.GetComponent<Toggle> ().isOn)
 		{
-			ActivateKeyboard ();
-		} 
+            usingKeybodInput = true;
+
+        } 
 		else if (MouseToggle.GetComponent<Toggle> ().isOn)
 		{
-			ActivateMouse ();
-		}
+            usingKeybodInput = false;
+        }
 	}
 
-	private void ActivateKeyboard()
-	{
-
-        MONO_AdventureCursor.instance.getMonoCustimMouseCursor.UsingKeyboard = true;
-        MONO_AdventureCursor.instance.getMonoPointerLogic.setKeyBordMode();
-    }
 
 
-	private void ActivateMouse()
-	{
-        MONO_AdventureCursor.instance.getMonoCustimMouseCursor.UsingKeyboard = false;
-        MONO_AdventureCursor.instance.getMonoPointerLogic.setMouseMode();
-    }
+
+	
 
 }

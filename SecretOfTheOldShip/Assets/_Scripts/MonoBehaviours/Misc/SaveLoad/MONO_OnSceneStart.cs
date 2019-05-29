@@ -11,12 +11,17 @@ public class MONO_OnSceneStart : MonoBehaviour {
 
     public UnityEvent startFlowChart = new UnityEvent();
 
+    [Space]
+    public UnityEvent toRunOnSceneShutDown = new UnityEvent();
+
     private Action<MONO_EventManager.EventParam> sceneStartSetup;
+    private Action<MONO_EventManager.EventParam> sceneShutDownSetup;
+
 
     private void Awake()
     {
-        sceneStartSetup = new Action<MONO_EventManager.EventParam>(RunThisAtStart);
-
+        sceneStartSetup     = new Action<MONO_EventManager.EventParam>(RunThisAtStart);
+        sceneShutDownSetup = new Action<MONO_EventManager.EventParam>(RunThisAtShutDown);
     }
     private void Start()
     {
@@ -27,6 +32,10 @@ public class MONO_OnSceneStart : MonoBehaviour {
         if(startFlowChart == null)
         {
             startFlowChart = new UnityEvent();
+        }
+        if(toRunOnSceneShutDown == null)
+        {
+            toRunOnSceneShutDown = new UnityEvent();
         }
     }
 
@@ -52,4 +61,10 @@ public class MONO_OnSceneStart : MonoBehaviour {
         toRunOnSceneStart.Invoke();
         startFlowChart.Invoke();
     }
+    public void RunThisAtShutDown(MONO_EventManager.EventParam eventParam)
+    {
+        toRunOnSceneShutDown.Invoke();
+    }
+
+
 }

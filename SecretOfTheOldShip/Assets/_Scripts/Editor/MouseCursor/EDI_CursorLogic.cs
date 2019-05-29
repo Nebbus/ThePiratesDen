@@ -19,49 +19,52 @@ public class EDI_CursorLogic : Editor {
     private SerializedProperty debugAllGrayHitProperty;
     private SerializedProperty debugCurentHitProperty;
 
+
     private SerializedProperty debugCurrentHoverOverProperty;
     private SerializedProperty debugCurrentInteractableTargetProperty;
-    private SerializedProperty debugCurrentButtonTargerProperty;
+    private SerializedProperty debugCurrentUIelemtTargerProperty;
 
 
     private SerializedProperty debugLastHoverOverProperty;
     private SerializedProperty debugLastInteractableTargetProperty;
-    private SerializedProperty debugLastButtonTargerProperty;
+    private SerializedProperty debugLastUIelemtTargerProperty;
 
 
-    private SerializedProperty museButtonProperty;
-    private SerializedProperty keyButtonProperty;
-    private SerializedProperty usedClickKeyProperty;
+    //private SerializedProperty museButtonProperty;
+    //private SerializedProperty keyButtonProperty;
+    //private SerializedProperty usedClickKeyProperty;
 
-   // private SerializedProperty lastClickTimeProperty;
+
+    // private SerializedProperty lastClickTimeProperty;
     private SerializedProperty timeThresholdProperty;
     private SerializedProperty debugTimedeltaProperty;
 
-    private const string mainCameraGraycasterPropertyName           = "mainCameraGraycaster";
-    private const string presistentCanvansPraycasterPropertyName    = "presistentCanvansPraycaster";
+    private const string mainCameraGraycasterPropertyName            = "mainCameraGraycaster";
+    private const string presistentCanvansPraycasterPropertyName     = "presistentCanvansPraycaster";
 
-    private const string monoPointerLogicName                       = "currentAction";
+    private const string monoPointerLogicName                        = "currentAction";
     
-    private const string debugAllPrayHitPropertyName                = "allPhysicalHitsDebug";  
-    private const string debugAllGrayHitPropertyName                = "allGraphicalHitsDebug";
-    private const string debugCurentHitPropertyName                 = "overCurentObject";
+    private const string debugAllPrayHitPropertyName                 = "allPhysicalHitsDebug";  
+    private const string debugAllGrayHitPropertyName                 = "allGraphicalHitsDebug";
+    private const string debugCurentHitPropertyName                  = "overCurentObject";
 
 
-    private const string debugCurrentHoverOverPropertyName          = "currentHoverOver";
-    private const string debugCurrentInteractableTargetPropertyName = "currentInteractableTarget";
-    private const string debugCurrentButtonTargerPropertyName       = "currentButtonTarger";
+    private const string debugCurrentHoverOverPropertyName           = "currentHoverOver";
+    private const string debugCurrentInteractableTargetPropertyName  = "currentInteractableTarget";
+    private const string debugCurrentUIelemtTargerPropertyName        = "currentUIelemt";
 
-    private const string debugLastHoverOverPropertyName             = "lastHoverOver";
-    private const string debugLastInteractableTargetPropertyName    = "lastInteractableTarget";
-    private const string debugLastButtonTargerPropertyName          = "lastButtonTarger";
+    private const string debugLastHoverOverPropertyName              = "lastHoverOver";
+    private const string debugLastInteractableTargetPropertyName     = "lastInteractableTarget";
+    private const string debugLastUIelemtTargerPropertyName           = "lastUIelemt";
 
-    private const string museButtonPropertyyName                    = "mouseKey";
-    private const string keyButtonPropertyName                      = "keabordKey";
-    private const string usedClickKeyPropertyName                   = "usedClickKey";
+    //private const string museButtonPropertyyName                     = "mouseKey";
+    //private const string keyButtonPropertyName                       = "keabordKey";
+    //private const string usedClickKeyPropertyName                    = "usedClickKey";
 
-    private const string lastClickTimePropertyName                  = "lastClickTime";
-    private const string timeThresholdPropertyName                  = "timeThreshold";
-    private const string debugTimedeltaPropertyName                 = "timedelta";
+    private const string lastClickTimePropertyName                   = "lastClickTime";
+    private const string timeThresholdPropertyName                   = "timeThreshold";
+    private const string debugTimedeltaPropertyName                  = "timedelta";
+
 
 
     public void OnEnable()
@@ -75,18 +78,18 @@ public class EDI_CursorLogic : Editor {
         debugAllPrayHitProperty                 = serializedObject.FindProperty(debugAllPrayHitPropertyName);
         debugAllGrayHitProperty                 = serializedObject.FindProperty(debugAllGrayHitPropertyName);
         debugCurentHitProperty                  = serializedObject.FindProperty(debugCurentHitPropertyName);
-        museButtonProperty                      = serializedObject.FindProperty(museButtonPropertyyName);
-        keyButtonProperty                       = serializedObject.FindProperty(keyButtonPropertyName);
-        usedClickKeyProperty                    = serializedObject.FindProperty(usedClickKeyPropertyName);
+        //museButtonProperty                      = serializedObject.FindProperty(museButtonPropertyyName);
+        //keyButtonProperty                       = serializedObject.FindProperty(keyButtonPropertyName);
+        //usedClickKeyProperty                    = serializedObject.FindProperty(usedClickKeyPropertyName);
        // lastClickTimeProperty                 = serializedObject.FindProperty(lastClickTimePropertyName);
         timeThresholdProperty                   = serializedObject.FindProperty(timeThresholdPropertyName);
         debugTimedeltaProperty                  = serializedObject.FindProperty(debugTimedeltaPropertyName);
         debugCurrentHoverOverProperty           = serializedObject.FindProperty(debugCurrentHoverOverPropertyName);
         debugCurrentInteractableTargetProperty  = serializedObject.FindProperty(debugCurrentInteractableTargetPropertyName);
-        debugCurrentButtonTargerProperty        = serializedObject.FindProperty(debugCurrentButtonTargerPropertyName);
+        debugCurrentUIelemtTargerProperty        = serializedObject.FindProperty(debugCurrentUIelemtTargerPropertyName);
         debugLastHoverOverProperty              = serializedObject.FindProperty(debugLastHoverOverPropertyName);
         debugLastInteractableTargetProperty     = serializedObject.FindProperty(debugLastInteractableTargetPropertyName);
-        debugLastButtonTargerProperty           = serializedObject.FindProperty(debugLastButtonTargerPropertyName);
+        debugLastUIelemtTargerProperty           = serializedObject.FindProperty(debugLastUIelemtTargerPropertyName);
 
     }
 
@@ -98,27 +101,27 @@ public class EDI_CursorLogic : Editor {
         DrawEditor();
         DrawDebug();
 
-
-
         serializedObject.ApplyModifiedProperties();
     }
 
     private void DrawEditor()
     {
         EditorGUILayout.BeginVertical(GUI.skin.box);
-            GUI.enabled = false; 
-                EditorGUILayout.PropertyField(usedClickKeyProperty);
-                EditorGUILayout.PropertyField(currentActionProperty);
-            GUI.enabled = true;
+            //GUI.enabled = false; 
+            //    EditorGUILayout.PropertyField(usedClickKeyProperty);
+            //    EditorGUILayout.PropertyField(currentActionProperty);
+            //GUI.enabled = true;
             EditorGUILayout.BeginVertical(GUI.skin.box);
                 EditorGUILayout.HelpBox("The time that has to pas for a click to be registerd as a click, " +
                                          "to prevent readings of multiple click the dubble tapping",MessageType.Info);
                EditorGUILayout.PropertyField(timeThresholdProperty);
             EditorGUILayout.EndVertical();
-            EditorGUILayout.BeginHorizontal(GUI.skin.box);
-                EditorGUILayout.PropertyField(museButtonProperty);
-                EditorGUILayout.PropertyField(keyButtonProperty);
-            EditorGUILayout.EndHorizontal();
+            //EditorGUILayout.BeginHorizontal(GUI.skin.box);
+            //    EditorGUILayout.PropertyField(museButtonProperty);
+            //    EditorGUILayout.PropertyField(keyButtonProperty);
+            //EditorGUILayout.EndHorizontal();
+
+      
         EditorGUILayout.EndVertical();
 
     }
@@ -143,10 +146,10 @@ public class EDI_CursorLogic : Editor {
                 GUI.enabled = false;
                 EditorGUILayout.PropertyField(debugCurrentHoverOverProperty);
                 EditorGUILayout.PropertyField(debugCurrentInteractableTargetProperty);
-                EditorGUILayout.PropertyField(debugCurrentButtonTargerProperty);
+                EditorGUILayout.PropertyField(debugCurrentUIelemtTargerProperty);
                 EditorGUILayout.PropertyField(debugLastHoverOverProperty);
                 EditorGUILayout.PropertyField(debugLastInteractableTargetProperty);
-                EditorGUILayout.PropertyField(debugLastButtonTargerProperty);
+                EditorGUILayout.PropertyField(debugLastUIelemtTargerProperty);
                 GUI.enabled = true;
             EditorGUILayout.EndVertical();
 
