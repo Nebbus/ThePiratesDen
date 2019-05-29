@@ -119,6 +119,8 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
                 MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
                 param.param4 = true;
                 MONO_EventManager.TriggerEvent(MONO_EventManager.setInputHandling_NAME, param);
+                MONO_EventManager.TriggerEvent(MONO_EventManager.setVisibilityOfInvnetory_NAME, param);
+
 
             }
         }
