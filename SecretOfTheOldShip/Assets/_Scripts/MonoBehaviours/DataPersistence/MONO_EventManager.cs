@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public class MONO_EventManager : MonoBehaviour
 {
 
+    public static bool isNotWorking = true;
+
     //Re-usable structure/ Can be a class to. Add all parameters you need inside it
      public struct EventParam
     {
@@ -130,6 +132,7 @@ public class MONO_EventManager : MonoBehaviour
     /// <param name="eventParam">paramettrs</param>
     public static void TriggerEvent(string eventName, EventParam eventParam)
     {
+        isNotWorking = false;
         Action<EventParam> thisEvent = null;
 
         if(instance.eventDictionary.TryGetValue(eventName, out thisEvent))
@@ -145,6 +148,9 @@ public class MONO_EventManager : MonoBehaviour
             }
 
         }
+        isNotWorking = true;
     }
+
+
 
 }

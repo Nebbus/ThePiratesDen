@@ -42,10 +42,12 @@ public class MONO_OnSceneStart : MonoBehaviour {
     private void OnEnable()
     {
         MONO_EventManager.StartListening(MONO_EventManager.sceneStartSetup_NAME, sceneStartSetup);
+        MONO_EventManager.StartListening(MONO_EventManager.sceneShutdownSetup_NAME, sceneShutDownSetup);
     }
     private void OnDisable()
     {
         MONO_EventManager.StopListening(MONO_EventManager.sceneStartSetup_NAME, sceneStartSetup);
+        MONO_EventManager.StopListening(MONO_EventManager.sceneShutdownSetup_NAME, sceneShutDownSetup);
     }
 
 

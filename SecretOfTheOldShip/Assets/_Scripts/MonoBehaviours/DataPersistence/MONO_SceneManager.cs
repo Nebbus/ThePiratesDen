@@ -112,11 +112,13 @@ public class MONO_SceneManager : MonoBehaviour {
         handleInput = false;
         fade.Fade(1f);
         yield return new WaitForSeconds(fade.fadeDuration);
-
         MONO_SaveAndLoad.SaveData data = saveLoad.GetData;
 
+       
 
-		if (goingToMainMenu)
+
+
+        if (goingToMainMenu)
 		{
 			saveLoad.handleSave (true);
 		} 
@@ -125,10 +127,8 @@ public class MONO_SceneManager : MonoBehaviour {
 			saveLoad.handleSave (true, sceneName);
 		}
 
-
-        // runs the shut down in the old scene
-        MONO_EventManager.EventParam paramFiller = new MONO_EventManager.EventParam();
-        MONO_EventManager.TriggerEvent(MONO_EventManager.sceneShutdownSetup_NAME, paramFiller);
+        yield return StartCoroutine(OneSceneShutdown());
+    
 
         //Unload old scene and load the new one.
         StartCoroutine(UnloadAndUnsetScene());
@@ -139,6 +139,7 @@ public class MONO_SceneManager : MonoBehaviour {
         saveLoad.handLoad(true);
 
         // runs the start upp in the new scene
+        MONO_EventManager.EventParam paramFiller = new MONO_EventManager.EventParam();
         MONO_EventManager.TriggerEvent(MONO_EventManager.sceneStartSetup_NAME, paramFiller);
 
        
@@ -161,14 +162,13 @@ public class MONO_SceneManager : MonoBehaviour {
     }
 
 
-
     /// <summary>
     /// Load in the new scene ontop of the persistent scene and activate.
     /// </summary>
     /// <param name="sceneName">Scene to load.</param>
     private IEnumerator LoadAndSetScene(string sceneName)
 	{
-		yield return SceneManager.LoadSceneAsync (sceneName, LoadSceneMode.Additive);
+        yield return SceneManager.LoadSceneAsync (sceneName, LoadSceneMode.Additive);
 		Scene scene = SceneManager.GetSceneAt (SceneManager.sceneCount - 1);
 		SceneManager.SetActiveScene (scene);
     }
@@ -178,8 +178,34 @@ public class MONO_SceneManager : MonoBehaviour {
 	/// </summary>
 	private IEnumerator UnloadAndUnsetScene()
 	{
-		yield return SceneManager.UnloadSceneAsync (SceneManager.GetActiveScene ().buildIndex);
+
+       
+
+      yield return SceneManager.UnloadSceneAsync (SceneManager.GetActiveScene ().buildIndex);
 	}
 
- 
+
+    /// <summary>
+    /// Unloads the previous scene.
+    /// </summary>
+    private IEnumerator OneSceneShutdown()
+    {
+        // runs the shut down in the old scene
+        MONO_EventManager.EventParam paramFiller = new MONO_EventManager.EventParam();
+        MONO_EventManager.TriggerEvent(MONO_EventManager.sceneShutdownSetup_NAME, paramFiller);
+
+        yield return !MONO_EventManager.isNotWorking ;
+    }
+
+
 }
+//public class waitForEventToBeDone : CustomYieldInstruction
+//{
+//    public override bool keepWaiting
+//    {
+//        get
+//        {
+//            return !MONO_EventManager.isNotWorking;
+//        }
+//    }
+//}

@@ -31,6 +31,9 @@ public class MONO_Settings : MonoBehaviour {
     [SerializeField]
     private KeyCode inventoryButton = KeyCode.W;
 
+    [SerializeField]
+    private KeyCode pauseButtonKey = KeyCode.Escape;
+
     public bool getClickKey
     {
         get
@@ -38,6 +41,15 @@ public class MONO_Settings : MonoBehaviour {
             return Input.GetKeyDown((usingKeybodInput) ? keabordKey : mouseKey);
         }
     }
+
+    public bool getPauseButtonKey
+    {
+        get
+        {
+            return Input.GetKeyDown(pauseButtonKey);
+        }
+    }
+
 
     public bool getHiglightAllButton
     {
