@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class MONO_Menus : MonoBehaviour {
 
-    public string sceneToLoadeOnStarteGame = "Scene1_outside";
+    public string sceneToLoadOnStartNewGame = "Scene1_outside";
 	[Space]
-	public MONO_SceneManager    sceneManager;
-	public MONO_LevelMusicManager audioManager;
+	public MONO_SceneManager   		sceneManager;
+	public MONO_LevelMusicManager 	audioManager;
 	[HideInInspector]
-	public MONO_SaveAndLoad     monoSaveAndLoad;
+	public MONO_SaveAndLoad     	monoSaveAndLoad;
 	[HideInInspector]
-	public MONO_IntroManager introManager;
+	public MONO_IntroManager 		introManager;
 
 
     [HideInInspector]
@@ -41,11 +41,9 @@ public class MONO_Menus : MonoBehaviour {
 	public Text musicVolumePaus;
 	public Text soundVolumeMain;
 	public Text soundVolumePaus;
-	public Text voiceVolumeMain;
-	public Text voiceVolumePaus;
+//	public Text voiceVolumeMain;		//Activate in case we use volume controls for voices
+//	public Text voiceVolumePaus;		//Activate in case we use volume controls for voices
 
-	private float minVolume = 0;
-	private float maxVolume = 1;
 
 	public enum menu {main, pause, settings};
 
@@ -64,14 +62,10 @@ public class MONO_Menus : MonoBehaviour {
 
 
 
-	private float timerTime;
-	private bool timerUpdating;
-
 
 	void Start()
 	{
 		SetTextComponents ();
-
 
 		fader = sceneManager.gameObject.GetComponent<MONO_Fade> ();
 		monoSaveAndLoad = sceneManager.gameObject.GetComponent<MONO_SaveAndLoad> ();
@@ -92,12 +86,13 @@ public class MONO_Menus : MonoBehaviour {
 		CloseMenu ();
 		ChangeLatestMenu (pauseMenu);
        
-		sceneManager.ChangeScene (sceneToLoadeOnStarteGame, false, false);
+		sceneManager.ChangeScene (sceneToLoadOnStartNewGame, false, false, false);
 
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
 		//inventory.SetActive (true);
 	}
+
 
     public void LoadLastGame()
     {
@@ -115,37 +110,36 @@ public class MONO_Menus : MonoBehaviour {
         //Update all condition
         data.conditions.uppdatAllCondition();
 
-
-        sceneManager.ChangeScene(data.currentScene, true, true);
+        sceneManager.ChangeScene(data.currentScene, true, true, false);
 
         mainMenu.SetActive(false);
-
-
     }
-   
-	void Update()
-	{
-		if (timerUpdating) 
-		{
-			timerTime += Time.deltaTime;
-		}
-	}
 
-
+	/// <summary>
+	/// DO NOT USE THIS. OBSOLETE METHOD.
+	/// </summary>
 	public void StartIntro()
 	{
 		menuOpen = false;
 
 		float delay = sceneManager.gameObject.GetComponent<MONO_Fade> ().fadeDuration;
-		timerTime = 0;
-		timerUpdating = true;
 		//fader.Fade (1);		//fades screen to black
 		StartCoroutine (FadeAndWait());
-
-	
 		//mainMenu.SetActive (false);
 		//introManager.InitiateIntro ();
 	}
+
+
+	public void OpenMainMenu()
+	{
+		sceneManager.ChangeScene ("MainMenu", false, false, true);
+		pauseMenu.SetActive (false);
+		mainMenu.SetActive (true);
+	}
+
+	//--------------------------------------------------------------------------------
+	//	Methods used when opening and closing menues
+	//--------------------------------------------------------------------------------
 
 	/// <summary>
 	/// Changes the latest menu variable. Used to help the system  knowing which menu to open.
@@ -197,9 +191,11 @@ public class MONO_Menus : MonoBehaviour {
     public void CloseMenu()
     {
         menuOpen = false;
-
     }
 
+	//--------------------------------------------------------------------------------
+	//	Audio Stuff
+	//--------------------------------------------------------------------------------
 
 	/// <summary>
 	/// Plays the click sound depending on whether you're in the main menu or the paus menu
@@ -222,32 +218,27 @@ public class MONO_Menus : MonoBehaviour {
 		}
 	}
 
-	/// <summary>
-	/// Changes the cursor speed by float parameter.
-	/// </summary>
-	/// <param name="offset">The amount cursor speed will change.</param>
-	public void ChangeCursorSpeed(float offset)
-	{
-		if (cursor.CursorSpeed + offset <= 0 || cursor.CursorSpeed + offset >= 5000) 
-		{
-			return;
-		}
-		cursor.CursorSpeed = cursor.CursorSpeed + offset;
-		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
-		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
-	}
-		
 
 	public void ChangeMusicVolume(float offset)
 	{
-		Debug.Log ("changing music volume");
 		Text tempText = musicVolumeMain;
 		tempText.text = audioManager.changeMusicVolume (offset);
 		musicVolumeMain.text = tempText.text;
 		musicVolumePaus.text = tempText.text;
 	}
 
+	public void ChangeSFXVolume(float offset)
+	{
+		Text tempText = musicVolumeMain;
+		tempText.text = audioManager.changeSFXVolume (offset);
+		soundVolumeMain.text = tempText.text;
+		soundVolumePaus.text = tempText.text;
+	}
 
+
+	//--------------------------------------------------------------------------------
+	// Helpful Methods
+	//--------------------------------------------------------------------------------
 
 	/// <summary>
 	/// Starts a new  wait for seconds.
@@ -271,13 +262,30 @@ public class MONO_Menus : MonoBehaviour {
 		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
 		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
 
-		musicVolumeMain.text = audioManager.GetMusicVolume ();
-	/*	musicVolumePaus;
-		soundVolumeMain;
-		soundVolumePaus;
-		voiceVolumeMain;
+		musicVolumeMain.text = audioManager.GetVolume (audioManager.audioTypeMusic);
+		musicVolumePaus.text = audioManager.GetVolume (audioManager.audioTypeMusic);
+		soundVolumeMain.text = audioManager.GetVolume (audioManager.audioTypeSFX);
+		soundVolumePaus.text = audioManager.GetVolume (audioManager.audioTypeSFX);
+	/*	voiceVolumeMain;
 		voiceVolumePaus;*/
 	}
+
+	/// <summary>
+	/// Changes the cursor speed by float parameter.
+	/// </summary>
+	/// <param name="offset">The amount cursor speed will change.</param>
+	public void ChangeCursorSpeed(float offset)
+	{
+		if (cursor.CursorSpeed + offset <= 0 || cursor.CursorSpeed + offset >= 5000) 
+		{
+			return;
+		}
+		cursor.CursorSpeed = cursor.CursorSpeed + offset;
+		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
+		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
+	}
+
+
 
 	/// <summary>
 	/// Quit game.

@@ -117,33 +117,83 @@ public class MONO_LevelMusicManager : MonoBehaviour {
 
 	public string changeMusicVolume(float changeFactor)
 	{
-		float currentVolume, percentageVolume;
-		musicVolumeController.getVolume (out percentageVolume, out currentVolume);
+		float originalVolume, currentVolume, percentageVolume;
+		musicVolumeController.getVolume (out percentageVolume, out originalVolume);
 
-		currentVolume = currentVolume + changeFactor;
+		currentVolume = originalVolume + changeFactor;
 		currentVolume *= 100f;
 		currentVolume = Mathf.Round (currentVolume);
 		percentageVolume = currentVolume;
 		currentVolume *= 0.01f;
 
-		musicVolumeController.setVolume (currentVolume);
+		//if you are trying to change the volume outside the percentage scale
+		if (percentageVolume < 0 || percentageVolume > 100) 
+		{
+			originalVolume = Mathf.Round (originalVolume * 100f);
+			return originalVolume.ToString();
+		}
 
+		musicVolumeController.setVolume (currentVolume);
 		return percentageVolume.ToString();
 	}
 
-	public void changeSFXVolume(float changeFactor, UnityEngine.UI.Text text)
-	{
 
+	public string changeSFXVolume(float changeFactor)
+	{
+		float originalVolume, currentVolume, percentageVolume;
+		sfxVolumeController.getVolume (out percentageVolume, out originalVolume);
+
+		currentVolume = originalVolume + changeFactor;
+		currentVolume *= 100f;
+		currentVolume = Mathf.Round (currentVolume);
+		percentageVolume = currentVolume;
+		currentVolume *= 0.01f;
+
+		//if you are trying to change the volume outside the percentage scale
+		if (percentageVolume < 0 || percentageVolume > 100) 
+		{
+			originalVolume = Mathf.Round (originalVolume * 100f);
+			return originalVolume.ToString();
+		}
+
+		sfxVolumeController.setVolume (currentVolume);
+		return percentageVolume.ToString();
 	}
 
-	public string GetMusicVolume()
+
+	public string GetVolume(Audio whichVolume)
 	{
 		float currentVolume, percentageVolume;
-		musicVolumeController.getVolume (out percentageVolume, out currentVolume);
+
+		switch (whichVolume) {
+		case Audio.Master:		//not implemented yet
+			goto default;
+
+		case Audio.Music:
+			musicVolumeController.getVolume (out percentageVolume, out currentVolume);
+			break;
+
+		case Audio.SFX:
+			sfxVolumeController.getVolume (out percentageVolume, out currentVolume);
+			break;
+
+		case Audio.Voices:		//not implemented yet
+			goto default;
+
+		default:
+			Debug.LogError ("Couldn't get the volume type");
+			return "";
+		}
+
 
 		percentageVolume = Mathf.Round (currentVolume * 100f);
-
 		return percentageVolume.ToString();
 	}
+
+	public enum Audio {Master, Music, SFX, Voices};
+	public Audio audioTypeMaster = Audio.Master;
+	public Audio audioTypeMusic = Audio.Music;
+	public Audio audioTypeSFX = Audio.SFX;
+	public Audio audioTypeVoices = Audio.Voices;
 
 }

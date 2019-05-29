@@ -5,7 +5,8 @@ public class SOBJ_SceneChangeReaction : SOBJ_DelayedReaction
 	public string sceneToBeLoaded;
 
     private bool setStartPosition = false;// only used from the load game button in the menu
-    public bool HandelInputAfterFade = true;
+    public bool handelInputAfterFade = true;
+	public bool changingToMainMenu = false;
 
     private GameObject sceneManager;
 	private MONO_SceneManager managerScript;
@@ -18,7 +19,7 @@ public class SOBJ_SceneChangeReaction : SOBJ_DelayedReaction
 
 	protected override void ImmediateReaction()
 	{
-		sceneManager.GetComponent<MONO_SceneManager> ().ChangeScene(sceneToBeLoaded, setStartPosition, HandelInputAfterFade);
+		sceneManager.GetComponent<MONO_SceneManager> ().ChangeScene(sceneToBeLoaded, setStartPosition, handelInputAfterFade, changingToMainMenu);
 	}
 }
 

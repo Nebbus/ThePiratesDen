@@ -92,9 +92,9 @@ public class MONO_SceneManager : MonoBehaviour {
     /// </summary>
     /// <param name="sceneName">Scene to load.</param>
     /// <param name="sceneName">Sets if the start position shuld be set.</param>
-    public void ChangeScene(string sceneName, bool setStartPos, bool handelUnputAfterFade)
+	public void ChangeScene(string sceneName, bool setStartPos, bool handelnputAfterFade, bool goingToMainMenu)
 	{
-        StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelUnputAfterFade));
+		StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelnputAfterFade, goingToMainMenu));
     }
 
 
@@ -104,7 +104,7 @@ public class MONO_SceneManager : MonoBehaviour {
     /// <param name="sceneName">Scene to load.</param>
     /// <param name="setStartPos">Sets if the start position shuld be set(onlyUsed then loading.</param>
     /// <param name="handelUnputAfterFade">Sets if the start position shuld be set.</param>
-    private IEnumerator FadeAndLoad(string sceneName, bool setStartPos, bool handelUnputAfterFade)
+	private IEnumerator FadeAndLoad(string sceneName, bool setStartPos, bool handelInputAfterFade, bool goingToMainMenu)
     {
         //disable input and fade out.
         handleInput = false;
@@ -112,7 +112,14 @@ public class MONO_SceneManager : MonoBehaviour {
         yield return new WaitForSeconds(fade.fadeDuration);
         MONO_SaveAndLoad.SaveData data = saveLoad.GetData;
 
-       saveLoad.handleSave(true, sceneName);
+		if (goingToMainMenu)
+		{
+			saveLoad.handleSave (true);
+		} 
+		else 
+		{
+			saveLoad.handleSave (true, sceneName);
+		}
 
 
         // runs the shut down in the old scene
@@ -146,7 +153,7 @@ public class MONO_SceneManager : MonoBehaviour {
 
        
         
-        handleInput = handelUnputAfterFade;
+        handleInput = handelInputAfterFade;
     }
 
 
@@ -170,45 +177,5 @@ public class MONO_SceneManager : MonoBehaviour {
 		yield return SceneManager.UnloadSceneAsync (SceneManager.GetActiveScene ().buildIndex);
 	}
 
-  
-
-
-
-
-	/// <summary>
-	/// Sets the player start position.
-	/// </summary>
-	//private void SetPlayerStartPosition()
-	//{
-	//	GameObject player              = GameObject.FindGameObjectWithTag ("Player");
-	//	GameObject pos                 = GameObject.Find ("PlayerStartPosition");
-	//	GameObject ghost               = GameObject.FindGameObjectWithTag ("Ghost");
-	//	GameObject gpos                = GameObject.Find ("GhostStartPosition");
-	//	player.transform.position      = pos.transform.position;
-	//	player.transform.localRotation = pos.transform.localRotation;
-	//	ghost.transform.position       = gpos.transform.position;
-	//	ghost.transform.localRotation  = gpos.transform.localRotation;
-	//	ghost.SetActive (false);
-	//}
-
-	/// <summary>
-	/// Sets the ghost start position.
-	/// </summary>
-	/*private void SetGhostStartPosition()
-	{
-		GameObject ghost              = GameObject.FindGameObjectWithTag ("Ghost");
-		GameObject gpos                 = GameObject.Find ("GhostStartPosition");
-		ghost.transform.position      = gpos.transform.position;
-		ghost.transform.localRotation = gpos.transform.localRotation;
-	}*/
-
-	/// <summary>
-	/// Changes the music.
-	/// </summary>
-	//private void ChangeMusic(float scene)
-	//{
-	//	//This needs to be done with a musician.
-	//	musicTrigger.TriggerParameters();
-	//	ambienceTrigger.TriggerParameters ();
-	//}
+ 
 }
