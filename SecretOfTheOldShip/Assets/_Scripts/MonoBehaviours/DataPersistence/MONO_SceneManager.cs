@@ -115,6 +115,9 @@ public class MONO_SceneManager : MonoBehaviour {
         fade.Fade(1f);
         yield return new WaitForSeconds(fade.fadeDuration);
 
+        MONO_SaveAndLoad.SaveData data = saveLoad.GetData;
+
+
 		if (goingToMainMenu)
 		{
 			saveLoad.handleSave (true);
