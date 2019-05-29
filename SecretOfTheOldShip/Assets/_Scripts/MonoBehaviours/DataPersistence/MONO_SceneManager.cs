@@ -18,7 +18,6 @@ public class MONO_SceneManager : MonoBehaviour {
 	private MONO_Fade fade;
 
     public bool testarDeta = false;
-    public bool doNotLoadStatScene = false;
 
 
 //==========================================================
@@ -73,8 +72,7 @@ public class MONO_SceneManager : MonoBehaviour {
 
     private IEnumerator Start () 
 	{
-        if (doNotLoadStatScene)
-        {
+        
             //Find the instance holding the code for fading.
             fade = FindObjectOfType<MONO_Fade>();
 
@@ -86,7 +84,7 @@ public class MONO_SceneManager : MonoBehaviour {
             loadCamera.gameObject.SetActive(false);
 
             fade.Fade(0f);
-        }
+        
 
     }
    
