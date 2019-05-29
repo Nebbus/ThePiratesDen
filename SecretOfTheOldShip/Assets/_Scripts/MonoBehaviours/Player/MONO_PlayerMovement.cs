@@ -368,7 +368,15 @@ public class MONO_PlayerMovement : MonoBehaviour
 				}
 
 
-				agent.SetDestination (destinationPosition);
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(destinationPosition, out hit, navMeshSampleDistance, NavMesh.AllAreas))
+                {
+                    destinationPosition = hit.position;
+                }
+            
+
+
+                agent.SetDestination (destinationPosition);
 				agent.isStopped = false;
 
 				keyboardInteractable.transform.position = this.transform.position;
