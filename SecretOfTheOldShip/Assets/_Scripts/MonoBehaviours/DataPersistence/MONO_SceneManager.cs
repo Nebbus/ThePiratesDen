@@ -94,9 +94,9 @@ public class MONO_SceneManager : MonoBehaviour {
     /// </summary>
     /// <param name="sceneName">Scene to load.</param>
     /// <param name="sceneName">Sets if the start position shuld be set.</param>
-	public void ChangeScene(string sceneName, bool setStartPos, bool handelnputAfterFade, bool goingToMainMenu)
+	public void ChangeScene(string sceneName, bool setStartPos, bool handelnputAfterFade, bool goingToMainMenu, bool save)
 	{
-		StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelnputAfterFade, goingToMainMenu));
+		StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelnputAfterFade, goingToMainMenu,save));
     }
 
 
@@ -106,7 +106,7 @@ public class MONO_SceneManager : MonoBehaviour {
     /// <param name="sceneName">Scene to load.</param>
     /// <param name="setStartPos">Sets if the start position shuld be set(onlyUsed then loading.</param>
     /// <param name="handelUnputAfterFade">Sets if the start position shuld be set.</param>
-	private IEnumerator FadeAndLoad(string sceneName, bool setStartPos, bool handelInputAfterFade, bool goingToMainMenu)
+	private IEnumerator FadeAndLoad(string sceneName, bool setStartPos, bool handelInputAfterFade, bool goingToMainMenu, bool save)
     {
         //disable input and fade out.
         handleInput = false;
@@ -114,19 +114,20 @@ public class MONO_SceneManager : MonoBehaviour {
         yield return new WaitForSeconds(fade.fadeDuration);
         MONO_SaveAndLoad.SaveData data = saveLoad.GetData;
 
-       
 
 
 
-        if (goingToMainMenu)
-		{
-			saveLoad.handleSave (true);
-		} 
-		else 
-		{
-			saveLoad.handleSave (true, sceneName);
-		}
-
+        if (save)
+        {
+            if (goingToMainMenu)
+            {
+                saveLoad.handleSave(true);
+            }
+            else
+            {
+                saveLoad.handleSave(true, sceneName);
+            }
+        }
         yield return StartCoroutine(OneSceneShutdown());
     
 
@@ -199,13 +200,3 @@ public class MONO_SceneManager : MonoBehaviour {
 
 
 }
-//public class waitForEventToBeDone : CustomYieldInstruction
-//{
-//    public override bool keepWaiting
-//    {
-//        get
-//        {
-//            return !MONO_EventManager.isNotWorking;
-//        }
-//    }
-//}

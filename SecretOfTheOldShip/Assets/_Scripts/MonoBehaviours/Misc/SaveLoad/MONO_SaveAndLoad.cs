@@ -242,8 +242,50 @@ public class MONO_SaveAndLoad : MonoBehaviour
         Save();
 
     }
-   
-   
+
+    /// <summary>
+    /// version that is specific for the bouns menu
+    /// </summary>
+    public void handleSave()
+    {
+
+        GetdataToSave = new SaveData();
+
+        Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
+        Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
+
+        if (loadData())
+        {
+            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
+        }
+        else
+        {
+            GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
+        }
+
+        //spare down the inventory items;
+        GetdataToSave.itemsInInentory = DeconstructInventoryItem(monoInventory.invetoryItems);
+
+        // gets the name the current scene, counts on presistent to be 0
+        if (loadData() && data.hasSAveData)
+        {
+            GetdataToSave.currentScene = data.currentScene;
+            GetdataToSave.playerPosData = data.playerPosData;
+            GetdataToSave.conditions = data.conditions;
+        }
+        else
+        {
+            GetdataToSave = new SaveData();
+        }
+
+
+        //===============================
+        // saves the data
+        //===============================
+
+
+        Save();
+    }
 
 
     public void Save()
@@ -269,7 +311,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
     /// <summary>
     /// Destroys the achivments, cepps rest of the data.
     /// </summary>
-    public void clearAchivments()
+    public void ClearAchivments()
     {
         if (loadData())
         {

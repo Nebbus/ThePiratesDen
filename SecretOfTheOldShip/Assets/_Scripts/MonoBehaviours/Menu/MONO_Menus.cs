@@ -86,12 +86,28 @@ public class MONO_Menus : MonoBehaviour {
 		CloseMenu ();
 		ChangeLatestMenu (pauseMenu);
        
-		sceneManager.ChangeScene (sceneToLoadOnStartNewGame, false, false, false);
+		sceneManager.ChangeScene (sceneToLoadOnStartNewGame, false, false, false, true);
 
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
 		//inventory.SetActive (true);
 	}
+
+    /// <summary>
+    /// This is practically only for the bouns menu
+    /// </summary>
+    /// <param name="newScene"></param>
+    public void fromMenuSetUpp(string newScene)
+    {
+        //float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
+        CloseMenu();
+        ChangeLatestMenu(pauseMenu);
+        sceneManager.ChangeScene(newScene, false, true, true, false);
+        //StartCoroutine (WaitSomeTime(delay));
+        mainMenu.SetActive(false);
+        //inventory.SetActive (true);
+    }
+
 
 
     public void LoadLastGame()
@@ -110,7 +126,7 @@ public class MONO_Menus : MonoBehaviour {
         //Update all condition
         data.conditions.uppdatAllCondition();
 
-        sceneManager.ChangeScene(data.currentScene, true, true, false);
+        sceneManager.ChangeScene(data.currentScene, true, true, false, true);
 
         mainMenu.SetActive(false);
     }
@@ -132,7 +148,7 @@ public class MONO_Menus : MonoBehaviour {
 
 	public void OpenMainMenu()
 	{
-		sceneManager.ChangeScene ("MainMenu", false, false, true);
+		sceneManager.ChangeScene ("MainMenu", false, false, true, true);
 		pauseMenu.SetActive (false);
 		mainMenu.SetActive (true);
 	}

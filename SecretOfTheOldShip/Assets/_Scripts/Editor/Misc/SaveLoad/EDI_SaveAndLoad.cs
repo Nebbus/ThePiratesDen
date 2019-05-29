@@ -25,6 +25,7 @@ public class EDI_SaveAndLoad : Editor {
         {
             monoSaveLoad.GetdataToSave = new MONO_SaveAndLoad.SaveData();
             monoSaveLoad.Save();
+            monoSaveLoad.ClearAchivments();
         }
         base.OnInspectorGUI();
     }
