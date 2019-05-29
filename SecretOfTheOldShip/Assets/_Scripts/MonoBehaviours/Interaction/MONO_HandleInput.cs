@@ -20,6 +20,14 @@ public class MONO_HandleInput : MonoBehaviour {
         param.param4 = handle;
         MONO_EventManager.TriggerEvent(MONO_EventManager.setInputHandling_NAME, param);
         MONO_EventManager.TriggerEvent(MONO_EventManager.setLocalInvntoryHandelInput_NAME, param);
+
+        //Hids inventory
+        if (!handle)
+        {
+            param.param4 = false;
+            MONO_EventManager.TriggerEvent(MONO_EventManager.setVisibilityOfInvnetory_NAME, param);
+        }
+
         //===============================================================================================================     
 
     }
