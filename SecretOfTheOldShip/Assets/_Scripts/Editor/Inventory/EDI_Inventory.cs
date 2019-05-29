@@ -59,55 +59,55 @@ public class EDI_Inventory : Editor {
 
     }
 
-    public override void OnInspectorGUI()
-     {
+    //public override void OnInspectorGUI()
+    // {
+        
+    //     serializedObject.Update();
+    //    // saftety uppdate. 
+    //    if (MONO_Inventory.numberItemSlots != monoInventory.inventorySlots.Length)
+    //    {
+    //        MONO_Inventory.numberItemSlots = monoInventory.inventorySlots.Length;
+    //        showItemSlosts = new bool[MONO_Inventory.numberItemSlots];
+    //    }
 
-         serializedObject.Update();
-        // saftety uppdate. 
-        if (MONO_Inventory.numberItemSlots != monoInventory.inventorySlots.Length)
-        {
-            MONO_Inventory.numberItemSlots = monoInventory.inventorySlots.Length;
-            showItemSlosts = new bool[MONO_Inventory.numberItemSlots];
-        }
+    //    if (addSlot)
+    //    {
+    //        addSlot = false;
+    //        AddInvetorySlotV2();
+    //    }
 
-        if (addSlot)
-        {
-            addSlot = false;
-            AddInvetorySlotV2();
-        }
-
-        if (remobeSlot)
-        {
-            remobeSlot = false;
-            RemoveInventorySlotV2();
-        }
+    //    if (remobeSlot)
+    //    {
+    //        remobeSlot = false;
+    //        RemoveInventorySlotV2();
+    //    }
   
 
-        EditorGUILayout.PropertyField(inventoryProperty);
-        EditorGUILayout.PropertyField(inventoryBackImageProperty);
-        EditorGUILayout.PropertyField(inventoryButtonHiglightProperty);
+    //    EditorGUILayout.PropertyField(inventoryProperty);
+    //    EditorGUILayout.PropertyField(inventoryBackImageProperty);
+    //    EditorGUILayout.PropertyField(inventoryButtonHiglightProperty);
 
-        // The buttosn for adding and removin item slots in the invetory
-        EditorGUILayout.BeginHorizontal();
-            addSlot = GUILayout.Button("+", GUILayout.Width(buttonWhidt));
-            remobeSlot = GUILayout.Button("-", GUILayout.Width(buttonWhidt));
-        EditorGUILayout.EndHorizontal();
+    //    // The buttosn for adding and removin item slots in the invetory
+    //    EditorGUILayout.BeginHorizontal();
+    //        addSlot = GUILayout.Button("+", GUILayout.Width(buttonWhidt));
+    //        remobeSlot = GUILayout.Button("-", GUILayout.Width(buttonWhidt));
+    //    EditorGUILayout.EndHorizontal();
 
-        for (int i = 0; i < MONO_Inventory.numberItemSlots; i++)
-         {
-             ItemSlotGUI(i);
-         }
+    //    for (int i = 0; i < MONO_Inventory.numberItemSlots; i++)
+    //     {
+    //         ItemSlotGUI(i);
+    //     }
 
-         EditorGUILayout.BeginHorizontal(GUI.skin.box);
-            EditorGUILayout.HelpBox("Hide delay after item has ben lifted from inventory delay in seconds.", MessageType.Info);
-            EditorGUILayout.PropertyField(inventoryWaitDelayProperty,GUIContent.none);
-         EditorGUILayout.EndHorizontal();
+    //     EditorGUILayout.BeginHorizontal(GUI.skin.box);
+    //        EditorGUILayout.HelpBox("Hide delay after item has ben lifted from inventory delay in seconds.", MessageType.Info);
+    //        EditorGUILayout.PropertyField(inventoryWaitDelayProperty,GUIContent.none);
+    //     EditorGUILayout.EndHorizontal();
       
         
-        serializedObject.ApplyModifiedProperties();
+    //    serializedObject.ApplyModifiedProperties();
 
 
-    }
+    //}
 
     /// <summary>
     /// Function that adds a item slot to the inventory

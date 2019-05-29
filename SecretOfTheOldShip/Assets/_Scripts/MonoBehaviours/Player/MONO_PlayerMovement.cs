@@ -258,17 +258,25 @@ public class MONO_PlayerMovement : MonoBehaviour
     public void OnGroundClick(Vector3 WorldPositiondata)
     {
         //Allow player to walk away from an interaction if said interaction is to show the interactionalternatives.
-  //      if (lastInteractable != null && lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> () != null)
-		//{
-		//	lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> ().HideAlternatives ();
-		//	sceneManager.getSetHandleInput = true;
-		//}
-			
-        // If the handle input flag is set to false then do nothing.
-		if (!sceneManager.getSetHandleInput)
+        //      if (lastInteractable != null && lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> () != null)
+        //{
+        //	lastInteractable.GetComponentInChildren<MONO_ShowAlternatives> ().HideAlternatives ();
+        //	sceneManager.getSetHandleInput = true;
+        //}
+
+
+        // if using keybord, then dont use on ground klick
+        if (MONO_Settings.instance.usingKeybodInput)
         {
             return;
         }
+
+        // If the handle input flag is set to false then do nothing.
+        if (!sceneManager.getSetHandleInput)
+        {
+            return;
+        }
+
     
 
         // The player is no longer headed for an interactable so set it to null.

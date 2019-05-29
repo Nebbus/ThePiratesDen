@@ -191,7 +191,6 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
         bool inventoryIsOppen = inventoryOppen;
 
         curretnKebordMod = (moved) ? kebordMovmentMod.CLOSESTTARGET : curretnKebordMod;
-        Debug.Log(scroll + "     " + moved + "        " + inventoryIsOppen);
       
         if (scroll || curretnKebordMod == kebordMovmentMod.SCROLL || inventoryIsOppen)
         {
@@ -231,7 +230,7 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
         }
        
     }
-
+  
     private void setCurentItem()
     {
         if (currentIndex != selectedIndex)
@@ -256,8 +255,14 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
                 //else
                 //{
                 if(getCurretItem != null)
-                    //now you can set the position of the ui element
+                {
+           
                     CustomCursorTransform.anchoredPosition = geUIpos(getCurretItem.gameObject.transform.position);
+
+
+                }
+                    //now you can set the position of the ui element
+                 
                 //}
 
                

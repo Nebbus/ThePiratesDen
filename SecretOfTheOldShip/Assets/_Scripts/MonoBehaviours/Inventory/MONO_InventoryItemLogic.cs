@@ -101,22 +101,26 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
     private void HovorEnterdReact()
     {
 
-
-        if (getSetItemsHashCode != -1 && getSetItemsHashCode != MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.getHash)
+        if (monoInventory.localHandleInput)
         {
-            FlowhartToShow = GameObject.Instantiate(monoInventory.GetItem(getSetItemsHashCode).onHowerText);
-            FlowhartToShow.ExecuteBlock("Description");
 
 
-            //==================================================================================
-            // Hack of the scenturey, to prevent on hover over item to turn of 
-            // the input handeling p.g.a a flowchart starts, set item handeling to true
-            // after the flowchart has started.
-            //==================================================================================
-            MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
-            param.param4 = true;
-            MONO_EventManager.TriggerEvent(MONO_EventManager.setInputHandling_NAME, param);
-            
+            if (getSetItemsHashCode != -1 && getSetItemsHashCode != MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.getHash)
+            {
+                FlowhartToShow = GameObject.Instantiate(monoInventory.GetItem(getSetItemsHashCode).onHowerText);
+                FlowhartToShow.ExecuteBlock("Description");
+
+
+                //==================================================================================
+                // Hack of the scenturey, to prevent on hover over item to turn of 
+                // the input handeling p.g.a a flowchart starts, set item handeling to true
+                // after the flowchart has started.
+                //==================================================================================
+                MONO_EventManager.EventParam param = new MONO_EventManager.EventParam();
+                param.param4 = true;
+                MONO_EventManager.TriggerEvent(MONO_EventManager.setInputHandling_NAME, param);
+
+            }
         }
     }
 
