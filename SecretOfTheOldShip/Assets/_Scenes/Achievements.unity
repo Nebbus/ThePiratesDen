@@ -385,7 +385,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Outrageous_Negotiation_Methods Description
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -398,12 +398,12 @@ MonoBehaviour:
   myHoverExitEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 878791792}
-        m_MethodName: 
+      - m_Target: {fileID: 878791793}
+        m_MethodName: StopAllBlocks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1958,7 +1958,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 878791847}
+  - {fileID: 878791861}
   selectedCommands: []
   variables: []
   description: 
@@ -6229,19 +6229,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2030220235}
   m_Script: {fileID: 11500000, guid: 1b7408fbc87c79040a25d3aaab8b4363, type: 3}
---- !u!114 &2048228333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f5fb5e9f7dd8e34387e88474fe174b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flowchart: {fileID: 878791793}
-  interactionBlock: Get_Into_the_Captains_Quarters Description
 --- !u!1 &2112353858
 GameObject:
   m_ObjectHideFlags: 0
@@ -6251,7 +6238,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2112353859}
   - component: {fileID: 2112353860}
-  - component: {fileID: 2112353862}
   - component: {fileID: 2112353861}
   m_Layer: 0
   m_Name: Achieved
@@ -6336,7 +6322,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   myHoverEnterdEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 878791793}
+        m_MethodName: ExecuteBlock
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Get_Into_the_Captains_Quarters Description
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   myHoverEvent:
@@ -6346,7 +6343,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   myHoverExitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 878791793}
+        m_MethodName: StopAllBlocks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   otherReactionsTriggers:
@@ -6418,19 +6426,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
---- !u!114 &2112353862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2112353858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reactions:
-  - {fileID: 2048228333}
 --- !u!1 &2114454324
 GameObject:
   m_ObjectHideFlags: 0
