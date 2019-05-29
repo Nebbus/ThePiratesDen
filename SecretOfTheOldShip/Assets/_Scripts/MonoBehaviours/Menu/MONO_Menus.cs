@@ -41,11 +41,9 @@ public class MONO_Menus : MonoBehaviour {
 	public Text musicVolumePaus;
 	public Text soundVolumeMain;
 	public Text soundVolumePaus;
-	public Text voiceVolumeMain;
-	public Text voiceVolumePaus;
+//	public Text voiceVolumeMain;		//Activate in case we use volume controls for voices
+//	public Text voiceVolumePaus;		//Activate in case we use volume controls for voices
 
-	private float minVolume = 0;
-	private float maxVolume = 1;
 
 	public enum menu {main, pause, settings};
 
@@ -240,11 +238,18 @@ public class MONO_Menus : MonoBehaviour {
 
 	public void ChangeMusicVolume(float offset)
 	{
-		Debug.Log ("changing music volume");
 		Text tempText = musicVolumeMain;
 		tempText.text = audioManager.changeMusicVolume (offset);
 		musicVolumeMain.text = tempText.text;
 		musicVolumePaus.text = tempText.text;
+	}
+
+	public void ChangeSFXVolume(float offset)
+	{
+		Text tempText = musicVolumeMain;
+		tempText.text = audioManager.changeSFXVolume (offset);
+		soundVolumeMain.text = tempText.text;
+		soundVolumePaus.text = tempText.text;
 	}
 
 
@@ -271,11 +276,11 @@ public class MONO_Menus : MonoBehaviour {
 		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
 		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
 
-		musicVolumeMain.text = audioManager.GetMusicVolume ();
-	/*	musicVolumePaus;
-		soundVolumeMain;
-		soundVolumePaus;
-		voiceVolumeMain;
+		musicVolumeMain.text = audioManager.GetVolume (audioManager.audioTypeMusic);
+		musicVolumePaus.text = audioManager.GetVolume (audioManager.audioTypeMusic);
+		soundVolumeMain.text = audioManager.GetVolume (audioManager.audioTypeSFX);
+		soundVolumePaus.text = audioManager.GetVolume (audioManager.audioTypeSFX);
+	/*	voiceVolumeMain;
 		voiceVolumePaus;*/
 	}
 
