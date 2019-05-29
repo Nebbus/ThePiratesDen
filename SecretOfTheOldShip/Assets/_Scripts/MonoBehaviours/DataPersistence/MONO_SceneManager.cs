@@ -18,6 +18,8 @@ public class MONO_SceneManager : MonoBehaviour {
 	private MONO_Fade fade;
 
     public bool testarDeta = false;
+    public bool doNotLoadStatScene = false;
+
 
 //==========================================================
 // Everything that has with handle inupt to do
@@ -71,19 +73,21 @@ public class MONO_SceneManager : MonoBehaviour {
 
     private IEnumerator Start () 
 	{
-		//Find the instance holding the code for fading.
-		fade = FindObjectOfType<MONO_Fade>();
+        if (doNotLoadStatScene)
+        {
+            //Find the instance holding the code for fading.
+            fade = FindObjectOfType<MONO_Fade>();
 
-        loadCamera.gameObject.SetActive(true);
+            loadCamera.gameObject.SetActive(true);
 
-        //Load first scene, set start position for player and fade in.
-        yield return StartCoroutine( LoadAndSetScene (startScene));
+            //Load first scene, set start position for player and fade in.
+            yield return StartCoroutine(LoadAndSetScene(startScene));
 
-        loadCamera.gameObject.SetActive(false);
+            loadCamera.gameObject.SetActive(false);
 
-        //SetPlayerStartPosition ();
-        fade.Fade (0f);
-       // Debug.log("Afsef");
+            fade.Fade(0f);
+        }
+
     }
    
     
@@ -110,7 +114,6 @@ public class MONO_SceneManager : MonoBehaviour {
         handleInput = false;
         fade.Fade(1f);
         yield return new WaitForSeconds(fade.fadeDuration);
-        MONO_SaveAndLoad.SaveData data = saveLoad.GetData;
 
 		if (goingToMainMenu)
 		{

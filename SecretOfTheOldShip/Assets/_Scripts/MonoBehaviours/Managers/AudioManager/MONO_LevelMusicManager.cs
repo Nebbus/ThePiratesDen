@@ -83,7 +83,7 @@ public class MONO_LevelMusicManager : MonoBehaviour {
             }
             if (startAmbience)
             {
-                if (AmbienceTarget.IsPlaying())
+                if (!AmbienceTarget.IsPlaying())
                 {
                     AmbienceTarget.Play();
                 }
