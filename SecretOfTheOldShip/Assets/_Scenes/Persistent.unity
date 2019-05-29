@@ -501,6 +501,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1394758230}
     m_Modifications:
+    - target: {fileID: 114133002790979656, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 224947622187026012, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -539,7 +544,7 @@ Prefab:
     - target: {fileID: 224947622187026012, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224947622187026012, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
         type: 2}
@@ -659,6 +664,46 @@ Prefab:
     - target: {fileID: 1756383749318270, guid: 305e5d7a4b1344fab9c66856c6bb18d2, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114133002790979656, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114133002790979656, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114133002790979656, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 217271199}
+    - target: {fileID: 114133002790979656, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 114133002790979656, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114133002790979656, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1274908773}
+    - target: {fileID: 114133002790979656, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: HandleInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 114133002790979656, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 305e5d7a4b1344fab9c66856c6bb18d2, type: 2}
@@ -788,7 +833,8 @@ MonoBehaviour:
   keabordKey: 32
   toNextInteractable: 9
   higligthAllButton: 113
-  inventoryButton: 119
+  inventoryButton: 101
+  pauseButtonKey: 112
 --- !u!4 &268509061
 Transform:
   m_ObjectHideFlags: 0
@@ -2585,6 +2631,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: 0
+--- !u!1 &1274908768 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1856817239127032, guid: 305e5d7a4b1344fab9c66856c6bb18d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 191709378}
+--- !u!114 &1274908773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1274908768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df7cf56ac90cce48b8373546a75cb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1290389517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,7 +2746,7 @@ Prefab:
     - target: {fileID: 224797372746110164, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224797372746110164, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
@@ -2859,67 +2921,67 @@ Prefab:
     - target: {fileID: 224358713837880038, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224358713837880038, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224358713837880038, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224358713837880038, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224358713837880038, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -180
+      value: 261.2
       objectReference: {fileID: 0}
     - target: {fileID: 224358713837880038, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 224428777962962372, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224428777962962372, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224428777962962372, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224428777962962372, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224428777962962372, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 655
+      value: 67.5
       objectReference: {fileID: 0}
     - target: {fileID: 224428777962962372, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 224301116974303636, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -181.2933
       objectReference: {fileID: 0}
     - target: {fileID: 224301116974303636, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
@@ -2929,12 +2991,12 @@ Prefab:
     - target: {fileID: 224428777962962372, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 30
+      value: 188.7
       objectReference: {fileID: 0}
     - target: {fileID: 224428777962962372, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -10
+      value: -10.5
       objectReference: {fileID: 0}
     - target: {fileID: 114187065586175866, guid: f9e24a91e740a4b009775b462417d81d,
         type: 2}
@@ -3674,8 +3736,8 @@ RectTransform:
   - {fileID: 505445119}
   - {fileID: 1037657789}
   - {fileID: 1664381505}
-  - {fileID: 217271203}
   - {fileID: 202772548}
+  - {fileID: 217271203}
   - {fileID: 1795386800}
   - {fileID: 215017518}
   - {fileID: 1449982437}
@@ -4078,7 +4140,10 @@ GameObject:
   - component: {fileID: 1504644868}
   - component: {fileID: 1504644867}
   - component: {fileID: 1504644866}
+  - component: {fileID: 1504644870}
   - component: {fileID: 1504644865}
+  - component: {fileID: 1504644869}
+  - component: {fileID: 1504644864}
   m_Layer: 5
   m_Name: PausMenuButton
   m_TagString: Untagged
@@ -4086,44 +4151,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1504644865
+--- !u!114 &1504644864
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114555506908586116, guid: 4ad7d763a586e81469ba8d5c270df835,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1504644863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 419c6bf4f4ac198418e2a98ce6095717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1504644866}
-  m_OnClick:
+  canMoveMouseOver: 0
+  myClickEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1171746227}
@@ -4170,6 +4210,143 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1504644869}
+        m_MethodName: HandleInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  myHoverEnterdEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  myHoverEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  myHoverExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  otherReactionsTriggers:
+    myOnStartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    myOnAwaykeEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    myOnScriptEnableEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    myOnScriptDisableEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    myOnScriptGamobjectDisabeld:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    myOnScriptGamobjectEnable:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    trackedObject: {fileID: 0}
+    gamobjectEnalde: 0
+  fungusRactionsTriggers:
+    FungusOnStart:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    FungusOnEnd:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    FungusOnGlyph:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    FungusOnInput:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    FungusOnResume:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    FungusOnPause:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    FungusOnVoiceover:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+--- !u!114 &1504644865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114555506908586116, guid: 4ad7d763a586e81469ba8d5c270df835,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1504644863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1504644866}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1504644866
@@ -4226,6 +4403,30 @@ RectTransform:
   m_AnchoredPosition: {x: 775.2608, y: 416.43045}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1504644869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1504644863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df7cf56ac90cce48b8373546a75cb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1504644870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1504644863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f526431156919243a0ac43d84e5a761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  monoSceneManager: {fileID: 0}
 --- !u!114 &1569003897 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114346494642331576, guid: b1f58ceacc102489792cd98234b9fc94,
@@ -4682,6 +4883,108 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 29.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114817719839454582, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114931846214316824, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45c8d8bb8394647bbaa5908267c4fae9,
+        type: 3}
+    - target: {fileID: 114817719839454582, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e6621be4c865f409cb8db82a20cbd6c2,
+        type: 3}
+    - target: {fileID: 114677228469203346, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114677228469203346, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 934aaffcfa00544779077c03c2dbf413,
+        type: 3}
+    - target: {fileID: 114049373098253676, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 49d4e8ac9011d42a39eb5960650839bc,
+        type: 3}
+    - target: {fileID: 114197426874042056, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45c8d8bb8394647bbaa5908267c4fae9,
+        type: 3}
+    - target: {fileID: 114289313067325852, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114289313067325852, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e6621be4c865f409cb8db82a20cbd6c2,
+        type: 3}
+    - target: {fileID: 114735681546779122, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45c8d8bb8394647bbaa5908267c4fae9,
+        type: 3}
+    - target: {fileID: 114535393173354916, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114535393173354916, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e6621be4c865f409cb8db82a20cbd6c2,
+        type: 3}
+    - target: {fileID: 114982214308171748, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 49d4e8ac9011d42a39eb5960650839bc,
+        type: 3}
+    - target: {fileID: 114788053018267358, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114788053018267358, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 934aaffcfa00544779077c03c2dbf413,
+        type: 3}
+    - target: {fileID: 114602137424538758, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 49d4e8ac9011d42a39eb5960650839bc,
+        type: 3}
+    - target: {fileID: 114025506194977716, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114025506194977716, guid: b1f58ceacc102489792cd98234b9fc94,
+        type: 2}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 934aaffcfa00544779077c03c2dbf413,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114273553200023678, guid: b1f58ceacc102489792cd98234b9fc94, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b1f58ceacc102489792cd98234b9fc94, type: 2}
@@ -6287,14 +6590,110 @@ MonoBehaviour:
   baseNameOfVariableCharts: VariableFlowchartAct
   monoInventory: {fileID: 1917639174}
   data:
-    hasAvchivmentData: 0
+    hasAvchivmentData: 1
     achivments:
-      flowChartName: 
+      flowChartName: VariableFlowchartAct0
       variabelValues: []
     hasSAveData: 1
-    currentScene: Achievements
+    currentScene: ScenePuzzle_SlidingRings
     itemsInInentory: []
-    flowChartVariableData: []
+    flowChartVariableData:
+    - flowChartName: VariableFlowchartAct2
+      variabelValues:
+      - variableType: 2
+        valueKey: Painting
+      - variableType: 2
+        valueKey: Underwear
+      - variableType: 2
+        valueKey: Cracker
+      - variableType: 2
+        valueKey: Harmonica
+      - variableType: 2
+        valueKey: ParrotCured
+      - variableType: 1
+        valueKey: ParrotMemories
+      - variableType: 2
+        valueKey: MermaidGaveGift
+      - variableType: 2
+        valueKey: GhostTalkedHarmonica
+      - variableType: 2
+        valueKey: GhostFirstAct2
+      - variableType: 2
+        valueKey: ReadyForAct3
+      - variableType: 2
+        valueKey: Repentance
+    - flowChartName: VariableFlowchartAct3
+      variabelValues:
+      - variableType: 2
+        valueKey: FailedToGetEarmuffs
+      - variableType: 2
+        valueKey: TalkedAboutTreasure
+      - variableType: 2
+        valueKey: PreppingForFinish
+      - variableType: 2
+        valueKey: EverythingSet
+      - variableType: 2
+        valueKey: GhostTalkedBurn
+      - variableType: 2
+        valueKey: CaughtParrot
+      - variableType: 2
+        valueKey: CatchingParrot
+      - variableType: 2
+        valueKey: FinalGoodbyes
+      - variableType: 1
+        valueKey: Everything
+      - variableType: 2
+        valueKey: HasCage
+      - variableType: 2
+        valueKey: ShownCage
+      - variableType: 2
+        valueKey: HasLid
+      - variableType: 2
+        valueKey: HasRope
+    - flowChartName: VariableFlowchartAct1
+      variabelValues:
+      - variableType: 2
+        valueKey: GameStarted
+      - variableType: 1
+        valueKey: CurrentArc
+      - variableType: 2
+        valueKey: Rum
+      - variableType: 2
+        valueKey: Book
+      - variableType: 2
+        valueKey: EnchantedRum
+      - variableType: 2
+        valueKey: Matches
+      - variableType: 2
+        valueKey: Gunpowder
+      - variableType: 2
+        valueKey: Cannonball
+      - variableType: 2
+        valueKey: DoorPuzzleAvailable
+      - variableType: 2
+        valueKey: DoorPuzzleInProgress
+      - variableType: 2
+        valueKey: DoorPuzzleFinished
+      - variableType: 1
+        valueKey: WhoSpokenToFirst
+      - variableType: 2
+        valueKey: ScaredGhost
+      - variableType: 2
+        valueKey: HintAboutGhost
+      - variableType: 2
+        valueKey: HintAboutPuzzle
+      - variableType: 2
+        valueKey: GhostSpawned
+      - variableType: 2
+        valueKey: HintAboutCaptainsQuarters
+      - variableType: 2
+        valueKey: HintCombine
+      - variableType: 2
+        valueKey: ParrotFirstPuzzleInProgress
+      - variableType: 2
+        valueKey: HasFedCannonball
+      - variableType: 2
+        valueKey: HasFedGunpowder
     playerPosData:
       tX: 0
       tY: 0
@@ -6304,8 +6703,8 @@ MonoBehaviour:
       qZ: 0
       qW: 0
     conditions:
-      allConditionConditionIndex: 0000000001000000ffffffff030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
-      allConditionConditionsatesfied: 00000000000000000000000000000000000000000000000000000000
+      allConditionConditionIndex: 0000000001000000ffffffff030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d000000
+      allConditionConditionsatesfied: 010000000000000101010000000000000000000000000000000101000000
   achivmetsData:
     flowChartName: 
     variabelValues: []

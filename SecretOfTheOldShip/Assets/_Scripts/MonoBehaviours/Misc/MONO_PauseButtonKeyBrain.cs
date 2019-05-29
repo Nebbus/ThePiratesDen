@@ -5,16 +5,26 @@ using UnityEngine.UI;
 
 public class MONO_PauseButtonKeyBrain : MonoBehaviour {
 
-    public Button button;
+    public MONO_SimpleInteractable button;
+    public MONO_SceneManager monoSceneManager;
+
+    public void Start()
+    {
+        monoSceneManager = FindObjectOfType<MONO_SceneManager>();
+        if(button == null)
+        {
+            button = GetComponent<MONO_SimpleInteractable>();
+        }
+    }
 
 
     public void Update()
     {
-        if (MONO_Settings.instance.getPauseButtonKey)
+        if (MONO_Settings.instance.getPauseButtonKey && monoSceneManager.getSetHandleInput)
         {
             if(button != null)
             {
-                button.onClick.Invoke();
+                button.OnClick() ;
             }
         }
     }
