@@ -3007,37 +3007,6 @@ MonoBehaviour:
   satisfied: 1
   hash: -897388368
   startValue: 0
---- !u!84 &409706830
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 0
-  m_Height: 0
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &422629365
 GameObject:
   m_ObjectHideFlags: 0
@@ -5515,6 +5484,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!84 &793562604
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 234
+  m_Height: 548
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &794691197
 GameObject:
   m_ObjectHideFlags: 0
@@ -6920,7 +6920,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 1391729895}
+  _compositeMat: {fileID: 1857714633}
 --- !u!92 &1017722109
 Behaviour:
   m_ObjectHideFlags: 0
@@ -10322,30 +10322,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1391023393}
   m_Mesh: {fileID: 4300000, guid: 8813f4e5fa11d4d4aa30f8d81fede680, type: 3}
---- !u!21 &1391729895
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1 &1393848121
 GameObject:
   m_ObjectHideFlags: 0
@@ -13891,7 +13867,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 409706830}
+  m_TargetTexture: {fileID: 793562604}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -13979,6 +13955,30 @@ Transform:
   m_PrefabParentObject: {fileID: 4702790811935920, guid: 20085ffeb32edba43b69c055b0c37821,
     type: 2}
   m_PrefabInternal: {fileID: 1512773074}
+--- !u!21 &1857714633
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!114 &1857855477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14481,6 +14481,19 @@ MonoBehaviour:
   hash: -829145576
   requierdHoldingItem: {fileID: 11400000, guid: cbfac9d27a3d620438aa1bc6b82da9a8,
     type: 2}
+--- !u!114 &1919187298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4967a4703c29da04d9b6d491d2c9a228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  enabled: 0
 --- !u!1 &1921195426
 GameObject:
   m_ObjectHideFlags: 0
@@ -38616,6 +38629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 753489773}
+  - {fileID: 1919187298}
 --- !u!114 &2092978525
 MonoBehaviour:
   m_ObjectHideFlags: 0
