@@ -14,7 +14,7 @@ public class MONO_MenuSelect : MonoBehaviour {
 
 	private bool buttonSelected;
 	private float offset = 0;
-    private GameObject currentSelectedMenuItem;
+    public GameObject currentSelectedMenuItem;
     private MONO_CustomMouseCursor OurCustomCursor;
 
 	private UnityEngine.UI.Image currentHoverImage;

@@ -107,6 +107,18 @@ public class MONO_Settings : MonoBehaviour {
         }
     }
 
+
+    public void UsingMouse()
+    {
+        usingKeybodInput = false;
+
+    }
+    public void UsingKeyBord()
+    {
+        usingKeybodInput = true;
+
+    }
+
     /// <summary>
     /// Switch between the controls being used.
     /// </summary>
