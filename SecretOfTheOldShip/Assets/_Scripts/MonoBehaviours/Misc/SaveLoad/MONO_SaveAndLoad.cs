@@ -24,19 +24,93 @@ public class MONO_SaveAndLoad : MonoBehaviour
     [SerializeField]
     private SaveData data = null;
 
+
+
+
     public SaveData GetData
     {
         get
         {
-            if(data == null && loadData())
+            if (data == null && loadData())
             {
                 return data;
             }
             return (data == null) ? new SaveData() : data;
         }
     }
-    
+
+
+
+    public variableData GetAchivmetData
+    {
+        get
+        {
+            /* NOTE would be more efficent to have it be founden 
+            * in geting flowcharts, but its more flexible (
+            * dosent has to be cald after the getVariableFlowcharts funktion
+            * and more understadebla then its consentratet att one spot
+            */
+
+
+            /// attemts geting achivmet data from current scene
+            Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
+            foreach (Fungus.Flowchart chart in flowChartsInScene)
+            {
+                string name = chart.GetName();
+                int difff = name.Length - baseNameOfVariableCharts.Length;// to allow dubble didget flowcharts
+                if (difff > 0)
+                {
+                    if (name.Remove(name.Length - difff) == baseNameOfVariableCharts)
+                    {
+                        //spare down the achivemt in a separate variable
+                        if (name[baseNameOfVariableCharts.Length] == '0' && !newAhivmentFlowchart)
+                        {
+                            newAhivmentFlowchart    = true;
+                            achivmetsFlowchartData  = chart;
+                            achivmetsData           = new variableData(achivmetsFlowchartData);
+                            return achivmetsData;
+                        }
+
+                    }
+                }
+
+            }
+
+            //attemts getting it from loading
+            if (loadData())
+            {
+                if (data.hasAvchivmentData)
+                {
+                    return data.getSetAchivment;
+                }
+
+            }
+
+
+            // waset abbel to rekover any achivement flowchart, so returns null
+            newAhivmentFlowchart    = false;
+            achivmetsFlowchartData  = null;
+            achivmetsData           = null;
+
+            return achivmetsData;
+
+        }
+
+
+
+    }
+
     [Space]
+    [Space]
+    [SerializeField]
+    private variableData achivmetsData;
+    [SerializeField]
+    private Fungus.Flowchart achivmetsFlowchartData;
+    [SerializeField]
+    private bool newAhivmentFlowchart = false;
+    [Space]
+    [Space]
+
     [SerializeField]
     private SaveData dataToSave = null;
 
@@ -80,13 +154,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
         }
         else
         {
-            List<variableData> completeDataTosave = new List<variableData>();
-            foreach (Fungus.Flowchart variabelChart in variableFlowCharts)
-            {
-                variableData variabledata = new variableData(variabelChart);
-                completeDataTosave.Add(variabledata);
-            }
-            GetdataToSave.flowChartVariableData = completeDataTosave.ToArray();
+            GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
         }
 
         //spare down the inventory items;
@@ -102,14 +170,17 @@ public class MONO_SaveAndLoad : MonoBehaviour
          * ( only saves stuff if player 
          * is in scene and is taged "Player")
          */
-        GetdataToSave.playerPosData.savePlayerPosition();
+            GetdataToSave.playerPosData.savePlayerPosition();
 
         // Register that data has ben saved
         GetdataToSave.hasSAveData = true;
 
+
+
         //===============================
         // saves the data
         //===============================
+
 
         Save();
     }
@@ -136,13 +207,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
         }
         else
         {
-            List<variableData> completeDataTosave = new List<variableData>();
-            foreach (Fungus.Flowchart variabelChart in variableFlowCharts)
-            {
-                variableData variabledata = new variableData(variabelChart);
-                completeDataTosave.Add(variabledata);
-            }
-            GetdataToSave.flowChartVariableData = completeDataTosave.ToArray();
+            GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
         }
 
         //spare down the inventory items;
@@ -168,21 +233,30 @@ public class MONO_SaveAndLoad : MonoBehaviour
          * be called from the level scenes (and from the 
          * editor but it has if to avid errors*/
 
+ 
+
         //===============================
         // saves the data
         //===============================
+
         Save();
 
     }
-
-
+   
+   
 
 
     public void Save()
     {
+
+        //gets achivment data
+        GetdataToSave.getSetAchivment = GetAchivmetData;
+        newAhivmentFlowchart = false;
+
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file    = File.Open(Application.persistentDataPath + filename, FileMode.OpenOrCreate);
-     
+
+
         bf.Serialize(file, GetdataToSave);
         file.Close();
         data = GetdataToSave;
@@ -190,10 +264,29 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
     }
 
+    
+
+    /// <summary>
+    /// Destroys the achivments, cepps rest of the data.
+    /// </summary>
+    public void clearAchivments()
+    {
+        if (loadData())
+        {
+            data.getSetAchivment = null;
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + filename, FileMode.OpenOrCreate);
 
 
-  
+            bf.Serialize(file, data);
+            file.Close();
+            UppdateSavedReckord();
+        }
 
+    }
+
+
+    
     /// <summary>
     /// Loades data from the save file
     /// </summary>
@@ -227,7 +320,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
         foreach(Fungus.Flowchart chart in flowChartsInScene)
         {
             int index;
-            if(hasBenSaved.TryGetValue(chart.name, out index))
+            if(hasBenSaved.TryGetValue(chart.name, out index) )
             {
                 foreach(valueData value in data.flowChartVariableData[index].variabelValues)
                 {
@@ -249,6 +342,30 @@ public class MONO_SaveAndLoad : MonoBehaviour
                             break;
                     }
                 }
+            }
+            else if (isAchivmentFlochart(chart.name) && data.hasAvchivmentData)
+            {
+                foreach (valueData value in data.getSetAchivment.variabelValues)
+                {
+                    switch (value.variableType)
+                    {
+                        case fungusVariableData.STRING:
+                            chart.SetStringVariable(value.valueKey, value.getStringValue);
+                            break;
+                        case fungusVariableData.INT:
+                            chart.SetIntegerVariable(value.valueKey, value.getIntValue);
+                            break;
+                        case fungusVariableData.BOOL:
+                            chart.SetBooleanVariable(value.valueKey, value.getBoolValue);
+                            break;
+                        case fungusVariableData.FLOAT:
+                            chart.SetFloatVariable(value.valueKey, value.getFlowtValue);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
             }
 
         }
@@ -312,14 +429,25 @@ public class MONO_SaveAndLoad : MonoBehaviour
         // Lokate all variable flowcharts in flowChartsInScene
         for (int i = 0; i < flowChartsInScene.Length; i++)
         {
+       
             string name = flowChartsInScene[i].GetName();
-            if (name.Remove(name.Length - 1) == baseNameOfVariableCharts)
+            int difff   = name.Length - baseNameOfVariableCharts.Length;// to allow dubble didget flowcharts
+            if(difff > 0)
             {
-                numberOfVariableFlowCharts++;
-                indexOfvariableFlowCharts.Add(i);
-            }
-        }
+                if (name.Remove(name.Length - difff) == baseNameOfVariableCharts)
+                {
+                    // Ignores the achivments flowchart here, it will get spared in other placeses
+                    if (difff == 1 && name[baseNameOfVariableCharts.Length] != '0')
+                    {
+                        numberOfVariableFlowCharts++;
+                        indexOfvariableFlowCharts.Add(i);
+                    }
 
+                   
+                }
+            }
+        
+        }
         variableFlowCharts = new Fungus.Flowchart[numberOfVariableFlowCharts];
 
         // Gets the variable flowcharts from flowChartsInScene
@@ -389,6 +517,25 @@ public class MONO_SaveAndLoad : MonoBehaviour
         return completeDataTosave.ToArray();
     }
 
+    /// <summary>
+    /// gets vartiabel datas from list of flocharts
+    /// </summary>
+    /// <param name="flowcharts"></param>
+    /// <returns></returns>
+    private variableData[] getVariableData(Fungus.Flowchart[] flowcharts)
+    {
+        List<variableData> completeDataTosave = new List<variableData>();
+        foreach (Fungus.Flowchart variabelChart in flowcharts)
+        {
+            variableData variabledata = new variableData(variabelChart);
+            completeDataTosave.Add(variabledata);
+        }
+        return completeDataTosave.ToArray();
+    }
+
+
+
+
     private string[] DeconstructInventoryItem(SOBJ_Item[] itemsInInventory)
     {
         // string[] names = new string[itemsInInventory.Length];
@@ -437,6 +584,13 @@ public class MONO_SaveAndLoad : MonoBehaviour
         }
     }
 
+    public bool isAchivmentFlochart(string name)
+    { 
+        int difff = name.Length - baseNameOfVariableCharts.Length;// to allow dubble didget flowcharts
+        return (difff > 0) ? (name.Remove(name.Length - difff) == baseNameOfVariableCharts) : false;
+    }
+
+
 
 
     /// <summary>
@@ -446,6 +600,23 @@ public class MONO_SaveAndLoad : MonoBehaviour
     [System.Serializable]
     public class SaveData
     {
+        public bool hasAvchivmentData = false;
+        [SerializeField]
+        private variableData achivments = null; // spece for achivemts to ceep it
+
+        public variableData getSetAchivment
+        {
+            get
+            {
+                return achivments;
+            }
+            set
+            {
+                hasAvchivmentData = (value != null);
+                achivments = value;
+            }
+        }
+
         public bool hasSAveData                     = false;                // to set if load button is interactable
         public string currentScene                  = "";                   // to load rigth scene
         public string[] itemsInInentory             = new string[0];       // for reqonstrukting the inventory
