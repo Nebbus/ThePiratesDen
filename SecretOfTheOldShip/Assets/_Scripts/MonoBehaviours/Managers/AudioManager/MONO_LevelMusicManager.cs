@@ -13,9 +13,9 @@ public class MONO_LevelMusicManager : MonoBehaviour {
     public StudioEventEmitter MusicTarget;
 
 
-    public static string pathToMasterVCA =  "vca:/Music";
+    public static string pathToMasterVCA =  "vca:/Master";
     public static string pathToMusicVCA = "vca:/Music";
-    public static string pathToSFXVCA = "vca:/Music";
+	public static string pathToSFXVCA = "vca:/Sounds";
 	private FMOD.Studio.VCA masterVolumeController;
     private FMOD.Studio.VCA musicVolumeController;
 	private FMOD.Studio.VCA sfxVolumeController;
