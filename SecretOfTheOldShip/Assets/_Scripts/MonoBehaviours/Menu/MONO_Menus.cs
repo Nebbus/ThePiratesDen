@@ -30,6 +30,8 @@ public class MONO_Menus : MonoBehaviour {
 	public Text cursorSpeedMain;
 	[Tooltip("The UI text object in pause settings menu for cursor speed.")]
 	public Text cursorSpeedPause;
+	public float cursorSpeedMinValue = 0;
+	public float cursorSpeedMaxValue = 3000;
 
 
 	[Space]
@@ -187,7 +189,7 @@ public class MONO_Menus : MonoBehaviour {
 
         switch (latestMenu) {
 		case menu.main:
-			mainMenu.SetActive (true);
+			OpenMainMenu ();
 			break;
 
 		case menu.pause:
@@ -275,8 +277,12 @@ public class MONO_Menus : MonoBehaviour {
 
 	private void SetTextComponents()
 	{
-		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
-		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
+		float speed = Mathf.InverseLerp (cursorSpeedMinValue, cursorSpeedMaxValue, cursor.CursorSpeed);
+		speed = Mathf.Round (speed * 10f) / 10f;
+		cursor.CursorSpeed = Mathf.Lerp (cursorSpeedMinValue, cursorSpeedMaxValue, speed);
+		speed *= 100f;
+		cursorSpeedMain.text = speed.ToString();
+		cursorSpeedPause.text = speed.ToString();
 
 		musicVolumeMain.text = audioManager.GetVolume (audioManager.audioTypeMusic);
 		musicVolumePaus.text = audioManager.GetVolume (audioManager.audioTypeMusic);
@@ -292,13 +298,21 @@ public class MONO_Menus : MonoBehaviour {
 	/// <param name="offset">The amount cursor speed will change.</param>
 	public void ChangeCursorSpeed(float offset)
 	{
-		if (cursor.CursorSpeed + offset <= 0 || cursor.CursorSpeed + offset >= 5000) 
+		float speedPercentage = Mathf.InverseLerp (cursorSpeedMinValue, cursorSpeedMaxValue, cursor.CursorSpeed);
+		speedPercentage *= 100f;
+		speedPercentage = Mathf.Round (speedPercentage);
+		speedPercentage += offset;
+
+		if (speedPercentage <  1|| speedPercentage > 100) 
 		{
 			return;
 		}
-		cursor.CursorSpeed = cursor.CursorSpeed + offset;
-		cursorSpeedMain.text = cursor.CursorSpeed.ToString ();
-		cursorSpeedPause.text = cursor.CursorSpeed.ToString ();
+
+		cursorSpeedMain.text = speedPercentage.ToString ();
+		cursorSpeedPause.text = speedPercentage.ToString ();
+
+		speedPercentage *= 0.01f;
+		cursor.CursorSpeed = Mathf.Lerp(cursorSpeedMinValue, cursorSpeedMaxValue, speedPercentage);
 	}
 
 

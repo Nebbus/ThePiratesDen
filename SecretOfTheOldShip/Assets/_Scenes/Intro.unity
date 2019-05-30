@@ -767,6 +767,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 075cc1d752efaf64f9cee53e8a1fa358, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &708236872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85354fd55db698741a61634857d964b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  onReaction: 0
+  startAmbience: 0
+  startMusic: 1
 --- !u!1 &894046497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1105,8 @@ MonoBehaviour:
   musicEmittor:
   - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
     Params:
+    - Name: Menu
+      Value: 0
     - Name: Intro
       Value: 1
   ambienceEmittor:
@@ -1356,9 +1373,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1790089249}
+  - {fileID: 1790089260}
   selectedCommands:
-  - {fileID: 1790089270}
+  - {fileID: 1790089263}
   variables: []
   description: 
   stepPause: 0
@@ -1638,7 +1655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 24
   indentLevel: 0
-  pathToFMODSound: 
+  pathToFMODSound: event:/Characters/Player/VA/Intro/Picture_1
 --- !u!114 &1790089263
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1652,7 +1669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 28
   indentLevel: 0
-  pathToFMODSound: 
+  pathToFMODSound: event:/Characters/Player/VA/Intro/Picture_2
 --- !u!114 &1790089264
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1810,7 +1827,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   sceneToBeLoaded: Scene1_outside
-  HandelInputAfterFade: 0
+  handelInputAfterFade: 1
+  changingToMainMenu: 0
+  saveOnChange: 1
 --- !u!1001 &2030220235
 Prefab:
   m_ObjectHideFlags: 0
@@ -1821,7 +1840,7 @@ Prefab:
     - target: {fileID: 114154579536713584, guid: 90fb50a205e253f409742c2638ef19bd,
         type: 2}
       propertyPath: FMODreactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114636686186420036, guid: 90fb50a205e253f409742c2638ef19bd,
         type: 2}
@@ -1924,6 +1943,11 @@ Prefab:
       propertyPath: otherReactionsTriggers.myOnScriptEnableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114154579536713584, guid: 90fb50a205e253f409742c2638ef19bd,
+        type: 2}
+      propertyPath: FMODreactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 708236872}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90fb50a205e253f409742c2638ef19bd, type: 2}
   m_IsPrefabParent: 0
