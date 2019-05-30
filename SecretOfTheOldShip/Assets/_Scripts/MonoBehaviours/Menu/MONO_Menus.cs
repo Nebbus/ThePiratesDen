@@ -147,14 +147,6 @@ public class MONO_Menus : MonoBehaviour {
 		//introManager.InitiateIntro ();
 	}
 
-
-	public void OpenMainMenu()
-	{
-		sceneManager.ChangeScene ("MainMenu", false, false, true, true);
-		pauseMenu.SetActive (false);
-		mainMenu.SetActive (true);
-	}
-
 	//--------------------------------------------------------------------------------
 	//	Methods used when opening and closing menues
 	//--------------------------------------------------------------------------------
@@ -189,7 +181,7 @@ public class MONO_Menus : MonoBehaviour {
 
         switch (latestMenu) {
 		case menu.main:
-			OpenMainMenu ();
+			mainMenu.SetActive (true);
 			break;
 
 		case menu.pause:
@@ -210,6 +202,15 @@ public class MONO_Menus : MonoBehaviour {
     {
         menuOpen = false;
     }
+
+
+
+	public void OpenMainMenu()
+	{
+		sceneManager.ChangeScene ("MainMenu", false, false, true, true);
+		pauseMenu.SetActive (false);
+		mainMenu.SetActive (true);
+	}
 
 	//--------------------------------------------------------------------------------
 	//	Audio Stuff
