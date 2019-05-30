@@ -449,37 +449,6 @@ MonoBehaviour:
   condition: {fileID: 114451473210790224, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
     type: 2}
   satisfied: 1
---- !u!84 &70419313
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 234
-  m_Height: 410
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!114 &70813768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,8 +1014,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 192670685}
-  - component: {fileID: 137203798}
-  - component: {fileID: 137203797}
   m_Layer: 0
   m_Name: INT_Barrel
   m_TagString: Untagged
@@ -1054,34 +1021,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!114 &137203797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114178214021833454, guid: 9e58b534bac5c724d92f8355caff617f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 137203796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8865ee5b02f9ff041981e3bda8948dd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionLocation: {fileID: 0}
-  conditionCollections: []
-  defaultReactionCollection: {fileID: 0}
---- !u!65 &137203798
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 65659653936550592, guid: 9e58b534bac5c724d92f8355caff617f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 137203796}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.79, y: 0.78, z: 0.83}
-  m_Center: {x: -0.24, y: 0.44, z: -0.03}
 --- !u!1 &137253079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,7 +1558,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 200707779}
   m_LocalRotation: {x: -0, y: 0.97528315, z: -0, w: -0.22095913}
-  m_LocalPosition: {x: 0.52300006, y: -1.0122886, z: 1.0030003}
+  m_LocalPosition: {x: 0.435, y: -1.017, z: 0.819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1194915091}
@@ -2061,13 +2000,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 276607215}
-  m_LocalRotation: {x: -0, y: 0.44880906, z: -0, w: 0.89362764}
-  m_LocalPosition: {x: -0.6600001, y: -1.6170441, z: -0.53000003}
+  m_LocalRotation: {x: 0, y: 0.75241494, z: 0, w: 0.6586895}
+  m_LocalPosition: {x: -0.729, y: -1.6170441, z: 0.206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 452802337}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 53.335003, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 97.6, z: 0}
 --- !u!1 &281522420
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,7 +2483,9 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -0.34000114
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65014323683484304, guid: 70a3c91e483afcb488d52730fccad3aa, type: 2}
+    - {fileID: 114791493233639990, guid: 70a3c91e483afcb488d52730fccad3aa, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70a3c91e483afcb488d52730fccad3aa, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &325478856 stripped
@@ -2667,7 +2608,7 @@ GameObject:
   - component: {fileID: 363151852}
   m_Layer: 0
   m_Name: INT_CannonBall Quest Item
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2853,7 +2794,7 @@ GameObject:
   - component: {fileID: 377012730}
   m_Layer: 0
   m_Name: INT_Clock
-  m_TagString: Untagged
+  m_TagString: Look
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3200,7 +3141,7 @@ GameObject:
   - component: {fileID: 425853318}
   m_Layer: 0
   m_Name: INT_PaperBlank
-  m_TagString: Untagged
+  m_TagString: Look
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3395,7 +3336,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 448182324}
   m_LocalRotation: {x: -0, y: 0.78832984, z: -0, w: -0.61525285}
-  m_LocalPosition: {x: 0.58199996, y: -0.6682627, z: 0.16299996}
+  m_LocalPosition: {x: 0.58199996, y: -0.712, z: 0.16299996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 942376548}
@@ -3621,6 +3562,30 @@ Transform:
   m_Father: {fileID: 147422464}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 10.543, z: 0}
+--- !u!21 &476119720
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!114 &476871930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3934,7 +3899,7 @@ GameObject:
   - component: {fileID: 519185013}
   m_Layer: 0
   m_Name: INT_BarrelLid QuestItem lid Gunpowder
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4508,7 +4473,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 620058725}
   m_LocalRotation: {x: -0, y: 0.85779226, z: -0, w: 0.5139965}
-  m_LocalPosition: {x: -0.6199992, y: -0.13500002, z: 0.37000287}
+  m_LocalPosition: {x: -0.33, y: -0.157, z: 0.215}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 363151850}
@@ -4538,7 +4503,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 620408612}
   m_LocalRotation: {x: 0.0000000014551915, y: 0.88196903, z: -9.313226e-10, w: 0.4713073}
-  m_LocalPosition: {x: -0.5181223, y: -1.1936413, z: 0.34205085}
+  m_LocalPosition: {x: -0.518, y: -0.987, z: 0.342}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1806360018}
@@ -4654,11 +4619,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114734240907617880, guid: bfae7120891f44713bcdbb14b7caf024,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfae7120891f44713bcdbb14b7caf024, type: 2}
@@ -5292,7 +5252,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 708228494}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.28300002, y: -0.85999995, z: 2.0340004}
+  m_LocalPosition: {x: -0.283, y: -0.774, z: 1.544}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1895348081}
@@ -6797,7 +6757,7 @@ GameObject:
   - component: {fileID: 942376551}
   m_Layer: 0
   m_Name: INT_RumBottle Quest Item
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7148,30 +7108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   item: {fileID: 11400000, guid: 8f12aab6a6043cf4e9a959e906708702, type: 2}
---- !u!21 &1016876565
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1 &1017722106 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1170521622661136, guid: 65455aac3f6678e48bbd19077e1e83e1,
@@ -7191,7 +7127,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 1016876565}
+  _compositeMat: {fileID: 476119720}
 --- !u!92 &1017722109
 Behaviour:
   m_ObjectHideFlags: 0
@@ -7681,7 +7617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1986073627}
+  selectedFlowchart: {fileID: 1986073595}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -7857,6 +7793,7 @@ MonoBehaviour:
   sceneToBeLoaded: Scene2_inside
   handelInputAfterFade: 1
   changingToMainMenu: 0
+  saveOnChange: 1
 --- !u!1001 &1065351963
 Prefab:
   m_ObjectHideFlags: 0
@@ -8884,7 +8821,7 @@ GameObject:
   - component: {fileID: 1194915093}
   m_Layer: 0
   m_Name: INT_BookClosed Quest Item (GhostBook)
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9154,7 +9091,7 @@ GameObject:
   - component: {fileID: 1224182564}
   m_Layer: 0
   m_Name: INT_Cannon Quest Item
-  m_TagString: Untagged
+  m_TagString: Look
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9545,7 +9482,9 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65295291435191764, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
+    - {fileID: 114560343527966150, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1252910413
@@ -10206,6 +10145,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 1203172263182760, guid: d2bdaa7ac1e16df45ba60ecbee210ac8, type: 2}
+      propertyPath: m_TagString
+      value: Look
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2bdaa7ac1e16df45ba60ecbee210ac8, type: 2}
   m_IsPrefabParent: 0
@@ -10649,7 +10592,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363543437}
   m_LocalRotation: {x: -0, y: 0.9339421, z: -0, w: -0.3574243}
-  m_LocalPosition: {x: 0.63999987, y: -0.7204153, z: 0.7900005}
+  m_LocalPosition: {x: 0.63999987, y: -0.883, z: 0.7900005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 138697697}
@@ -11487,7 +11430,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1449124210}
   m_LocalRotation: {x: 0.01381267, y: 0.98452914, z: 0.14889602, w: -0.09133204}
-  m_LocalPosition: {x: 0.076, y: -1.821, z: -0.152}
+  m_LocalPosition: {x: 0.077, y: -1.802, z: -0.146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 123266582}
@@ -11898,7 +11841,7 @@ GameObject:
   - component: {fileID: 1528589131}
   m_Layer: 0
   m_Name: INT_Door
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11947,7 +11890,7 @@ GameObject:
   - component: {fileID: 1546958744}
   m_Layer: 0
   m_Name: INT_Matchbox Quest Item
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12140,13 +12083,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1559941012}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -96.899994, y: -5.7999997, z: 33.4}
+  m_LocalRotation: {x: 0, y: 0.992332, z: 0, w: 0.12360149}
+  m_LocalPosition: {x: -4.94, y: -3.58, z: 13.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1775651484}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 165.8, z: 0}
 --- !u!1 &1561041571
 GameObject:
   m_ObjectHideFlags: 0
@@ -12195,6 +12138,37 @@ Transform:
   m_Father: {fileID: 217034449}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1571790807
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 234
+  m_Height: 410
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!4 &1574378512
 Transform:
   m_ObjectHideFlags: 0
@@ -12227,11 +12201,11 @@ GameObject:
   - component: {fileID: 1578020836}
   m_Layer: 0
   m_Name: INT_RumBarrel QuestItem
-  m_TagString: NotInteractable
+  m_TagString: Hand
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1578020835
 Transform:
   m_ObjectHideFlags: 0
@@ -12429,6 +12403,7 @@ MonoBehaviour:
   sceneToBeLoaded: ScenePuzzle_SlidingRings
   handelInputAfterFade: 1
   changingToMainMenu: 0
+  saveOnChange: 1
 --- !u!1 &1619978484
 GameObject:
   m_ObjectHideFlags: 0
@@ -12453,7 +12428,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1619978484}
   m_LocalRotation: {x: -0, y: 0.7372774, z: -0, w: -0.67559016}
-  m_LocalPosition: {x: 1.7010001, y: -0.517, z: 0.09899998}
+  m_LocalPosition: {x: 1.7010001, y: -0.499, z: 0.09899998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1367910369}
@@ -12498,7 +12473,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634479864}
   m_LocalRotation: {x: -0, y: 0.84421456, z: -0, w: -0.53600544}
-  m_LocalPosition: {x: 1.7900006, y: -0.35792312, z: 0.84}
+  m_LocalPosition: {x: 1.7900006, y: -0.168, z: 0.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1772754640}
@@ -12631,7 +12606,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1665478795}
   m_LocalRotation: {x: -0, y: 0.011182579, z: -0, w: -0.9999375}
-  m_LocalPosition: {x: -0.03999987, y: -0.2240126, z: -0.9299999}
+  m_LocalPosition: {x: -0.03999987, y: -0.35, z: -0.9299999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2039373352}
@@ -12895,7 +12870,9 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65295291435191764, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
+    - {fileID: 114560343527966150, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f79b83ae4b27a1044af7045c8dbe6997, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1677611804
@@ -12961,6 +12938,7 @@ MonoBehaviour:
   sceneToBeLoaded: Scene2_inside
   handelInputAfterFade: 1
   changingToMainMenu: 0
+  saveOnChange: 1
 --- !u!1 &1697153399
 GameObject:
   m_ObjectHideFlags: 0
@@ -13391,8 +13369,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1747067863}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00003874302, y: -2.8129997, z: 8.3}
-  m_LocalScale: {x: 125.98927, y: 125.9892, z: 125.9892}
+  m_LocalPosition: {x: -2.95, y: -5.23, z: -53.33}
+  m_LocalScale: {x: 6.45, y: 97.1, z: 17.16}
   m_Children:
   - {fileID: 637870416}
   - {fileID: 309075156}
@@ -13440,6 +13418,8 @@ MonoBehaviour:
   musicEmittor:
   - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
     Params:
+    - Name: Intro
+      Value: 0
     - Name: Menu
       Value: 0
     - Name: Area
@@ -13677,7 +13657,7 @@ GameObject:
   - component: {fileID: 1772754642}
   m_Layer: 0
   m_Name: INT_Rope QuestItem
-  m_TagString: Untagged
+  m_TagString: Look
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13740,7 +13720,7 @@ GameObject:
   - component: {fileID: 1775651485}
   m_Layer: 0
   m_Name: INT_Underwear QuestItem
-  m_TagString: NotInteractable
+  m_TagString: Look
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13959,7 +13939,9 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 276.899
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 65014323683484304, guid: 70a3c91e483afcb488d52730fccad3aa, type: 2}
+    - {fileID: 114791493233639990, guid: 70a3c91e483afcb488d52730fccad3aa, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70a3c91e483afcb488d52730fccad3aa, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1795877124 stripped
@@ -14526,7 +14508,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 70419313}
+  m_TargetTexture: {fileID: 1571790807}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -15093,13 +15075,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1915998739}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.7586729, z: 2}
+  m_LocalRotation: {x: 0, y: 0.9213552, z: 0, w: 0.38872194}
+  m_LocalPosition: {x: -0.919, y: -0.268, z: 0.618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1578020835}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 134.25, z: 0}
 --- !u!114 &1918777665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15143,7 +15125,7 @@ GameObject:
   - component: {fileID: 1921195429}
   m_Layer: 0
   m_Name: INT_Screwdriver
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15819,11 +15801,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 529.63214, y: 123.83465}
+  scrollPos: {x: -15.38632, y: 89.83719}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 0.73000026
+  zoom: 0.8800001
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -15831,9 +15813,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986074582}
+  - {fileID: 1986074046}
   selectedCommands:
-  - {fileID: 1986074581}
+  - {fileID: 1986074434}
   variables: []
   description: 
   stepPause: 0
@@ -15930,7 +15912,6 @@ GameObject:
   - component: {fileID: 1986074440}
   - component: {fileID: 1986074442}
   - component: {fileID: 1986074566}
-  - component: {fileID: 1986074565}
   - component: {fileID: 1986074574}
   - component: {fileID: 1986074587}
   - component: {fileID: 1986074586}
@@ -15939,6 +15920,7 @@ GameObject:
   - component: {fileID: 1986074583}
   - component: {fileID: 1986074582}
   - component: {fileID: 1986074581}
+  - component: {fileID: 1986074565}
   m_Layer: 0
   m_Name: INT_MiscFlowchart
   m_TagString: Untagged
@@ -15985,7 +15967,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1274.4786
     y: -390.46985
-    width: 168.18176
+    width: 168.57138
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16131,7 +16113,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -989.2065
     y: -517.119
-    width: 146.36359
+    width: 147.14282
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16160,7 +16142,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -962.0982
     y: -568.5303
-    width: 137.27267
+    width: 137.14282
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16189,7 +16171,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -980.7848
     y: -237.76297
-    width: 126.363594
+    width: 127.14283
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16220,7 +16202,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -986.047
     y: -291.88058
-    width: 135.4545
+    width: 132.85712
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16252,7 +16234,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -972.8653
     y: -624.3235
-    width: 131.81815
+    width: 129.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16417,7 +16399,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -751.2161
     y: -683.19556
-    width: 159.09085
+    width: 159.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16447,7 +16429,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -709.9424
     y: -1008.9091
-    width: 133.63632
+    width: 132.85712
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16562,11 +16544,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 2247.281, y: 498.85742}
+  scrollPos: {x: 1965.0067, y: 337.94888}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 0.5500003
+  zoom: 0.7000002
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -16574,9 +16556,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986073927}
+  - {fileID: 1986073987}
   selectedCommands:
-  - {fileID: 1986074579}
+  - {fileID: 1986073933}
   variables: []
   description: 
   stepPause: 0
@@ -17275,7 +17257,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -741.6381
     y: -824.87537
-    width: 142.72722
+    width: 142.85712
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -18289,9 +18271,9 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 1986073637}
   - {fileID: 1986074285}
   - {fileID: 1986074428}
-  - {fileID: 1986073637}
   - {fileID: 1986074409}
 --- !u!114 &1986073641
 MonoBehaviour:
@@ -18361,7 +18343,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 441
     y: 130
-    width: 120
+    width: 121.5909
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -18548,7 +18530,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -182.96132
     y: 77.9857
-    width: 217.12323
+    width: 237.49997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -20504,7 +20486,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 557.866
     y: 362.03455
-    width: 177.39722
+    width: 193.1818
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -24093,7 +24075,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 36.407005
     y: 181.99136
-    width: 134.93149
+    width: 143.18181
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -24249,7 +24231,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1001.1563
     y: -969.5817
-    width: 149.99994
+    width: 145.71426
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -25575,7 +25557,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2241.8828
     y: -71.3558
-    width: 151.81812
+    width: 149.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -25608,7 +25590,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1509.1597
     y: -68.40523
-    width: 151.81812
+    width: 149.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -25637,7 +25619,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -851.65967
     y: -68.348434
-    width: 148.18176
+    width: 145.71426
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -26996,7 +26978,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1344.9762
     y: 169.15822
-    width: 120.90905
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -27378,7 +27360,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1098.9529
     y: 443.08466
-    width: 160.90903
+    width: 159.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -27409,7 +27391,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1084.8254
     y: 384.69608
-    width: 142.72722
+    width: 141.42854
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -27437,7 +27419,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -831.62
     y: 242.63425
-    width: 179.09084
+    width: 177.14282
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -28469,7 +28451,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986073720}
-  - {fileID: 1986074565}
   - {fileID: 1986074566}
   - {fileID: 1986074434}
   - {fileID: 1986074433}
@@ -28516,7 +28497,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 303.683
     y: 188.9269
-    width: 128.08215
+    width: 139.7727
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -31920,7 +31901,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1755.7026
     y: -638.022
-    width: 140.90904
+    width: 139.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -31977,7 +31958,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1485.8385
     y: -668.15906
-    width: 128.18176
+    width: 127.14283
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -32006,7 +31987,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1285.8385
     y: -668.15906
-    width: 184.54538
+    width: 187.1428
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -34453,9 +34434,9 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 1986074426}
   - {fileID: 1986074283}
   - {fileID: 1986074427}
-  - {fileID: 1986074426}
   - {fileID: 1986074423}
 --- !u!114 &1986074285
 MonoBehaviour:
@@ -35498,7 +35479,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -804.91565
     y: 632.5263
-    width: 179.09084
+    width: 177.14282
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36126,7 +36107,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1125.0673
     y: 959.1069
-    width: 142.72722
+    width: 141.42854
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36152,7 +36133,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -933.31525
     y: 991.06573
-    width: 120.90905
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36278,7 +36259,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -768.3669
     y: 957.04474
-    width: 135.4545
+    width: 134.28569
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36684,7 +36665,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 105.54237
     y: 804.50903
-    width: 180.90901
+    width: 178.57138
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36874,7 +36855,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1090.2015
     y: 661.25946
-    width: 144.54541
+    width: 141.42854
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36903,7 +36884,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1109.9385
     y: 600.73267
-    width: 159.09085
+    width: 155.71425
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36930,7 +36911,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1080.9907
     y: 533.62756
-    width: 129.99995
+    width: 129.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -37752,7 +37733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 83
   indentLevel: 0
-  pathToFMODSound: event:/Inventory/Underwear_PickUp
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
 --- !u!114 &1986074423
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -38048,7 +38029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 76
   indentLevel: 0
-  pathToFMODSound: event:/Inventory/Rope_PickUp
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
 --- !u!114 &1986074435
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -38255,7 +38236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 88
   indentLevel: 0
-  pathToFMODSound: 
+  pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
 --- !u!114 &1986074444
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -38493,7 +38474,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -799.2418
     y: -936.2862
-    width: 224.54535
+    width: 218.57138
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -38711,7 +38692,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2516.5374
     y: -337.57385
-    width: 133.63632
+    width: 129.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -38775,7 +38756,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1373.8063
     y: 327.5387
-    width: 224.54535
+    width: 221.42851
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -40267,13 +40248,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1986073572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea6e8f632db87477eb750446b28d73a3, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 92
+  itemId: 101
   indentLevel: 0
-  commenterName: 
-  commentText: below, for picking up
+  pathToFMODSound: event:/Objects/2D/Seashell_Drop
 --- !u!114 &1986074566
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -40329,7 +40309,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1882.187
     y: 280.73163
-    width: 229.9999
+    width: 224.28566
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -40657,7 +40637,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1986074581
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073572}
@@ -40683,7 +40663,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1986074582
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073572}
@@ -40706,9 +40686,10 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986074581}
+  - {fileID: 1986074565}
 --- !u!114 &1986074583
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073572}
@@ -40734,7 +40715,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1986074584
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073572}
@@ -40760,7 +40741,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1986074585
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073572}
@@ -40786,7 +40767,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1986074586
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073572}
@@ -40812,7 +40793,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1986074587
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073572}
