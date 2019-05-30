@@ -123,7 +123,7 @@ Prefab:
     - target: {fileID: 114154579536713584, guid: 90fb50a205e253f409742c2638ef19bd,
         type: 2}
       propertyPath: FMODreactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114636686186420036, guid: 90fb50a205e253f409742c2638ef19bd,
         type: 2}
@@ -194,8 +194,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1056433483245906, guid: 90fb50a205e253f409742c2638ef19bd, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114154579536713584, guid: 90fb50a205e253f409742c2638ef19bd,
+        type: 2}
+      propertyPath: FMODreactions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1107327108}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90fb50a205e253f409742c2638ef19bd, type: 2}
   m_IsPrefabParent: 0
@@ -412,6 +417,10 @@ GameObject:
   - component: {fileID: 393375554}
   - component: {fileID: 393375556}
   - component: {fileID: 393375555}
+  - component: {fileID: 393375559}
+  - component: {fileID: 393375558}
+  - component: {fileID: 393375557}
+  - component: {fileID: 393375560}
   m_Layer: 0
   m_Name: Outro Flowchart
   m_TagString: Untagged
@@ -445,8 +454,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 393375540}
-  selectedCommands:
-  - {fileID: 393375555}
+  selectedCommands: []
   variables:
   - {fileID: 393375553}
   description: 
@@ -504,6 +512,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 393375543}
+  - {fileID: 393375558}
   - {fileID: 393375549}
   - {fileID: 393375544}
 --- !u!114 &393375534
@@ -531,6 +540,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 393375539}
   commandList:
+  - {fileID: 393375559}
   - {fileID: 393375554}
   - {fileID: 393375538}
   - {fileID: 393375537}
@@ -656,6 +666,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 393375560}
   - {fileID: 393375546}
   - {fileID: 393375550}
   - {fileID: 393375552}
@@ -687,6 +698,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 393375548}
+  - {fileID: 393375557}
   - {fileID: 393375547}
   - {fileID: 393375545}
 --- !u!4 &393375542
@@ -923,7 +935,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &393375553
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393375530}
@@ -937,7 +949,7 @@ MonoBehaviour:
   value: 0
 --- !u!114 &393375554
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393375530}
@@ -952,7 +964,7 @@ MonoBehaviour:
   variable: {fileID: 393375553}
 --- !u!114 &393375555
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393375530}
@@ -979,7 +991,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &393375556
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393375530}
@@ -994,6 +1006,75 @@ MonoBehaviour:
     floatRef: {fileID: 393375553}
     floatVal: 1
   durationOLD: 0
+--- !u!114 &393375557
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393375530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 25
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/VA/Outro/Picture_2
+--- !u!114 &393375558
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393375530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 24
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/VA/Outro/Picture_1
+--- !u!114 &393375559
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393375530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 23
+  indentLevel: 0
+  pathToFMODSound: event:/Objects/2D/Fire
+--- !u!114 &393375560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393375530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 26
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 1078559261}
+  targetComponentAssemblyName: MONO_ReactionCollection, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: MONO_ReactionCollection
+  targetMethod: React
+  targetMethodText: 'React (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!1 &565893837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,6 +1148,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &597306375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcd34d881f2b3e40b1f7623c5fcf408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  musicEmittor:
+  - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
+    Params:
+    - Name: puzzle
+      Value: 0
+    - Name: Area
+      Value: 0
+    - Name: Menu
+      Value: 0
+    - Name: Intro
+      Value: 0
+  ambienceEmittor:
+  - Target: {fileID: 114900551189115810, guid: 5897231331641db4d8c62c41adad930f, type: 2}
+    Params:
+    - Name: AMB_Switch
+      Value: 0
+    - Name: Puzzle
+      Value: 0
+    - Name: Pause
+      Value: 0
+  valuesAmb: []
+  valuesMus: []
+  namesAmb: []
+  namesMus: []
 --- !u!1 &598111203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1419,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   sceneToBeLoaded: MainMenu
-  HandelInputAfterFade: 1
+  handelInputAfterFade: 1
+  changingToMainMenu: 0
+  saveOnChange: 1
 --- !u!1 &1064998949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1484,78 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1078559261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1078559263}
+  - component: {fileID: 1078559262}
+  m_Layer: 0
+  m_Name: CreditsParamReaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1078559262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1078559261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49768f7075518514c98e9dee731174e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reactions:
+  - {fileID: 597306375}
+--- !u!4 &1078559263
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1078559261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1107327108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcd34d881f2b3e40b1f7623c5fcf408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  musicEmittor:
+  - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
+    Params:
+    - Name: puzzle
+      Value: 0
+    - Name: Area
+      Value: 0
+    - Name: Menu
+      Value: 0
+    - Name: Intro
+      Value: 0
+  ambienceEmittor:
+  - Target: {fileID: 114900551189115810, guid: 5897231331641db4d8c62c41adad930f, type: 2}
+    Params: []
+  valuesAmb: []
+  valuesMus: []
+  namesAmb: []
+  namesMus: []
 --- !u!1 &1565808058
 GameObject:
   m_ObjectHideFlags: 1
@@ -1564,6 +1755,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   onReaction: 0
+  startAmbience: 0
+  startMusic: 1
 --- !u!1 &1962418093
 GameObject:
   m_ObjectHideFlags: 0
