@@ -252,6 +252,8 @@ GameObject:
   - component: {fileID: 165808392}
   - component: {fileID: 165808391}
   - component: {fileID: 165808395}
+  - component: {fileID: 165808397}
+  - component: {fileID: 165808396}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -342,6 +344,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 56d04e603e6114634a23a2bb193fea4d, type: 2}
+--- !u!81 &165808396
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 165808390}
+  m_Enabled: 1
+--- !u!114 &165808397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 165808390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 7
 --- !u!1 &232267158
 GameObject:
   m_ObjectHideFlags: 1
@@ -456,78 +477,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &319692350
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 874268159}
-    m_Modifications:
-    - target: {fileID: 114865285004592162, guid: 12417a5b40bb0f840b3dcf3fc27eebe1,
-        type: 2}
-      propertyPath: reactions.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1884130510126044, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-      propertyPath: m_Name
-      value: SceneChangeReaction
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865285004592162, guid: 12417a5b40bb0f840b3dcf3fc27eebe1,
-        type: 2}
-      propertyPath: reactions.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865285004592162, guid: 12417a5b40bb0f840b3dcf3fc27eebe1,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114865285004592162, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &319692351 stripped
+--- !u!1 &319692351
 GameObject:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 1884130510126044, guid: 12417a5b40bb0f840b3dcf3fc27eebe1,
     type: 2}
-  m_PrefabInternal: {fileID: 319692350}
---- !u!4 &319692352 stripped
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 319692352}
+  - component: {fileID: 319692353}
+  m_Layer: 0
+  m_Name: SceneChangeReaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319692352
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 4680497923757338, guid: 12417a5b40bb0f840b3dcf3fc27eebe1,
     type: 2}
-  m_PrefabInternal: {fileID: 319692350}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319692351}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 874268159}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &319692353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,6 +1598,16 @@ MonoBehaviour:
   musicEmittor:
   - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
     Params:
+    - Name: Outro
+      Value: 0
+    - Name: Tyst
+      Value: 0
+    - Name: Intro
+      Value: 0
+    - Name: Menu
+      Value: 0
+    - Name: Area
+      Value: 0
     - Name: puzzle
       Value: 1
   ambienceEmittor:
@@ -2449,7 +2439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 443.0306, y: 82.72618}
+  scrollPos: {x: 345.6622, y: 193.2525}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 432
@@ -2463,7 +2453,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1684474442}
   selectedCommands:
-  - {fileID: 1684474485}
+  - {fileID: 1684474443}
   variables:
   - {fileID: 1684474433}
   - {fileID: 1684474432}
@@ -2932,7 +2922,7 @@ MonoBehaviour:
   itemId: 214
   indentLevel: 0
   soundClip: {fileID: 8300000, guid: 1717d8165887ee045a462262cf199525, type: 3}
-  volume: 0.599
+  volume: 0.406
   waitUntilFinished: 0
 --- !u!114 &1684474439
 MonoBehaviour:
@@ -4016,7 +4006,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &1684474485
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1684474415}
@@ -4686,7 +4676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   sceneToBeLoaded: Scene2_inside
-  handelInputAfterFade: 1
+  handelInputAfterFade: 0
   changingToMainMenu: 0
   saveOnChange: 1
 --- !u!1 &1989600616

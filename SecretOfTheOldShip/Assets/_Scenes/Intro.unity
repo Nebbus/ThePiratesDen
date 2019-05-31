@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1529519, g: 0.19843343, b: 0.45517552, a: 1}
+  m_IndirectSpecularColor: {r: 0.15295216, g: 0.19843298, b: 0.4551764, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 894046499}
   - component: {fileID: 894046498}
   - component: {fileID: 894046503}
+  - component: {fileID: 894046504}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -901,7 +902,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ListenerNumber: 0
+  ListenerNumber: 7
+--- !u!81 &894046504
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 894046497}
+  m_Enabled: 1
 --- !u!1001 &962683753
 Prefab:
   m_ObjectHideFlags: 0
@@ -1002,7 +1010,7 @@ Prefab:
     - target: {fileID: 114751239687782058, guid: eb2c0682f32794f8982143904cb3d7af,
         type: 2}
       propertyPath: writingSpeed
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb2c0682f32794f8982143904cb3d7af, type: 2}
@@ -1105,6 +1113,10 @@ MonoBehaviour:
   musicEmittor:
   - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
     Params:
+    - Name: Tyst
+      Value: 0
+    - Name: Area
+      Value: 0
     - Name: Menu
       Value: 0
     - Name: Intro
@@ -1286,16 +1298,13 @@ GameObject:
   - component: {fileID: 1790089255}
   - component: {fileID: 1790089261}
   - component: {fileID: 1790089252}
-  - component: {fileID: 1790089262}
   - component: {fileID: 1790089265}
   - component: {fileID: 1790089264}
   - component: {fileID: 1790089258}
-  - component: {fileID: 1790089263}
   - component: {fileID: 1790089269}
   - component: {fileID: 1790089267}
   - component: {fileID: 1790089268}
   - component: {fileID: 1790089266}
-  - component: {fileID: 1790089270}
   m_Layer: 0
   m_Name: Intro
   m_TagString: Untagged
@@ -1342,7 +1351,6 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1790089248}
   commandList:
-  - {fileID: 1790089270}
   - {fileID: 1790089257}
   - {fileID: 1790089256}
   - {fileID: 1790089266}
@@ -1361,11 +1369,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -8.374951, y: -66.37501}
+  scrollPos: {x: 116.8683, y: 10.994378}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.7600002
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -1375,7 +1383,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1790089260}
   selectedCommands:
-  - {fileID: 1790089263}
+  - {fileID: 1790089258}
   variables: []
   description: 
   stepPause: 0
@@ -1418,14 +1426,14 @@ MonoBehaviour:
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: 7aa271a9e568c5c488c9d0b72a3d79d0, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
   fadeWhenDone: 1
   waitForClick: 0
   stopVoiceover: 1
-  waitForVO: 0
+  waitForVO: 1
   setSayDialog: {fileID: 0}
 --- !u!114 &1790089253
 MonoBehaviour:
@@ -1440,7 +1448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
+    x: 66
     y: 138
     width: 120
     height: 40
@@ -1452,7 +1460,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1790089254}
-  - {fileID: 1790089262}
   - {fileID: 1790089252}
   - {fileID: 1790089265}
 --- !u!114 &1790089254
@@ -1557,19 +1564,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 27
   indentLevel: 0
-  storyText: "Ignoring the fears of her crew, she set out towards the abandoned ship
-    to uncover its secrets.\r"
+  storyText: "Ignoring the fears of her crew, she, I, set out towards the abandoned
+    ship to uncover its secrets.\r"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: 30efbb9bd72e94143859ce37d8ec64c2, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
   fadeWhenDone: 1
-  waitForClick: 1
+  waitForClick: 0
   stopVoiceover: 1
-  waitForVO: 0
+  waitForVO: 1
   setSayDialog: {fileID: 0}
 --- !u!114 &1790089259
 MonoBehaviour:
@@ -1595,8 +1602,8 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 1790089269}
   - {fileID: 1790089268}
+  - {fileID: 1790089269}
 --- !u!114 &1790089260
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1610,7 +1617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 66
+    x: 67.31579
     y: 216
     width: 120
     height: 40
@@ -1622,7 +1629,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1790089264}
-  - {fileID: 1790089263}
   - {fileID: 1790089258}
   - {fileID: 1790089267}
 --- !u!114 &1790089261
@@ -1642,34 +1648,6 @@ MonoBehaviour:
     floatRef: {fileID: 0}
     floatVal: 1
   durationOLD: 0
---- !u!114 &1790089262
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1790089247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 24
-  indentLevel: 0
-  pathToFMODSound: event:/Characters/Player/VA/Intro/Picture_1
---- !u!114 &1790089263
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1790089247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 28
-  indentLevel: 0
-  pathToFMODSound: event:/Characters/Player/VA/Intro/Picture_2
 --- !u!114 &1790089264
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1766,7 +1744,7 @@ MonoBehaviour:
   indentLevel: 0
   duration: 1
   targetAlpha: 1
-  waitUntilFinished: 1
+  waitUntilFinished: 0
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTexture: {fileID: 0}
 --- !u!114 &1790089269
@@ -1796,24 +1774,6 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
---- !u!114 &1790089270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1790089247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 33
-  indentLevel: 0
-  duration: 0.01
-  targetAlpha: 1
-  waitUntilFinished: 1
-  fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  fadeTexture: {fileID: 0}
 --- !u!114 &1889678021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1827,9 +1787,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   sceneToBeLoaded: Scene1_outside
+  setStartPosition: 1
   handelInputAfterFade: 1
   changingToMainMenu: 0
   saveOnChange: 1
+  activateMenuButton: 1
+  activateHintButton: 1
+  activateInventory: 1
 --- !u!1001 &2030220235
 Prefab:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
 	public void Exit()
 	{
-		sceneManager.ChangeScene("Scene1_outside", false, true, false, true);
+		sceneManager.ChangeScene("Scene1_outside", false, true, false, true, true, true, true);
 	}
 
 	private void Start()
