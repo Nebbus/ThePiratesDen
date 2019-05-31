@@ -80,7 +80,9 @@ public class MONO_Menus : MonoBehaviour {
 
     }
 
-
+	//--------------------------------------------------------------------------------
+	// Methods started on button clicks
+	//--------------------------------------------------------------------------------
 
 	public void StartNewGame()
 	{
@@ -95,23 +97,9 @@ public class MONO_Menus : MonoBehaviour {
 		//inventory.SetActive (true);
 	}
 
-    /// <summary>
-    /// This is practically only for the bouns menu
-    /// </summary>
-    /// <param name="newScene"></param>
-    public void fromMenuSetUpp(string newScene)
-    {
-        //float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
-        CloseMenu();
-        ChangeLatestMenu(pauseMenu);
-        sceneManager.ChangeScene(newScene, false, true, true, false);
-        //StartCoroutine (WaitSomeTime(delay));
-        mainMenu.SetActive(false);
-        //inventory.SetActive (true);
-    }
-
-
-
+	/// <summary>
+	/// Loads the last game.
+	/// </summary>
     public void LoadLastGame()
     {
         MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
@@ -134,18 +122,29 @@ public class MONO_Menus : MonoBehaviour {
     }
 
 	/// <summary>
-	/// DO NOT USE THIS. OBSOLETE METHOD.
+	/// Start intro
 	/// </summary>
 	public void StartIntro()
 	{
-		menuOpen = false;
+		MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
+		CloseMenu();
+		ChangeLatestMenu(pauseMenu);
 
-		float delay = sceneManager.gameObject.GetComponent<MONO_Fade> ().fadeDuration;
-		//fader.Fade (1);		//fades screen to black
-		StartCoroutine (FadeAndWait());
-		//mainMenu.SetActive (false);
-		//introManager.InitiateIntro ();
+		SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
+		// gets all the inventory items from last game
+		for(int i = 0; i < data.itemsInInentory.Length; i++)
+		{
+			monoInventory.AddItem(items[i]);
+		}
+
+		//Update all condition
+		data.conditions.uppdatAllCondition();
+
+		sceneManager.ChangeScene("Intro", true, true, false, true);
+
+		mainMenu.SetActive(false);
 	}
+
 
 	//--------------------------------------------------------------------------------
 	//	Methods used when opening and closing menues
@@ -173,7 +172,7 @@ public class MONO_Menus : MonoBehaviour {
 	/// This is based on which menu that was opened most recently, so 
 	/// that you can go back to whatever menu you came from when going 
 	/// back from, ex, the settings menu. The latest menu is set to be the 
-	/// paus menu by default, since this is the menu you open from in game.
+	/// pause menu by default, since this is the menu you open from in game.
 	/// </summary>
 	public void OpenMenu()
 	{
@@ -204,7 +203,9 @@ public class MONO_Menus : MonoBehaviour {
     }
 
 
-
+	/// <summary>
+	/// Opens the main menu.
+	/// </summary>
 	public void OpenMainMenu()
 	{
 		sceneManager.ChangeScene ("MainMenu", false, false, true, true);
@@ -276,6 +277,24 @@ public class MONO_Menus : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// This is practically only for the bouns menu
+	/// </summary>
+	/// <param name="newScene"></param>
+	public void fromMenuSetUpp(string newScene)
+	{
+		//float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
+		CloseMenu();
+		ChangeLatestMenu(pauseMenu);
+		sceneManager.ChangeScene(newScene, false, true, true, false);
+		//StartCoroutine (WaitSomeTime(delay));
+		mainMenu.SetActive(false);
+		//inventory.SetActive (true);
+	}
+
+	/// <summary>
+	/// Sets the text components.
+	/// </summary>
 	private void SetTextComponents()
 	{
 		float speed = Mathf.InverseLerp (cursorSpeedMinValue, cursorSpeedMaxValue, cursor.CursorSpeed);
@@ -315,7 +334,6 @@ public class MONO_Menus : MonoBehaviour {
 		speedPercentage *= 0.01f;
 		cursor.CursorSpeed = Mathf.Lerp(cursorSpeedMinValue, cursorSpeedMaxValue, speedPercentage);
 	}
-
 
 
 	/// <summary>
