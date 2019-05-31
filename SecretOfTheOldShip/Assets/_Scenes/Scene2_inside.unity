@@ -241,7 +241,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4250746531366702, guid: 898c592848482aa479a40189fc9f5839, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4250746531366702, guid: 898c592848482aa479a40189fc9f5839, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1333,6 +1333,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 199314373}
   m_Mesh: {fileID: 4300012, guid: 9f6bc234c467307419832e3ea8827a6a, type: 3}
+--- !u!84 &205855162
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 640
+  m_Height: 480
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!114 &208749338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5335,7 +5366,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4232609696157738, guid: 65455aac3f6678e48bbd19077e1e83e1, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114999458601538360, guid: 65455aac3f6678e48bbd19077e1e83e1,
         type: 2}
@@ -6704,7 +6735,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4100445283536318, guid: 16854e7399bd99e44b9d34d75fb89c75, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1300731800296030, guid: 16854e7399bd99e44b9d34d75fb89c75, type: 2}
       propertyPath: m_Name
@@ -9018,7 +9049,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4100445283536318, guid: 16854e7399bd99e44b9d34d75fb89c75, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16854e7399bd99e44b9d34d75fb89c75, type: 2}
@@ -9383,7 +9414,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4335633188428070, guid: 2b34eedb0b24146e0ae9fd526cbd7380, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4335633188428070, guid: 2b34eedb0b24146e0ae9fd526cbd7380, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -9676,7 +9707,6 @@ GameObject:
   - component: {fileID: 970905225}
   - component: {fileID: 970905223}
   - component: {fileID: 970905232}
-  - component: {fileID: 970905231}
   - component: {fileID: 970905230}
   - component: {fileID: 970905229}
   - component: {fileID: 970905228}
@@ -9744,11 +9774,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 164.2402, y: 200.77022}
+  scrollPos: {x: -186.61304, y: -355.88504}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.6700001
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -9756,8 +9786,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 970905260}
-  selectedCommands: []
+  - {fileID: 970905301}
+  selectedCommands:
+  - {fileID: 970905287}
   variables:
   - {fileID: 970905220}
   - {fileID: 970905219}
@@ -9942,8 +9973,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 14
   indentLevel: 1
-  storyText: This is a portrait of a mermaid, maybe the parrot does have some opinions
-    on it.
+  storyText: This is a portrait of a mermaid, maybe the parrot has some opinions on
+    it.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -10076,33 +10107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 83
   indentLevel: 1
-  storyText: There's no earmuffs here! How dare she assign me an impossible quest!
-  description: 
-  character: {fileID: 32387697}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &970905231
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 970905213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 82
-  indentLevel: 1
-  storyText: '...'
+  storyText: That is one cute pair of earmuffs.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -10136,11 +10141,10 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 81
   blockName: Earmuffs
-  description: 
+  description: "bort med if, detta \xE4r generell dialog"
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 970905228}
-  - {fileID: 970905231}
   - {fileID: 970905230}
   - {fileID: 970905229}
   - {fileID: 970905227}
@@ -10236,7 +10240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 73
   indentLevel: 1
-  storyText: Lights up the environment. Useful when on a dark haunted ship.
+  storyText: Lights up the environment. Useful when exploring a dark, haunted ship.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -10309,8 +10313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 326
-    y: 450
+    x: 318.10522
+    y: 451.3158
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -10493,15 +10497,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 457
-    y: 506
+    x: 466.21057
+    y: 492.84204
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 62
   blockName: Map
-  description: 
+  description: THERES NO MAP?
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 970905247}
@@ -10577,7 +10581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 59
   indentLevel: 0
-  storyText: It's a chair, you sit on it.
+  storyText: It's a chair; you sit on it.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -10641,7 +10645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 56
   indentLevel: 1
-  storyText: After my pirating days are done maybe I'll try my hand at writing plays.
+  storyText: After my pirating days are done, maybe I'll try my hand at writing plays.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -10707,7 +10711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 53
   indentLevel: 1
-  storyText: I still haven't finished that map back at the ship.
+  storyText: I still haven't finished drawing up my map, back at my ship.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -10780,7 +10784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 130
+    x: 133
     y: 118
     width: 120
     height: 40
@@ -10852,7 +10856,7 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 126
   blockName: NotPickup
-  description: PLACEHOLDER DIALOG
+  description: 
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 970905264}
@@ -10869,7 +10873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 132
   indentLevel: 0
-  storyText: An umbrella, in middle of the sea, wonder who would use this.
+  storyText: An umbrella, out in middle of the sea? I wonder who would use this.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -10936,7 +10940,7 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 127
   blockName: Pickup
-  description: PLACEHOLDER DIALOG
+  description: 
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 970905311}
@@ -11024,7 +11028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 39
   indentLevel: 0
-  storyText: Let's hope it don't fall on me
+  storyText: Let's hope it doesn't fall on me.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -11103,7 +11107,7 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 101
   blockName: Empty
-  description: PLACEHOLDER DIALOG
+  description: 
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 970905318}
@@ -11139,7 +11143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 110
   indentLevel: 1
-  storyText: I wonder if this is real mahogany?
+  storyText: This actually seems like real mahogany wood.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -11360,8 +11364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 23
   indentLevel: 0
-  storyText: Oh wow, a seashell. I've heard that you can hear the sound of the sea
-    when putting it up to your ear.
+  storyText: This might be the seashell Lark wanted me to throw overboard.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -11413,7 +11416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 21
   indentLevel: 0
-  storyText: 10 recipies for eelpie, looks horrible.
+  storyText: 10 recipes for eel pie, they look horrible.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -11701,15 +11704,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 12
-    y: 75
+    x: 6
+    y: 77
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 6
   blockName: Seashell
-  description: 
+  description: this or open chest?
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 970905287}
@@ -11735,7 +11738,7 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 5
   blockName: Harmonica
-  description: 
+  description: NOT VISIBLE INGAME
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 970905293}
@@ -11835,15 +11838,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 460
-    y: 595
+    x: 458.6842
+    y: 616.05273
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 0
   blockName: Lingerie
-  description: 
+  description: NOT INSIDE
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 970905305}
@@ -11890,8 +11893,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 106
   indentLevel: 1
-  storyText: Just checking if there are any hidden buttons under here, don't want
-    to fall down through a trapdoor.
+  storyText: I almost expected a hidden button under the desk. How silly of me. There
+    is nothing there.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -12590,11 +12593,7 @@ GameObject:
   - component: {fileID: 1014120572}
   - component: {fileID: 1014120571}
   - component: {fileID: 1014120570}
-  - component: {fileID: 1014120569}
-  - component: {fileID: 1014120579}
-  - component: {fileID: 1014120578}
   - component: {fileID: 1014120577}
-  - component: {fileID: 1014120576}
   - component: {fileID: 1014120575}
   - component: {fileID: 1014120574}
   - component: {fileID: 1014120573}
@@ -12634,10 +12633,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 11
   indentLevel: 0
-  storyText: This was just a huge disappointment. NO actual treasure, are you kidding
-    me?
+  storyText: 'The seashell taught me that maybe not all riches are made of gold and
+    glitter. '
   description: 
-  character: {fileID: 0}
+  character: {fileID: 32387697}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -12661,44 +12660,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 334
-    y: 180
-    width: 124
+    x: 335
+    y: 181
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 10
   blockName: AlreadyOpen
-  description: PLACEHOLDER DIALOG
+  description: 
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1014120567}
---- !u!114 &1014120569
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1014120565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 2
-  indentLevel: 0
-  storyText: HNNNGGG
-  description: 
-  character: {fileID: 32387697}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1014120570
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -12712,7 +12685,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   indentLevel: 0
-  storyText: AHA! TREASURE!
+  storyText: Treasure chests always belongs on pirate ships! I wonder if I can...hngh?!
+    It's stuck?! Why won't it open?!
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -12747,14 +12721,10 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 0
   blockName: Start
-  description: PLACEHOLDER DIALOG
+  description: 
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1014120570}
-  - {fileID: 1014120569}
-  - {fileID: 1014120578}
-  - {fileID: 1014120579}
-  - {fileID: 1014120576}
 --- !u!114 &1014120572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12768,11 +12738,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -104, y: 28}
+  scrollPos: {x: -73.48692, y: 89.424194}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.64000034
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -12781,7 +12751,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 1014120577}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 1014120573}
   variables: []
   description: 
   stepPause: 0
@@ -12808,7 +12779,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: This might be the seashell Lark wanted me to throw overboard.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 32387697}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -12860,32 +12831,6 @@ MonoBehaviour:
   itemId: 7
   indentLevel: 0
   pathToFMODSound: event:/Inventory/Seashell_PickUp
---- !u!114 &1014120576
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1014120565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 6
-  indentLevel: 0
-  storyText: I'll have to come back later.
-  description: 
-  character: {fileID: 32387697}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1014120577
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -12914,58 +12859,6 @@ MonoBehaviour:
   - {fileID: 1014120575}
   - {fileID: 1014120574}
   - {fileID: 1014120580}
---- !u!114 &1014120578
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1014120565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 4
-  indentLevel: 0
-  storyText: '...'
-  description: 
-  character: {fileID: 32387697}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1014120579
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1014120565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 3
-  indentLevel: 0
-  storyText: Won't budge, there might a key somewhere.
-  description: 
-  character: {fileID: 32387697}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1014120580
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -12993,37 +12886,6 @@ MonoBehaviour:
   stringData:
     stringRef: {fileID: 0}
     stringVal: 
---- !u!84 &1026125531
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 293
-  m_Height: 410
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1033994699
 GameObject:
   m_ObjectHideFlags: 0
@@ -13546,7 +13408,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 2051788284}
+  _compositeMat: {fileID: 1702159937}
 --- !u!114 &1141340949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13723,7 +13585,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6bd51b2d9f5f93b42b80872571058003, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6bd51b2d9f5f93b42b80872571058003, type: 3}
       propertyPath: m_LocalScale.x
@@ -17259,6 +17121,30 @@ Transform:
   m_Father: {fileID: 585051779}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!21 &1702159937
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1 &1704374493
 GameObject:
   m_ObjectHideFlags: 0
@@ -17802,7 +17688,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1026125531}
+  m_TargetTexture: {fileID: 205855162}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -21404,7 +21290,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4707836982509392, guid: 90fb50a205e253f409742c2638ef19bd, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114636686186420036, guid: 90fb50a205e253f409742c2638ef19bd,
         type: 2}
@@ -21482,7 +21368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 970905214}
+  selectedFlowchart: {fileID: 2068932535}
 --- !u!4 &1804600061
 Transform:
   m_ObjectHideFlags: 1
@@ -25980,30 +25866,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2043264459}
   m_Mesh: {fileID: 4300000, guid: e71a3ac5820d830489edc67dfdc9ee67, type: 3}
---- !u!21 &2051788284
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1 &2057280958
 GameObject:
   m_ObjectHideFlags: 0
@@ -29943,9 +29805,7 @@ GameObject:
   - component: {fileID: 2068932679}
   - component: {fileID: 2068932678}
   - component: {fileID: 2068932677}
-  - component: {fileID: 2068932676}
   - component: {fileID: 2068932675}
-  - component: {fileID: 2068932674}
   - component: {fileID: 2068932673}
   - component: {fileID: 2068932672}
   - component: {fileID: 2068932671}
@@ -29956,7 +29816,6 @@ GameObject:
   - component: {fileID: 2068932666}
   - component: {fileID: 2068932665}
   - component: {fileID: 2068932663}
-  - component: {fileID: 2068932662}
   - component: {fileID: 2068932661}
   - component: {fileID: 2068932660}
   - component: {fileID: 2068932659}
@@ -29990,7 +29849,6 @@ GameObject:
   - component: {fileID: 2068932632}
   - component: {fileID: 2068932631}
   - component: {fileID: 2068932630}
-  - component: {fileID: 2068932629}
   - component: {fileID: 2068932628}
   - component: {fileID: 2068932627}
   - component: {fileID: 2068932626}
@@ -30094,7 +29952,6 @@ GameObject:
   - component: {fileID: 2068932703}
   - component: {fileID: 2068932702}
   - component: {fileID: 2068932701}
-  - component: {fileID: 2068932700}
   - component: {fileID: 2068932709}
   - component: {fileID: 2068932708}
   - component: {fileID: 2068932712}
@@ -30220,33 +30077,20 @@ GameObject:
   - component: {fileID: 2068932966}
   - component: {fileID: 2068932965}
   - component: {fileID: 2068932964}
-  - component: {fileID: 2068932963}
-  - component: {fileID: 2068932962}
-  - component: {fileID: 2068932961}
-  - component: {fileID: 2068932960}
-  - component: {fileID: 2068932959}
   - component: {fileID: 2068932958}
   - component: {fileID: 2068932957}
-  - component: {fileID: 2068932956}
   - component: {fileID: 2068932955}
-  - component: {fileID: 2068932954}
   - component: {fileID: 2068932953}
   - component: {fileID: 2068932952}
   - component: {fileID: 2068932951}
   - component: {fileID: 2068932950}
   - component: {fileID: 2068932949}
-  - component: {fileID: 2068932948}
   - component: {fileID: 2068932947}
   - component: {fileID: 2068932946}
-  - component: {fileID: 2068932945}
-  - component: {fileID: 2068932944}
-  - component: {fileID: 2068932943}
-  - component: {fileID: 2068932942}
   - component: {fileID: 2068932941}
   - component: {fileID: 2068932940}
   - component: {fileID: 2068932939}
   - component: {fileID: 2068932938}
-  - component: {fileID: 2068932937}
   - component: {fileID: 2068932936}
   - component: {fileID: 2068932935}
   - component: {fileID: 2068932934}
@@ -30276,7 +30120,6 @@ GameObject:
   - component: {fileID: 2068932910}
   - component: {fileID: 2068932909}
   - component: {fileID: 2068932908}
-  - component: {fileID: 2068932907}
   - component: {fileID: 2068932906}
   - component: {fileID: 2068932905}
   - component: {fileID: 2068932904}
@@ -30350,9 +30193,6 @@ GameObject:
   - component: {fileID: 2068932836}
   - component: {fileID: 2068932835}
   - component: {fileID: 2068932834}
-  - component: {fileID: 2068932833}
-  - component: {fileID: 2068932832}
-  - component: {fileID: 2068932831}
   - component: {fileID: 2068932830}
   - component: {fileID: 2068932829}
   - component: {fileID: 2068932828}
@@ -30363,22 +30203,11 @@ GameObject:
   - component: {fileID: 2068932823}
   - component: {fileID: 2068932822}
   - component: {fileID: 2068932821}
-  - component: {fileID: 2068932820}
-  - component: {fileID: 2068932819}
-  - component: {fileID: 2068932818}
   - component: {fileID: 2068932817}
   - component: {fileID: 2068932816}
-  - component: {fileID: 2068932815}
-  - component: {fileID: 2068932814}
-  - component: {fileID: 2068932813}
   - component: {fileID: 2068932812}
   - component: {fileID: 2068932811}
-  - component: {fileID: 2068932810}
-  - component: {fileID: 2068932809}
-  - component: {fileID: 2068932808}
-  - component: {fileID: 2068932807}
   - component: {fileID: 2068932806}
-  - component: {fileID: 2068932805}
   - component: {fileID: 2068932804}
   - component: {fileID: 2068932803}
   - component: {fileID: 2068932802}
@@ -30407,9 +30236,86 @@ GameObject:
   - component: {fileID: 2068932664}
   - component: {fileID: 2068932685}
   - component: {fileID: 2068932684}
-  - component: {fileID: 2068932782}
   - component: {fileID: 2068932568}
   - component: {fileID: 2068932552}
+  - component: {fileID: 2068933029}
+  - component: {fileID: 2068933028}
+  - component: {fileID: 2068933027}
+  - component: {fileID: 2068933026}
+  - component: {fileID: 2068933025}
+  - component: {fileID: 2068933024}
+  - component: {fileID: 2068933023}
+  - component: {fileID: 2068933022}
+  - component: {fileID: 2068933021}
+  - component: {fileID: 2068933020}
+  - component: {fileID: 2068933019}
+  - component: {fileID: 2068933018}
+  - component: {fileID: 2068933017}
+  - component: {fileID: 2068932783}
+  - component: {fileID: 2068933031}
+  - component: {fileID: 2068933030}
+  - component: {fileID: 2068933032}
+  - component: {fileID: 2068933035}
+  - component: {fileID: 2068933034}
+  - component: {fileID: 2068933033}
+  - component: {fileID: 2068933038}
+  - component: {fileID: 2068933037}
+  - component: {fileID: 2068933036}
+  - component: {fileID: 2068932831}
+  - component: {fileID: 2068932820}
+  - component: {fileID: 2068932819}
+  - component: {fileID: 2068932818}
+  - component: {fileID: 2068932814}
+  - component: {fileID: 2068932813}
+  - component: {fileID: 2068932833}
+  - component: {fileID: 2068932832}
+  - component: {fileID: 2068933044}
+  - component: {fileID: 2068933043}
+  - component: {fileID: 2068933042}
+  - component: {fileID: 2068933041}
+  - component: {fileID: 2068933040}
+  - component: {fileID: 2068933039}
+  - component: {fileID: 2068932963}
+  - component: {fileID: 2068932948}
+  - component: {fileID: 2068932937}
+  - component: {fileID: 2068932815}
+  - component: {fileID: 2068932810}
+  - component: {fileID: 2068932809}
+  - component: {fileID: 2068932808}
+  - component: {fileID: 2068932807}
+  - component: {fileID: 2068932805}
+  - component: {fileID: 2068933045}
+  - component: {fileID: 2068932944}
+  - component: {fileID: 2068932943}
+  - component: {fileID: 2068932942}
+  - component: {fileID: 2068932907}
+  - component: {fileID: 2068932959}
+  - component: {fileID: 2068932956}
+  - component: {fileID: 2068932954}
+  - component: {fileID: 2068932945}
+  - component: {fileID: 2068932782}
+  - component: {fileID: 2068932960}
+  - component: {fileID: 2068933056}
+  - component: {fileID: 2068933055}
+  - component: {fileID: 2068933054}
+  - component: {fileID: 2068933053}
+  - component: {fileID: 2068933052}
+  - component: {fileID: 2068933051}
+  - component: {fileID: 2068933050}
+  - component: {fileID: 2068933049}
+  - component: {fileID: 2068933048}
+  - component: {fileID: 2068933047}
+  - component: {fileID: 2068933046}
+  - component: {fileID: 2068932962}
+  - component: {fileID: 2068932961}
+  - component: {fileID: 2068932700}
+  - component: {fileID: 2068932676}
+  - component: {fileID: 2068932674}
+  - component: {fileID: 2068932662}
+  - component: {fileID: 2068932629}
+  - component: {fileID: 2068933058}
+  - component: {fileID: 2068933057}
+  - component: {fileID: 2068933059}
   m_Layer: 0
   m_Name: INT_SkeletonFlowchart
   m_TagString: Untagged
@@ -30430,11 +30336,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 1886.9126, y: -289.50262}
+  scrollPos: {x: 1806.3777, y: -437.0903}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 402
-  zoom: 0.60999984
+  zoom: 0.25
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -30510,7 +30416,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -791.60425
     y: 309.12933
-    width: 151.63937
+    width: 162
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -30554,7 +30460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 169
   indentLevel: 1
-  text: GiveUnderwear
+  text: Show the underwear
   description: 
   targetBlock: {fileID: 2068932541}
   hideIfVisited: 0
@@ -30580,7 +30486,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1034.9484
     y: 381.55756
-    width: 120
+    width: 130
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -30592,6 +30498,7 @@ MonoBehaviour:
   - {fileID: 2068932721}
   - {fileID: 2068932698}
   - {fileID: 2068932720}
+  - {fileID: 2068932959}
 --- !u!114 &2068932542
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -30644,7 +30551,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1542.4977
     y: 310.1484
-    width: 123.770515
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -30751,7 +30658,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1036.2133
     y: 239.33115
-    width: 135.24593
+    width: 146
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -30763,6 +30670,7 @@ MonoBehaviour:
   - {fileID: 2068932725}
   - {fileID: 2068932549}
   - {fileID: 2068932724}
+  - {fileID: 2068932956}
 --- !u!114 &2068932549
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -30776,7 +30684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 145
   indentLevel: 0
-  storyText: How would I? Considering I be stuck in here!
+  storyText: How would I? Considerin' I'm stuck in here!
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -30802,7 +30710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 144
   indentLevel: 0
-  text: So what tales can you tell me about this forgotten love of parrots?
+  text: What tales can you tell me Lark's forgotten love?
   description: 
   targetBlock: {fileID: 2068932551}
   hideIfVisited: 0
@@ -30828,7 +30736,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1043.3555
     y: 157.90265
-    width: 130.32788
+    width: 142
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -30839,11 +30747,11 @@ MonoBehaviour:
   commandList:
   - {fileID: 2068932727}
   - {fileID: 2068932569}
-  - {fileID: 2068932782}
   - {fileID: 2068932726}
   - {fileID: 2068932567}
   - {fileID: 2068932554}
   - {fileID: 2068932553}
+  - {fileID: 2068932782}
 --- !u!114 &2068932552
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -30911,7 +30819,7 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 138
   blockName: CanITakeIt
-  description: 
+  description: earmuffs skrivs ut ur dialogen rn
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932566}
@@ -30963,7 +30871,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -4101.093
     y: 110.21912
-    width: 120.49182
+    width: 130
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -31015,7 +30923,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1543.7203
     y: 182.1885
-    width: 120
+    width: 122
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -31028,6 +30936,7 @@ MonoBehaviour:
   - {fileID: 2068932560}
   - {fileID: 2068932714}
   - {fileID: 2068932697}
+  - {fileID: 2068932954}
 --- !u!114 &2068932560
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -31106,6 +31015,7 @@ MonoBehaviour:
   - {fileID: 2068932563}
   - {fileID: 2068932716}
   - {fileID: 2068932695}
+  - {fileID: 2068932945}
 --- !u!114 &2068932563
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -31119,8 +31029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 158
   indentLevel: 0
-  storyText: Give me the earmuffs, they be right on me cupboard. Put them on me desk
-    so i can see them.
+  storyText: I've no idea, ye might as well take it.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -31174,7 +31083,7 @@ MonoBehaviour:
   itemId: 152
   indentLevel: 0
   storyText: Nay, ye can not. I worked me fingers to the bone to get that, ye need
-    to be getting me something first.
+    to give me somethin' first.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -31280,7 +31189,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 146
   indentLevel: 0
-  storyText: 'A mermaid it be, she wanted a picture painted of the mermaid. '
+  storyText: "A mermaid she was. Lark wanted a paintin' of the mermaid. Had to hang
+    it in here, since it couldn\u2019t be trusted to hang down under deck, because
+    of potential water leaks."
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -31353,8 +31264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 133
   indentLevel: 0
-  storyText: "You have to help the parrot remember her forgotten love, so she can
-    move on. Do that and I\u2019ll be showing ye where me treasure be."
+  storyText: "Ye got to help the parrot remember her forgotten love so she can move
+    on. Do that and I\u2019ll show ye where me treasure is."
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -31380,8 +31291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 132
   indentLevel: 0
-  storyText: Long story short, before I can pass on everyone else must as well, since
-    I be the captain and have to go down with me ship.
+  storyText: Long story short, before I can pass on the crew must as well, seein'
+    as I be the capt'n and the capt'n always has to go down with the ship.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -31407,7 +31318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 131
   indentLevel: 0
-  text: Alright, then I will quit the game.
+  text: Alright,  I'll quit the game.
   description: 
   targetBlock: {fileID: 2068932580}
   hideIfVisited: 0
@@ -31455,8 +31366,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 129
   indentLevel: 0
-  storyText: I guess ye be quitting the game then. Seeing as there isn't any point
-    continuing the game, if ye don't want to help me.
+  storyText: I guess ye will be quittin' the game then. On account of ye refusin'
+    to help me.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -31564,7 +31475,7 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 125
   blockName: QuitGame
-  description: 
+  description: QUITGAME
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932699}
@@ -31613,6 +31524,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932733}
+  - {fileID: 2068933059}
   - {fileID: 2068932573}
   - {fileID: 2068932572}
   - {fileID: 2068932732}
@@ -31670,8 +31582,8 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 2068932713}
   - {fileID: 2068932731}
+  - {fileID: 2068932713}
   - {fileID: 2068932579}
   - {fileID: 2068932730}
   - {fileID: 2068932578}
@@ -31738,7 +31650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 116
   indentLevel: 0
-  text: Alright then, what do I need to do?
+  text: Alright, what do you need of me?
   description: 
   targetBlock: {fileID: 2068932585}
   hideIfVisited: 0
@@ -31762,7 +31674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 115
   indentLevel: 0
-  storyText: I, the famous captain Robin, am looking for a treasure.
+  storyText: I, the famous Captain Robin, am looking for a treasure.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -31788,8 +31700,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 114
   indentLevel: 0
-  storyText: "So ye be looking for a treasure, huh. Tell ye what, if you help me out
-    I\u2019ll be giving ye me treasure."
+  storyText: "So ye are lookin' fer a treasure. Tell ye what. If ye help me out, I\u2019ll
+    give ye me treasure."
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -31815,8 +31727,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 113
   indentLevel: 0
-  storyText: I be feeling in me bones ye didn't just come here to chit chat. What
-    do ye want?
+  storyText: Anyway, I feel it in me bones, ye didn't just come here to chit chat.
+    What do ye want?
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -31978,7 +31890,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -780.4356
     y: -11.409134
-    width: 120
+    width: 122
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -31987,13 +31899,14 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 2068932711}
   - {fileID: 2068932737}
+  - {fileID: 2068932711}
   - {fileID: 2068932590}
   - {fileID: 2068932736}
   - {fileID: 2068932710}
   - {fileID: 2068932588}
   - {fileID: 2068932735}
+  - {fileID: 2068933057}
   - {fileID: 2068932589}
   - {fileID: 2068932734}
   - {fileID: 2068932586}
@@ -32427,7 +32340,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2042.6028
     y: -225.04808
-    width: 122.131165
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -32526,8 +32439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 80
   indentLevel: 0
-  storyText: "Oh right... Now I remember. That\u2019s right they be dead and I be
-    stuck here, which is fitting considering..."
+  storyText: "Oh ... Now I remember. That\u2019s right, they're dead and I am stuck
+    here..."
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -32561,13 +32474,14 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 79
   blockName: OhRight
-  description: 
+  description: MENUCHOICES GO AWAY
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 2068932709}
   - {fileID: 2068932745}
+  - {fileID: 2068932709}
   - {fileID: 2068932621}
   - {fileID: 2068932744}
+  - {fileID: 2068933058}
   - {fileID: 2068932619}
   - {fileID: 2068932618}
   - {fileID: 2068932620}
@@ -32584,9 +32498,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 78
   indentLevel: 0
-  storyText: "I didn\u2019t allow anything like that. They can\u2019t just walk off
-    on vacation like it\u2019s nothing. Where be me first mate Reed? She wouldn't
-    leave me."
+  storyText: "I didn\u2019t allow anything like that. They can\u2019t just leave on
+    vacation like it\u2019s nothin'. Where is Paloma? She wouldn't leave me."
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -32612,7 +32525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 76
   indentLevel: 0
-  storyText: Feared or not. You are in fact dead; along with Reed.
+  storyText: Feared or not, you are in fact dead, along with Paloma.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -32638,8 +32551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 75
   indentLevel: 0
-  storyText: "What dead? I doubt it, we be the most feared pirates on all of the seven
-    seas, we can\u2019t be dead. What about Reed?"
+  storyText: "What? Dead? I doubt it, we are the most feared pirates on all of the
+    seven seas, we can\u2019t be dead! What about Paloma?"
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -32741,22 +32654,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Script: {fileID: 11500000, guid: dbd8c931f22994b9d90e2037fffaa770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 71
+  itemId: 588
   indentLevel: 0
-  text: Since you're just lying there like a limp noodle, I'll leave.
-  description: 
-  targetBlock: {fileID: 2068932557}
-  hideIfVisited: 0
-  interactable:
-    booleanRef: {fileID: 0}
-    booleanVal: 1
-  setMenuDialog: {fileID: 0}
-  hideThisOption:
+  _targetGameObject:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 1336913914}
+  activeState:
     booleanRef: {fileID: 0}
     booleanVal: 0
+  targetGameObjectOLD: {fileID: 0}
 --- !u!114 &2068932630
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -32794,8 +32703,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 69
   indentLevel: 0
-  storyText: "Any minute now. Just wait one moment. Can anyone throw this woman overboard!?
-    Dammit, where\u2019s me crew? Captain Scarlett is waiting!"
+  storyText: "Any minute now... Just wait one moment... I can't move... Can anyone
+    throw this woman overboard!? Dammit, where\u2019s me crew? Capt'n Scarlett is
+    waitin'!"
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -32821,7 +32731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 67
   indentLevel: 0
-  storyText: "Let me just get up and I\u2019ll walk ye over to the plank, ye landlubber."
+  storyText: Just give me a minute and I'll walk ye over there, ye landlubber.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -32909,21 +32819,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1274.0215
     y: -179.01137
-    width: 123.770515
+    width: 130
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 63
   blockName: FirstInfoCont
-  description: 
+  description: SKELETONTALKCOUNTER
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 2068932700}
   - {fileID: 2068932751}
   - {fileID: 2068932632}
   - {fileID: 2068932631}
   - {fileID: 2068932750}
-  - {fileID: 2068932629}
   - {fileID: 2068932628}
   - {fileID: 2068932630}
   - {fileID: 2068932591}
@@ -32940,7 +32848,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 62
   indentLevel: 0
-  storyText: I didn't know...
+  storyText: There's no adventure in spending it all! What about the treasure maps
+    and the excitement? Even the legendary Cain Mharacter buried it.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -32966,8 +32875,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 61
   indentLevel: 0
-  storyText: Ye do now and don't go thinking ye have tricked me, I know ye be an imposter.
-    Ye'll have to walk the plank!
+  storyText: See, ye are just an imposter, I could tell! Cain Mharacter is dead, I
+    saw it with me own eyes. That's why I lied about the treasure, to fool around
+    with ye.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -33019,8 +32929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 59
   indentLevel: 0
-  storyText: There be no such thing, why would I ever bury me treasure? If I had money
-    I would spend it. Why would I ever do anything like that?
+  storyText: There is no such thing. If I had money I would spend it, not bury it.
+    Why would I ever bury me treasure?
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -33046,8 +32956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 58
   indentLevel: 0
-  storyText: 'I don''t know, it''s something that pirates usually do. Don''t ask me
-    why you would do that. I just figured... '
+  storyText: You don't bury your treasure? Everyone does that!
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -33073,8 +32982,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 57
   indentLevel: 0
-  storyText: YOU FIGURED WRONG. I be spending all me riches while I was alive, never
-    be a reason to bury it. A pirate who be burying treasure, we're not banks ye know.
+  storyText: I spent all me riches when I was alive; there was no reason to bury it!
+    A pirate who buries treasure...we're not banks, ye know!
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -33100,8 +33009,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 56
   indentLevel: 0
-  storyText: Cain Mharacter? Ye be the famed pirate Cain Mharacter? I figured ye'd
-    be dead.
+  storyText: Cain Mharacter? Ye are the famed pirate Cain Mharacter? I figured ye
+    were dead. What are ye doin' here?
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -33127,8 +33036,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 55
   indentLevel: 0
-  storyText: Noneofyourbusiness, huh. Nice to meet you Noneofyourbusiness. Too bad
-    ye be walking the plank.
+  storyText: Noneofyourbusiness, huh. Nice to meet you, Noneofyourbusiness. Too bad
+    ye will have to walk the plank.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -33154,7 +33063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 54
   indentLevel: 0
-  storyText: Robin, never heard of it. Ye will be walking the plank anyway.
+  storyText: Robin...nay, never heard of it! Ye will have walk the plank anyway.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -33431,7 +33340,7 @@ MonoBehaviour:
   useCustomTint: 0
   itemId: 41
   blockName: FirstInfo
-  description: 
+  description: NOT USED
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932702}
@@ -33459,7 +33368,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1022.63196
     y: -120.467896
-    width: 131.96722
+    width: 142
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33473,8 +33382,10 @@ MonoBehaviour:
   - {fileID: 2068932759}
   - {fileID: 2068932639}
   - {fileID: 2068932757}
+  - {fileID: 2068932962}
   - {fileID: 2068932640}
   - {fileID: 2068932756}
+  - {fileID: 2068932961}
   - {fileID: 2068932641}
   - {fileID: 2068932755}
   - {fileID: 2068932642}
@@ -33484,6 +33395,12 @@ MonoBehaviour:
   - {fileID: 2068932753}
   - {fileID: 2068932638}
   - {fileID: 2068932752}
+  - {fileID: 2068932676}
+  - {fileID: 2068932700}
+  - {fileID: 2068932674}
+  - {fileID: 2068933046}
+  - {fileID: 2068932662}
+  - {fileID: 2068932629}
   - {fileID: 2068932646}
   - {fileID: 2068932633}
 --- !u!114 &2068932658
@@ -33511,6 +33428,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932760}
+  - {fileID: 2068933047}
   - {fileID: 2068932644}
   - {fileID: 2068932647}
   - {fileID: 2068932634}
@@ -33530,7 +33448,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1017.9226
     y: -242.05823
-    width: 120
+    width: 122
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33540,6 +33458,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932762}
+  - {fileID: 2068933048}
   - {fileID: 2068932645}
   - {fileID: 2068932648}
   - {fileID: 2068932635}
@@ -33600,22 +33519,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 34
+  itemId: 587
   indentLevel: 0
-  text: Actually, I should be going.
+  storyText: Aye, not that ye will ever see it, seein' as ye are about to walk the
+    plank!
   description: 
-  targetBlock: {fileID: 2068932557}
-  hideIfVisited: 0
-  interactable:
-    booleanRef: {fileID: 0}
-    booleanVal: 1
-  setMenuDialog: {fileID: 0}
-  hideThisOption:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
+  character: {fileID: 426802951}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!114 &2068932663
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -33719,16 +33641,15 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1401.0745
     y: -460.79077
-    width: 122.131165
+    width: 130
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 29
   blockName: ButWhoBeYe
-  description: 
+  description: NOT USED
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 2068932662}
   - {fileID: 2068932661}
   - {fileID: 2068932660}
   - {fileID: 2068932663}
@@ -33745,7 +33666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 28
   indentLevel: 0
-  storyText: Aye, that be correct lass, I be captain Scarlett of the Rainbow's Luck.
+  storyText: Aye, that's correct lass, I'm Capt'n Scarlett of the Rainbow's Luck.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -33771,8 +33692,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 27
   indentLevel: 0
-  storyText: Who I be? I be captain Scarlett of the Rainbow's Luck, the ship ye be
-    standing on.
+  storyText: Who am I? I am Captain Scarlett of the Rainbow's Luck, the ship ye dirty
+    boots are standing on.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -33800,7 +33721,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -897.9137
     y: -418.9999
-    width: 135.24593
+    width: 146
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33827,8 +33748,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -882.1074
-    y: -505.5669
+    x: -890.80304
+    y: -503.39297
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -33898,18 +33819,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Script: {fileID: 11500000, guid: dbd8c931f22994b9d90e2037fffaa770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 22
+  itemId: 586
   indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932677}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
+  _targetGameObject:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 1336913914}
+  activeState:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  targetGameObjectOLD: {fileID: 0}
 --- !u!114 &2068932675
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -33923,8 +33844,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 21
   indentLevel: 0
-  storyText: "Nicer?! This is the nicest ye ever be seeing, this be real mahogany
-    wood. Ye lasses don\u2019t be appreciating the finer woods in life."
+  storyText: "Nicer?! This is the nicest ye will ever see! This is real mahogany wood.
+    Ye lasses don\u2019t appreciate the finer woods in life."
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -33945,18 +33866,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 20
+  itemId: 585
   indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932677}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
+  pathToFMODSound: event:/Characters/Player/VA/Ah/Ah
 --- !u!114 &2068932677
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -33970,15 +33885,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -658.07587
-    y: -465.12158
-    width: 154.91806
+    x: -616.2154
+    y: -600.005
+    width: 170
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 19
   blockName: MenuAboutCaptain
-  description: 
+  description: SkeletonTalkCounter
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932592}
@@ -33997,7 +33912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 18
   indentLevel: 0
-  storyText: "Ye can bet yer sea legs it\u2019s nice, this be real mahogany wood."
+  storyText: "Ye can bet yer sea legs it\u2019s nice; this is real mahogany wood."
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -34047,9 +33962,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -380.1405
-    y: -415.37772
-    width: 127.0492
+    x: -391.76846
+    y: -420.0289
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -34061,8 +33976,9 @@ MonoBehaviour:
   - {fileID: 2068932772}
   - {fileID: 2068932706}
   - {fileID: 2068932675}
-  - {fileID: 2068932674}
   - {fileID: 2068932766}
+  - {fileID: 2068933054}
+  - {fileID: 2068933053}
 --- !u!114 &2068932681
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34078,7 +33994,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -396.53394
     y: -511.4302
-    width: 145.082
+    width: 158
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -34090,8 +34006,9 @@ MonoBehaviour:
   - {fileID: 2068932773}
   - {fileID: 2068932707}
   - {fileID: 2068932678}
-  - {fileID: 2068932676}
   - {fileID: 2068932767}
+  - {fileID: 2068933056}
+  - {fileID: 2068933055}
 --- !u!114 &2068932682
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34352,7 +34269,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -118.60011
     y: -449.58804
-    width: 122.131165
+    width: 126
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -34362,6 +34279,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932683}
+  - {fileID: 2068932960}
   - {fileID: 2068932679}
   - {fileID: 2068932682}
 --- !u!114 &2068932692
@@ -34535,7 +34453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 172
   indentLevel: 0
-  storyText: That underwear ain't mine, It be Lark's.
+  storyText: That underwear ain't mine, it's Lark's.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -34569,12 +34487,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 186
+  itemId: 584
   indentLevel: 0
-  pathToFMODSound: event:/Characters/NPC_2/WalkThePlank/WalkThePlank
+  storyText: So there is a treasure after all! I knew it.
+  description: 
+  character: {fileID: 32387697}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!114 &2068932701
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34632,7 +34562,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: See ya, chum.
   description: 
-  character: {fileID: 0}
+  character: {fileID: 426802951}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -34712,7 +34642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 187
   indentLevel: 0
-  pathToFMODSound: event:/Characters/NPC_2/Sighing/Sighing (2)
+  pathToFMODSound: event:/Characters/NPC_2/Sad_Oh/Sad__2
 --- !u!114 &2068932710
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34726,7 +34656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 191
   indentLevel: 0
-  pathToFMODSound: event:/Characters/Player/VA/Yes_Aye/Yes_Aye (4)
+  pathToFMODSound: event:/Characters/Player/VA/Ha/Ha
 --- !u!114 &2068932711
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -34740,7 +34670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 190
   indentLevel: 0
-  pathToFMODSound: event:/Characters/NPC_2/Rattle/RattleTheBones
+  pathToFMODSound: event:/Characters/NPC_2/ICanFeelIt/ICanFeelIt
 --- !u!114 &2068932712
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36069,7 +35999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 260
   indentLevel: 0
-  storyText: "But who ye be? I don\u2019t recognize ye."
+  storyText: "But I don\u2019t recognize ye. Who are ye?"
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -36106,8 +36036,12 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933049}
   - {fileID: 2068932778}
   - {fileID: 2068932777}
+  - {fileID: 2068933052}
+  - {fileID: 2068933051}
+  - {fileID: 2068933050}
 --- !u!114 &2068932780
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36156,25 +36090,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 511
+  itemId: 569
   indentLevel: 0
-  storyText: "Had to hang it up here, since it couldn\u2019t be trusted to hang down
-    under deck, because of the crew."
-  description: 
-  character: {fileID: 426802951}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
+  targetFlowchart: {fileID: 2068932535}
+  targetBlock: {fileID: 2068932538}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &2068932783
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 527
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/VA/Yes_Aye/Yes_Aye (4)
 --- !u!114 &2068932784
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36609,22 +36550,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: -1673.1147
-    y: 2136.7273
-    width: 120
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 480
-  blockName: Ahoy!
+  itemId: 559
+  indentLevel: 0
+  text: I just want to try and see how they fit for a while!
   description: 
-  eventHandler: {fileID: 0}
-  commandList: []
+  targetBlock: {fileID: 2068932928}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
 --- !u!114 &2068932806
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36640,7 +36581,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1677.0623
     y: 2093.3062
-    width: 136.88527
+    width: 154
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36661,11 +36602,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 478
+  itemId: 558
   indentLevel: 0
-  text: Ahoy!
+  text: Ear them over.
   description: 
-  targetBlock: {fileID: 2068932805}
+  targetBlock: {fileID: 2068932927}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -36685,12 +36626,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 477
+  itemId: 557
   indentLevel: 0
-  text: And remember to tell every other pirate that have moved on, that it was the
-    famous Captain Robin who helped you.
+  text: You can keep your earmuffs for now, I'll come back later and get them.
   description: 
-  targetBlock: {fileID: 2068932806}
+  targetBlock: {fileID: 2068932557}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -36707,18 +36647,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 476
+  itemId: 556
   indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932815}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
+  text: "But I feel like there\u2019s this nice, fluffy quality to them."
+  description: 
+  targetBlock: {fileID: 2068932941}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
 --- !u!114 &2068932810
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36727,18 +36671,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 475
+  itemId: 555
   indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932815}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
+  text: Oh, come on, just give them to me.
+  description: 
+  targetBlock: {fileID: 2068932940}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
 --- !u!114 &2068932811
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36804,7 +36752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 472
+  itemId: 542
   indentLevel: 0
   text: Aye, and the treasure?
   description: 
@@ -36828,7 +36776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 471
+  itemId: 541
   indentLevel: 0
   text: "Don\u2019t think I don't appreciate our time as well, because I do."
   description: 
@@ -36849,24 +36797,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: -1490.2195
-    y: 2109.0957
-    width: 136.88527
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 470
-  blockName: FinalGoodbyes2
+  itemId: 554
+  indentLevel: 0
+  text: As a fellow captain and pirate, you can trust me to keep your earmuffs safe.
   description: 
-  eventHandler: {fileID: 0}
-  commandList:
-  - {fileID: 2068932808}
-  - {fileID: 2068932807}
+  targetBlock: {fileID: 2068932939}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
 --- !u!114 &2068932816
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36882,7 +36828,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1333.6406
     y: 2135.4119
-    width: 127.0492
+    width: 138
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36891,8 +36837,10 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068932832}
   - {fileID: 2068932811}
-  - {fileID: 2068932809}
+  - {fileID: 2068933042}
+  - {fileID: 2068933041}
 --- !u!114 &2068932817
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36908,7 +36856,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1338.9036
     y: 2078.8323
-    width: 135.24593
+    width: 146
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -36917,8 +36865,10 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068932833}
   - {fileID: 2068932812}
-  - {fileID: 2068932810}
+  - {fileID: 2068933044}
+  - {fileID: 2068933043}
 --- !u!114 &2068932818
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36927,18 +36877,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 467
+  itemId: 540
   indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932820}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
+  text: Aye, and the treasure?
+  description: 
+  targetBlock: {fileID: 2068932816}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
 --- !u!114 &2068932819
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36947,18 +36901,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 466
+  itemId: 539
   indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932820}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
+  text: "Don\u2019t think I don't appreciate our time as well, because I do."
+  description: 
+  targetBlock: {fileID: 2068932817}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
 --- !u!114 &2068932820
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -36967,24 +36925,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: -1184.6141
-    y: 2109.569
-    width: 136.88527
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 465
-  blockName: FinalGoodbyes1
-  description: 
-  eventHandler: {fileID: 0}
-  commandList:
-  - {fileID: 2068932814}
-  - {fileID: 2068932813}
+  itemId: 538
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Agreeing/Agreeing
 --- !u!114 &2068932821
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37052,7 +36998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 462
   indentLevel: 0
-  text: Option Text
+  text: I'm just happy I get a chance to leave this place.
   description: 
   targetBlock: {fileID: 2068932826}
   hideIfVisited: 0
@@ -37126,7 +37072,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -965.6268
     y: 2141.216
-    width: 130.32788
+    width: 146
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -37136,7 +37082,8 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932821}
-  - {fileID: 2068932818}
+  - {fileID: 2068932814}
+  - {fileID: 2068932813}
 --- !u!114 &2068932827
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37163,6 +37110,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 2068932822}
   - {fileID: 2068932819}
+  - {fileID: 2068932818}
 --- !u!114 &2068932828
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37253,24 +37201,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 454
+  itemId: 537
   indentLevel: 0
-  storyText: Not even a little bit?
-  description: 
-  character: {fileID: 426802951}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
+  pathToFMODSound: event:/Characters/NPC_2/Sighing/Sighing (2)
 --- !u!114 &2068932832
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37279,23 +37215,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: -1031.9843
-    y: 1720.4473
-    width: 127.0492
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 453
-  blockName: IDon'tWantTo
-  description: 
-  eventHandler: {fileID: 0}
-  commandList:
-  - {fileID: 2068932831}
+  itemId: 544
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Yes_Aye/Yes_Aye
 --- !u!114 &2068932833
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37304,22 +37229,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: -1029.2985
-    y: 1664.8591
-    width: 122.131165
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 452
-  blockName: BeRightBack
-  description: 
-  eventHandler: {fileID: 0}
-  commandList: []
+  itemId: 543
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Interested/Interested
 --- !u!114 &2068932834
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37335,7 +37250,7 @@ MonoBehaviour:
   indentLevel: 0
   text: "I don\u2019t want to."
   description: 
-  targetBlock: {fileID: 2068932832}
+  targetBlock: {fileID: 2068932860}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -37359,7 +37274,7 @@ MonoBehaviour:
   indentLevel: 0
   text: Be right back.
   description: 
-  targetBlock: {fileID: 2068932833}
+  targetBlock: {fileID: 2068932557}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -37538,7 +37453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 443
   indentLevel: 0
-  storyText: Aye, Aye.
+  storyText: Aye, aye.
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -37744,7 +37659,8 @@ MonoBehaviour:
   blockName: FairPoint
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 2068933033}
 --- !u!114 &2068932851
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37760,16 +37676,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2056.5518
     y: 1972.638
-    width: 120
+    width: 122
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 434
   blockName: YouWillTho
-  description: 
+  description: START OUTRO
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932843}
+  - {fileID: 2068933036}
   - {fileID: 2068932841}
   - {fileID: 2068932842}
 --- !u!114 &2068932852
@@ -37796,6 +37713,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933037}
   - {fileID: 2068932837}
   - {fileID: 2068932845}
   - {fileID: 2068932844}
@@ -37814,7 +37732,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1824.2831
     y: 1943.4951
-    width: 150.00003
+    width: 166
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -37822,7 +37740,8 @@ MonoBehaviour:
   blockName: MakeMyFarewells
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 2068933034}
 --- !u!114 &2068932854
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37873,7 +37792,8 @@ MonoBehaviour:
   blockName: IllThink
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 2068933035}
 --- !u!114 &2068932856
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37914,7 +37834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -1288.925
+    x: -1281.6521
     y: 1854.7595
     width: 120
     height: 40
@@ -37924,7 +37844,8 @@ MonoBehaviour:
   blockName: Okay
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 2068933032}
 --- !u!114 &2068932858
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -37986,9 +37907,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -1054.3251
-    y: 1892.5742
-    width: 153.27872
+    x: -1054.3252
+    y: 1905.3015
+    width: 162
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -37997,6 +37918,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933038}
   - {fileID: 2068932840}
   - {fileID: 2068932859}
   - {fileID: 2068932858}
@@ -38015,7 +37937,7 @@ MonoBehaviour:
   indentLevel: 0
   text: "Nay, I think I\u2019ll just skip the goodbyes and burn it down now."
   description: 
-  targetBlock: {fileID: 2068932557}
+  targetBlock: {fileID: 2068932860}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -38040,7 +37962,7 @@ MonoBehaviour:
   text: Aye, I think it will be fitting for such a great pirate as myself, to give
     a final farewell.
   description: 
-  targetBlock: {fileID: 2068932860}
+  targetBlock: {fileID: 2068932557}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -38221,8 +38143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 414
   indentLevel: 0
-  storyText: "I be kiddin' with ye. Aye, there is a treasure, it is actually made
-    of mermaid\u2019s tears which have transformed into priceless crystals."
+  storyText: I'm kiddin' with ye. Aye, there is a treasure, it is actually made of
+    mermaid tears which have transformed into priceless crystals.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -38576,7 +38498,7 @@ MonoBehaviour:
   indentLevel: 0
   text: Never mind, I need to be somewhere else.
   description: 
-  targetBlock: {fileID: 2068932557}
+  targetBlock: {fileID: 2068933015}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -38650,7 +38572,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Are ye some kind of actor?
   description: 
-  character: {fileID: 0}
+  character: {fileID: 426802951}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -38676,7 +38598,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 3774.2817
     y: 1514.3264
-    width: 127.0492
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -38729,7 +38651,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 3998.5664
     y: 1485.6466
-    width: 154.91806
+    width: 162
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -38778,7 +38700,7 @@ MonoBehaviour:
   indentLevel: 0
   text: It's nothing, I'll leave you to your own devices.
   description: 
-  targetBlock: {fileID: 2068932557}
+  targetBlock: {fileID: 2068933015}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -38898,7 +38820,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 4290.02
     y: 1523.0483
-    width: 120
+    width: 122
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -39137,18 +39059,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 376
+  itemId: 564
   indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932962}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
+  text: I won't burn them down, I'll wear them so my ears won't get hurt.
+  description: 
+  targetBlock: {fileID: 2068932958}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
 --- !u!114 &2068932908
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -39256,7 +39182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 371
   indentLevel: 0
-  text: Comfortable or not, I need them to burn the ship.
+  text: Comfortable or not, I need them when burning down the ship, for safekeeping.
   description: 
   targetBlock: {fileID: 2068932915}
   hideIfVisited: 0
@@ -39308,7 +39234,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 3133.3618
     y: 1154.4498
-    width: 123.770515
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -39332,9 +39258,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 3137.1187
-    y: 1103.0209
-    width: 120.49182
+    x: 3119.728
+    y: 1092.1511
+    width: 122
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -39344,6 +39270,9 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932913}
+  - {fileID: 2068932944}
+  - {fileID: 2068932943}
+  - {fileID: 2068932942}
   - {fileID: 2068932907}
 --- !u!114 &2068932916
 MonoBehaviour:
@@ -39430,7 +39359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 364
   indentLevel: 0
-  storyText: Don't ye think I need em as well to feel comfortable?
+  storyText: Don't ye think I need 'em as well to feel comfortable?
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -39456,7 +39385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 363
   indentLevel: 0
-  storyText: To the ship that isn't there because it exploded?
+  storyText: To the ship that isn't there because it sank?
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -39600,8 +39529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 357
   indentLevel: 0
-  storyText: No, earmuscles? No? ... I guess ye can borrow 'em for a moment to block
-    out the sound of the explosion, but ye better throw 'em back to me ship afterwards.
+  storyText: '...I guess ye can borrow ''em, but ye better throw ''em back to me ship
+    afterwards.'
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -39627,9 +39556,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 1581.6667
-    y: 933.07666
-    width: 131.96722
+    x: 1572.0513
+    y: 969.61523
+    width: 146
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -39655,7 +39584,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1590.0312
     y: 885.4375
-    width: 128.68854
+    width: 142
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -39754,8 +39683,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 1851.9858
-    y: 888.1174
+    x: 1876.9861
+    y: 997.7331
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -39801,8 +39730,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 349
   indentLevel: 0
-  storyText: Aye, it would be a real shame to see em go down in flames. Fine ye can
-    have em, as a fellow capt'n I trust em on yer good ears.
+  storyText: Aye, it would be a real shame to see 'em go down in flames. Fine ye can
+    have 'em, as a fellow capt'n I trust 'em on yer good ears.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -39848,7 +39777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 347
   indentLevel: 0
-  storyText: Nay, they're mine and perfectly fit fer me head. I'll wear em meself,
+  storyText: Nay, they're mine and perfectly fit fer me head. I'll wear 'em meself,
     unless ye can prove otherwise.
   description: 
   character: {fileID: 426802951}
@@ -39870,18 +39799,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 346
+  itemId: 553
   indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932932}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
+  text: You can keep your earmuffs for now, I'll come back later and get them.
+  description: 
+  targetBlock: {fileID: 2068932557}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
 --- !u!114 &2068932938
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -39895,7 +39828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 345
   indentLevel: 0
-  storyText: Well, ye are strong, can't ye use yer earmuscles or somethin'?
+  storyText: Well, ye'll be rich soon, can't ye buy yer own earmuffs or somethin'?
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -39923,7 +39856,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 2111.6697
     y: 988.30884
-    width: 120
+    width: 126
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -39949,7 +39882,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 2078.9524
     y: 935.2475
-    width: 146.72134
+    width: 154
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -39975,7 +39908,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 2057.306
     y: 888.3087
-    width: 171.31151
+    width: 190
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -39985,7 +39918,9 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932938}
-  - {fileID: 2068932937}
+  - {fileID: 2068932808}
+  - {fileID: 2068932807}
+  - {fileID: 2068932805}
 --- !u!114 &2068932942
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -39997,11 +39932,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 341
+  itemId: 563
   indentLevel: 0
-  text: You can keep your earmuffs for now, I'll come back later and get them.
+  text: I just need them.
   description: 
-  targetBlock: {fileID: 2068932557}
+  targetBlock: {fileID: 2068932957}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -40021,11 +39956,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 340
+  itemId: 562
   indentLevel: 0
-  text: Oh come on, just give them to me.
+  text: You know if you keep em, they'll burn down with the ship.
   description: 
-  targetBlock: {fileID: 2068932940}
+  targetBlock: {fileID: 2068932955}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -40045,11 +39980,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 339
+  itemId: 561
   indentLevel: 0
-  text: As a fellow captain and pirate, you can trust me to keep your earmuffs safe.
+  text: You can keep your earmuffs for now, I'll come back later and get them.
   description: 
-  targetBlock: {fileID: 2068932939}
+  targetBlock: {fileID: 2068932557}
   hideIfVisited: 0
   interactable:
     booleanRef: {fileID: 0}
@@ -40066,22 +40001,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 338
+  itemId: 568
   indentLevel: 0
-  text: I haven't been able to find anything else.
-  description: 
-  targetBlock: {fileID: 2068932941}
-  hideIfVisited: 0
-  interactable:
-    booleanRef: {fileID: 0}
-    booleanVal: 1
-  setMenuDialog: {fileID: 0}
-  hideThisOption:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
+  targetFlowchart: {fileID: 2068932535}
+  targetBlock: {fileID: 2068932538}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
 --- !u!114 &2068932946
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -40135,18 +40066,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 335
+  itemId: 552
   indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932956}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
+  text: I won't burn them down, I'll keep them as a souvenir!
+  description: 
+  targetBlock: {fileID: 2068932958}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
 --- !u!114 &2068932949
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -40180,8 +40115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 1474.3347
-    y: 1586.4987
+    x: 1524.3345
+    y: 1579.3558
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -40190,7 +40125,8 @@ MonoBehaviour:
   blockName: Win
   description: 
   eventHandler: {fileID: 0}
-  commandList: []
+  commandList:
+  - {fileID: 2068933045}
 --- !u!114 &2068932951
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -40230,7 +40166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 331
   indentLevel: 0
-  storyText: Ye won't get em if you're planning on burnin' em, savy?
+  storyText: Ye won't get 'em if you're planning on burnin' 'em, savy?
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -40256,7 +40192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 330
   indentLevel: 0
-  storyText: Why can't ye use somethin' else to protect yer ears?
+  storyText: "Why isn\u2019t the treasure enough! Ye want to take me favorite earmuffs
+    too?"
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -40277,22 +40214,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 329
+  itemId: 567
   indentLevel: 0
-  text: You can keep your earmuffs for now, I'll come back later and get them.
-  description: 
-  targetBlock: {fileID: 2068932557}
-  hideIfVisited: 0
-  interactable:
-    booleanRef: {fileID: 0}
-    booleanVal: 1
-  setMenuDialog: {fileID: 0}
-  hideThisOption:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
+  targetFlowchart: {fileID: 2068932535}
+  targetBlock: {fileID: 2068932538}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
 --- !u!114 &2068932955
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -40306,8 +40239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 2620.4236
-    y: 995.18494
+    x: 2607.3801
+    y: 999.53284
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -40327,26 +40260,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068932534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: 2367.282
-    y: 895.8601
-    width: 120
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 326
-  blockName: Success2
-  description: 
-  eventHandler: {fileID: 0}
-  commandList:
-  - {fileID: 2068932942}
-  - {fileID: 2068932944}
-  - {fileID: 2068932943}
-  - {fileID: 2068932945}
+  itemId: 566
+  indentLevel: 0
+  targetFlowchart: {fileID: 2068932535}
+  targetBlock: {fileID: 2068932538}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
 --- !u!114 &2068932957
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -40360,8 +40285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 2623.0325
-    y: 941.33997
+    x: 2612.1633
+    y: 939.1661
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -40387,7 +40312,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 2620.8398
-    y: 898.35785
+    y: 852.2038
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -40398,8 +40323,86 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932953}
-  - {fileID: 2068932948}
+  - {fileID: 2068932937}
+  - {fileID: 2068932815}
+  - {fileID: 2068932810}
+  - {fileID: 2068932809}
 --- !u!114 &2068932959
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 565
+  indentLevel: 0
+  targetFlowchart: {fileID: 2068932535}
+  targetBlock: {fileID: 2068932538}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &2068932960
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 570
+  indentLevel: 0
+  storyText: The brave Captain Robin has successfully entered the famous captain's
+    quarters! Now, let's see...
+  description: 
+  character: {fileID: 32387697}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2068932961
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 583
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/VA/Sad_Ah/Sad_Ah
+--- !u!114 &2068932962
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 582
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Yes_Arr/Yes_Arr
+--- !u!114 &2068932963
 MonoBehaviour:
   m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
@@ -40410,7 +40413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 323
+  itemId: 551
   indentLevel: 0
   text: I just need them.
   description: 
@@ -40423,102 +40426,6 @@ MonoBehaviour:
   hideThisOption:
     booleanRef: {fileID: 0}
     booleanVal: 0
---- !u!114 &2068932960
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2068932534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 322
-  indentLevel: 0
-  text: You know if you keep em, they'll burn down with the ship.
-  description: 
-  targetBlock: {fileID: 2068932955}
-  hideIfVisited: 0
-  interactable:
-    booleanRef: {fileID: 0}
-    booleanVal: 1
-  setMenuDialog: {fileID: 0}
-  hideThisOption:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
---- !u!114 &2068932961
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2068932534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 321
-  indentLevel: 0
-  text: I won't burn them down, I'll wear them so my ears won't get hurt.
-  description: 
-  targetBlock: {fileID: 2068932958}
-  hideIfVisited: 0
-  interactable:
-    booleanRef: {fileID: 0}
-    booleanVal: 1
-  setMenuDialog: {fileID: 0}
-  hideThisOption:
-    booleanRef: {fileID: 0}
-    booleanVal: 0
---- !u!114 &2068932962
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2068932534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: 2880.6567
-    y: 902.6858
-    width: 120
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 320
-  blockName: Success1
-  description: 
-  eventHandler: {fileID: 0}
-  commandList:
-  - {fileID: 2068932954}
-  - {fileID: 2068932960}
-  - {fileID: 2068932959}
-  - {fileID: 2068932961}
---- !u!114 &2068932963
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2068932534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 319
-  indentLevel: 0
-  targetFlowchart: {fileID: 2068932535}
-  targetBlock: {fileID: 2068932962}
-  startLabel:
-    stringRef: {fileID: 0}
-    stringVal: 
-  startIndex: 0
-  callMode: 0
 --- !u!114 &2068932964
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -40532,9 +40439,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 318
   indentLevel: 0
-  storyText: Ye can't burn down the ship with 'em, they're for wearin'.
+  storyText: They won't be on the oceans floor! They'll be with me!
   description: 
-  character: {fileID: 0}
+  character: {fileID: 426802951}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -40606,7 +40513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 314
   indentLevel: 0
-  text: But I need them to sink the ship.
+  text: But I really want to keep them! What good will they do on the oceans floor!
   description: 
   targetBlock: {fileID: 2068932969}
   hideIfVisited: 0
@@ -40632,7 +40539,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 3126.6445
     y: 967.91907
-    width: 125.40986
+    width: 138
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -40660,7 +40567,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 3130.7117
     y: 903.3717
-    width: 120
+    width: 126
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -40670,7 +40577,10 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932964}
+  - {fileID: 2068933040}
+  - {fileID: 2068933039}
   - {fileID: 2068932963}
+  - {fileID: 2068932948}
 --- !u!114 &2068932970
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -40684,7 +40594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 311
   indentLevel: 0
-  storyText: You really think I be fallin' for that?
+  storyText: You really think I would fall for that?
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -40860,7 +40770,7 @@ MonoBehaviour:
   itemId: 304
   indentLevel: 0
   storyText: Of course I do, these are the capt'n's earmuffs. Won't do with any other,
-    only capt'ns, such as meself can wear em.
+    only capt'ns, such as meself can wear 'em.
   description: 
   character: {fileID: 426802951}
   portrait: {fileID: 0}
@@ -40886,8 +40796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 303
   indentLevel: 0
-  storyText: I could really use something to dampen the sound of the explosion. Scarlett,
-    do you really need those earmuffs?
+  storyText: Scarlett, do you really need those earmuffs?
   description: 
   character: {fileID: 32387697}
   portrait: {fileID: 0}
@@ -40915,7 +40824,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 3351.413
     y: 1309.4576
-    width: 158.19675
+    width: 170
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -40971,7 +40880,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 3388.3381
     y: 941.77124
-    width: 123.770515
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -40999,13 +40908,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 4523.3247
     y: 1140.215
-    width: 140.16396
+    width: 154
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 299
   blockName: GiveEarmuffsPls
-  description: Ta bort Earmuffs
+  description: 
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932878}
@@ -41216,7 +41125,9 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933020}
   - {fileID: 2068932983}
+  - {fileID: 2068933019}
 --- !u!114 &2068932991
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -41232,7 +41143,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1043.7859
     y: 759.5409
-    width: 128.68854
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41241,7 +41152,9 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933022}
   - {fileID: 2068932984}
+  - {fileID: 2068933021}
 --- !u!114 &2068932992
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -41257,7 +41170,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1044.7053
     y: 696.89526
-    width: 130.32788
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41266,7 +41179,9 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933023}
   - {fileID: 2068932985}
+  - {fileID: 2068933024}
 --- !u!114 &2068932993
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -41562,6 +41477,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068933000}
+  - {fileID: 2068933027}
   - {fileID: 2068932998}
   - {fileID: 2068932999}
   - {fileID: 2068932996}
@@ -41580,7 +41496,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1046.7045
     y: 522.82733
-    width: 131.96722
+    width: 142
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41660,7 +41576,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -752.9802
     y: 2116.1
-    width: 130.32788
+    width: 146
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41669,7 +41585,9 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068932831}
   - {fileID: 2068932829}
+  - {fileID: 2068932820}
   - {fileID: 2068932828}
   - {fileID: 2068932825}
   - {fileID: 2068932823}
@@ -41689,7 +41607,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -817.7513
     y: 1793.4346
-    width: 169.67216
+    width: 178
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41714,7 +41632,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -839.14954
     y: 1690.6239
-    width: 189.3443
+    width: 206
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41750,9 +41668,12 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933018}
   - {fileID: 2068932869}
+  - {fileID: 2068933017}
   - {fileID: 2068932866}
   - {fileID: 2068932867}
+  - {fileID: 2068932783}
   - {fileID: 2068932868}
 --- !u!114 &2068933012
 MonoBehaviour:
@@ -41779,7 +41700,9 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932865}
+  - {fileID: 2068933031}
   - {fileID: 2068932864}
+  - {fileID: 2068933030}
   - {fileID: 2068932863}
   - {fileID: 2068932862}
   - {fileID: 2068932861}
@@ -41798,7 +41721,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -789.1494
     y: 1606.141
-    width: 128.68854
+    width: 138
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41828,7 +41751,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1322.5212
     y: 568.6729
-    width: 153.27872
+    width: 166
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41855,7 +41778,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -829.81775
     y: 752.2515
-    width: 177.8689
+    width: 190
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41864,6 +41787,8 @@ MonoBehaviour:
   description: ASK ABOUT EARMUFFSDISABLED
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933025}
+  - {fileID: 2068933026}
   - {fileID: 2068932989}
   - {fileID: 2068932986}
   - {fileID: 2068932987}
@@ -41886,7 +41811,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -824.4389
     y: 573.3566
-    width: 171.31151
+    width: 190
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -41895,10 +41820,842 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933029}
   - {fileID: 2068933007}
+  - {fileID: 2068933028}
   - {fileID: 2068933006}
   - {fileID: 2068933002}
   - {fileID: 2068933003}
+--- !u!114 &2068933017
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 526
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/VA/Ha/Ha (3)
+--- !u!114 &2068933018
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 525
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Agreeing/Agreeing
+--- !u!114 &2068933019
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 524
+  indentLevel: 0
+  targetFlowchart: {fileID: 2068932535}
+  targetBlock: {fileID: 2068933015}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &2068933020
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 523
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Yes_Arr/Yes_Arr
+--- !u!114 &2068933021
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 522
+  indentLevel: 0
+  targetFlowchart: {fileID: 2068932535}
+  targetBlock: {fileID: 2068933015}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &2068933022
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 521
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Yes_Arr/Yes_Arr
+--- !u!114 &2068933023
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 520
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Yes_Arr/Yes_Arr
+--- !u!114 &2068933024
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 519
+  indentLevel: 0
+  targetFlowchart: {fileID: 2068932535}
+  targetBlock: {fileID: 2068933015}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &2068933025
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 518
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Ahoy/Ahoy
+--- !u!114 &2068933026
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 517
+  indentLevel: 0
+  storyText: Aye, what do ye want?
+  description: 
+  character: {fileID: 426802951}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2068933027
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 516
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Thinking/Thinking
+--- !u!114 &2068933028
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 515
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Annoyed/Annoyed
+--- !u!114 &2068933029
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 514
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/VA/Ahoy/Ahoy
+--- !u!114 &2068933030
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 529
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Ah/Ah
+--- !u!114 &2068933031
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 528
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/Player/VA/Yes_Aye/Yes_Aye (5)
+--- !u!114 &2068933032
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 530
+  indentLevel: 0
+  storyText: Thank you, matey.
+  description: 
+  character: {fileID: 426802951}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2068933033
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 533
+  indentLevel: 0
+  storyText: Thank you, matey.
+  description: 
+  character: {fileID: 426802951}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2068933034
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 532
+  indentLevel: 0
+  storyText: Thank you, matey.
+  description: 
+  character: {fileID: 426802951}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2068933035
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 531
+  indentLevel: 0
+  storyText: Thank you, matey.
+  description: 
+  character: {fileID: 426802951}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2068933036
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 536
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Yes_Aye/Yes_Aye
+--- !u!114 &2068933037
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 535
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Annoyed/Annoyed
+--- !u!114 &2068933038
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 534
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Sad_Oh/Sad_1
+--- !u!114 &2068933039
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 550
+  indentLevel: 0
+  text: You know if you keep 'em, they'll burn down with the ship.
+  description: 
+  targetBlock: {fileID: 2068932955}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933040
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 549
+  indentLevel: 0
+  text: You can keep your earmuffs for now, I'll come back later and get them.
+  description: 
+  targetBlock: {fileID: 2068932557}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933041
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 548
+  indentLevel: 0
+  text: Ahoy!
+  description: 
+  targetBlock: {fileID: 2068932557}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933042
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 547
+  indentLevel: 0
+  text: And remember to tell every other pirate that have moved on, that it was the
+    famous Captain Robin who helped you.
+  description: 
+  targetBlock: {fileID: 2068932806}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933043
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 546
+  indentLevel: 0
+  text: Ahoy!
+  description: 
+  targetBlock: {fileID: 2068932557}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933044
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 545
+  indentLevel: 0
+  text: And remember to tell every other pirate that have moved on, that it was the
+    famous Captain Robin who helped you.
+  description: 
+  targetBlock: {fileID: 2068932806}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933045
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 560
+  indentLevel: 0
+  storyText: Go on, go grab them over there since ye wanted 'em so badly.
+  description: 
+  character: {fileID: 426802951}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2068933046
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 581
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/WalkThePlank/WalkThePlank
+--- !u!114 &2068933047
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 580
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/WalkThePlank/WalkThePlank
+--- !u!114 &2068933048
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 579
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/WalkThePlank/WalkThePlank
+--- !u!114 &2068933049
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 578
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Interested/Interested
+--- !u!114 &2068933050
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 577
+  indentLevel: 0
+  text: I am the famous captain Robin.
+  description: 
+  targetBlock: {fileID: 2068932659}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933051
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 576
+  indentLevel: 0
+  text: "My name\u2019s Noneofyourbusiness."
+  description: 
+  targetBlock: {fileID: 2068932658}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933052
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 575
+  indentLevel: 0
+  text: I be Cain Mharacter
+  description: 
+  targetBlock: {fileID: 2068932657}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933053
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 574
+  indentLevel: 0
+  text: Who are you?
+  description: 
+  targetBlock: {fileID: 2068932671}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933054
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 573
+  indentLevel: 0
+  text: You must be the captain of the ship, that I have heard so much about.
+  description: 
+  targetBlock: {fileID: 2068932670}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933055
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 572
+  indentLevel: 0
+  text: Who are you?
+  description: 
+  targetBlock: {fileID: 2068932671}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933056
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841589fc622bc494aa5405f416fa1301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 571
+  indentLevel: 0
+  text: You must be the captain of the ship, that I have heard so much about.
+  description: 
+  targetBlock: {fileID: 2068932670}
+  hideIfVisited: 0
+  interactable:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  setMenuDialog: {fileID: 0}
+  hideThisOption:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+--- !u!114 &2068933057
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 590
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Interested/Interested
+--- !u!114 &2068933058
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 589
+  indentLevel: 0
+  targetFlowchart: {fileID: 2068932535}
+  targetBlock: {fileID: 2068932597}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &2068933059
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 591
+  indentLevel: 0
+  pathToFMODSound: event:/Characters/NPC_2/Yes_Aye/Yes_Aye
 --- !u!4 &2095786070 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4250746531366702, guid: 898c592848482aa479a40189fc9f5839,
