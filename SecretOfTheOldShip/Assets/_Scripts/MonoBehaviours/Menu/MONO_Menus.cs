@@ -148,7 +148,7 @@ public class MONO_Menus : MonoBehaviour {
 		GameObject[] objectsToActivate = { };
 		GameObject[] objectsToDeactivate = { mainMenu };
 
-		SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
+	/*	SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
 		// gets all the inventory items from last game
 		for(int i = 0; i < data.itemsInInentory.Length; i++)
 		{
@@ -157,7 +157,7 @@ public class MONO_Menus : MonoBehaviour {
 
 		//Update all condition
 		data.conditions.uppdatAllCondition();
-
+*/
 		sceneManager.ChangeScene(introSceneName, false, false, false, false, false, false, false);
 
 		StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
@@ -324,7 +324,7 @@ public class MONO_Menus : MonoBehaviour {
 		}
 	}
 
-	/*
+
 	/// <summary>
 	/// This is practically only for the bouns menu
 	/// </summary>
@@ -339,7 +339,7 @@ public class MONO_Menus : MonoBehaviour {
 		mainMenu.SetActive(false);
 		//inventory.SetActive (true);
 	}
-	*/
+
 
 	/// <summary>
 	/// Sets the text components.
