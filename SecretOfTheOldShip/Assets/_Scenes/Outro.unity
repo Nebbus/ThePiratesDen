@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1529519, g: 0.19843343, b: 0.45517552, a: 1}
+  m_IndirectSpecularColor: {r: 0.15295216, g: 0.19843298, b: 0.4551764, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -381,6 +381,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114751239687782058, guid: eb2c0682f32794f8982143904cb3d7af,
+        type: 2}
+      propertyPath: writingSpeed
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb2c0682f32794f8982143904cb3d7af, type: 2}
   m_IsPrefabParent: 0
@@ -407,7 +412,6 @@ GameObject:
   - component: {fileID: 393375548}
   - component: {fileID: 393375547}
   - component: {fileID: 393375545}
-  - component: {fileID: 393375546}
   - component: {fileID: 393375549}
   - component: {fileID: 393375550}
   - component: {fileID: 393375551}
@@ -418,12 +422,11 @@ GameObject:
   - component: {fileID: 393375556}
   - component: {fileID: 393375555}
   - component: {fileID: 393375559}
-  - component: {fileID: 393375558}
-  - component: {fileID: 393375557}
   - component: {fileID: 393375560}
   - component: {fileID: 393375562}
   - component: {fileID: 393375561}
   - component: {fileID: 393375563}
+  - component: {fileID: 393375546}
   m_Layer: 0
   m_Name: Outro Flowchart
   m_TagString: Untagged
@@ -456,9 +459,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 393375534}
-  selectedCommands:
-  - {fileID: 393375538}
+  - {fileID: 393375562}
+  selectedCommands: []
   variables:
   - {fileID: 393375553}
   description: 
@@ -516,7 +518,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 393375543}
-  - {fileID: 393375558}
   - {fileID: 393375549}
   - {fileID: 393375544}
 --- !u!114 &393375534
@@ -659,7 +660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
+    x: 66
     y: 238
     width: 120
     height: 40
@@ -671,7 +672,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 393375560}
-  - {fileID: 393375546}
   - {fileID: 393375550}
   - {fileID: 393375552}
   - {fileID: 393375551}
@@ -703,8 +703,8 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 393375548}
-  - {fileID: 393375557}
   - {fileID: 393375547}
+  - {fileID: 393375546}
   - {fileID: 393375545}
 --- !u!4 &393375542
 Transform:
@@ -784,7 +784,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &393375546
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393375530}
@@ -793,9 +793,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 15
+  itemId: 30
   indentLevel: 0
-  duration: 2
+  duration: 1
   targetAlpha: 1
   waitUntilFinished: 1
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
@@ -813,19 +813,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 13
   indentLevel: 0
-  storyText: and as the first rays of sunshine shine upon the sea, the brave pirate
+  storyText: and as the first rays of sunshine shone upon the sea, the brave pirate
     could hear a whispered "thank you".
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: ea1f3681d8e050141bfc1157a5f5250f, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
   fadeWhenDone: 1
   waitForClick: 0
-  stopVoiceover: 1
-  waitForVO: 0
+  stopVoiceover: 0
+  waitForVO: 1
   setSayDialog: {fileID: 0}
 --- !u!114 &393375548
 MonoBehaviour:
@@ -863,18 +863,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 16
   indentLevel: 0
-  storyText: The once haunted ship burns through the night
+  storyText: The once haunted ship burned through the night
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
+  voiceOverClip: {fileID: 8300000, guid: f38da2ad3c4330d408a7930a90b42d9e, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
   fadeWhenDone: 1
   waitForClick: 0
   stopVoiceover: 1
-  waitForVO: 0
+  waitForVO: 1
   setSayDialog: {fileID: 0}
 --- !u!114 &393375550
 MonoBehaviour:
@@ -1012,34 +1012,6 @@ MonoBehaviour:
     floatRef: {fileID: 393375553}
     floatVal: 1
   durationOLD: 0
---- !u!114 &393375557
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 393375530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 25
-  indentLevel: 0
-  pathToFMODSound: event:/Characters/Player/VA/Outro/Picture_2
---- !u!114 &393375558
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 393375530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 24
-  indentLevel: 0
-  pathToFMODSound: event:/Characters/Player/VA/Outro/Picture_1
 --- !u!114 &393375559
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1397,6 +1369,8 @@ GameObject:
   - component: {fileID: 894046500}
   - component: {fileID: 894046499}
   - component: {fileID: 894046498}
+  - component: {fileID: 894046504}
+  - component: {fileID: 894046503}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1491,6 +1465,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &894046503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 894046497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 7
+--- !u!81 &894046504
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 894046497}
+  m_Enabled: 1
 --- !u!114 &910103752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,6 +1619,10 @@ MonoBehaviour:
   musicEmittor:
   - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
     Params:
+    - Name: Outro
+      Value: 1
+    - Name: Tyst
+      Value: 0
     - Name: puzzle
       Value: 0
     - Name: Area

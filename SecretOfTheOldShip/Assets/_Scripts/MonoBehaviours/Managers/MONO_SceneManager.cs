@@ -20,6 +20,12 @@ public class MONO_SceneManager : MonoBehaviour {
 	[HideInInspector]
 	public float fadeDuration;
 
+	[Space]
+	public GameObject openMenuButton;
+	public GameObject hintButton;
+	public GameObject inventory;
+	[HideInInspector]
+
     public bool testarDeta = false;
 
 
@@ -98,9 +104,9 @@ public class MONO_SceneManager : MonoBehaviour {
     /// </summary>
     /// <param name="sceneName">Scene to load.</param>
     /// <param name="sceneName">Sets if the start position shuld be set.</param>
-	public void ChangeScene(string sceneName, bool setStartPos, bool handelnputAfterFade, bool goingToMainMenu, bool save)
+	public void ChangeScene(string sceneName, bool setStartPos, bool handelnputAfterFade, bool goingToMainMenu, bool save, bool activateMenuButton = true, bool activateHintButton = true, bool activateInventory = true)
 	{
-		StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelnputAfterFade, goingToMainMenu,save));
+		StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelnputAfterFade, goingToMainMenu, save, activateMenuButton, activateHintButton, activateInventory));
     }
 
 
@@ -110,7 +116,7 @@ public class MONO_SceneManager : MonoBehaviour {
     /// <param name="sceneName">Scene to load.</param>
     /// <param name="setStartPos">Sets if the start position shuld be set(onlyUsed then loading.</param>
     /// <param name="handelUnputAfterFade">Sets if the start position shuld be set.</param>
-	private IEnumerator FadeAndLoad(string sceneName, bool setStartPos, bool handelInputAfterFade, bool goingToMainMenu, bool save)
+	private IEnumerator FadeAndLoad(string sceneName, bool setStartPos, bool handelInputAfterFade, bool goingToMainMenu, bool save, bool activateMenuButton = true, bool activateHintButton = true, bool activateInventory = true)
     {
         //disable input and fade out.
         handleInput = false;
@@ -148,6 +154,18 @@ public class MONO_SceneManager : MonoBehaviour {
         MONO_EventManager.TriggerEvent(MONO_EventManager.sceneStartSetup_NAME, paramFiller);
 
        
+		if (activateMenuButton) 
+		{
+			openMenuButton.SetActive (true);
+		}
+		if (activateHintButton)
+		{
+			hintButton.SetActive (true);
+		}
+		if (activateInventory) 
+		{
+			inventory.SetActive (true);
+		}
 
         //fade in and enable input.
         fade.Fade(0f);

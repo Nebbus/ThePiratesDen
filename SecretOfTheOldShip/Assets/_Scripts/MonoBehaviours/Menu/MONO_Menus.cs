@@ -102,7 +102,7 @@ public class MONO_Menus : MonoBehaviour {
 		CloseMenu ();
 		ChangeLatestMenu (pauseMenu);
        
-		sceneManager.ChangeScene (startSceneName, false, false, false, true);
+		sceneManager.ChangeScene (startSceneName, false, false, false, true, true, true, true);
 
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
@@ -131,7 +131,7 @@ public class MONO_Menus : MonoBehaviour {
         //Update all condition
         data.conditions.uppdatAllCondition();
 
-        sceneManager.ChangeScene(data.currentScene, true, true, false, true);
+		sceneManager.ChangeScene(data.currentScene, true, true, false, true, true, true, true);
 
 		StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
     }
@@ -158,7 +158,7 @@ public class MONO_Menus : MonoBehaviour {
 		//Update all condition
 		data.conditions.uppdatAllCondition();
 
-		sceneManager.ChangeScene(introSceneName, true, true, false, true);
+		sceneManager.ChangeScene(introSceneName, true, true, false, true, false, false, false);
 
 		StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
 	}
@@ -181,7 +181,7 @@ public class MONO_Menus : MonoBehaviour {
 		//Update all condition
 		data.conditions.uppdatAllCondition();
 
-		sceneManager.ChangeScene(achievementsSceneName, true, true, false, true);
+		sceneManager.ChangeScene(achievementsSceneName, true, true, false, true, true, false, false);
 		StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
 	}
 
@@ -248,7 +248,7 @@ public class MONO_Menus : MonoBehaviour {
 	{
 		GameObject[] objectsToActivate = { mainMenu };
 		GameObject[] objectsToDeactivate = { pauseMenu };
-		sceneManager.ChangeScene (mainMenuSceneName, false, false, true, true);
+		sceneManager.ChangeScene (mainMenuSceneName, false, false, true, true, false, false, false);
 
 		StartCoroutine( WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
 	}
@@ -333,7 +333,7 @@ public class MONO_Menus : MonoBehaviour {
 		//float delay = sceneManager.GetComponent<MONO_Fade> ().fadeDuration;
 		CloseMenu();
 		ChangeLatestMenu(pauseMenu);
-		sceneManager.ChangeScene(newScene, false, true, true, false);
+		sceneManager.ChangeScene(newScene, false, true, true, false, true, true, true);
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive(false);
 		//inventory.SetActive (true);
