@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15295216, g: 0.19843298, b: 0.4551764, a: 1}
+  m_IndirectSpecularColor: {r: 0.1529519, g: 0.19843343, b: 0.45517552, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -402,7 +402,6 @@ GameObject:
   - component: {fileID: 393375533}
   - component: {fileID: 393375541}
   - component: {fileID: 393375540}
-  - component: {fileID: 393375538}
   - component: {fileID: 393375537}
   - component: {fileID: 393375536}
   - component: {fileID: 393375535}
@@ -459,7 +458,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 393375562}
+  - {fileID: 393375534}
   selectedCommands: []
   variables:
   - {fileID: 393375553}
@@ -545,7 +544,6 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 393375539}
   commandList:
-  - {fileID: 393375538}
   - {fileID: 393375559}
   - {fileID: 393375554}
   - {fileID: 393375537}
@@ -616,24 +614,6 @@ MonoBehaviour:
   waitUntilFinished: 0
   durationOLD: 0
   targetColorOLD: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &393375538
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 393375530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 3
-  indentLevel: 0
-  duration: 0.01
-  targetAlpha: 1
-  waitUntilFinished: 0
-  fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  fadeTexture: {fileID: 0}
 --- !u!114 &393375539
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -784,7 +764,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &393375546
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393375530}
@@ -1497,9 +1477,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   sceneToBeLoaded: MainMenu
+  setStartPosition: 0
   handelInputAfterFade: 1
   changingToMainMenu: 0
   saveOnChange: 1
+  activateMenuButton: 1
+  activateHintButton: 1
+  activateInventory: 1
 --- !u!1 &1064998949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,7 +1507,7 @@ VideoPlayer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1064998949}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: e749efec7c5f84f2f9078ff63c0339d8, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 627d442ecfe604d4eb617da1e4433159, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 894046501}
