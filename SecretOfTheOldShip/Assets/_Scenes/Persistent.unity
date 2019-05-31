@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2679,6 +2679,7 @@ GameObject:
   - component: {fileID: 821634111}
   - component: {fileID: 821634117}
   - component: {fileID: 821634116}
+  - component: {fileID: 821634120}
   m_Layer: 0
   m_Name: Fade Flowchart
   m_TagString: Untagged
@@ -2716,7 +2717,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 67
     y: 70
-    width: 122
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2751,7 +2752,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 821634119}
   selectedCommands: []
   variables:
   - {fileID: 821634111}
@@ -2861,17 +2863,30 @@ MonoBehaviour:
     serializedVersion: 2
     x: 220
     y: 70
-    width: 137
+    width: 130
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 2
   blockName: FadeFromBlack
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 821634120}
   commandList:
   - {fileID: 821634117}
   - {fileID: 821634118}
+--- !u!114 &821634120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 821634110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 821634119}
+  waitForFrames: 1
 --- !u!1 &835684012
 GameObject:
   m_ObjectHideFlags: 0
@@ -9446,7 +9461,7 @@ MonoBehaviour:
       flowChartName: 
       variabelValues: []
     hasSAveData: 1
-    currentScene: Scene1_outside
+    currentScene: MainMenu
     itemsInInentory: []
     flowChartVariableData: []
     playerPosData:
@@ -9458,8 +9473,8 @@ MonoBehaviour:
       qZ: 0
       qW: 0
     conditions:
-      allConditionConditionIndex: 0000000001000000ffffffff030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f00000020000000
-      allConditionConditionsatesfied: 010100000000000101010001000000000001010000000000000101000001000000
+      allConditionConditionIndex: 0000000001000000ffffffff030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d000000
+      allConditionConditionsatesfied: 010100000000000101010000000000000000000000000000000101000000
   achivmetsData:
     flowChartName: 
     variabelValues: []
