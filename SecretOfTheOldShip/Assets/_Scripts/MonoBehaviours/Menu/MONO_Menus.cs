@@ -27,7 +27,10 @@ public class MONO_Menus : MonoBehaviour {
     public Button loadButton;
     public MONO_Inventory       monoInventory;
 
-
+	[Space]
+	public GameObject openMenuButton;
+	public GameObject hintButton;
+	public GameObject inventory;
 
 	[Space]
 	public MONO_CustomMouseCursor cursor;
@@ -115,6 +118,9 @@ public class MONO_Menus : MonoBehaviour {
         CloseMenu();
         ChangeLatestMenu(pauseMenu);
 
+		GameObject[] objectsToActivate = { openMenuButton, hintButton, inventory };
+		GameObject[] objectsToDeactivate = { mainMenu};
+
         SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
         // gets all the inventory items from last game
         for(int i = 0; i < data.itemsInInentory.Length; i++)
@@ -127,7 +133,7 @@ public class MONO_Menus : MonoBehaviour {
 
         sceneManager.ChangeScene(data.currentScene, true, true, false, true);
 
-        mainMenu.SetActive(false);
+		StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
     }
 
 	/// <summary>
@@ -138,6 +144,9 @@ public class MONO_Menus : MonoBehaviour {
 		MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
 		CloseMenu();
 		ChangeLatestMenu(pauseMenu);
+
+		GameObject[] objectsToActivate = { };
+		GameObject[] objectsToDeactivate = { mainMenu };
 
 		SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
 		// gets all the inventory items from last game
@@ -151,7 +160,7 @@ public class MONO_Menus : MonoBehaviour {
 
 		sceneManager.ChangeScene(introSceneName, true, true, false, true);
 
-		mainMenu.SetActive(false);
+		StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
 	}
 
 	public void GoToAchievements()
@@ -159,6 +168,8 @@ public class MONO_Menus : MonoBehaviour {
 		MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
 		CloseMenu();
 		ChangeLatestMenu(pauseMenu);
+		GameObject[] objectsToActivate = { };
+		GameObject[] objectsToDeactivate = { bonusMenu };
 
 		SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
 		// gets all the inventory items from last game
@@ -171,8 +182,7 @@ public class MONO_Menus : MonoBehaviour {
 		data.conditions.uppdatAllCondition();
 
 		sceneManager.ChangeScene(achievementsSceneName, true, true, false, true);
-
-		bonusMenu.SetActive(false);
+		StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
 	}
 
 	//--------------------------------------------------------------------------------
@@ -193,7 +203,6 @@ public class MONO_Menus : MonoBehaviour {
 		{
 			latestMenu = menu.pause;	
 		}
-
 	}
 
 	/// <summary>
@@ -241,7 +250,7 @@ public class MONO_Menus : MonoBehaviour {
 		GameObject[] objectsToDeactivate = { pauseMenu };
 		sceneManager.ChangeScene (mainMenuSceneName, false, false, true, true);
 
-		WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate);
+		StartCoroutine( WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
 	}
 
 	//--------------------------------------------------------------------------------
@@ -300,7 +309,7 @@ public class MONO_Menus : MonoBehaviour {
 	{
 		yield return new WaitForSeconds (fadeDuration);
 
-		if (objectsToDeactivate) {
+		if (objectsToDeactivate != null) {
 			for (int i = 0; i < objectsToDeactivate.Length; i++)
 			{
 				objectsToDeactivate [i].SetActive (false);
