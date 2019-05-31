@@ -33,7 +33,7 @@ public class MONO_LevelMusicManager : MonoBehaviour {
         }
         else
         {
-            Debug.LogError("Must only be one leve music manager");
+            Debug.LogError("Must only be one level music manager");
         }
     }
 

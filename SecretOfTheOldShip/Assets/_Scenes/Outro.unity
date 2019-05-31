@@ -421,6 +421,9 @@ GameObject:
   - component: {fileID: 393375558}
   - component: {fileID: 393375557}
   - component: {fileID: 393375560}
+  - component: {fileID: 393375562}
+  - component: {fileID: 393375561}
+  - component: {fileID: 393375563}
   m_Layer: 0
   m_Name: Outro Flowchart
   m_TagString: Untagged
@@ -453,8 +456,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 393375540}
-  selectedCommands: []
+  - {fileID: 393375534}
+  selectedCommands:
+  - {fileID: 393375538}
   variables:
   - {fileID: 393375553}
   description: 
@@ -540,9 +544,9 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 393375539}
   commandList:
+  - {fileID: 393375538}
   - {fileID: 393375559}
   - {fileID: 393375554}
-  - {fileID: 393375538}
   - {fileID: 393375537}
   - {fileID: 393375536}
   - {fileID: 393375535}
@@ -671,6 +675,7 @@ MonoBehaviour:
   - {fileID: 393375550}
   - {fileID: 393375552}
   - {fileID: 393375551}
+  - {fileID: 393375563}
   - {fileID: 393375556}
   - {fileID: 393375555}
 --- !u!114 &393375541
@@ -962,6 +967,7 @@ MonoBehaviour:
   indentLevel: 0
   videoPlayer: {fileID: 1064998950}
   variable: {fileID: 393375553}
+  setVariableCommand: {fileID: 393375561}
 --- !u!114 &393375555
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1050,7 +1056,7 @@ MonoBehaviour:
   pathToFMODSound: event:/Objects/2D/Fire
 --- !u!114 &393375560
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393375530}
@@ -1075,6 +1081,85 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
+--- !u!114 &393375561
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393375530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb77d0ce495044f6e9feb91b31798e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 28
+  indentLevel: 0
+  variable: {fileID: 393375553}
+  setOperator: 0
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
+--- !u!114 &393375562
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393375530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 326
+    y: 115
+    width: 120
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 27
+  blockName: New Block
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 393375561}
+--- !u!114 &393375563
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393375530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb77d0ce495044f6e9feb91b31798e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 29
+  indentLevel: 0
+  variable: {fileID: 393375553}
+  setOperator: 3
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 1.5
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
 --- !u!1 &565893837
 GameObject:
   m_ObjectHideFlags: 0

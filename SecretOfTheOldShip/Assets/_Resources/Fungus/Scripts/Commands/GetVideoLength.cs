@@ -16,11 +16,12 @@ namespace Fungus
 
 		private UnityEngine.Video.VideoClip videoClip;
 
-		private SetVariable setVariableCommand;
+		public SetVariable setVariableCommand;
 		private SetOperator assign = SetOperator.Assign;
 
 		public override void OnEnter() 
 		{
+			setVariableCommand = FindObjectOfType<SetVariable> ();
 			LengthToVariable ();
 
 			Continue();
