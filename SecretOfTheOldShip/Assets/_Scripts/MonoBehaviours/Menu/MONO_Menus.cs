@@ -158,7 +158,7 @@ public class MONO_Menus : MonoBehaviour {
 		//Update all condition
 		data.conditions.uppdatAllCondition();
 
-		sceneManager.ChangeScene(introSceneName, true, true, false, true, false, false, false);
+		sceneManager.ChangeScene(introSceneName, false, false, false, false, false, false, false);
 
 		StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
 	}
@@ -324,6 +324,7 @@ public class MONO_Menus : MonoBehaviour {
 		}
 	}
 
+	/*
 	/// <summary>
 	/// This is practically only for the bouns menu
 	/// </summary>
@@ -338,6 +339,7 @@ public class MONO_Menus : MonoBehaviour {
 		mainMenu.SetActive(false);
 		//inventory.SetActive (true);
 	}
+	*/
 
 	/// <summary>
 	/// Sets the text components.
