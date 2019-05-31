@@ -16,6 +16,9 @@ public class MONO_SceneManager : MonoBehaviour {
     public Camera loadCamera;
 
 	private MONO_Fade fade;
+	public Fungus.Flowchart fadeFlowchart;
+	[HideInInspector]
+	public float fadeDuration;
 
     public bool testarDeta = false;
 
@@ -54,6 +57,7 @@ public class MONO_SceneManager : MonoBehaviour {
     private void Awake()
     {
         setInputHandling = new Action<MONO_EventManager.EventParam>(SetHandleInput);
+		fadeDuration = fadeFlowchart.GetFloatVariable ("fadeDuration");
     }
     private void OnEnable()
     {

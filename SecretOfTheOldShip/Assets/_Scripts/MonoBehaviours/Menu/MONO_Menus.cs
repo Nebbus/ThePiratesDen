@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class MONO_Menus : MonoBehaviour {
 
-    public string sceneToLoadOnStartNewGame = "Scene1_outside";
+	public string mainMenuSceneName = "MainMenu";
+    public string startSceneName = "Scene1_outside";
+	public string introSceneName = "Intro";
+	public string achievementsSceneName = "Achievements";
 	[Space]
 	public MONO_SceneManager   		sceneManager;
 	public MONO_LevelMusicManager 	audioManager;
@@ -15,6 +18,8 @@ public class MONO_Menus : MonoBehaviour {
 	[HideInInspector]
 	public MONO_IntroManager 		introManager;
 
+	[Space]
+	public Fungus.Flowchart fadeFlowchart;
 
     [HideInInspector]
 	public bool menuOpen = true;
@@ -56,7 +61,11 @@ public class MONO_Menus : MonoBehaviour {
 	[SerializeField]
 	private GameObject pauseMenu;
 	[SerializeField]
-	private GameObject settingsMenu;
+	private GameObject mainSettingsMenu;
+	[SerializeField]
+	private GameObject pauseSettingsMenu;
+	[SerializeField]
+	private GameObject bonusMenu;
 	//[SerializeField]
 	//private GameObject inventory;
 	private MONO_Fade fader;
@@ -90,7 +99,7 @@ public class MONO_Menus : MonoBehaviour {
 		CloseMenu ();
 		ChangeLatestMenu (pauseMenu);
        
-		sceneManager.ChangeScene (sceneToLoadOnStartNewGame, false, false, false, true);
+		sceneManager.ChangeScene (startSceneName, false, false, false, true);
 
 		//StartCoroutine (WaitSomeTime(delay));
 		mainMenu.SetActive (false);
@@ -140,11 +149,31 @@ public class MONO_Menus : MonoBehaviour {
 		//Update all condition
 		data.conditions.uppdatAllCondition();
 
-		sceneManager.ChangeScene("Intro", true, true, false, true);
+		sceneManager.ChangeScene(introSceneName, true, true, false, true);
 
 		mainMenu.SetActive(false);
 	}
 
+	public void GoToAchievements()
+	{
+		MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
+		CloseMenu();
+		ChangeLatestMenu(pauseMenu);
+
+		SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
+		// gets all the inventory items from last game
+		for(int i = 0; i < data.itemsInInentory.Length; i++)
+		{
+			monoInventory.AddItem(items[i]);
+		}
+
+		//Update all condition
+		data.conditions.uppdatAllCondition();
+
+		sceneManager.ChangeScene(achievementsSceneName, true, true, false, true);
+
+		bonusMenu.SetActive(false);
+	}
 
 	//--------------------------------------------------------------------------------
 	//	Methods used when opening and closing menues
@@ -208,9 +237,11 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	public void OpenMainMenu()
 	{
-		sceneManager.ChangeScene ("MainMenu", false, false, true, true);
-		pauseMenu.SetActive (false);
-		mainMenu.SetActive (true);
+		GameObject[] objectsToActivate = { mainMenu };
+		GameObject[] objectsToDeactivate = { pauseMenu };
+		sceneManager.ChangeScene (mainMenuSceneName, false, false, true, true);
+
+		WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate);
 	}
 
 	//--------------------------------------------------------------------------------
@@ -265,15 +296,22 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	/// <returns>The some time.</returns>
 	/// <param name="seconds">Seconds.</param>
-	IEnumerator FadeAndWait()
+	IEnumerator WaitAndActivate(float fadeDuration, GameObject[] objectsToActivate, GameObject[] objectsToDeactivate)
 	{
-		if (!fader.isFading) 
-		{
-			fader.Fade (1);
-			yield return new WaitForSeconds (fader.fadeDuration);
-			//mainMenu.SetActive (false);
-			//introManager.InitiateIntro ();
-			
+		yield return new WaitForSeconds (fadeDuration);
+
+		if (objectsToDeactivate) {
+			for (int i = 0; i < objectsToDeactivate.Length; i++)
+			{
+				objectsToDeactivate [i].SetActive (false);
+			}
+		}
+
+		if (objectsToActivate != null) {
+			for (int i = 0; i < objectsToActivate.Length; i++) 
+			{
+				objectsToActivate [i].SetActive (true);
+			}
 		}
 	}
 
