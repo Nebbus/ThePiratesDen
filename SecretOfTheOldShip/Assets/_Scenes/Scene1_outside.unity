@@ -3305,6 +3305,37 @@ MonoBehaviour:
   satisfied: 1
   hash: -897388368
   startValue: 0
+--- !u!84 &422549980
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 234
+  m_Height: 410
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &422629365
 GameObject:
   m_ObjectHideFlags: 0
@@ -5544,37 +5575,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!84 &701077797
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 298
-  m_Height: 410
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!114 &702430186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7555,6 +7555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 990366835}
   - component: {fileID: 990366836}
+  - component: {fileID: 990366837}
   m_Layer: 0
   m_Name: EnableReaction
   m_TagString: Untagged
@@ -7569,12 +7570,12 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 990366834}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.034463454, y: -0, z: 0.999406, w: 0}
+  m_LocalPosition: {x: -1.8, y: -1.84, z: -21.2}
+  m_LocalScale: {x: 13.700011, y: 0.48, z: 41.5}
   m_Children: []
-  m_Father: {fileID: 2129238674}
-  m_RootOrder: 5
+  m_Father: {fileID: 1221090065}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &990366836
 MonoBehaviour:
@@ -7590,6 +7591,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1479367156}
+--- !u!114 &990366837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 990366834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bb9f26b5539954cb25e1600d1ed64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  conditiosns:
+  - {fileID: 2123075466}
+  reactionCollection: {fileID: 990366836}
+  setGamobjectTo: 1
 --- !u!1 &1000918083
 GameObject:
   m_ObjectHideFlags: 0
@@ -7710,7 +7727,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 1720911517}
+  _compositeMat: {fileID: 1636077292}
 --- !u!92 &1017722109
 Behaviour:
   m_ObjectHideFlags: 0
@@ -9690,6 +9707,7 @@ Transform:
   - {fileID: 1656721417}
   - {fileID: 1839523814}
   - {fileID: 1775651484}
+  - {fileID: 990366835}
   - {fileID: 2129238674}
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -13412,6 +13430,30 @@ Transform:
   m_Father: {fileID: 1772754640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 244.824, z: 0}
+--- !u!21 &1636077292
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!114 &1641295567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14011,30 +14053,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7550d594a51ffd448e29715a75dfb9d, type: 3}
   m_IsPrefabParent: 0
---- !u!21 &1720911517
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!114 &1723721821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15483,7 +15501,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 701077797}
+  m_TargetTexture: {fileID: 422549980}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -43038,21 +43056,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1986074574}
---- !u!114 &1986778575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: Pickup Seashell
-  satisfied: 1
-  hash: 684334808
-  startValue: 0
 --- !u!1 &1988982238
 GameObject:
   m_ObjectHideFlags: 0
@@ -44474,6 +44477,21 @@ MonoBehaviour:
   - {fileID: 856560356}
   - {fileID: 747139582}
   - {fileID: 2037231762}
+--- !u!114 &2123075466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Pickup Seashell
+  satisfied: 1
+  hash: 684334808
+  startValue: 0
 --- !u!1 &2128917853
 GameObject:
   m_ObjectHideFlags: 0
@@ -44530,7 +44548,6 @@ GameObject:
   - component: {fileID: 2129238674}
   - component: {fileID: 2129238673}
   - component: {fileID: 2129238672}
-  - component: {fileID: 2129238675}
   m_Layer: 0
   m_Name: INT_SeaInteractable
   m_TagString: NotInteractable
@@ -44583,26 +44600,9 @@ Transform:
   - {fileID: 675771228}
   - {fileID: 1928777270}
   - {fileID: 1988982239}
-  - {fileID: 990366835}
   m_Father: {fileID: 1221090065}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 3.95, z: 180}
---- !u!114 &2129238675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2129238671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77bb9f26b5539954cb25e1600d1ed64e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: 
-  conditiosns:
-  - {fileID: 1986778575}
-  reactionCollection: {fileID: 0}
-  setGamobjectTo: 1
 --- !u!114 &2135598401
 MonoBehaviour:
   m_ObjectHideFlags: 0
