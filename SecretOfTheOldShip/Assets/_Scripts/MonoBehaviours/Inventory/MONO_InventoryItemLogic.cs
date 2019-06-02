@@ -7,6 +7,7 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
 
 
     public int hashCode = -1;
+    [SerializeField]
     private int index;
     private bool hasBenGrabed = false;
     private MONO_Inventory monoInventory;
@@ -83,8 +84,8 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         if (getSetItemsHashCode != -1)
         {
 
-            doNotreturnItem = !monoInventory.GetItem(getSetItemsHashCode).OnClickInteractionRun(this);
-           
+            //doNotreturnItem = !monoInventory.GetItem(getSetItemsHashCode).OnClickInteractionRun(this);
+            doNotreturnItem = !monoInventory.GetSOBJitemFromInventory(getStetIndex, this.gameObject).OnClickInteractionRun(this);
         }
         // if no reaction was don ore no item is held, return to inventory
         if (doNotreturnItem)
@@ -100,14 +101,15 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
     /// </summary>
     private void HovorEnterdReact()
     {
-
-        if (monoInventory.localHandleInput)
+        /* handel input is active for inventorys, 
+         * and that this thing has a item in it
+         */ 
+        if (monoInventory.localHandleInput && getSetItemsHashCode != -1)
         {
-
-
-            if (getSetItemsHashCode != -1 && getSetItemsHashCode != MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.getHash)
+            if (getSetItemsHashCode != MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.getHash)
             {
-                FlowhartToShow = GameObject.Instantiate(monoInventory.GetItem(getSetItemsHashCode).onHowerText);
+                //FlowhartToShow = GameObject.Instantiate(monoInventory.GetItem(getSetItemsHashCode).onHowerText);
+                FlowhartToShow = GameObject.Instantiate(monoInventory.GetSOBJitemFromInventory(getStetIndex, this.gameObject).onHowerText);
                 FlowhartToShow.ExecuteBlock("Description");
 
 
@@ -135,7 +137,8 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         if (getSetItemsHashCode != -1)
         {
 
-            monoInventory.GetItem(getSetItemsHashCode).OnHoverInteractionRun(this);
+            // monoInventory.GetItem(getSetItemsHashCode).OnHoverInteractionRun(this);
+            monoInventory.GetSOBJitemFromInventory(getStetIndex, this.gameObject).OnHoverInteractionRun(this);
         }
     }
 

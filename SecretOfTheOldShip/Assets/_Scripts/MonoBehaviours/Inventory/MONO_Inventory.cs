@@ -100,10 +100,8 @@ public class MONO_Inventory : MonoBehaviour {
         {
             if (wait != null)
             {
-                Debug.Log("! 1");
                 if (!raycast() && !timerStarted)
                 {
-                    Debug.Log("! 2");
                     timerStarted = true;
                     curentTimer = StartCoroutine(ReactCoroutine());
                   
@@ -111,7 +109,6 @@ public class MONO_Inventory : MonoBehaviour {
                 }
                 else if (raycast() && timerStarted)
                 {
-                    Debug.Log("! 4");
                     StopCoroutine(curentTimer);
                     timerStarted = false;
                 }
@@ -224,17 +221,17 @@ public class MONO_Inventory : MonoBehaviour {
     /// Removes item from inventory
     /// </summary>
     /// <param name="itemToRemove">item to be removed</param>
-    public void RemoveItem(int itemToRemoveIndex)
-    {
-        if (itemToRemoveIndex < invetoryItems.Length && itemToRemoveIndex > (-1))
-        {
-            invetoryItems[itemToRemoveIndex]               = null;
-            invetoryItemsImages[itemToRemoveIndex].sprite  = null;
-            invetoryItemsImages[itemToRemoveIndex].enabled = false;
-            inventorySlots[itemToRemoveIndex].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = -1;
-        }
+    //public void RemoveItem(int itemToRemoveIndex)
+    //{
+    //    if (itemToRemoveIndex < invetoryItems.Length && itemToRemoveIndex > (-1))
+    //    {
+    //        invetoryItems[itemToRemoveIndex]               = null;
+    //        invetoryItemsImages[itemToRemoveIndex].sprite  = null;
+    //        invetoryItemsImages[itemToRemoveIndex].enabled = false;
+    //        inventorySlots[itemToRemoveIndex].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = -1;
+    //    }
 
-    }
+    //}
 
 
 
@@ -250,7 +247,6 @@ public class MONO_Inventory : MonoBehaviour {
         //gets the right index for the item
         for (int i = 0; i < invetoryItems.Length; i++)
         {
-           // Debug.Log((invetoryItems[i] != null && invetoryItems[i].getHash == hash));
             if (invetoryItems[i]!=null && invetoryItems[i].getHash == hash)
             {
                 itemIndex = i;
@@ -273,35 +269,51 @@ public class MONO_Inventory : MonoBehaviour {
     }
 
     /// <summary>
+    /// to get this item from the inventory logic script,
+    /// 
+    /// </summary>
+    /// <param name="inventoryIndex"> index of the item to be recived</param>
+    /// <param name="caller"> ust for debug to se from ther the falty call thas maide</param>
+    /// <returns> a item, if null, then a error has ocured</returns>
+    public SOBJ_Item GetSOBJitemFromInventory(int inventoryIndex, GameObject caller)
+    {
+        if (inventoryIndex < invetoryItems.Length && inventoryIndex > (-1))
+        {
+            return invetoryItems[inventoryIndex];
+        }
+        Debug.LogError("A item logic has tryd to get a time than it dosent has a item");
+        return null;
+
+    }
+
+    /// <summary>
     /// gets a item form the inventory
     /// </summary>
     /// <param name="hash"> the hash of the itenm</param>
     /// <returns> returns null if the item isent in the inventory</returns>
-    public SOBJ_Item GetItem(int hash)
-    {
+    //public SOBJ_Item GetItem(int hash)
+    //{
        
-        int itemIndex = -1;
+    //    int itemIndex = -1;
 
-        //gets the right index for the item
-        for (int i = 0; i < invetoryItems.Length; i++)
-        {
-            if (invetoryItems[i].getHash == hash)
-            {
-                itemIndex = i;
-                break;
-            }
-        }
+    //    //gets the right index for the item
+    //    for (int i = 0; i < invetoryItems.Length; i++)
+    //    {
+    //        if (invetoryItems[i].getHash == hash)
+    //        {
+    //            itemIndex = i;
+    //            break;
+    //        }
+    //    }
 
-        if (itemIndex == -1)
-        {
-            Debug.LogError("Tryed to grab item that isent in the inventory");
-            return null;
-        }
+    //    if (itemIndex == -1)
+    //    {
+    //        Debug.LogError("Tryed to grab item that isent in the inventory");
+    //        return null;
+    //    }
 
-        return invetoryItems[itemIndex];
-
-
-    }
+    //    return invetoryItems[itemIndex];
+    //}
 
 
     /// <summary>
