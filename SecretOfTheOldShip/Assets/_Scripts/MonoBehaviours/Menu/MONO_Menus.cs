@@ -69,26 +69,19 @@ public class MONO_Menus : MonoBehaviour {
 	private GameObject pauseSettingsMenu;
 	[SerializeField]
 	private GameObject bonusMenu;
-	//[SerializeField]
-	//private GameObject inventory;
-	private MONO_Fade fader;
-	//private MONO_Wait waitManager;
-
 
 
 
 	void Start()
 	{
 		SetTextComponents ();
-
-		fader = sceneManager.gameObject.GetComponent<MONO_Fade> ();
 		monoSaveAndLoad = sceneManager.gameObject.GetComponent<MONO_SaveAndLoad> ();
 
         latestMenu = menu.main; 	//main menu is the menu the game is started with
 
-        // Sets if the load button shuld be usavle
+        // Sets if the load button shuld be usable
         MONO_SaveAndLoad.SaveData data  = monoSaveAndLoad.GetData;
-        loadButton.interactable         = data.hasSAveData;
+        loadButton.interactable         = !data.hasSAveData;
 
     }
 
@@ -102,11 +95,12 @@ public class MONO_Menus : MonoBehaviour {
 		CloseMenu ();
 		ChangeLatestMenu (pauseMenu);
        
+		GameObject[] objectsToActivate = { openMenuButton, hintButton, inventory };
+		GameObject[] objectsToDeactivate = { mainMenu};
+
 		sceneManager.ChangeScene (startSceneName, false, false, false, true, true, true, true);
 
-		//StartCoroutine (WaitSomeTime(delay));
-		mainMenu.SetActive (false);
-		//inventory.SetActive (true);
+		StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
 	}
 
 	/// <summary>
@@ -146,7 +140,7 @@ public class MONO_Menus : MonoBehaviour {
 		ChangeLatestMenu(pauseMenu);
 
 		GameObject[] objectsToActivate = { };
-		GameObject[] objectsToDeactivate = { mainMenu };
+		GameObject[] objectsToDeactivate = { mainMenu, openMenuButton, hintButton, inventory };
 
 	/*	SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
 		// gets all the inventory items from last game
