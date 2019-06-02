@@ -100,10 +100,8 @@ public class MONO_Inventory : MonoBehaviour {
         {
             if (wait != null)
             {
-                Debug.Log("! 1");
                 if (!raycast() && !timerStarted)
                 {
-                    Debug.Log("! 2");
                     timerStarted = true;
                     curentTimer = StartCoroutine(ReactCoroutine());
                   
@@ -111,7 +109,6 @@ public class MONO_Inventory : MonoBehaviour {
                 }
                 else if (raycast() && timerStarted)
                 {
-                    Debug.Log("! 4");
                     StopCoroutine(curentTimer);
                     timerStarted = false;
                 }
@@ -221,24 +218,6 @@ public class MONO_Inventory : MonoBehaviour {
 
 
     /// <summary>
-    /// Removes item from inventory
-    /// </summary>
-    /// <param name="itemToRemove">item to be removed</param>
-    public void RemoveItem(int itemToRemoveIndex)
-    {
-        if (itemToRemoveIndex < invetoryItems.Length && itemToRemoveIndex > (-1))
-        {
-            invetoryItems[itemToRemoveIndex]               = null;
-            invetoryItemsImages[itemToRemoveIndex].sprite  = null;
-            invetoryItemsImages[itemToRemoveIndex].enabled = false;
-            inventorySlots[itemToRemoveIndex].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = -1;
-        }
-
-    }
-
-
-
-    /// <summary>
     /// Set item hold by the mouspinter
     /// </summary>
     /// <param name="itemIndex">index of item to grabe</param>
@@ -250,11 +229,14 @@ public class MONO_Inventory : MonoBehaviour {
         //gets the right index for the item
         for (int i = 0; i < invetoryItems.Length; i++)
         {
-           // Debug.Log((invetoryItems[i] != null && invetoryItems[i].getHash == hash));
-            if (invetoryItems[i]!=null && invetoryItems[i].getHash == hash)
+            // crude but works
+            if (invetoryItems[i] != null)
             {
-                itemIndex = i;
-                break;
+                if (invetoryItems[i].getHash == hash)
+                {
+                    itemIndex = i;
+                    break;
+                }
             }
         }
 
@@ -266,43 +248,27 @@ public class MONO_Inventory : MonoBehaviour {
 
         if (invetoryItemsImages[itemIndex].sprite != null && itemIndex < invetoryItems.Length && itemIndex > (-1))
         {
-
             MONO_AdventureCursor.instance.getMonoHoldedItem.GrabbedItem(invetoryItems[itemIndex], invetoryItemsImages[itemIndex].sprite, itemIndex);
             invetoryItemsImages[itemIndex].enabled = false;
         }
     }
 
     /// <summary>
-    /// gets a item form the inventory
+    /// to get this item from the inventory logic script,
     /// </summary>
-    /// <param name="hash"> the hash of the itenm</param>
-    /// <returns> returns null if the item isent in the inventory</returns>
-    public SOBJ_Item GetItem(int hash)
+    /// <param name="inventoryIndex"> index of the item to be recived</param>
+    /// <param name="caller"> ust for debug to se from ther the falty call thas maide</param>
+    /// <returns> a item, if null, then a error has ocured</returns>
+    public SOBJ_Item GetSOBJitemFromInventory(int inventoryIndex, GameObject caller)
     {
-       
-        int itemIndex = -1;
-
-        //gets the right index for the item
-        for (int i = 0; i < invetoryItems.Length; i++)
+        if (inventoryIndex < invetoryItems.Length && inventoryIndex > (-1))
         {
-            if (invetoryItems[i].getHash == hash)
-            {
-                itemIndex = i;
-                break;
-            }
+            return invetoryItems[inventoryIndex];
         }
-
-        if (itemIndex == -1)
-        {
-            Debug.LogError("Tryed to grab item that isent in the inventory");
-            return null;
-        }
-
-        return invetoryItems[itemIndex];
-
+        Debug.LogError("A item logic has tryd to get a time than it dosent has a item");
+        return null;
 
     }
-
 
     /// <summary>
     /// Activates the items that was holded by the mouse pointer,
@@ -329,10 +295,7 @@ public class MONO_Inventory : MonoBehaviour {
 
     }
 
-
-
-
-
+    
     private bool raycast()
     {
         RectTransform rectransform = MONO_AdventureCursor.instance.gameObject.GetComponent<RectTransform>();
