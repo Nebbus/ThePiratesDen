@@ -7,7 +7,7 @@ using FMODUnity;
 
 public class MONO_SceneManager : MonoBehaviour {
 
-	public string startScene;						//The name of the starting scene as a string.
+	public string startScene = "MainMenu";						//The name of the starting scene as a string.
 	public Canvas canvas;							//The canvas holding the black image we fade to.
 	//public StudioParameterTrigger musicTrigger;
 	//public StudioParameterTrigger ambienceTrigger;
@@ -15,7 +15,6 @@ public class MONO_SceneManager : MonoBehaviour {
 
     public Camera loadCamera;
 
-	private MONO_Fade fade;
 	public Fungus.Flowchart fadeFlowchart;
 	[HideInInspector]
 	public float fadeDuration;
@@ -58,7 +57,7 @@ public class MONO_SceneManager : MonoBehaviour {
     private Action<MONO_EventManager.EventParam> setInputHandling;
 
     //==========================================================
-    // Setup and turn of stuff
+    // Setup and turn off stuff
     //==========================================================
     private void Awake()
     {
@@ -83,20 +82,14 @@ public class MONO_SceneManager : MonoBehaviour {
     private IEnumerator Start () 
 	{
         
-            //Find the instance holding the code for fading.
-            fade = FindObjectOfType<MONO_Fade>();
+   	    loadCamera.gameObject.SetActive(true);
 
-            loadCamera.gameObject.SetActive(true);
+    	 //Load first scene, set start position for player and fade in.
+        yield return StartCoroutine(LoadAndSetScene(startScene));
 
-            //Load first scene, set start position for player and fade in.
-            yield return StartCoroutine(LoadAndSetScene(startScene));
-
-            loadCamera.gameObject.SetActive(false);
-
-            fade.Fade(0f);
-        
-
-    }
+        loadCamera.gameObject.SetActive(false);
+		fadeFlowchart.ExecuteBlock ("FadeFromBlack");
+	}
    
     
     /// <summary>
@@ -120,8 +113,8 @@ public class MONO_SceneManager : MonoBehaviour {
     {
         //disable input and fade out.
         handleInput = false;
-        fade.Fade(1f);
-        yield return new WaitForSeconds(fade.fadeDuration);
+		fadeFlowchart.ExecuteBlock ("FadeToBlack");
+        yield return new WaitForSeconds(fadeDuration);
         MONO_SaveAndLoad.SaveData data = saveLoad.GetData;
 
 
@@ -168,7 +161,7 @@ public class MONO_SceneManager : MonoBehaviour {
 		}
 
         //fade in and enable input.
-        fade.Fade(0f);
+		fadeFlowchart.ExecuteBlock("FadeFromBlack");
 
         if (setStartPos)
         {
@@ -177,7 +170,7 @@ public class MONO_SceneManager : MonoBehaviour {
         }
 
 
-        yield return new WaitForSeconds(fade.fadeDuration);
+        yield return new WaitForSeconds(fadeDuration);
 
        
         
@@ -201,8 +194,6 @@ public class MONO_SceneManager : MonoBehaviour {
 	/// </summary>
 	private IEnumerator UnloadAndUnsetScene()
 	{
-
-       
 
       yield return SceneManager.UnloadSceneAsync (SceneManager.GetActiveScene ().buildIndex);
 	}
