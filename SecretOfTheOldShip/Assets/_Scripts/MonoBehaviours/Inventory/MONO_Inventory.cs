@@ -248,7 +248,6 @@ public class MONO_Inventory : MonoBehaviour {
 
         if (invetoryItemsImages[itemIndex].sprite != null && itemIndex < invetoryItems.Length && itemIndex > (-1))
         {
-
             MONO_AdventureCursor.instance.getMonoHoldedItem.GrabbedItem(invetoryItems[itemIndex], invetoryItemsImages[itemIndex].sprite, itemIndex);
             invetoryItemsImages[itemIndex].enabled = false;
         }
