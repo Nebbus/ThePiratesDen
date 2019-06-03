@@ -2638,37 +2638,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfffe43d467eb4a4d96d97d942ffa854, type: 2}
   m_IsPrefabParent: 0
---- !u!84 &307494132
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 732
-  m_Height: 412
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!114 &311165613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3755,6 +3724,37 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 465676671}
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+--- !u!84 &461771615
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 234
+  m_Height: 430
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &465676671
 Prefab:
   m_ObjectHideFlags: 0
@@ -5270,6 +5270,16 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82523101005324770, guid: bfae7120891f44713bcdbb14b7caf024,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 943a8c759a37b97459f8977631ca918c, type: 3}
+    - target: {fileID: 82523101005324770, guid: bfae7120891f44713bcdbb14b7caf024,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfae7120891f44713bcdbb14b7caf024, type: 2}
@@ -11587,7 +11597,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 1932684975}
+  _compositeMat: {fileID: 1958334470}
 --- !u!92 &1017722109
 Behaviour:
   m_ObjectHideFlags: 0
@@ -12277,14 +12287,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.5
+  changeType: 0
   sceneToBeLoaded: Scene2_inside
-  setStartPosition: 0
-  handelInputAfterFade: 1
-  changingToMainMenu: 0
-  saveOnChange: 1
-  activateMenuButton: 1
-  activateHintButton: 1
-  activateInventory: 1
+  handelInputAfterLoad: 1
+  saveDataBefforChangeGame: 1
+  loadDataAfterLoad: 1
+  loadedGame: 1
 --- !u!1001 &1065351963
 Prefab:
   m_ObjectHideFlags: 0
@@ -17533,14 +17541,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.5
+  changeType: 0
   sceneToBeLoaded: ScenePuzzle_SlidingRings
-  setStartPosition: 0
-  handelInputAfterFade: 1
-  changingToMainMenu: 0
-  saveOnChange: 1
-  activateMenuButton: 1
-  activateHintButton: 1
-  activateInventory: 1
+  handelInputAfterLoad: 1
+  saveDataBefforChangeGame: 1
+  loadDataAfterLoad: 1
+  loadedGame: 1
 --- !u!1 &1619978484
 GameObject:
   m_ObjectHideFlags: 0
@@ -18173,14 +18179,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+  changeType: 0
   sceneToBeLoaded: Scene2_inside
-  setStartPosition: 0
-  handelInputAfterFade: 1
-  changingToMainMenu: 0
-  saveOnChange: 1
-  activateMenuButton: 1
-  activateHintButton: 1
-  activateInventory: 1
+  handelInputAfterLoad: 1
+  saveDataBefforChangeGame: 1
+  loadDataAfterLoad: 1
+  loadedGame: 1
 --- !u!1 &1697153399
 GameObject:
   m_ObjectHideFlags: 0
@@ -18651,14 +18655,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+  changeType: 0
   sceneToBeLoaded: Scene2_inside
-  setStartPosition: 0
-  handelInputAfterFade: 0
-  changingToMainMenu: 0
-  saveOnChange: 1
-  activateMenuButton: 1
-  activateHintButton: 1
-  activateInventory: 1
+  handelInputAfterLoad: 1
+  saveDataBefforChangeGame: 1
+  loadDataAfterLoad: 1
+  loadedGame: 1
 --- !u!114 &1750459173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19150,7 +19152,7 @@ MonoBehaviour:
   delay: 0
   onReaction: 0
   startAmbience: 1
-  startMusic: 0
+  startMusic: 1
 --- !u!1001 &1790352272
 Prefab:
   m_ObjectHideFlags: 0
@@ -19937,7 +19939,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 307494132}
+  m_TargetTexture: {fileID: 461771615}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -20756,30 +20758,6 @@ Transform:
   m_Father: {fileID: 2129238674}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1932684975
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1001 &1935957933
 Prefab:
   m_ObjectHideFlags: 0
@@ -20945,6 +20923,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowchart: {fileID: 1986073603}
   interactionBlock: Start
+--- !u!21 &1958334470
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!114 &1962956137
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -98,6 +98,43 @@ public class MONO_LevelMusicManager : MonoBehaviour {
         }
 
     }
+    public void StartStopSound( bool startAmbience, bool startMusic)
+    {
+
+        if (startMusic)
+        {
+            if (!MusicTarget.IsPlaying())
+            {
+                MusicTarget.Play();
+            }
+
+        }
+        else
+        {
+            if (MusicTarget.IsPlaying())
+            {
+                MusicTarget.Stop();
+            }
+        }
+        if (startAmbience)
+        {
+            if (!AmbienceTarget.IsPlaying())
+            {
+                AmbienceTarget.Play();
+            }
+
+        }
+        else
+        {
+            if (AmbienceTarget.IsPlaying())
+            {
+                AmbienceTarget.Stop();
+            }
+
+        }
+
+
+    }
 
 
 

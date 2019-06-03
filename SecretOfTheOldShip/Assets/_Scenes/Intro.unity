@@ -846,6 +846,38 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 075cc1d752efaf64f9cee53e8a1fa358, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &461771615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcd34d881f2b3e40b1f7623c5fcf408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  musicEmittor:
+  - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
+    Params:
+    - Name: puzzle
+      Value: 0
+    - Name: Area
+      Value: 0
+    - Name: Menu
+      Value: 0
+    - Name: Intro
+      Value: 0
+    - Name: Tyst
+      Value: 0
+  ambienceEmittor:
+  - Target: {fileID: 114900551189115810, guid: 5897231331641db4d8c62c41adad930f, type: 2}
+    Params: []
+  valuesAmb: []
+  valuesMus: []
+  namesAmb: []
+  namesMus: []
 --- !u!114 &708236872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +893,36 @@ MonoBehaviour:
   onReaction: 0
   startAmbience: 0
   startMusic: 1
+--- !u!114 &728167383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcd34d881f2b3e40b1f7623c5fcf408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  musicEmittor:
+  - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
+    Params:
+    - Name: Area
+      Value: 0.5
+    - Name: Intro
+      Value: 1
+    - Name: Tyst
+      Value: 0
+  ambienceEmittor:
+  - Target: {fileID: 114900551189115810, guid: 5897231331641db4d8c62c41adad930f, type: 2}
+    Params:
+    - Name: Pause
+      Value: 0
+  valuesAmb: []
+  valuesMus: []
+  namesAmb: []
+  namesMus: []
 --- !u!1 &894046497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1153,16 @@ Prefab:
       propertyPath: writingSpeed
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 82132959475652944, guid: eb2c0682f32794f8982143904cb3d7af,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 943a8c759a37b97459f8977631ca918c, type: 3}
+    - target: {fileID: 82132959475652944, guid: eb2c0682f32794f8982143904cb3d7af,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb2c0682f32794f8982143904cb3d7af, type: 2}
   m_IsPrefabParent: 0
@@ -1177,34 +1249,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1243298064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdcd34d881f2b3e40b1f7623c5fcf408, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  musicEmittor:
-  - Target: {fileID: 114113119448294432, guid: 5897231331641db4d8c62c41adad930f, type: 2}
-    Params:
-    - Name: Tyst
-      Value: 0
-    - Name: Area
-      Value: 0
-    - Name: Intro
-      Value: 1
-  ambienceEmittor:
-  - Target: {fileID: 114900551189115810, guid: 5897231331641db4d8c62c41adad930f, type: 2}
-    Params: []
-  valuesAmb: []
-  valuesMus: []
-  namesAmb: []
-  namesMus: []
 --- !u!1 &1378535667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 2147040024}
+  - {fileID: 461771615}
 --- !u!4 &1508772053
 Transform:
   m_ObjectHideFlags: 0
@@ -1440,9 +1485,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1790089249}
-  selectedCommands:
-  - {fileID: 1790089266}
+  - {fileID: 1790089259}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -1939,7 +1983,7 @@ Prefab:
         type: 2}
       propertyPath: FMODreactions.Array.data[0]
       value: 
-      objectReference: {fileID: 1243298064}
+      objectReference: {fileID: 708236872}
     - target: {fileID: 114636686186420036, guid: 90fb50a205e253f409742c2638ef19bd,
         type: 2}
       propertyPath: otherReactionsTriggers.myOnScriptEnableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1969,7 +2013,12 @@ Prefab:
         type: 2}
       propertyPath: FMODreactions.Array.data[1]
       value: 
-      objectReference: {fileID: 708236872}
+      objectReference: {fileID: 728167383}
+    - target: {fileID: 114154579536713584, guid: 90fb50a205e253f409742c2638ef19bd,
+        type: 2}
+      propertyPath: FMODreactions.Array.data[2]
+      value: 
+      objectReference: {fileID: 728167383}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90fb50a205e253f409742c2638ef19bd, type: 2}
   m_IsPrefabParent: 0

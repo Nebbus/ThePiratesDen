@@ -15,8 +15,9 @@ public class SOBJ_LevelMusicAmbienceStartStop_FMOD : SOBJ_FMODreaction
     protected override void ImmediateReaction()
     {
       
-            MONO_LevelMusicManager.instace.StartStopSound(onReaction == mode.START, startAmbience, startMusic);
-        
-        
+          //  MONO_LevelMusicManager.instace.StartStopSound(onReaction == mode.START, startAmbience, startMusic);
+
+        MONO_LevelMusicManager.instace.StartStopSound( startAmbience, startMusic);
+
     }
 }

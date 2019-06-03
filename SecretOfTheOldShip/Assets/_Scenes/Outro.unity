@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1529519, g: 0.19843343, b: 0.45517552, a: 1}
+  m_IndirectSpecularColor: {r: 0.15295216, g: 0.19843298, b: 0.4551764, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -386,6 +386,16 @@ Prefab:
       propertyPath: writingSpeed
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 82132959475652944, guid: eb2c0682f32794f8982143904cb3d7af,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 943a8c759a37b97459f8977631ca918c, type: 3}
+    - target: {fileID: 82132959475652944, guid: eb2c0682f32794f8982143904cb3d7af,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb2c0682f32794f8982143904cb3d7af, type: 2}
   m_IsPrefabParent: 0
@@ -458,8 +468,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 393375534}
-  selectedCommands: []
+  - {fileID: 393375533}
+  selectedCommands:
+  - {fileID: 393375549}
   variables:
   - {fileID: 393375553}
   description: 
@@ -505,7 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
+    x: 68
     y: 126
     width: 120
     height: 40
@@ -1476,14 +1487,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+  changeType: 0
   sceneToBeLoaded: MainMenu
-  setStartPosition: 0
-  handelInputAfterFade: 1
-  changingToMainMenu: 0
-  saveOnChange: 1
-  activateMenuButton: 1
-  activateHintButton: 1
-  activateInventory: 1
+  handelInputAfterLoad: 1
+  saveDataBefforChangeGame: 1
+  loadDataAfterLoad: 1
+  loadedGame: 1
 --- !u!1 &1064998949
 GameObject:
   m_ObjectHideFlags: 0
