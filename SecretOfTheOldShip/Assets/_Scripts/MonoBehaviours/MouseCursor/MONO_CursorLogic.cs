@@ -376,17 +376,22 @@ public class MONO_CursorLogic : MonoBehaviour
         if (lastUIelemt != currentUIelemt)
         {
             lastUIelemt = currentUIelemt;
+   
             if (currentUIelemt)
             {
                 currentUIelemt.Select();
+                presistentSeneEventSystem.SetSelectedGameObject(currentUIelemt.gameObject);
+
             }
             else
             {
                 presistentSeneEventSystem.SetSelectedGameObject(null);
 
             }
-
         }
+        
+
+    
         
 
     }
