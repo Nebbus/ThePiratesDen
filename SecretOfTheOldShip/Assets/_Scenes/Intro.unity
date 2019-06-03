@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15295216, g: 0.19843298, b: 0.4551764, a: 1}
+  m_IndirectSpecularColor: {r: 0.1529519, g: 0.19843343, b: 0.45517552, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1410,6 +1410,7 @@ GameObject:
   - component: {fileID: 1790089267}
   - component: {fileID: 1790089268}
   - component: {fileID: 1790089266}
+  - component: {fileID: 1790089261}
   m_Layer: 0
   m_Name: Intro
   m_TagString: Untagged
@@ -1459,6 +1460,7 @@ MonoBehaviour:
   - {fileID: 1790089257}
   - {fileID: 1790089256}
   - {fileID: 1790089266}
+  - {fileID: 1790089261}
   - {fileID: 1790089255}
 --- !u!114 &1790089250
 MonoBehaviour:
@@ -1485,8 +1487,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1790089259}
-  selectedCommands: []
+  - {fileID: 1790089249}
+  selectedCommands:
+  - {fileID: 1790089261}
   variables: []
   description: 
   stepPause: 0
@@ -1529,7 +1532,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 8300000, guid: 7aa271a9e568c5c488c9d0b72a3d79d0, type: 3}
+  voiceOverClip: {fileID: 8300000, guid: 277f1fa6fa48a4a3290556a5a95c584e, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1672,7 +1675,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 8300000, guid: 30efbb9bd72e94143859ce37d8ec64c2, type: 3}
+  voiceOverClip: {fileID: 8300000, guid: 4ca0079c99fb54f5dad12980a7ceb455, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1734,6 +1737,23 @@ MonoBehaviour:
   - {fileID: 1790089264}
   - {fileID: 1790089258}
   - {fileID: 1790089267}
+--- !u!114 &1790089261
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1790089247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 33
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 5
+  durationOLD: 0
 --- !u!114 &1790089264
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1792,7 +1812,7 @@ MonoBehaviour:
   indentLevel: 0
   duration: 1
   targetAlpha: 0
-  waitUntilFinished: 1
+  waitUntilFinished: 0
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTexture: {fileID: 0}
 --- !u!114 &1790089267
