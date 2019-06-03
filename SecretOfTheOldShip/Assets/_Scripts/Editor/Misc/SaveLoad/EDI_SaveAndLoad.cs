@@ -16,7 +16,6 @@ public class EDI_SaveAndLoad : Editor {
     }
 
 
-
     public override void OnInspectorGUI()
     {
         EditorGUILayout.HelpBox("NOTE: [baseNameOfVariableCharts]0 (this base namen whit 0 after) is allocated for the achivments flowchart, this is so that it dosen't get whiped then geting starting a new game", MessageType.Info);

@@ -41,7 +41,7 @@ public class MONO_IntroManager : MonoBehaviour {
 
 	public void StartGame()
 	{
-		menuManager.StartNewGame ();
+		menuManager.StartNewGame();
 	}
 
 

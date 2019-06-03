@@ -128,125 +128,121 @@ public class MONO_SaveAndLoad : MonoBehaviour
     }
 
 
-
-
     //Only used to Keep track of saved flowcharts;
     // string: name of flowchart, int: index in data varaialbe
     [SerializeField]
     Dictionary<String, int> hasBenSaved = new Dictionary<string, int>();
 
-    /// <summary>
-    ///  Save 
-    /// </summary>
-    /// <param name="loadAllredySavedData"> TRUE: loads allready saved data and combinds whit new saved data to prevent lost of data ( normal save)
-    ///                                     FALSE: Writes over old data ( then startin a new game )</param>
-    public void handleSave(bool loadAllredySavedData)
-    {
+    ///// <summary>
+    /////  Save 
+    ///// </summary>
+    ///// <param name="loadAllredySavedData"> TRUE: loads allready saved data and combinds whit new saved data to prevent lost of data ( normal save)
+    /////                                     FALSE: Writes over old data ( then startin a new game )</param>
+    //public void handleSave(bool loadAllredySavedData)
+    //{
 
-        GetdataToSave = new SaveData();
+    //    GetdataToSave = new SaveData();
 
-        Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];     
-        Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
+    //    Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];     
+    //    Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
 
-        if (loadAllredySavedData && loadData())
-        {
-            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
-        }
-        else
-        {
-            GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
-        }
+    //    if (loadAllredySavedData && loadData())
+    //    {
+    //        dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
+    //    }
+    //    else
+    //    {
+    //        GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
+    //    }
 
-        //spare down the inventory items;
-        GetdataToSave.itemsInInentory = DeconstructInventoryItem(monoInventory.invetoryItems);
+    //    //spare down the inventory items;
+    //    GetdataToSave.itemsInInentory = DeconstructInventoryItem(monoInventory.invetoryItems);
 
-        // gets the name the current scene, counts on presistent to be 0
-        GetdataToSave.currentScene = SceneManager.GetSceneAt(1).name;
+    //    // gets the name the current scene, counts on presistent to be 0
+    //    GetdataToSave.currentScene = SceneManager.GetSceneAt(1).name;
 
-        //Save all condition variables
-        GetdataToSave.conditions.spareAllcondition();
+    //    //Save all condition variables
+    //    GetdataToSave.conditions.spareAllcondition();
 
-        /* save player postion stuff 
-         * ( only saves stuff if player 
-         * is in scene and is taged "Player")
-         */
-            GetdataToSave.playerPosData.savePlayerPosition();
+    //    /* save player postion stuff 
+    //     * ( only saves stuff if player 
+    //     * is in scene and is taged "Player")
+    //     */
+    //        GetdataToSave.playerPosData.savePlayerPosition();
 
-        // Register that data has ben saved
-        GetdataToSave.hasSAveData = true;
-
-
-
-        //===============================
-        // saves the data
-        //===============================
-
-
-        Save();
-    }
-    /// <summary>
-    /// Same as noraml but set the name to the next scene ( to be used in the save fromt than changing scene)
-    /// </summary>
-    /// <param name="loadAllredySavedData"></param>
-    /// <param name="nextScene"></param>
-    public void handleSave(bool loadAllredySavedData,string nextScene)
-    {
-
-        /*Creats data variabel to be saved
-         *Gets savaed data if wated 
-         */
-        GetdataToSave = new SaveData();
-
-        Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
-
-        Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
-
-        if (loadAllredySavedData && loadData())
-        {
-            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
-        }
-        else
-        {
-            GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
-        }
-
-        //spare down the inventory items;
-        GetdataToSave.itemsInInentory    = DeconstructInventoryItem(monoInventory.invetoryItems);
-
-        //Save curent scene
-        dataToSave.currentScene       = nextScene;
-
-        //Save all condition variables
-        GetdataToSave.conditions.spareAllcondition();
-
-        // Register that data has ben saved
-        GetdataToSave.hasSAveData = true;
+    //    // Register that data has ben saved
+    //    GetdataToSave.hasSAveData = true;
 
 
 
-        /* the save position will be uppdatet
-         * from the scene manager after 
-         * the new scene has ben loaded,
-         * in the other version of this 
-         * funktion is the player position grabbed 
-         * directly from the player, this is becus it will ony
-         * be called from the level scenes (and from the 
-         * editor but it has if to avid errors*/
+    //    //===============================
+    //    // saves the data
+    //    //===============================
+
+
+    //    Save();
+    //}
+    ///// <summary>
+    ///// Same as noraml but set the name to the next scene ( to be used in the save fromt than changing scene)
+    ///// </summary>
+    ///// <param name="loadAllredySavedData"></param>
+    ///// <param name="nextScene"></param>
+    //public void handleSave(bool loadAllredySavedData,string nextScene)
+    //{
+
+    //    /*Creats data variabel to be saved
+    //     *Gets savaed data if wated 
+    //     */
+    //    GetdataToSave = new SaveData();
+
+    //    Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
+
+    //    Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
+
+    //    if (loadAllredySavedData && loadData())
+    //    {
+    //        dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
+    //    }
+    //    else
+    //    {
+    //        GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
+    //    }
+
+    //    //spare down the inventory items;
+    //    GetdataToSave.itemsInInentory    = DeconstructInventoryItem(monoInventory.invetoryItems);
+
+    //    //Save curent scene
+    //    dataToSave.currentScene       = nextScene;
+
+    //    //Save all condition variables
+    //    GetdataToSave.conditions.spareAllcondition();
+
+    //    // Register that data has ben saved
+    //    GetdataToSave.hasSAveData = true;
+
+
+
+    //    /* the save position will be uppdatet
+    //     * from the scene manager after 
+    //     * the new scene has ben loaded,
+    //     * in the other version of this 
+    //     * funktion is the player position grabbed 
+    //     * directly from the player, this is becus it will ony
+    //     * be called from the level scenes (and from the 
+    //     * editor but it has if to avid errors*/
 
  
 
-        //===============================
-        // saves the data
-        //===============================
+    //    //===============================
+    //    // saves the data
+    //    //===============================
 
-        Save();
+    //    Save();
 
-    }
+    //}
 
-    /// <summary>
-    /// version that is specific for the bouns menu
-    /// </summary>
-    public void handleSave()
+
+    public void SaveFromNotPlaingScene(bool CeepOldSaveData)
     {
 
         GetdataToSave = new SaveData();
@@ -265,25 +261,95 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
         //spare down the inventory items;
         GetdataToSave.itemsInInentory = DeconstructInventoryItem(monoInventory.invetoryItems);
+        GetdataToSave.currentScene    = SceneManager.GetSceneAt(1).name;
+        GetdataToSave.conditions.spareAllcondition();
 
-        // gets the name the current scene, counts on presistent to be 0
-        if (loadData() && data.hasSAveData)
+        // Register that data has ben saved
+        GetdataToSave.hasSAveData = true;
+
+        Save();
+    }
+
+
+    public void SaveThenChanginScene(string nextScene)
+    {
+
+        /*Creats data variabel to be saved
+         *Gets savaed data if wated 
+         */
+        GetdataToSave = new SaveData();
+
+        Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
+
+        Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
+
+        if (loadData())
         {
-            GetdataToSave.currentScene = data.currentScene;
-            GetdataToSave.playerPosData = data.playerPosData;
-            GetdataToSave.conditions = data.conditions;
+            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
         }
         else
         {
-            GetdataToSave = new SaveData();
+            GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
         }
+
+        //spare down the inventory items;
+        GetdataToSave.itemsInInentory = DeconstructInventoryItem(monoInventory.invetoryItems);
+
+        //Save curent scene
+        dataToSave.currentScene = nextScene;
+
+        //Save all condition variables
+        GetdataToSave.conditions.spareAllcondition();
+
+        // Register that data has ben saved
+        GetdataToSave.hasSAveData = true;
+
+
 
 
         //===============================
         // saves the data
         //===============================
 
+        Save();
 
+    }
+
+    public void SaveInGame()
+    {
+
+        GetdataToSave = new SaveData();
+
+        Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
+        Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
+
+        if (loadData())
+        {
+            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
+        }
+        else
+        {
+            GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
+        }
+
+        //spare down the inventory items;
+        GetdataToSave.itemsInInentory   = DeconstructInventoryItem(monoInventory.invetoryItems);
+        GetdataToSave.currentScene      = SceneManager.GetSceneAt(1).name;
+        GetdataToSave.conditions.spareAllcondition();
+        GetdataToSave.playerPosData.savePlayerPosition();
+
+        // Register that data has ben saved
+        GetdataToSave.hasSAveData = true;
+
+        Save();
+    }
+
+    /// <summary>
+    /// onlyFor saving data 
+    /// </summary>
+    public void StartNewGAme()
+    {
+        GetdataToSave = new SaveData();
         Save();
     }
 
@@ -293,7 +359,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
         //gets achivment data
         GetdataToSave.getSetAchivment = GetAchivmetData;
-        newAhivmentFlowchart = false;
+        newAhivmentFlowchart          = false;
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file    = File.Open(Application.persistentDataPath + filename, FileMode.OpenOrCreate);
@@ -889,7 +955,6 @@ public class MONO_SaveAndLoad : MonoBehaviour
         }
 
     }
-
 
     /// <summary>
     /// Contains data from that position the 
