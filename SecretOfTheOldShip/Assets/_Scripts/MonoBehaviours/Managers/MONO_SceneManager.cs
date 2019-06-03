@@ -84,8 +84,6 @@ public class MONO_SceneManager : MonoBehaviour {
 
 	private void Start () 
 	{
-        
-   	    loadCamera.gameObject.SetActive(true);
 
     	 //Load first scene, set start position for player and fade in.
         //yield return StartCoroutine(LoadAndSetScene(startScene));
@@ -93,8 +91,6 @@ public class MONO_SceneManager : MonoBehaviour {
         //yield return StartCoroutine(OneSceneStartUpp());
 		StartCoroutine(LoadAndFadeMainMenu());
 
-        loadCamera.gameObject.SetActive(false);
-		fadeFlowchart.ExecuteBlock ("FadeFromBlack");
 	}
 
 	private IEnumerator LoadAndFadeMainMenu()
@@ -102,7 +98,11 @@ public class MONO_SceneManager : MonoBehaviour {
 		yield return StartCoroutine(LoadAndSetScene(startScene));
 
 		yield return StartCoroutine(OneSceneStartUpp());
-	}
+
+        fadeFlowchart.ExecuteBlock("FadeFromBlack");
+
+        yield return new WaitForSeconds(fadeDuration);
+    }
 
 
     /// <summary>

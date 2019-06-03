@@ -34,6 +34,10 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
     [Space]
     public GameObject DebugselecetGamobject;
 
+    [SerializeField]
+    private Transform currentTransform;
+
+
     public bool inventoryMod = false;
     public bool inventoryOppen
     {
@@ -228,6 +232,11 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
             curretnKebordMod = kebordMovmentMod.CLOSESTTARGET;
                 getClosestInteractable();
         }
+        else
+        {
+            // cep over rigt pos
+            CustomCursorTransform.anchoredPosition = geUIpos(currentTransform.position);
+        }
        
     }
   
@@ -244,26 +253,14 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
             }
             else
             {
-                /* if the object has a rec transform, handle it as the inventrory slot
-                * else calculat is screen position
-                */
-                //RectTransform recTransform = getCurretItem.gameObject.GetComponent<RectTransform>();
-                //if(recTransform != null)
-                //{
-                //    CustomCursorTransform.position = new Vector3(recTransform.position.x, recTransform.position.y, 1f);
-                //}
-                //else
-                //{
+
                 if(getCurretItem != null)
                 {
-           
-                    CustomCursorTransform.anchoredPosition = geUIpos(getCurretItem.gameObject.transform.position);
-
+                    currentTransform = getCurretItem.gameObject.transform;
+                    CustomCursorTransform.anchoredPosition = geUIpos(currentTransform.position);
 
                 }
-                    //now you can set the position of the ui element
-                 
-                //}
+
 
                
             }
@@ -331,6 +328,7 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
 
         Selectable bestTarget   = null;
         Vector2 pos              = new Vector2(0,0);
+        Transform tempShosedTarget = null;
         int indexFinal = 0;
         closestInteractable     = null;
         float closestDistanceSqr = Mathf.Infinity;
@@ -350,9 +348,11 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
                 closestDistanceSqr = dSqrToTarget;
                 bestTarget         = selectableUI;
                 pos                = tempPos;
-                indexFinal = i;
+                indexFinal         = i;
+                tempShosedTarget = selectableUI.gameObject.transform;
             }
         }
+        currentTransform                       = tempShosedTarget;
         closestInteractable                    = bestTarget;
         CustomCursorTransform.anchoredPosition = pos;
         currentIndex                           = indexFinal;
