@@ -124,7 +124,7 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
                     return true;
 
                 }
-                return false;
+                //return false;
             }
 
 
