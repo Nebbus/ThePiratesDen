@@ -16,6 +16,7 @@ public class EDI_Inventory : Editor {
     private SerializedProperty inventoryBackImageProperty;
     private SerializedProperty inventoryWaitDelayProperty;
     private SerializedProperty inventoryButtonHiglightProperty;
+    private SerializedProperty descritpionBoxProperty;
 
     private const string inventoryPropItemsImageName            = "invetoryItemsImages";
     private const string inventoryPropItemsName                 = "invetoryItems";
@@ -26,7 +27,7 @@ public class EDI_Inventory : Editor {
     private const string inventoryWaitDelayPropName             = "waitDelay";
     private const string inventoryButtonHiglightPropertyName    = "buttonHiglight";
     private const string pathToItemSlotPrethab                  = "Assets/_Prefabs/UI/Inventory/itemTemplet.prefab";
-
+    private const string descritpionBoxPropertyBoxName = "descritpionBox";
 
 
     private float buttonWhidt = 30f;
@@ -50,6 +51,7 @@ public class EDI_Inventory : Editor {
         inventoryBackImageProperty      = serializedObject.FindProperty(inventoryBackImagePropName);
         inventoryWaitDelayProperty      = serializedObject.FindProperty(inventoryWaitDelayPropName);
         inventoryButtonHiglightProperty = serializedObject.FindProperty(inventoryButtonHiglightPropertyName);
+        descritpionBoxProperty          = serializedObject.FindProperty(descritpionBoxPropertyBoxName);
 
         // Control that the count is upp to date 
         if (MONO_Inventory.numberItemSlots != monoInventory.inventorySlots.Length)
@@ -86,6 +88,7 @@ public class EDI_Inventory : Editor {
         EditorGUILayout.PropertyField(inventoryProperty);
         EditorGUILayout.PropertyField(inventoryBackImageProperty);
         EditorGUILayout.PropertyField(inventoryButtonHiglightProperty);
+        EditorGUILayout.PropertyField(descritpionBoxProperty);
 
         // The buttosn for adding and removin item slots in the invetory
         EditorGUILayout.BeginHorizontal();

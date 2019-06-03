@@ -7,7 +7,8 @@ using System;
 
 public class MONO_Inventory : MonoBehaviour {
 
- 
+
+    public Fungus.SayDialog descritpionBox;
 
     public Image higligtImage;
 
@@ -42,6 +43,9 @@ public class MONO_Inventory : MonoBehaviour {
 
     public Action<MONO_EventManager.EventParam> setLocalInvntoryHandelInput;
     public Action<MONO_EventManager.EventParam> setVisibilityOfInvnetory;
+
+
+
 
     private void Awake()
     {
