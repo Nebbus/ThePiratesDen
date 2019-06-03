@@ -82,18 +82,26 @@ public class MONO_SceneManager : MonoBehaviour {
         handleInput = evntParam.param4;
     }
 
-    private IEnumerator Start () 
+	private void Start () 
 	{
         
    	    loadCamera.gameObject.SetActive(true);
 
     	 //Load first scene, set start position for player and fade in.
-        yield return StartCoroutine(LoadAndSetScene(startScene));
+        //yield return StartCoroutine(LoadAndSetScene(startScene));
 
-        yield return StartCoroutine(OneSceneStartUpp());
+        //yield return StartCoroutine(OneSceneStartUpp());
+		StartCoroutine(LoadAndFadeMainMenu());
 
         loadCamera.gameObject.SetActive(false);
 		fadeFlowchart.ExecuteBlock ("FadeFromBlack");
+	}
+
+	private IEnumerator LoadAndFadeMainMenu()
+	{
+		yield return StartCoroutine(LoadAndSetScene(startScene));
+
+		yield return StartCoroutine(OneSceneStartUpp());
 	}
 
 
