@@ -283,7 +283,7 @@ public class MONO_Menus : MonoBehaviour {
 
 	public void ChangeSFXVolume(float offset)
 	{
-		Text tempText = musicVolumeMain;
+		Text tempText = soundVolumeMain;
 		tempText.text = audioManager.changeSFXVolume (offset);
 		soundVolumeMain.text = tempText.text;
 		soundVolumePaus.text = tempText.text;
