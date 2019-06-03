@@ -218,6 +218,20 @@ public class MONO_Inventory : MonoBehaviour {
 
 
     /// <summary>
+    /// t prevent duplicating of items
+    /// </summary>
+    public void ClerInventory()
+    {
+        for (int i = 0; i < invetoryItems.Length; i++)
+        {
+                invetoryItems[i] = null;
+                invetoryItemsImages[i].sprite = null;
+                invetoryItemsImages[i].enabled = false;
+                inventorySlots[i].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = -1;
+        }
+    }
+
+    /// <summary>
     /// Set item hold by the mouspinter
     /// </summary>
     /// <param name="itemIndex">index of item to grabe</param>

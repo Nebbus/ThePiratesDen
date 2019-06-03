@@ -65,7 +65,7 @@ public class MONO_SceneManager : MonoBehaviour {
     private void Awake()
     {
         setInputHandling = new Action<MONO_EventManager.EventParam>(SetHandleInput);
-		fadeDuration = fadeFlowchart.GetFloatVariable ("fadeDuration");
+		fadeDuration    = fadeFlowchart.GetFloatVariable ("fadeDuration");
     }
     private void OnEnable()
     {
@@ -89,6 +89,8 @@ public class MONO_SceneManager : MonoBehaviour {
 
     	 //Load first scene, set start position for player and fade in.
         yield return StartCoroutine(LoadAndSetScene(startScene));
+
+        yield return StartCoroutine(OneSceneStartUpp());
 
         loadCamera.gameObject.SetActive(false);
 		fadeFlowchart.ExecuteBlock ("FadeFromBlack");
@@ -253,7 +255,6 @@ public class MONO_SceneManager : MonoBehaviour {
 
         handleInput = handelInputAfterFade;
     }
-
 
 
     private IEnumerator FadeSceneToScene(string sceneName, bool handelInputAfterFade, bool saveDataBefforChangeGame, bool loadDataAfterLoad)

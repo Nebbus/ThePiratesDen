@@ -27,10 +27,6 @@ public class MONO_Menus : MonoBehaviour {
     public Button loadButton;
     public MONO_Inventory       monoInventory;
 
-	[Space]
-	public GameObject openMenuButton;
-	public GameObject hintButton;
-	public GameObject inventory;
 
 	[Space]
 	public MONO_CustomMouseCursor cursor;
@@ -112,11 +108,12 @@ public class MONO_Menus : MonoBehaviour {
         CloseMenu();
         ChangeLatestMenu(pauseMenu);
 
-
+        monoInventory.ClerInventory();
 
         SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
+
         // gets all the inventory items from last game
-        for(int i = 0; i < data.itemsInInentory.Length; i++)
+        for (int i = 0; i < data.itemsInInentory.Length; i++)
         {
             monoInventory.AddItem(items[i]);
         }
@@ -132,9 +129,7 @@ public class MONO_Menus : MonoBehaviour {
         bool loadedGame               = true;
         MONO_SceneManager.changeScenType changeType = MONO_SceneManager.changeScenType.MENUtoSCENE;
         sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
-        
-        //sceneManager.ChangeScene(data.currentScene, true, true, false, true, true, true, true);
-        //StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
+
         mainMenu.SetActive(false);
 
     }
@@ -148,9 +143,6 @@ public class MONO_Menus : MonoBehaviour {
 		CloseMenu();
 		ChangeLatestMenu(pauseMenu);
 
-		//GameObject[] objectsToActivate = { };
-		//GameObject[] objectsToDeactivate = { mainMenu }; //openMenuButton, hintButton, inventory
-
 
         string newScene               = introSceneName;
         bool handelInputAfterLoad     = false; 
@@ -160,33 +152,19 @@ public class MONO_Menus : MonoBehaviour {
         MONO_SceneManager.changeScenType changeType = MONO_SceneManager.changeScenType.MENUtoSCENE;
         sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
 
-        // sceneManager.ChangeScene(introSceneName, false, false, false, false, false, false, false);
-        //StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
         mainMenu.SetActive(false);
 
     }
 
 	public void GoToAchievements()
 	{
-		//MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
-		//CloseMenu();
-		//ChangeLatestMenu(pauseMenu);
-		//GameObject[] objectsToActivate = { };
-		//GameObject[] objectsToDeactivate = { bonusMenu };
-
-		//SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
-		//// gets all the inventory items from last game
-		//for(int i = 0; i < data.itemsInInentory.Length; i++)
-		//{
-		//	monoInventory.AddItem(items[i]);
-		//}
-
-		////Update all condition
-		//data.conditions.uppdatAllCondition();
-
-		//sceneManager.ChangeScene(achievementsSceneName, true, true, false, true, true, false, false);
-		//StartCoroutine (WaitAndActivate (sceneManager.fadeDuration, objectsToActivate, objectsToDeactivate));
+		
 	}
+
+
+
+
+
 
 	//--------------------------------------------------------------------------------
 	//	Methods used when opening and closing menues
@@ -249,7 +227,7 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	public void OpenMainMenu()
 	{
-
+        ChangeLatestMenu(mainMenu);
 
         string newScene               = mainMenuSceneName;
         bool handelInputAfterLoad     = true;// not used her
@@ -261,7 +239,7 @@ public class MONO_Menus : MonoBehaviour {
 
 
         pauseMenu.SetActive(false);
-        mainMenu.SetActive(true);
+      //  mainMenu.SetActive(true);
 
 
     }

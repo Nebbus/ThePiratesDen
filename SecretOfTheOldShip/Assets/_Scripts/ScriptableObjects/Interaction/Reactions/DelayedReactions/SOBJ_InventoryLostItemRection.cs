@@ -18,6 +18,10 @@ public class SOBJ_InventoryLostItemRection : SOBJ_DelayedReaction
 
     protected override void ImmediateReaction()
     {
+        if (monoInventory == null)
+        {
+            monoInventory = FindObjectOfType<MONO_Inventory>();
+        }
         monoInventory.RemoveItem(item);
     }
 }

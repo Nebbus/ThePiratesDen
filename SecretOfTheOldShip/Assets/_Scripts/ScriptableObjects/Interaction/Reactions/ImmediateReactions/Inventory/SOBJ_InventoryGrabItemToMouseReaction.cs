@@ -24,6 +24,11 @@ public class SOBJ_InventoryGrabItemToMouseReaction : SOBJ_Reaction
 
     protected override void ImmediateReaction()
     {
+        if(monoInventory == null)
+        {
+            monoInventory = FindObjectOfType<MONO_Inventory>();
+        } 
+
         monoInventory.GrabItem(itemToGrab.getHash);  
     }
 }
