@@ -16,8 +16,16 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
 	public void Exit()
 	{
-		sceneManager.ChangeScene("Scene1_outside", false, true, false, true, true, true, true);
-	}
+        //sceneManager.ChangeScene("Scene1_outside", false, true, false, true, true, true, true);
+        string newScene = "Scene1_outside";
+        bool handelInputAfterLoad       = true;
+        bool saveDataBefforChangeGame   = true;
+        bool loadDataAfterLoad          = true;
+        bool loadedGame                 = false; // not used
+        MONO_SceneManager.changeScenType changeType = MONO_SceneManager.changeScenType.SCENEtoSCENE;
+        sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
+
+    }
 
 	private void Start()
 	{
