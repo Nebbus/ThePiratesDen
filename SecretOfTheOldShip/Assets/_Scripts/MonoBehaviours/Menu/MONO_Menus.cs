@@ -140,7 +140,7 @@ public class MONO_Menus : MonoBehaviour {
 		ChangeLatestMenu(pauseMenu);
 
 		GameObject[] objectsToActivate = { };
-		GameObject[] objectsToDeactivate = { mainMenu, openMenuButton, hintButton, inventory };
+		GameObject[] objectsToDeactivate = { mainMenu };
 
 	/*	SOBJ_Item[] items = monoSaveAndLoad.ReconstructInventoryItems(data.itemsInInentory);
 		// gets all the inventory items from last game
