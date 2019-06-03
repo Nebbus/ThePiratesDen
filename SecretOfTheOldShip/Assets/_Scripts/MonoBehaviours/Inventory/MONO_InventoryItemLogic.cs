@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class MONO_InventoryItemLogic : MONO_InteractionBase
 {
-
-
     public int hashCode = -1;
     [SerializeField]
     private int index;
@@ -109,6 +107,7 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
             if (getSetItemsHashCode != MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.getHash)
             {
                 //FlowhartToShow = GameObject.Instantiate(monoInventory.GetItem(getSetItemsHashCode).onHowerText);
+           
                 FlowhartToShow = GameObject.Instantiate(monoInventory.GetSOBJitemFromInventory(getStetIndex, this.gameObject).onHowerText);
                 FlowhartToShow.ExecuteBlock("Description");
 
