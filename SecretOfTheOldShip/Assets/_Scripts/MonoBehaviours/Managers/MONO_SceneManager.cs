@@ -237,13 +237,6 @@ public class MONO_SceneManager : MonoBehaviour {
         yield return StartCoroutine(LoadAndSetScene(sceneName));
 
         saveLoad.handLoad(true);
-        saveLoad.SaveInGame();
-
-        yield return StartCoroutine(OneSceneStartUpp());
-
-        //fade in and enable input.
-        fadeFlowchart.ExecuteBlock("FadeFromBlack");
-
 
         //setsStartPosition, then loading from menu 
         if (loadedGame)
@@ -257,6 +250,14 @@ public class MONO_SceneManager : MonoBehaviour {
                 player.transform.rotation = data.playerPosData.getRotation;
             }
         }
+        saveLoad.SaveInGame();
+
+        yield return StartCoroutine(OneSceneStartUpp());
+
+        //fade in and enable input.
+        fadeFlowchart.ExecuteBlock("FadeFromBlack");
+
+
 
         yield return new WaitForSeconds(fadeDuration);
 
