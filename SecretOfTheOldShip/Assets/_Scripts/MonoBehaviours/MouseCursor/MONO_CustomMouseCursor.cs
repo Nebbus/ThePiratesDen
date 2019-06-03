@@ -235,7 +235,11 @@ public class MONO_CustomMouseCursor : MonoBehaviour {
         else
         {
             // cep over rigt pos
-            CustomCursorTransform.anchoredPosition = geUIpos(currentTransform.position);
+            if(currentTransform != null)
+            {
+                CustomCursorTransform.anchoredPosition = geUIpos(currentTransform.position);
+            }
+
         }
        
     }

@@ -95,7 +95,10 @@ public class MONO_SceneManager : MonoBehaviour {
 
 	private IEnumerator LoadAndFadeMainMenu()
 	{
-		yield return StartCoroutine(LoadAndSetScene(startScene));
+        fadeFlowchart.ExecuteBlock("FadeToBlack");
+        yield return new WaitForSeconds(fadeDuration);
+
+        yield return StartCoroutine(LoadAndSetScene(startScene));
 
 		yield return StartCoroutine(OneSceneStartUpp());
 
