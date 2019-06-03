@@ -10,7 +10,7 @@ using System;
 public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListener
 {
 
-
+    private MONO_SceneManager monoSceneManager;
   
 
 
@@ -118,7 +118,13 @@ public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListe
         }
     }
 
+    [Tooltip(" if this shuld have get a Selectabe added to it so it can be selected then using keybord")]
     public bool canMoveMouseOver = false;
+
+    [Tooltip("if this simple intaraction shuld obay the handle input OBS: must have the MONO_SceneManager in sen if true")]
+    public bool respectHandleInput = false;
+
+
 
     [Space]
     [Space]
@@ -141,16 +147,15 @@ public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListe
 
     public void Start()
     {
+
+        if (canMoveMouseOver && gameObject.GetComponent(typeof(UnityEngine.UI.Selectable)) == null)
         {
-            if (canMoveMouseOver && gameObject.GetComponent(typeof(UnityEngine.UI.Selectable)) == null)
-            {
-                gameObject.AddComponent(typeof(UnityEngine.UI.Selectable));
-     
-            }
+            gameObject.AddComponent(typeof(UnityEngine.UI.Selectable));
         }
+        monoSceneManager = FindObjectOfType(typeof(MONO_SceneManager)) as MONO_SceneManager;
     }
 
-        private void Update()
+    private void Update()
     {
         
 
@@ -205,22 +210,74 @@ public class MONO_SimpleInteractable : MONO_InteractionBase, Fungus.IWriterListe
 
     public override void OnClick()
     {
-        myClickEvent.Invoke();
+        if (respectHandleInput)
+        {
+
+            if (monoSceneManager.getSetHandleInput)
+            {
+                myClickEvent.Invoke();
+            }
+           
+        }
+        else
+        {
+            myClickEvent.Invoke();
+        }
+
     }
 
     public override void OnHoverEnterd()
     {
-        myHoverEnterdEvent.Invoke();
+        if (respectHandleInput)
+        {
+
+            if (monoSceneManager.getSetHandleInput)
+            {
+                myHoverEnterdEvent.Invoke();
+            }
+
+        }
+        else
+        {
+            myHoverEnterdEvent.Invoke();
+        }
+
     }
 
     public override void OnHover()
     {
-        myHoverEvent.Invoke();
+        if (respectHandleInput)
+        {
+
+            if (monoSceneManager.getSetHandleInput)
+            {
+                myHoverEvent.Invoke();
+            }
+
+        }
+        else
+        {
+            myHoverEvent.Invoke();
+        }
+
     }
 
     public override void OnHoverExit()
     {
-        myHoverExitEvent.Invoke();
+        if (respectHandleInput)
+        {
+
+            if (monoSceneManager.getSetHandleInput)
+            {
+                myHoverExitEvent.Invoke();
+            }
+
+        }
+        else
+        {
+            myHoverExitEvent.Invoke();
+        }
+
     }
 
 
