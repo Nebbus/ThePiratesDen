@@ -89,7 +89,7 @@ public class MONO_Menus : MonoBehaviour {
 		GameObject[] objectsToActivate = { };
 		GameObject[] objectsToDeactivate = { mainMenu };
         CloseMenu();
-        ChangeLatestMenu(pauseMenu);
+		ChangeLatestMenu(pauseMenu.name);
 
         monoSaveAndLoad.StartNewGAme();
         string newScene                             = startSceneName;
@@ -112,7 +112,7 @@ public class MONO_Menus : MonoBehaviour {
 
         MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
         CloseMenu();
-        ChangeLatestMenu(pauseMenu);
+		ChangeLatestMenu(pauseMenu.name);
 
         monoInventory.ClerInventory();
 
@@ -145,7 +145,7 @@ public class MONO_Menus : MonoBehaviour {
 	{
 		MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
 		CloseMenu();
-		ChangeLatestMenu(pauseMenu);
+		ChangeLatestMenu(pauseMenu.name);
 
 		GameObject[] objectsToActivate = { };
 		GameObject[] objectsToDeactivate = { mainMenu };
@@ -181,13 +181,13 @@ public class MONO_Menus : MonoBehaviour {
 	/// Changes the latest menu variable. Used to help the system  knowing which menu to open.
 	/// </summary>
 	/// <param name="menuObject">Gameobject of the current menu.</param>
-	public void ChangeLatestMenu(GameObject menuObject)
+	public void ChangeLatestMenu(string mainOrPause)
 	{
-		if (menuObject.name == "Main") 
+		if (mainOrPause == "Main") 
 		{
 			latestMenu = menu.main;
 		} 
-		else if (menuObject.name == "Pause")
+		else if (mainOrPause == "Pause")
 		{
 			latestMenu = menu.pause;	
 		}
@@ -234,7 +234,7 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	public void OpenMainMenu()
 	{
-        ChangeLatestMenu(mainMenu);
+		ChangeLatestMenu(mainMenu.name);
 		GameObject[] objectsToActivate = { mainMenu};
 		GameObject[] objectsToDeactivate = { pauseMenu };
 
