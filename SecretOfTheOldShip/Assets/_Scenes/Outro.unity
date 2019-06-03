@@ -440,12 +440,12 @@ GameObject:
   - component: {fileID: 393375554}
   - component: {fileID: 393375556}
   - component: {fileID: 393375555}
-  - component: {fileID: 393375559}
   - component: {fileID: 393375560}
   - component: {fileID: 393375562}
   - component: {fileID: 393375561}
   - component: {fileID: 393375563}
   - component: {fileID: 393375546}
+  - component: {fileID: 393375538}
   m_Layer: 0
   m_Name: Outro Flowchart
   m_TagString: Untagged
@@ -480,7 +480,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 393375534}
   selectedCommands:
-  - {fileID: 393375537}
+  - {fileID: 393375538}
   variables:
   - {fileID: 393375553}
   description: 
@@ -565,11 +565,11 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 393375539}
   commandList:
-  - {fileID: 393375559}
   - {fileID: 393375554}
   - {fileID: 393375537}
   - {fileID: 393375536}
   - {fileID: 393375535}
+  - {fileID: 393375538}
   - {fileID: 393375532}
 --- !u!114 &393375535
 MonoBehaviour:
@@ -635,6 +635,23 @@ MonoBehaviour:
   waitUntilFinished: 0
   durationOLD: 0
   targetColorOLD: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &393375538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393375530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 31
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 0.5
+  durationOLD: 0
 --- !u!114 &393375539
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -819,7 +836,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 8300000, guid: ea1f3681d8e050141bfc1157a5f5250f, type: 3}
+  voiceOverClip: {fileID: 8300000, guid: 48a8213ca68d54c2a8ddc374872ad157, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -868,7 +885,7 @@ MonoBehaviour:
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 8300000, guid: f38da2ad3c4330d408a7930a90b42d9e, type: 3}
+  voiceOverClip: {fileID: 8300000, guid: 9c2db18e02f5144bfa4bf9a2b3d5a546, type: 3}
   showAlways: 1
   showCount: 1
   extendPrevious: 0
@@ -1013,20 +1030,6 @@ MonoBehaviour:
     floatRef: {fileID: 393375553}
     floatVal: 1
   durationOLD: 0
---- !u!114 &393375559
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 393375530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 23
-  indentLevel: 0
-  pathToFMODSound: event:/Objects/2D/Fire
 --- !u!114 &393375560
 MonoBehaviour:
   m_ObjectHideFlags: 2
