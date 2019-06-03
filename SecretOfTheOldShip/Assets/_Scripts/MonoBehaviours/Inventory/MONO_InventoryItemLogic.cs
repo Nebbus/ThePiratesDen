@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class MONO_InventoryItemLogic : MONO_InteractionBase
 {
     public int hashCode = -1;
+
+    public Fungus.SayDialog lastBox;
     [SerializeField]
     private int index;
     private bool hasBenGrabed = false;
@@ -67,6 +69,7 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
 
         }
 
+   
     }
 
     /// <summary>
@@ -106,8 +109,9 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         {
             if (getSetItemsHashCode != MONO_AdventureCursor.instance.getMonoHoldedItem.currentItem.getHash)
             {
-                //FlowhartToShow = GameObject.Instantiate(monoInventory.GetItem(getSetItemsHashCode).onHowerText);
-           
+
+                lastBox = Fungus.SayDialog.ActiveSayDialog;
+                Fungus.SayDialog.ActiveSayDialog = monoInventory.descritpionBox;
                 FlowhartToShow = GameObject.Instantiate(monoInventory.GetSOBJitemFromInventory(getStetIndex, this.gameObject).onHowerText);
                 FlowhartToShow.ExecuteBlock("Description");
 
@@ -137,7 +141,9 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
         {
 
             // monoInventory.GetItem(getSetItemsHashCode).OnHoverInteractionRun(this);
+            
             monoInventory.GetSOBJitemFromInventory(getStetIndex, this.gameObject).OnHoverInteractionRun(this);
+
         }
     }
 
@@ -149,8 +155,10 @@ public class MONO_InventoryItemLogic : MONO_InteractionBase
     {
         if (FlowhartToShow != null)
         {
+
             FlowhartToShow.StopAllBlocks();
             Destroy(FlowhartToShow.gameObject);// maybe is exist better solution, but worsk for now
+            Fungus.SayDialog.ActiveSayDialog = lastBox;
         }
     }
 
