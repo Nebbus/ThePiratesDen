@@ -2,7 +2,7 @@
 
 public class SOBJ_ChangeTextureReaction : SOBJ_DelayedReaction
 {
-	public Material target;
+	public Texture target;
 	public GameObject gameObject;
 
 
