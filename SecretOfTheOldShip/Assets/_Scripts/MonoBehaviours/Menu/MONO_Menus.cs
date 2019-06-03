@@ -20,12 +20,13 @@ public class MONO_Menus : MonoBehaviour {
 
 	[Space]
 	public Fungus.Flowchart fadeFlowchart;
+	private float fadeDuration;
 
     [HideInInspector]
 	public bool menuOpen = true;
 	[Space]
-    public Button loadButton;
-    public MONO_Inventory       monoInventory;
+    public Button 			loadButton;
+    public MONO_Inventory 	monoInventory;
 
 
 	[Space]
@@ -79,12 +80,14 @@ public class MONO_Menus : MonoBehaviour {
         MONO_SaveAndLoad.SaveData data  = monoSaveAndLoad.GetData;
         loadButton.interactable         = data.hasSAveData;
 
+		fadeDuration = sceneManager.fadeDuration;
     }
 
 
     public void StartNewGame()
     {
-
+		GameObject[] objectsToActivate = { };
+		GameObject[] objectsToDeactivate = { mainMenu };
         CloseMenu();
         ChangeLatestMenu(pauseMenu);
 
@@ -95,8 +98,8 @@ public class MONO_Menus : MonoBehaviour {
         bool loadDataAfterLoad                      = true;// not used her
         bool loadedGame                             = false;
         MONO_SceneManager.changeScenType changeType = MONO_SceneManager.changeScenType.MENUtoSCENE;
-        sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
-
+        sceneManager.ChangeScene (newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
+		StartCoroutine (WaitAndActivate (fadeDuration, objectsToActivate, objectsToDeactivate));
     }
 
     /// <summary>
@@ -104,6 +107,9 @@ public class MONO_Menus : MonoBehaviour {
     /// </summary>
     public void LoadLastGame()
     {
+		GameObject[] objectsToActivate = { };
+		GameObject[] objectsToDeactivate = { mainMenu };
+
         MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
         CloseMenu();
         ChangeLatestMenu(pauseMenu);
@@ -129,9 +135,7 @@ public class MONO_Menus : MonoBehaviour {
         bool loadedGame               = true;
         MONO_SceneManager.changeScenType changeType = MONO_SceneManager.changeScenType.MENUtoSCENE;
         sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
-
-        mainMenu.SetActive(false);
-
+		StartCoroutine (WaitAndActivate (fadeDuration, objectsToActivate, objectsToDeactivate));
     }
 
 	/// <summary>
@@ -143,6 +147,9 @@ public class MONO_Menus : MonoBehaviour {
 		CloseMenu();
 		ChangeLatestMenu(pauseMenu);
 
+		GameObject[] objectsToActivate = { };
+		GameObject[] objectsToDeactivate = { mainMenu };
+
 
         string newScene               = introSceneName;
         bool handelInputAfterLoad     = false; 
@@ -152,7 +159,7 @@ public class MONO_Menus : MonoBehaviour {
         MONO_SceneManager.changeScenType changeType = MONO_SceneManager.changeScenType.MENUtoSCENE;
         sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
 
-        mainMenu.SetActive(false);
+		StartCoroutine (WaitAndActivate (fadeDuration, objectsToActivate, objectsToDeactivate));
 
     }
 
@@ -228,6 +235,8 @@ public class MONO_Menus : MonoBehaviour {
 	public void OpenMainMenu()
 	{
         ChangeLatestMenu(mainMenu);
+		GameObject[] objectsToActivate = { mainMenu};
+		GameObject[] objectsToDeactivate = { pauseMenu };
 
         string newScene               = mainMenuSceneName;
         bool handelInputAfterLoad     = true;// not used her
@@ -237,11 +246,7 @@ public class MONO_Menus : MonoBehaviour {
         MONO_SceneManager.changeScenType changeType = MONO_SceneManager.changeScenType.SCENEtoMENU;
         sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
 
-
-        pauseMenu.SetActive(false);
-      //  mainMenu.SetActive(true);
-
-
+		StartCoroutine (WaitAndActivate (fadeDuration, objectsToActivate, objectsToDeactivate));
     }
 
 	//--------------------------------------------------------------------------------
@@ -296,7 +301,8 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	/// <returns>The some time.</returns>
 	/// <param name="seconds">Seconds.</param>
-	IEnumerator WaitAndActivate(float fadeDuration, GameObject[] objectsToActivate, GameObject[] objectsToDeactivate)
+	IEnumerator WaitAndActivate(float fadeDuration, GameObject[] objectsToActivate, GameObject[] objectsToDeactivate
+							/*, string newScene, bool loadedGame, bool handelInputAfterLoad, bool saveDataBefforChangeGame, bool loadDataAfterLoad, MONO_SceneManager.changeScenType changeType*/)
 	{
 		yield return new WaitForSeconds (fadeDuration);
 
@@ -313,6 +319,8 @@ public class MONO_Menus : MonoBehaviour {
 				objectsToActivate [i].SetActive (true);
 			}
 		}
+
+		//sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
 	}
 
 
