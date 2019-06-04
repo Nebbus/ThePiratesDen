@@ -26,13 +26,14 @@ namespace Fungus
 		[SerializeField] protected Variable variable;
 
 
-		private SetVariable setVariableCommand;
+		public SetVariable setVariableCommand;
 
 		private SetOperator assign = SetOperator.Assign;
 
 		public override void OnEnter()
 		{
 			ConditionToVariable();
+            Continue();
 		}
 
 		private void ConditionToVariable (){
