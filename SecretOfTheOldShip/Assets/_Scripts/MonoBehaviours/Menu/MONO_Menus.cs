@@ -143,7 +143,9 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	public void StartIntro()
 	{
-		MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
+
+        monoInventory.ClerInventory();
+        monoSaveAndLoad.StartNewGAme();
 		CloseMenu();
 		ChangeLatestMenu(pauseMenu.name);
 
