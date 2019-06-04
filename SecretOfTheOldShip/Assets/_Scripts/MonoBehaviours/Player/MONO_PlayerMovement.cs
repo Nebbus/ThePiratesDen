@@ -123,6 +123,9 @@ public class MONO_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
+
+     
         // If the nav mesh agent is currently waiting for a path, do nothing.
         if (agent.pathPending)
         {
@@ -159,7 +162,7 @@ public class MONO_PlayerMovement : MonoBehaviour
          * speed that the nav mesh agent wants to move at.
          */ 
         animator.SetFloat(hashSpeedPara, speed, speedDampTime, Time.deltaTime);
-
+        
 		KeyboardMovement ();
     }
 
@@ -264,6 +267,12 @@ public class MONO_PlayerMovement : MonoBehaviour
         //	sceneManager.getSetHandleInput = true;
         //}
 
+        //Prevent movment during pick upp animtation
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("HOLD"))
+        {
+            return;
+        }
+
 
         // if using keybord, then dont use on ground klick
         if (MONO_Settings.instance.usingKeybodInput)
@@ -323,10 +332,15 @@ public class MONO_PlayerMovement : MonoBehaviour
            		return;
            }
 
+        //Prevent movment during pick upp animtation
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("HOLD"))
+        {
+            return;
+        }
 
 
-           // Store the interactble that was clicked on.
-           currentInteractable = interactable;
+        // Store the interactble that was clicked on.
+        currentInteractable = interactable;
 
            // Set the destination to the interaction location of the interactable.
            destinationPosition.x = currentInteractable.interactionLocation.position.x;
@@ -344,7 +358,13 @@ public class MONO_PlayerMovement : MonoBehaviour
 	{
 		if ( sceneManager.getSetHandleInput) 
 		{
-			GameObject keyboardInteractable;
+            //Prevent movment during pick upp animtation
+            if (animator.GetCurrentAnimatorStateInfo(0).IsTag("HOLD"))
+            {
+                return;
+            }
+
+            GameObject keyboardInteractable;
 
 			if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
 				keyboardInteractable = new GameObject ();
