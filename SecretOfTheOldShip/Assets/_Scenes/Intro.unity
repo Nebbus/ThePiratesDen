@@ -256,6 +256,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 962683756}
+        m_MethodName: setMeActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   startFlowChart:
@@ -1063,7 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ListenerNumber: 7
+  ListenerNumber: 0
 --- !u!81 &894046504
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1186,6 +1197,29 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb2c0682f32794f8982143904cb3d7af, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &962683754 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114914735538160704, guid: eb2c0682f32794f8982143904cb3d7af,
+    type: 2}
+  m_PrefabInternal: {fileID: 962683753}
+  m_Script: {fileID: 11500000, guid: 3a0bbe22c246e4c78ad8e9816cbae9d5, type: 3}
+--- !u!1 &962683755 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1126034772325998, guid: eb2c0682f32794f8982143904cb3d7af,
+    type: 2}
+  m_PrefabInternal: {fileID: 962683753}
+--- !u!114 &962683756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 962683755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e003a72c4d5d9c94e8a425c6cc3c240a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastBox: {fileID: 962683754}
 --- !u!212 &993507001 stripped
 SpriteRenderer:
   m_PrefabParentObject: {fileID: 212210592567237450, guid: 075cc1d752efaf64f9cee53e8a1fa358,
@@ -1507,9 +1541,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1790089253}
-  selectedCommands:
-  - {fileID: 1790089252}
+  - {fileID: 1790089249}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -1718,7 +1751,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 67
-    y: 288
+    y: 284.0526
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
