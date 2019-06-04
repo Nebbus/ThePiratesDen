@@ -74,13 +74,13 @@ public class MONO_Menus : MonoBehaviour {
 		SetTextComponents ();
 		monoSaveAndLoad = sceneManager.gameObject.GetComponent<MONO_SaveAndLoad> ();
 
-        latestMenu = menu.main; 	//main menu is the menu the game is started with
+        latestMenu = menu.main;     //main menu is the menu the game is started with
 
         // Sets if the load button shuld be usable
-        MONO_SaveAndLoad.SaveData data  = monoSaveAndLoad.GetData;
-        loadButton.interactable         = data.hasSAveData;
+        MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
+        loadButton.interactable = data.hasSAveData;
 
-		fadeDuration = sceneManager.fadeDuration;
+        fadeDuration = sceneManager.fadeDuration;
     }
 
 
@@ -236,7 +236,11 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	public void OpenMainMenu()
 	{
-		ChangeLatestMenu(mainMenu.name);
+
+        
+
+
+        ChangeLatestMenu(mainMenu.name);
 		GameObject[] objectsToActivate = { mainMenu};
 		GameObject[] objectsToDeactivate = { pauseMenu };
 
@@ -321,9 +325,10 @@ public class MONO_Menus : MonoBehaviour {
 				objectsToActivate [i].SetActive (true);
 			}
 		}
-
-		//sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
-	}
+        // Sets if the load button shuld be usable
+        MONO_SaveAndLoad.SaveData data = monoSaveAndLoad.GetData;
+        loadButton.interactable = data.hasSAveData;     //sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
+    }
 
 
 	/// <summary>
