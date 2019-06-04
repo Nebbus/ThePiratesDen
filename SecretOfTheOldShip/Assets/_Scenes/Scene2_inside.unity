@@ -204,6 +204,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &20992808
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1001 &32387696
 Prefab:
   m_ObjectHideFlags: 0
@@ -5814,6 +5838,37 @@ Transform:
   m_Father: {fileID: 823843808}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &321447497
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 509
+  m_Height: 461
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &359225097
 GameObject:
   m_ObjectHideFlags: 0
@@ -7406,8 +7461,6 @@ MonoBehaviour:
   description: End
   requiredConditions:
   - {fileID: 872340121}
-  - {fileID: 1397608307}
-  - {fileID: 1042362034}
   reactionCollection: {fileID: 2049405456}
 --- !u!1 &583215062
 GameObject:
@@ -8096,30 +8149,6 @@ Transform:
   m_Father: {fileID: 311312835}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 135.32901, z: 0}
---- !u!21 &644938653
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1 &646966915
 GameObject:
   m_ObjectHideFlags: 0
@@ -13411,21 +13440,6 @@ MonoBehaviour:
   - {fileID: 1397293055}
   reactionCollection: {fileID: 0}
   setGamobjectTo: 1
---- !u!114 &1042362034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: Pickup Matchbook
-  satisfied: 1
-  hash: -494521235
-  startValue: 0
 --- !u!114 &1043175066 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114707206845671278, guid: 898c592848482aa479a40189fc9f5839,
@@ -13886,7 +13900,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 644938653}
+  _compositeMat: {fileID: 20992808}
 --- !u!114 &1141340949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14045,37 +14059,6 @@ MonoBehaviour:
   interactionLocation: {fileID: 1131762166}
   conditionCollections: []
   defaultReactionCollection: {fileID: 759294438}
---- !u!84 &1172275917
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 509
-  m_Height: 460
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1174876610
 Prefab:
   m_ObjectHideFlags: 0
@@ -15961,21 +15944,6 @@ MonoBehaviour:
   description: Pickup Seashell
   satisfied: 1
   hash: 684334808
-  startValue: 0
---- !u!114 &1397608307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: Pickup Rum
-  satisfied: 1
-  hash: 1912070029
   startValue: 0
 --- !u!1 &1411285537
 GameObject:
@@ -18634,7 +18602,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1172275917}
+  m_TargetTexture: {fileID: 321447497}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -22314,7 +22282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 970905214}
+  selectedFlowchart: {fileID: 2068932535}
 --- !u!4 &1804600061
 Transform:
   m_ObjectHideFlags: 1
@@ -31488,6 +31456,8 @@ GameObject:
   - component: {fileID: 2068932712}
   - component: {fileID: 2068932708}
   - component: {fileID: 2068933102}
+  - component: {fileID: 2068933104}
+  - component: {fileID: 2068933103}
   m_Layer: 0
   m_Name: INT_SkeletonFlowchart
   m_TagString: Untagged
@@ -31508,7 +31478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 1010.4367, y: -1285.9136}
+  scrollPos: {x: 1732.8259, y: -1542.6315}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 402
@@ -31519,7 +31489,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 2068932806}
   selectedCommands: []
   variables: []
   description: 
@@ -33359,6 +33330,8 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2068933104}
+  - {fileID: 2068933103}
   - {fileID: 2068932661}
   - {fileID: 2068932654}
   - {fileID: 2068933079}
@@ -37942,8 +37915,8 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2068932832}
-  - {fileID: 2068933042}
   - {fileID: 2068933041}
+  - {fileID: 2068933042}
   - {fileID: 2068932739}
   - {fileID: 2068932811}
   - {fileID: 2068932738}
@@ -37974,8 +37947,8 @@ MonoBehaviour:
   - {fileID: 2068932741}
   - {fileID: 2068932833}
   - {fileID: 2068932812}
-  - {fileID: 2068933044}
   - {fileID: 2068933043}
+  - {fileID: 2068933044}
   - {fileID: 2068932613}
   - {fileID: 2068932740}
 --- !u!114 &2068932818
@@ -38190,8 +38163,8 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 2068932814}
   - {fileID: 2068932813}
+  - {fileID: 2068932814}
   - {fileID: 2068932743}
   - {fileID: 2068932821}
   - {fileID: 2068932742}
@@ -38219,8 +38192,8 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 2068932819}
   - {fileID: 2068932818}
+  - {fileID: 2068932819}
   - {fileID: 2068932780}
   - {fileID: 2068932822}
   - {fileID: 2068932777}
@@ -42735,9 +42708,9 @@ MonoBehaviour:
   - {fileID: 2068932831}
   - {fileID: 2068932829}
   - {fileID: 2068932820}
+  - {fileID: 2068932824}
   - {fileID: 2068932825}
   - {fileID: 2068932823}
-  - {fileID: 2068932824}
   - {fileID: 2068932612}
   - {fileID: 2068932781}
 --- !u!114 &2068933009
@@ -44695,6 +44668,40 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &2068933103
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876dc6fb4af084da08aed811e79e963f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 683
+  indentLevel: 0
+  condition: {fileID: 114572345385910680, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+    type: 2}
+  variable: {fileID: 2062442242}
+  setVariableCommand: {fileID: 1307823268}
+--- !u!114 &2068933104
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068932534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876dc6fb4af084da08aed811e79e963f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 682
+  indentLevel: 0
+  condition: {fileID: 114907019401040742, guid: 3eed64145a2bddf4d820c14e09bb1ad8,
+    type: 2}
+  variable: {fileID: 2062442253}
+  setVariableCommand: {fileID: 1307823268}
 --- !u!4 &2095786070 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4250746531366702, guid: 898c592848482aa479a40189fc9f5839,
