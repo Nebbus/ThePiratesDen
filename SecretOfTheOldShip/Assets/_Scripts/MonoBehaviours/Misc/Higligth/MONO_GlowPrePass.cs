@@ -8,12 +8,16 @@ public class MONO_GlowPrePass : MonoBehaviour
     private int antiAilising = 2;
 	private static RenderTexture PrePass;
     private static RenderTexture Blurred;
-
-	private Material _blurMat;
+    [SerializeField]
+    [Tooltip("if width or highet is 0, then somthing is wrong (seams to happen momentearly then unity starts but has mad a sma fix to prevent errors from okuring")]
+    private Vector2 DEBUG_screeneSize;
+    private Material _blurMat;
 
 
     void OnEnable()
 	{
+        DEBUG_screeneSize = new Vector2(Screen.width, Screen.height);
+
         PrePass = new RenderTexture(Screen.width, Screen.height, 24);
 
         PrePass.antiAliasing = (QualitySettings.antiAliasing == 0) ? antiAilising : QualitySettings.antiAliasing; 
