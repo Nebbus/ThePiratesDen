@@ -12,9 +12,9 @@ public class MONO_SceneManager : MonoBehaviour {
 
 	public string startScene = "MainMenu";						//The name of the starting scene as a string.
 	public Canvas canvas;							//The canvas holding the black image we fade to.
-	//public StudioParameterTrigger musicTrigger;
-	//public StudioParameterTrigger ambienceTrigger;
     public MONO_SaveAndLoad saveLoad;
+
+    public MONO_Inventory monoInvenotry;        // for returning item then changing scene
 
     public Camera loadCamera;
 
@@ -22,7 +22,7 @@ public class MONO_SceneManager : MonoBehaviour {
 	[HideInInspector]
 	public float fadeDuration;
 
-	[Space]
+    [Space]
 	public GameObject openMenuButton;
 	public GameObject hintButton;
 	public GameObject inventory;
@@ -211,6 +211,12 @@ public class MONO_SceneManager : MonoBehaviour {
 
     public void ChangeScene(string sceneName, bool loadedGame, bool handelnputAfterFade, bool saveDataBefforChangeGame, bool loadDataAfterLoad, changeScenType typeOffFade)
     {
+        //Removes the curent item if annything is held
+        int index = MONO_AdventureCursor.instance.getMonoHoldedItem.ReturnItemToInventorySceneChange();
+        if(index != -1)
+        {
+            monoInvenotry.ReturnToInventory(index);    
+        }
 
         switch (typeOffFade)
         {

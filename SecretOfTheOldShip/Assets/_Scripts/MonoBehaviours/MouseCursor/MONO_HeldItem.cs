@@ -74,8 +74,27 @@ public class MONO_HeldItem : MonoBehaviour
         getSetIndex               = -1;
     }
 
+    /// <summary>
+    /// Clears the items and return the indx of the item that was clered
+    /// (Will be caled from MONO_SceneManager on scene change)
+    /// </summary>
+    /// <returns>index of item that was clerd (-1 if no item was held)</returns>
+   public int ReturnItemToInventorySceneChange()
+    {
+        int returnIndex = getSetIndex;
+        if (returnIndex == -1)
+        {
+            return -1;
+        }
 
-   
+        currentItem              = nullStartItem;
+        currentItemImage.sprite  = null;
+        currentItemImage.enabled = false;
+        getSetIndex              = -1;
+
+
+        return returnIndex;
+    }
 
   
 }
