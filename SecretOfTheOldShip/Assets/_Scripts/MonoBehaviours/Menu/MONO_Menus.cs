@@ -204,8 +204,9 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	public void OpenMenu()
 	{
+        MONO_AdventureCursor.instance.getMonoCursorSprite.setDefultCursor();
         menuOpen = true;
-
+ 
         switch (latestMenu) {
 		case menu.main:
 			mainMenu.SetActive (true);

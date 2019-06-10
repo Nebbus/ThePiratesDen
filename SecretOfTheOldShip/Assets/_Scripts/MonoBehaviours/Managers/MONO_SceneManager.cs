@@ -211,6 +211,8 @@ public class MONO_SceneManager : MonoBehaviour {
 
     public void ChangeScene(string sceneName, bool loadedGame, bool handelnputAfterFade, bool saveDataBefforChangeGame, bool loadDataAfterLoad, changeScenType typeOffFade)
     {
+
+        MONO_AdventureCursor.instance.getMonoCursorSprite.setDefultCursor();
         //Removes the curent item if annything is held
         int index = MONO_AdventureCursor.instance.getMonoHoldedItem.ReturnItemToInventorySceneChange();
         if(index != -1)
