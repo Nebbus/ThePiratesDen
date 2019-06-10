@@ -205,6 +205,15 @@ public class MONO_Menus : MonoBehaviour {
 	public void OpenMenu()
 	{
         MONO_AdventureCursor.instance.getMonoCursorSprite.setDefultCursor();
+        //Removes the curent item if annything is held
+        int index = MONO_AdventureCursor.instance.getMonoHoldedItem.ReturnItemToInventorySceneChange();
+        if (index != -1)
+        {
+            monoInventory.ReturnToInventory(index);
+        }
+
+
+
         menuOpen = true;
  
         switch (latestMenu) {
