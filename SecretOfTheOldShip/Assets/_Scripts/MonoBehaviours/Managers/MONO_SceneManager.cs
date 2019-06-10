@@ -292,7 +292,7 @@ public class MONO_SceneManager : MonoBehaviour {
         MONO_SaveAndLoad.SaveData data = saveLoad.GetData;
         if (saveDataBefforChangeGame)
         {
-            saveLoad.SaveInGame();
+            saveLoad.SaveThenChanginScene(sceneName);
         }
 
 
@@ -306,8 +306,10 @@ public class MONO_SceneManager : MonoBehaviour {
 
         if (loadDataAfterLoad)
         {
-            saveLoad.handLoad(true);
-            saveLoad.SaveInGame();
+            //saveLoad.handLoad(true);
+            //saveLoad.SaveInGame();
+            saveLoad.loadNotSavedData(true);
+            saveLoad.SaveThenChanginScene(sceneName);
         }
 
 
@@ -329,10 +331,10 @@ public class MONO_SceneManager : MonoBehaviour {
         fadeFlowchart.ExecuteBlock("FadeToBlack");
         yield return new WaitForSeconds(fadeDuration);
 
-        if (saveDataBefforChangeGame)
-        {
-            saveLoad.SaveInGame();
-        }
+        //if (saveDataBefforChangeGame)
+        //{
+        //    //saveLoad.SaveInGame();
+        //}
 
         yield return StartCoroutine(OneSceneShutdown());
 

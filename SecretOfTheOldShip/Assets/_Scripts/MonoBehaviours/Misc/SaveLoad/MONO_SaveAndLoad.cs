@@ -21,23 +21,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
     public MONO_Inventory monoInventory = null;
 
 
-    [SerializeField]
-    private SaveData data = null;
 
-
-
-
-    public SaveData GetData
-    {
-        get
-        {
-            if (data == null && loadData())
-            {
-                return data;
-            }
-            return (data == null) ? new SaveData() : data;
-        }
-    }
 
 
 
@@ -113,7 +97,6 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
     [SerializeField]
     private SaveData dataToSave = null;
-
     public SaveData GetdataToSave
     {
         get
@@ -124,6 +107,22 @@ public class MONO_SaveAndLoad : MonoBehaviour
         set
         {
             dataToSave = value;
+        }
+    }
+    public bool hasNotSavedData = false;
+
+
+    [SerializeField]
+    private SaveData data = null;
+    public SaveData GetData
+    {
+        get
+        {
+            if (data == null && loadData())
+            {
+                return data;
+            }
+            return (data == null) ? new SaveData() : data;
         }
     }
 
@@ -270,7 +269,10 @@ public class MONO_SaveAndLoad : MonoBehaviour
         Save();
     }
 
-
+    /// <summary>
+    /// Only uppdates the to be saved file
+    /// </summary>
+    /// <param name="nextScene"></param>
     public void SaveThenChanginScene(string nextScene)
     {
 
@@ -311,13 +313,21 @@ public class MONO_SaveAndLoad : MonoBehaviour
         // saves the data
         //===============================
 
-        Save();
+        GetdataToSave.getSetAchivment = GetAchivmetData;
+        newAhivmentFlowchart = false;
+        hasNotSavedData = true;
 
     }
 
     public void SaveInGame()
     {
-
+        // hack: saves not saved data betfor doing the actual save
+        // (don so not neading to redo any of the old save code
+        if (hasNotSavedData)
+        {
+            Save();
+            hasNotSavedData = false;
+        }
         GetdataToSave = new SaveData();
 
         Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
@@ -421,7 +431,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
     /// current sceen whit walus form 
     /// loade data
     /// </summary>
-    public void UppdateFlowcharts()
+    public void UppdateFlowcharts(SaveData data)
     {
         Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
 
@@ -674,11 +684,32 @@ public class MONO_SaveAndLoad : MonoBehaviour
 //==========================================================================================
 
     /// <summary>
-    /// Loads data from save file if it exsist
+    /// Loads data from save file if it exsist, mostly used then loading a game, 
+    /// then going from menu to game and betwene menus
     /// </summary>
     /// <param name="applayLodedData"> TRUE: emidiet applays the loaded infomration 
     ///                                FALSE: only loade the values</param>
     public void handLoad(bool applayLodedData)
+    {
+        GetdataToSave = new SaveData();
+        hasNotSavedData = false;
+
+        if (loadData())
+        {
+            UppdateSavedReckord();
+            if (applayLodedData)
+            {
+                UppdateFlowcharts(GetData);
+            }
+
+        }
+    }
+
+    /// <summary>
+    /// Uppdates from temp save, used betwene scenes in the game
+    /// </summary>
+    /// <param name="applayLodedData"></param>
+    public void loadNotSavedData(bool applayLodedData)
     {
 
         if (loadData())
@@ -686,7 +717,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
             UppdateSavedReckord();
             if (applayLodedData)
             {
-                UppdateFlowcharts();
+                UppdateFlowcharts(GetdataToSave);
             }
 
         }
