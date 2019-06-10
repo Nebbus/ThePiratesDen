@@ -2329,6 +2329,30 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 189d8c8ccdcaf6a4b8c07f87bab58293, type: 3}
   m_PrefabInternal: {fileID: 781910873}
+--- !u!21 &265625404
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!114 &265668657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3028,37 +3052,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!84 &354984051
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 514
-  m_Height: 465
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!114 &359121561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12099,7 +12092,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 1795426729}
+  _compositeMat: {fileID: 265625404}
 --- !u!81 &1017722108
 AudioListener:
   m_ObjectHideFlags: 0
@@ -18171,6 +18164,37 @@ Transform:
   m_Father: {fileID: 775924980}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1596292963
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 708
+  m_Height: 535
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!114 &1602487302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19367,7 +19391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   target: {fileID: 1772754641}
-  newTag: Untagged
+  newTag: Hand
 --- !u!114 &1750459173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19958,30 +19982,6 @@ Prefab:
     - {fileID: 114791493233639990, guid: 70a3c91e483afcb488d52730fccad3aa, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70a3c91e483afcb488d52730fccad3aa, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1795426729
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!4 &1795877124 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: a61d6adef2983f5498fedef64e3fe267, type: 3}
@@ -20625,6 +20625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   antiAilising: 2
+  DEBUG_screeneSize: {x: 708, y: 535}
 --- !u!20 &1843033807
 Camera:
   m_ObjectHideFlags: 0
@@ -20651,7 +20652,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 354984051}
+  m_TargetTexture: {fileID: 1596292963}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -21849,7 +21850,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1772754642}
+      - m_Target: {fileID: 617297562}
         m_MethodName: CheckAndReact
         m_Mode: 1
         m_Arguments:
@@ -21904,29 +21905,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1775651485}
-        m_MethodName: CheckAndReact
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 617297562}
-        m_MethodName: CheckAndReact
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1196586131}
+        m_MethodName: CheckAndReact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1772754642}
+        m_MethodName: CheckAndReact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1775651485}
         m_MethodName: CheckAndReact
         m_Mode: 1
         m_Arguments:

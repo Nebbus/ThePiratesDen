@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class MONO_SaveAndLoad : MonoBehaviour
 {
     public enum fungusVariableData { STRING, INT, BOOL, FLOAT };
+    public enum dictionary { SAVED, TObeSAVED };
 
     public string filename = "/SecretOfTheOldShip.dat";
 
@@ -63,9 +64,9 @@ public class MONO_SaveAndLoad : MonoBehaviour
             //attemts getting it from loading
             if (loadData())
             {
-                if (data.hasAvchivmentData)
+                if (savedData.hasAvchivmentData)
                 {
-                    return data.getSetAchivment;
+                    return savedData.getSetAchivment;
                 }
 
             }
@@ -113,16 +114,16 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
 
     [SerializeField]
-    private SaveData data = null;
+    private SaveData savedData = null;
     public SaveData GetData
     {
         get
         {
-            if (data == null && loadData())
+            if (savedData == null && loadData())
             {
-                return data;
+                return savedData;
             }
-            return (data == null) ? new SaveData() : data;
+            return (savedData == null) ? new SaveData() : savedData;
         }
     }
 
@@ -132,165 +133,47 @@ public class MONO_SaveAndLoad : MonoBehaviour
     [SerializeField]
     Dictionary<String, int> hasBenSaved = new Dictionary<string, int>();
 
-    ///// <summary>
-    /////  Save 
-    ///// </summary>
-    ///// <param name="loadAllredySavedData"> TRUE: loads allready saved data and combinds whit new saved data to prevent lost of data ( normal save)
-    /////                                     FALSE: Writes over old data ( then startin a new game )</param>
-    //public void handleSave(bool loadAllredySavedData)
-    //{
+    //Only used to Keep track of on get saved flowcharts;
+    // string: name of flowchart, int: index in data varaialbe
+    [SerializeField]
+    Dictionary<String, int> hasNotBenSaved = new Dictionary<string, int>();
 
-    //    GetdataToSave = new SaveData();
-
-    //    Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];     
-    //    Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
-
-    //    if (loadAllredySavedData && loadData())
-    //    {
-    //        dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
-    //    }
-    //    else
-    //    {
-    //        GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
-    //    }
-
-    //    //spare down the inventory items;
-    //    GetdataToSave.itemsInInentory = DeconstructInventoryItem(monoInventory.invetoryItems);
-
-    //    // gets the name the current scene, counts on presistent to be 0
-    //    GetdataToSave.currentScene = SceneManager.GetSceneAt(1).name;
-
-    //    //Save all condition variables
-    //    GetdataToSave.conditions.spareAllcondition();
-
-    //    /* save player postion stuff 
-    //     * ( only saves stuff if player 
-    //     * is in scene and is taged "Player")
-    //     */
-    //        GetdataToSave.playerPosData.savePlayerPosition();
-
-    //    // Register that data has ben saved
-    //    GetdataToSave.hasSAveData = true;
-
-
-
-    //    //===============================
-    //    // saves the data
-    //    //===============================
-
-
-    //    Save();
-    //}
-    ///// <summary>
-    ///// Same as noraml but set the name to the next scene ( to be used in the save fromt than changing scene)
-    ///// </summary>
-    ///// <param name="loadAllredySavedData"></param>
-    ///// <param name="nextScene"></param>
-    //public void handleSave(bool loadAllredySavedData,string nextScene)
-    //{
-
-    //    /*Creats data variabel to be saved
-    //     *Gets savaed data if wated 
-    //     */
-    //    GetdataToSave = new SaveData();
-
-    //    Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
-
-    //    Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
-
-    //    if (loadAllredySavedData && loadData())
-    //    {
-    //        dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
-    //    }
-    //    else
-    //    {
-    //        GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
-    //    }
-
-    //    //spare down the inventory items;
-    //    GetdataToSave.itemsInInentory    = DeconstructInventoryItem(monoInventory.invetoryItems);
-
-    //    //Save curent scene
-    //    dataToSave.currentScene       = nextScene;
-
-    //    //Save all condition variables
-    //    GetdataToSave.conditions.spareAllcondition();
-
-    //    // Register that data has ben saved
-    //    GetdataToSave.hasSAveData = true;
-
-
-
-    //    /* the save position will be uppdatet
-    //     * from the scene manager after 
-    //     * the new scene has ben loaded,
-    //     * in the other version of this 
-    //     * funktion is the player position grabbed 
-    //     * directly from the player, this is becus it will ony
-    //     * be called from the level scenes (and from the 
-    //     * editor but it has if to avid errors*/
-
- 
-
-    //    //===============================
-    //    // saves the data
-    //    //===============================
-
-    //    Save();
-
-    //}
-
-
-    public void SaveFromNotPlaingScene(bool CeepOldSaveData)
-    {
-
-        GetdataToSave = new SaveData();
-
-        Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
-        Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
-
-        if (loadData())
-        {
-            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
-        }
-        else
-        {
-            GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
-        }
-
-        //spare down the inventory items;
-        GetdataToSave.itemsInInentory = DeconstructInventoryItem(monoInventory.invetoryItems);
-        GetdataToSave.currentScene    = SceneManager.GetSceneAt(1).name;
-        GetdataToSave.conditions.spareAllcondition();
-
-        // Register that data has ben saved
-        GetdataToSave.hasSAveData = true;
-
-        Save();
-    }
 
     /// <summary>
     /// Only uppdates the to be saved file
     /// </summary>
     /// <param name="nextScene"></param>
-    public void SaveThenChanginScene(string nextScene)
+    public void SaveToTempStorage(string nextScene)
     {
 
         /*Creats data variabel to be saved
          *Gets savaed data if wated 
          */
-        GetdataToSave = new SaveData();
+
 
         Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
 
         Fungus.Flowchart[] variableFlowCharts = getVariableFlowCharts(flowChartsInScene);
 
+        if (hasNotSavedData)
+        {
+            /* the last saved data dos allready exist
+             * inside the dataTobeSaved, so makes sure 
+             * to only get the data from that file.
+            */
+            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(GetdataToSave, variableFlowCharts, dictionary.TObeSAVED);
+        }
         if (loadData())
         {
-            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
+            /* saves lads last save to add the cages on.
+             * dosent save vem
+             */ 
+            GetdataToSave = new SaveData();
+            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(GetData,variableFlowCharts,dictionary.SAVED);
         }
         else
         {
+            GetdataToSave = new SaveData();
             GetdataToSave.flowChartVariableData = getVariableData(variableFlowCharts);
         }
 
@@ -335,7 +218,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
         if (loadData())
         {
-            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(variableFlowCharts);
+            dataToSave.flowChartVariableData = getAllVariableFlowchartToSave(GetData, variableFlowCharts,dictionary.SAVED);
         }
         else
         {
@@ -377,32 +260,12 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
         bf.Serialize(file, GetdataToSave);
         file.Close();
-        data = GetdataToSave;
-        UppdateSavedReckord();
+        savedData = GetdataToSave;
+        UppdateSavedReckord(dictionary.SAVED, savedData);
 
     }
 
     
-
-    /// <summary>
-    /// Destroys the achivments, cepps rest of the data.
-    /// </summary>
-    public void ClearAchivments()
-    {
-        if (loadData())
-        {
-            data.getSetAchivment = null;
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + filename, FileMode.OpenOrCreate);
-
-
-            bf.Serialize(file, data);
-            file.Close();
-            UppdateSavedReckord();
-        }
-
-    }
-
 
     
     /// <summary>
@@ -417,7 +280,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + filename, FileMode.Open);
-            data = (SaveData)bf.Deserialize(file);
+            savedData = (SaveData)bf.Deserialize(file);
             file.Close();
             return true;
         }
@@ -431,14 +294,16 @@ public class MONO_SaveAndLoad : MonoBehaviour
     /// current sceen whit walus form 
     /// loade data
     /// </summary>
-    public void UppdateFlowcharts(SaveData data)
+    public void UppdateFlowcharts(SaveData data, dictionary dictionaryToUse)
     {
         Fungus.Flowchart[] flowChartsInScene = FindObjectsOfType(typeof(Fungus.Flowchart)) as Fungus.Flowchart[];
+
+        Dictionary<string, int> temp = (dictionaryToUse == dictionary.SAVED) ? hasBenSaved : hasNotBenSaved;
 
         foreach(Fungus.Flowchart chart in flowChartsInScene)
         {
             int index;
-            if(hasBenSaved.TryGetValue(chart.name, out index) )
+            if(temp.TryGetValue(chart.name, out index) )
             {
                 foreach(valueData value in data.flowChartVariableData[index].variabelValues)
                 {
@@ -500,14 +365,31 @@ public class MONO_SaveAndLoad : MonoBehaviour
     /// Uppdates the dictionary that has tarack of
     /// what flowchart that has ben saved
     /// </summary>
-    private void UppdateSavedReckord()
+    private void UppdateSavedReckord(dictionary uppdatet, SaveData data)
     {
         //uppdate the saved dictonary
-        hasBenSaved.Clear();
-        for (int i = 0; i < data.flowChartVariableData.Length; i++)
+
+
+        switch(uppdatet)
         {
-            hasBenSaved.Add(data.flowChartVariableData[i].flowChartName, i);
+            case dictionary.SAVED:
+
+                hasBenSaved.Clear();
+                for (int i = 0; i < data.flowChartVariableData.Length; i++)
+                {
+                    hasBenSaved.Add(data.flowChartVariableData[i].flowChartName, i);
+                }
+                break;
+            case dictionary.TObeSAVED:
+                hasNotBenSaved.Clear();
+                for (int i = 0; i < data.flowChartVariableData.Length; i++)
+                {
+                    hasNotBenSaved.Add(data.flowChartVariableData[i].flowChartName, i);
+                }
+                break;
         }
+
+       
     }
     /// <summary>
     /// Uppdates the dictionary that has tarack of
@@ -519,9 +401,9 @@ public class MONO_SaveAndLoad : MonoBehaviour
         //uppdate the saved dictonary
         loadData();
         hasBenSaved.Clear();
-        for (int i = 0; i < data.flowChartVariableData.Length; i++)
+        for (int i = 0; i < savedData.flowChartVariableData.Length; i++)
         {
-            hasBenSaved.Add(data.flowChartVariableData[i].flowChartName, i);
+            hasBenSaved.Add(savedData.flowChartVariableData[i].flowChartName, i);
         }
     }
 
@@ -590,7 +472,7 @@ public class MONO_SaveAndLoad : MonoBehaviour
     /// <param name="variableFlowCharts"> the flowcharts that is in
     ///                                   the current scene</param>
     /// <returns> array of all flowcharts to save</returns>
-    private variableData[] getAllVariableFlowchartToSave(Fungus.Flowchart[] variableFlowCharts)
+    private variableData[] getAllVariableFlowchartToSave(SaveData data, Fungus.Flowchart[] variableFlowCharts, dictionary dicionaryToUse)
     {   
          //========================================================
          // Gets all flowcharts that arent in the new scene but 
@@ -612,7 +494,15 @@ public class MONO_SaveAndLoad : MonoBehaviour
                 bool isNotInThisScene = !flowchartsFromCurrentScene.TryGetValue(serceName, out indexInData);
                 if (isNotInThisScene)
                 {
-                    hasBenSaved.TryGetValue(serceName, out indexInData);// gets actually index
+                    if (dicionaryToUse == dictionary.SAVED)
+                    {
+                        hasBenSaved.TryGetValue(serceName, out indexInData);// gets actually index
+                    }
+                    else
+                    {
+                       hasNotBenSaved.TryGetValue(serceName, out indexInData);// gets actually index
+                    }
+
                     indexToCepFromOld.Add(indexInData);
                 }
             }
@@ -635,6 +525,8 @@ public class MONO_SaveAndLoad : MonoBehaviour
         return completeDataTosave.ToArray();
     }
 
+
+
     /// <summary>
     /// gets vartiabel datas from list of flocharts
     /// </summary>
@@ -650,8 +542,6 @@ public class MONO_SaveAndLoad : MonoBehaviour
         }
         return completeDataTosave.ToArray();
     }
-
-
 
 
     private string[] DeconstructInventoryItem(SOBJ_Item[] itemsInInventory)
@@ -696,10 +586,10 @@ public class MONO_SaveAndLoad : MonoBehaviour
 
         if (loadData())
         {
-            UppdateSavedReckord();
+            UppdateSavedReckord(dictionary.SAVED, GetData);
             if (applayLodedData)
             {
-                UppdateFlowcharts(GetData);
+                UppdateFlowcharts(GetData, dictionary.SAVED);
             }
 
         }
@@ -712,21 +602,49 @@ public class MONO_SaveAndLoad : MonoBehaviour
     public void loadNotSavedData(bool applayLodedData)
     {
 
-        if (loadData())
+        if (hasNotSavedData)
         {
-            UppdateSavedReckord();
+            UppdateSavedReckord(dictionary.TObeSAVED, GetdataToSave);
             if (applayLodedData)
             {
-                UppdateFlowcharts(GetdataToSave);
+                UppdateFlowcharts(GetdataToSave, dictionary.TObeSAVED);
             }
 
         }
     }
 
+
+//==========================================================================================
+ // Achivment HELPER
+//==========================================================================================
+    /// <summary>
+    /// to se if a flowchart is the achivmet flowchart
+    /// </summary>
+    /// <param name="name"> name if flowchart to check</param>
+    /// <returns></returns>
     public bool isAchivmentFlochart(string name)
     { 
         int difff = name.Length - baseNameOfVariableCharts.Length;// to allow dubble didget flowcharts
         return (difff > 0) ? (name.Remove(name.Length - difff) == baseNameOfVariableCharts) : false;
+    }
+
+    /// <summary>
+    /// Destroys the achivments, cepps rest of the data.
+    /// </summary>
+    public void ClearAchivments()
+    {
+        if (loadData())
+        {
+            savedData.getSetAchivment = null;
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + filename, FileMode.OpenOrCreate);
+
+
+            bf.Serialize(file, savedData);
+            file.Close();
+            UppdateSavedReckord(dictionary.TObeSAVED, GetData);
+        }
+
     }
 
 

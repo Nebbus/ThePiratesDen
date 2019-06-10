@@ -23,6 +23,7 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
 
         private Vector3             startPosition;
         private RectTransform       imageTransform;
+        private RectTransform       targetTransform;
         private Rigidbody2D         rigedBody2D;
         private Image               image;
         private Sprite              defultSprite;
@@ -33,14 +34,15 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
 
         public void ItemImageMoveINIT()
         {
-            rigedBody2D           = lobedItem.GetComponent<Rigidbody2D>();
-            image                 = lobedItem.GetComponent<Image>();
-            defultSprite          = image.sprite;
-            imageTransform        = lobedItem.GetComponent<RectTransform>();
-            presistentSeneEventSystem = FindObjectOfType<EventSystem>();
+            rigedBody2D                 = lobedItem.GetComponent<Rigidbody2D>();
+            image                       = lobedItem.GetComponent<Image>();
+            defultSprite                = image.sprite;
+            imageTransform              = lobedItem.GetComponent<RectTransform>();
+            targetTransform             = inventoryButton.GetComponent<RectTransform>();
+            presistentSeneEventSystem   = FindObjectOfType<EventSystem>();
             presistentCanvansPraycaster = FindObjectOfType<GraphicRaycaster>();
-            startPosition         = imageTransform.position;
-            rigedBody2D.simulated = false;
+            startPosition               = imageTransform.position;
+            rigedBody2D.simulated       = false;
             lobedItem.SetActive(false);
 
         }
@@ -114,7 +116,7 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
             {
                 debug = result.gameObject.name;
                 debugg = result.gameObject.name == inventoryButton.name;
-                if (result.gameObject.name == inventoryButton.name)
+                if ((result.gameObject.name == inventoryButton.name) )
                 {
                     lobedItem.SetActive(false);
                     rigedBody2D.simulated = false;
@@ -126,7 +128,16 @@ public class MONO_Inventory_buttonLigthUpp : MonoBehaviour {
                 }
     
             }
+            if ((imageTransform.localPosition.y < targetTransform.localPosition.y))
+            {
+                lobedItem.SetActive(false);
+                rigedBody2D.simulated = false;
+                imageTransform.position = startPosition;
+                image.sprite = defultSprite;
 
+                return true;
+
+            }
 
             return false;
 

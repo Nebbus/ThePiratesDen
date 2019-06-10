@@ -114,100 +114,6 @@ public class MONO_SceneManager : MonoBehaviour {
     }
 
 
-    /// <summary>
-    /// Changes the scene.
-    /// </summary>
-    /// <param name="sceneName">Scene to load.</param>
-    /// <param name="sceneName">Sets if the start position shuld be set.</param>
-    //public void ChangeScene(string sceneName, bool setStartPos, bool handelnputAfterFade, bool goingToMainMenu, bool save, bool activateMenuButton = true, bool activateHintButton = true, bool activateInventory = true)
-    //{
-    //	StartCoroutine (FadeAndLoad (sceneName, setStartPos, handelnputAfterFade, goingToMainMenu, save, activateMenuButton, activateHintButton, activateInventory));
-    //   }
-
-    /// <summary>
-    /// Disable input, fade out, then switch scene before fading in.
-    /// </summary>
-    /// <param name="sceneName">Scene to load.</param>
-    /// <param name="setStartPos">Sets if the start position shuld be set(onlyUsed then loading.</param>
-    /// <param name="handelUnputAfterFade">Sets if the start position shuld be set.</param>
-    //private IEnumerator FadeAndLoad(string sceneName, bool setStartPos, bool handelInputAfterFade, bool goingToMainMenu, bool save, bool activateMenuButton = true, bool activateHintButton = true, bool activateInventory = true)
-    //{
-    //    //disable input and fade out.
-    //    handleInput = false;
-    //    fadeFlowchart.ExecuteBlock("FadeToBlack");
-    //    yield return new WaitForSeconds(fadeDuration);
-    //    MONO_SaveAndLoad.SaveData data = saveLoad.GetData;
-
-    //    if (save)
-    //    {
-    //        if (goingToMainMenu)
-    //        {
-    //            saveLoad.handleSave(true);
-    //        }
-    //        else
-    //        {
-    //            saveLoad.handleSave(true, sceneName);
-    //        }
-    //    }
-
-    //    saveLoad.SaveInGame();
-
-    //    yield return StartCoroutine(OneSceneShutdown());
-
-
-    //    //Unload old scene and load the new one.
-    //    StartCoroutine(UnloadAndUnsetScene());
-    //    loadCamera.gameObject.SetActive(true);// TEMP CAMERA=================================================================================================================
-    //    yield return StartCoroutine(LoadAndSetScene(sceneName));
-    //    loadCamera.gameObject.SetActive(false); // TEMP CAMERA=================================================================================================================
-
-    //    saveLoad.handLoad(true);
-    //    saveLoad.SaveInGame();
-
-
-    //    if (activateMenuButton)
-    //    {
-    //        openMenuButton.SetActive(true);
-    //    }
-    //    if (activateHintButton)
-    //    {
-    //        hintButton.SetActive(true);
-    //    }
-    //    if (activateInventory)
-    //    {
-    //        inventory.SetActive(true);
-    //    }
-
-
-    //    yield return StartCoroutine(OneSceneStartUpp());
-
-    //    //fade in and enable input.
-    //    fadeFlowchart.ExecuteBlock("FadeFromBlack");
-
-
-
-    //    //setsStartPosition, then loading from menu 
-    //    if (setStartPos)
-    //    {
-
-    //        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-    //        if (player != null)
-    //        {
-    //            player.transform.position = data.playerPosData.getPos;// = new Vector3(0f,1f,2f);
-    //            player.transform.rotation = data.playerPosData.getRotation;
-    //        }
-    //    }
-
-
-    //    yield return new WaitForSeconds(fadeDuration);
-
-
-
-    //    handleInput = handelInputAfterFade;
-    //}
-
-
 
     public void ChangeScene(string sceneName, bool loadedGame, bool handelnputAfterFade, bool saveDataBefforChangeGame, bool loadDataAfterLoad, changeScenType typeOffFade)
     {
@@ -294,7 +200,7 @@ public class MONO_SceneManager : MonoBehaviour {
         MONO_SaveAndLoad.SaveData data = saveLoad.GetData;
         if (saveDataBefforChangeGame)
         {
-            saveLoad.SaveThenChanginScene(sceneName);
+            saveLoad.SaveToTempStorage(sceneName);
         }
 
 
@@ -310,8 +216,9 @@ public class MONO_SceneManager : MonoBehaviour {
         {
             //saveLoad.handLoad(true);
             //saveLoad.SaveInGame();
+
             saveLoad.loadNotSavedData(true);
-            saveLoad.SaveThenChanginScene(sceneName);
+            
         }
 
 
