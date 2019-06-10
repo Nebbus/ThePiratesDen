@@ -34,7 +34,7 @@ public class MONO_PlayerMovement : MonoBehaviour
     /* An hash representing the Locomotion tag, 
      * this is used at runtime in place of a string.
      */
-      private readonly int hashLocomotionTag = Animator.StringToHash("Locomotion");
+     // private readonly int hashLocomotionTag = Animator.StringToHash("Locomotion");
 
     // The key used to retrieve the starting position from the playerSaveData.
     //   public const string startingPositionKey = "starting position";
@@ -160,8 +160,11 @@ public class MONO_PlayerMovement : MonoBehaviour
 
         /* Set the animator's Speed parameter based on the (possibly modified) 
          * speed that the nav mesh agent wants to move at.
-         */ 
-        animator.SetFloat(hashSpeedPara, speed, speedDampTime, Time.deltaTime);
+         */
+
+        float animationsSpeed = speed / 2;
+
+        animator.SetFloat(hashSpeedPara, animationsSpeed, speedDampTime, Time.deltaTime);
         
 		KeyboardMovement ();
     }

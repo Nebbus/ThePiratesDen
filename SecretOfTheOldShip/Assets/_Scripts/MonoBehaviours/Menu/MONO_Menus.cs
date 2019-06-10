@@ -204,8 +204,18 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	public void OpenMenu()
 	{
-        menuOpen = true;
+        MONO_AdventureCursor.instance.getMonoCursorSprite.setDefultCursor();
+        //Removes the curent item if annything is held
+        int index = MONO_AdventureCursor.instance.getMonoHoldedItem.ReturnItemToInventorySceneChange();
+        if (index != -1)
+        {
+            monoInventory.ReturnToInventory(index);
+        }
 
+
+
+        menuOpen = true;
+ 
         switch (latestMenu) {
 		case menu.main:
 			mainMenu.SetActive (true);
@@ -236,10 +246,6 @@ public class MONO_Menus : MonoBehaviour {
 	/// </summary>
 	public void OpenMainMenu()
 	{
-
-        
-
-
         ChangeLatestMenu(mainMenu.name);
 		GameObject[] objectsToActivate = { mainMenu};
 		GameObject[] objectsToDeactivate = { pauseMenu };
@@ -252,7 +258,12 @@ public class MONO_Menus : MonoBehaviour {
         MONO_SceneManager.changeScenType changeType = MONO_SceneManager.changeScenType.SCENEtoMENU;
         sceneManager.ChangeScene(newScene, loadedGame, handelInputAfterLoad, saveDataBefforChangeGame, loadDataAfterLoad, changeType);
 
-		StartCoroutine (WaitAndActivate (fadeDuration, objectsToActivate, objectsToDeactivate));
+
+        // Sets if the load button shuld be usable
+        MONO_SaveAndLoad.SaveData data  = monoSaveAndLoad.GetData;
+        loadButton.interactable         = data.hasSAveData;
+
+        StartCoroutine (WaitAndActivate (fadeDuration, objectsToActivate, objectsToDeactivate));
     }
 
 	//--------------------------------------------------------------------------------
@@ -291,8 +302,8 @@ public class MONO_Menus : MonoBehaviour {
 
 	public void ChangeSFXVolume(float offset)
 	{
-		Text tempText = soundVolumeMain;
-		tempText.text = audioManager.changeSFXVolume (offset);
+		Text tempText        = soundVolumeMain;
+		tempText.text        = audioManager.changeSFXVolume (offset);
 		soundVolumeMain.text = tempText.text;
 		soundVolumePaus.text = tempText.text;
 	}
