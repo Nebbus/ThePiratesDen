@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 165808395}
   - component: {fileID: 165808397}
   - component: {fileID: 165808396}
+  - component: {fileID: 165808398}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -374,6 +375,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: 7
+--- !u!114 &165808398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 165808390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c072b0c78ba8a4ebec1edd40d3eff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowIntensity: 2
+  globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
+  globalLerpFactor: 10
+  _compositeMat: {fileID: 1521798955}
 --- !u!1 &232267158
 GameObject:
   m_ObjectHideFlags: 1
@@ -713,6 +729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 462253615}
   - component: {fileID: 462253616}
+  - component: {fileID: 462253617}
   m_Layer: 0
   m_Name: OuterCircleSprite
   m_TagString: Untagged
@@ -777,6 +794,40 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &462253617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462253614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62bd7e944c7f8e4ab71df6c00b36dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  run: 1
+  mat: {fileID: 2100000, guid: 286bca48214046344b9ec18a5239f6ae, type: 2}
+  delay: 0.025
+  currentMod: 0
+  defultGlossines: 0.5
+  currentGlossines: 0
+  metalicDefautl: 0
+  metalicCurrent: 0
+  backToDefualtSpeed: 0.1
+  glitterGlossinesMax: 0.85
+  glitterGlossinesMin: 0.8
+  glitterGlossinesChange: 0.005
+  normalOffsetDefult: 0.5
+  normalOffsetCurrent: 0.5
+  normalOffsetMax: -0.23
+  normalOffsetMin: -0.83
+  normalOffsetChange: 0.0075
+  higlightValue: 0.6
+  higlightSpeed: 0.01
+  higlightMetalic: 1
+  higlightMetalicSpeed: 0.1
+  BlockChanges: 0
+  lastHiglight: 0
 --- !u!1 &525949438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1764,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowChart: {fileID: 1684474420}
+  innerRt: {fileID: 2022548801}
+  midleRt: {fileID: 976406455}
+  outerRt: {fileID: 2121318107}
+  innerR: {fileID: 1989600620}
+  midleR: {fileID: 1766591165}
+  outerR: {fileID: 462253617}
+  tempIn: 0
+  tempMi: 0
+  tempOu: 0
+  rotating: 0
 --- !u!4 &874268159
 Transform:
   m_ObjectHideFlags: 0
@@ -1959,7 +2020,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   myHoverEnterdEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1766591165}
+        m_MethodName: SetHig
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   myHoverEvent:
@@ -1969,7 +2041,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   myHoverExitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1766591165}
+        m_MethodName: SetDefult
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   otherReactionsTriggers:
@@ -3016,6 +3099,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1521798955
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1 &1673603989
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,6 +3332,9 @@ GameObject:
   - component: {fileID: 1684474463}
   - component: {fileID: 1684474462}
   - component: {fileID: 1684474485}
+  - component: {fileID: 1684474486}
+  - component: {fileID: 1684474487}
+  - component: {fileID: 1684474488}
   m_Layer: 0
   m_Name: SlidingPuzzle
   m_TagString: Untagged
@@ -3306,7 +3416,7 @@ MonoBehaviour:
   scrollPos: {x: 583.8203, y: 94.568306}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 432
+  blockViewHeight: 371
   zoom: 0.7600002
   scrollViewRect:
     serializedVersion: 2
@@ -3315,14 +3425,15 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1684474459}
+  - {fileID: 1684474425}
   selectedCommands:
-  - {fileID: 1684474455}
+  - {fileID: 1684474487}
   variables:
   - {fileID: 1684474433}
   - {fileID: 1684474432}
   - {fileID: 1684474431}
   - {fileID: 1684474444}
+  - {fileID: 1684474486}
   description: 
   stepPause: 0
   colorCommands: 1
@@ -3437,6 +3548,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1684474416}
   commandList:
+  - {fileID: 1684474488}
   - {fileID: 1684474445}
   - {fileID: 1684474466}
   - {fileID: 1684474446}
@@ -3444,6 +3556,7 @@ MonoBehaviour:
   - {fileID: 1684474429}
   - {fileID: 1684474479}
   - {fileID: 1684474465}
+  - {fileID: 1684474487}
 --- !u!114 &1684474426
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4882,6 +4995,74 @@ MonoBehaviour:
   itemId: 228
   indentLevel: 0
   pathToFMODSound: event:/Characters/Player/VA/Ha/Ha (2)
+--- !u!114 &1684474486
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1684474415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d02d9822eec54c98afe95bb497211b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 1
+  key: RotIng
+  value: 0
+--- !u!114 &1684474487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1684474415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb77d0ce495044f6e9feb91b31798e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 229
+  indentLevel: 0
+  variable: {fileID: 1684474486}
+  setOperator: 0
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
+--- !u!114 &1684474488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1684474415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb77d0ce495044f6e9feb91b31798e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 230
+  indentLevel: 0
+  variable: {fileID: 1684474486}
+  setOperator: 0
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
 --- !u!114 &1684474520
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -5203,6 +5384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1766591162}
   - component: {fileID: 1766591163}
+  - component: {fileID: 1766591165}
   m_Layer: 0
   m_Name: MiddleCircleSprite
   m_TagString: Untagged
@@ -5267,6 +5449,40 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1766591165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766591161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62bd7e944c7f8e4ab71df6c00b36dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  run: 1
+  mat: {fileID: 2100000, guid: fec4cc3fc3cfbcb438f144aa44b7f653, type: 2}
+  delay: 0.025
+  currentMod: 0
+  defultGlossines: 0.5
+  currentGlossines: 0
+  metalicDefautl: 0
+  metalicCurrent: 0
+  backToDefualtSpeed: 0.1
+  glitterGlossinesMax: 0.85
+  glitterGlossinesMin: 0.8
+  glitterGlossinesChange: 0.005
+  normalOffsetDefult: 0.5
+  normalOffsetCurrent: 0.5
+  normalOffsetMax: -0.23
+  normalOffsetMin: -0.83
+  normalOffsetChange: 0.0075
+  higlightValue: 0.6
+  higlightSpeed: 0.01
+  higlightMetalic: 1
+  higlightMetalicSpeed: 0.1
+  BlockChanges: 0
+  lastHiglight: 0
 --- !u!114 &1767780925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5682,6 +5898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1989600617}
   - component: {fileID: 1989600618}
+  - component: {fileID: 1989600620}
   m_Layer: 0
   m_Name: InnerCircleSprite
   m_TagString: Untagged
@@ -5746,6 +5963,40 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1989600620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1989600616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62bd7e944c7f8e4ab71df6c00b36dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  run: 1
+  mat: {fileID: 2100000, guid: 739b18513e9a1f24890ff362b75c0c7e, type: 2}
+  delay: 0.025
+  currentMod: 0
+  defultGlossines: 0.5
+  currentGlossines: 0
+  metalicDefautl: 0
+  metalicCurrent: 0
+  backToDefualtSpeed: 0.1
+  glitterGlossinesMax: 0.85
+  glitterGlossinesMin: 0.8
+  glitterGlossinesChange: 0.005
+  normalOffsetDefult: 0.5
+  normalOffsetCurrent: 0.5
+  normalOffsetMax: -0.23
+  normalOffsetMin: -0.83
+  normalOffsetChange: 0.0075
+  higlightValue: 0.6
+  higlightSpeed: 0.01
+  higlightMetalic: 1
+  higlightMetalicSpeed: 0.1
+  BlockChanges: 0
+  lastHiglight: 0
 --- !u!1 &2022548797
 GameObject:
   m_ObjectHideFlags: 0
@@ -5807,7 +6058,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   myHoverEnterdEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1989600620}
+        m_MethodName: SetHig
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   myHoverEvent:
@@ -5817,7 +6079,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   myHoverExitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1989600620}
+        m_MethodName: SetDefult
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   otherReactionsTriggers:
@@ -6556,7 +6829,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   myHoverEnterdEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 462253617}
+        m_MethodName: SetHig
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   myHoverEvent:
@@ -6566,7 +6850,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   myHoverExitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 462253617}
+        m_MethodName: SetDefult
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   otherReactionsTriggers:
