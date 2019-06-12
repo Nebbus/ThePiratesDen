@@ -69,13 +69,18 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 	{
         //Modulo ();
    
-         tempIn = round(innerRt.eulerAngles.z);// .rotation.z;
-         tempMi = round(midleRt.eulerAngles.z);//.rotation.z;
-         tempOu = round(outerRt.eulerAngles.z);//.rotation.z;
+         tempIn = round(innerRt.eulerAngles.z);
+         tempMi = round(midleRt.eulerAngles.z);
+         tempOu = round(outerRt.eulerAngles.z);
 
-        setGlitter();
+        setTheRingsModes();
 
         rotating = flowChart.GetBooleanVariable("RotIng");
+
+        /*Prevents from cheking if the rotation isent done,
+         * prevents that the puzzle get finished then the
+         * ring just passes the corect position
+         */
         if (rotating)
         {
             return;
@@ -93,7 +98,11 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
 
     }
-    private void setGlitter()
+    /// <summary>
+    /// Break out to make the uppdate
+    /// funktion easyer to read
+    /// </summary>
+    private void setTheRingsModes()
     {
 
         if (finished)
@@ -118,16 +127,21 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
         }
         else
         {
-            setRing(tempIn, innerR);
-            setRing(tempMi, midleR);
-            setRing(tempOu, outerR);
+            setRingMode(tempIn, innerR);
+            setRingMode(tempMi, midleR);
+            setRingMode(tempOu, outerR);
         }
 
     }
 
 
-
-    private void setRing(float value, TEST script)
+    /// <summary>
+    /// set the ring to glitter if 
+    /// it is att 0
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="script"></param>
+    private void setRingMode(float value, TEST script)
     {
         if (value == 0f)
         {

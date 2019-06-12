@@ -44,16 +44,20 @@ public class TEST : MonoBehaviour {
     [Space]
     [Space]
 
-    public float higlightValue;
-    public float higlightSpeed = 0.05f;
-    public float higlightMetalic = 1f;
-    public float higlightMetalicSpeed = 0.1f;
+    public float higlightGlossinesMax;
+    public float higlightGlossinesMin   = 0.6f;
+    public float higlightGlossinesChange = 0.05f;
 
+    public float higlightMetalic        = 1f;
+    public float higlightMetalicSpeed   = 0.1f;
+
+    public float higlightNormal         = 2f;
+    public float higlightNormalSpeed    = 0.1f;
 
     private WaitForSeconds timer;
-    private const string gliterVar = "_Glossiness";
-    private const string bumpMapScale = "_BumpScale";
-    private const string metalic = "_Metallic";
+    private const string glossinesName      = "_Glossiness";
+    private const string bumpMapScale   = "_BumpScale";
+    private const string metalic        = "_Metallic";
     private Coroutine glitrar;
 
     //will beset by ring manager, prevents higlight
@@ -96,7 +100,8 @@ public class TEST : MonoBehaviour {
     {
 
         if (glitrar != null) { StopCoroutine(glitrar); }
-        mat.SetFloat(gliterVar, defultGlossines);
+
+        mat.SetFloat(glossinesName, defultGlossines);
         mat.SetFloat(bumpMapScale, normalOffsetDefult);
         mat.SetFloat(metalic, metalicDefautl);
     }
@@ -132,7 +137,7 @@ public class TEST : MonoBehaviour {
                     {
                         float temp = Mathf.MoveTowards(currentGlossines, defultGlossines, backToDefualtSpeed);
                         currentGlossines = temp;
-                        mat.SetFloat(gliterVar, currentGlossines);
+                        mat.SetFloat(glossinesName, currentGlossines);
                     }
 
             
@@ -156,8 +161,8 @@ public class TEST : MonoBehaviour {
                     {
                         glitterGlossinesChange *= -1;
                     }
-                    currentGlossines = mat.GetFloat(gliterVar) + glitterGlossinesChange;
-                    mat.SetFloat(gliterVar, currentGlossines);
+                    currentGlossines = mat.GetFloat(glossinesName) + glitterGlossinesChange;
+                    mat.SetFloat(glossinesName, currentGlossines);
 
                     //Fluters the normal
                     if ((normalOffsetCurrent > normalOffsetMax && normalOffsetChange > 0) || (normalOffsetCurrent < normalOffsetMin && normalOffsetChange < 0))
@@ -170,22 +175,30 @@ public class TEST : MonoBehaviour {
 
                     break;
                 case MODE.HIGLIGHT:
-                    if ((currentGlossines != higlightValue))
+
+                    //Fluters the glossynes
+                    if ((currentGlossines > higlightGlossinesMax && higlightGlossinesChange > 0) || (currentGlossines < higlightGlossinesMin && higlightGlossinesChange < 0))
                     {
-                       
-                        currentGlossines = Mathf.Clamp( mat.GetFloat(gliterVar) + higlightSpeed, 0.0f, higlightValue);
-                        mat.SetFloat(gliterVar, currentGlossines);
+                        higlightGlossinesChange *= -1;
                     }
-                    if(metalicCurrent != higlightMetalic)
+                    currentGlossines = mat.GetFloat(glossinesName) + higlightGlossinesChange;
+                    mat.SetFloat(glossinesName, currentGlossines);
+
+
+
+
+
+                    //Sets the metalic value
+                    if (metalicCurrent != higlightMetalic)
                     {
                         metalicCurrent = Mathf.Clamp(mat.GetFloat(metalic) + higlightMetalicSpeed, metalicDefautl, higlightMetalic);
                         mat.SetFloat(metalic, metalicCurrent);
 
                     }
 
-                    if (normalOffsetCurrent != normalOffsetDefult)
+                    if (normalOffsetCurrent != higlightNormal)
                     {
-                        float temp = Mathf.MoveTowards(normalOffsetCurrent, normalOffsetDefult, higlightSpeed);
+                        float temp = Mathf.MoveTowards(normalOffsetCurrent, higlightNormal, higlightNormalSpeed);
                         normalOffsetCurrent = temp;
                         mat.SetFloat(bumpMapScale, normalOffsetCurrent);
                     }
