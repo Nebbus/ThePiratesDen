@@ -7,10 +7,10 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
 	public Flowchart flowChart;
 
-	//private int tempInner;
-	//private int tempMiddle;
-	//private int tempOuter;
-	private MONO_SceneManager sceneManager;
+    private int tempInner;
+    private int tempMiddle;
+    private int tempOuter;
+    private MONO_SceneManager sceneManager;
 
 	private bool finished = false;
 
@@ -71,8 +71,7 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
         /*Prevents from cheking if the rotation isent done,
          * prevents that the puzzle get finished then the
-         * ring just passes the corect position
-         */
+         * ring just passes the corect position*/
         if (rotating)
         {
             return;
@@ -89,23 +88,23 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
 
     }
- 
-	//private void Modulo()
-	//{
-	//	tempInner =  flowChart.GetIntegerVariable("InnerCircle");
-	//	tempMiddle =  flowChart.GetIntegerVariable("MiddleCircle");
-	//	tempOuter =  flowChart.GetIntegerVariable("OuterCircle");
 
-	//	tempInner = tempInner % 8;
-	//	tempMiddle = tempMiddle % 8;
-	//	tempOuter = tempOuter % 8;
+    private void Modulo()
+    {
+        tempInner = flowChart.GetIntegerVariable("InnerCircle");
+        tempMiddle = flowChart.GetIntegerVariable("MiddleCircle");
+        tempOuter = flowChart.GetIntegerVariable("OuterCircle");
 
-	//	flowChart.SetIntegerVariable ("InnerCircle", tempInner);
-	//	flowChart.SetIntegerVariable ("MiddleCircle", tempMiddle);
-	//	flowChart.SetIntegerVariable ("OuterCircle", tempOuter);
-	//}
+        tempInner = tempInner % 8;
+        tempMiddle = tempMiddle % 8;
+        tempOuter = tempOuter % 8;
 
-	private void PuzzleFinished()
+        flowChart.SetIntegerVariable("InnerCircle", tempInner);
+        flowChart.SetIntegerVariable("MiddleCircle", tempMiddle);
+        flowChart.SetIntegerVariable("OuterCircle", tempOuter);
+    }
+
+    private void PuzzleFinished()
 	{
 		flowChart.ExecuteBlock ("Finished");
 		//yield return new WaitForSeconds (3);
