@@ -7,9 +7,9 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
 	public Flowchart flowChart;
 
-	private int tempInner;
-	private int tempMiddle;
-	private int tempOuter;
+	//private int tempInner;
+	//private int tempMiddle;
+	//private int tempOuter;
 	private MONO_SceneManager sceneManager;
 
 	private bool finished = false;
@@ -21,14 +21,6 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
     public Transform midleRt;
     public Transform outerRt;
 
-
-    [Space]
-    [Space]
-
-
-    public TEST innerR;
-    public TEST midleR;
-    public TEST outerR;
     [Space]
     [Space]
    public float tempIn;
@@ -73,7 +65,7 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
          tempMi = round(midleRt.eulerAngles.z);
          tempOu = round(outerRt.eulerAngles.z);
 
-        setTheRingsModes();
+        //setTheRingsModes();
 
         rotating = flowChart.GetBooleanVariable("RotIng");
 
@@ -86,7 +78,6 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
             return;
         }
 
-
         if (tempIn == 0f && tempMi == 0f && tempOu == 0f && !finished) 
 		{
 			finished = true;
@@ -98,84 +89,21 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
 
     }
-    /// <summary>
-    /// Break out to make the uppdate
-    /// funktion easyer to read
-    /// </summary>
-    private void setTheRingsModes()
-    {
+ 
+	//private void Modulo()
+	//{
+	//	tempInner =  flowChart.GetIntegerVariable("InnerCircle");
+	//	tempMiddle =  flowChart.GetIntegerVariable("MiddleCircle");
+	//	tempOuter =  flowChart.GetIntegerVariable("OuterCircle");
 
-        if (finished)
-        {
-            if (innerR.currentMod != TEST.MODE.GLITTER)
-            {
-                innerR.currentMod = TEST.MODE.GLITTER;
-                innerR.BlockChanges = true;
-            }
-            if (midleR.currentMod != TEST.MODE.GLITTER)
-            {
-                midleR.currentMod = TEST.MODE.GLITTER;
-                midleR.BlockChanges = true;
+	//	tempInner = tempInner % 8;
+	//	tempMiddle = tempMiddle % 8;
+	//	tempOuter = tempOuter % 8;
 
-            }
-            if (outerR.currentMod != TEST.MODE.GLITTER)
-            {
-                outerR.currentMod = TEST.MODE.GLITTER;
-                outerR.BlockChanges = true;
-            }
-
-        }
-        else
-        {
-            setRingMode(tempIn, innerR);
-            setRingMode(tempMi, midleR);
-            setRingMode(tempOu, outerR);
-        }
-
-    }
-
-
-    /// <summary>
-    /// set the ring to glitter if 
-    /// it is att 0
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="script"></param>
-    private void setRingMode(float value, TEST script)
-    {
-        if (value == 0f)
-        {
-            if (script.currentMod != TEST.MODE.GLITTER)
-            {
-                script.currentMod = TEST.MODE.GLITTER;
-                script.BlockChanges = true;
-            }
-        }
-        else
-        {
-            if (script.currentMod == TEST.MODE.GLITTER)
-            {
-                script.currentMod = TEST.MODE.DEFAULT;
-                script.BlockChanges = false;
-            }
-        }
-    }
-
-
-	private void Modulo()
-	{
-		tempInner =  flowChart.GetIntegerVariable("InnerCircle");
-		tempMiddle =  flowChart.GetIntegerVariable("MiddleCircle");
-		tempOuter =  flowChart.GetIntegerVariable("OuterCircle");
-
-		tempInner = tempInner % 8;
-		tempMiddle = tempMiddle % 8;
-		tempOuter = tempOuter % 8;
-
-		flowChart.SetIntegerVariable ("InnerCircle", tempInner);
-		flowChart.SetIntegerVariable ("MiddleCircle", tempMiddle);
-		flowChart.SetIntegerVariable ("OuterCircle", tempOuter);
-	}
+	//	flowChart.SetIntegerVariable ("InnerCircle", tempInner);
+	//	flowChart.SetIntegerVariable ("MiddleCircle", tempMiddle);
+	//	flowChart.SetIntegerVariable ("OuterCircle", tempOuter);
+	//}
 
 	private void PuzzleFinished()
 	{

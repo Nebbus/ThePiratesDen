@@ -2,7 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TEST : MonoBehaviour {
+
+
+/*
+ * This scriopt has as gol to higlight the rings 
+ * for diffrents effekts, it dose this by shainge valus in the materaials
+ * (the start valus contains the start values and resets the 
+ * material then this scritp is disabled), it cald from the 
+ * 
+ * 
+ */ 
+
+
+public class MONO_RingePuzzleEffekts : MonoBehaviour {
 
     public enum MODE  {DEFAULT, GLITTER, HIGLIGHT };
 
@@ -65,6 +77,7 @@ public class TEST : MonoBehaviour {
     public Color higlightColor = new Color(1, 1, 1, 1);
     [Space]
     [Space]
+    public float rotation = 0;
 
     private WaitForSeconds timer;
     private const string glossinesName        = "_Glossiness";
@@ -121,8 +134,38 @@ public class TEST : MonoBehaviour {
         mat.SetFloat(metalicName, startMetalic);
         mat.SetColor(colorName, startColor);
     }
-   
-   
+
+    private float round(float value)
+    {
+        float temp = value * 100f;
+        temp = Mathf.Round(temp);
+
+        return temp / 100f;
+
+    }
+
+    public void Update()
+    {
+        rotation = round(transform.eulerAngles.z);
+        if (rotation == 0f)
+        {
+            if (currentMod != MONO_RingePuzzleEffekts.MODE.GLITTER)
+            {
+                currentMod = MONO_RingePuzzleEffekts.MODE.GLITTER;
+                BlockChanges = true;
+            }
+        }
+        else
+        {
+            if (currentMod == MONO_RingePuzzleEffekts.MODE.GLITTER)
+            {
+                currentMod = MONO_RingePuzzleEffekts.MODE.DEFAULT;
+                BlockChanges = false;
+            }
+        }
+    }
+
+
     public IEnumerator gliter()
     {
         currentGlossines    = startGlossines;
