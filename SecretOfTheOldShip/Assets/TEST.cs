@@ -12,45 +12,63 @@ public class TEST : MonoBehaviour {
     public float delay = 0.5f;
     public MODE currentMod = MODE.DEFAULT;
     [Space]
+    public float startGlossines                 = 0.5f;
+    public float startMetalic                   = 0;
+    public float startNormal                    = 0.5f;
+    public Color startColor                     = new Color(1, 1, 1, 1);
     [Space]
-
+    [Space]
     [Tooltip("Normal value of the metalic smoothnes")]
     public float defultGlossines                = 0.5f;
-    public float currentGlossines;
+    public float defultMetalic                  = 0;
+    public float defultNormal                   = 0.5f;
+    public Color defultColor = new Color(1, 1, 1, 1);
+    [Space]
+    public float defultReturnSpeed              = 0.1f;
     [Space]
     [Space]
-    public float metalicDefautl                 = 0;
-    public float metalicCurrent                 = 0;
+    public float currentGlossines               = 0.5f;
+    public float currentMetalic                 = 0f;
+    public float currentNormal                  = 0.5f;
+    public Color currentColor;
     [Space]
-    public float normalOffsetDefult             = 0.5f;
-    public float normalOffsetCurrent            = 0.5f;
-    [Space]
-    public float backToDefualtSpeed             = 0.1f;
     [Space]
     [Space]
     public float glitterGlossinesMax            = 0.75f;
     public float glitterGlossinesMin            = 0.6f;
     public float glitterGlossinesChangeSpeed    = 0.05f;
     [Space]
-    public float glitterNormalOffsetMax         = -0.27f;
-    public float glitterNormalOffsetMin         = -0.39f;
-    public float glitterNormalOffsetChange      = 0.0005f;
+    public float glitterMetalicMax              = 1f;
+    public float glitterMetalicMin              = 1f;
+    public float glitterMetalicChangeSpeed      = 0.1f;
+    [Space]
+    public float glitterNormalMax               = -0.27f;
+    public float glitterNormalMin               = -0.39f;
+    public float glitterNormalChangeSpeed            = 0.0005f;
+    [Space]
+    public Color glitterColor = new Color(1, 1, 1, 1);
+    [Space]
     [Space]
     [Space]
     public float higlightGlossinesMax;
     public float higlightGlossinesMin           = 0.6f;
     public float higlightGlossinesChangeSpeed   = 0.05f;
     [Space]
-    public float higlightMetalic                = 1f;
+    public float higlightMetalicMax             = 1f;
+    public float higlightMetalicMin             = 1f;
     public float higlightMetalicChangeSpeed     = 0.1f;
     [Space]
-    public float higlightNormal                 = 2f;
+    public float higlightNormalMax              = 2f;
+    public float higlightNormalMin              = 2f;
     public float higlightNormalChangeSpeed      = 0.1f;
+    [Space]
+    [Space]
 
     private WaitForSeconds timer;
-    private const string glossinesName          = "_Glossiness";
-    private const string bumpMapScale           = "_BumpScale";
-    private const string metalic                = "_Metallic";
+    private const string glossinesName        = "_Glossiness";
+    private const string normalName           = "_BumpScale";
+    private const string metalicName          = "_Metallic";
+    private const string colorName            = "_Color";
     private Coroutine glitrar;
 
     //will beset by ring manager, prevents higlight
@@ -77,6 +95,8 @@ public class TEST : MonoBehaviour {
         currentMod = MODE.DEFAULT;
     }
 
+
+
     private void OnEnable()
     {
         //defaultValue = mat.GetFloat(gliterVar);
@@ -94,16 +114,19 @@ public class TEST : MonoBehaviour {
 
         if (glitrar != null) { StopCoroutine(glitrar); }
 
-        mat.SetFloat(glossinesName, defultGlossines);
-        mat.SetFloat(bumpMapScale, normalOffsetDefult);
-        mat.SetFloat(metalic, metalicDefautl);
+        mat.SetFloat(glossinesName, startGlossines);
+        mat.SetFloat(normalName, startNormal);
+        mat.SetFloat(metalicName, startMetalic);
+        mat.SetColor(colorName, startColor);
     }
    
    
     public IEnumerator gliter()
     {
-        currentGlossines    = defultGlossines;
-        normalOffsetCurrent = normalOffsetDefult;
+        currentGlossines    = startGlossines;
+        currentNormal       = startNormal;
+        currentMetalic      = startMetalic;
+        currentColor        = startColor;
         while (run)
         {
 
@@ -113,99 +136,83 @@ public class TEST : MonoBehaviour {
             switch (currentMod)
             {
                 case MODE.DEFAULT:
-                    if (metalicCurrent != metalicDefautl)
-                    {
-                        float temp = Mathf.MoveTowards(metalicCurrent, metalicDefautl, backToDefualtSpeed);
-                        metalicCurrent = temp;
-                        mat.SetFloat(metalic, metalicCurrent);
 
-                    }
-                    if (normalOffsetCurrent != normalOffsetDefult)
-                    {
-                        float temp = Mathf.MoveTowards(normalOffsetCurrent, normalOffsetDefult, backToDefualtSpeed);
-                        normalOffsetCurrent = temp;
-                        mat.SetFloat(bumpMapScale, normalOffsetCurrent);
-                    }
-                    if (currentGlossines != defultGlossines)
-                    {
-                        float temp = Mathf.MoveTowards(currentGlossines, defultGlossines, backToDefualtSpeed);
-                        currentGlossines = temp;
-                        mat.SetFloat(glossinesName, currentGlossines);
-                    }
+                    MoveTowardsValue(defultMetalic, defultReturnSpeed, out currentMetalic, metalicName);
 
-            
+                    MoveTowardsValue(defultNormal, defultReturnSpeed, out currentNormal, normalName);
 
+                    MoveTowardsValue(defultGlossines, defultReturnSpeed, out currentGlossines, glossinesName);
 
-                    break;
-                
+                    mat.SetColor(colorName, defultColor);
 
+                    break;     
                 case MODE.GLITTER:
+                    MoveTowardsValue(defultMetalic, defultReturnSpeed, out currentMetalic, metalicName);
 
-                    if (metalicCurrent != metalicDefautl)
-                    {
-                        float temp = Mathf.MoveTowards(metalicCurrent, metalicDefautl, backToDefualtSpeed);
-                        metalicCurrent = temp;
-                        mat.SetFloat(metalic, metalicCurrent);
+                    FlutterEffecktBase(glitterGlossinesMax, glitterGlossinesMin, ref glitterGlossinesChangeSpeed, out currentGlossines, glossinesName, true);
 
-                    }
+                    FlutterEffecktBase(glitterNormalMax, glitterNormalMin, ref glitterNormalChangeSpeed, out currentNormal, normalName, true);
 
-                    //Fluters the glossynes
-                    if ((currentGlossines > glitterGlossinesMax && glitterGlossinesChangeSpeed > 0) || (currentGlossines < glitterGlossinesMin && glitterGlossinesChangeSpeed < 0))
-                    {
-                        glitterGlossinesChangeSpeed *= -1;
-                    }
-                    //float bost = ((currentGlossines > glitterGlossinesMax) || (currentGlossines < glitterGlossinesMin)) ? glitterGlossinesChangeBost : 1f;
-                    currentGlossines = mat.GetFloat(glossinesName) + glitterGlossinesChangeSpeed ;
-                    currentGlossines = Mathf.Clamp(currentGlossines, glitterGlossinesMin, glitterGlossinesMax);
-                    mat.SetFloat(glossinesName, currentGlossines);
-
-                    //Fluters the normal
-                    if ((normalOffsetCurrent > glitterNormalOffsetMax && glitterNormalOffsetChange > 0) || (normalOffsetCurrent < glitterNormalOffsetMin && glitterNormalOffsetChange < 0))
-                    {
-                        glitterNormalOffsetChange *= -1;
-                    }
-                    normalOffsetCurrent = mat.GetFloat(bumpMapScale) + glitterNormalOffsetChange;  
-                    mat.SetFloat(bumpMapScale, normalOffsetCurrent);
-
+                    mat.SetColor(colorName, glitterColor);
 
                     break;
                 case MODE.HIGLIGHT:
 
-                    //Fluters the glossynes
-                    if ((currentGlossines > higlightGlossinesMax && higlightGlossinesChangeSpeed > 0) || (currentGlossines < higlightGlossinesMin && higlightGlossinesChangeSpeed < 0))
-                    {
-                        higlightGlossinesChangeSpeed *= -1;
-                    }
-                    currentGlossines = mat.GetFloat(glossinesName) + higlightGlossinesChangeSpeed;
-                    mat.SetFloat(glossinesName, currentGlossines);
+                    FlutterEffecktBase(higlightGlossinesMax, higlightGlossinesMin, ref higlightGlossinesChangeSpeed, out currentGlossines, glossinesName, false);
 
+                    MoveTowardsValueUsingClamp(higlightMetalicMax, defultMetalic, ref higlightMetalicChangeSpeed, out currentMetalic, metalicName);
 
-
-
-
-                    //Sets the metalic value
-                    if (metalicCurrent != higlightMetalic)
-                    {
-                        metalicCurrent = Mathf.Clamp(mat.GetFloat(metalic) + higlightMetalicChangeSpeed, metalicDefautl, higlightMetalic);
-                        mat.SetFloat(metalic, metalicCurrent);
-
-                    }
-
-                    if (normalOffsetCurrent != higlightNormal)
-                    {
-                        float temp = Mathf.MoveTowards(normalOffsetCurrent, higlightNormal, higlightNormalChangeSpeed);
-                        normalOffsetCurrent = temp;
-                        mat.SetFloat(bumpMapScale, normalOffsetCurrent);
-                    }
+                    MoveTowardsValue(higlightNormalMax, higlightNormalChangeSpeed, out currentNormal, metalicName);
 
                     break;
             }
+        }
+    }
 
+    private void FlutterEffecktBase(float max, float min, ref float changeSpeed, out float current, string nameOfvariable, bool useClamp)
+    {
+        current = mat.GetFloat(nameOfvariable);
+        if ((current >= max && changeSpeed > 0) || (current <= min && changeSpeed < 0))
+        {
+            changeSpeed *= -1;
+        }
+        current = (useClamp) ? Mathf.Clamp(current + changeSpeed, min, max) : current + changeSpeed;
+        mat.SetFloat(nameOfvariable, current);
+    }
 
-
-            
-
+    private void MoveTowardsValue(float newValue, float changeSpeed, out float current, string nameOfvariable)
+    {
+        current = mat.GetFloat(nameOfvariable);
+        if (current != newValue)
+        {
+            current = Mathf.MoveTowards(current, newValue, changeSpeed);
+            mat.SetFloat(nameOfvariable, current);
 
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="newValue">         The new value to move</param>
+    /// <param name="bottomFloor">      The botom flor of the clamp</param>
+    /// <param name="changeSpeed">      The speed the change chould happen at</param>
+    /// <param name="current">          The current value</param>
+    /// <param name="nameOfvariable">   The name of the varibla to change</param>
+    private void MoveTowardsValueUsingClamp(float newValue, float bottomFloor, ref float changeSpeed, out float current, string nameOfvariable)
+    {
+        current = mat.GetFloat(nameOfvariable);
+        if (current != newValue)
+        {
+            if ((current > newValue && changeSpeed > 0) || (current < newValue && changeSpeed < 0))
+            {
+                changeSpeed *= -1;
+            }
+            current = Mathf.Clamp(current + changeSpeed, bottomFloor, newValue);
+            mat.SetFloat(nameOfvariable, current);
+        }
+
+    }
+
+
 }
