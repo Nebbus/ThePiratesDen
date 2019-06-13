@@ -62,6 +62,8 @@ public class TEST : MonoBehaviour {
     public float higlightNormalMin              = 2f;
     public float higlightNormalChangeSpeed      = 0.1f;
     [Space]
+    public Color higlightColor = new Color(1, 1, 1, 1);
+    [Space]
     [Space]
 
     private WaitForSeconds timer;
@@ -163,6 +165,8 @@ public class TEST : MonoBehaviour {
                     MoveTowardsValueUsingClamp(higlightMetalicMax, defultMetalic, ref higlightMetalicChangeSpeed, out currentMetalic, metalicName);
 
                     MoveTowardsValue(higlightNormalMax, higlightNormalChangeSpeed, out currentNormal, metalicName);
+
+                    mat.SetColor(colorName, higlightColor);
 
                     break;
             }
