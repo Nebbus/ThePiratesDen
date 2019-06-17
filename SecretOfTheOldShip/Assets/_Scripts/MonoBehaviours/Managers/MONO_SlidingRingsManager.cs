@@ -7,14 +7,29 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 
 	public Flowchart flowChart;
 
-	private int tempInner;
-	private int tempMiddle;
-	private int tempOuter;
-	private MONO_SceneManager sceneManager;
+    private int tempInner;
+    private int tempMiddle;
+    private int tempOuter;
+    private MONO_SceneManager sceneManager;
 
 	private bool finished = false;
 
-	public void Exit()
+    [Space]
+    [Space]
+
+    public Transform innerRt;
+    public Transform midleRt;
+    public Transform outerRt;
+
+    [Space]
+    [Space]
+   public float tempIn;
+   public float tempMi;
+   public float tempOu;
+
+    [Space]
+    public bool rotating = false;
+    public void Exit()
 	{
         //sceneManager.ChangeScene("Scene1_outside", false, true, false, true, true, true, true);
         string newScene = "Scene1_outside";
@@ -32,33 +47,64 @@ public class MONO_SlidingRingsManager : MonoBehaviour {
 		sceneManager = FindObjectOfType<MONO_SceneManager> ();
 	}
 
+
+    private float round(float value)
+    {
+        float temp = value * 100f;
+        temp = Mathf.Round(temp);
+
+        return temp/100f;
+
+    }
+
 	private void Update () 
 	{
-		Modulo ();
+        //Modulo ();
+   
+         tempIn = round(innerRt.eulerAngles.z);
+         tempMi = round(midleRt.eulerAngles.z);
+         tempOu = round(outerRt.eulerAngles.z);
 
-		if (tempInner == 0 && tempMiddle == 0 && tempOuter == 0 && !finished) 
+        //setTheRingsModes();
+
+        rotating = flowChart.GetBooleanVariable("RotIng");
+
+        /*Prevents from cheking if the rotation isent done,
+         * prevents that the puzzle get finished then the
+         * ring just passes the corect position*/
+        if (rotating)
+        {
+            return;
+        }
+
+        if (tempIn == 0f && tempMi == 0f && tempOu == 0f && !finished) 
 		{
 			finished = true;
 			PuzzleFinished ();
 		}
-	}
 
-	private void Modulo()
-	{
-		tempInner =  flowChart.GetIntegerVariable("InnerCircle");
-		tempMiddle =  flowChart.GetIntegerVariable("MiddleCircle");
-		tempOuter =  flowChart.GetIntegerVariable("OuterCircle");
 
-		tempInner = tempInner % 8;
-		tempMiddle = tempMiddle % 8;
-		tempOuter = tempOuter % 8;
 
-		flowChart.SetIntegerVariable ("InnerCircle", tempInner);
-		flowChart.SetIntegerVariable ("MiddleCircle", tempMiddle);
-		flowChart.SetIntegerVariable ("OuterCircle", tempOuter);
-	}
 
-	private void PuzzleFinished()
+
+    }
+
+    private void Modulo()
+    {
+        tempInner = flowChart.GetIntegerVariable("InnerCircle");
+        tempMiddle = flowChart.GetIntegerVariable("MiddleCircle");
+        tempOuter = flowChart.GetIntegerVariable("OuterCircle");
+
+        tempInner = tempInner % 8;
+        tempMiddle = tempMiddle % 8;
+        tempOuter = tempOuter % 8;
+
+        flowChart.SetIntegerVariable("InnerCircle", tempInner);
+        flowChart.SetIntegerVariable("MiddleCircle", tempMiddle);
+        flowChart.SetIntegerVariable("OuterCircle", tempOuter);
+    }
+
+    private void PuzzleFinished()
 	{
 		flowChart.ExecuteBlock ("Finished");
 		//yield return new WaitForSeconds (3);

@@ -21,14 +21,19 @@ public class MONO_HandleInput : MonoBehaviour {
         MONO_EventManager.TriggerEvent(MONO_EventManager.setInputHandling_NAME, param);
         MONO_EventManager.TriggerEvent(MONO_EventManager.setLocalInvntoryHandelInput_NAME, param);
 
-        //Hids inventory
+        //Hids inventory and sets MonoCursor to defult
         if (!handle)
         {
             param.param4 = false;
             MONO_EventManager.TriggerEvent(MONO_EventManager.setVisibilityOfInvnetory_NAME, param);
+
+
+            MONO_AdventureCursor.instance.getMonoCursorSprite.setDefultCursor();
         }
 
-        //===============================================================================================================     
+        //===============================================================================================================   
+        
+
 
     }
 
