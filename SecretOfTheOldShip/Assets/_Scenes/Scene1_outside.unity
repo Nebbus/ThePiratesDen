@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1529519, g: 0.19843343, b: 0.45517552, a: 1}
+  m_IndirectSpecularColor: {r: 0.15295216, g: 0.19843298, b: 0.4551764, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1916,37 +1916,6 @@ Transform:
   m_Father: {fileID: 33686157}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -182.203, y: 0, z: 0}
---- !u!84 &181437644
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 1920
-  m_Height: 909
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!114 &186349858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6137,6 +6106,30 @@ MonoBehaviour:
   keepMoving: 0
   fadeScript: {fileID: 2139170673}
   lerpScript: {fileID: 2139170674}
+--- !u!21 &283969999
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1 &288946138
 GameObject:
   m_ObjectHideFlags: 0
@@ -11466,6 +11459,37 @@ MonoBehaviour:
   - {fileID: 625627400}
   - {fileID: 1495191655}
   - {fileID: 350566061}
+--- !u!84 &485769563
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 830
+  m_Height: 673
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &496804777
 GameObject:
   m_ObjectHideFlags: 0
@@ -19323,30 +19347,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12417a5b40bb0f840b3dcf3fc27eebe1, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1011014556
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!114 &1015550544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19379,7 +19379,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 1011014556}
+  _compositeMat: {fileID: 283969999}
 --- !u!81 &1017722108
 AudioListener:
   m_ObjectHideFlags: 0
@@ -19888,7 +19888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1986073603}
+  selectedFlowchart: {fileID: 1986073595}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -31510,7 +31510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   antiAilising: 2
-  DEBUG_screeneSize: {x: 1920, y: 909}
+  DEBUG_screeneSize: {x: 830, y: 673}
 --- !u!20 &1843033807
 Camera:
   m_ObjectHideFlags: 0
@@ -31537,7 +31537,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 181437644}
+  m_TargetTexture: {fileID: 485769563}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -32985,7 +32985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -394.1339, y: 163.83878}
+  scrollPos: {x: -233.60727, y: 113.83864}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 370
@@ -32997,7 +32997,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986073577}
+  - {fileID: 1986074138}
   selectedCommands: []
   variables: []
   description: 
@@ -33123,7 +33123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 341.79718, y: 259.1338}
+  scrollPos: {x: 275.91525, y: 152.07518}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -33135,9 +33135,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986074982}
-  selectedCommands:
-  - {fileID: 1986074981}
+  - {fileID: 1986074046}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -33306,7 +33305,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1266.2816
     y: -421.61737
-    width: 184.17728
+    width: 168
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33422,7 +33421,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1233.9011
     y: -374.91827
-    width: 124.68358
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33452,7 +33451,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -989.2065
     y: -517.119
-    width: 160.12665
+    width: 146
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33481,7 +33480,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -962.0982
     y: -568.5303
-    width: 148.73422
+    width: 135
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33510,7 +33509,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -992.4139
     y: -331.07748
-    width: 137.34181
+    width: 127
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33541,7 +33540,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -989.24884
     y: -388.08957
-    width: 144.93677
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33573,7 +33572,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -972.8653
     y: -624.3235
-    width: 137.34181
+    width: 128
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33742,7 +33741,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -753.0343
     y: -685.01373
-    width: 174.05069
+    width: 159
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33773,7 +33772,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -449.53082
     y: -1166.7346
-    width: 143.67093
+    width: 132
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33804,7 +33803,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -710.97473
     y: -420.05228
-    width: 125.9494
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -33894,11 +33893,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 1547.4691, y: 396.31586}
+  scrollPos: {x: 1718.6586, y: -224.60693}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 0.7899996
+  zoom: 1
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -33906,9 +33905,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986074001}
+  - {fileID: 1986074769}
   selectedCommands:
-  - {fileID: 1986074485}
+  - {fileID: 1986074770}
   variables: []
   description: 
   stepPause: 0
@@ -34181,7 +34180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 550.95233, y: 570.88965}
+  scrollPos: {x: 545.4574, y: 288.47165}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -34193,9 +34192,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986074644}
-  selectedCommands:
-  - {fileID: 1986074638}
+  - {fileID: 1986074141}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -34601,7 +34599,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1200.9983
     y: -807.0955
-    width: 120.88611
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -34629,7 +34627,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -741.6381
     y: -824.87537
-    width: 155.06335
+    width: 141
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -35411,7 +35409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 1966.7441, y: 1441.3843}
+  scrollPos: {x: 1760.4104, y: -405.45197}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 407
@@ -35423,9 +35421,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986073570}
-  selectedCommands:
-  - {fileID: 1986073612}
+  - {fileID: 1986074313}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -35720,7 +35717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 10
   indentLevel: 0
-  storyText: Gunpowder might always come in handy!
+  storyText: Gunpowder could always come in handy!
   description: 
   character: {fileID: 1760775792}
   portrait: {fileID: 0}
@@ -41984,7 +41981,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1001.1563
     y: -969.5817
-    width: 161.39246
+    width: 148
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -43319,7 +43316,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2158.2952
     y: 61.399567
-    width: 160.12665
+    width: 149
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -43352,7 +43349,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1509.1597
     y: -68.40523
-    width: 161.39246
+    width: 150
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -43387,7 +43384,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -860.9619
     y: -24.162392
-    width: 158.86081
+    width: 148
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -44745,7 +44742,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1333.4376
     y: 213.38904
-    width: 127.215225
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -45128,7 +45125,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1098.9529
     y: 443.08466
-    width: 171.51904
+    width: 158
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -45159,7 +45156,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1084.8254
     y: 384.69608
-    width: 152.53171
+    width: 141
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -45187,7 +45184,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -758.1825
     y: 241.07175
-    width: 198.10133
+    width: 178
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -46845,7 +46842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 402
   indentLevel: 0
-  storyText: But I have never seen Lark happier than during those times.
+  storyText: But I have never seen Lark happier than during those days.
   description: 
   character: {fileID: 458706957}
   portrait: {fileID: 0}
@@ -49692,7 +49689,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1752.0663
     y: -636.2038
-    width: 150.00006
+    width: 140
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -49719,7 +49716,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1738.8158
     y: -707.88513
-    width: 120.88611
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -49749,7 +49746,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1485.8385
     y: -668.15906
-    width: 137.34181
+    width: 128
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -50961,7 +50958,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: -1919.6049
-    y: -1702.2997
+    y: -1701.0338
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -53290,7 +53287,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -804.91565
     y: 636.16266
-    width: 198.10133
+    width: 178
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53795,7 +53792,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -836.6713
     y: -100.40259
-    width: 122.15193
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53942,7 +53939,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1088.5286
     y: 1111.0303
-    width: 152.53171
+    width: 140
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -53969,7 +53966,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -896.7766
     y: 1142.9894
-    width: 127.215225
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54095,7 +54092,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -731.82825
     y: 1108.9681
-    width: 143.67093
+    width: 133
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54501,7 +54498,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 105.54237
     y: 804.50903
-    width: 193.03804
+    width: 177
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54665,7 +54662,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1082.8735
     y: 663.98834
-    width: 124.68358
+    width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54690,8 +54687,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: -1103.616
-    y: 621.0158
-    width: 155.06335
+    y: 622.2353
+    width: 142
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54720,7 +54717,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1114.8164
     y: 578.7818
-    width: 170.25323
+    width: 156
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -54747,7 +54744,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1080.9907
     y: 533.62756
-    width: 139.87347
+    width: 130
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -55932,7 +55929,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 441.9534
-    y: 188.48193
+    y: 189.6584
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -56322,7 +56319,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -799.2418
     y: -936.2862
-    width: 241.13934
+    width: 220
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -56543,7 +56540,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2516.5374
     y: -337.57385
-    width: 141.13928
+    width: 132
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -56610,7 +56607,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1373.8063
     y: 327.5387
-    width: 238.6077
+    width: 221
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -58155,7 +58152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 91
   indentLevel: 0
-  storyText: Maybe this old rope might come in handy after all.
+  storyText: This old rope might come in handy after all.
   description: 
   character: {fileID: 1760775792}
   portrait: {fileID: 0}
@@ -58197,7 +58194,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1882.187
     y: 280.73163
-    width: 248.73428
+    width: 223
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -58939,7 +58936,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -933.1877
     y: 272.6838
-    width: 147.46841
+    width: 137
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -59045,7 +59042,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -931.6252
     y: 205.4963
-    width: 129.74687
+    width: 122
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -59097,7 +59094,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -934.7502
     y: 127.37131
-    width: 146.20258
+    width: 138
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -59149,7 +59146,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -934.7502
     y: 63.308807
-    width: 131.0127
+    width: 121
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -60335,7 +60332,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1032.7981
     y: -281.64127
-    width: 246.20264
+    width: 221
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -60365,7 +60362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 580
   indentLevel: 0
-  storyText: 'She used to refer to it as "adult naptime". I guess nun''s don''t like
+  storyText: 'She used to refer to it as "adult naptime". I guess nuns don''t like
     napping. '
   description: 
   character: {fileID: 400407069}
@@ -60512,7 +60509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 577
   indentLevel: 0
-  text: WhoIsTheCaptain?
+  text: Who is the captain?
   description: 
   targetBlock: {fileID: 1986074656}
   hideIfVisited: 0
@@ -60562,7 +60559,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1037.7174
     y: -224.26404
-    width: 281.6457
+    width: 250
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -60685,7 +60682,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1057.3892
     y: -170.16565
-    width: 295.56976
+    width: 263
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -60859,7 +60856,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1058.6211
     y: -1097.5438
-    width: 271.5191
+    width: 242
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -60928,7 +60925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 601
   indentLevel: 0
-  text: WhoIsTheCaptain?
+  text: Who is the captain?
   description: 
   targetBlock: {fileID: 1986074682}
   hideIfVisited: 0
@@ -60954,7 +60951,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1047.9651
     y: -1033.6086
-    width: 236.07605
+    width: 213
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -61004,7 +61001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 609
   indentLevel: 0
-  storyText: 'She used to refer to it as "adult naptime". I guess nun''s don''t like
+  storyText: 'She used to refer to it as "adult naptime". I guess nuns don''t like
     napping. '
   description: 
   character: {fileID: 400407069}
@@ -61229,7 +61226,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1067.6387
     y: -1163.1193
-    width: 285.44318
+    width: 255
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -61463,7 +61460,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1806.5792
     y: -225.90558
-    width: 239.87352
+    width: 217
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -61530,7 +61527,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2208.2197
     y: -330.8236
-    width: 147.46841
+    width: 134
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -61630,7 +61627,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 633
   indentLevel: 0
-  storyText: We did. I loved her more than all riches on earth. Do you find that odd?
+  storyText: We did. I loved her more than all the riches in the world. Do you find
+    that odd?
   description: 
   character: {fileID: 1189165212}
   portrait: {fileID: 0}
@@ -61658,7 +61656,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2050.8403
     y: -298.03674
-    width: 237.34187
+    width: 215
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -61785,7 +61783,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2249.2036
     y: -271.80713
-    width: 175.31653
+    width: 156
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -61880,7 +61878,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2055.758
     y: -248.85645
-    width: 223.4178
+    width: 202
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -62024,7 +62022,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2055.7578
     y: -201.3154
-    width: 215.82286
+    width: 196
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -62170,7 +62168,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2050.8403
     y: -142.29904
-    width: 252.53175
+    width: 226
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -62297,7 +62295,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2157.3975
     y: -81.64319
-    width: 317.08875
+    width: 287
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -62490,7 +62488,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -2029.1538
     y: -25.037386
-    width: 195.56969
+    width: 177
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -62602,7 +62600,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1169.4856
     y: 730.1459
-    width: 234.81023
+    width: 212
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -62695,7 +62693,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1443.2838
     y: 665.4819
-    width: 210.75957
+    width: 191
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -62844,8 +62842,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: -1434.6901
-    y: 606.107
-    width: 218.3545
+    y: 607.3265
+    width: 197
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -62993,7 +62991,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1452.6586
     y: 531.10693
-    width: 232.27858
+    width: 210
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -63018,7 +63016,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 688
   indentLevel: 0
-  storyText: We did. I loved her more than all riches on earth. Do you find that odd?
+  storyText: We did. I loved her more than all the riches in the world. Do you find
+    that odd?
   description: 
   character: {fileID: 1189165212}
   portrait: {fileID: 0}
@@ -63070,7 +63069,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1645.6271
     y: 546.732
-    width: 170.25323
+    width: 151
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -63163,7 +63162,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1626.8771
     y: 482.66968
-    width: 142.40512
+    width: 129
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -63231,7 +63230,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1198.8427
     y: 852.61115
-    width: 312.02545
+    width: 282
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -63536,7 +63535,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1180.2151
     y: 793.53674
-    width: 247.46846
+    width: 221
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -63607,7 +63606,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1091.8114
     y: 910.4236
-    width: 190.5064
+    width: 172
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -63743,7 +63742,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -747.18604
     y: -1308.9193
-    width: 263.92416
+    width: 236
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -63834,7 +63833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 727
   indentLevel: 0
-  text: WhoIsTheCaptain?
+  text: Who is the captain?
   description: 
   targetBlock: {fileID: 1986074807}
   hideIfVisited: 0
@@ -63860,7 +63859,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -712.9001
     y: -1364.634
-    width: 228.48111
+    width: 207
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -63890,7 +63889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 735
   indentLevel: 0
-  storyText: 'She used to refer to it as "adult naptime". I guess nun''s don''t like
+  storyText: 'She used to refer to it as "adult naptime". I guess nuns don''t like
     napping. '
   description: 
   character: {fileID: 400407069}
@@ -64077,7 +64076,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -792.18604
     y: -1253.2056
-    width: 277.8482
+    width: 249
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -68258,7 +68257,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &1986074981
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073572}
@@ -68285,7 +68284,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1986074982
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986073572}
