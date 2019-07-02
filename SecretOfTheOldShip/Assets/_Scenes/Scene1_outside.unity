@@ -19379,7 +19379,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 283969999}
+  _compositeMat: {fileID: 1973263680}
 --- !u!81 &1017722108
 AudioListener:
   m_ObjectHideFlags: 0
@@ -19888,7 +19888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1986073595}
+  selectedFlowchart: {fileID: 1986073571}
 --- !u!4 &1019477260
 Transform:
   m_ObjectHideFlags: 1
@@ -31510,7 +31510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   antiAilising: 2
-  DEBUG_screeneSize: {x: 830, y: 673}
+  DEBUG_screeneSize: {x: 261, y: 410}
 --- !u!20 &1843033807
 Camera:
   m_ObjectHideFlags: 0
@@ -31537,7 +31537,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 485769563}
+  m_TargetTexture: {fileID: 2021873208}
   m_TargetDisplay: 7
   m_TargetEye: 3
   m_HDR: 0
@@ -32568,6 +32568,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   item: {fileID: 11400000, guid: df035cccb26cc924a803ed78f83924c7, type: 2}
+--- !u!21 &1973263680
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1001 &1973763986
 Prefab:
   m_ObjectHideFlags: 0
@@ -33135,8 +33159,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1986074046}
-  selectedCommands: []
+  - {fileID: 1986073632}
+  selectedCommands:
+  - {fileID: 1986074985}
   variables: []
   description: 
   stepPause: 0
@@ -33258,6 +33283,7 @@ GameObject:
   - component: {fileID: 1986074642}
   - component: {fileID: 1986074982}
   - component: {fileID: 1986074981}
+  - component: {fileID: 1986074985}
   m_Layer: 0
   m_Name: INT_MiscFlowchart
   m_TagString: Untagged
@@ -35595,6 +35621,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 1986074985}
   - {fileID: 1986073631}
   - {fileID: 1986074288}
   - {fileID: 1986073598}
@@ -68347,6 +68374,33 @@ MonoBehaviour:
   stringData:
     stringRef: {fileID: 0}
     stringVal: 
+--- !u!114 &1986074985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986073572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb77d0ce495044f6e9feb91b31798e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 126
+  indentLevel: 0
+  variable: {fileID: 2015500806}
+  setOperator: 0
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 1
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
 --- !u!1 &1988982238
 GameObject:
   m_ObjectHideFlags: 0
@@ -68617,6 +68671,7 @@ GameObject:
   - component: {fileID: 2015500803}
   - component: {fileID: 2015500805}
   - component: {fileID: 2015500804}
+  - component: {fileID: 2015500806}
   m_Layer: 0
   m_Name: VariableFlowchartAct1
   m_TagString: Untagged
@@ -68941,6 +68996,7 @@ MonoBehaviour:
   - {fileID: 2015500803}
   - {fileID: 2015500805}
   - {fileID: 2015500804}
+  - {fileID: 2015500806}
   description: 
   stepPause: 0
   colorCommands: 1
@@ -69021,6 +69077,20 @@ MonoBehaviour:
   scope: 1
   key: HasFedCannonball
   value: 0
+--- !u!114 &2015500806
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2015500781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d02d9822eec54c98afe95bb497211b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 1
+  key: Screwdriver
+  value: 0
 --- !u!1001 &2021571870
 Prefab:
   m_ObjectHideFlags: 0
@@ -69091,6 +69161,37 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fa6f23244ca9174489fc3c6b2fe3702, type: 3}
   m_IsPrefabParent: 0
+--- !u!84 &2021873208
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 261
+  m_Height: 410
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!114 &2023927710
 MonoBehaviour:
   m_ObjectHideFlags: 0
