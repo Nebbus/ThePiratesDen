@@ -358,20 +358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactions:
   - {fileID: 1145011509}
---- !u!114 &60585428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c32ee25dc6d909488b72ffab5b2c2af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  onShotEvent: event:/Objects/2D/Chest_Open
-  theSorceOftheOneShot: {fileID: 0}
 --- !u!114 &69878832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6036,37 +6022,6 @@ Transform:
   m_Father: {fileID: 1993779900}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &401576648
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 574
-  m_Height: 276
-  m_AntiAliasing: 2
-  m_DepthFormat: 2
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &401898838
 GameObject:
   m_ObjectHideFlags: 0
@@ -8296,7 +8251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reactions:
-  - {fileID: 60585428}
   - {fileID: 914469099}
   - {fileID: 1125686357}
 --- !u!1 &659767811
@@ -10213,7 +10167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -264.79092, y: 179.01418}
+  scrollPos: {x: 149.32675, y: 86.07297}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -10225,7 +10179,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 970905321}
+  - {fileID: 970905274}
+  - {fileID: 970905334}
+  - {fileID: 970905267}
   selectedCommands: []
   variables:
   - {fileID: 970905220}
@@ -13347,6 +13303,8 @@ GameObject:
   - component: {fileID: 1014120568}
   - component: {fileID: 1014120567}
   - component: {fileID: 1014120580}
+  - component: {fileID: 1014120569}
+  - component: {fileID: 1014120576}
   m_Layer: 0
   m_Name: INT_ChestFlowchart
   m_TagString: Untagged
@@ -13419,6 +13377,20 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1014120567}
+--- !u!114 &1014120569
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1014120565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b225260cf23884c815860dafb8cb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 13
+  indentLevel: 0
+  pathToFMODSound: event:/Objects/2D/Chest_Open
 --- !u!114 &1014120570
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -13497,9 +13469,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1014120571}
+  - {fileID: 1014120577}
   selectedCommands:
-  - {fileID: 1014120570}
+  - {fileID: 1014120576}
   variables: []
   description: 
   stepPause: 0
@@ -13579,6 +13551,23 @@ MonoBehaviour:
   itemId: 7
   indentLevel: 0
   pathToFMODSound: event:/Characters/Player/Player_Interact/Player_PickUp
+--- !u!114 &1014120576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1014120565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 14
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 0.3
+  durationOLD: 0
 --- !u!114 &1014120577
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -13604,6 +13593,8 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1014120573}
+  - {fileID: 1014120569}
+  - {fileID: 1014120576}
   - {fileID: 1014120575}
   - {fileID: 1014120574}
   - {fileID: 1014120580}
@@ -14210,30 +14201,6 @@ MonoBehaviour:
   delay: 0
   animation: {fileID: 32387698}
   state: PickUp
---- !u!21 &1139198108
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Hidden/GlowComposite
-  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1 &1141340947 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1170521622661136, guid: 65455aac3f6678e48bbd19077e1e83e1,
@@ -14253,7 +14220,7 @@ MonoBehaviour:
   glowIntensity: 2
   globalGlowColor: {r: 1, g: 1, b: 1, a: 1}
   globalLerpFactor: 10
-  _compositeMat: {fileID: 1139198108}
+  _compositeMat: {fileID: 2137438220}
 --- !u!114 &1141340949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14290,6 +14257,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: 0
+--- !u!84 &1141601776
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1920
+  m_Height: 910
+  m_AntiAliasing: 2
+  m_DepthFormat: 2
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!114 &1145011509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19023,7 +19021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   antiAilising: 2
-  DEBUG_screeneSize: {x: 574, y: 276}
+  DEBUG_screeneSize: {x: 1920, y: 910}
 --- !u!124 &1772844696
 Behaviour:
   m_ObjectHideFlags: 0
@@ -19057,7 +19055,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 401576648}
+  m_TargetTexture: {fileID: 1141601776}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -48436,6 +48434,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2133098933}
   m_Mesh: {fileID: 4300000, guid: 21b2419593b33164699380010e8397fc, type: 3}
+--- !u!21 &2137438220
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hidden/GlowComposite
+  m_Shader: {fileID: 4800000, guid: e4b39d1c04bdfb24ebc10e5897e6b067, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!4 &2146869431 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4100445283536318, guid: 16854e7399bd99e44b9d34d75fb89c75,
