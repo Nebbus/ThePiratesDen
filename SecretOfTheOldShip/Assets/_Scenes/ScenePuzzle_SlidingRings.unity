@@ -154,6 +154,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1272615498}
+        m_MethodName: CheckAndReact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   startFlowChart:
@@ -4638,6 +4649,7 @@ GameObject:
   - component: {fileID: 1272615496}
   - component: {fileID: 1272615495}
   - component: {fileID: 1272615494}
+  - component: {fileID: 1272615498}
   m_Layer: 0
   m_Name: ScrewdriverButton
   m_TagString: Untagged
@@ -4840,6 +4852,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1272615498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272615493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bb9f26b5539954cb25e1600d1ed64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: HIDE IF NOT PICKED UP
+  conditiosns:
+  - {fileID: 1736743463}
+  reactionCollection: {fileID: 0}
+  setGamobjectTo: 0
 --- !u!1 &1281240147
 GameObject:
   m_ObjectHideFlags: 0
@@ -7793,6 +7821,21 @@ MonoBehaviour:
   - {fileID: 1684474512}
   - {fileID: 1684474510}
   - {fileID: 1684474509}
+--- !u!114 &1736743463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbd9f7d8bca32945b252c3cbaadb99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Pickup Sonicscrewdriver
+  satisfied: 0
+  hash: -897388368
+  startValue: 0
 --- !u!1 &1766591161
 GameObject:
   m_ObjectHideFlags: 0
