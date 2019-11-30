@@ -178,8 +178,9 @@ public class MONO_PlayerMovement : MonoBehaviour
         // Stop the nav mesh agent from moving the player.
         agent.isStopped = true;
 
+        
         // Set the player's position to the destination.
-        transform.position = destinationPosition;
+       // (Var detta som gjorde att robin hovrade vid visa interactions positionertransform.position = destinationPosition;
 
 		animator.SetBool ("Walk", false);
 
