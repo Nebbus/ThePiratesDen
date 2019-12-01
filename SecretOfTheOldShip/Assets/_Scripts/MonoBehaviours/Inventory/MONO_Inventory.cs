@@ -176,10 +176,10 @@ public class MONO_Inventory : MonoBehaviour {
     }
 
     /// <summary>
-    /// Adds item to the inventory
+    /// Adds item to the inventory, returns true if the item was added, returns fals if no space was found.
     /// </summary>
     /// <param name="itemToAdd"> item to add</param>
-    public void AddItem(SOBJ_Item itemToAdd)
+    public bool AddItem(SOBJ_Item itemToAdd)
      {
          for (int i = 0; i < invetoryItems.Length; i++)
          {
@@ -194,10 +194,11 @@ public class MONO_Inventory : MonoBehaviour {
                 invetoryItemsImages[i].enabled = true;
                 inventorySlots[i].GetComponent<MONO_InventoryItemLogic>().getSetItemsHashCode = itemToAdd.getHash;
                 PickUpReaction();
-                return;
+                return true;
              }
 
          }
+        return false;
         Debug.LogError("The inventory is overflowing!!!!!");
      }
     /// <summary>

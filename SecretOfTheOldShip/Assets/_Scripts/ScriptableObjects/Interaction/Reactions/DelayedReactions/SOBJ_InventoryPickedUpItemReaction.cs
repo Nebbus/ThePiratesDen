@@ -17,10 +17,12 @@ public class SOBJ_InventoryPickedUpItemReaction : SOBJ_DelayedReaction
 
     protected override void ImmediateReaction()
     {
+
         if (monoInventory == null)
         {
             monoInventory = FindObjectOfType<MONO_Inventory>();
         }
+
         monoInventory.AddItem(item);
     }
 }
